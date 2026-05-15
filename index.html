@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zach Hero Section</title>
+  <title>ZH Homes Hero Section</title>
 
   <style>
     :root {
-      --bg: #050607;
-      --bg-2: #0c0f12;
+      --bg: #060708;
+      --bg-soft: #0b0e11;
       --text: #ffffff;
-      --muted: rgba(255,255,255,0.72);
+      --muted: rgba(255,255,255,0.74);
       --line: rgba(255,255,255,0.10);
       --orange: #f37021;
-      --orange-dark: #d95e12;
-      --card: rgba(7, 9, 11, 0.78);
+      --orange-dark: #da5d11;
+      --card: rgba(7, 9, 11, 0.82);
     }
 
     * {
@@ -39,82 +39,73 @@
     }
 
     /*
-      Put these image files in the same folder as this HTML:
-      - ChatGPT Image May 14, 2026, 09_12_52 PM.png   (sketch / blueprint image)
-      - ChatGPT Image May 14, 2026, 09_29_45 PM.png   (kitchen image)
+      Put these files in the same folder as this HTML:
+
+      - ChatGPT Image May 14, 2026, 09_12_52 PM.png
+      - ChatGPT Image May 14, 2026, 09_29_45 PM.png
     */
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 40;
-      background: rgba(5, 6, 7, 0.78);
+      z-index: 50;
+      background: rgba(6, 7, 8, 0.78);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .header-inner {
-      width: min(1200px, calc(100% - 36px));
+      width: min(1220px, calc(100% - 36px));
+      min-height: 80px;
       margin: 0 auto;
-      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
+      gap: 26px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       min-width: max-content;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      position: relative;
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(243,112,33,0.14), rgba(243,112,33,0.03)),
+        rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.03);
-      clip-path: polygon(0 0, 82% 0, 100% 18%, 100% 100%, 0 100%);
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      flex: 0 0 auto;
     }
 
-    .brand-mark::before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      top: 7px;
-      width: 7px;
-      height: 28px;
-      background: var(--orange);
-      transform: skewX(-18deg);
-    }
-
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      left: 9px;
-      bottom: 10px;
-      width: 25px;
-      height: 6px;
-      background: var(--orange);
-      transform: skewX(-18deg);
+    .brand-logo span {
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      color: #fff;
     }
 
     .brand-text strong {
       display: block;
       font-size: 18px;
-      line-height: 1.05;
-      letter-spacing: -0.3px;
+      line-height: 1.02;
+      letter-spacing: -0.4px;
     }
 
-    .brand-text span {
+    .brand-text small {
       display: block;
       margin-top: 4px;
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.15px;
       text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 800;
       color: rgba(255,255,255,0.56);
     }
 
@@ -153,12 +144,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 10px;
       background: var(--orange);
       color: #fff;
       font-size: 14px;
       font-weight: 900;
-      border-radius: 10px;
-      box-shadow: 0 12px 26px rgba(243, 112, 33, 0.22);
+      box-shadow: 0 12px 26px rgba(243, 112, 33, 0.20);
       transition: 0.2s ease;
     }
 
@@ -169,7 +160,7 @@
 
     .hero {
       position: relative;
-      min-height: calc(100vh - 79px);
+      min-height: calc(100vh - 81px);
       overflow: hidden;
       background:
         url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
@@ -177,72 +168,53 @@
       isolation: isolate;
     }
 
-    /* blueprint image kept visible; no heavy dimming */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -3;
       background:
-        radial-gradient(circle at 16% 52%, rgba(255,255,255,0.03), transparent 30%),
-        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.02), transparent 26%);
+        radial-gradient(circle at 16% 50%, rgba(255,255,255,0.025), transparent 30%),
+        radial-gradient(circle at 72% 40%, rgba(255,255,255,0.02), transparent 24%);
       pointer-events: none;
     }
 
-    /* subtle texture only, not darkening the image */
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.00) 100%);
-      pointer-events: none;
-    }
-
-    .hero-kitchen {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .hero-kitchen image {
-      width: 100%;
-      height: 100%;
-    }
-
+    .hero-kitchen,
     .curve-stroke {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+    }
+
+    .curve-stroke {
+      z-index: 1;
     }
 
     .curve-stroke path {
       fill: none;
       stroke: var(--orange);
       stroke-width: 4;
-      opacity: 0.92;
+      opacity: 0.90;
       filter: drop-shadow(0 0 8px rgba(243, 112, 33, 0.16));
     }
 
     .hero-inner {
       position: relative;
       z-index: 2;
-      width: min(1200px, calc(100% - 36px));
+      width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
-      min-height: calc(100vh - 79px);
+      min-height: calc(100vh - 81px);
       display: flex;
       align-items: center;
-      padding: 56px 0 78px;
+      padding: 54px 0 86px;
     }
 
     .hero-copy {
-      max-width: 590px;
-      padding-top: 4px;
+      max-width: 560px;
+      padding-top: 8px;
+      margin-left: 0;
     }
 
     .eyebrow {
@@ -250,11 +222,11 @@
       align-items: center;
       gap: 14px;
       margin-bottom: 22px;
+      color: var(--orange);
       font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 1.15px;
-      color: var(--orange);
     }
 
     .eyebrow::before {
@@ -266,21 +238,20 @@
     }
 
     h1 {
-      font-size: clamp(50px, 6vw, 76px);
+      font-size: clamp(50px, 5.9vw, 78px);
       line-height: 1.02;
-      letter-spacing: -2.8px;
+      letter-spacing: -3px;
       font-weight: 700;
       margin-bottom: 22px;
-      max-width: 620px;
+      max-width: 600px;
     }
 
     h1 .accent {
       color: var(--orange);
-      display: inline;
     }
 
     .subheadline {
-      max-width: 600px;
+      max-width: 580px;
       font-size: 18px;
       line-height: 1.6;
       color: var(--muted);
@@ -296,7 +267,6 @@
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
     }
 
     .btn {
@@ -338,18 +308,20 @@
 
     .btn-secondary:hover {
       border-color: var(--orange);
-      color: #fff;
       transform: translateY(-2px);
     }
 
+    /* Card now lives on the kitchen/image side */
     .review-card {
-      width: min(100%, 900px);
+      position: absolute;
+      right: clamp(22px, 4vw, 58px);
+      bottom: clamp(24px, 4.8vw, 58px);
+      z-index: 3;
+      width: min(660px, 44vw);
       display: grid;
-      grid-template-columns: 1.05fr 1px 1fr;
-      gap: 0;
-      margin-top: 10px;
+      grid-template-columns: 1.02fr 1px 1fr;
       background:
-        linear-gradient(90deg, rgba(8,10,12,0.88), rgba(8,10,12,0.76)),
+        linear-gradient(90deg, rgba(8,10,12,0.90), rgba(8,10,12,0.76)),
         rgba(8,10,12,0.84);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
@@ -360,7 +332,7 @@
 
     .review-left,
     .review-right {
-      padding: 26px 28px;
+      padding: 24px 26px;
     }
 
     .review-divider {
@@ -388,10 +360,10 @@
     .review-quote {
       color: rgba(255,255,255,0.92);
       font-size: 18px;
-      line-height: 1.65;
+      line-height: 1.62;
       font-style: italic;
       margin-bottom: 18px;
-      max-width: 360px;
+      max-width: 320px;
     }
 
     .review-author {
@@ -401,49 +373,49 @@
 
     .review-list {
       display: grid;
-      gap: 16px;
+      gap: 14px;
     }
 
     .review-item {
       display: grid;
-      grid-template-columns: 26px 1fr;
-      gap: 14px;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
       align-items: start;
       color: rgba(255,255,255,0.88);
     }
 
     .review-item svg {
-      width: 22px;
-      height: 22px;
+      width: 21px;
+      height: 21px;
       color: var(--orange);
       margin-top: 2px;
     }
 
     .review-item strong {
       display: block;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       line-height: 1.35;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1120px) {
       .nav {
         display: none;
       }
 
       .review-card {
-        max-width: 760px;
+        width: min(620px, 48vw);
       }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
       .curve-stroke path {
         stroke-width: 3;
       }
 
       .hero-inner {
         align-items: flex-start;
-        padding: 50px 0 58px;
+        padding: 50px 0 360px;
       }
 
       .hero-copy {
@@ -451,22 +423,20 @@
       }
 
       .review-card {
-        grid-template-columns: 1fr;
-      }
-
-      .review-divider {
-        width: auto;
-        height: 1px;
+        width: calc(100% - 32px);
+        right: 16px;
+        left: 16px;
+        bottom: 16px;
       }
     }
 
     @media (max-width: 760px) {
       .header-inner,
       .hero-inner {
-        width: min(100% - 28px, 1200px);
+        width: min(100% - 28px, 1220px);
       }
 
-      .brand-text span,
+      .brand-text small,
       .header-cta {
         display: none;
       }
@@ -489,6 +459,15 @@
         width: 100%;
       }
 
+      .review-card {
+        grid-template-columns: 1fr;
+      }
+
+      .review-divider {
+        width: auto;
+        height: 1px;
+      }
+
       .review-left,
       .review-right {
         padding: 22px 20px;
@@ -504,11 +483,11 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="#" class="brand" aria-label="Zach's Construction home">
-        <div class="brand-mark" aria-hidden="true"></div>
+      <a href="#" class="brand" aria-label="ZH Homes home">
+        <div class="brand-logo" aria-hidden="true"><span>ZH</span></div>
         <div class="brand-text">
           <strong>ZH Homes</strong>
-          <span>Quality Work. Fair Prices.</span>
+          <small>Good Quality Work</small>
         </div>
       </a>
 
@@ -525,18 +504,17 @@
 
   <section class="hero">
 
-    <!-- Kitchen image clipped into a more natural, less identical curve -->
+    <!-- Kitchen image clipped into a softer, hill-like curve -->
     <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <clipPath id="kitchenClipNatural">
+        <clipPath id="kitchenClipHill" clipPathUnits="userSpaceOnUse">
           <path d="
-            M 780 0
-            C 725 54, 700 112, 702 170
-            C 705 228, 741 280, 776 331
-            C 812 384, 827 438, 818 494
-            C 808 552, 773 602, 747 653
-            C 722 703, 712 753, 723 805
-            C 736 855, 766 888, 816 900
+            M 805 0
+            C 745 70, 720 145, 730 220
+            C 741 300, 797 360, 846 425
+            C 888 482, 902 542, 879 604
+            C 852 677, 794 742, 782 810
+            C 775 847, 786 878, 810 900
             L 1440 900
             L 1440 0
             Z
@@ -551,19 +529,18 @@
         width="1440"
         height="900"
         preserveAspectRatio="xMidYMid slice"
-        clip-path="url(#kitchenClipNatural)"
+        clip-path="url(#kitchenClipHill)"
       ></image>
     </svg>
 
     <svg class="curve-stroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <path d="
-        M 780 0
-        C 725 54, 700 112, 702 170
-        C 705 228, 741 280, 776 331
-        C 812 384, 827 438, 818 494
-        C 808 552, 773 602, 747 653
-        C 722 703, 712 753, 723 805
-        C 736 855, 766 888, 816 900
+        M 805 0
+        C 745 70, 720 145, 730 220
+        C 741 300, 797 360, 846 425
+        C 888 482, 902 542, 879 604
+        C 852 677, 794 742, 782 810
+        C 775 847, 786 878, 810 900
       " />
     </svg>
 
@@ -603,55 +580,55 @@
             <span>Text Us</span>
           </a>
         </div>
-
-        <div class="review-card">
-          <div class="review-left">
-            <div class="stars-row">
-              <div class="stars">★★★★★</div>
-              <span>5.0</span>
-            </div>
-
-            <div class="review-quote">
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Highly recommended ZH Homes.”
-            </div>
-
-            <div class="review-author">
-              — Lorem Ipsum, Salem, OR
-            </div>
-          </div>
-
-          <div class="review-divider"></div>
-
-          <div class="review-right">
-            <div class="review-list">
-              <div class="review-item">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3L14.7 8.3L20.5 9.1L16.25 13.2L17.3 19L12 16.2L6.7 19L7.75 13.2L3.5 9.1L9.3 8.3L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-                <strong>Experienced &amp; Reliable</strong>
-              </div>
-
-              <div class="review-item">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M3 11.5L12 4L21 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M6 10.5V20H18V10.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                </svg>
-                <strong>Homeowners<br>Landlords · Realtors</strong>
-              </div>
-
-              <div class="review-item">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 21C16.5 16.3 19 13.03 19 9.9C19 5.98 15.87 3 12 3C8.13 3 5 5.98 5 9.9C5 13.03 7.5 16.3 12 21Z" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                <strong>Serving Salem, Eugene, Portland, Dallas, Grand Ronde &amp; Nearby Areas</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
+
+    <div class="review-card">
+      <div class="review-left">
+        <div class="stars-row">
+          <div class="stars">★★★★★</div>
+          <span>5.0</span>
+        </div>
+
+        <div class="review-quote">
+          “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Highly recommended ZH Homes.”
+        </div>
+
+        <div class="review-author">
+          — Lorem Ipsum, Salem, OR
+        </div>
+      </div>
+
+      <div class="review-divider"></div>
+
+      <div class="review-right">
+        <div class="review-list">
+          <div class="review-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3L14.7 8.3L20.5 9.1L16.25 13.2L17.3 19L12 16.2L6.7 19L7.75 13.2L3.5 9.1L9.3 8.3L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <strong>Experienced &amp; Reliable</strong>
+          </div>
+
+          <div class="review-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 11.5L12 4L21 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 10.5V20H18V10.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <strong>Homeowners<br>Landlords · Realtors</strong>
+          </div>
+
+          <div class="review-item">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21C16.5 16.3 19 13.03 19 9.9C19 5.98 15.87 3 12 3C8.13 3 5 5.98 5 9.9C5 13.03 7.5 16.3 12 21Z" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <strong>Serving Salem, Eugene, Portland, Dallas, Grand Ronde &amp; Nearby Areas</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
 </body>
