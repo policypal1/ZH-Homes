@@ -7,13 +7,13 @@
 
   <style>
     :root {
-      --black: #101317;
+      --black: #111418;
       --black-soft: #1d2329;
       --white: #ffffff;
-      --panel: rgba(246, 246, 242, 0.92);
-      --gray: #5f6872;
+      --off-white: #f7f6f2;
+      --gray: #626b74;
       --orange: #f05a18;
-      --orange-dark: #c4470e;
+      --orange-dark: #c8450f;
     }
 
     * {
@@ -44,7 +44,7 @@
       height: 76px;
       background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(16, 19, 23, 0.08);
+      border-bottom: 1px solid rgba(17, 20, 24, 0.08);
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
     }
 
@@ -95,14 +95,11 @@
       transform: skewX(-18deg);
     }
 
-    .brand-text {
-      line-height: 1.05;
-    }
-
     .brand-text strong {
       display: block;
       font-size: 18px;
       letter-spacing: -0.4px;
+      line-height: 1.05;
     }
 
     .brand-text span {
@@ -167,91 +164,52 @@
       position: relative;
       min-height: calc(100vh - 76px);
       overflow: hidden;
-      background: #d9dddf;
+      background: var(--off-white);
+      isolation: isolate;
     }
 
     /*
-      Put this file in the same folder as this HTML:
-      ChatGPT Image May 14, 2026, 09_07_21 PM.png
+      Put these files in the same folder as this HTML:
+      - ChatGPT Image May 14, 2026, 09_12_52 PM.png  (blueprints)
+      - ChatGPT Image May 14, 2026, 09_29_45 PM.png  (kitchen)
     */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(to right, rgba(244,244,240,0.20), rgba(244,244,240,0.00) 47%, rgba(0,0,0,0.07)),
-        url("ChatGPT Image May 14, 2026, 09_07_21 PM.png") center right / cover no-repeat,
-        linear-gradient(135deg, #f1f1ee 0%, #c5cbd0 45%, #7f8a92 100%);
-    }
-
-    .hero-bg::after {
+    .hero::before {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: -3;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(0,0,0,0.13)),
-        linear-gradient(to right, rgba(255,255,255,0.10), rgba(255,255,255,0) 52%);
+        linear-gradient(90deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.82) 35%, rgba(255,255,255,0.58) 58%, rgba(255,255,255,0.40) 100%),
+        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat;
+      filter: grayscale(100%) contrast(1.05);
     }
 
-    .white-cut {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: var(--panel);
-      clip-path: polygon(0 0, 50% 0, 77.5% 100%, 0 100%);
-    }
-
-    .white-cut::before {
+    .hero::after {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: -2;
       background:
-        linear-gradient(to right, rgba(255,255,255,0.86), rgba(255,255,255,0.20)),
-        url("ChatGPT Image May 14, 2026, 09_07_21 PM.png") center right / cover no-repeat;
-      opacity: 0.13;
-      filter: grayscale(100%);
-    }
-
-    .black-slice {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      background: var(--black);
-      clip-path: polygon(49.2% 0, 50.35% 0, 78% 100%, 76.85% 100%);
-    }
-
-    .orange-slice {
-      position: absolute;
-      inset: 0;
-      z-index: 4;
-      background: var(--orange);
-      clip-path: polygon(73.1% 71%, 74.6% 71%, 80.15% 100%, 78.55% 100%);
-      box-shadow: 0 0 35px rgba(240, 90, 24, 0.28);
-    }
-
-    .top-orange-line {
-      position: absolute;
-      top: 0;
-      left: 38%;
-      width: 120px;
-      height: 4px;
-      background: var(--orange);
-      z-index: 5;
+        radial-gradient(circle at 78% 38%, rgba(240, 90, 24, 0.12), transparent 22%),
+        radial-gradient(circle at 72% 75%, rgba(240, 90, 24, 0.08), transparent 18%);
+      pointer-events: none;
     }
 
     .hero-inner {
-      position: relative;
-      z-index: 8;
       width: min(1180px, calc(100% - 40px));
       min-height: calc(100vh - 76px);
       margin: 0 auto;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
       align-items: center;
-      padding: 70px 0 82px;
+      gap: 44px;
+      padding: 70px 0 86px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-copy {
-      width: min(560px, 45vw);
+      max-width: 560px;
     }
 
     .eyebrow {
@@ -277,13 +235,13 @@
     }
 
     h1 {
-      max-width: 650px;
-      font-size: clamp(54px, 5.3vw, 86px);
+      max-width: 660px;
+      font-size: clamp(54px, 5.2vw, 84px);
       line-height: 1.02;
-      letter-spacing: -3.2px;
+      letter-spacing: -3.1px;
       font-weight: 600;
       color: var(--black);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     h1 .accent {
@@ -304,7 +262,7 @@
     }
 
     .subheadline {
-      max-width: 570px;
+      max-width: 560px;
       font-size: 18px;
       line-height: 1.65;
       color: var(--gray);
@@ -367,25 +325,107 @@
       transform: translateY(-2px);
     }
 
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bubble-accent-1,
+    .bubble-accent-2 {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--orange);
+      filter: blur(0px);
+      opacity: 0.95;
+    }
+
+    .bubble-accent-1 {
+      width: 78px;
+      height: 78px;
+      top: 34px;
+      right: 34px;
+      opacity: 0.12;
+    }
+
+    .bubble-accent-2 {
+      width: 24px;
+      height: 24px;
+      bottom: 58px;
+      left: 42px;
+      opacity: 0.78;
+    }
+
+    .kitchen-bubble-wrap {
+      position: relative;
+      width: min(520px, 100%);
+      aspect-ratio: 1 / 1.04;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kitchen-bubble-outline {
+      position: absolute;
+      inset: 18px;
+      border: 2px solid rgba(240, 90, 24, 0.55);
+      border-radius: 56% 44% 50% 50% / 43% 56% 44% 57%;
+      transform: rotate(-6deg);
+    }
+
+    .kitchen-bubble {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 60% 40% 54% 46% / 44% 58% 42% 56%;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+      transform: rotate(-3deg);
+      background:
+        url("ChatGPT Image May 14, 2026, 09_29_45 PM.png") center center / cover no-repeat,
+        #ddd;
+    }
+
+    .kitchen-bubble::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(0,0,0,0.14));
+    }
+
+    .kitchen-bubble::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border-radius: 58% 42% 50% 50% / 44% 56% 44% 56%;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      pointer-events: none;
+    }
+
     @media (max-width: 1080px) {
       .nav {
         display: none;
       }
 
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding-top: 68px;
+      }
+
       .hero-copy {
-        width: min(570px, 55vw);
+        max-width: 100%;
       }
 
-      .white-cut {
-        clip-path: polygon(0 0, 58% 0, 88% 100%, 0 100%);
+      .hero-visual {
+        min-height: 0;
+        justify-content: flex-start;
       }
 
-      .black-slice {
-        clip-path: polygon(57.1% 0, 58.3% 0, 88.3% 100%, 87.1% 100%);
-      }
-
-      .orange-slice {
-        clip-path: polygon(81% 71%, 82.55% 71%, 88.5% 100%, 86.8% 100%);
+      .kitchen-bubble-wrap {
+        width: min(520px, 100%);
       }
     }
 
@@ -399,10 +439,7 @@
         width: min(100% - 32px, 1180px);
       }
 
-      .brand-text span {
-        display: none;
-      }
-
+      .brand-text span,
       .header-cta {
         display: none;
       }
@@ -411,52 +448,32 @@
         min-height: auto;
       }
 
-      .hero-bg {
-        background-position: center;
-      }
-
-      .hero-bg::after {
-        background: rgba(0,0,0,0.20);
-      }
-
-      .white-cut {
-        background: rgba(246, 246, 242, 0.94);
-        clip-path: polygon(0 0, 100% 0, 100% 76%, 0 100%);
-      }
-
-      .white-cut::before {
-        opacity: 0.10;
-      }
-
-      .black-slice {
-        clip-path: polygon(0 75%, 100% 63%, 100% 65.5%, 0 77.5%);
-      }
-
-      .orange-slice {
-        clip-path: polygon(0 94%, 100% 80%, 100% 86%, 0 100%);
-      }
-
-      .top-orange-line {
-        left: 32px;
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.72) 100%),
+          url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat;
       }
 
       .hero-inner {
         min-height: auto;
-        align-items: flex-start;
-        padding: 76px 0 190px;
-      }
-
-      .hero-copy {
-        width: 100%;
+        padding: 64px 0 72px;
       }
 
       h1 {
-        font-size: clamp(44px, 12vw, 64px);
+        font-size: clamp(43px, 12vw, 62px);
         letter-spacing: -2px;
       }
 
       .subheadline {
         font-size: 16px;
+      }
+
+      .hero-visual {
+        justify-content: center;
+      }
+
+      .kitchen-bubble-wrap {
+        width: min(460px, 100%);
       }
     }
 
@@ -472,6 +489,22 @@
 
       .quote-btn {
         width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 0;
+      }
+
+      .bubble-accent-1 {
+        width: 56px;
+        height: 56px;
+        top: 8px;
+        right: 10px;
+      }
+
+      .bubble-accent-2 {
+        left: 8px;
+        bottom: 18px;
       }
     }
   </style>
@@ -500,12 +533,6 @@
   </header>
 
   <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="white-cut"></div>
-    <div class="black-slice"></div>
-    <div class="orange-slice"></div>
-    <div class="top-orange-line"></div>
-
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="eyebrow">Quality Work. Fair Price. Zero Cut Corners.</div>
@@ -519,6 +546,16 @@
         </p>
 
         <a href="#quote" class="quote-btn"><span>Get a Free Quote</span></a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="bubble-accent-1"></div>
+        <div class="bubble-accent-2"></div>
+
+        <div class="kitchen-bubble-wrap">
+          <div class="kitchen-bubble-outline"></div>
+          <div class="kitchen-bubble"></div>
+        </div>
       </div>
     </div>
   </section>
