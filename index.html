@@ -458,7 +458,7 @@
     .about-section {
       background: #fff;
       color: var(--section-text);
-      padding: 92px 0;
+      padding: 96px 0;
       overflow: hidden;
     }
 
@@ -466,30 +466,30 @@
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 0.95fr 1fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: clamp(42px, 6vw, 78px);
       align-items: center;
     }
 
     .about-media {
       position: relative;
-      min-height: 480px;
+      min-height: 560px;
     }
 
     .photo-stack {
       position: relative;
-      height: 480px;
+      height: 560px;
     }
 
     .photo-main {
       position: absolute;
       left: 0;
       top: 0;
-      width: 82%;
-      height: 285px;
-      border-radius: 12px;
+      width: 94%;
+      height: 340px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 24px 42px rgba(0,0,0,0.14);
+      box-shadow: 0 28px 48px rgba(0,0,0,0.16);
       background: #ddd;
     }
 
@@ -506,37 +506,37 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(243,112,33,0.26), rgba(0,0,0,0.04));
+      background: linear-gradient(135deg, rgba(243,112,33,0.22), rgba(0,0,0,0.03));
       pointer-events: none;
     }
 
     .photo-small {
       position: absolute;
-      bottom: 18px;
-      height: 135px;
-      border-radius: 10px;
+      bottom: 0;
+      height: 165px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 18px 34px rgba(0,0,0,0.12);
+      box-shadow: 0 20px 38px rgba(0,0,0,0.14);
       background: #ddd;
     }
 
     .photo-small.one {
       left: 0;
-      width: 42%;
+      width: 45%;
     }
 
     .photo-small.two {
-      left: 47%;
-      width: 42%;
+      left: 49%;
+      width: 45%;
     }
 
     .floating-badge {
       position: absolute;
       left: -18px;
-      top: 110px;
-      width: 104px;
-      min-height: 112px;
-      border-radius: 10px;
+      top: 138px;
+      width: 112px;
+      min-height: 118px;
+      border-radius: 11px;
       background: var(--orange);
       color: #fff;
       display: grid;
@@ -549,7 +549,7 @@
 
     .floating-badge strong {
       display: block;
-      font-size: 27px;
+      font-size: 29px;
       line-height: 1;
       font-weight: 950;
       letter-spacing: -1px;
@@ -566,7 +566,11 @@
     }
 
     .about-content {
-      max-width: 610px;
+      min-height: 560px;
+      max-width: 590px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .section-eyebrow {
@@ -589,25 +593,25 @@
     }
 
     .about-content h2 {
-      font-size: clamp(36px, 4vw, 55px);
+      font-size: clamp(35px, 3.8vw, 52px);
       line-height: 1.06;
       letter-spacing: -1.8px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: var(--brown);
     }
 
     .about-content p {
       color: var(--section-muted);
       font-size: 16px;
-      line-height: 1.75;
-      margin-bottom: 24px;
+      line-height: 1.7;
+      margin-bottom: 22px;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px 28px;
-      margin: 26px 0 30px;
+      gap: 14px 24px;
+      margin: 18px 0 28px;
     }
 
     .about-check {
@@ -681,6 +685,207 @@
       letter-spacing: 0.8px;
     }
 
+    .services-section {
+      position: relative;
+      background:
+        linear-gradient(rgba(10, 7, 5, 0.88), rgba(10, 7, 5, 0.92)),
+        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
+        #0a0705;
+      padding: 92px 0 96px;
+      overflow: hidden;
+    }
+
+    .services-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 82% 20%, rgba(243,112,33,0.10), transparent 34%),
+        radial-gradient(circle at 10% 90%, rgba(243,112,33,0.08), transparent 34%);
+      pointer-events: none;
+    }
+
+    .services-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .services-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 52px;
+    }
+
+    .services-heading {
+      max-width: 620px;
+    }
+
+    .services-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .services-eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .services-heading h2 {
+      color: #fff;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -1.6px;
+      font-weight: 850;
+    }
+
+    .services-btn {
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 7px;
+      background: var(--orange);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 13px;
+      font-weight: 950;
+      white-space: nowrap;
+      box-shadow: 0 14px 28px rgba(243,112,33,0.20);
+      transition: 0.2s ease;
+    }
+
+    .services-btn:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 305px;
+      background: #fff;
+      color: var(--section-text);
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: 152px 1fr;
+      box-shadow: 0 26px 54px rgba(0,0,0,0.26);
+      transition: 0.22s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 34px 70px rgba(0,0,0,0.34);
+    }
+
+    .service-image {
+      position: relative;
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.35s ease;
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.05);
+    }
+
+    .service-image::after {
+      content: "";
+      position: absolute;
+      right: -34px;
+      bottom: -1px;
+      width: 118px;
+      height: 105%;
+      background: var(--orange);
+      transform: skewX(-15deg);
+      transform-origin: bottom right;
+    }
+
+    .service-number {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.72);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 950;
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .service-content {
+      padding: 28px 28px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .service-content h3 {
+      font-size: 23px;
+      line-height: 1.14;
+      letter-spacing: -0.7px;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .service-content p {
+      color: var(--section-muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 950;
+      width: fit-content;
+    }
+
+    .service-link svg {
+      width: 16px;
+      height: 16px;
+      transition: 0.2s ease;
+    }
+
+    .service-link:hover svg {
+      transform: translateX(3px);
+    }
+
     @media (max-width: 1120px) {
       .nav {
         display: none;
@@ -688,6 +893,20 @@
 
       .trust-card {
         width: min(620px, 48vw);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 230px;
+        grid-template-columns: 280px 1fr;
+        grid-template-rows: none;
+      }
+
+      .service-image {
+        min-height: 230px;
       }
     }
 
@@ -725,22 +944,29 @@
       }
 
       .about-media {
-        min-height: 440px;
+        min-height: 520px;
       }
 
       .photo-stack {
-        height: 440px;
+        height: 520px;
       }
 
       .about-content {
+        min-height: auto;
         max-width: 100%;
+      }
+
+      .services-top {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
     @media (max-width: 760px) {
       .header-inner,
       .hero-inner,
-      .about-inner {
+      .about-inner,
+      .services-inner {
         width: min(100% - 28px, 1220px);
       }
 
@@ -807,20 +1033,20 @@
       }
 
       .about-media {
-        min-height: 390px;
+        min-height: 430px;
       }
 
       .photo-stack {
-        height: 390px;
+        height: 430px;
       }
 
       .photo-main {
         width: 100%;
-        height: 235px;
+        height: 255px;
       }
 
       .photo-small {
-        height: 116px;
+        height: 130px;
       }
 
       .photo-small.one {
@@ -834,7 +1060,7 @@
 
       .floating-badge {
         left: 12px;
-        top: 190px;
+        top: 205px;
         width: 96px;
         min-height: 98px;
       }
@@ -850,6 +1076,19 @@
       .about-bottom {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .services-section {
+        padding: 76px 0 80px;
+      }
+
+      .service-card {
+        grid-template-columns: 1fr;
+        grid-template-rows: 170px 1fr;
+      }
+
+      .service-image {
+        min-height: 170px;
       }
     }
 
@@ -894,7 +1133,6 @@
 
   <section class="hero">
 
-    <!-- Kitchen image: one main natural bump, not a perfect curve -->
     <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <clipPath id="kitchenClipNaturalBump" clipPathUnits="userSpaceOnUse">
@@ -912,9 +1150,9 @@
 
       <image
         href="ChatGPT Image May 14, 2026, 09_29_45 PM.png"
-        x="0"
+        x="65"
         y="0"
-        width="1440"
+        width="1540"
         height="900"
         preserveAspectRatio="xMidYMid slice"
         clip-path="url(#kitchenClipNaturalBump)"
@@ -1083,18 +1321,13 @@
         <div class="section-eyebrow">About ZH Homes</div>
 
         <h2>
-          Reliable construction work without the runaround.
+          Reliable construction without the runaround.
         </h2>
 
         <p>
           ZH Homes helps homeowners, landlords, realtors, and property managers with construction,
-          remodeling, and handyman work. The goal is simple: honest communication, quality work,
+          remodeling, and handyman work. The goal is simple: clear communication, quality work,
           and fair pricing without making the job feel overpriced or complicated.
-        </p>
-
-        <p>
-          Whether it is a small repair, property punch list, or a larger remodel, Zach and the team
-          stay owner-involved and focused on getting the work done right.
         </p>
 
         <div class="about-grid">
@@ -1141,6 +1374,96 @@
             <span>Oregon CCB License</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section" id="services">
+    <div class="services-inner">
+      <div class="services-top">
+        <div class="services-heading">
+          <div class="services-eyebrow">Our Services</div>
+          <h2>Quality work for homes, rentals, and properties.</h2>
+        </div>
+
+        <a href="#quote" class="services-btn">
+          <span>Get a Quote</span>
+          <span>↗</span>
+        </a>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-image">
+            <div class="service-number">01</div>
+            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home remodeling service">
+          </div>
+
+          <div class="service-content">
+            <div>
+              <h3>Home Remodeling</h3>
+              <p>
+                Interior updates, repairs, improvements, and remodel work built around clean finishes and lasting value.
+              </p>
+            </div>
+
+            <a href="#quote" class="service-link">
+              <span>Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-image">
+            <div class="service-number">02</div>
+            <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Construction project planning">
+          </div>
+
+          <div class="service-content">
+            <div>
+              <h3>Construction Projects</h3>
+              <p>
+                Reliable construction work for homeowners, landlords, realtors, and property managers who need it done right.
+              </p>
+            </div>
+
+            <a href="#quote" class="service-link">
+              <span>Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="service-card">
+          <div class="service-image">
+            <div class="service-number">03</div>
+            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Handyman repairs and property work">
+          </div>
+
+          <div class="service-content">
+            <div>
+              <h3>Handyman &amp; Repairs</h3>
+              <p>
+                Punch lists, repairs, rental prep, small fixes, and property improvements handled with honest communication.
+              </p>
+            </div>
+
+            <a href="#quote" class="service-link">
+              <span>Read More</span>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
