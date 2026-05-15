@@ -44,7 +44,7 @@
 
       - ChatGPT Image May 14, 2026, 09_12_52 PM.png   (blueprints)
       - ChatGPT Image May 14, 2026, 09_29_45 PM.png   (kitchen)
-      - ChatGPT Image May 14, 2026, 10_06_01 PM.png   (new background / placeholder)
+      - ChatGPT Image May 14, 2026, 10_06_01 PM.png   (paper/background image)
     */
 
     .site-header {
@@ -150,7 +150,7 @@
       color: #fff;
       font-size: 14px;
       font-weight: 900;
-      box-shadow: 0 12px 26px rgba(243, 112, 33, 0.20);
+      box-shadow: 0 12px 26px rgba(243,112,33,0.20);
       transition: 0.2s ease;
     }
 
@@ -198,7 +198,7 @@
       stroke: var(--orange);
       stroke-width: 4;
       opacity: 0.92;
-      filter: drop-shadow(0 0 8px rgba(243, 112, 33, 0.16));
+      filter: drop-shadow(0 0 8px rgba(243,112,33,0.16));
     }
 
     .hero-inner {
@@ -292,7 +292,7 @@
     .btn-primary {
       background: var(--orange);
       color: #fff;
-      box-shadow: 0 16px 32px rgba(243, 112, 33, 0.18);
+      box-shadow: 0 16px 32px rgba(243,112,33,0.18);
     }
 
     .btn-primary:hover {
@@ -586,7 +586,9 @@
       padding-top: 0;
     }
 
-    .section-eyebrow {
+    .section-eyebrow,
+    .services-eyebrow,
+    .mission-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -598,7 +600,9 @@
       margin-bottom: 16px;
     }
 
-    .section-eyebrow::before {
+    .section-eyebrow::before,
+    .services-eyebrow::before,
+    .mission-eyebrow::before {
       content: "";
       width: 34px;
       height: 2px;
@@ -738,25 +742,6 @@
 
     .services-heading {
       max-width: 660px;
-    }
-
-    .services-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
-    }
-
-    .services-eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 2px;
-      background: var(--orange);
     }
 
     .services-heading h2 {
@@ -905,11 +890,11 @@
     .mission-section {
       position: relative;
       background:
-        linear-gradient(rgba(255,255,255,0.91), rgba(255,255,255,0.97)),
+        linear-gradient(rgba(255,255,255,0.90), rgba(255,255,255,0.96)),
         url("ChatGPT Image May 14, 2026, 10_06_01 PM.png") center center / cover no-repeat,
         #ffffff;
       color: var(--section-text);
-      padding: 94px 0;
+      padding: 92px 0 88px;
       overflow: hidden;
     }
 
@@ -918,8 +903,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(243,112,33,0.05), transparent 30%, rgba(243,112,33,0.06)),
-        radial-gradient(circle at 78% 22%, rgba(243,112,33,0.08), transparent 31%);
+        linear-gradient(90deg, rgba(243,112,33,0.05), transparent 28%, rgba(243,112,33,0.05)),
+        radial-gradient(circle at 78% 22%, rgba(243,112,33,0.09), transparent 30%);
       pointer-events: none;
     }
 
@@ -928,60 +913,90 @@
       z-index: 2;
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
+    }
+
+    .mission-top {
       display: grid;
-      grid-template-columns: 0.98fr 1.02fr;
-      gap: clamp(42px, 6vw, 78px);
-      align-items: center;
+      grid-template-columns: 0.95fr 1fr;
+      gap: clamp(36px, 6vw, 80px);
+      align-items: start;
+      padding-bottom: 42px;
+      border-bottom: 1px solid rgba(35,23,18,0.10);
     }
 
-    .mission-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
-    }
-
-    .mission-eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 2px;
-      background: var(--orange);
-    }
-
-    .mission-copy h2 {
+    .mission-title h2 {
       font-size: clamp(34px, 4vw, 54px);
       line-height: 1.08;
       letter-spacing: -1.7px;
       color: var(--brown);
-      max-width: 590px;
-      margin-bottom: 24px;
-    }
-
-    .mission-points {
-      display: grid;
-      gap: 14px;
-      margin-top: 28px;
       max-width: 560px;
     }
 
-    .mission-point {
-      display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 14px;
-      align-items: center;
-      padding: 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(35,23,18,0.08);
-      box-shadow: 0 14px 34px rgba(35,23,18,0.05);
+    .mission-copy {
+      max-width: 620px;
+      padding-top: 34px;
     }
 
-    .mission-icon {
+    .mission-copy p {
+      color: var(--section-muted);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .mission-strip {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(35,23,18,0.10);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.74);
+      box-shadow: 0 22px 55px rgba(35,23,18,0.07);
+      backdrop-filter: blur(8px);
+    }
+
+    .mission-stat {
+      min-height: 150px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(35,23,18,0.10);
+    }
+
+    .mission-stat:last-child {
+      border-right: 0;
+    }
+
+    .mission-stat strong {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+      letter-spacing: -1.6px;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .mission-stat span {
+      color: var(--section-muted);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.55px;
+    }
+
+    .mission-note {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #5d524c;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .mission-note-icon {
       width: 42px;
       height: 42px;
       border-radius: 50%;
@@ -989,107 +1004,46 @@
       color: #fff;
       display: grid;
       place-items: center;
-      box-shadow: 0 14px 24px rgba(243,112,33,0.18);
+      flex: 0 0 auto;
+      box-shadow: 0 14px 28px rgba(243,112,33,0.18);
     }
 
-    .mission-icon svg {
+    .mission-note-icon svg {
       width: 20px;
       height: 20px;
     }
 
-    .mission-point strong {
-      display: block;
-      color: var(--brown);
-      font-size: 15px;
-      font-weight: 950;
-      margin-bottom: 3px;
-    }
-
-    .mission-point span {
-      display: block;
-      color: var(--section-muted);
-      font-size: 13px;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-
-    .mission-image-wrap {
-      position: relative;
-    }
-
-    .mission-image-card {
-      position: relative;
-      min-height: 460px;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 30px 70px rgba(35,23,18,0.16);
-      background: #ddd;
-    }
-
-    .mission-image-card img {
-      width: 100%;
-      height: 100%;
-      min-height: 460px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .mission-image-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.44)),
-        linear-gradient(135deg, rgba(243,112,33,0.12), transparent 55%);
-    }
-
-    .mission-floating-card {
-      position: absolute;
-      left: -28px;
-      bottom: 28px;
-      width: min(320px, calc(100% - 32px));
-      border-radius: 18px;
-      background: rgba(255,255,255,0.94);
-      color: var(--brown);
-      padding: 24px;
-      box-shadow: 0 24px 54px rgba(0,0,0,0.20);
-      border: 1px solid rgba(35,23,18,0.08);
-    }
-
-    .mission-floating-card strong {
-      display: block;
-      font-size: 31px;
-      line-height: 1;
-      color: var(--orange);
-      letter-spacing: -1px;
-      margin-bottom: 8px;
-    }
-
-    .mission-floating-card span {
-      display: block;
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--section-muted);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
     .gallery-section {
-      background: #fff;
-      color: var(--section-text);
+      position: relative;
+      background:
+        linear-gradient(rgba(6,7,8,0.93), rgba(6,7,8,0.96)),
+        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
+        #060708;
+      color: #fff;
       padding: 96px 0 110px;
       overflow: hidden;
     }
 
+    .gallery-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(243,112,33,0.10), transparent 30%),
+        radial-gradient(circle at 82% 88%, rgba(243,112,33,0.08), transparent 34%);
+      pointer-events: none;
+    }
+
     .gallery-inner {
+      position: relative;
+      z-index: 2;
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
     }
 
     .gallery-top {
       text-align: center;
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 42px;
     }
 
@@ -1117,63 +1071,39 @@
       font-size: clamp(34px, 4vw, 54px);
       line-height: 1.08;
       letter-spacing: -1.7px;
-      color: var(--brown);
-      margin-bottom: 20px;
-    }
-
-    .gallery-filters {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
-    .gallery-filter {
-      border: 1px solid rgba(35,23,18,0.12);
-      background: #fff;
-      color: #5f524b;
-      border-radius: 999px;
-      min-height: 38px;
-      padding: 0 15px;
-      display: inline-flex;
-      align-items: center;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.3px;
-    }
-
-    .gallery-filter.active {
-      background: var(--orange);
-      border-color: var(--orange);
       color: #fff;
-      box-shadow: 0 12px 24px rgba(243,112,33,0.18);
+      margin-bottom: 18px;
+    }
+
+    .gallery-top p {
+      color: rgba(255,255,255,0.68);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 auto;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: 1fr 1.1fr 1fr;
-      grid-auto-rows: 160px;
+      grid-template-columns: 1fr 1.12fr 1fr;
+      grid-auto-rows: 158px;
       gap: 20px;
-      margin-top: 38px;
+      margin-top: 42px;
+      grid-auto-flow: dense;
     }
 
     .gallery-item {
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      background: #ddd;
-      box-shadow: 0 24px 52px rgba(35,23,18,0.12);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 24px 52px rgba(0,0,0,0.26);
       isolation: isolate;
+      border: 1px solid rgba(255,255,255,0.07);
     }
 
     .gallery-item.large {
       grid-row: span 2;
-    }
-
-    .gallery-item.wide {
-      grid-column: span 2;
     }
 
     .gallery-item img {
@@ -1193,7 +1123,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.00) 35%, rgba(0,0,0,0.58)),
+        linear-gradient(180deg, rgba(0,0,0,0.00) 28%, rgba(0,0,0,0.66)),
         linear-gradient(135deg, rgba(243,112,33,0.14), transparent 55%);
       z-index: 1;
     }
@@ -1222,6 +1152,149 @@
       font-weight: 800;
     }
 
+    .process-section {
+      background: #fff;
+      color: var(--section-text);
+      padding: 94px 0 108px;
+      overflow: hidden;
+    }
+
+    .process-inner {
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .process-panel {
+      position: relative;
+      min-height: 410px;
+      border-radius: 22px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(13, 64, 63, 0.76), rgba(13, 64, 63, 0.82)),
+        url("ChatGPT Image May 14, 2026, 09_29_45 PM.png") center center / cover no-repeat;
+      box-shadow: 0 30px 70px rgba(35,23,18,0.16);
+      padding: 42px 44px 34px;
+    }
+
+    .process-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12), transparent 26%),
+        linear-gradient(90deg, rgba(243,112,33,0.10), transparent 45%, rgba(243,112,33,0.08));
+      pointer-events: none;
+    }
+
+    .process-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .process-top {
+      max-width: 760px;
+      margin: 0 auto 46px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .process-eyebrow {
+      color: rgba(255,255,255,0.70);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .process-top h2 {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.7px;
+      margin-bottom: 12px;
+    }
+
+    .process-top p {
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .process-steps {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .process-steps::before {
+      content: "";
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      bottom: -26px;
+      height: 2px;
+      background: rgba(255,255,255,0.28);
+    }
+
+    .process-card {
+      position: relative;
+      min-height: 156px;
+      background: rgba(255,255,255,0.94);
+      border-radius: 12px;
+      padding: 24px 22px 22px;
+      color: var(--brown);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+    }
+
+    .process-icon {
+      width: 30px;
+      height: 30px;
+      color: #158985;
+      margin-bottom: 16px;
+    }
+
+    .process-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .process-card h3 {
+      font-size: 17px;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+      font-weight: 950;
+    }
+
+    .process-card p {
+      color: #5f5954;
+      font-size: 12px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .process-dot {
+      position: absolute;
+      left: 50%;
+      bottom: -39px;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(21,137,133,0.92);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 950;
+      border: 3px solid rgba(255,255,255,0.46);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+    }
+
     @media (max-width: 1120px) {
       .nav {
         display: none;
@@ -1235,12 +1308,14 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .mission-inner {
-        grid-template-columns: 1fr;
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 18px;
       }
 
-      .mission-floating-card {
-        left: 24px;
+      .process-steps::before,
+      .process-dot {
+        display: none;
       }
     }
 
@@ -1296,12 +1371,34 @@
         flex-direction: column;
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
+      .mission-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .gallery-item.wide {
-        grid-column: span 1;
+      .mission-copy {
+        padding-top: 0;
+      }
+
+      .mission-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mission-stat {
+        border-bottom: 1px solid rgba(35,23,18,0.10);
+      }
+
+      .mission-stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .mission-stat:nth-child(3),
+      .mission-stat:nth-child(4) {
+        border-bottom: 0;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -1311,7 +1408,8 @@
       .about-inner,
       .services-inner,
       .mission-inner,
-      .gallery-inner {
+      .gallery-inner,
+      .process-inner {
         width: min(100% - 28px, 1220px);
       }
 
@@ -1443,18 +1541,21 @@
         padding: 74px 0;
       }
 
-      .mission-image-card,
-      .mission-image-card img {
-        min-height: 360px;
+      .mission-strip {
+        grid-template-columns: 1fr;
       }
 
-      .mission-floating-card {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        width: 100%;
-        margin-top: -42px;
-        z-index: 3;
+      .mission-stat {
+        border-right: 0;
+        border-bottom: 1px solid rgba(35,23,18,0.10);
+      }
+
+      .mission-stat:last-child {
+        border-bottom: 0;
+      }
+
+      .mission-stat:nth-child(3) {
+        border-bottom: 1px solid rgba(35,23,18,0.10);
       }
 
       .gallery-section {
@@ -1468,6 +1569,18 @@
 
       .gallery-item.large {
         grid-row: span 1;
+      }
+
+      .process-section {
+        padding: 74px 0 84px;
+      }
+
+      .process-panel {
+        padding: 36px 18px 26px;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1501,9 +1614,9 @@
 
       <nav class="nav" aria-label="Main navigation">
         <a href="#services">Services</a>
-        <a href="#work">Work</a>
+        <a href="#work">Why Us</a>
         <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
+        <a href="#process">Process</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -1565,22 +1678,10 @@
 
         <div class="hero-actions">
           <a href="#quote" class="btn btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M8 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M16 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
-              <path d="M4 10H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M9 14H12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
             <span>Get a Free Quote</span>
           </a>
 
           <a href="#contact" class="btn btn-secondary">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M8 10.5H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M8 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M6 19L6.7 16.6C5.03 15.32 4 13.44 4 11.3C4 7.27 7.58 4 12 4C16.42 4 20 7.27 20 11.3C20 15.33 16.42 18.6 12 18.6C10.83 18.6 9.73 18.37 8.74 17.95L6 19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
             <span>Text Us</span>
           </a>
         </div>
@@ -1745,10 +1846,6 @@
         <div class="about-bottom">
           <a href="#quote" class="about-cta">
             <span>Request a Free Estimate</span>
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-              <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
           </a>
 
           <div class="license-note">
@@ -1785,10 +1882,7 @@
               <h3>Home Remodeling</h3>
               <p>Interior updates, repairs, improvements, and remodel work built around clean finishes and lasting value.</p>
             </div>
-            <a href="#quote" class="service-link">
-              <span>Read More</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="#quote" class="service-link"><span>Read More</span></a>
           </div>
         </article>
 
@@ -1802,10 +1896,7 @@
               <h3>Construction Projects</h3>
               <p>Reliable construction work for homeowners, landlords, realtors, and property managers who need it done right.</p>
             </div>
-            <a href="#quote" class="service-link">
-              <span>Read More</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="#quote" class="service-link"><span>Read More</span></a>
           </div>
         </article>
 
@@ -1819,10 +1910,7 @@
               <h3>Handyman &amp; Repairs</h3>
               <p>Punch lists, repairs, rental prep, small fixes, and property improvements handled with honest communication.</p>
             </div>
-            <a href="#quote" class="service-link">
-              <span>Read More</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="#quote" class="service-link"><span>Read More</span></a>
           </div>
         </article>
 
@@ -1836,10 +1924,7 @@
               <h3>Rental Property Work</h3>
               <p>Turnover repairs, small updates, maintenance items, and fixes that help get rentals ready faster.</p>
             </div>
-            <a href="#quote" class="service-link">
-              <span>Read More</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="#quote" class="service-link"><span>Read More</span></a>
           </div>
         </article>
 
@@ -1853,10 +1938,7 @@
               <h3>Interior Updates</h3>
               <p>Kitchen, fixture, finish, and layout-focused updates that make the inside of the home feel cleaner and newer.</p>
             </div>
-            <a href="#quote" class="service-link">
-              <span>Read More</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="#quote" class="service-link"><span>Read More</span></a>
           </div>
         </article>
 
@@ -1870,10 +1952,7 @@
               <h3>Custom Jobs</h3>
               <p>Not every job fits a box. Send photos, explain what you need, and ZH Homes can look at the best next step.</p>
             </div>
-            <a href="#quote" class="service-link">
-              <span>Read More</span>
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <a href="#quote" class="service-link"><span>Read More</span></a>
           </div>
         </article>
       </div>
@@ -1882,60 +1961,55 @@
 
   <section class="mission-section" id="work">
     <div class="mission-inner">
-      <div class="mission-copy">
-        <div class="mission-eyebrow">Why Choose ZH Homes</div>
+      <div class="mission-top">
+        <div class="mission-title">
+          <div class="mission-eyebrow">Why Choose ZH Homes</div>
+          <h2>Built around honest work, clear pricing, and jobs done right.</h2>
+        </div>
 
-        <h2>Built around honest work, clear pricing, and jobs done right.</h2>
+        <div class="mission-copy">
+          <p>
+            ZH Homes is built for people who want a contractor who communicates clearly, shows up,
+            and keeps the work straightforward. No confusing process, no overcomplicated sales pitch,
+            just quality construction and repair work at a fair price.
+          </p>
 
-        <div class="mission-points">
-          <div class="mission-point">
-            <div class="mission-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Clear communication</strong>
-              <span>You know what is being done, what it costs, and what happens next.</span>
-            </div>
-          </div>
-
-          <div class="mission-point">
-            <div class="mission-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 3L14.7 8.3L20.5 9.1L16.25 13.2L17.3 19L12 16.2L6.7 19L7.75 13.2L3.5 9.1L9.3 8.3L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Quality over shortcuts</strong>
-              <span>Focused work that looks good, holds up, and makes the property better.</span>
-            </div>
-          </div>
-
-          <div class="mission-point">
-            <div class="mission-icon">
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M3 11.5L12 4L21 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M6 10.5V20H18V10.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <strong>Built for real property needs</strong>
-              <span>Homeowners, landlords, realtors, and property managers can all get help.</span>
-            </div>
-          </div>
+          <p>
+            From small repairs to larger home projects, the focus stays the same:
+            protect the customer’s time, budget, and property.
+          </p>
         </div>
       </div>
 
-      <div class="mission-image-wrap">
-        <div class="mission-image-card">
-          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="ZH Homes construction background placeholder">
+      <div class="mission-strip">
+        <div class="mission-stat">
+          <strong>CCB</strong>
+          <span>#260679 Licensed Oregon Contractor</span>
         </div>
 
-        <div class="mission-floating-card">
-          <strong>CCB #260679</strong>
-          <span>Licensed, bonded, and insured Oregon contractor</span>
+        <div class="mission-stat">
+          <strong>Free</strong>
+          <span>Estimates For Qualified Projects</span>
         </div>
+
+        <div class="mission-stat">
+          <strong>3</strong>
+          <span>Construction · Remodeling · Handyman</span>
+        </div>
+
+        <div class="mission-stat">
+          <strong>Local</strong>
+          <span>Salem, Portland, Eugene &amp; Nearby Areas</span>
+        </div>
+      </div>
+
+      <div class="mission-note">
+        <div class="mission-note-icon">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span>Best fit for homeowners, landlords, realtors, and property managers who want reliable work without the runaround.</span>
       </div>
     </div>
   </section>
@@ -1944,15 +2018,8 @@
     <div class="gallery-inner">
       <div class="gallery-top">
         <div class="gallery-eyebrow">Project Gallery</div>
-        <h2>Recent work, repairs, and home improvement projects.</h2>
-
-        <div class="gallery-filters" aria-label="Gallery categories">
-          <span class="gallery-filter active">All Work</span>
-          <span class="gallery-filter">Remodels</span>
-          <span class="gallery-filter">Repairs</span>
-          <span class="gallery-filter">Rentals</span>
-          <span class="gallery-filter">Custom Jobs</span>
-        </div>
+        <h2>Recent work, repairs, and property improvements.</h2>
+        <p>Placeholder project photos for now. Swap these with Zach’s real job photos once you have them.</p>
       </div>
 
       <div class="gallery-grid">
@@ -1965,7 +2032,7 @@
         </div>
 
         <div class="gallery-item large">
-          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Kitchen remodel">
+          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Interior remodel">
           <div class="gallery-label">
             <strong>Interior Remodel</strong>
             <span>Kitchen and home updates</span>
@@ -1973,7 +2040,7 @@
         </div>
 
         <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="Construction work">
+          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="Property work">
           <div class="gallery-label">
             <strong>Property Work</strong>
             <span>Clean, reliable finishes</span>
@@ -1981,7 +2048,7 @@
         </div>
 
         <div class="gallery-item large">
-          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home improvement">
+          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home updates">
           <div class="gallery-label">
             <strong>Home Updates</strong>
             <span>Functional upgrades</span>
@@ -1997,10 +2064,86 @@
         </div>
 
         <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="Finished construction project">
+          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="Repair work">
           <div class="gallery-label">
             <strong>Repair Work</strong>
             <span>Small fixes and punch lists</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Finished construction detail">
+          <div class="gallery-label">
+            <strong>Finished Details</strong>
+            <span>Clean final touches</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section" id="process">
+    <div class="process-inner">
+      <div class="process-panel">
+        <div class="process-content">
+          <div class="process-top">
+            <div class="process-eyebrow">How We Work</div>
+            <h2>A simple project process</h2>
+            <p>
+              Getting quality work done should feel clear, not complicated. Here is the basic process from first contact to finished project.
+            </p>
+          </div>
+
+          <div class="process-steps">
+            <div class="process-card">
+              <div class="process-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M6 7H18V17H6V7Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Reach Out</h3>
+              <p>Send a message, call, or submit the quote form with the basics of what you need done.</p>
+              <div class="process-dot">1</div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M17 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <path d="M4 10H20" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3>Review & Estimate</h3>
+              <p>Zach reviews the job, asks for photos if needed, and gives you the clearest next step.</p>
+              <div class="process-dot">2</div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 19L14 9L18 13L20 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 5H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Schedule The Work</h3>
+              <p>Once the plan is clear, the job gets scheduled around the project size and service area.</p>
+              <div class="process-dot">3</div>
+            </div>
+
+            <div class="process-card">
+              <div class="process-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3>Job Gets Done</h3>
+              <p>ZH Homes shows up, completes the work, and keeps communication clear through the finish.</p>
+              <div class="process-dot">4</div>
+            </div>
           </div>
         </div>
       </div>
