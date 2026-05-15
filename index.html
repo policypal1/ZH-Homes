@@ -7,13 +7,12 @@
 
   <style>
     :root {
-      --black: #111418;
-      --black-soft: #1d2329;
+      --black: #07090b;
+      --black-2: #111418;
       --white: #ffffff;
-      --off-white: #f7f6f2;
-      --gray: #626b74;
+      --muted: rgba(255, 255, 255, 0.72);
       --orange: #f05a18;
-      --orange-dark: #c8450f;
+      --orange-dark: #c8460f;
     }
 
     * {
@@ -29,23 +28,32 @@
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: var(--black);
-      color: var(--black);
+      color: var(--white);
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
+
+    /*
+      Image files needed in the same folder as this HTML:
+
+      Blueprints/sketches:
+      ChatGPT Image May 14, 2026, 09_12_52 PM.png
+
+      Kitchen:
+      ChatGPT Image May 14, 2026, 09_29_45 PM.png
+    */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
       height: 76px;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(7, 9, 11, 0.78);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(17, 20, 24, 0.08);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .header-inner {
@@ -68,8 +76,9 @@
     .brand-mark {
       width: 42px;
       height: 42px;
-      background: var(--black);
       position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.04);
       clip-path: polygon(0 0, 82% 0, 100% 18%, 100% 100%, 0 100%);
     }
 
@@ -100,6 +109,7 @@
       font-size: 18px;
       letter-spacing: -0.4px;
       line-height: 1.05;
+      color: #fff;
     }
 
     .brand-text span {
@@ -109,7 +119,7 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
       font-weight: 800;
-      color: var(--gray);
+      color: rgba(255, 255, 255, 0.56);
     }
 
     .nav {
@@ -118,7 +128,7 @@
       gap: 28px;
       font-size: 14px;
       font-weight: 800;
-      color: #2c333a;
+      color: rgba(255, 255, 255, 0.78);
     }
 
     .nav a {
@@ -151,7 +161,7 @@
       color: #fff;
       font-size: 14px;
       font-weight: 900;
-      box-shadow: 0 12px 24px rgba(240, 90, 24, 0.24);
+      box-shadow: 0 12px 24px rgba(240, 90, 24, 0.22);
       transition: 0.2s ease;
     }
 
@@ -164,24 +174,20 @@
       position: relative;
       min-height: calc(100vh - 76px);
       overflow: hidden;
-      background: var(--off-white);
       isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(7, 9, 11, 0.96) 0%, rgba(7, 9, 11, 0.88) 38%, rgba(7, 9, 11, 0.70) 57%, rgba(7, 9, 11, 0.08) 100%),
+        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat;
     }
 
-    /*
-      Put these files in the same folder as this HTML:
-      - ChatGPT Image May 14, 2026, 09_12_52 PM.png  (blueprints)
-      - ChatGPT Image May 14, 2026, 09_29_45 PM.png  (kitchen)
-    */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -3;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.82) 35%, rgba(255,255,255,0.58) 58%, rgba(255,255,255,0.40) 100%),
-        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat;
-      filter: grayscale(100%) contrast(1.05);
+      background: url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat;
+      filter: grayscale(100%) contrast(1.15);
+      opacity: 0.55;
     }
 
     .hero::after {
@@ -190,26 +196,70 @@
       inset: 0;
       z-index: -2;
       background:
-        radial-gradient(circle at 78% 38%, rgba(240, 90, 24, 0.12), transparent 22%),
-        radial-gradient(circle at 72% 75%, rgba(240, 90, 24, 0.08), transparent 18%);
+        radial-gradient(circle at 18% 48%, rgba(240, 90, 24, 0.10), transparent 28%),
+        linear-gradient(90deg, rgba(7, 9, 11, 0.94) 0%, rgba(7, 9, 11, 0.87) 35%, rgba(7, 9, 11, 0.55) 57%, rgba(7, 9, 11, 0.08) 100%);
       pointer-events: none;
     }
 
+    .kitchen-reveal {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 64%;
+      z-index: -1;
+      background: url("ChatGPT Image May 14, 2026, 09_29_45 PM.png") center center / cover no-repeat;
+      clip-path: ellipse(86% 98% at 84% 50%);
+    }
+
+    .kitchen-reveal::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(7, 9, 11, 0.50) 0%, rgba(7, 9, 11, 0.16) 18%, rgba(7, 9, 11, 0.00) 44%),
+        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(0,0,0,0.16));
+    }
+
+    .kitchen-reveal::after {
+      content: "";
+      position: absolute;
+      top: -8%;
+      bottom: -8%;
+      left: -2px;
+      width: 42%;
+      background: rgba(7, 9, 11, 0.34);
+      clip-path: ellipse(58% 59% at 0% 50%);
+      pointer-events: none;
+    }
+
+    .orange-edge {
+      position: absolute;
+      top: 0;
+      right: 58.5%;
+      width: 3px;
+      height: 100%;
+      z-index: 1;
+      background: linear-gradient(to bottom, transparent 0%, rgba(240, 90, 24, 0.82) 18%, rgba(240, 90, 24, 0.82) 82%, transparent 100%);
+      transform: rotate(8deg);
+      transform-origin: center;
+      opacity: 0.68;
+    }
+
     .hero-inner {
+      position: relative;
+      z-index: 2;
       width: min(1180px, calc(100% - 40px));
       min-height: calc(100vh - 76px);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
+      display: flex;
       align-items: center;
-      gap: 44px;
-      padding: 70px 0 86px;
-      position: relative;
-      z-index: 2;
+      padding: 72px 0 86px;
     }
 
     .hero-copy {
-      max-width: 560px;
+      max-width: 590px;
+      padding-top: 8px;
     }
 
     .eyebrow {
@@ -217,7 +267,7 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 24px;
-      color: #343a40;
+      color: rgba(255, 255, 255, 0.82);
       font-size: 12px;
       line-height: 1.2;
       letter-spacing: 1.35px;
@@ -239,9 +289,10 @@
       font-size: clamp(54px, 5.2vw, 84px);
       line-height: 1.02;
       letter-spacing: -3.1px;
-      font-weight: 600;
-      color: var(--black);
+      font-weight: 650;
+      color: #fff;
       margin-bottom: 22px;
+      text-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
     }
 
     h1 .accent {
@@ -262,10 +313,10 @@
     }
 
     .subheadline {
-      max-width: 560px;
+      max-width: 555px;
       font-size: 18px;
       line-height: 1.65;
-      color: var(--gray);
+      color: var(--muted);
       margin-bottom: 34px;
     }
 
@@ -277,11 +328,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--black);
+      background: var(--orange);
       color: #fff;
       font-size: 15px;
       font-weight: 900;
       transition: 0.2s ease;
+      box-shadow: 0 18px 35px rgba(240, 90, 24, 0.24);
     }
 
     .quote-btn::before,
@@ -291,7 +343,7 @@
       top: -8px;
       bottom: -8px;
       width: 1px;
-      background: rgba(16, 19, 23, 0.42);
+      background: rgba(240, 90, 24, 0.58);
     }
 
     .quote-btn::before {
@@ -309,7 +361,7 @@
       left: -8px;
       right: -8px;
       height: 1px;
-      background: rgba(16, 19, 23, 0.42);
+      background: rgba(240, 90, 24, 0.58);
     }
 
     .quote-btn span::before {
@@ -321,87 +373,8 @@
     }
 
     .quote-btn:hover {
-      background: var(--black-soft);
+      background: var(--orange-dark);
       transform: translateY(-2px);
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .bubble-accent-1,
-    .bubble-accent-2 {
-      position: absolute;
-      border-radius: 50%;
-      background: var(--orange);
-      filter: blur(0px);
-      opacity: 0.95;
-    }
-
-    .bubble-accent-1 {
-      width: 78px;
-      height: 78px;
-      top: 34px;
-      right: 34px;
-      opacity: 0.12;
-    }
-
-    .bubble-accent-2 {
-      width: 24px;
-      height: 24px;
-      bottom: 58px;
-      left: 42px;
-      opacity: 0.78;
-    }
-
-    .kitchen-bubble-wrap {
-      position: relative;
-      width: min(520px, 100%);
-      aspect-ratio: 1 / 1.04;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .kitchen-bubble-outline {
-      position: absolute;
-      inset: 18px;
-      border: 2px solid rgba(240, 90, 24, 0.55);
-      border-radius: 56% 44% 50% 50% / 43% 56% 44% 57%;
-      transform: rotate(-6deg);
-    }
-
-    .kitchen-bubble {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      border-radius: 60% 40% 54% 46% / 44% 58% 42% 56%;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
-      transform: rotate(-3deg);
-      background:
-        url("ChatGPT Image May 14, 2026, 09_29_45 PM.png") center center / cover no-repeat,
-        #ddd;
-    }
-
-    .kitchen-bubble::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(0,0,0,0.14));
-    }
-
-    .kitchen-bubble::after {
-      content: "";
-      position: absolute;
-      inset: 16px;
-      border-radius: 58% 42% 50% 50% / 44% 56% 44% 56%;
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      pointer-events: none;
     }
 
     @media (max-width: 1080px) {
@@ -409,23 +382,14 @@
         display: none;
       }
 
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 34px;
-        padding-top: 68px;
+      .kitchen-reveal {
+        width: 70%;
+        clip-path: ellipse(88% 95% at 86% 50%);
+        opacity: 0.86;
       }
 
       .hero-copy {
-        max-width: 100%;
-      }
-
-      .hero-visual {
-        min-height: 0;
-        justify-content: flex-start;
-      }
-
-      .kitchen-bubble-wrap {
-        width: min(520px, 100%);
+        max-width: 560px;
       }
     }
 
@@ -446,17 +410,36 @@
 
       .hero {
         min-height: auto;
-      }
-
-      .hero::before {
         background:
-          linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.82) 40%, rgba(255,255,255,0.72) 100%),
+          linear-gradient(180deg, rgba(7, 9, 11, 0.92) 0%, rgba(7, 9, 11, 0.82) 54%, rgba(7, 9, 11, 0.92) 100%),
           url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat;
       }
 
       .hero-inner {
         min-height: auto;
-        padding: 64px 0 72px;
+        align-items: flex-start;
+        padding: 62px 0 360px;
+      }
+
+      .kitchen-reveal {
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 360px;
+        clip-path: ellipse(80% 68% at 50% 100%);
+        opacity: 1;
+      }
+
+      .kitchen-reveal::before {
+        background:
+          linear-gradient(to bottom, rgba(7, 9, 11, 0.48), rgba(7, 9, 11, 0.05) 38%, rgba(7, 9, 11, 0.02));
+      }
+
+      .kitchen-reveal::after,
+      .orange-edge {
+        display: none;
       }
 
       h1 {
@@ -466,14 +449,6 @@
 
       .subheadline {
         font-size: 16px;
-      }
-
-      .hero-visual {
-        justify-content: center;
-      }
-
-      .kitchen-bubble-wrap {
-        width: min(460px, 100%);
       }
     }
 
@@ -491,20 +466,12 @@
         width: 100%;
       }
 
-      .hero-visual {
-        min-height: 0;
+      .hero-inner {
+        padding-bottom: 320px;
       }
 
-      .bubble-accent-1 {
-        width: 56px;
-        height: 56px;
-        top: 8px;
-        right: 10px;
-      }
-
-      .bubble-accent-2 {
-        left: 8px;
-        bottom: 18px;
+      .kitchen-reveal {
+        height: 320px;
       }
     }
   </style>
@@ -533,6 +500,9 @@
   </header>
 
   <section class="hero">
+    <div class="kitchen-reveal"></div>
+    <div class="orange-edge"></div>
+
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="eyebrow">Quality Work. Fair Price. Zero Cut Corners.</div>
@@ -546,16 +516,6 @@
         </p>
 
         <a href="#quote" class="quote-btn"><span>Get a Free Quote</span></a>
-      </div>
-
-      <div class="hero-visual">
-        <div class="bubble-accent-1"></div>
-        <div class="bubble-accent-2"></div>
-
-        <div class="kitchen-bubble-wrap">
-          <div class="kitchen-bubble-outline"></div>
-          <div class="kitchen-bubble"></div>
-        </div>
       </div>
     </div>
   </section>
