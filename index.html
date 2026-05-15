@@ -7,12 +7,15 @@
 
   <style>
     :root {
-      --dark: #1d2227;
-      --text: #23272d;
-      --muted: #6d747c;
-      --white-panel: rgba(246, 246, 244, 0.91);
-      --line: #171c21;
-      --soft-line: rgba(29, 34, 39, 0.32);
+      --black: #111418;
+      --black-2: #1d2228;
+      --white: #ffffff;
+      --off-white: #f4f4f1;
+      --gray: #676f78;
+      --light-gray: #e8e8e4;
+      --orange: #f05a18;
+      --orange-dark: #c9430b;
+      --shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
     }
 
     * {
@@ -21,33 +24,168 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #111;
-      color: var(--text);
+      color: var(--black);
+      background: #0f1114;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 78px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(17, 20, 24, 0.09);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100% - 42px));
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      background: var(--black);
+      clip-path: polygon(0 0, 82% 0, 100% 18%, 100% 100%, 0 100%);
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 7px;
+      width: 7px;
+      height: 28px;
+      background: var(--orange);
+      transform: skewX(-18deg);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 9px;
+      bottom: 10px;
+      width: 25px;
+      height: 6px;
+      background: var(--orange);
+      transform: skewX(-18deg);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-text strong {
+      font-size: 18px;
+      letter-spacing: -0.4px;
+      color: var(--black);
+    }
+
+    .brand-text span {
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #2d333a;
+    }
+
+    .nav a {
+      position: relative;
+      padding: 29px 0;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 21px;
+      height: 2px;
+      background: var(--orange);
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover::after {
+      right: 0;
+    }
+
+    .header-cta {
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      background: var(--orange);
+      color: white;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 12px 24px rgba(240, 90, 24, 0.24);
+      transition: 0.2s ease;
+    }
+
+    .header-cta:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
     }
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: calc(100vh - 78px);
       width: 100%;
       overflow: hidden;
-      background: #d8dde0;
+      background: #dfe2e3;
     }
 
     /*
-      Replace zach-hero.jpg with Zach's real project/jobsite photo.
-      Best photo type: exterior remodel, construction project, roofline, tools, truck, or before/after work.
+      Replace zach-hero.jpg with Zach's real image.
+      Use a real project photo if possible: remodel, repair work, exterior construction, tools, truck, or before/after.
     */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to right, rgba(230, 233, 234, 0.25) 0%, rgba(230, 233, 234, 0.02) 46%, rgba(0, 0, 0, 0.08) 100%),
-        url("zach-hero.jpg") center right / cover no-repeat,
-        linear-gradient(135deg, #dfe4e6 0%, #b8c0c4 42%, #7f8b91 100%);
       z-index: 1;
-      filter: grayscale(100%);
+      background:
+        linear-gradient(to right, rgba(245, 245, 242, 0.35) 0%, rgba(245, 245, 242, 0.06) 48%, rgba(0, 0, 0, 0.04) 100%),
+        url("zach-hero.jpg") center right / cover no-repeat,
+        linear-gradient(135deg, #f1f1ee 0%, #c7cdd0 48%, #858f96 100%);
     }
 
     .hero-bg::after {
@@ -55,128 +193,134 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(255,255,255,0.12), rgba(255,255,255,0) 52%),
-        linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(0,0,0,0.08));
+        linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(0,0,0,0.14)),
+        linear-gradient(to right, rgba(255,255,255,0.16), rgba(255,255,255,0) 50%);
     }
 
-    /* Main white angled overlay, shaped like the reference layout */
     .white-cut {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: var(--white-panel);
-      clip-path: polygon(0 0, 50.2% 0, 78.5% 100%, 0 100%);
+      background: rgba(246, 246, 242, 0.92);
+      clip-path: polygon(0 0, 50.5% 0, 77.5% 100%, 0 100%);
     }
 
-    /* Faint background image inside the white panel */
     .white-cut::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(255,255,255,0.72), rgba(255,255,255,0.28)),
+        linear-gradient(to right, rgba(255,255,255,0.82), rgba(255,255,255,0.24)),
         url("zach-hero.jpg") center right / cover no-repeat;
-      opacity: 0.16;
+      opacity: 0.14;
       filter: grayscale(100%);
     }
 
-    /* Dark diagonal cut line from the reference */
-    .black-cut-line {
+    .black-slice {
       position: absolute;
       inset: 0;
       z-index: 3;
-      background: var(--line);
-      clip-path: polygon(49.55% 0, 50.55% 0, 78.75% 100%, 77.75% 100%);
+      background: var(--black);
+      clip-path: polygon(49.7% 0, 50.8% 0, 78% 100%, 76.9% 100%);
     }
 
-    /* Subtle lower diagonal strip, black/gray only */
-    .lower-cut-line {
+    .orange-slice {
       position: absolute;
       inset: 0;
       z-index: 4;
-      background: #20252a;
-      clip-path: polygon(73.75% 73%, 75.15% 73%, 80.6% 100%, 79.1% 100%);
+      background: var(--orange);
+      clip-path: polygon(73.2% 72%, 74.65% 72%, 80.15% 100%, 78.55% 100%);
+      box-shadow: 0 0 35px rgba(240, 90, 24, 0.24);
     }
 
-    .top-accent {
+    .top-orange-line {
       position: absolute;
       top: 0;
-      left: 0;
-      right: 0;
+      left: 38%;
+      width: 120px;
       height: 4px;
-      z-index: 10;
-      background: linear-gradient(to right, transparent 0%, transparent 38%, #111 38%, #111 48%, transparent 48%);
+      background: var(--orange);
+      z-index: 7;
     }
 
     .hero-content {
       position: relative;
-      z-index: 6;
-      min-height: 100vh;
+      z-index: 8;
+      min-height: calc(100vh - 78px);
       display: flex;
       align-items: center;
-      padding: 80px 8% 96px;
+      width: min(1180px, calc(100% - 42px));
+      margin: 0 auto;
+      padding: 72px 0 98px;
     }
 
     .hero-copy {
-      width: min(520px, 42vw);
-      margin-left: 8%;
-      margin-top: -10px;
+      width: min(560px, 45vw);
+      margin-left: 2px;
     }
 
-    .mini-brand {
+    .eyebrow {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
+      color: #3d4248;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.35px;
+      font-weight: 900;
     }
 
-    .mark {
+    .eyebrow-mark {
       position: relative;
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
+      width: 56px;
+      height: 48px;
+      flex: 0 0 auto;
     }
 
-    .mark::before {
+    .eyebrow-mark::before {
       content: "";
       position: absolute;
-      inset: 3px;
-      background:
-        linear-gradient(#111, #111) 12px 0 / 4px 100% no-repeat,
-        linear-gradient(#111, #111) 0 36px / 100% 4px no-repeat;
+      left: 11px;
+      top: 5px;
+      width: 5px;
+      height: 34px;
+      background: var(--orange);
+      transform: skewX(-18deg);
     }
 
-    .mark::after {
+    .eyebrow-mark::after {
       content: "";
+      position: absolute;
+      left: 5px;
+      bottom: 10px;
+      width: 35px;
+      height: 5px;
+      background: var(--orange);
+      transform: skewX(-18deg);
+    }
+
+    .grid-lines {
       position: absolute;
       inset: 0;
       background:
-        repeating-linear-gradient(to right, var(--soft-line) 0 1px, transparent 1px 12px),
-        repeating-linear-gradient(to bottom, var(--soft-line) 0 1px, transparent 1px 12px);
-      clip-path: polygon(0 18%, 82% 18%, 82% 100%, 0 100%);
-    }
-
-    .mini-brand span {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.1px;
-      font-weight: 700;
-      color: #3d4248;
-      white-space: nowrap;
+        repeating-linear-gradient(to right, rgba(17,20,24,0.23) 0 1px, transparent 1px 11px),
+        repeating-linear-gradient(to bottom, rgba(17,20,24,0.23) 0 1px, transparent 1px 11px);
+      opacity: 0.55;
     }
 
     h1 {
-      font-size: clamp(52px, 4.9vw, 82px);
-      line-height: 1.06;
-      letter-spacing: -2.5px;
+      max-width: 650px;
+      color: var(--black);
+      font-size: clamp(52px, 5.2vw, 84px);
+      line-height: 1.03;
+      letter-spacing: -3px;
       font-weight: 500;
-      color: var(--text);
       margin-bottom: 24px;
     }
 
     h1 .accent {
-      color: #111;
+      color: var(--orange);
       position: relative;
       display: inline-block;
       font-weight: 700;
@@ -185,133 +329,195 @@
     h1 .accent::after {
       content: "";
       position: absolute;
-      left: 0;
-      right: -8px;
+      left: 2px;
+      right: -10px;
       bottom: -7px;
       height: 2px;
-      background: #111;
+      background: var(--orange);
       transform: skewX(-18deg);
-      opacity: 0.85;
     }
 
     .hero-text {
-      max-width: 650px;
+      max-width: 610px;
+      color: var(--gray);
       font-size: 17px;
-      line-height: 1.65;
-      color: var(--muted);
+      line-height: 1.68;
       margin-bottom: 34px;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .btn {
       position: relative;
+      min-width: 196px;
+      height: 58px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 190px;
-      height: 58px;
       padding: 0 28px;
-      background: var(--dark);
-      color: #fff;
-      text-decoration: none;
+      border: 0;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 900;
       transition: 0.2s ease;
     }
 
-    .btn::before,
-    .btn::after {
+    .btn-primary {
+      background: var(--black);
+      color: #fff;
+    }
+
+    .btn-primary::before,
+    .btn-primary::after {
       content: "";
       position: absolute;
       top: -8px;
       bottom: -8px;
       width: 1px;
-      background: rgba(29,34,39,0.45);
+      background: rgba(17,20,24,0.42);
     }
 
-    .btn::before {
+    .btn-primary::before {
       left: 8px;
     }
 
-    .btn::after {
+    .btn-primary::after {
       right: 8px;
     }
 
-    .btn span::before,
-    .btn span::after {
+    .btn-primary span::before,
+    .btn-primary span::after {
       content: "";
       position: absolute;
       left: -8px;
       right: -8px;
       height: 1px;
-      background: rgba(29,34,39,0.45);
+      background: rgba(17,20,24,0.42);
     }
 
-    .btn span::before {
+    .btn-primary span::before {
       top: 8px;
     }
 
-    .btn span::after {
+    .btn-primary span::after {
       bottom: 8px;
     }
 
-    .btn:hover {
+    .btn-primary:hover {
       background: #30363d;
       transform: translateY(-2px);
     }
 
-    .slider-dots {
+    .btn-secondary {
+      background: transparent;
+      color: var(--black);
+      border: 2px solid rgba(17,20,24,0.18);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .hero-trust {
       position: absolute;
-      left: calc(16% + 8px);
-      bottom: 48px;
-      z-index: 7;
-      display: flex;
-      gap: 16px;
-      align-items: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9;
+      background: rgba(255,255,255,0.86);
+      border-top: 1px solid rgba(17,20,24,0.08);
+      backdrop-filter: blur(12px);
     }
 
-    .slider-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #111;
-      opacity: 0.9;
+    .trust-inner {
+      width: min(1180px, calc(100% - 42px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    .slider-dots span:first-child {
-      width: 15px;
-      height: 15px;
+    .trust-item {
+      padding: 20px 22px;
+      border-right: 1px solid rgba(17,20,24,0.08);
     }
 
-    @media (max-width: 1200px) {
-      .hero-copy {
-        margin-left: 3%;
-        width: min(520px, 48vw);
-      }
+    .trust-item:first-child {
+      border-left: 1px solid rgba(17,20,24,0.08);
+    }
 
-      h1 {
-        font-size: clamp(48px, 5vw, 72px);
+    .trust-item strong {
+      display: block;
+      color: var(--black);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .trust-item span {
+      display: block;
+      color: var(--gray);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .trust-item strong::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      margin-right: 9px;
+      transform: skewX(-18deg);
+    }
+
+    @media (max-width: 1080px) {
+      .nav {
+        display: none;
       }
 
       .white-cut {
-        clip-path: polygon(0 0, 56% 0, 86% 100%, 0 100%);
+        clip-path: polygon(0 0, 58% 0, 88% 100%, 0 100%);
       }
 
-      .black-cut-line {
-        clip-path: polygon(55.4% 0, 56.6% 0, 86.3% 100%, 85.1% 100%);
+      .black-slice {
+        clip-path: polygon(57.2% 0, 58.4% 0, 88.3% 100%, 87.1% 100%);
       }
 
-      .lower-cut-line {
-        clip-path: polygon(80.5% 74%, 82.1% 74%, 87.4% 100%, 85.8% 100%);
+      .orange-slice {
+        clip-path: polygon(81% 72%, 82.6% 72%, 88.4% 100%, 86.7% 100%);
+      }
+
+      .hero-copy {
+        width: min(580px, 54vw);
+      }
+
+      h1 {
+        font-size: clamp(48px, 5.8vw, 76px);
       }
     }
 
     @media (max-width: 820px) {
+      .site-header {
+        height: 72px;
+      }
+
+      .header-inner {
+        width: min(100% - 32px, 1180px);
+      }
+
+      .brand-text span {
+        display: none;
+      }
+
+      .header-cta {
+        display: none;
+      }
+
       .hero {
         min-height: auto;
       }
@@ -321,40 +527,44 @@
       }
 
       .hero-bg::after {
-        background: rgba(0,0,0,0.22);
+        background: rgba(0,0,0,0.18);
       }
 
       .white-cut {
-        background: rgba(246,246,244,0.94);
-        clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+        background: rgba(246, 246, 242, 0.94);
+        clip-path: polygon(0 0, 100% 0, 100% 76%, 0 100%);
       }
 
       .white-cut::before {
-        opacity: 0.12;
+        opacity: 0.11;
       }
 
-      .black-cut-line {
-        clip-path: polygon(0 77%, 100% 65%, 100% 67%, 0 79%);
+      .black-slice {
+        clip-path: polygon(0 75%, 100% 63%, 100% 65.5%, 0 77.5%);
       }
 
-      .lower-cut-line {
-        clip-path: polygon(0 96%, 100% 82%, 100% 88%, 0 100%);
+      .orange-slice {
+        clip-path: polygon(0 94%, 100% 80%, 100% 86%, 0 100%);
+      }
+
+      .top-orange-line {
+        left: 32px;
       }
 
       .hero-content {
         min-height: auto;
-        padding: 105px 24px 170px;
+        width: min(100% - 32px, 1180px);
         align-items: flex-start;
+        padding: 76px 0 270px;
       }
 
       .hero-copy {
         width: 100%;
-        margin-left: 0;
       }
 
       h1 {
-        font-size: clamp(43px, 12vw, 62px);
-        letter-spacing: -1.8px;
+        font-size: clamp(43px, 12vw, 64px);
+        letter-spacing: -2px;
       }
 
       .hero-text {
@@ -362,43 +572,87 @@
         max-width: 100%;
       }
 
-      .slider-dots {
-        left: 24px;
-        bottom: 36px;
+      .hero-trust {
+        background: rgba(255,255,255,0.93);
+      }
+
+      .trust-inner {
+        width: min(100% - 32px, 1180px);
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .trust-item {
+        padding: 15px 12px;
+        border-left: 0 !important;
       }
     }
 
-    @media (max-width: 480px) {
-      .mini-brand span {
-        font-size: 10px;
+    @media (max-width: 520px) {
+      .brand-text strong {
+        font-size: 16px;
       }
 
-      .mark {
-        width: 46px;
-        height: 46px;
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
       }
 
       .btn {
         width: 100%;
+      }
+
+      .trust-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        border-right: 0;
       }
     }
   </style>
 </head>
 
 <body>
-  <section class="hero">
-    <div class="top-accent"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="brand" aria-label="Zach's Construction home">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-text">
+          <strong>Zach's Construction</strong>
+          <span>Construction & Property Work</span>
+        </div>
+      </a>
 
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#quote">Contact</a>
+      </nav>
+
+      <a href="#quote" class="header-cta">Free Estimate</a>
+    </div>
+  </header>
+
+  <section class="hero">
     <div class="hero-bg"></div>
     <div class="white-cut"></div>
-    <div class="black-cut-line"></div>
-    <div class="lower-cut-line"></div>
+    <div class="black-slice"></div>
+    <div class="orange-slice"></div>
+    <div class="top-orange-line"></div>
 
     <div class="hero-content">
       <div class="hero-copy">
-        <div class="mini-brand">
-          <div class="mark" aria-hidden="true"></div>
-          <span>The Last Contractor You'll Ever Need</span>
+        <div class="eyebrow">
+          <div class="eyebrow-mark" aria-hidden="true">
+            <div class="grid-lines"></div>
+          </div>
+          <span>The last contractor you'll ever need</span>
         </div>
 
         <h1>
@@ -407,21 +661,37 @@
         </h1>
 
         <p class="hero-text">
-          Reliable construction, repairs, remodel work, and property improvements for
-          homeowners, landlords, realtors, and anyone who needs honest work without
-          being overcharged.
+          Reliable repairs, remodel work, and property improvements for homeowners,
+          landlords, realtors, and anyone who needs honest work without getting
+          overcharged.
         </p>
 
         <div class="hero-actions">
-          <a href="#quote" class="btn"><span>Request Estimate</span></a>
+          <a href="#quote" class="btn btn-primary"><span>Request Estimate</span></a>
+          <a href="tel:0000000000" class="btn btn-secondary">Call or Text Zach</a>
         </div>
       </div>
     </div>
 
-    <div class="slider-dots" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="hero-trust">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <strong>Free Estimates</strong>
+          <span>Send photos or videos of the project.</span>
+        </div>
+        <div class="trust-item">
+          <strong>Owner Involved</strong>
+          <span>Small team with direct communication.</span>
+        </div>
+        <div class="trust-item">
+          <strong>Fair Pricing</strong>
+          <span>Low cost without cutting corners.</span>
+        </div>
+        <div class="trust-item">
+          <strong>Wide Service Area</strong>
+          <span>Eugene to Portland depending on job size.</span>
+        </div>
+      </div>
     </div>
   </section>
 </body>
