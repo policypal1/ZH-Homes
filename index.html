@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zach's Construction | Hero Section</title>
+  <title>Zach's Construction | Hero</title>
 
   <style>
     :root {
-      --black: #111418;
-      --black-2: #1d2228;
+      --black: #101317;
+      --black-soft: #1d2329;
       --white: #ffffff;
-      --off-white: #f4f4f1;
-      --gray: #676f78;
-      --light-gray: #e8e8e4;
+      --panel: rgba(246, 246, 242, 0.92);
+      --gray: #5f6872;
       --orange: #f05a18;
-      --orange-dark: #c9430b;
-      --shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
+      --orange-dark: #c4470e;
     }
 
     * {
@@ -30,34 +28,34 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
       color: var(--black);
-      background: #0f1114;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      height: 78px;
-      background: rgba(255, 255, 255, 0.92);
+      height: 76px;
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(17, 20, 24, 0.09);
+      border-bottom: 1px solid rgba(16, 19, 23, 0.08);
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
     }
 
     .header-inner {
-      width: min(1180px, calc(100% - 42px));
+      width: min(1180px, calc(100% - 40px));
       height: 100%;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
+      gap: 24px;
     }
 
     .brand {
@@ -68,10 +66,10 @@
     }
 
     .brand-mark {
-      position: relative;
       width: 42px;
       height: 42px;
       background: var(--black);
+      position: relative;
       clip-path: polygon(0 0, 82% 0, 100% 18%, 100% 100%, 0 100%);
     }
 
@@ -98,24 +96,23 @@
     }
 
     .brand-text {
-      display: flex;
-      flex-direction: column;
       line-height: 1.05;
     }
 
     .brand-text strong {
+      display: block;
       font-size: 18px;
       letter-spacing: -0.4px;
-      color: var(--black);
     }
 
     .brand-text span {
-      font-size: 11px;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 1.3px;
-      font-weight: 800;
+      display: block;
       margin-top: 4px;
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--gray);
     }
 
     .nav {
@@ -124,12 +121,12 @@
       gap: 28px;
       font-size: 14px;
       font-weight: 800;
-      color: #2d333a;
+      color: #2c333a;
     }
 
     .nav a {
       position: relative;
-      padding: 29px 0;
+      padding: 28px 0;
     }
 
     .nav a::after {
@@ -137,7 +134,7 @@
       position: absolute;
       left: 0;
       right: 100%;
-      bottom: 21px;
+      bottom: 20px;
       height: 2px;
       background: var(--orange);
       transition: 0.2s ease;
@@ -149,12 +146,12 @@
 
     .header-cta {
       height: 46px;
+      padding: 0 20px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
       background: var(--orange);
-      color: white;
+      color: #fff;
       font-size: 14px;
       font-weight: 900;
       box-shadow: 0 12px 24px rgba(240, 90, 24, 0.24);
@@ -168,24 +165,23 @@
 
     .hero {
       position: relative;
-      min-height: calc(100vh - 78px);
-      width: 100%;
+      min-height: calc(100vh - 76px);
       overflow: hidden;
-      background: #dfe2e3;
+      background: #d9dddf;
     }
 
     /*
-      Replace zach-hero.jpg with Zach's real image.
-      Use a real project photo if possible: remodel, repair work, exterior construction, tools, truck, or before/after.
+      Put this file in the same folder as this HTML:
+      ChatGPT Image May 14, 2026, 09_07_21 PM.png
     */
     .hero-bg {
       position: absolute;
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(to right, rgba(245, 245, 242, 0.35) 0%, rgba(245, 245, 242, 0.06) 48%, rgba(0, 0, 0, 0.04) 100%),
-        url("zach-hero.jpg") center right / cover no-repeat,
-        linear-gradient(135deg, #f1f1ee 0%, #c7cdd0 48%, #858f96 100%);
+        linear-gradient(to right, rgba(244,244,240,0.20), rgba(244,244,240,0.00) 47%, rgba(0,0,0,0.07)),
+        url("ChatGPT Image May 14, 2026, 09_07_21 PM.png") center right / cover no-repeat,
+        linear-gradient(135deg, #f1f1ee 0%, #c5cbd0 45%, #7f8a92 100%);
     }
 
     .hero-bg::after {
@@ -193,16 +189,16 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(0,0,0,0.14)),
-        linear-gradient(to right, rgba(255,255,255,0.16), rgba(255,255,255,0) 50%);
+        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(0,0,0,0.13)),
+        linear-gradient(to right, rgba(255,255,255,0.10), rgba(255,255,255,0) 52%);
     }
 
     .white-cut {
       position: absolute;
       inset: 0;
       z-index: 2;
-      background: rgba(246, 246, 242, 0.92);
-      clip-path: polygon(0 0, 50.5% 0, 77.5% 100%, 0 100%);
+      background: var(--panel);
+      clip-path: polygon(0 0, 50% 0, 77.5% 100%, 0 100%);
     }
 
     .white-cut::before {
@@ -210,9 +206,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(255,255,255,0.82), rgba(255,255,255,0.24)),
-        url("zach-hero.jpg") center right / cover no-repeat;
-      opacity: 0.14;
+        linear-gradient(to right, rgba(255,255,255,0.86), rgba(255,255,255,0.20)),
+        url("ChatGPT Image May 14, 2026, 09_07_21 PM.png") center right / cover no-repeat;
+      opacity: 0.13;
       filter: grayscale(100%);
     }
 
@@ -221,7 +217,7 @@
       inset: 0;
       z-index: 3;
       background: var(--black);
-      clip-path: polygon(49.7% 0, 50.8% 0, 78% 100%, 76.9% 100%);
+      clip-path: polygon(49.2% 0, 50.35% 0, 78% 100%, 76.85% 100%);
     }
 
     .orange-slice {
@@ -229,8 +225,8 @@
       inset: 0;
       z-index: 4;
       background: var(--orange);
-      clip-path: polygon(73.2% 72%, 74.65% 72%, 80.15% 100%, 78.55% 100%);
-      box-shadow: 0 0 35px rgba(240, 90, 24, 0.24);
+      clip-path: polygon(73.1% 71%, 74.6% 71%, 80.15% 100%, 78.55% 100%);
+      box-shadow: 0 0 35px rgba(240, 90, 24, 0.28);
     }
 
     .top-orange-line {
@@ -240,82 +236,53 @@
       width: 120px;
       height: 4px;
       background: var(--orange);
-      z-index: 7;
+      z-index: 5;
     }
 
-    .hero-content {
+    .hero-inner {
       position: relative;
       z-index: 8;
-      min-height: calc(100vh - 78px);
+      width: min(1180px, calc(100% - 40px));
+      min-height: calc(100vh - 76px);
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      width: min(1180px, calc(100% - 42px));
-      margin: 0 auto;
-      padding: 72px 0 98px;
+      padding: 70px 0 82px;
     }
 
     .hero-copy {
       width: min(560px, 45vw);
-      margin-left: 2px;
     }
 
     .eyebrow {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 24px;
-      color: #3d4248;
+      color: #343a40;
       font-size: 12px;
-      text-transform: uppercase;
+      line-height: 1.2;
       letter-spacing: 1.35px;
+      text-transform: uppercase;
       font-weight: 900;
     }
 
-    .eyebrow-mark {
-      position: relative;
-      width: 56px;
-      height: 48px;
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 4px;
+      background: var(--orange);
+      transform: skewX(-18deg);
       flex: 0 0 auto;
-    }
-
-    .eyebrow-mark::before {
-      content: "";
-      position: absolute;
-      left: 11px;
-      top: 5px;
-      width: 5px;
-      height: 34px;
-      background: var(--orange);
-      transform: skewX(-18deg);
-    }
-
-    .eyebrow-mark::after {
-      content: "";
-      position: absolute;
-      left: 5px;
-      bottom: 10px;
-      width: 35px;
-      height: 5px;
-      background: var(--orange);
-      transform: skewX(-18deg);
-    }
-
-    .grid-lines {
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(to right, rgba(17,20,24,0.23) 0 1px, transparent 1px 11px),
-        repeating-linear-gradient(to bottom, rgba(17,20,24,0.23) 0 1px, transparent 1px 11px);
-      opacity: 0.55;
     }
 
     h1 {
       max-width: 650px;
+      font-size: clamp(54px, 5.3vw, 86px);
+      line-height: 1.02;
+      letter-spacing: -3.2px;
+      font-weight: 600;
       color: var(--black);
-      font-size: clamp(52px, 5.2vw, 84px);
-      line-height: 1.03;
-      letter-spacing: -3px;
-      font-weight: 500;
       margin-bottom: 24px;
     }
 
@@ -323,7 +290,6 @@
       color: var(--orange);
       position: relative;
       display: inline-block;
-      font-weight: 700;
     }
 
     h1 .accent::after {
@@ -337,142 +303,68 @@
       transform: skewX(-18deg);
     }
 
-    .hero-text {
-      max-width: 610px;
+    .subheadline {
+      max-width: 570px;
+      font-size: 18px;
+      line-height: 1.65;
       color: var(--gray);
-      font-size: 17px;
-      line-height: 1.68;
       margin-bottom: 34px;
     }
 
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
+    .quote-btn {
       position: relative;
-      min-width: 196px;
-      height: 58px;
+      min-width: 200px;
+      height: 60px;
+      padding: 0 30px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0 28px;
-      border: 0;
+      background: var(--black);
+      color: #fff;
       font-size: 15px;
       font-weight: 900;
       transition: 0.2s ease;
     }
 
-    .btn-primary {
-      background: var(--black);
-      color: #fff;
-    }
-
-    .btn-primary::before,
-    .btn-primary::after {
+    .quote-btn::before,
+    .quote-btn::after {
       content: "";
       position: absolute;
       top: -8px;
       bottom: -8px;
       width: 1px;
-      background: rgba(17,20,24,0.42);
+      background: rgba(16, 19, 23, 0.42);
     }
 
-    .btn-primary::before {
+    .quote-btn::before {
       left: 8px;
     }
 
-    .btn-primary::after {
+    .quote-btn::after {
       right: 8px;
     }
 
-    .btn-primary span::before,
-    .btn-primary span::after {
+    .quote-btn span::before,
+    .quote-btn span::after {
       content: "";
       position: absolute;
       left: -8px;
       right: -8px;
       height: 1px;
-      background: rgba(17,20,24,0.42);
+      background: rgba(16, 19, 23, 0.42);
     }
 
-    .btn-primary span::before {
+    .quote-btn span::before {
       top: 8px;
     }
 
-    .btn-primary span::after {
+    .quote-btn span::after {
       bottom: 8px;
     }
 
-    .btn-primary:hover {
-      background: #30363d;
+    .quote-btn:hover {
+      background: var(--black-soft);
       transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--black);
-      border: 2px solid rgba(17,20,24,0.18);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--orange);
-      color: var(--orange);
-      transform: translateY(-2px);
-    }
-
-    .hero-trust {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 9;
-      background: rgba(255,255,255,0.86);
-      border-top: 1px solid rgba(17,20,24,0.08);
-      backdrop-filter: blur(12px);
-    }
-
-    .trust-inner {
-      width: min(1180px, calc(100% - 42px));
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .trust-item {
-      padding: 20px 22px;
-      border-right: 1px solid rgba(17,20,24,0.08);
-    }
-
-    .trust-item:first-child {
-      border-left: 1px solid rgba(17,20,24,0.08);
-    }
-
-    .trust-item strong {
-      display: block;
-      color: var(--black);
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .trust-item span {
-      display: block;
-      color: var(--gray);
-      font-size: 13px;
-      line-height: 1.35;
-    }
-
-    .trust-item strong::before {
-      content: "";
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background: var(--orange);
-      margin-right: 9px;
-      transform: skewX(-18deg);
     }
 
     @media (max-width: 1080px) {
@@ -480,24 +372,20 @@
         display: none;
       }
 
+      .hero-copy {
+        width: min(570px, 55vw);
+      }
+
       .white-cut {
         clip-path: polygon(0 0, 58% 0, 88% 100%, 0 100%);
       }
 
       .black-slice {
-        clip-path: polygon(57.2% 0, 58.4% 0, 88.3% 100%, 87.1% 100%);
+        clip-path: polygon(57.1% 0, 58.3% 0, 88.3% 100%, 87.1% 100%);
       }
 
       .orange-slice {
-        clip-path: polygon(81% 72%, 82.6% 72%, 88.4% 100%, 86.7% 100%);
-      }
-
-      .hero-copy {
-        width: min(580px, 54vw);
-      }
-
-      h1 {
-        font-size: clamp(48px, 5.8vw, 76px);
+        clip-path: polygon(81% 71%, 82.55% 71%, 88.5% 100%, 86.8% 100%);
       }
     }
 
@@ -506,7 +394,8 @@
         height: 72px;
       }
 
-      .header-inner {
+      .header-inner,
+      .hero-inner {
         width: min(100% - 32px, 1180px);
       }
 
@@ -527,7 +416,7 @@
       }
 
       .hero-bg::after {
-        background: rgba(0,0,0,0.18);
+        background: rgba(0,0,0,0.20);
       }
 
       .white-cut {
@@ -536,7 +425,7 @@
       }
 
       .white-cut::before {
-        opacity: 0.11;
+        opacity: 0.10;
       }
 
       .black-slice {
@@ -551,11 +440,10 @@
         left: 32px;
       }
 
-      .hero-content {
+      .hero-inner {
         min-height: auto;
-        width: min(100% - 32px, 1180px);
         align-items: flex-start;
-        padding: 76px 0 270px;
+        padding: 76px 0 190px;
       }
 
       .hero-copy {
@@ -563,27 +451,12 @@
       }
 
       h1 {
-        font-size: clamp(43px, 12vw, 64px);
+        font-size: clamp(44px, 12vw, 64px);
         letter-spacing: -2px;
       }
 
-      .hero-text {
+      .subheadline {
         font-size: 16px;
-        max-width: 100%;
-      }
-
-      .hero-trust {
-        background: rgba(255,255,255,0.93);
-      }
-
-      .trust-inner {
-        width: min(100% - 32px, 1180px);
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .trust-item {
-        padding: 15px 12px;
-        border-left: 0 !important;
       }
     }
 
@@ -597,21 +470,8 @@
         height: 38px;
       }
 
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
+      .quote-btn {
         width: 100%;
-      }
-
-      .trust-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-item {
-        border-right: 0;
       }
     }
   </style>
@@ -635,7 +495,7 @@
         <a href="#quote">Contact</a>
       </nav>
 
-      <a href="#quote" class="header-cta">Free Estimate</a>
+      <a href="#quote" class="header-cta">Free Quote</a>
     </div>
   </header>
 
@@ -646,51 +506,19 @@
     <div class="orange-slice"></div>
     <div class="top-orange-line"></div>
 
-    <div class="hero-content">
+    <div class="hero-inner">
       <div class="hero-copy">
-        <div class="eyebrow">
-          <div class="eyebrow-mark" aria-hidden="true">
-            <div class="grid-lines"></div>
-          </div>
-          <span>The last contractor you'll ever need</span>
-        </div>
+        <div class="eyebrow">Quality Work. Fair Price. Zero Cut Corners.</div>
 
         <h1>
-          Quality <span class="accent">Construction</span><br>
-          Done Right
+          The Last Contractor <span class="accent">You’ll Ever Need</span>
         </h1>
 
-        <p class="hero-text">
-          Reliable repairs, remodel work, and property improvements for homeowners,
-          landlords, realtors, and anyone who needs honest work without getting
-          overcharged.
+        <p class="subheadline">
+          Reliable construction, repairs, remodels, and property work done right without overcharging.
         </p>
 
-        <div class="hero-actions">
-          <a href="#quote" class="btn btn-primary"><span>Request Estimate</span></a>
-          <a href="tel:0000000000" class="btn btn-secondary">Call or Text Zach</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-trust">
-      <div class="trust-inner">
-        <div class="trust-item">
-          <strong>Free Estimates</strong>
-          <span>Send photos or videos of the project.</span>
-        </div>
-        <div class="trust-item">
-          <strong>Owner Involved</strong>
-          <span>Small team with direct communication.</span>
-        </div>
-        <div class="trust-item">
-          <strong>Fair Pricing</strong>
-          <span>Low cost without cutting corners.</span>
-        </div>
-        <div class="trust-item">
-          <strong>Wide Service Area</strong>
-          <span>Eugene to Portland depending on job size.</span>
-        </div>
+        <a href="#quote" class="quote-btn"><span>Get a Free Quote</span></a>
       </div>
     </div>
   </section>
