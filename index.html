@@ -39,6 +39,13 @@
       text-decoration: none;
     }
 
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
@@ -566,7 +573,9 @@
     .section-eyebrow,
     .services-eyebrow,
     .mission-eyebrow,
-    .area-eyebrow {
+    .area-eyebrow,
+    .contact-eyebrow,
+    .faq-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -581,7 +590,9 @@
     .section-eyebrow::before,
     .services-eyebrow::before,
     .mission-eyebrow::before,
-    .area-eyebrow::before {
+    .area-eyebrow::before,
+    .contact-eyebrow::before,
+    .faq-eyebrow::before {
       content: "";
       width: 34px;
       height: 2px;
@@ -681,7 +692,7 @@
     .services-section {
       position: relative;
       background:
-        linear-gradient(rgba(10,7,5,0.42), rgba(10,7,5,0.50)),
+        linear-gradient(rgba(10,7,5,0.62), rgba(10,7,5,0.70)),
         url("ChatGPT Image May 14, 2026, 10_21_07 PM.png") center center / cover no-repeat,
         #0a0705;
       padding: 92px 0 104px;
@@ -1244,27 +1255,31 @@
     }
 
     .project-cta-section {
-      background: var(--orange);
-      color: #fff;
-      padding: 0;
+      background: #fff;
+      padding: 0 0 104px;
       overflow: hidden;
     }
 
-    .project-cta-full {
+    .project-cta-wrap {
       width: min(1220px, calc(100% - 36px));
-      min-height: 150px;
       margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 24px 58px rgba(243,112,33,0.20);
       display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 28px;
-      padding: 32px 0;
+      grid-template-columns: 1fr 380px;
+      min-height: 160px;
+      background: var(--orange);
     }
 
-    .project-cta-left {
+    .project-cta-content {
+      padding: 30px 36px;
       display: flex;
       align-items: center;
       gap: 20px;
+      color: #fff;
+      position: relative;
+      z-index: 2;
     }
 
     .project-cta-icon {
@@ -1285,9 +1300,9 @@
 
     .project-cta-copy strong {
       display: block;
-      font-size: clamp(28px, 3.6vw, 44px);
+      font-size: clamp(26px, 3vw, 40px);
       line-height: 1.02;
-      letter-spacing: -1.4px;
+      letter-spacing: -1.3px;
       font-weight: 950;
       margin-bottom: 9px;
     }
@@ -1295,31 +1310,53 @@
     .project-cta-copy span {
       display: block;
       color: rgba(255,255,255,0.88);
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.5;
       font-weight: 800;
+      max-width: 520px;
+      margin-bottom: 16px;
     }
 
     .project-cta-button {
-      min-height: 56px;
-      padding: 0 24px;
+      min-height: 48px;
+      padding: 0 20px;
       border-radius: 9px;
       background: #fff;
       color: var(--orange);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 950;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
+      width: fit-content;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
       transition: 0.2s ease;
-      white-space: nowrap;
     }
 
     .project-cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 22px 42px rgba(0,0,0,0.18);
+      box-shadow: 0 20px 38px rgba(0,0,0,0.16);
+    }
+
+    .project-cta-image {
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .project-cta-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05);
+    }
+
+    .project-cta-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(243,112,33,0.20), rgba(0,0,0,0.08));
     }
 
     .service-area-section {
@@ -1329,7 +1366,7 @@
         url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
         #060708;
       color: #fff;
-      padding: 104px 0 112px;
+      padding: 92px 0 98px;
       overflow: hidden;
     }
 
@@ -1349,38 +1386,38 @@
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: clamp(42px, 6vw, 78px);
-      align-items: center;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: clamp(36px, 5vw, 68px);
+      align-items: start;
     }
 
     .area-content h2 {
       color: #fff;
-      font-size: clamp(34px, 4vw, 54px);
+      font-size: clamp(30px, 3.4vw, 46px);
       line-height: 1.08;
-      letter-spacing: -1.7px;
-      margin-bottom: 20px;
-      max-width: 560px;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+      max-width: 520px;
     }
 
     .area-content p {
       color: rgba(255,255,255,0.70);
-      font-size: 16px;
-      line-height: 1.75;
-      max-width: 580px;
-      margin-bottom: 26px;
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 540px;
+      margin-bottom: 20px;
     }
 
     .area-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      max-width: 560px;
+      gap: 10px;
+      max-width: 530px;
     }
 
     .area-pill {
-      min-height: 46px;
-      padding: 0 15px;
+      min-height: 40px;
+      padding: 0 13px;
       border-radius: 10px;
       display: flex;
       align-items: center;
@@ -1388,7 +1425,7 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.10);
       color: rgba(255,255,255,0.88);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 850;
     }
 
@@ -1404,7 +1441,7 @@
 
     .map-card {
       position: relative;
-      min-height: 470px;
+      min-height: 386px;
       border-radius: 22px;
       overflow: hidden;
       background:
@@ -1498,10 +1535,10 @@
 
     .map-note {
       position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      padding: 18px 20px;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 16px 18px;
       border-radius: 16px;
       background: rgba(6,7,8,0.76);
       border: 1px solid rgba(255,255,255,0.10);
@@ -1510,14 +1547,14 @@
 
     .map-note strong {
       display: block;
-      font-size: 16px;
+      font-size: 15px;
       margin-bottom: 5px;
       color: #fff;
     }
 
     .map-note span {
       color: rgba(255,255,255,0.68);
-      font-size: 13px;
+      font-size: 12px;
       line-height: 1.45;
       font-weight: 700;
     }
@@ -1573,35 +1610,26 @@
       color: var(--section-muted);
       font-size: 15px;
       line-height: 1.72;
-      margin-bottom: 26px;
     }
 
-    .testimonial-arrows {
+    .testimonial-slider {
+      position: relative;
+      padding: 0 50px;
+    }
+
+    .testimonial-window {
+      overflow: hidden;
+    }
+
+    .testimonial-track {
       display: flex;
-      gap: 10px;
-    }
-
-    .testimonial-arrow {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid rgba(35,23,18,0.12);
-      background: #fff;
-      color: var(--brown);
-      display: grid;
-      place-items: center;
-      font-size: 16px;
-      font-weight: 950;
-      box-shadow: 0 12px 24px rgba(35,23,18,0.06);
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 22px;
+      transition: transform 0.35s ease;
+      will-change: transform;
     }
 
     .testimonial-card {
+      min-width: calc((100% - 22px) / 2);
       min-height: 250px;
       border-radius: 18px;
       background: #fff;
@@ -1611,6 +1639,33 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    .testimonial-side-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(35,23,18,0.12);
+      background: #fff;
+      color: var(--brown);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      font-weight: 950;
+      box-shadow: 0 14px 30px rgba(35,23,18,0.10);
+      cursor: pointer;
+      z-index: 4;
+    }
+
+    .testimonial-side-btn.left {
+      left: 0;
+    }
+
+    .testimonial-side-btn.right {
+      right: 0;
     }
 
     .stars {
@@ -1664,6 +1719,371 @@
       flex: 0 0 auto;
     }
 
+    .contact-section {
+      position: relative;
+      background:
+        linear-gradient(rgba(6,7,8,0.92), rgba(6,7,8,0.96)),
+        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
+        #060708;
+      color: #fff;
+      padding: 104px 0 112px;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 30%, rgba(243,112,33,0.12), transparent 30%),
+        radial-gradient(circle at 86% 72%, rgba(243,112,33,0.10), transparent 36%);
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: clamp(44px, 6vw, 84px);
+      align-items: center;
+    }
+
+    .contact-content h2 {
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -1.8px;
+      margin-bottom: 18px;
+    }
+
+    .contact-content p {
+      max-width: 480px;
+      color: rgba(255,255,255,0.70);
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 30px;
+    }
+
+    .contact-info-list {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .contact-info-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 13px;
+      align-items: center;
+    }
+
+    .contact-info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(243,112,33,0.14);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(243,112,33,0.22);
+    }
+
+    .contact-info-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .contact-info-item span {
+      display: block;
+      color: rgba(255,255,255,0.52);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.55px;
+      margin-bottom: 3px;
+    }
+
+    .contact-info-item strong {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .social-row span {
+      color: rgba(255,255,255,0.60);
+      font-size: 13px;
+      font-weight: 850;
+      margin-right: 4px;
+    }
+
+    .social-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .contact-form-card {
+      position: relative;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 20px;
+      padding: 38px;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.26);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .contact-form-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 36px;
+      bottom: 36px;
+      width: 5px;
+      background: var(--orange);
+      border-radius: 999px;
+    }
+
+    .contact-form-card h3 {
+      color: #fff;
+      font-size: 27px;
+      line-height: 1.1;
+      letter-spacing: -0.7px;
+      margin-bottom: 10px;
+    }
+
+    .contact-form-card > p {
+      color: rgba(255,255,255,0.62);
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+      max-width: 620px;
+    }
+
+    .quote-form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .field label {
+      display: block;
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      font-weight: 850;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.18);
+      background: transparent;
+      color: #fff;
+      min-height: 42px;
+      outline: none;
+      resize: vertical;
+    }
+
+    .field textarea {
+      min-height: 92px;
+      padding-top: 8px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .field select {
+      color: rgba(255,255,255,0.86);
+    }
+
+    .field option {
+      color: #111;
+    }
+
+    .submit-btn {
+      margin-top: 8px;
+      border: 0;
+      min-height: 54px;
+      padding: 0 22px;
+      width: fit-content;
+      border-radius: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(243,112,33,0.22);
+      transition: 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    .faq-section {
+      background: #fff;
+      color: var(--section-text);
+      padding: 96px 0 104px;
+    }
+
+    .faq-inner {
+      width: min(1050px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .faq-top {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .faq-eyebrow {
+      justify-content: center;
+    }
+
+    .faq-eyebrow::after {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .faq-top h2 {
+      color: var(--brown);
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.7px;
+      margin-bottom: 14px;
+    }
+
+    .faq-top p {
+      color: var(--section-muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(35,23,18,0.08);
+      border-radius: 16px;
+      padding: 24px 26px;
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(35,23,18,0.06);
+    }
+
+    .faq-item h3 {
+      color: var(--brown);
+      font-size: 18px;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
+      margin-bottom: 9px;
+    }
+
+    .faq-item p {
+      color: var(--section-muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .footer {
+      background: #050607;
+      color: #fff;
+      padding: 72px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.1fr 0.8fr 0.8fr 0.9fr;
+      gap: 42px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-size: 25px;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.60);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 18px;
+      color: #fff;
+    }
+
+    .footer-col a,
+    .footer-col span {
+      display: block;
+      color: rgba(255,255,255,0.60);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .footer-col a:hover {
+      color: var(--orange);
+    }
+
+    .footer-bottom {
+      padding-top: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,0.46);
+      font-size: 13px;
+    }
+
     @media (max-width: 1120px) {
       .nav {
         display: none;
@@ -1685,12 +2105,17 @@
         display: none;
       }
 
-      .testimonials-inner {
+      .testimonials-inner,
+      .contact-inner {
         grid-template-columns: 1fr;
       }
 
       .testimonials-left {
         max-width: 720px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -1753,13 +2178,13 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      .project-cta-full {
+      .project-cta-wrap {
         grid-template-columns: 1fr;
-        align-items: start;
       }
 
-      .project-cta-button {
-        width: fit-content;
+      .project-cta-image {
+        min-height: 170px;
+        clip-path: none;
       }
 
       .service-area-inner {
@@ -1768,6 +2193,10 @@
 
       .map-card {
         min-height: 420px;
+      }
+
+      .testimonial-card {
+        min-width: 100%;
       }
     }
 
@@ -1779,9 +2208,11 @@
       .mission-inner,
       .gallery-inner,
       .process-inner,
-      .project-cta-full,
+      .project-cta-wrap,
       .service-area-inner,
-      .testimonials-inner {
+      .testimonials-inner,
+      .contact-inner,
+      .footer-inner {
         width: min(100% - 28px, 1220px);
       }
 
@@ -1935,9 +2366,10 @@
         grid-template-columns: 1fr;
       }
 
-      .project-cta-left {
+      .project-cta-content {
         align-items: flex-start;
         flex-direction: column;
+        padding: 28px 24px;
       }
 
       .project-cta-button {
@@ -1964,8 +2396,41 @@
         padding: 76px 0 86px;
       }
 
-      .testimonials-grid {
+      .testimonial-slider {
+        padding: 0 44px;
+      }
+
+      .testimonial-card {
+        min-width: 100%;
+      }
+
+      .contact-section {
+        padding: 76px 0 86px;
+      }
+
+      .contact-form-card {
+        padding: 32px 22px;
+      }
+
+      .form-row {
         grid-template-columns: 1fr;
+      }
+
+      .submit-btn {
+        width: 100%;
+      }
+
+      .faq-section {
+        padding: 76px 0 84px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
 
@@ -1981,6 +2446,14 @@
 
       .stat-box:last-child {
         border-right: 0;
+      }
+
+      .testimonial-slider {
+        padding: 0;
+      }
+
+      .testimonial-side-btn {
+        display: none;
       }
     }
   </style>
@@ -2005,9 +2478,10 @@
         <a href="#process">Process</a>
         <a href="#areas">Areas</a>
         <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
       </nav>
 
-      <a href="#quote" class="header-cta">Get a Free Quote</a>
+      <a href="#contact" class="header-cta">Get a Free Quote</a>
     </div>
   </header>
 
@@ -2063,7 +2537,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
           <a href="#contact" class="btn btn-secondary">Text Us</a>
         </div>
       </div>
@@ -2216,7 +2690,7 @@
         </div>
 
         <div class="about-bottom">
-          <a href="#quote" class="about-cta">Request a Free Estimate</a>
+          <a href="#contact" class="about-cta">Request a Free Estimate</a>
 
           <div class="license-note">
             <strong>260679</strong>
@@ -2235,7 +2709,7 @@
           <h2>Quality work for homes, rentals, and properties.</h2>
         </div>
 
-        <a href="#quote" class="services-btn">
+        <a href="#contact" class="services-btn">
           <span>Get a Quote</span>
           <span>↗</span>
         </a>
@@ -2252,7 +2726,7 @@
               <h3>Home Remodeling</h3>
               <p>Interior updates, repairs, improvements, and remodel work built around clean finishes and lasting value.</p>
             </div>
-            <a href="#quote" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Read More</a>
           </div>
         </article>
 
@@ -2266,7 +2740,7 @@
               <h3>Construction Projects</h3>
               <p>Reliable construction work for homeowners, landlords, realtors, and property managers who need it done right.</p>
             </div>
-            <a href="#quote" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Read More</a>
           </div>
         </article>
 
@@ -2280,7 +2754,7 @@
               <h3>Handyman &amp; Repairs</h3>
               <p>Punch lists, repairs, rental prep, small fixes, and property improvements handled with honest communication.</p>
             </div>
-            <a href="#quote" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Read More</a>
           </div>
         </article>
 
@@ -2294,7 +2768,7 @@
               <h3>Rental Property Work</h3>
               <p>Turnover repairs, small updates, maintenance items, and fixes that help get rentals ready faster.</p>
             </div>
-            <a href="#quote" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Read More</a>
           </div>
         </article>
 
@@ -2308,7 +2782,7 @@
               <h3>Interior Updates</h3>
               <p>Kitchen, fixture, finish, and layout-focused updates that make the inside of the home feel cleaner and newer.</p>
             </div>
-            <a href="#quote" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Read More</a>
           </div>
         </article>
 
@@ -2322,7 +2796,7 @@
               <h3>Custom Jobs</h3>
               <p>Not every job fits a box. Send photos, explain what you need, and ZH Homes can look at the best next step.</p>
             </div>
-            <a href="#quote" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Read More</a>
           </div>
         </article>
       </div>
@@ -2502,8 +2976,8 @@
   </section>
 
   <section class="project-cta-section" id="quote">
-    <div class="project-cta-full">
-      <div class="project-cta-left">
+    <div class="project-cta-wrap">
+      <div class="project-cta-content">
         <div class="project-cta-icon">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
@@ -2513,12 +2987,13 @@
         <div class="project-cta-copy">
           <strong>Need help with a project?</strong>
           <span>Call or text ZH Homes to talk through the job and get a clear next step.</span>
+          <a href="#contact" class="project-cta-button">Request a Free Estimate ↗</a>
         </div>
       </div>
 
-      <a href="#contact" class="project-cta-button">
-        Request a Free Estimate ↗
-      </a>
+      <div class="project-cta-image">
+        <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="ZH Homes project help">
+      </div>
     </div>
   </section>
 
@@ -2529,7 +3004,7 @@
         <h2>Serving Salem and surrounding Oregon communities.</h2>
         <p>
           ZH Homes takes on projects throughout the Willamette Valley depending on the type and size of the job.
-          For smaller work, location matters more. For larger projects, the service range can expand.
+          Smaller work is usually closer to Salem. Larger projects may have a wider service range.
         </p>
 
         <div class="area-list">
@@ -2563,8 +3038,8 @@
         <div class="map-label label-mill">Mill City</div>
 
         <div class="map-note">
-          <strong>Want a real map here?</strong>
-          <span>Replace the inside of this map card with a Google Maps iframe once you have the exact service-area map ready.</span>
+          <strong>Google Map Placeholder</strong>
+          <span>Replace this fake map card with your real Google Maps iframe once you’re ready.</span>
         </div>
       </div>
     </div>
@@ -2576,53 +3051,298 @@
         <div class="testimonials-eyebrow">Testimonials</div>
         <h2>What people say about ZH Homes.</h2>
         <p>
-          Placeholder reviews for now. Once Zach has real customer feedback, swap these out with actual names,
-          locations, and job details.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. These placeholder reviews can be replaced with real customer feedback.
+        </p>
+      </div>
+
+      <div class="testimonial-slider">
+        <button class="testimonial-side-btn left" type="button" aria-label="Previous review" onclick="moveReview(-1)">‹</button>
+
+        <div class="testimonial-window">
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">★★★★★</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium, nunc sit amet pulvinar facilisis, lorem lectus.</p>
+              </div>
+
+              <div class="testimonial-person">
+                <div class="person-name">
+                  <span>Homeowner</span>
+                  <strong>Lorem Ipsum</strong>
+                </div>
+                <div class="quote-mark">“</div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">★★★★★</div>
+                <p>Donec porta, justo vitae suscipit ultrices, neque erat facilisis magna, sed tempor massa justo non mauris.</p>
+              </div>
+
+              <div class="testimonial-person">
+                <div class="person-name">
+                  <span>Property Owner</span>
+                  <strong>Dolor Sit</strong>
+                </div>
+                <div class="quote-mark">“</div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">★★★★★</div>
+                <p>Aliquam erat volutpat. Curabitur blandit risus vitae tellus posuere, vitae luctus magna interdum.</p>
+              </div>
+
+              <div class="testimonial-person">
+                <div class="person-name">
+                  <span>Landlord</span>
+                  <strong>Amet Consectetur</strong>
+                </div>
+                <div class="quote-mark">“</div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div>
+                <div class="stars">★★★★★</div>
+                <p>Sed dignissim, lectus vel cursus feugiat, sapien arcu commodo sapien, in facilisis orci nisi et lorem.</p>
+              </div>
+
+              <div class="testimonial-person">
+                <div class="person-name">
+                  <span>Realtor</span>
+                  <strong>Adipiscing Elit</strong>
+                </div>
+                <div class="quote-mark">“</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="testimonial-side-btn right" type="button" aria-label="Next review" onclick="moveReview(1)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-content">
+        <div class="contact-eyebrow">Contact Us</div>
+        <h2>Have a question? Get in touch.</h2>
+        <p>
+          Tell us what kind of project you need help with. Send a quick message, include the basics, and ZH Homes can help you figure out the next step.
         </p>
 
-        <div class="testimonial-arrows">
-          <div class="testimonial-arrow">‹</div>
-          <div class="testimonial-arrow">›</div>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <span>Call / Text</span>
+              <strong>Add phone number here</strong>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <span>Email</span>
+              <strong>Add email here</strong>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21C16.5 16.3 19 13.03 19 9.9C19 5.98 15.87 3 12 3C8.13 3 5 5.98 5 9.9C5 13.03 7.5 16.3 12 21Z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
+            <div>
+              <span>Location</span>
+              <strong>Salem, Oregon and surrounding areas</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <span>Follow:</span>
+          <div class="social-dot">F</div>
+          <div class="social-dot">IG</div>
+          <div class="social-dot">G</div>
         </div>
       </div>
 
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p>
-              “Zach was easy to communicate with, showed up when he said he would, and got the work done cleanly.”
-            </p>
+      <div class="contact-form-card">
+        <h3>Get a quote</h3>
+        <p>
+          Fill this out with the basics. Once this is connected to your backend or form service, submissions can go straight to email.
+        </p>
+
+        <form class="quote-form">
+          <div class="form-row">
+            <div class="field">
+              <label for="fullName">Full Name</label>
+              <input id="fullName" type="text" placeholder="Your name">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com">
+            </div>
           </div>
 
-          <div class="testimonial-person">
-            <div class="person-name">
-              <span>Homeowner</span>
-              <strong>Placeholder Name</strong>
+          <div class="form-row">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="Your phone number">
             </div>
-            <div class="quote-mark">“</div>
+
+            <div class="field">
+              <label for="serviceType">Service Type</label>
+              <select id="serviceType">
+                <option>Home Remodeling</option>
+                <option>Construction Project</option>
+                <option>Handyman / Repairs</option>
+                <option>Rental Property Work</option>
+                <option>Custom Job</option>
+              </select>
+            </div>
           </div>
+
+          <div class="field">
+            <label for="description">Project Description</label>
+            <textarea id="description" placeholder="Tell us what you need help with..."></textarea>
+          </div>
+
+          <button class="submit-btn" type="submit">Submit Now ↗</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="faq-inner">
+      <div class="faq-top">
+        <div class="faq-eyebrow">FAQ</div>
+        <h2>Common questions before getting started.</h2>
+        <p>
+          Here are a few quick answers customers usually want before requesting an estimate.
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Do you offer free estimates?</h3>
+          <p>Yes. ZH Homes can review the project, ask for photos if needed, and help you understand the best next step.</p>
         </div>
 
-        <div class="testimonial-card">
-          <div>
-            <div class="stars">★★★★★</div>
-            <p>
-              “The pricing was straightforward and the finished work looked great. No confusing back and forth.”
-            </p>
-          </div>
+        <div class="faq-item">
+          <h3>What areas do you serve?</h3>
+          <p>ZH Homes is based around Salem and can serve nearby areas including Keizer, Dallas, Portland, Eugene, Grand Ronde, Mill City, and surrounding communities depending on job size.</p>
+        </div>
 
-          <div class="testimonial-person">
-            <div class="person-name">
-              <span>Property Owner</span>
-              <strong>Placeholder Name</strong>
-            </div>
-            <div class="quote-mark">“</div>
-          </div>
+        <div class="faq-item">
+          <h3>What kind of work do you take on?</h3>
+          <p>Common work includes remodeling, construction projects, handyman repairs, rental property work, punch lists, interior updates, and custom jobs.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Are you licensed?</h3>
+          <p>Yes. ZH Homes is listed with Oregon CCB #260679. You can keep this license number visible on the site for trust.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>ZH Homes</strong>
+          <p>
+            Honest, quality construction and home services for homeowners, landlords, realtors, and property managers.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#services">Services</a>
+          <a href="#work">Why Us</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#areas">Service Area</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <span>Home Remodeling</span>
+          <span>Handyman Repairs</span>
+          <span>Rental Property Work</span>
+          <span>Custom Jobs</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <span>Add phone number here</span>
+          <span>Add email here</span>
+          <span>Salem, Oregon</span>
+          <span>CCB #260679</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 ZH Homes. All rights reserved.</span>
+        <span>Licensed Oregon Contractor · CCB #260679</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let reviewIndex = 0;
+
+    function getVisibleReviewCount() {
+      return window.innerWidth <= 950 ? 1 : 2;
+    }
+
+    function moveReview(direction) {
+      const track = document.getElementById("testimonialTrack");
+      const cards = track.querySelectorAll(".testimonial-card");
+      const visible = getVisibleReviewCount();
+      const maxIndex = cards.length - visible;
+
+      reviewIndex += direction;
+
+      if (reviewIndex > maxIndex) reviewIndex = 0;
+      if (reviewIndex < 0) reviewIndex = maxIndex;
+
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const gap = 22;
+      const moveAmount = reviewIndex * (cardWidth + gap);
+
+      track.style.transform = `translateX(-${moveAmount}px)`;
+    }
+
+    window.addEventListener("resize", () => {
+      reviewIndex = 0;
+      const track = document.getElementById("testimonialTrack");
+      if (track) track.style.transform = "translateX(0)";
+    });
+
+    setInterval(() => {
+      moveReview(1);
+    }, 5000);
+  </script>
 
 </body>
 </html>
