@@ -986,8 +986,8 @@
     .gallery-section {
       position: relative;
       background:
-        linear-gradient(rgba(6,7,8,0.93), rgba(6,7,8,0.96)),
-        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
+        linear-gradient(rgba(6,7,8,0.88), rgba(6,7,8,0.94)),
+        url("78f73903-bf75-4edb-a889-85c3273fe3f8.png") center center / cover no-repeat,
         #060708;
       color: #fff;
       padding: 110px 0 132px;
@@ -1123,7 +1123,11 @@
     }
 
     .process-section {
-      background: #fff;
+      position: relative;
+      background:
+        linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.95)),
+        url("ChatGPT Image May 15, 2026, 01_46_25 PM.png") center center / cover no-repeat,
+        #fff;
       color: var(--section-text);
       padding: 94px 0 108px;
       overflow: hidden;
@@ -1580,7 +1584,7 @@
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 0.78fr 1.22fr;
+      grid-template-columns: 0.76fr 1.24fr;
       gap: clamp(34px, 5vw, 70px);
       align-items: center;
     }
@@ -1623,121 +1627,164 @@
       line-height: 1.72;
     }
 
-    .testimonial-slider {
+    .review-carousel {
       position: relative;
-      padding: 0 50px;
-    }
-
-    .testimonial-window {
-      overflow: hidden;
-      padding: 18px 0 20px;
-      margin: -18px 0 -20px;
-    }
-
-    .testimonial-track {
-      display: flex;
-      gap: 22px;
-      transition: transform 0.45s ease;
-      will-change: transform;
-    }
-
-    .testimonial-card {
-      flex: 0 0 calc((100% - 22px) / 2);
-      min-width: 0;
-      min-height: 250px;
-      border-radius: 18px;
-      background: #fff;
+      min-height: 360px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #fbf8f5);
       border: 1px solid rgba(35,23,18,0.08);
-      box-shadow: 0 24px 56px rgba(35,23,18,0.08);
-      padding: 30px 30px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      box-shadow: 0 28px 64px rgba(35,23,18,0.10);
+      overflow: hidden;
+      padding: 34px 96px 86px;
     }
 
-    .testimonial-side-btn {
+    .review-slide {
+      display: none;
+      min-height: 240px;
+      animation: reviewFade 0.35s ease;
+    }
+
+    .review-slide.active {
+      display: block;
+    }
+
+    @keyframes reviewFade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .review-quote-mark {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(243,112,33,0.10);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      font-size: 38px;
+      font-weight: 950;
+      margin-bottom: 24px;
+    }
+
+    .review-stars {
+      color: var(--orange);
+      letter-spacing: 2px;
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .review-text {
+      color: #564c46;
+      font-size: 22px;
+      line-height: 1.7;
+      letter-spacing: -0.35px;
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    .review-person {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .review-person strong {
+      display: block;
+      color: var(--brown);
+      font-size: 17px;
+      font-weight: 950;
+      margin-bottom: 4px;
+    }
+
+    .review-person span {
+      display: block;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .review-counter {
+      color: rgba(35,23,18,0.42);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+    }
+
+    .review-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 42px;
-      height: 42px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       border: 1px solid rgba(35,23,18,0.12);
       background: #fff;
       color: var(--brown);
       display: grid;
       place-items: center;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 950;
       box-shadow: 0 14px 30px rgba(35,23,18,0.10);
       cursor: pointer;
       z-index: 4;
+      transition: 0.2s ease;
     }
 
-    .testimonial-side-btn.left {
-      left: 0;
-    }
-
-    .testimonial-side-btn.right {
-      right: 0;
-    }
-
-    .stars {
+    .review-arrow:hover {
+      border-color: rgba(243,112,33,0.26);
       color: var(--orange);
-      letter-spacing: 2px;
-      font-size: 15px;
-      margin-bottom: 18px;
+      transform: translateY(-50%) scale(1.03);
     }
 
-    .testimonial-card p {
-      color: #5f554f;
-      font-size: 15px;
-      line-height: 1.72;
-      margin-bottom: 24px;
+    .review-arrow.prev {
+      left: 28px;
     }
 
-    .testimonial-person {
+    .review-arrow.next {
+      right: 28px;
+    }
+
+    .review-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 28px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .person-name span {
-      display: block;
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 5px;
-    }
-
-    .person-name strong {
-      display: block;
-      color: var(--brown);
-      font-size: 15px;
-      font-weight: 950;
-    }
-
-    .quote-mark {
-      width: 38px;
-      height: 38px;
+    .review-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--brown);
-      color: #fff;
-      font-size: 22px;
-      font-weight: 950;
-      flex: 0 0 auto;
+      border: 0;
+      background: rgba(35,23,18,0.18);
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .review-dot.active {
+      width: 28px;
+      border-radius: 999px;
+      background: var(--orange);
     }
 
     .contact-section {
       position: relative;
       background:
-        linear-gradient(rgba(6,7,8,0.92), rgba(6,7,8,0.96)),
-        url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
+        linear-gradient(rgba(6,7,8,0.88), rgba(6,7,8,0.94)),
+        url("ChatGPT Image May 15, 2026, 01_46_25 PM.png") center center / cover no-repeat,
         #060708;
       color: #fff;
       padding: 104px 0 112px;
@@ -1939,6 +1986,42 @@
 
     .field option {
       color: #111;
+    }
+
+    .field input[type="file"] {
+      border: 1px dashed rgba(255,255,255,0.22);
+      border-radius: 10px;
+      min-height: auto;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+    }
+
+    .field input[type="file"]::file-selector-button {
+      margin-right: 14px;
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .field-note {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255,255,255,0.52);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .file-error {
+      display: none;
+      margin-top: 8px;
+      color: #ffb1b1;
+      font-size: 12px;
+      font-weight: 800;
     }
 
     .submit-btn {
@@ -2256,8 +2339,8 @@
         height: auto;
       }
 
-      .testimonial-card {
-        flex-basis: 100%;
+      .review-carousel {
+        min-height: 320px;
       }
     }
 
@@ -2457,12 +2540,31 @@
         padding: 76px 0 86px;
       }
 
-      .testimonial-slider {
-        padding: 0 44px;
+      .review-carousel {
+        padding: 30px 28px 86px;
+        min-height: 360px;
       }
 
-      .testimonial-card {
-        flex-basis: 100%;
+      .review-text {
+        font-size: 18px;
+      }
+
+      .review-arrow {
+        top: auto;
+        bottom: 26px;
+        transform: none;
+      }
+
+      .review-arrow:hover {
+        transform: scale(1.03);
+      }
+
+      .review-arrow.prev {
+        left: 24px;
+      }
+
+      .review-arrow.next {
+        right: 24px;
       }
 
       .contact-section {
@@ -2509,12 +2611,13 @@
         border-right: 0;
       }
 
-      .testimonial-slider {
-        padding: 0;
+      .review-carousel {
+        padding: 26px 20px 80px;
       }
 
-      .testimonial-side-btn {
-        display: none;
+      .review-arrow {
+        width: 42px;
+        height: 42px;
       }
     }
   </style>
@@ -2909,7 +3012,7 @@
       <div class="gallery-top">
         <div class="gallery-eyebrow">Project Gallery</div>
         <h2>Recent work, repairs, and property improvements.</h2>
-        <p>Placeholder project photos for now. Swap these with Zach’s real job photos once you have them.</p>
+        <p>A look at the kind of work ZH Homes handles, from home updates to rental property projects and custom jobs.</p>
       </div>
 
       <div class="gallery-grid">
@@ -3053,7 +3156,7 @@
       </div>
 
       <div class="project-cta-image">
-        <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="ZH Homes project help">
+        <img src="ChatGPT Image May 15, 2026, 01_46_25 PM.png" alt="ZH Homes project help">
       </div>
     </div>
   </section>
@@ -3099,8 +3202,8 @@
         <div class="map-label label-mill">Mill City</div>
 
         <div class="map-note">
-          <strong>Google Map Placeholder</strong>
-          <span>Replace this fake map card with your real Google Maps iframe once you’re ready.</span>
+          <strong>Coverage depends on the project.</strong>
+          <span>Most work stays around Salem and nearby communities, with larger jobs reaching farther throughout the area.</span>
         </div>
       </div>
     </div>
@@ -3112,78 +3215,72 @@
         <div class="testimonials-eyebrow">Testimonials</div>
         <h2>What people are saying about ZH Homes.</h2>
         <p>
-          Real reviews can be added here as they come in. For now, this section keeps the layout clean without any lorem ipsum filler.
+          This can hold real customer reviews as they come in. For now, it is set up as a clean quote-style review carousel that is easy to swap out later.
         </p>
       </div>
 
-      <div class="testimonial-slider">
-        <button class="testimonial-side-btn left" type="button" aria-label="Previous review" onclick="moveReview(-1)">‹</button>
+      <div class="review-carousel" id="reviewCarousel">
+        <button class="review-arrow prev" type="button" aria-label="Previous review">‹</button>
+        <button class="review-arrow next" type="button" aria-label="Next review">›</button>
 
-        <div class="testimonial-window">
-          <div class="testimonial-track" id="testimonialTrack">
-            <div class="testimonial-card">
-              <div>
-                <div class="stars">★★★★★</div>
-                <p>Zach was straightforward, fair on price, and clear about what needed to be done. The work came out clean and the process was simple.</p>
-              </div>
-
-              <div class="testimonial-person">
-                <div class="person-name">
-                  <span>Homeowner</span>
-                  <strong>Local Customer</strong>
-                </div>
-                <div class="quote-mark">“</div>
-              </div>
+        <article class="review-slide active">
+          <div class="review-quote-mark">“</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Zach was straightforward, fair on price, and clear about what needed to be done. The work came out clean and the whole process felt easy.</p>
+          <div class="review-person">
+            <div>
+              <strong>Local Homeowner</strong>
+              <span>Home Repair Project</span>
             </div>
-
-            <div class="testimonial-card">
-              <div>
-                <div class="stars">★★★★★</div>
-                <p>We needed property work handled without a bunch of back and forth. ZH Homes communicated well and helped get the project moving.</p>
-              </div>
-
-              <div class="testimonial-person">
-                <div class="person-name">
-                  <span>Property Owner</span>
-                  <strong>Property Customer</strong>
-                </div>
-                <div class="quote-mark">“</div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <div>
-                <div class="stars">★★★★★</div>
-                <p>Good communication, honest pricing, and solid work. That is exactly what we needed for our rental repairs.</p>
-              </div>
-
-              <div class="testimonial-person">
-                <div class="person-name">
-                  <span>Landlord</span>
-                  <strong>Rental Owner</strong>
-                </div>
-                <div class="quote-mark">“</div>
-              </div>
-            </div>
-
-            <div class="testimonial-card">
-              <div>
-                <div class="stars">★★★★★</div>
-                <p>He took the time to understand the job and gave a fair option instead of trying to overcomplicate the project.</p>
-              </div>
-
-              <div class="testimonial-person">
-                <div class="person-name">
-                  <span>Realtor</span>
-                  <strong>Project Client</strong>
-                </div>
-                <div class="quote-mark">“</div>
-              </div>
-            </div>
+            <div class="review-counter">01 / 04</div>
           </div>
-        </div>
+        </article>
 
-        <button class="testimonial-side-btn right" type="button" aria-label="Next review" onclick="moveReview(1)">›</button>
+        <article class="review-slide">
+          <div class="review-quote-mark">“</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">We needed property work handled without a bunch of back and forth. ZH Homes communicated well, showed up ready, and helped get the project moving.</p>
+          <div class="review-person">
+            <div>
+              <strong>Property Owner</strong>
+              <span>Rental Property Work</span>
+            </div>
+            <div class="review-counter">02 / 04</div>
+          </div>
+        </article>
+
+        <article class="review-slide">
+          <div class="review-quote-mark">“</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">Good communication, honest pricing, and solid work. That is exactly what we needed for our repairs before getting the property ready again.</p>
+          <div class="review-person">
+            <div>
+              <strong>Landlord</strong>
+              <span>Repair and Punch List</span>
+            </div>
+            <div class="review-counter">03 / 04</div>
+          </div>
+        </article>
+
+        <article class="review-slide">
+          <div class="review-quote-mark">“</div>
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">He took the time to understand the job, explain the options, and give us a fair path forward instead of trying to upsell the project.</p>
+          <div class="review-person">
+            <div>
+              <strong>Local Client</strong>
+              <span>Custom Project</span>
+            </div>
+            <div class="review-counter">04 / 04</div>
+          </div>
+        </article>
+
+        <div class="review-dots" aria-label="Review navigation">
+          <button class="review-dot active" type="button" aria-label="Go to review 1"></button>
+          <button class="review-dot" type="button" aria-label="Go to review 2"></button>
+          <button class="review-dot" type="button" aria-label="Go to review 3"></button>
+          <button class="review-dot" type="button" aria-label="Go to review 4"></button>
+        </div>
       </div>
     </div>
   </section>
@@ -3206,7 +3303,7 @@
             </div>
             <div>
               <span>Call / Text</span>
-              <strong>Add phone number here</strong>
+              <strong>(503) 884-9153</strong>
             </div>
           </div>
 
@@ -3219,7 +3316,7 @@
             </div>
             <div>
               <span>Email</span>
-              <strong>Add email here</strong>
+              <strong>zach@zhhomeco.com</strong>
             </div>
           </div>
 
@@ -3248,10 +3345,10 @@
       <div class="contact-form-card">
         <h3>Get a quote</h3>
         <p>
-          Fill this out with the basics. Once this is connected to your backend or form service, submissions can go straight to email.
+          Fill this out with the basics. Customers can also upload a project photo to help explain the job before Zach responds.
         </p>
 
-        <form class="quote-form">
+        <form class="quote-form" id="quoteForm" enctype="multipart/form-data">
           <div class="form-row">
             <div class="field">
               <label for="fullName">Full Name</label>
@@ -3285,6 +3382,13 @@
           <div class="field">
             <label for="description">Project Description</label>
             <textarea id="description" placeholder="Tell us what you need help with..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="projectPhoto">Upload Image</label>
+            <input id="projectPhoto" name="projectPhoto" type="file" accept="image/*">
+            <span class="field-note">Optional. Image uploads should stay under 10MB.</span>
+            <span class="file-error" id="fileError">Please upload an image that is 10MB or smaller.</span>
           </div>
 
           <button class="submit-btn" type="submit">Submit Now ↗</button>
@@ -3323,6 +3427,17 @@
           <summary>Are you licensed?</summary>
           <p>Yes. ZH Homes is listed with Oregon CCB #260679. You can keep this license number visible on the site for trust.</p>
         </details>
+
+        <details class="faq-item">
+          <summary>Can I send photos of the project?</summary>
+          <p>Yes. The quote form includes an image upload field so customers can send a project photo along with their message. Keep uploads under 10MB.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the best way to reach you?</summary>
+          <p>Call, text, email, or use the quote form. For quick job questions, many customers start by texting photos and a short description.</p>
+        </details>
+      </div>
       </div>
     </div>
   </section>
@@ -3355,8 +3470,8 @@
 
         <div class="footer-col">
           <h4>Contact</h4>
-          <span>Add phone number here</span>
-          <span>Add email here</span>
+          <span>(503) 884-9153</span>
+          <span>zach@zhhomeco.com</span>
           <span>Salem, Oregon</span>
           <span>CCB #260679</span>
         </div>
@@ -3370,100 +3485,99 @@
   </footer>
 
   <script>
-    const testimonialState = {
-      track: null,
-      originalCount: 0,
-      currentIndex: 0,
-      isReady: false,
-      autoTimer: null
-    };
+    const reviewCarousel = document.getElementById("reviewCarousel");
+    const reviewSlides = Array.from(document.querySelectorAll(".review-slide"));
+    const reviewDots = Array.from(document.querySelectorAll(".review-dot"));
+    const prevReviewBtn = document.querySelector(".review-arrow.prev");
+    const nextReviewBtn = document.querySelector(".review-arrow.next");
+    const quoteForm = document.getElementById("quoteForm");
+    const projectPhoto = document.getElementById("projectPhoto");
+    const fileError = document.getElementById("fileError");
 
-    function getSlideDistance() {
-      const firstCard = testimonialState.track?.querySelector(".testimonial-card");
-      if (!firstCard) return 0;
+    let currentReviewIndex = 0;
+    let reviewTimer = null;
 
-      const trackStyles = window.getComputedStyle(testimonialState.track);
-      const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || 22) || 22;
-      return firstCard.getBoundingClientRect().width + gap;
-    }
+    function showReview(index) {
+      currentReviewIndex = (index + reviewSlides.length) % reviewSlides.length;
 
-    function setReviewPosition(animate = true) {
-      if (!testimonialState.track) return;
-
-      testimonialState.track.style.transition = animate ? "transform 0.45s ease" : "none";
-      testimonialState.track.style.transform = `translateX(-${testimonialState.currentIndex * getSlideDistance()}px)`;
-    }
-
-    function buildInfiniteReviews() {
-      const track = document.getElementById("testimonialTrack");
-      if (!track || testimonialState.isReady) return;
-
-      const originalCards = Array.from(track.children);
-      testimonialState.track = track;
-      testimonialState.originalCount = originalCards.length;
-      testimonialState.currentIndex = testimonialState.originalCount;
-
-      const beforeClones = originalCards.map((card) => {
-        const clone = card.cloneNode(true);
-        clone.classList.add("is-clone");
-        clone.setAttribute("aria-hidden", "true");
-        return clone;
+      reviewSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === currentReviewIndex);
       });
 
-      const afterClones = originalCards.map((card) => {
-        const clone = card.cloneNode(true);
-        clone.classList.add("is-clone");
-        clone.setAttribute("aria-hidden", "true");
-        return clone;
-      });
-
-      track.innerHTML = "";
-      beforeClones.forEach((clone) => track.appendChild(clone));
-      originalCards.forEach((card) => track.appendChild(card));
-      afterClones.forEach((clone) => track.appendChild(clone));
-
-      testimonialState.isReady = true;
-      setReviewPosition(false);
-
-      track.addEventListener("transitionend", () => {
-        if (testimonialState.currentIndex >= testimonialState.originalCount * 2) {
-          testimonialState.currentIndex -= testimonialState.originalCount;
-          setReviewPosition(false);
-        }
-
-        if (testimonialState.currentIndex < testimonialState.originalCount) {
-          testimonialState.currentIndex += testimonialState.originalCount;
-          setReviewPosition(false);
-        }
+      reviewDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentReviewIndex);
       });
     }
 
-    function moveReview(direction) {
-      if (!testimonialState.isReady) buildInfiniteReviews();
-      if (!testimonialState.track) return;
-
-      testimonialState.currentIndex += direction;
-      setReviewPosition(true);
-      restartReviewAutoplay();
+    function nextReview() {
+      showReview(currentReviewIndex + 1);
     }
 
-    function restartReviewAutoplay() {
-      if (testimonialState.autoTimer) clearInterval(testimonialState.autoTimer);
-
-      testimonialState.autoTimer = setInterval(() => {
-        moveReview(1);
-      }, 5000);
+    function prevReview() {
+      showReview(currentReviewIndex - 1);
     }
 
-    window.addEventListener("load", () => {
-      buildInfiniteReviews();
-      restartReviewAutoplay();
+    function restartReviewTimer() {
+      if (reviewTimer) clearInterval(reviewTimer);
+      reviewTimer = setInterval(nextReview, 5000);
+    }
+
+    prevReviewBtn?.addEventListener("click", () => {
+      prevReview();
+      restartReviewTimer();
     });
 
-    window.addEventListener("resize", () => {
-      if (!testimonialState.track) return;
-      setReviewPosition(false);
+    nextReviewBtn?.addEventListener("click", () => {
+      nextReview();
+      restartReviewTimer();
     });
+
+    reviewDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showReview(index);
+        restartReviewTimer();
+      });
+    });
+
+    reviewCarousel?.addEventListener("mouseenter", () => {
+      if (reviewTimer) clearInterval(reviewTimer);
+    });
+
+    reviewCarousel?.addEventListener("mouseleave", () => {
+      restartReviewTimer();
+    });
+
+    projectPhoto?.addEventListener("change", () => {
+      const file = projectPhoto.files?.[0];
+
+      if (!file) {
+        fileError.style.display = "none";
+        projectPhoto.setCustomValidity("");
+        return;
+      }
+
+      if (file.size > 10 * 1024 * 1024) {
+        fileError.style.display = "block";
+        projectPhoto.value = "";
+        projectPhoto.setCustomValidity("Please upload an image that is 10MB or smaller.");
+      } else {
+        fileError.style.display = "none";
+        projectPhoto.setCustomValidity("");
+      }
+    });
+
+    quoteForm?.addEventListener("submit", (event) => {
+      const file = projectPhoto?.files?.[0];
+
+      if (file && file.size > 10 * 1024 * 1024) {
+        event.preventDefault();
+        fileError.style.display = "block";
+        projectPhoto.focus();
+      }
+    });
+
+    showReview(0);
+    restartReviewTimer();
   </script>
 
 </body>
