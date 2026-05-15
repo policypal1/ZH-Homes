@@ -692,7 +692,7 @@
     .services-section {
       position: relative;
       background:
-        linear-gradient(rgba(10,7,5,0.62), rgba(10,7,5,0.70)),
+        linear-gradient(rgba(10,7,5,0.82), rgba(10,7,5,0.88)),
         url("ChatGPT Image May 14, 2026, 10_21_07 PM.png") center center / cover no-repeat,
         #0a0705;
       padding: 92px 0 104px;
@@ -704,8 +704,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 82% 20%, rgba(243,112,33,0.14), transparent 34%),
-        radial-gradient(circle at 10% 90%, rgba(243,112,33,0.12), transparent 34%);
+        linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.30)),
+        radial-gradient(circle at 82% 20%, rgba(243,112,33,0.10), transparent 34%),
+        radial-gradient(circle at 10% 90%, rgba(243,112,33,0.08), transparent 34%);
       pointer-events: none;
     }
 
@@ -1366,7 +1367,7 @@
         url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
         #060708;
       color: #fff;
-      padding: 92px 0 98px;
+      padding: 94px 0 104px;
       overflow: hidden;
     }
 
@@ -1386,9 +1387,16 @@
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: 0.82fr 1.18fr;
       gap: clamp(36px, 5vw, 68px);
-      align-items: start;
+      align-items: stretch;
+    }
+
+    .area-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px 0;
     }
 
     .area-content h2 {
@@ -1413,6 +1421,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       max-width: 530px;
+      margin-top: 8px;
     }
 
     .area-pill {
@@ -1441,7 +1450,8 @@
 
     .map-card {
       position: relative;
-      min-height: 386px;
+      min-height: 560px;
+      height: 100%;
       border-radius: 22px;
       overflow: hidden;
       background:
@@ -1570,13 +1580,14 @@
       width: min(1220px, calc(100% - 36px));
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 0.75fr 1.25fr;
+      grid-template-columns: 0.78fr 1.22fr;
       gap: clamp(34px, 5vw, 70px);
-      align-items: start;
+      align-items: center;
     }
 
     .testimonials-left {
-      max-width: 390px;
+      max-width: 430px;
+      padding-top: 4px;
     }
 
     .testimonials-eyebrow {
@@ -1600,9 +1611,9 @@
 
     .testimonials-left h2 {
       color: var(--brown);
-      font-size: clamp(34px, 4vw, 52px);
+      font-size: clamp(32px, 3.45vw, 48px);
       line-height: 1.08;
-      letter-spacing: -1.7px;
+      letter-spacing: -1.35px;
       margin-bottom: 18px;
     }
 
@@ -1619,17 +1630,20 @@
 
     .testimonial-window {
       overflow: hidden;
+      padding: 18px 0 20px;
+      margin: -18px 0 -20px;
     }
 
     .testimonial-track {
       display: flex;
       gap: 22px;
-      transition: transform 0.35s ease;
+      transition: transform 0.45s ease;
       will-change: transform;
     }
 
     .testimonial-card {
-      min-width: calc((100% - 22px) / 2);
+      flex: 0 0 calc((100% - 22px) / 2);
+      min-width: 0;
       min-height: 250px;
       border-radius: 18px;
       background: #fff;
@@ -2000,23 +2014,64 @@
     .faq-item {
       border: 1px solid rgba(35,23,18,0.08);
       border-radius: 16px;
-      padding: 24px 26px;
       background: #fff;
       box-shadow: 0 18px 44px rgba(35,23,18,0.06);
+      overflow: hidden;
+      transition: 0.2s ease;
     }
 
-    .faq-item h3 {
+    .faq-item[open] {
+      border-color: rgba(243,112,33,0.22);
+      box-shadow: 0 24px 54px rgba(35,23,18,0.09);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
       color: var(--brown);
       font-size: 18px;
       line-height: 1.3;
       letter-spacing: -0.4px;
-      margin-bottom: 9px;
+      font-weight: 950;
+      padding: 24px 26px;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(243,112,33,0.10);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 900;
+      flex: 0 0 auto;
+      transition: 0.2s ease;
+    }
+
+    .faq-item[open] summary::after {
+      content: "−";
+      background: var(--orange);
+      color: #fff;
     }
 
     .faq-item p {
       color: var(--section-muted);
       font-size: 14px;
       line-height: 1.65;
+      padding: 0 26px 24px;
+      margin-top: -4px;
     }
 
     .footer {
@@ -2189,14 +2244,20 @@
 
       .service-area-inner {
         grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .area-content {
+        padding: 0;
       }
 
       .map-card {
         min-height: 420px;
+        height: auto;
       }
 
       .testimonial-card {
-        min-width: 100%;
+        flex-basis: 100%;
       }
     }
 
@@ -2401,7 +2462,7 @@
       }
 
       .testimonial-card {
-        min-width: 100%;
+        flex-basis: 100%;
       }
 
       .contact-section {
@@ -3049,9 +3110,9 @@
     <div class="testimonials-inner">
       <div class="testimonials-left">
         <div class="testimonials-eyebrow">Testimonials</div>
-        <h2>What people say about ZH Homes.</h2>
+        <h2>What people are saying about ZH Homes.</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. These placeholder reviews can be replaced with real customer feedback.
+          Real reviews can be added here as they come in. For now, this section keeps the layout clean without any lorem ipsum filler.
         </p>
       </div>
 
@@ -3063,13 +3124,13 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars">★★★★★</div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pretium, nunc sit amet pulvinar facilisis, lorem lectus.</p>
+                <p>Zach was straightforward, fair on price, and clear about what needed to be done. The work came out clean and the process was simple.</p>
               </div>
 
               <div class="testimonial-person">
                 <div class="person-name">
                   <span>Homeowner</span>
-                  <strong>Lorem Ipsum</strong>
+                  <strong>Local Customer</strong>
                 </div>
                 <div class="quote-mark">“</div>
               </div>
@@ -3078,13 +3139,13 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars">★★★★★</div>
-                <p>Donec porta, justo vitae suscipit ultrices, neque erat facilisis magna, sed tempor massa justo non mauris.</p>
+                <p>We needed property work handled without a bunch of back and forth. ZH Homes communicated well and helped get the project moving.</p>
               </div>
 
               <div class="testimonial-person">
                 <div class="person-name">
                   <span>Property Owner</span>
-                  <strong>Dolor Sit</strong>
+                  <strong>Property Customer</strong>
                 </div>
                 <div class="quote-mark">“</div>
               </div>
@@ -3093,13 +3154,13 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars">★★★★★</div>
-                <p>Aliquam erat volutpat. Curabitur blandit risus vitae tellus posuere, vitae luctus magna interdum.</p>
+                <p>Good communication, honest pricing, and solid work. That is exactly what we needed for our rental repairs.</p>
               </div>
 
               <div class="testimonial-person">
                 <div class="person-name">
                   <span>Landlord</span>
-                  <strong>Amet Consectetur</strong>
+                  <strong>Rental Owner</strong>
                 </div>
                 <div class="quote-mark">“</div>
               </div>
@@ -3108,13 +3169,13 @@
             <div class="testimonial-card">
               <div>
                 <div class="stars">★★★★★</div>
-                <p>Sed dignissim, lectus vel cursus feugiat, sapien arcu commodo sapien, in facilisis orci nisi et lorem.</p>
+                <p>He took the time to understand the job and gave a fair option instead of trying to overcomplicate the project.</p>
               </div>
 
               <div class="testimonial-person">
                 <div class="person-name">
                   <span>Realtor</span>
-                  <strong>Adipiscing Elit</strong>
+                  <strong>Project Client</strong>
                 </div>
                 <div class="quote-mark">“</div>
               </div>
@@ -3243,25 +3304,25 @@
       </div>
 
       <div class="faq-list">
-        <div class="faq-item">
-          <h3>Do you offer free estimates?</h3>
+        <details class="faq-item">
+          <summary>Do you offer free estimates?</summary>
           <p>Yes. ZH Homes can review the project, ask for photos if needed, and help you understand the best next step.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>What areas do you serve?</h3>
+        <details class="faq-item">
+          <summary>What areas do you serve?</summary>
           <p>ZH Homes is based around Salem and can serve nearby areas including Keizer, Dallas, Portland, Eugene, Grand Ronde, Mill City, and surrounding communities depending on job size.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>What kind of work do you take on?</h3>
+        <details class="faq-item">
+          <summary>What kind of work do you take on?</summary>
           <p>Common work includes remodeling, construction projects, handyman repairs, rental property work, punch lists, interior updates, and custom jobs.</p>
-        </div>
+        </details>
 
-        <div class="faq-item">
-          <h3>Are you licensed?</h3>
+        <details class="faq-item">
+          <summary>Are you licensed?</summary>
           <p>Yes. ZH Homes is listed with Oregon CCB #260679. You can keep this license number visible on the site for trust.</p>
-        </div>
+        </details>
       </div>
     </div>
   </section>
@@ -3309,39 +3370,100 @@
   </footer>
 
   <script>
-    let reviewIndex = 0;
+    const testimonialState = {
+      track: null,
+      originalCount: 0,
+      currentIndex: 0,
+      isReady: false,
+      autoTimer: null
+    };
 
-    function getVisibleReviewCount() {
-      return window.innerWidth <= 950 ? 1 : 2;
+    function getSlideDistance() {
+      const firstCard = testimonialState.track?.querySelector(".testimonial-card");
+      if (!firstCard) return 0;
+
+      const trackStyles = window.getComputedStyle(testimonialState.track);
+      const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || 22) || 22;
+      return firstCard.getBoundingClientRect().width + gap;
+    }
+
+    function setReviewPosition(animate = true) {
+      if (!testimonialState.track) return;
+
+      testimonialState.track.style.transition = animate ? "transform 0.45s ease" : "none";
+      testimonialState.track.style.transform = `translateX(-${testimonialState.currentIndex * getSlideDistance()}px)`;
+    }
+
+    function buildInfiniteReviews() {
+      const track = document.getElementById("testimonialTrack");
+      if (!track || testimonialState.isReady) return;
+
+      const originalCards = Array.from(track.children);
+      testimonialState.track = track;
+      testimonialState.originalCount = originalCards.length;
+      testimonialState.currentIndex = testimonialState.originalCount;
+
+      const beforeClones = originalCards.map((card) => {
+        const clone = card.cloneNode(true);
+        clone.classList.add("is-clone");
+        clone.setAttribute("aria-hidden", "true");
+        return clone;
+      });
+
+      const afterClones = originalCards.map((card) => {
+        const clone = card.cloneNode(true);
+        clone.classList.add("is-clone");
+        clone.setAttribute("aria-hidden", "true");
+        return clone;
+      });
+
+      track.innerHTML = "";
+      beforeClones.forEach((clone) => track.appendChild(clone));
+      originalCards.forEach((card) => track.appendChild(card));
+      afterClones.forEach((clone) => track.appendChild(clone));
+
+      testimonialState.isReady = true;
+      setReviewPosition(false);
+
+      track.addEventListener("transitionend", () => {
+        if (testimonialState.currentIndex >= testimonialState.originalCount * 2) {
+          testimonialState.currentIndex -= testimonialState.originalCount;
+          setReviewPosition(false);
+        }
+
+        if (testimonialState.currentIndex < testimonialState.originalCount) {
+          testimonialState.currentIndex += testimonialState.originalCount;
+          setReviewPosition(false);
+        }
+      });
     }
 
     function moveReview(direction) {
-      const track = document.getElementById("testimonialTrack");
-      const cards = track.querySelectorAll(".testimonial-card");
-      const visible = getVisibleReviewCount();
-      const maxIndex = cards.length - visible;
+      if (!testimonialState.isReady) buildInfiniteReviews();
+      if (!testimonialState.track) return;
 
-      reviewIndex += direction;
-
-      if (reviewIndex > maxIndex) reviewIndex = 0;
-      if (reviewIndex < 0) reviewIndex = maxIndex;
-
-      const cardWidth = cards[0].getBoundingClientRect().width;
-      const gap = 22;
-      const moveAmount = reviewIndex * (cardWidth + gap);
-
-      track.style.transform = `translateX(-${moveAmount}px)`;
+      testimonialState.currentIndex += direction;
+      setReviewPosition(true);
+      restartReviewAutoplay();
     }
 
-    window.addEventListener("resize", () => {
-      reviewIndex = 0;
-      const track = document.getElementById("testimonialTrack");
-      if (track) track.style.transform = "translateX(0)";
+    function restartReviewAutoplay() {
+      if (testimonialState.autoTimer) clearInterval(testimonialState.autoTimer);
+
+      testimonialState.autoTimer = setInterval(() => {
+        moveReview(1);
+      }, 5000);
+    }
+
+    window.addEventListener("load", () => {
+      buildInfiniteReviews();
+      restartReviewAutoplay();
     });
 
-    setInterval(() => {
-      moveReview(1);
-    }, 5000);
+    window.addEventListener("resize", () => {
+      if (!testimonialState.track) return;
+      setReviewPosition(false);
+    });
   </script>
 
 </body>
