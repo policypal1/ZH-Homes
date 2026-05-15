@@ -8,13 +8,10 @@
   <style>
     :root {
       --bg: #060708;
-      --bg-soft: #0b0e11;
       --text: #ffffff;
       --muted: rgba(255,255,255,0.74);
-      --line: rgba(255,255,255,0.10);
       --orange: #f37021;
       --orange-dark: #da5d11;
-      --card: rgba(7, 9, 11, 0.82);
     }
 
     * {
@@ -39,17 +36,17 @@
     }
 
     /*
-      Put these files in the same folder as this HTML:
+      Keep these image files in the same folder as this HTML:
 
-      - ChatGPT Image May 14, 2026, 09_12_52 PM.png
-      - ChatGPT Image May 14, 2026, 09_29_45 PM.png
+      - ChatGPT Image May 14, 2026, 09_12_52 PM.png   (blueprints)
+      - ChatGPT Image May 14, 2026, 09_29_45 PM.png   (kitchen)
     */
 
     .site-header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(6, 7, 8, 0.78);
+      background: rgba(6, 7, 8, 0.80);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
@@ -168,14 +165,15 @@
       isolation: isolate;
     }
 
+    /* Slight darkening only for the blueprint background */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -3;
       background:
-        radial-gradient(circle at 16% 50%, rgba(255,255,255,0.025), transparent 30%),
-        radial-gradient(circle at 72% 40%, rgba(255,255,255,0.02), transparent 24%);
+        linear-gradient(90deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.18) 38%, rgba(0,0,0,0.08) 100%),
+        radial-gradient(circle at 18% 50%, rgba(255,255,255,0.02), transparent 30%);
       pointer-events: none;
     }
 
@@ -214,7 +212,6 @@
     .hero-copy {
       max-width: 560px;
       padding-top: 8px;
-      margin-left: 0;
     }
 
     .eyebrow {
@@ -311,11 +308,11 @@
       transform: translateY(-2px);
     }
 
-    /* Card now lives on the kitchen/image side */
+    /* Review card lives on the image side and sits higher */
     .review-card {
       position: absolute;
       right: clamp(22px, 4vw, 58px);
-      bottom: clamp(24px, 4.8vw, 58px);
+      bottom: clamp(110px, 12vw, 150px);
       z-index: 3;
       width: min(660px, 44vw);
       display: grid;
@@ -426,7 +423,7 @@
         width: calc(100% - 32px);
         right: 16px;
         left: 16px;
-        bottom: 16px;
+        bottom: 24px;
       }
     }
 
@@ -504,17 +501,14 @@
 
   <section class="hero">
 
-    <!-- Kitchen image clipped into a softer, hill-like curve -->
+    <!-- Kitchen image: one main bump only -->
     <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <clipPath id="kitchenClipHill" clipPathUnits="userSpaceOnUse">
+        <clipPath id="kitchenClipSingleBump" clipPathUnits="userSpaceOnUse">
           <path d="
-            M 805 0
-            C 745 70, 720 145, 730 220
-            C 741 300, 797 360, 846 425
-            C 888 482, 902 542, 879 604
-            C 852 677, 794 742, 782 810
-            C 775 847, 786 878, 810 900
+            M 835 0
+            C 740 155, 720 395, 775 595
+            C 815 740, 905 845, 1030 900
             L 1440 900
             L 1440 0
             Z
@@ -529,18 +523,15 @@
         width="1440"
         height="900"
         preserveAspectRatio="xMidYMid slice"
-        clip-path="url(#kitchenClipHill)"
+        clip-path="url(#kitchenClipSingleBump)"
       ></image>
     </svg>
 
     <svg class="curve-stroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <path d="
-        M 805 0
-        C 745 70, 720 145, 730 220
-        C 741 300, 797 360, 846 425
-        C 888 482, 902 542, 879 604
-        C 852 677, 794 742, 782 810
-        C 775 847, 786 878, 810 900
+        M 835 0
+        C 740 155, 720 395, 775 595
+        C 815 740, 905 845, 1030 900
       " />
     </svg>
 
