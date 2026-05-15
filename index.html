@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZH Homes Hero Section</title>
+  <title>ZH Homes</title>
 
   <style>
     :root {
@@ -12,6 +12,10 @@
       --muted: rgba(255,255,255,0.74);
       --orange: #f37021;
       --orange-dark: #da5d11;
+      --brown: #231712;
+      --cream: #f8f4ef;
+      --section-text: #241814;
+      --section-muted: #706762;
     }
 
     * {
@@ -46,7 +50,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(6, 7, 8, 0.80);
+      background: rgba(6, 7, 8, 0.84);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
@@ -69,24 +73,23 @@
     }
 
     .brand-logo {
-      width: 48px;
+      min-width: 112px;
       height: 48px;
-      border-radius: 12px;
-      background:
-        linear-gradient(135deg, rgba(243,112,33,0.14), rgba(243,112,33,0.03)),
-        rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 11px;
+      background: linear-gradient(135deg, #ff7a22, var(--orange-dark));
       display: grid;
       place-items: center;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      box-shadow: 0 14px 28px rgba(243,112,33,0.24);
+      border: 1px solid rgba(255,255,255,0.14);
       flex: 0 0 auto;
     }
 
     .brand-logo span {
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: -0.6px;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.8px;
       color: #fff;
+      text-transform: uppercase;
     }
 
     .brand-text strong {
@@ -103,7 +106,7 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
       font-weight: 800;
-      color: rgba(255,255,255,0.56);
+      color: rgba(255,255,255,0.58);
     }
 
     .nav {
@@ -165,15 +168,14 @@
       isolation: isolate;
     }
 
-    /* Slight darkening only for the blueprint background */
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -3;
       background:
-        linear-gradient(90deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0.18) 38%, rgba(0,0,0,0.08) 100%),
-        radial-gradient(circle at 18% 50%, rgba(255,255,255,0.02), transparent 30%);
+        linear-gradient(90deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0.24) 40%, rgba(0,0,0,0.10) 100%),
+        radial-gradient(circle at 18% 50%, rgba(255,255,255,0.025), transparent 30%);
       pointer-events: none;
     }
 
@@ -194,7 +196,7 @@
       fill: none;
       stroke: var(--orange);
       stroke-width: 4;
-      opacity: 0.90;
+      opacity: 0.92;
       filter: drop-shadow(0 0 8px rgba(243, 112, 33, 0.16));
     }
 
@@ -210,7 +212,7 @@
     }
 
     .hero-copy {
-      max-width: 560px;
+      max-width: 600px;
       padding-top: 8px;
     }
 
@@ -235,12 +237,12 @@
     }
 
     h1 {
-      font-size: clamp(50px, 5.9vw, 78px);
+      font-size: clamp(48px, 5.8vw, 76px);
       line-height: 1.02;
       letter-spacing: -3px;
-      font-weight: 700;
+      font-weight: 750;
       margin-bottom: 22px;
-      max-width: 600px;
+      max-width: 650px;
     }
 
     h1 .accent {
@@ -308,13 +310,12 @@
       transform: translateY(-2px);
     }
 
-    /* Review card lives on the image side and sits higher */
-    .review-card {
+    .trust-card {
       position: absolute;
       right: clamp(22px, 4vw, 58px);
       bottom: clamp(110px, 12vw, 150px);
       z-index: 3;
-      width: min(660px, 44vw);
+      width: min(640px, 43vw);
       display: grid;
       grid-template-columns: 1.02fr 1px 1fr;
       background:
@@ -327,53 +328,58 @@
       box-shadow: 0 24px 50px rgba(0,0,0,0.18);
     }
 
-    .review-left,
-    .review-right {
+    .trust-left,
+    .trust-right {
       padding: 24px 26px;
     }
 
-    .review-divider {
+    .trust-divider {
       background: rgba(255,255,255,0.10);
       width: 1px;
     }
 
-    .stars-row {
-      display: flex;
+    .license-label {
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-      color: #fff;
-      font-weight: 800;
-    }
-
-    .stars {
-      display: flex;
-      gap: 4px;
+      gap: 8px;
       color: var(--orange);
-      font-size: 20px;
-      line-height: 1;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      margin-bottom: 14px;
     }
 
-    .review-quote {
-      color: rgba(255,255,255,0.92);
-      font-size: 18px;
-      line-height: 1.62;
-      font-style: italic;
-      margin-bottom: 18px;
-      max-width: 320px;
+    .license-label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(243,112,33,0.14);
     }
 
-    .review-author {
-      color: rgba(255,255,255,0.62);
+    .trust-title {
+      color: rgba(255,255,255,0.95);
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .trust-copy {
+      color: rgba(255,255,255,0.68);
       font-size: 15px;
+      line-height: 1.6;
     }
 
-    .review-list {
+    .trust-list {
       display: grid;
       gap: 14px;
     }
 
-    .review-item {
+    .trust-item {
       display: grid;
       grid-template-columns: 24px 1fr;
       gap: 12px;
@@ -381,18 +387,298 @@
       color: rgba(255,255,255,0.88);
     }
 
-    .review-item svg {
+    .trust-item svg {
       width: 21px;
       height: 21px;
       color: var(--orange);
       margin-top: 2px;
     }
 
-    .review-item strong {
+    .trust-item strong {
       display: block;
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.35;
+    }
+
+    .trust-item span {
+      display: block;
+      margin-top: 3px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.56);
+    }
+
+    .quick-stats {
+      background: var(--orange);
+      color: #fff;
+      position: relative;
+      z-index: 5;
+    }
+
+    .quick-stats-inner {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-box {
+      min-height: 112px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px 16px;
+      border-left: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .stat-box:last-child {
+      border-right: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.8px;
+      margin-bottom: 8px;
+    }
+
+    .stat-box span {
+      display: block;
+      font-size: 11px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0.75px;
+      text-transform: uppercase;
+      opacity: 0.92;
+    }
+
+    .about-section {
+      background: #fff;
+      color: var(--section-text);
+      padding: 92px 0;
+      overflow: hidden;
+    }
+
+    .about-inner {
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1fr;
+      gap: clamp(42px, 6vw, 78px);
+      align-items: center;
+    }
+
+    .about-media {
+      position: relative;
+      min-height: 480px;
+    }
+
+    .photo-stack {
+      position: relative;
+      height: 480px;
+    }
+
+    .photo-main {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 82%;
+      height: 285px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 42px rgba(0,0,0,0.14);
+      background: #ddd;
+    }
+
+    .photo-main img,
+    .photo-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-main::after,
+    .photo-small::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(243,112,33,0.26), rgba(0,0,0,0.04));
+      pointer-events: none;
+    }
+
+    .photo-small {
+      position: absolute;
+      bottom: 18px;
+      height: 135px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 18px 34px rgba(0,0,0,0.12);
+      background: #ddd;
+    }
+
+    .photo-small.one {
+      left: 0;
+      width: 42%;
+    }
+
+    .photo-small.two {
+      left: 47%;
+      width: 42%;
+    }
+
+    .floating-badge {
+      position: absolute;
+      left: -18px;
+      top: 110px;
+      width: 104px;
+      min-height: 112px;
+      border-radius: 10px;
+      background: var(--orange);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 14px 10px;
+      box-shadow: 0 20px 34px rgba(243,112,33,0.25);
+      z-index: 4;
+    }
+
+    .floating-badge strong {
+      display: block;
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .floating-badge span {
+      display: block;
+      font-size: 10px;
+      line-height: 1.3;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .about-content {
+      max-width: 610px;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .section-eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .about-content h2 {
+      font-size: clamp(36px, 4vw, 55px);
+      line-height: 1.06;
+      letter-spacing: -1.8px;
+      margin-bottom: 20px;
+      color: var(--brown);
+    }
+
+    .about-content p {
+      color: var(--section-muted);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 28px;
+      margin: 26px 0 30px;
+    }
+
+    .about-check {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: #4e443e;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 750;
+    }
+
+    .about-check svg {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+      margin-top: 1px;
+    }
+
+    .about-bottom {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .about-cta {
+      min-height: 54px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 8px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 950;
+      box-shadow: 0 14px 28px rgba(243,112,33,0.20);
+      transition: 0.2s ease;
+    }
+
+    .about-cta:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .about-cta svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .license-note {
+      display: grid;
+      gap: 3px;
+    }
+
+    .license-note strong {
+      color: var(--orange);
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -1px;
+      font-weight: 950;
+    }
+
+    .license-note span {
+      color: var(--section-muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
     @media (max-width: 1120px) {
@@ -400,7 +686,7 @@
         display: none;
       }
 
-      .review-card {
+      .trust-card {
         width: min(620px, 48vw);
       }
     }
@@ -419,18 +705,52 @@
         max-width: 100%;
       }
 
-      .review-card {
+      .trust-card {
         width: calc(100% - 32px);
         right: 16px;
         left: 16px;
         bottom: 24px;
       }
+
+      .quick-stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-box {
+        border-bottom: 1px solid rgba(255,255,255,0.16);
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .about-media {
+        min-height: 440px;
+      }
+
+      .photo-stack {
+        height: 440px;
+      }
+
+      .about-content {
+        max-width: 100%;
+      }
     }
 
     @media (max-width: 760px) {
       .header-inner,
-      .hero-inner {
+      .hero-inner,
+      .about-inner {
         width: min(100% - 28px, 1220px);
+      }
+
+      .brand-logo {
+        min-width: 94px;
+        height: 44px;
+      }
+
+      .brand-logo span {
+        font-size: 11px;
       }
 
       .brand-text small,
@@ -456,22 +776,95 @@
         width: 100%;
       }
 
-      .review-card {
+      .trust-card {
         grid-template-columns: 1fr;
       }
 
-      .review-divider {
+      .trust-divider {
         width: auto;
         height: 1px;
       }
 
-      .review-left,
-      .review-right {
+      .trust-left,
+      .trust-right {
         padding: 22px 20px;
       }
 
-      .review-quote {
-        font-size: 16px;
+      .trust-title {
+        font-size: 21px;
+      }
+
+      .quick-stats-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-box {
+        min-height: 96px;
+      }
+
+      .about-section {
+        padding: 70px 0;
+      }
+
+      .about-media {
+        min-height: 390px;
+      }
+
+      .photo-stack {
+        height: 390px;
+      }
+
+      .photo-main {
+        width: 100%;
+        height: 235px;
+      }
+
+      .photo-small {
+        height: 116px;
+      }
+
+      .photo-small.one {
+        width: 48%;
+      }
+
+      .photo-small.two {
+        left: 52%;
+        width: 48%;
+      }
+
+      .floating-badge {
+        left: 12px;
+        top: 190px;
+        width: 96px;
+        min-height: 98px;
+      }
+
+      .floating-badge strong {
+        font-size: 24px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .quick-stats-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-box {
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .stat-box:last-child {
+        border-right: 0;
       }
     }
   </style>
@@ -481,10 +874,10 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="brand" aria-label="ZH Homes home">
-        <div class="brand-logo" aria-hidden="true"><span>ZH</span></div>
+        <div class="brand-logo" aria-hidden="true"><span>Add Logo</span></div>
         <div class="brand-text">
           <strong>ZH Homes</strong>
-          <small>Good Quality Work</small>
+          <small>Honest Quality Construction</small>
         </div>
       </a>
 
@@ -501,14 +894,15 @@
 
   <section class="hero">
 
-    <!-- Kitchen image: one main bump only -->
+    <!-- Kitchen image: one main natural bump, not a perfect curve -->
     <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <clipPath id="kitchenClipSingleBump" clipPathUnits="userSpaceOnUse">
+        <clipPath id="kitchenClipNaturalBump" clipPathUnits="userSpaceOnUse">
           <path d="
-            M 835 0
-            C 740 155, 720 395, 775 595
-            C 815 740, 905 845, 1030 900
+            M 855 0
+            C 805 72, 754 155, 739 254
+            C 716 405, 793 488, 775 604
+            C 761 702, 817 814, 977 900
             L 1440 900
             L 1440 0
             Z
@@ -523,15 +917,16 @@
         width="1440"
         height="900"
         preserveAspectRatio="xMidYMid slice"
-        clip-path="url(#kitchenClipSingleBump)"
+        clip-path="url(#kitchenClipNaturalBump)"
       ></image>
     </svg>
 
     <svg class="curve-stroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <path d="
-        M 835 0
-        C 740 155, 720 395, 775 595
-        C 815 740, 905 845, 1030 900
+        M 855 0
+        C 805 72, 754 155, 739 254
+        C 716 405, 793 488, 775 604
+        C 761 702, 817 814, 977 900
       " />
     </svg>
 
@@ -541,13 +936,13 @@
 
         <h1>
           Honest, quality<br>
-          construction and<br>
-          <span class="accent">home services.</span>
+          construction that’s<br>
+          <span class="accent">fair &amp; affordable.</span>
         </h1>
 
         <p class="subheadline">
-          From remodels to repairs, we deliver trusted craftsmanship and lasting results without overcharging.
-          Proudly serving <strong>Salem to Portland</strong> and the surrounding areas.
+          From remodels to repairs, ZH Homes delivers trusted craftsmanship and lasting results without overcharging.
+          Serving <strong>Salem, Eugene, Portland</strong> and surrounding areas depending on the job size.
         </p>
 
         <div class="hero-actions">
@@ -574,52 +969,180 @@
       </div>
     </div>
 
-    <div class="review-card">
-      <div class="review-left">
-        <div class="stars-row">
-          <div class="stars">★★★★★</div>
-          <span>5.0</span>
+    <div class="trust-card">
+      <div class="trust-left">
+        <div class="license-label">Bonded &amp; Insured</div>
+
+        <div class="trust-title">
+          The last contractor you’ll ever need.
         </div>
 
-        <div class="review-quote">
-          “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Highly recommended ZH Homes.”
-        </div>
-
-        <div class="review-author">
-          — Lorem Ipsum, Salem, OR
-        </div>
+        <p class="trust-copy">
+          Owner-involved construction, remodeling, and handyman services for homeowners, landlords, realtors, and property managers.
+        </p>
       </div>
 
-      <div class="review-divider"></div>
+      <div class="trust-divider"></div>
 
-      <div class="review-right">
-        <div class="review-list">
-          <div class="review-item">
+      <div class="trust-right">
+        <div class="trust-list">
+          <div class="trust-item">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 3L14.7 8.3L20.5 9.1L16.25 13.2L17.3 19L12 16.2L6.7 19L7.75 13.2L3.5 9.1L9.3 8.3L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
             </svg>
-            <strong>Experienced &amp; Reliable</strong>
+            <div>
+              <strong>Quality Work</strong>
+              <span>Done right without cutting corners.</span>
+            </div>
           </div>
 
-          <div class="review-item">
+          <div class="trust-item">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M3 11.5L12 4L21 11.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M6 10.5V20H18V10.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <strong>Homeowners<br>Landlords · Realtors</strong>
+            <div>
+              <strong>CCB #260679</strong>
+              <span>Licensed Oregon contractor.</span>
+            </div>
           </div>
 
-          <div class="review-item">
+          <div class="trust-item">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M12 21C16.5 16.3 19 13.03 19 9.9C19 5.98 15.87 3 12 3C8.13 3 5 5.98 5 9.9C5 13.03 7.5 16.3 12 21Z" stroke="currentColor" stroke-width="2"/>
               <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
             </svg>
-            <strong>Serving Salem, Eugene, Portland, Dallas, Grand Ronde &amp; Nearby Areas</strong>
+            <div>
+              <strong>Willamette Valley Service Area</strong>
+              <span>Salem to Portland, Eugene, Dallas, Grand Ronde, Mill City, and nearby areas.</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+  </section>
+
+  <section class="quick-stats" aria-label="ZH Homes quick facts">
+    <div class="quick-stats-inner">
+      <div class="stat-box">
+        <div>
+          <strong>CCB</strong>
+          <span>#260679 Licensed Contractor</span>
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div>
+          <strong>Free</strong>
+          <span>Estimates Available</span>
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div>
+          <strong>3</strong>
+          <span>Construction · Remodeling · Handyman</span>
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div>
+          <strong>Local</strong>
+          <span>Salem to Portland &amp; Eugene</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <div class="about-media">
+        <div class="photo-stack">
+          <div class="photo-main">
+            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Finished home remodel work">
+          </div>
+
+          <div class="floating-badge">
+            <div>
+              <strong>ZH</strong>
+              <span>Quality Work<br>Fair Prices</span>
+            </div>
+          </div>
+
+          <div class="photo-small one">
+            <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Construction planning blueprints">
+          </div>
+
+          <div class="photo-small two">
+            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home improvement project">
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <div class="section-eyebrow">About ZH Homes</div>
+
+        <h2>
+          Reliable construction work without the runaround.
+        </h2>
+
+        <p>
+          ZH Homes helps homeowners, landlords, realtors, and property managers with construction,
+          remodeling, and handyman work. The goal is simple: honest communication, quality work,
+          and fair pricing without making the job feel overpriced or complicated.
+        </p>
+
+        <p>
+          Whether it is a small repair, property punch list, or a larger remodel, Zach and the team
+          stay owner-involved and focused on getting the work done right.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-check">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Construction, remodeling &amp; handyman services</span>
+          </div>
+
+          <div class="about-check">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Bonded, insured, and CCB licensed</span>
+          </div>
+
+          <div class="about-check">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Free estimates with photo/video quote options</span>
+          </div>
+
+          <div class="about-check">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Serving Salem, Eugene, Portland, Dallas &amp; nearby areas</span>
+          </div>
+        </div>
+
+        <div class="about-bottom">
+          <a href="#quote" class="about-cta">
+            <span>Request a Free Estimate</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12H19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+          <div class="license-note">
+            <strong>260679</strong>
+            <span>Oregon CCB License</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
 </body>
