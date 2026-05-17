@@ -73,23 +73,18 @@
     }
 
     .brand-logo {
-      min-width: 112px;
-      height: 48px;
-      border-radius: 11px;
-      background: linear-gradient(135deg, #ff7a22, var(--orange-dark));
+      width: 112px;
+      height: 54px;
       display: grid;
       place-items: center;
-      box-shadow: 0 14px 28px rgba(243,112,33,0.24);
-      border: 1px solid rgba(255,255,255,0.14);
       flex: 0 0 auto;
     }
 
-    .brand-logo span {
-      font-size: 13px;
-      font-weight: 950;
-      letter-spacing: 0.8px;
-      color: #fff;
-      text-transform: uppercase;
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .brand-text strong {
@@ -1647,7 +1642,8 @@
 
     .review-carousel {
       position: relative;
-      min-height: 360px;
+      height: 430px;
+      min-height: 430px;
       border-radius: 22px;
       background: linear-gradient(180deg, #ffffff, #fbf8f5);
       border: 1px solid rgba(35,23,18,0.08);
@@ -1658,12 +1654,14 @@
 
     .review-slide {
       display: none;
-      min-height: 240px;
+      height: 100%;
+      min-height: 0;
       animation: reviewFade 0.35s ease;
     }
 
     .review-slide.active {
-      display: block;
+      display: flex;
+      flex-direction: column;
     }
 
     @keyframes reviewFade {
@@ -1711,6 +1709,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      margin-top: auto;
     }
 
     .review-person strong {
@@ -2357,7 +2356,12 @@
       }
 
       .review-carousel {
+        height: auto;
         min-height: 320px;
+      }
+
+      .review-slide {
+        min-height: 240px;
       }
     }
 
@@ -2378,12 +2382,8 @@
       }
 
       .brand-logo {
-        min-width: 94px;
+        width: 94px;
         height: 44px;
-      }
-
-      .brand-logo span {
-        font-size: 11px;
       }
 
       .brand-text small,
@@ -2649,7 +2649,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="brand" aria-label="ZH Homes home">
-        <div class="brand-logo" aria-hidden="true"><span>Add Logo</span></div>
+        <div class="brand-logo" aria-hidden="true"><img src="2 (4).png" alt="ZH Homes logo"></div>
         <div class="brand-text">
           <strong>ZH Homes</strong>
           <small>Honest Quality Construction</small>
@@ -2811,7 +2811,7 @@
       <div class="about-media">
         <div class="photo-stack">
           <div class="photo-main">
-            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Finished home remodel work">
+            <img src="20251110_163905.jpg" alt="Finished home remodel work">
           </div>
 
           <div class="floating-badge">
@@ -2822,11 +2822,11 @@
           </div>
 
           <div class="photo-small one">
-            <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Construction planning blueprints">
+            <img src="20251130_130636.jpg" alt="Construction project detail">
           </div>
 
           <div class="photo-small two">
-            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home improvement project">
+            <img src="20251110_163911.jpg" alt="Home improvement project">
           </div>
         </div>
       </div>
@@ -2902,7 +2902,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">01</div>
-            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home remodeling service">
+            <img src="completed-kitchen-remodeling-project.webp" alt="Custom home remodeling project">
           </div>
           <div class="service-content">
             <div>
@@ -2916,7 +2916,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">02</div>
-            <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Construction project planning">
+            <img src="20250909_173306.jpg" alt="Construction project">
           </div>
           <div class="service-content">
             <div>
@@ -2930,7 +2930,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">03</div>
-            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Handyman repairs and property work">
+            <img src="20250703_184642.jpg" alt="Handyman repairs and property work">
           </div>
           <div class="service-content">
             <div>
@@ -2944,7 +2944,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">04</div>
-            <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Rental property repairs">
+            <img src="Messenger_creation_6085CB66-8564-419A-A715-56A63F68BCCE.jpeg" alt="Rental property repairs">
           </div>
           <div class="service-content">
             <div>
@@ -2958,7 +2958,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">05</div>
-            <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Kitchen and interior updates">
+            <img src="InCollage_20251122_142825051.jpg" alt="Interior updates">
           </div>
           <div class="service-content">
             <div>
@@ -2972,7 +2972,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">06</div>
-            <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Custom construction work">
+            <img src="Messenger_creation_7C4BFDBA-1C84-4225-8DCB-39DB75344FCB.jpeg" alt="Custom construction work">
           </div>
           <div class="service-content">
             <div>
