@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZH Homes</title>
 
+  <!-- Speed hints for the first visible assets -->
+  <link rel="preload" as="image" href="2 (4).png" fetchpriority="high">
+  <link rel="preload" as="image" href="ChatGPT Image May 14, 2026, 09_12_52 PM.png" fetchpriority="high">
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="preconnect" href="https://maps.googleapis.com">
+
   <style>
     :root {
       --bg: #060708;
@@ -78,12 +84,14 @@
       display: grid;
       place-items: center;
       flex: 0 0 auto;
+      transform: translateY(-6px);
     }
 
     .brand-logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      object-position: center center;
       display: block;
     }
 
@@ -936,6 +944,25 @@
       letter-spacing: 0.6px;
     }
 
+    .mission-image-box {
+      height: 230px;
+      max-width: 520px;
+      justify-self: end;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #ddd;
+      border: 1px solid rgba(35,23,18,0.10);
+      box-shadow: 0 20px 48px rgba(35,23,18,0.12);
+    }
+
+    .mission-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .mission-strip {
       margin-top: 34px;
       display: grid;
@@ -1346,23 +1373,15 @@
       clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
       background:
         linear-gradient(135deg, rgba(6,7,8,0.50), rgba(6,7,8,0.18)),
-        linear-gradient(45deg, rgba(255,255,255,0.12) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.12) 75%, transparent 75%, transparent),
+        url("20251130_130636.jpg") center center / cover no-repeat,
         #171310;
-      background-size: auto, 28px 28px, auto;
-      display: grid;
-      place-items: center;
     }
 
     .project-cta-image::before {
-      content: "Project image placeholder";
-      position: relative;
-      z-index: 2;
-      color: rgba(255,255,255,0.78);
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-left: 34px;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(243,112,33,0.18), rgba(0,0,0,0.08));
     }
 
     .project-cta-image img {
@@ -1476,6 +1495,16 @@
         rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.10);
       box-shadow: 0 30px 70px rgba(0,0,0,0.24);
+    }
+
+    .map-embed {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      filter: grayscale(0.15) contrast(1.02);
     }
 
     .fake-map {
@@ -2065,8 +2094,8 @@
     }
 
     .faq-section {
-      background: #fff;
-      color: var(--section-text);
+      background: #050607;
+      color: #fff;
       padding: 96px 0 104px;
     }
 
@@ -2174,6 +2203,39 @@
       margin-top: -4px;
     }
 
+
+    /* Dark FAQ overrides */
+    .faq-section .faq-top h2 {
+      color: #fff;
+    }
+
+    .faq-section .faq-top p {
+      color: rgba(255,255,255,0.66);
+    }
+
+    .faq-section .faq-item {
+      background: rgba(255,255,255,0.055);
+      border-color: rgba(255,255,255,0.10);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+    }
+
+    .faq-section .faq-item[open] {
+      border-color: rgba(243,112,33,0.34);
+      box-shadow: 0 24px 54px rgba(0,0,0,0.24);
+    }
+
+    .faq-section .faq-item summary {
+      color: #fff;
+    }
+
+    .faq-section .faq-item p {
+      color: rgba(255,255,255,0.64);
+    }
+
+    .faq-section .faq-item summary::after {
+      background: rgba(243,112,33,0.14);
+    }
+
     .footer {
       background: #050607;
       color: #fff;
@@ -2237,6 +2299,48 @@
       gap: 20px;
       color: rgba(255,255,255,0.46);
       font-size: 13px;
+    }
+
+
+    /* Rendering speed helpers */
+    .about-section,
+    .services-section,
+    .mission-section,
+    .gallery-section,
+    .process-section,
+    .project-cta-section,
+    .service-area-section,
+    .testimonials-section,
+    .contact-section,
+    .faq-section,
+    .footer {
+      content-visibility: auto;
+      contain-intrinsic-size: 900px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .service-card:hover,
+      .process-card:hover,
+      .gallery-item:hover img,
+      .service-card:hover .service-image img,
+      .btn-primary:hover,
+      .btn-secondary:hover,
+      .about-cta:hover,
+      .services-btn:hover,
+      .submit-btn:hover {
+        transform: none;
+      }
     }
 
     @media (max-width: 1120px) {
@@ -2649,7 +2753,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="brand" aria-label="ZH Homes home">
-        <div class="brand-logo" aria-hidden="true"><img src="2 (4).png" alt="ZH Homes logo"></div>
+        <div class="brand-logo" aria-hidden="true"><img fetchpriority="high" decoding="async" width="112" height="54" src="2 (4).png" alt="ZH Homes logo"></div>
         <div class="brand-text">
           <strong>ZH Homes</strong>
           <small>Honest Quality Construction</small>
@@ -2811,7 +2915,7 @@
       <div class="about-media">
         <div class="photo-stack">
           <div class="photo-main">
-            <img src="20251110_163905.jpg" alt="Finished home remodel work">
+            <img decoding="async" loading="lazy" src="20251110_163905.jpg" alt="Finished home remodel work">
           </div>
 
           <div class="floating-badge">
@@ -2822,11 +2926,11 @@
           </div>
 
           <div class="photo-small one">
-            <img src="20251130_130636.jpg" alt="Construction project detail">
+            <img decoding="async" loading="lazy" src="20251130_130636.jpg" alt="Construction project detail">
           </div>
 
           <div class="photo-small two">
-            <img src="20251110_163911.jpg" alt="Home improvement project">
+            <img decoding="async" loading="lazy" src="20251110_163911.jpg" alt="Home improvement project">
           </div>
         </div>
       </div>
@@ -2902,7 +3006,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">01</div>
-            <img src="completed-kitchen-remodeling-project.webp" alt="Custom home remodeling project">
+            <img decoding="async" loading="lazy" src="completed-kitchen-remodeling-project.webp" alt="Custom home remodeling project">
           </div>
           <div class="service-content">
             <div>
@@ -2916,7 +3020,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">02</div>
-            <img src="20250909_173306.jpg" alt="Construction project">
+            <img decoding="async" loading="lazy" src="20250909_173306.jpg" alt="Construction project">
           </div>
           <div class="service-content">
             <div>
@@ -2930,7 +3034,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">03</div>
-            <img src="20250703_184642.jpg" alt="Handyman repairs and property work">
+            <img decoding="async" loading="lazy" src="20250703_184642.jpg" alt="Handyman repairs and property work">
           </div>
           <div class="service-content">
             <div>
@@ -2944,7 +3048,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">04</div>
-            <img src="Messenger_creation_6085CB66-8564-419A-A715-56A63F68BCCE.jpeg" alt="Rental property repairs">
+            <img decoding="async" loading="lazy" src="Messenger_creation_6085CB66-8564-419A-A715-56A63F68BCCE.jpeg" alt="Rental property repairs">
           </div>
           <div class="service-content">
             <div>
@@ -2958,7 +3062,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">05</div>
-            <img src="InCollage_20251122_142825051.jpg" alt="Interior updates">
+            <img decoding="async" loading="lazy" src="InCollage_20251122_142825051.jpg" alt="Interior updates">
           </div>
           <div class="service-content">
             <div>
@@ -2972,7 +3076,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">06</div>
-            <img src="Messenger_creation_7C4BFDBA-1C84-4225-8DCB-39DB75344FCB.jpeg" alt="Custom construction work">
+            <img decoding="async" loading="lazy" src="Messenger_creation_7C4BFDBA-1C84-4225-8DCB-39DB75344FCB.jpeg" alt="Custom construction work">
           </div>
           <div class="service-content">
             <div>
@@ -2994,11 +3098,8 @@
           <h2>Built around honest work, clear pricing, and jobs done right.</h2>
         </div>
 
-        <div class="mission-placeholder-box">
-          <div>
-            <strong>Add Project Image</strong>
-            <span>Placeholder for Zach’s real work photo</span>
-          </div>
+        <div class="mission-image-box">
+          <img src="Messenger_creation_A7F0981D-9E47-4755-824D-CDA60E7A8FC8.jpeg" alt="ZH Homes project work" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -3036,15 +3137,15 @@
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Construction planning">
+          <img src="20251110_163905.jpg" alt="Finished remodel work" loading="lazy" decoding="async">
           <div class="gallery-label">
-            <strong>Planning & Layout</strong>
-            <span>Project prep</span>
+            <strong>Finished Work</strong>
+            <span>Clean project details</span>
           </div>
         </div>
 
         <div class="gallery-item large">
-          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Interior remodel">
+          <img src="completed-kitchen-remodeling-project.webp" alt="Kitchen remodel project" loading="lazy" decoding="async">
           <div class="gallery-label">
             <strong>Interior Remodel</strong>
             <span>Kitchen and home updates</span>
@@ -3052,15 +3153,15 @@
         </div>
 
         <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="Property work">
+          <img src="20250909_173306.jpg" alt="Construction project work" loading="lazy" decoding="async">
           <div class="gallery-label">
-            <strong>Property Work</strong>
-            <span>Clean, reliable finishes</span>
+            <strong>Construction Work</strong>
+            <span>Property improvements</span>
           </div>
         </div>
 
         <div class="gallery-item large">
-          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Home updates">
+          <img src="Messenger_creation_A7F0981D-9E47-4755-824D-CDA60E7A8FC8.jpeg" alt="ZH Homes project" loading="lazy" decoding="async">
           <div class="gallery-label">
             <strong>Home Updates</strong>
             <span>Functional upgrades</span>
@@ -3068,15 +3169,7 @@
         </div>
 
         <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 09_12_52 PM.png" alt="Blueprint project">
-          <div class="gallery-label">
-            <strong>Custom Jobs</strong>
-            <span>Built around the property</span>
-          </div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 10_06_01 PM.png" alt="Repair work">
+          <img src="20250703_184642.jpg" alt="Handyman repair work" loading="lazy" decoding="async">
           <div class="gallery-label">
             <strong>Repair Work</strong>
             <span>Small fixes and punch lists</span>
@@ -3084,10 +3177,18 @@
         </div>
 
         <div class="gallery-item">
-          <img src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Finished construction detail">
+          <img src="InCollage_20251122_142825051.jpg" alt="Interior update project" loading="lazy" decoding="async">
           <div class="gallery-label">
-            <strong>Finished Details</strong>
-            <span>Clean final touches</span>
+            <strong>Interior Updates</strong>
+            <span>Cleaner finished spaces</span>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="Messenger_creation_7C4BFDBA-1C84-4225-8DCB-39DB75344FCB.jpeg" alt="Custom construction detail" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Custom Jobs</strong>
+            <span>Built around the property</span>
           </div>
         </div>
       </div>
@@ -3201,22 +3302,16 @@
       </div>
 
       <div class="map-card">
-        <div class="fake-map"></div>
-        <div class="map-road road-one"></div>
-        <div class="map-road road-two"></div>
-        <div class="map-road road-three"></div>
-
-        <div class="map-pin pin-salem"></div>
-        <div class="map-pin pin-portland"></div>
-        <div class="map-pin pin-eugene"></div>
-        <div class="map-pin pin-dallas"></div>
-        <div class="map-pin pin-mill"></div>
-
-        <div class="map-label label-salem">Salem</div>
-        <div class="map-label label-portland">Portland</div>
-        <div class="map-label label-eugene">Eugene</div>
-        <div class="map-label label-dallas">Dallas</div>
-        <div class="map-label label-mill">Mill City</div>
+        <iframe
+          class="map-embed"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d659439.8178171889!2d-122.7896336194444!3d44.83307497584451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1778994842845!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="ZH Homes service area map">
+        </iframe>
 
         <div class="map-note">
           <strong>Coverage depends on the project.</strong>
