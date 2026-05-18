@@ -1527,88 +1527,6 @@
       filter: grayscale(0.15) contrast(1.02);
     }
 
-    .fake-map {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
-        linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px),
-        radial-gradient(circle at 48% 42%, rgba(243,112,33,0.34), transparent 18%),
-        radial-gradient(circle at 62% 36%, rgba(243,112,33,0.16), transparent 20%),
-        radial-gradient(circle at 36% 58%, rgba(243,112,33,0.14), transparent 22%),
-        #101113;
-      background-size:
-        54px 54px,
-        54px 54px,
-        auto,
-        auto,
-        auto,
-        auto;
-    }
-
-    .map-road {
-      position: absolute;
-      height: 2px;
-      background: rgba(255,255,255,0.13);
-      transform-origin: left center;
-      border-radius: 999px;
-    }
-
-    .road-one {
-      width: 70%;
-      left: 14%;
-      top: 45%;
-      transform: rotate(-16deg);
-    }
-
-    .road-two {
-      width: 58%;
-      left: 27%;
-      top: 57%;
-      transform: rotate(12deg);
-    }
-
-    .road-three {
-      width: 46%;
-      left: 20%;
-      top: 32%;
-      transform: rotate(28deg);
-    }
-
-    .map-pin {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: var(--orange);
-      border: 4px solid #fff;
-      border-radius: 50%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.22), 0 0 0 12px rgba(243,112,33,0.14);
-    }
-
-    .pin-salem { left: 49%; top: 44%; }
-    .pin-portland { left: 56%; top: 24%; }
-    .pin-eugene { left: 38%; top: 72%; }
-    .pin-dallas { left: 34%; top: 48%; }
-    .pin-mill { left: 68%; top: 47%; }
-
-    .map-label {
-      position: absolute;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.92);
-      color: var(--brown);
-      font-size: 11px;
-      font-weight: 950;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-      white-space: nowrap;
-    }
-
-    .label-salem { left: 52%; top: 41%; }
-    .label-portland { left: 59%; top: 21%; }
-    .label-eugene { left: 41%; top: 69%; }
-    .label-dallas { left: 20%; top: 45%; }
-    .label-mill { left: 71%; top: 44%; }
-
     .map-note {
       position: absolute;
       left: 22px;
@@ -2223,39 +2141,6 @@
       margin-top: -4px;
     }
 
-
-    /* Light FAQ final overrides */
-    .faq-section .faq-top h2 {
-      color: var(--brown);
-    }
-
-    .faq-section .faq-top p {
-      color: var(--section-muted);
-    }
-
-    .faq-section .faq-item {
-      background: #fff;
-      border-color: rgba(35,23,18,0.08);
-      box-shadow: 0 18px 44px rgba(35,23,18,0.06);
-    }
-
-    .faq-section .faq-item[open] {
-      border-color: rgba(243,112,33,0.22);
-      box-shadow: 0 24px 54px rgba(35,23,18,0.09);
-    }
-
-    .faq-section .faq-item summary {
-      color: var(--brown);
-    }
-
-    .faq-section .faq-item p {
-      color: var(--section-muted);
-    }
-
-    .faq-section .faq-item summary::after {
-      background: rgba(243,112,33,0.10);
-    }
-
     .footer {
       background: #050607;
       color: #fff;
@@ -2321,6 +2206,10 @@
       font-size: 13px;
     }
 
+    /* Mobile sticky CTA bar — hidden by default, shown on mobile */
+    .mobile-cta-bar {
+      display: none;
+    }
 
     /* Rendering speed helpers */
     .about-section,
@@ -2346,20 +2235,6 @@
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
         transition-duration: 0.001ms !important;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .service-card:hover,
-      .process-card:hover,
-      .gallery-item:hover img,
-      .service-card:hover .service-image img,
-      .btn-primary:hover,
-      .btn-secondary:hover,
-      .about-cta:hover,
-      .services-btn:hover,
-      .submit-btn:hover {
-        transform: none;
       }
     }
 
@@ -2398,306 +2273,741 @@
       }
     }
 
+    /* ====================================================================
+       MOBILE OPTIMIZATIONS — everything below 950px gets a rebuilt layout
+       ==================================================================== */
     @media (max-width: 950px) {
+      .service-card:hover,
+      .process-card:hover,
+      .gallery-item:hover img,
+      .service-card:hover .service-image img,
+      .btn-primary:hover,
+      .btn-secondary:hover,
+      .about-cta:hover,
+      .services-btn:hover,
+      .submit-btn:hover {
+        transform: none;
+      }
+
+      /* ===== HEADER — clean, compact, with CTA visible ===== */
+      .site-header {
+        background: rgba(255,255,255,0.98);
+      }
+
+      .header-inner {
+        width: calc(100% - 24px);
+        min-height: 64px;
+        gap: 12px;
+      }
+
+      .brand-logo {
+        width: 72px;
+        height: 36px;
+        transform: translateY(-16px);
+      }
+
+      .brand-text strong {
+        font-size: 17px;
+      }
+
+      .brand-text small {
+        display: none;
+      }
+
+      .header-cta {
+        min-height: 40px;
+        padding: 0 14px;
+        font-size: 12px;
+        border-radius: 8px;
+        box-shadow: 0 6px 14px rgba(243,112,33,0.22);
+      }
+
+      /* ===== HERO — full-bleed, no overlapping trust card ===== */
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0.85) 100%),
+          url("ChatGPT Image May 14, 2026, 09_12_52 PM.png") center center / cover no-repeat,
+          var(--bg);
+      }
+
+      .hero::before {
+        display: none;
+      }
+
+      .hero-kitchen,
+      .curve-stroke {
+        display: none;
+      }
+
       .hero-inner {
+        min-height: auto;
         align-items: flex-start;
-        padding: 50px 0 360px;
+        padding: 48px 0 44px;
+        width: calc(100% - 28px);
       }
 
       .hero-copy {
         max-width: 100%;
+        padding-top: 0;
       }
 
-      .trust-card {
-        width: calc(100% - 32px);
-        right: 16px;
-        left: 16px;
-        bottom: 24px;
+      .eyebrow {
+        margin-bottom: 18px;
+        font-size: 11px;
+        letter-spacing: 1px;
       }
 
-      .quick-stats-inner {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .about-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .about-content {
-        max-width: 100%;
-      }
-
-      .services-top {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .mission-top {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-
-      .mission-placeholder-box {
-        justify-self: start;
-      }
-
-      .mission-strip {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .mission-stat {
-        border-bottom: 1px solid rgba(35,23,18,0.10);
-      }
-
-      .mission-stat:nth-child(2) {
-        border-right: 0;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .project-cta-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .project-cta-image {
-        display: none;
-      }
-
-      .service-area-inner {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-
-      .area-content {
-        padding: 0;
-      }
-
-      .map-card {
-        min-height: 420px;
-        height: auto;
-      }
-
-      .review-carousel {
-        height: auto;
-        min-height: 320px;
-      }
-
-      .review-slide {
-        min-height: 240px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .header-inner,
-      .hero-inner,
-      .about-inner,
-      .services-inner,
-      .mission-inner,
-      .gallery-inner,
-      .process-inner,
-      .project-cta-wrap,
-      .service-area-inner,
-      .testimonials-inner,
-      .contact-inner,
-      .footer-inner {
-        width: min(100% - 28px, 1220px);
-      }
-
-      .brand-logo {
-        width: 82px;
-        height: 38px;
-        transform: translateY(-20px);
-      }
-
-      .brand-text small,
-      .header-cta {
-        display: none;
+      .eyebrow::before {
+        width: 28px;
       }
 
       h1 {
-        font-size: clamp(40px, 12vw, 58px);
-        letter-spacing: -2px;
+        font-size: clamp(38px, 11vw, 54px);
+        line-height: 1.02;
+        letter-spacing: -1.8px;
+        font-weight: 800;
+        margin-bottom: 18px;
+        max-width: 100%;
+      }
+
+      h1 br {
+        display: none;
       }
 
       .subheadline {
-        font-size: 16px;
+        font-size: 15px;
+        line-height: 1.55;
+        margin-bottom: 26px;
+        max-width: 100%;
       }
 
       .hero-actions {
         flex-direction: column;
-        align-items: stretch;
+        gap: 12px;
       }
 
       .btn {
         width: 100%;
+        min-height: 54px;
+        padding: 0 22px;
+        font-size: 14px;
+        border-radius: 9px;
       }
 
+      /* Trust card becomes a clean stacked card BELOW hero content */
       .trust-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 32px;
         grid-template-columns: 1fr;
+        background: rgba(8,10,12,0.86);
+        border-radius: 14px;
+        box-shadow: 0 16px 36px rgba(0,0,0,0.30);
       }
 
       .trust-divider {
         width: auto;
         height: 1px;
+        background: rgba(255,255,255,0.10);
       }
 
       .trust-left,
       .trust-right {
-        padding: 22px 20px;
+        padding: 22px 22px;
       }
 
+      .trust-left {
+        padding-bottom: 18px;
+      }
+
+      .license-label {
+        font-size: 11px;
+        margin-bottom: 12px;
+      }
+
+      .trust-title {
+        font-size: 20px;
+        line-height: 1.25;
+        margin-bottom: 10px;
+      }
+
+      .trust-copy {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .trust-list {
+        gap: 16px;
+      }
+
+      .trust-item strong {
+        font-size: 15px;
+      }
+
+      .trust-item span {
+        font-size: 12.5px;
+      }
+
+      /* ===== QUICK STATS — 2x2 grid, tighter ===== */
       .quick-stats-inner {
         grid-template-columns: 1fr 1fr;
       }
 
+      .stat-box {
+        min-height: 92px;
+        padding: 16px 12px;
+      }
+
+      .stat-box:nth-child(2n) {
+        border-left: 1px solid rgba(255,255,255,0.16);
+      }
+
+      .stat-box:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255,255,255,0.16);
+      }
+
+      .stat-box strong {
+        font-size: 24px;
+        margin-bottom: 6px;
+      }
+
+      .stat-box span {
+        font-size: 10px;
+        letter-spacing: 0.6px;
+      }
+
+      /* ===== ABOUT — single column, photos as a clean 2-grid + main ===== */
       .about-section {
-        padding: 70px 0 78px;
+        padding: 64px 0 70px;
+      }
+
+      .about-inner {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .about-content {
+        max-width: 100%;
+        order: 1;
       }
 
       .about-media {
-        min-height: 460px;
+        order: 2;
+        min-height: auto;
       }
 
       .photo-stack {
-        height: 460px;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        position: relative;
       }
 
       .photo-main {
+        position: relative;
+        left: auto;
+        top: auto;
         width: 100%;
-        height: 270px;
+        height: 220px;
+        grid-column: 1 / -1;
       }
 
       .photo-small {
+        position: relative;
+        left: auto !important;
+        bottom: auto;
+        width: 100% !important;
         height: 140px;
       }
 
-      .photo-small.one {
-        width: 48%;
-      }
-
-      .photo-small.two {
-        left: 52%;
-        width: 48%;
-      }
-
       .floating-badge {
-        left: 12px;
-        top: 215px;
-        width: 96px;
-        min-height: 98px;
+        left: 14px;
+        top: 14px;
+        width: 88px;
+        min-height: 88px;
+        padding: 10px 8px;
+        border-radius: 10px;
+        z-index: 5;
       }
 
       .floating-badge strong {
-        font-size: 24px;
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+
+      .floating-badge span {
+        font-size: 9px;
+      }
+
+      .about-content h2 {
+        font-size: 32px;
+        letter-spacing: -1.2px;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+
+      .about-content p {
+        font-size: 15px;
+        line-height: 1.65;
+        margin-bottom: 18px;
       }
 
       .about-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 20px 0 24px;
+      }
+
+      .about-check {
+        font-size: 14px;
       }
 
       .about-bottom {
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
       }
 
+      .about-cta {
+        width: 100%;
+        justify-content: center;
+        min-height: 52px;
+      }
+
+      .license-note strong {
+        font-size: 26px;
+      }
+
+      /* ===== SERVICES — single column with bigger images ===== */
       .services-section {
-        padding: 76px 0 84px;
+        padding: 70px 0 76px;
+      }
+
+      .services-inner {
+        width: calc(100% - 28px);
+      }
+
+      .services-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        margin-bottom: 36px;
+      }
+
+      .services-heading h2 {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: 1.12;
+      }
+
+      .services-btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 50px;
       }
 
       .services-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
       }
 
       .service-card {
-        grid-template-rows: 175px 1fr;
+        grid-template-rows: 200px 1fr;
+        min-height: auto;
+        border-radius: 14px;
       }
 
+      .service-content {
+        padding: 22px 22px 24px;
+      }
+
+      .service-content h3 {
+        font-size: 20px;
+      }
+
+      .service-content p {
+        font-size: 14px;
+      }
+
+      /* ===== MISSION — stacked, image above stats grid ===== */
       .mission-section {
-        padding: 74px 0;
+        padding: 64px 0 68px;
+      }
+
+      .mission-inner {
+        width: calc(100% - 28px);
+      }
+
+      .mission-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-bottom: 30px;
+      }
+
+      .mission-title h2 {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: 1.12;
+      }
+
+      .mission-image-box,
+      .mission-placeholder-box {
+        height: 200px;
+        max-width: 100%;
+        justify-self: stretch;
       }
 
       .mission-strip {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 26px;
+        border-radius: 14px;
       }
 
       .mission-stat {
-        border-right: 0;
+        min-height: 110px;
+        padding: 20px 16px;
+        border-right: 1px solid rgba(35,23,18,0.10);
         border-bottom: 1px solid rgba(35,23,18,0.10);
       }
 
-      .mission-stat:last-child {
+      .mission-stat:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .mission-stat:nth-last-child(-n+2) {
         border-bottom: 0;
       }
 
+      .mission-stat strong {
+        font-size: 26px;
+        letter-spacing: -1px;
+        margin-bottom: 6px;
+      }
+
+      .mission-stat span {
+        font-size: 11px;
+        line-height: 1.35;
+        letter-spacing: 0.4px;
+      }
+
+      /* ===== GALLERY — single column, full-width images ===== */
       .gallery-section {
-        padding: 74px 0 94px;
+        padding: 68px 0 76px;
+      }
+
+      .gallery-inner {
+        width: calc(100% - 28px);
+      }
+
+      .gallery-top {
+        margin-bottom: 32px;
+      }
+
+      .gallery-top h2 {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: 1.12;
+        margin-bottom: 14px;
+      }
+
+      .gallery-top p {
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+
+      .gallery-eyebrow::before,
+      .gallery-eyebrow::after {
+        width: 24px;
       }
 
       .gallery-grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: 240px;
+        grid-auto-rows: 220px;
+        gap: 14px;
+        margin-top: 30px;
       }
 
       .gallery-item.large {
         grid-row: span 1;
       }
 
+      .gallery-item {
+        border-radius: 14px;
+      }
+
+      .gallery-label {
+        left: 16px;
+        bottom: 16px;
+      }
+
+      .gallery-label strong {
+        font-size: 16px;
+      }
+
+      .gallery-label span {
+        font-size: 11.5px;
+      }
+
+      /* ===== PROCESS — vertical timeline feel ===== */
       .process-section {
-        padding: 74px 0 84px;
+        padding: 66px 0 74px;
+      }
+
+      .process-inner {
+        width: calc(100% - 28px);
+      }
+
+      .process-top {
+        margin-bottom: 32px;
+      }
+
+      .process-top h2 {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: 1.12;
+      }
+
+      .process-top p {
+        font-size: 14.5px;
+      }
+
+      .process-eyebrow::before,
+      .process-eyebrow::after {
+        width: 24px;
       }
 
       .process-steps {
         grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .process-card {
+        padding: 24px 22px 22px;
+        border-radius: 14px;
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        grid-template-rows: auto auto;
+        gap: 4px 18px;
+        align-items: start;
+      }
+
+      .process-icon {
+        grid-row: 1 / 3;
+        margin-bottom: 0;
+        width: 50px;
+        height: 50px;
+      }
+
+      .process-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .process-card h3 {
+        grid-column: 2;
+        font-size: 18px;
+        margin-bottom: 6px;
+        padding-right: 50px;
+      }
+
+      .process-card p {
+        grid-column: 2;
+        font-size: 13.5px;
+      }
+
+      .process-number {
+        top: 22px;
+        right: 20px;
+        font-size: 32px;
+      }
+
+      /* ===== PROJECT CTA — clean stacked card ===== */
+      .project-cta-section {
+        padding: 56px 0 0;
+      }
+
+      .project-cta-wrap {
+        grid-template-columns: 1fr;
+        min-height: auto;
       }
 
       .project-cta-content {
-        align-items: flex-start;
+        padding: 36px 22px;
         flex-direction: column;
-        padding: 28px 0;
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      .project-cta-icon {
+        width: 52px;
+        height: 52px;
+      }
+
+      .project-cta-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .project-cta-copy strong {
+        font-size: 26px;
+        letter-spacing: -1px;
+        margin-bottom: 8px;
+      }
+
+      .project-cta-copy span {
+        font-size: 14px;
+        margin-bottom: 18px;
       }
 
       .project-cta-button {
         width: 100%;
+        min-height: 50px;
+        padding: 0 22px;
       }
 
-      .project-cta-wrap {
-        width: 100%;
+      .project-cta-image {
+        display: none;
       }
 
+      /* ===== SERVICE AREA — content above map ===== */
       .service-area-section {
-        padding: 78px 0 86px;
+        padding: 64px 0 72px;
+      }
+
+      .service-area-inner {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .area-content {
+        padding: 0;
+      }
+
+      .area-content h2 {
+        font-size: 28px;
+        letter-spacing: -1px;
+        line-height: 1.14;
+        margin-bottom: 14px;
+      }
+
+      .area-content p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 18px;
       }
 
       .area-list {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        max-width: 100%;
+      }
+
+      .area-pill {
+        min-height: 38px;
+        padding: 0 12px;
+        font-size: 12px;
       }
 
       .map-card {
         min-height: 380px;
+        height: 380px;
+        border-radius: 16px;
       }
 
-      .map-label {
-        display: none;
+      .map-note {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 14px 14px;
+        border-radius: 12px;
       }
 
+      .map-note strong {
+        font-size: 14px;
+      }
+
+      .map-note span {
+        font-size: 11.5px;
+      }
+
+      /* ===== TESTIMONIALS — single column, redesigned mobile carousel ===== */
       .testimonials-section {
-        padding: 76px 0 86px;
+        padding: 64px 0 72px;
+      }
+
+      .testimonials-inner {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .testimonials-left {
+        max-width: 100%;
+      }
+
+      .testimonials-left h2 {
+        font-size: 28px;
+        letter-spacing: -1px;
+        line-height: 1.14;
+        margin-bottom: 14px;
+      }
+
+      .testimonials-left p {
+        font-size: 14.5px;
+        line-height: 1.65;
       }
 
       .review-carousel {
-        padding: 30px 28px 86px;
-        min-height: 360px;
+        height: auto;
+        min-height: 340px;
+        padding: 26px 22px 78px;
+        border-radius: 16px;
+      }
+
+      .review-quote-mark {
+        width: 48px;
+        height: 48px;
+        font-size: 30px;
+        margin-bottom: 16px;
+      }
+
+      .review-stars {
+        font-size: 14px;
+        margin-bottom: 14px;
       }
 
       .review-text {
-        font-size: 18px;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 22px;
+      }
+
+      .review-person {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .review-person strong {
+        font-size: 15px;
+      }
+
+      .review-counter {
+        font-size: 12px;
       }
 
       .review-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
         top: auto;
-        bottom: 26px;
+        bottom: 22px;
         transform: none;
       }
 
@@ -2706,64 +3016,328 @@
       }
 
       .review-arrow.prev {
-        left: 24px;
+        left: 20px;
       }
 
       .review-arrow.next {
-        right: 24px;
+        right: 20px;
       }
 
+      .review-dots {
+        bottom: 32px;
+      }
+
+      /* ===== CONTACT — form first feel, clean spacing ===== */
       .contact-section {
-        padding: 76px 0 86px;
+        padding: 64px 0 80px;
+      }
+
+      .contact-inner {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .contact-content h2 {
+        font-size: 32px;
+        letter-spacing: -1.3px;
+        line-height: 1.08;
+        margin-bottom: 14px;
+      }
+
+      .contact-content p {
+        font-size: 14.5px;
+        line-height: 1.65;
+        margin-bottom: 24px;
+        max-width: 100%;
+      }
+
+      .contact-info-list {
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+
+      .contact-info-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .contact-info-item strong {
+        font-size: 14.5px;
       }
 
       .contact-form-card {
-        padding: 32px 22px;
+        padding: 28px 22px;
+        border-radius: 16px;
+      }
+
+      .contact-form-card::before {
+        top: 28px;
+        bottom: 28px;
+      }
+
+      .contact-form-card h3 {
+        font-size: 24px;
+      }
+
+      .contact-form-card > p {
+        font-size: 13.5px;
+        margin-bottom: 22px;
+      }
+
+      .quote-form {
+        gap: 18px;
       }
 
       .form-row {
         grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+        min-height: 44px;
       }
 
       .submit-btn {
         width: 100%;
+        min-height: 54px;
       }
 
+      /* ===== FAQ — tighter padding ===== */
       .faq-section {
-        padding: 76px 0 84px;
+        padding: 64px 0 72px;
+      }
+
+      .faq-inner {
+        width: calc(100% - 28px);
+      }
+
+      .faq-top {
+        margin-bottom: 30px;
+      }
+
+      .faq-top h2 {
+        font-size: 28px;
+        letter-spacing: -1px;
+        line-height: 1.14;
+      }
+
+      .faq-top p {
+        font-size: 14px;
+      }
+
+      .faq-eyebrow::after {
+        width: 24px;
+      }
+
+      .faq-item {
+        border-radius: 12px;
+      }
+
+      .faq-item summary {
+        font-size: 15.5px;
+        padding: 20px 22px;
+        gap: 14px;
+      }
+
+      .faq-item summary::after {
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+      }
+
+      .faq-item p {
+        font-size: 13.5px;
+        padding: 0 22px 20px;
+      }
+
+      /* ===== FOOTER — clean stacked, with bottom padding for sticky bar ===== */
+      .footer {
+        padding: 56px 0 110px; /* Extra bottom padding for sticky mobile bar */
+      }
+
+      .footer-inner {
+        width: calc(100% - 28px);
       }
 
       .footer-top {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 24px;
+        padding-bottom: 32px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-brand strong {
+        font-size: 22px;
+      }
+
+      .footer-brand p {
+        font-size: 13.5px;
+      }
+
+      .footer-col h4 {
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+
+      .footer-col a,
+      .footer-col span {
+        font-size: 13.5px;
+        margin-bottom: 8px;
       }
 
       .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
+        gap: 8px;
+        padding-top: 22px;
+        font-size: 12px;
+      }
+
+      /* ===== STICKY MOBILE CTA BAR — call + text always accessible ===== */
+      .mobile-cta-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        z-index: 60;
+        padding: 10px;
+        background: rgba(8,10,12,0.94);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 14px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 14px 34px rgba(0,0,0,0.40);
+      }
+
+      .mobile-cta-bar a {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 950;
+        letter-spacing: 0.2px;
+      }
+
+      .mobile-cta-bar a svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .mobile-cta-bar .cta-call {
+        background: var(--orange);
+        color: #fff;
+        box-shadow: 0 6px 14px rgba(243,112,33,0.30);
+      }
+
+      .mobile-cta-bar .cta-quote {
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.18);
       }
     }
 
     @media (max-width: 460px) {
+      .header-inner {
+        gap: 8px;
+      }
+
+      .brand-text strong {
+        font-size: 16px;
+      }
+
+      .header-cta {
+        padding: 0 12px;
+        font-size: 11.5px;
+      }
+
+      .hero-inner {
+        padding: 40px 0 36px;
+      }
+
+      h1 {
+        font-size: clamp(34px, 10vw, 46px);
+        letter-spacing: -1.5px;
+      }
+
+      .subheadline {
+        font-size: 14.5px;
+      }
+
+      .trust-left,
+      .trust-right {
+        padding: 20px 18px;
+      }
+
+      .trust-title {
+        font-size: 19px;
+      }
+
       .quick-stats-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
       .stat-box {
-        border-left: 0;
-        border-right: 0;
+        min-height: 84px;
+        padding: 14px 10px;
       }
 
-      .stat-box:last-child {
-        border-right: 0;
+      .stat-box strong {
+        font-size: 22px;
+      }
+
+      .stat-box span {
+        font-size: 9.5px;
+      }
+
+      .about-content h2,
+      .services-heading h2,
+      .mission-title h2,
+      .gallery-top h2,
+      .process-top h2 {
+        font-size: 27px;
+        letter-spacing: -1px;
+      }
+
+      .photo-main {
+        height: 200px;
+      }
+
+      .photo-small {
+        height: 120px;
       }
 
       .review-carousel {
-        padding: 26px 20px 80px;
+        padding: 22px 18px 74px;
       }
 
       .review-arrow {
-        width: 42px;
-        height: 42px;
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+      }
+
+      .review-arrow.prev {
+        left: 16px;
+      }
+
+      .review-arrow.next {
+        right: 16px;
+      }
+
+      .contact-form-card {
+        padding: 24px 18px;
       }
     }
   </style>
@@ -2834,7 +3408,7 @@
 
         <h1>
           Honest, quality<br>
-          construction that’s<br>
+          construction that's<br>
           <span class="accent">fair &amp; affordable.</span>
         </h1>
 
@@ -2844,53 +3418,53 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
-          <a href="#contact" class="btn btn-secondary">Text Us</a>
+          <a href="tel:5038849153" class="btn btn-primary">Call (503) 884-9153</a>
+          <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
         </div>
-      </div>
-    </div>
 
-    <div class="trust-card">
-      <div class="trust-left">
-        <div class="license-label">Bonded &amp; Insured</div>
-        <div class="trust-title">The last contractor you’ll ever need.</div>
-        <p class="trust-copy">
-          Owner-involved construction, remodeling, and handyman services for homeowners, landlords, realtors, and property managers.
-        </p>
-      </div>
-
-      <div class="trust-divider"></div>
-
-      <div class="trust-right">
-        <div class="trust-list">
-          <div class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3L14.7 8.3L20.5 9.1L16.25 13.2L17.3 19L12 16.2L6.7 19L7.75 13.2L3.5 9.1L9.3 8.3L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-            <div>
-              <strong>Quality Work</strong>
-              <span>Done right without cutting corners.</span>
-            </div>
+        <div class="trust-card">
+          <div class="trust-left">
+            <div class="license-label">Bonded &amp; Insured</div>
+            <div class="trust-title">The last contractor you'll ever need.</div>
+            <p class="trust-copy">
+              Owner-involved construction, remodeling, and handyman services for homeowners, landlords, realtors, and property managers.
+            </p>
           </div>
 
-          <div class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <div>
-              <strong>CCB #260679</strong>
-              <span>Licensed Oregon contractor.</span>
-            </div>
-          </div>
+          <div class="trust-divider"></div>
 
-          <div class="trust-item">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 21C16.5 16.3 19 13.03 19 9.9C19 5.98 15.87 3 12 3C8.13 3 5 5.98 5 9.9C5 13.03 7.5 16.3 12 21Z" stroke="currentColor" stroke-width="2"/>
-              <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <div>
-              <strong>Willamette Valley Service Area</strong>
-              <span>Salem to Portland, Eugene, Dallas, Grand Ronde, Mill City, and nearby areas.</span>
+          <div class="trust-right">
+            <div class="trust-list">
+              <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3L14.7 8.3L20.5 9.1L16.25 13.2L17.3 19L12 16.2L6.7 19L7.75 13.2L3.5 9.1L9.3 8.3L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  <strong>Quality Work</strong>
+                  <span>Done right without cutting corners.</span>
+                </div>
+              </div>
+
+              <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                  <strong>CCB #260679</strong>
+                  <span>Licensed Oregon contractor.</span>
+                </div>
+              </div>
+
+              <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 21C16.5 16.3 19 13.03 19 9.9C19 5.98 15.87 3 12 3C8.13 3 5 5.98 5 9.9C5 13.03 7.5 16.3 12 21Z" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div>
+                  <strong>Willamette Valley</strong>
+                  <span>Salem to Portland, Eugene, Dallas, Grand Ronde, Mill City, and nearby areas.</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -3356,7 +3930,7 @@
         <button class="review-arrow next" type="button" aria-label="Next review">›</button>
 
         <article class="review-slide active">
-          <div class="review-quote-mark">“</div>
+          <div class="review-quote-mark">"</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
           <div class="review-person">
@@ -3369,7 +3943,7 @@
         </article>
 
         <article class="review-slide">
-          <div class="review-quote-mark">“</div>
+          <div class="review-quote-mark">"</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
           <div class="review-person">
@@ -3382,7 +3956,7 @@
         </article>
 
         <article class="review-slide">
-          <div class="review-quote-mark">“</div>
+          <div class="review-quote-mark">"</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
           <div class="review-person">
@@ -3395,7 +3969,7 @@
         </article>
 
         <article class="review-slide">
-          <div class="review-quote-mark">“</div>
+          <div class="review-quote-mark">"</div>
           <div class="review-stars">★★★★★</div>
           <p class="review-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur.</p>
           <div class="review-person">
@@ -3570,7 +4144,6 @@
           <p>Call, text, email, or use the quote form. For quick job questions, many customers start by texting photos and a short description.</p>
         </details>
       </div>
-      </div>
     </div>
   </section>
 
@@ -3615,6 +4188,23 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile-only sticky CTA bar -->
+  <div class="mobile-cta-bar" aria-label="Quick contact actions">
+    <a href="tel:5038849153" class="cta-call">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      </svg>
+      Call Now
+    </a>
+    <a href="#contact" class="cta-quote">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      Get Quote
+    </a>
+  </div>
 
   <script>
     const reviewCarousel = document.getElementById("reviewCarousel");
