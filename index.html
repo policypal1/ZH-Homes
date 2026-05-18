@@ -56,9 +56,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(6, 7, 8, 0.84);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(35,23,18,0.08);
     }
 
     .header-inner {
@@ -84,7 +84,7 @@
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      transform: translateY(-20px);
+      transform: translateY(-24px);
       overflow: visible;
     }
 
@@ -94,6 +94,10 @@
       object-fit: contain;
       object-position: center top;
       display: block;
+    }
+
+    .brand-text {
+      color: var(--brown);
     }
 
     .brand-text strong {
@@ -110,7 +114,7 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
       font-weight: 800;
-      color: rgba(255,255,255,0.58);
+      color: rgba(35,23,18,0.52);
     }
 
     .nav {
@@ -119,7 +123,7 @@
       gap: 24px;
       font-size: 14px;
       font-weight: 800;
-      color: rgba(255,255,255,0.78);
+      color: rgba(35,23,18,0.88);
     }
 
     .nav a {
@@ -2504,7 +2508,7 @@
       .brand-logo {
         width: 82px;
         height: 38px;
-        transform: translateY(-16px);
+        transform: translateY(-20px);
       }
 
       .brand-text small,
@@ -3153,31 +3157,59 @@
 
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="2026-05-14 (1).jpg" alt="Finished remodel work" loading="lazy" decoding="async">
+          <img src="2026-05-14 (1).jpg" alt="Bathtub converted into a shower" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Tub to Shower Conversion</strong>
+            <span>Bathroom update with a cleaner, more usable shower setup.</span>
+          </div>
         </div>
 
         <div class="gallery-item large">
           <img src="20250703_184659.jpg" alt="Interior remodel project" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Interior Remodel</strong>
+            <span>Hallway, flooring, and inside updates in progress.</span>
+          </div>
         </div>
 
         <div class="gallery-item">
-          <img src="2026-05-13 (3).jpg" alt="Construction project work" loading="lazy" decoding="async">
+          <img src="2026-05-13 (3).jpg" alt="Exterior repair and improvement project" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Exterior Repairs</strong>
+            <span>Siding, trim, and outside improvements for better curb appeal.</span>
+          </div>
         </div>
 
         <div class="gallery-item large">
-          <img src="2026-05-13 (2).jpg" alt="ZH Homes project" loading="lazy" decoding="async">
+          <img src="2026-05-13 (2).jpg" alt="Property improvement project" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Property Improvements</strong>
+            <span>Exterior cleanup and repair work to refresh the home.</span>
+          </div>
         </div>
 
         <div class="gallery-item">
-          <img src="2026-05-13 (1).jpg" alt="Handyman repair work" loading="lazy" decoding="async">
+          <img src="2026-05-13 (1).jpg" alt="Entryway repair and upgrade" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Entryway Upgrade</strong>
+            <span>Front entry and step improvements for a cleaner finish.</span>
+          </div>
         </div>
 
         <div class="gallery-item">
-          <img src="2026-05-13.jpg" alt="Interior update project" loading="lazy" decoding="async">
+          <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Drywall &amp; Wall Repairs</strong>
+            <span>Interior framing, wall repair, and prep for the next finish stage.</span>
+          </div>
         </div>
 
         <div class="gallery-item">
-          <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Custom construction detail" loading="lazy" decoding="async">
+          <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring and finish repair detail" loading="lazy" decoding="async">
+          <div class="gallery-label">
+            <strong>Flooring Detail</strong>
+            <span>Finish work and flooring repairs to clean up the space.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -3225,8 +3257,8 @@
           <div class="process-number">03</div>
           <div class="process-icon">
             <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 19L14 9L18 13L20 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M4 5H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 8V12L15 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
           <h3>Schedule The Work</h3>
