@@ -813,6 +813,10 @@
       object-position: center 22%;
     }
 
+    .service-img-3 {
+      object-position: center center;
+    }
+
     .service-img-4 {
       object-position: center 34%;
     }
@@ -4078,7 +4082,7 @@
       .hero-mobile-subheadline {
         display: block;
         max-width: 335px;
-        margin: 0 0 34px;
+        margin: 0 0 52px;
         color: rgba(255,255,255,0.76);
         font-size: 14.5px;
         line-height: 1.55;
@@ -4090,9 +4094,20 @@
       }
 
       .hero-actions {
-        max-width: 360px;
+        width: 100%;
+        max-width: 100%;
         margin-top: 0;
         gap: 14px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 58px;
+      }
+
+      .hero-quick-gallery {
+        display: none !important;
       }
 
       .hero-quick-gallery {
@@ -4261,7 +4276,7 @@
     @media (max-width: 460px) {
       .hero-inner {
         min-height: 650px;
-        padding: 40px 0 46px;
+        padding: 40px 0 64px;
       }
 
       .hero-mobile-title {
@@ -4272,7 +4287,7 @@
 
       .hero-mobile-subheadline {
         max-width: 310px;
-        margin-bottom: 32px;
+        margin-bottom: 50px;
         font-size: 14px;
       }
 
@@ -4396,26 +4411,6 @@
           <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
         </div>
 
-        <div class="hero-quick-gallery" aria-label="Swipe through recent project photos">
-          <div class="hero-quick-gallery-head">
-            <span>Recent Projects</span>
-            <span>Swipe</span>
-          </div>
-          <div class="hero-quick-gallery-track">
-            <div class="hero-quick-gallery-card">
-              <img decoding="async" loading="lazy" src="2026-05-14 (1).jpg" alt="Bathroom update project">
-              <span>Bathroom Update</span>
-            </div>
-            <div class="hero-quick-gallery-card">
-              <img decoding="async" loading="lazy" src="2026-05-13 (3).jpg" alt="Exterior repair project">
-              <span>Exterior Repairs</span>
-            </div>
-            <div class="hero-quick-gallery-card">
-              <img decoding="async" loading="lazy" src="2026-05-13 (2).jpg" alt="Property improvement project">
-              <span>Property Work</span>
-            </div>
-          </div>
-        </div>
 
         <div class="hero-mobile-collage" aria-label="Recent project highlights">
           <div class="hero-mobile-collage-main">
@@ -4591,7 +4586,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">03</div>
-            <img decoding="async" loading="lazy" src="20250703_184642.jpg" alt="Handyman repairs and property work">
+            <img decoding="async" loading="lazy" class="service-img-3" src="2026-05-13.jpg" alt="Handyman repairs and property work">
           </div>
           <div class="service-content">
             <div>
