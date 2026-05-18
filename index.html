@@ -4013,7 +4013,14 @@
     }
 
 
-    /* ===== V9 MOBILE REQUESTS: use desktop right-side image as full hero background, remove featured mobile gallery image, make gallery taller ===== */
+    .hero-mobile-title,
+    .hero-mobile-subheadline,
+    .hero-quick-gallery,
+    .testimonials-mobile-subheadline {
+      display: none;
+    }
+
+    /* ===== V10 MOBILE REQUESTS: mobile hero copy, quick swipe gallery, one-by-one project carousel, testimonial subheadline ===== */
     .about-kicker {
       margin: -6px 0 16px;
       color: var(--orange) !important;
@@ -4027,7 +4034,7 @@
       .hero {
         min-height: auto;
         background:
-          linear-gradient(180deg, rgba(6,7,8,0.68) 0%, rgba(6,7,8,0.76) 45%, rgba(6,7,8,0.88) 100%),
+          linear-gradient(180deg, rgba(6,7,8,0.68) 0%, rgba(6,7,8,0.76) 45%, rgba(6,7,8,0.90) 100%),
           url("ChatGPT Image May 14, 2026, 09_29_45 PM.png") center center / cover no-repeat,
           #060708 !important;
         overflow: hidden;
@@ -4043,7 +4050,7 @@
 
       .hero-inner {
         min-height: 690px;
-        padding: 44px 0 88px;
+        padding: 44px 0 52px;
       }
 
       .hero-copy {
@@ -4052,12 +4059,123 @@
         max-width: 430px;
       }
 
+      .hero-copy > h1:not(.hero-mobile-title),
+      .hero-copy > .subheadline:not(.hero-mobile-subheadline) {
+        display: none !important;
+      }
+
+      .hero-mobile-title {
+        display: block;
+        max-width: 390px;
+        margin: 0 0 20px;
+        color: #fff;
+        font-size: clamp(40px, 12vw, 58px);
+        line-height: 0.98;
+        letter-spacing: -2.2px;
+        font-weight: 900;
+      }
+
+      .hero-mobile-subheadline {
+        display: block;
+        max-width: 335px;
+        margin: 0 0 34px;
+        color: rgba(255,255,255,0.76);
+        font-size: 14.5px;
+        line-height: 1.55;
+        font-weight: 700;
+      }
+
       .hero-mobile-collage {
         display: none !important;
       }
 
       .hero-actions {
         max-width: 360px;
+        margin-top: 0;
+        gap: 14px;
+      }
+
+      .hero-quick-gallery {
+        display: block;
+        margin-top: 34px;
+        width: min(390px, 100%);
+      }
+
+      .hero-quick-gallery-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 12px;
+        color: rgba(255,255,255,0.84);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+
+      .hero-quick-gallery-head span:last-child {
+        color: var(--orange);
+        font-size: 11px;
+        letter-spacing: 0.5px;
+      }
+
+      .hero-quick-gallery-track {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 18px 12px 0;
+        scrollbar-width: none;
+      }
+
+      .hero-quick-gallery-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hero-quick-gallery-card {
+        position: relative;
+        flex: 0 0 78%;
+        min-height: 156px;
+        border-radius: 18px;
+        overflow: hidden;
+        scroll-snap-align: start;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.10);
+        box-shadow: 0 20px 42px rgba(0,0,0,0.28);
+      }
+
+      .hero-quick-gallery-card img {
+        width: 100%;
+        height: 156px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-quick-gallery-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.00) 42%, rgba(0,0,0,0.62));
+        pointer-events: none;
+      }
+
+      .hero-quick-gallery-card span {
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        z-index: 2;
+        min-height: 30px;
+        padding: 0 12px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        background: rgba(6,7,8,0.70);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 900;
+        backdrop-filter: blur(10px);
       }
 
       .about-content .about-kicker {
@@ -4084,7 +4202,7 @@
 
       .gallery-mobile-carousel {
         display: block;
-        max-width: calc(100% - 12px);
+        max-width: calc(100% - 8px);
         margin: 30px auto 0;
       }
 
@@ -4095,73 +4213,98 @@
       .gallery-mobile-stage {
         margin-top: 0;
         overflow: hidden;
+        border-radius: 22px;
       }
 
       .gallery-mobile-slide {
         padding: 0 2px;
       }
 
-      .gallery-mobile-pair {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
+      .gallery-mobile-single {
+        display: block;
       }
 
-      .gallery-mobile-pair .gallery-mobile-mini {
-        min-height: 230px;
-        border-radius: 20px;
+      .gallery-mobile-single .gallery-mobile-mini {
+        min-height: 360px;
+        border-radius: 22px;
         background: rgba(255,255,255,0.06);
         border: 1px solid rgba(255,255,255,0.08);
-        box-shadow: 0 18px 42px rgba(0,0,0,0.22);
+        box-shadow: 0 22px 50px rgba(0,0,0,0.28);
       }
 
-      .gallery-mobile-pair .gallery-mobile-mini img {
-        height: 230px;
+      .gallery-mobile-single .gallery-mobile-mini img {
+        height: 360px;
       }
 
       .gallery-mobile-pill {
-        left: 12px;
-        bottom: 12px;
-        min-height: 31px;
-        padding: 0 12px;
-        font-size: 11px;
+        left: 14px;
+        bottom: 14px;
+        min-height: 34px;
+        padding: 0 14px;
+        font-size: 11.5px;
       }
 
       .gallery-mobile-controls {
         margin-top: 18px;
+      }
+
+      .testimonials-mobile-subheadline {
+        display: block;
+        margin-top: 12px;
+        color: var(--section-muted);
+        font-size: 14px;
+        line-height: 1.6;
+        font-weight: 750;
       }
     }
 
     @media (max-width: 460px) {
       .hero-inner {
         min-height: 650px;
-        padding: 40px 0 80px;
+        padding: 40px 0 46px;
+      }
+
+      .hero-mobile-title {
+        max-width: 350px;
+        font-size: clamp(39px, 12.8vw, 52px);
+        letter-spacing: -2px;
+      }
+
+      .hero-mobile-subheadline {
+        max-width: 310px;
+        margin-bottom: 32px;
+        font-size: 14px;
+      }
+
+      .hero-quick-gallery-card {
+        flex-basis: 82%;
+        min-height: 144px;
+      }
+
+      .hero-quick-gallery-card img {
+        height: 144px;
       }
 
       .gallery-mobile-carousel {
-        max-width: calc(100% - 8px);
+        max-width: calc(100% - 4px);
       }
 
-      .gallery-mobile-pair {
-        gap: 10px;
+      .gallery-mobile-single .gallery-mobile-mini {
+        min-height: 315px;
+        border-radius: 20px;
       }
 
-      .gallery-mobile-pair .gallery-mobile-mini {
-        min-height: 188px;
-        border-radius: 18px;
-      }
-
-      .gallery-mobile-pair .gallery-mobile-mini img {
-        height: 188px;
+      .gallery-mobile-single .gallery-mobile-mini img {
+        height: 315px;
       }
 
       .gallery-mobile-pill {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
         justify-content: center;
         text-align: center;
-        font-size: 10.5px;
+        font-size: 10.8px;
       }
     }
 
@@ -4242,9 +4385,36 @@
           Serving Salem, Eugene, Portland and surrounding areas depending on the job size.
         </p>
 
+        <h1 class="hero-mobile-title">The last contractor you'll ever need.</h1>
+
+        <p class="subheadline hero-mobile-subheadline">
+          Reliable remodels, repairs, and handyman work done clean, fair, and right.
+        </p>
+
         <div class="hero-actions">
           <a href="tel:5038849153" class="btn btn-primary">Call (503) 884-9153</a>
           <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
+        </div>
+
+        <div class="hero-quick-gallery" aria-label="Swipe through recent project photos">
+          <div class="hero-quick-gallery-head">
+            <span>Recent Projects</span>
+            <span>Swipe</span>
+          </div>
+          <div class="hero-quick-gallery-track">
+            <div class="hero-quick-gallery-card">
+              <img decoding="async" loading="lazy" src="2026-05-14 (1).jpg" alt="Bathroom update project">
+              <span>Bathroom Update</span>
+            </div>
+            <div class="hero-quick-gallery-card">
+              <img decoding="async" loading="lazy" src="2026-05-13 (3).jpg" alt="Exterior repair project">
+              <span>Exterior Repairs</span>
+            </div>
+            <div class="hero-quick-gallery-card">
+              <img decoding="async" loading="lazy" src="2026-05-13 (2).jpg" alt="Property improvement project">
+              <span>Property Work</span>
+            </div>
+          </div>
         </div>
 
         <div class="hero-mobile-collage" aria-label="Recent project highlights">
@@ -4581,19 +4751,28 @@
       </div>
 
       <div class="gallery-mobile-carousel" id="projectGalleryMobile" aria-label="Recent project carousel">
-        <div class="gallery-mobile-fixed">
-          <img src="2026-05-14 (1).jpg" alt="Featured bathroom repair project" loading="lazy" decoding="async">
-          <span class="gallery-mobile-pill">Featured Project</span>
-        </div>
-
         <div class="gallery-mobile-stage">
           <div class="gallery-mobile-track">
             <article class="gallery-mobile-slide">
-              <div class="gallery-mobile-pair">
+              <div class="gallery-mobile-single">
+                <div class="gallery-mobile-mini">
+                  <img src="2026-05-14 (1).jpg" alt="Bathroom update project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Bathroom Update</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
                   <img src="2026-05-13 (3).jpg" alt="Exterior repair project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Exterior Repairs</span>
                 </div>
+              </div>
+            </article>
+
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
                   <img src="2026-05-13 (2).jpg" alt="Property improvement project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Property Improvements</span>
@@ -4602,11 +4781,16 @@
             </article>
 
             <article class="gallery-mobile-slide">
-              <div class="gallery-mobile-pair">
+              <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
                   <img src="2026-05-13 (1).jpg" alt="Entryway upgrade project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Entryway Upgrade</span>
                 </div>
+              </div>
+            </article>
+
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
                   <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring and finish repair detail" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Flooring Detail</span>
@@ -4615,11 +4799,16 @@
             </article>
 
             <article class="gallery-mobile-slide">
-              <div class="gallery-mobile-pair">
+              <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
                   <img src="20250703_184659.jpg" alt="Interior remodel project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Interior Remodel</span>
                 </div>
+              </div>
+            </article>
+
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
                   <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Wall Repairs</span>
@@ -4635,6 +4824,10 @@
             <button class="gallery-mobile-dot active" type="button" aria-label="Go to project slide 1"></button>
             <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 2"></button>
             <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 3"></button>
+            <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 4"></button>
+            <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 5"></button>
+            <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 6"></button>
+            <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 7"></button>
           </div>
           <button class="gallery-mobile-arrow next" type="button" aria-label="Next project">›</button>
         </div>
@@ -4778,6 +4971,7 @@
       <div class="testimonials-left">
         <div class="testimonials-eyebrow">Testimonials</div>
         <h2>What people are saying about ZH Homes.</h2>
+        <p class="testimonials-mobile-subheadline">Clear communication, clean work, and reliable help for repairs, remodels, and property projects.</p>
       </div>
 
       <div class="review-carousel" id="reviewCarousel">
