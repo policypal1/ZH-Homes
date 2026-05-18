@@ -3246,6 +3246,209 @@
         color: #fff;
         border: 1px solid rgba(255,255,255,0.18);
       }
+
+
+      /* ===== FINAL MOBILE CLEANUP PASS ===== */
+      /* Cut the crowded trust/stats blocks from the mobile hero. */
+      .trust-card,
+      .quick-stats {
+        display: none;
+      }
+
+      .hero-inner {
+        padding: 42px 0 42px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      /* About mobile order: headline, photos, bullets, CTA. */
+      .about-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .about-content {
+        display: contents;
+      }
+
+      .about-content .section-eyebrow {
+        order: 1;
+        margin-bottom: -8px;
+      }
+
+      .about-content h2 {
+        order: 2;
+        margin-bottom: 0;
+      }
+
+      .about-media {
+        order: 3;
+      }
+
+      .about-content p,
+      .license-note,
+      .floating-badge {
+        display: none;
+      }
+
+      .about-grid {
+        order: 4;
+        margin: 0;
+      }
+
+      .about-bottom {
+        order: 5;
+        width: 100%;
+        margin-top: 0;
+      }
+
+      .about-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Mobile gallery becomes a horizontal carousel instead of a long stack. */
+      .gallery-grid {
+        display: flex;
+        grid-template-columns: none;
+        grid-auto-rows: unset;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 14px;
+        padding: 2px 4px 18px;
+        margin-top: 28px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .gallery-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .gallery-item,
+      .gallery-item.large {
+        flex: 0 0 86%;
+        height: 320px;
+        grid-row: auto;
+        scroll-snap-align: start;
+      }
+
+      /* Keep the phone icon beside the project CTA headline on mobile. */
+      .project-cta-content {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 32px 20px;
+      }
+
+      .project-cta-icon {
+        width: 46px;
+        height: 46px;
+        flex: 0 0 46px;
+        margin-top: 2px;
+      }
+
+      .project-cta-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .project-cta-copy {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .project-cta-copy strong {
+        font-size: 25px;
+      }
+
+      .project-cta-button {
+        width: 100%;
+      }
+
+      /* Move the testimonial intro paragraph below the review box on mobile. */
+      .testimonials-inner {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .testimonials-left {
+        display: contents;
+      }
+
+      .testimonials-eyebrow {
+        order: 1;
+      }
+
+      .testimonials-left h2 {
+        order: 2;
+      }
+
+      .review-carousel {
+        order: 3;
+      }
+
+      .testimonials-left p {
+        order: 4;
+        margin-top: -10px;
+        padding: 16px;
+        border-radius: 14px;
+        background: #f8f4ef;
+        border: 1px solid rgba(35,23,18,0.08);
+        font-size: 13.5px;
+        line-height: 1.6;
+      }
+
+      /* Contact mobile order: headline, subheadline, quote form, contact info, follow row. */
+      .contact-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .contact-content {
+        display: contents;
+      }
+
+      .contact-eyebrow {
+        order: 1;
+        margin-bottom: -8px;
+      }
+
+      .contact-content h2 {
+        order: 2;
+      }
+
+      .contact-content p {
+        order: 3;
+        margin-bottom: 0;
+      }
+
+      .contact-form-card {
+        order: 4;
+      }
+
+      .contact-info-list {
+        order: 5;
+        margin: 0;
+        padding: 18px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.055);
+        border: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .social-row {
+        order: 6;
+        margin-top: -8px;
+        padding: 0 2px;
+      }
+
     }
 
     @media (max-width: 460px) {
@@ -3607,7 +3810,7 @@
               <h3>Home Remodeling</h3>
               <p>Interior updates, repairs, improvements, and remodel work built around clean finishes and lasting value.</p>
             </div>
-            <a href="#contact" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Learn More</a>
           </div>
         </article>
 
@@ -3621,7 +3824,7 @@
               <h3>Construction Projects</h3>
               <p>Reliable construction work for homeowners, landlords, realtors, and property managers who need it done right.</p>
             </div>
-            <a href="#contact" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Learn More</a>
           </div>
         </article>
 
@@ -3635,7 +3838,7 @@
               <h3>Handyman &amp; Repairs</h3>
               <p>Punch lists, repairs, rental prep, small fixes, and property improvements handled with honest communication.</p>
             </div>
-            <a href="#contact" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Learn More</a>
           </div>
         </article>
 
@@ -3649,7 +3852,7 @@
               <h3>Rental Property Work</h3>
               <p>Turnover repairs, small updates, maintenance items, and fixes that help get rentals ready faster.</p>
             </div>
-            <a href="#contact" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Learn More</a>
           </div>
         </article>
 
@@ -3663,7 +3866,7 @@
               <h3>Interior Updates</h3>
               <p>Kitchen, fixture, finish, and layout-focused updates that make the inside of the home feel cleaner and newer.</p>
             </div>
-            <a href="#contact" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Learn More</a>
           </div>
         </article>
 
@@ -3677,7 +3880,7 @@
               <h3>Custom Jobs</h3>
               <p>Not every job fits a box. Send photos, explain what you need, and ZH Homes can look at the best next step.</p>
             </div>
-            <a href="#contact" class="service-link">Read More</a>
+            <a href="#contact" class="service-link">Learn More</a>
           </div>
         </article>
       </div>
