@@ -4012,6 +4012,223 @@
       }
     }
 
+
+    /* ===== V8 MOBILE REQUESTS: cutout hero background, short about subheadline, still featured gallery image ===== */
+    .about-kicker {
+      margin: -6px 0 16px;
+      color: var(--orange) !important;
+      font-size: 14px !important;
+      line-height: 1.45 !important;
+      font-weight: 900;
+      letter-spacing: -0.1px;
+    }
+
+    @media (max-width: 950px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(6,7,8,0.84) 0%, rgba(6,7,8,0.80) 48%, rgba(6,7,8,0.94) 100%),
+          #060708 !important;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -18%;
+        bottom: 74px;
+        top: auto;
+        width: 104%;
+        height: 360px;
+        background: linear-gradient(135deg, #ff7f1f 0%, var(--orange) 62%, #d84f08 100%);
+        clip-path: polygon(30% 0, 100% 0, 100% 92%, 0 100%, 0 38%);
+        border-radius: 32px 0 0 32px;
+        z-index: 0;
+        box-shadow: 0 30px 70px rgba(243,112,33,0.18);
+        pointer-events: none;
+      }
+
+      .hero::before {
+        content: "";
+        display: block !important;
+        position: absolute;
+        right: -20px;
+        bottom: 28px;
+        left: auto;
+        top: auto;
+        width: min(92vw, 420px);
+        height: 345px;
+        background:
+          linear-gradient(180deg, rgba(6,7,8,0.03), rgba(6,7,8,0.15)),
+          url("ChatGPT Image May 18, 2026, 06_06_22 AM.png") center center / cover no-repeat;
+        clip-path: polygon(16% 0, 100% 0, 100% 100%, 0 100%, 0 34%);
+        border-radius: 24px 0 0 24px;
+        opacity: 0.98;
+        z-index: 1;
+        box-shadow: 0 28px 58px rgba(0,0,0,0.34);
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        min-height: 690px;
+        padding: 42px 0 330px;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 3;
+      }
+
+      .hero-mobile-collage {
+        display: none !important;
+      }
+
+      .hero-actions {
+        max-width: 360px;
+      }
+
+      .about-content .about-kicker {
+        display: block !important;
+        order: 3;
+        margin: -10px 0 0;
+        color: #5f5954 !important;
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+        font-weight: 850;
+      }
+
+      .about-media {
+        order: 4;
+      }
+
+      .about-grid {
+        order: 5;
+      }
+
+      .about-bottom {
+        order: 6;
+      }
+
+      .gallery-mobile-carousel {
+        display: block;
+        margin-top: 26px;
+      }
+
+      .gallery-mobile-fixed {
+        position: relative;
+        min-height: 315px;
+        border-radius: 22px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.09);
+        box-shadow: 0 26px 56px rgba(0,0,0,0.30);
+      }
+
+      .gallery-mobile-fixed img {
+        width: 100%;
+        height: 100%;
+        min-height: 315px;
+        object-fit: cover;
+        object-position: center center;
+        display: block;
+      }
+
+      .gallery-mobile-fixed::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.00) 38%, rgba(0,0,0,0.64));
+        pointer-events: none;
+      }
+
+      .gallery-mobile-stage {
+        margin-top: 14px;
+        border-radius: 0;
+        overflow: hidden;
+      }
+
+      .gallery-mobile-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .gallery-mobile-pair .gallery-mobile-mini {
+        min-height: 178px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 18px 42px rgba(0,0,0,0.22);
+      }
+
+      .gallery-mobile-pair .gallery-mobile-mini img {
+        height: 178px;
+      }
+
+      .gallery-mobile-pill {
+        left: 12px;
+        bottom: 12px;
+        min-height: 31px;
+        padding: 0 12px;
+        font-size: 11px;
+      }
+
+      .gallery-mobile-controls {
+        margin-top: 18px;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .hero-inner {
+        min-height: 650px;
+        padding: 40px 0 292px;
+      }
+
+      .hero::after {
+        height: 315px;
+        bottom: 66px;
+        right: -24%;
+        width: 112%;
+      }
+
+      .hero::before {
+        width: min(94vw, 365px);
+        height: 300px;
+        right: -18px;
+        bottom: 30px;
+      }
+
+      .gallery-mobile-fixed {
+        min-height: 270px;
+      }
+
+      .gallery-mobile-fixed img {
+        min-height: 270px;
+      }
+
+      .gallery-mobile-pair {
+        gap: 10px;
+      }
+
+      .gallery-mobile-pair .gallery-mobile-mini {
+        min-height: 148px;
+        border-radius: 16px;
+      }
+
+      .gallery-mobile-pair .gallery-mobile-mini img {
+        height: 148px;
+      }
+
+      .gallery-mobile-pill {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        justify-content: center;
+        text-align: center;
+        font-size: 10.5px;
+      }
+    }
+
   </style>
 </head>
 
@@ -4171,6 +4388,8 @@
         <div class="section-eyebrow">About ZH Homes</div>
 
         <h2>Reliable construction without the runaround.</h2>
+
+        <p class="about-kicker">Local remodels, repairs, and property improvements done clean, clear, and fair.</p>
 
         <p>
           ZH Homes helps homeowners, landlords, realtors, and property managers with construction,
@@ -4426,67 +4645,48 @@
       </div>
 
       <div class="gallery-mobile-carousel" id="projectGalleryMobile" aria-label="Recent project carousel">
+        <div class="gallery-mobile-fixed">
+          <img src="2026-05-14 (1).jpg" alt="Featured bathroom repair project" loading="lazy" decoding="async">
+          <span class="gallery-mobile-pill">Featured Project</span>
+        </div>
+
         <div class="gallery-mobile-stage">
           <div class="gallery-mobile-track">
             <article class="gallery-mobile-slide">
-              <div class="gallery-mobile-card">
-                <div class="gallery-mobile-feature gallery-mobile-feature-split">
-                  <div class="gallery-mobile-split-half">
-                    <img src="2026-05-13 (3).jpg" alt="Before exterior repair work" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Before</span>
-                  </div>
-                  <div class="gallery-mobile-split-half">
-                    <img src="2026-05-13 (2).jpg" alt="After exterior improvement work" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">After</span>
-                  </div>
+              <div class="gallery-mobile-pair">
+                <div class="gallery-mobile-mini">
+                  <img src="2026-05-13 (3).jpg" alt="Exterior repair project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Exterior Repairs</span>
                 </div>
-                <div class="gallery-mobile-mini-row">
-                  <div class="gallery-mobile-mini">
-                    <img src="2026-05-13 (1).jpg" alt="Entryway upgrade project" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Entryway Upgrade</span>
-                  </div>
-                  <div class="gallery-mobile-mini">
-                    <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring repair detail" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Flooring Detail</span>
-                  </div>
+                <div class="gallery-mobile-mini">
+                  <img src="2026-05-13 (2).jpg" alt="Property improvement project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Property Improvements</span>
                 </div>
               </div>
             </article>
 
             <article class="gallery-mobile-slide">
-              <div class="gallery-mobile-card">
-                <div class="gallery-mobile-feature gallery-mobile-feature-single">
-                  <img src="2026-05-14 (1).jpg" alt="Tub to shower conversion" loading="lazy" decoding="async">
-                  <span class="gallery-mobile-pill">Tub to Shower Conversion</span>
+              <div class="gallery-mobile-pair">
+                <div class="gallery-mobile-mini">
+                  <img src="2026-05-13 (1).jpg" alt="Entryway upgrade project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Entryway Upgrade</span>
                 </div>
-                <div class="gallery-mobile-mini-row">
-                  <div class="gallery-mobile-mini">
-                    <img src="20250703_184659.jpg" alt="Interior remodel hallway" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Interior Remodel</span>
-                  </div>
-                  <div class="gallery-mobile-mini">
-                    <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Drywall Repairs</span>
-                  </div>
+                <div class="gallery-mobile-mini">
+                  <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring and finish repair detail" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Flooring Detail</span>
                 </div>
               </div>
             </article>
 
             <article class="gallery-mobile-slide">
-              <div class="gallery-mobile-card">
-                <div class="gallery-mobile-feature gallery-mobile-feature-single">
-                  <img src="20250703_184659.jpg" alt="Interior improvement project" loading="lazy" decoding="async">
-                  <span class="gallery-mobile-pill">Interior Updates</span>
+              <div class="gallery-mobile-pair">
+                <div class="gallery-mobile-mini">
+                  <img src="20250703_184659.jpg" alt="Interior remodel project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Interior Remodel</span>
                 </div>
-                <div class="gallery-mobile-mini-row">
-                  <div class="gallery-mobile-mini">
-                    <img src="2026-05-13 (3).jpg" alt="Exterior repair project" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Exterior Repairs</span>
-                  </div>
-                  <div class="gallery-mobile-mini">
-                    <img src="2026-05-13 (2).jpg" alt="Property improvement project" loading="lazy" decoding="async">
-                    <span class="gallery-mobile-pill">Property Improvements</span>
-                  </div>
+                <div class="gallery-mobile-mini">
+                  <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Wall Repairs</span>
                 </div>
               </div>
             </article>
