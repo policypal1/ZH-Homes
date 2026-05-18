@@ -84,7 +84,7 @@
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      transform: translateY(-12px);
+      transform: translateY(-20px);
       overflow: visible;
     }
 
@@ -810,10 +810,10 @@
     }
 
     .service-img-5 {
-      object-fit: contain;
+      object-fit: cover;
       object-position: center center;
-      background: #efe7e0;
-      padding: 2px;
+      background: #ddd;
+      padding: 0;
     }
 
     .service-card:hover .service-image img {
@@ -1844,14 +1844,23 @@
 
     .contact-section {
       position: relative;
-      background: #060708;
+      background:
+        linear-gradient(rgba(6,7,8,0.76), rgba(6,7,8,0.88)),
+        url("ChatGPT Image May 17, 2026, 07_03_43 PM.png") center center / cover no-repeat,
+        #060708;
       color: #fff;
       padding: 104px 0 112px;
       overflow: hidden;
     }
 
     .contact-section::before {
-      content: none;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 30%, rgba(243,112,33,0.12), transparent 30%),
+        radial-gradient(circle at 86% 72%, rgba(243,112,33,0.10), transparent 36%);
+      pointer-events: none;
     }
 
     .contact-inner {
@@ -2495,7 +2504,7 @@
       .brand-logo {
         width: 82px;
         height: 38px;
-        transform: translateY(-9px);
+        transform: translateY(-16px);
       }
 
       .brand-text small,
@@ -3069,7 +3078,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">05</div>
-            <img decoding="async" loading="lazy" class="service-img-5" src="InCollage_20251122_142825051.jpg" alt="Interior updates">
+            <img decoding="async" loading="lazy" class="service-img-5" src="20250703_184659.jpg" alt="Interior remodel updates">
           </div>
           <div class="service-content">
             <div>
@@ -3145,58 +3154,30 @@
       <div class="gallery-grid">
         <div class="gallery-item">
           <img src="2026-05-14 (1).jpg" alt="Finished remodel work" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Finished Work</strong>
-            <span>Clean project details</span>
-          </div>
         </div>
 
         <div class="gallery-item large">
-          <img src="2026-05-14.jpg" alt="Kitchen remodel project" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Interior Remodel</strong>
-            <span>Kitchen and home updates</span>
-          </div>
+          <img src="20250703_184659.jpg" alt="Interior remodel project" loading="lazy" decoding="async">
         </div>
 
         <div class="gallery-item">
           <img src="2026-05-13 (3).jpg" alt="Construction project work" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Construction Work</strong>
-            <span>Property improvements</span>
-          </div>
         </div>
 
         <div class="gallery-item large">
           <img src="2026-05-13 (2).jpg" alt="ZH Homes project" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Home Updates</strong>
-            <span>Functional upgrades</span>
-          </div>
         </div>
 
         <div class="gallery-item">
           <img src="2026-05-13 (1).jpg" alt="Handyman repair work" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Repair Work</strong>
-            <span>Small fixes and punch lists</span>
-          </div>
         </div>
 
         <div class="gallery-item">
           <img src="2026-05-13.jpg" alt="Interior update project" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Interior Updates</strong>
-            <span>Cleaner finished spaces</span>
-          </div>
         </div>
 
         <div class="gallery-item">
           <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Custom construction detail" loading="lazy" decoding="async">
-          <div class="gallery-label">
-            <strong>Custom Jobs</strong>
-            <span>Built around the property</span>
-          </div>
         </div>
       </div>
     </div>
