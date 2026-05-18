@@ -3768,6 +3768,481 @@
         padding: 24px 18px;
       }
     }
+
+    /* ===== V5 HERO / VALUE / ABOUT REFRESH ===== */
+    .hero {
+      background:
+        radial-gradient(circle at 16% 18%, rgba(243,112,33,0.10), transparent 26%),
+        linear-gradient(135deg, #090b0f 0%, #10151b 52%, #090b0f 100%) !important;
+      min-height: calc(100vh - 81px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 32%),
+        radial-gradient(circle at 18% 46%, rgba(255,255,255,0.04), transparent 28%);
+      pointer-events: none;
+    }
+
+    .hero-shape {
+      position: absolute;
+      right: clamp(-96px, -6vw, -24px);
+      top: 130px;
+      width: min(50vw, 760px);
+      height: 430px;
+      background: linear-gradient(135deg, #ff7f1f, #f37021 64%);
+      clip-path: polygon(24% 0, 100% 0, 100% 78%, 0 78%);
+      border-radius: 40px 0 0 40px;
+      z-index: 1;
+      filter: drop-shadow(0 30px 70px rgba(243,112,33,0.22));
+    }
+
+    .hero-inner {
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 24px;
+      align-items: center;
+      padding: 48px 0 148px;
+    }
+
+    .hero-copy {
+      max-width: 560px;
+    }
+
+    .eyebrow {
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(56px, 6.3vw, 92px);
+      line-height: 0.95;
+      letter-spacing: -3.8px;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .subheadline {
+      max-width: 520px;
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      gap: 18px;
+    }
+
+    .btn {
+      min-height: 64px;
+      padding: 0 28px;
+      border-radius: 16px;
+      font-size: 16px;
+    }
+
+    .btn-call {
+      border-color: rgba(243,112,33,0.55);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-icon {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 640px;
+    }
+
+    .hero-image-wrap {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(48vw, 720px);
+      max-width: 720px;
+      aspect-ratio: 0.94 / 1;
+      border-radius: 34px 0 0 0;
+      overflow: hidden;
+      background: #12161a;
+      box-shadow: 0 42px 90px rgba(0,0,0,0.34);
+      z-index: 3;
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(0,0,0,0.10));
+      pointer-events: none;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      display: block;
+      transform: translateX(28px);
+    }
+
+    .hero-line-cluster {
+      position: absolute;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      z-index: 2;
+      opacity: 0.78;
+    }
+
+    .hero-line-cluster span {
+      width: 2px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(243,112,33,0.10), rgba(243,112,33,0.88));
+      display: block;
+    }
+
+    .hero-line-cluster-left {
+      left: -2px;
+      bottom: 112px;
+      height: 92px;
+    }
+
+    .hero-line-cluster-right {
+      right: 48px;
+      top: 82px;
+      height: 118px;
+    }
+
+    .hero-line-cluster span:nth-child(1) { height: 42%; }
+    .hero-line-cluster span:nth-child(2) { height: 68%; }
+    .hero-line-cluster span:nth-child(3) { height: 100%; }
+    .hero-line-cluster span:nth-child(4) { height: 76%; }
+    .hero-line-cluster span:nth-child(5) { height: 54%; }
+
+    .quick-stats {
+      background: transparent;
+      margin-top: -86px;
+      padding-bottom: 20px;
+      z-index: 10;
+    }
+
+    .quick-stats-inner {
+      width: min(1220px, calc(100% - 36px));
+      background: linear-gradient(135deg, #06121a 0%, #0b1821 54%, #081018 100%);
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 36px 80px rgba(0,0,0,0.34);
+    }
+
+    .stat-box {
+      min-height: 214px;
+      padding: 34px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      text-align: left;
+      border-left: 0;
+      border-right: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .stat-box:last-child {
+      border-right: 0;
+    }
+
+    .stat-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: rgba(243,112,33,0.08);
+      color: var(--orange);
+      border: 1px solid rgba(243,112,33,0.26);
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .stat-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .stat-box strong {
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+
+    .stat-box span {
+      font-size: 14px;
+      line-height: 1.66;
+      letter-spacing: 0;
+      text-transform: none;
+      opacity: 0.84;
+    }
+
+    .about-media {
+      min-height: 620px;
+    }
+
+    .photo-stack {
+      height: 620px;
+    }
+
+    .photo-main {
+      width: 72%;
+      height: 390px;
+      left: 12%;
+      top: 30px;
+      border-radius: 40px;
+      box-shadow: 0 30px 56px rgba(0,0,0,0.18);
+      transform: rotate(-1.8deg);
+    }
+
+    .photo-main img {
+      object-position: center center;
+    }
+
+    .photo-small {
+      height: 190px;
+      border-radius: 32px;
+      box-shadow: 0 24px 44px rgba(0,0,0,0.14);
+    }
+
+    .photo-small.one {
+      width: 38%;
+      left: 0;
+      bottom: 38px;
+      transform: rotate(-7deg);
+    }
+
+    .photo-small.two {
+      width: 40%;
+      left: auto;
+      right: 0;
+      bottom: 70px;
+      transform: rotate(7deg);
+    }
+
+    .floating-badge {
+      left: 54px;
+      top: 0;
+      border-radius: 22px;
+      width: 118px;
+      min-height: 124px;
+      box-shadow: 0 24px 38px rgba(243,112,33,0.24);
+    }
+
+    @media (max-width: 1120px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      }
+
+      .hero-shape {
+        width: min(52vw, 640px);
+      }
+
+      .hero-image-wrap {
+        width: min(50vw, 610px);
+      }
+    }
+
+    @media (max-width: 950px) {
+      .hero {
+        background: linear-gradient(180deg, #0b0f13 0%, #12171d 100%) !important;
+        min-height: auto;
+      }
+
+      .hero::before {
+        background: radial-gradient(circle at 18% 20%, rgba(243,112,33,0.12), transparent 34%);
+      }
+
+      .hero-shape,
+      .hero-visual {
+        display: none;
+      }
+
+      .hero-inner {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr;
+        gap: 0;
+        min-height: auto;
+        padding: 38px 0 28px;
+      }
+
+      .hero-copy {
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(40px, 12vw, 58px);
+        line-height: 0.97;
+        letter-spacing: -2px;
+        margin-bottom: 18px;
+      }
+
+      h1 br {
+        display: block;
+      }
+
+      .subheadline {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.58;
+        margin-bottom: 26px;
+      }
+
+      .hero-actions {
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 56px;
+        font-size: 14px;
+        border-radius: 12px;
+      }
+
+      .hero-mobile-collage {
+        display: grid;
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .hero-mobile-collage-main,
+      .hero-mobile-collage-small {
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 38px rgba(0,0,0,0.24);
+      }
+
+      .hero-mobile-collage-main {
+        min-height: 240px;
+      }
+
+      .hero-mobile-collage-side {
+        display: grid;
+      }
+
+      .hero-mobile-collage-small {
+        min-height: 240px;
+      }
+
+      .quick-stats {
+        margin-top: 18px;
+        padding-bottom: 0;
+      }
+
+      .quick-stats-inner {
+        width: calc(100% - 28px);
+        grid-template-columns: 1fr 1fr;
+        border-radius: 24px;
+      }
+
+      .stat-box {
+        min-height: 178px;
+        padding: 24px 18px;
+        flex-direction: column;
+        gap: 14px;
+        border-right: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .stat-box:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .stat-box:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .stat-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+      }
+
+      .stat-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .stat-box strong {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .stat-box span {
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .about-media {
+        min-height: auto;
+      }
+
+      .photo-stack {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .photo-main {
+        position: relative;
+        grid-column: 1 / -1;
+        width: 100%;
+        height: 260px;
+        left: auto;
+        top: auto;
+        border-radius: 28px;
+        transform: none;
+      }
+
+      .photo-small {
+        position: relative;
+        width: 100% !important;
+        height: 164px;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto;
+        border-radius: 24px;
+        transform: none;
+      }
+
+      .floating-badge {
+        left: 16px;
+        top: 16px;
+        border-radius: 16px;
+        width: 92px;
+        min-height: 92px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .quick-stats-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-box {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .stat-box:last-child {
+        border-bottom: 0;
+      }
+    }
+
   </style>
 </head>
 
@@ -3795,59 +4270,32 @@
   </header>
 
   <section class="hero">
-    <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <clipPath id="kitchenClipNaturalBump" clipPathUnits="userSpaceOnUse">
-          <path d="
-            M 900 0
-            C 850 72, 799 155, 784 254
-            C 761 405, 838 488, 820 604
-            C 806 702, 862 814, 1022 900
-            L 1440 900
-            L 1440 0
-            Z
-          " />
-        </clipPath>
-      </defs>
-
-      <image
-        href="ChatGPT Image May 14, 2026, 09_29_45 PM.png"
-        x="220"
-        y="0"
-        width="1540"
-        height="900"
-        preserveAspectRatio="xMidYMid slice"
-        clip-path="url(#kitchenClipNaturalBump)"
-      ></image>
-    </svg>
-
-    <svg class="curve-stroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-      <path d="
-        M 900 0
-        C 850 72, 799 155, 784 254
-        C 761 405, 838 488, 820 604
-        C 806 702, 862 814, 1022 900
-      " />
-    </svg>
+    <div class="hero-shape" aria-hidden="true"></div>
 
     <div class="hero-inner">
       <div class="hero-copy">
-        <div class="eyebrow">Quality Work. Fair Prices. Zero Shortcuts.</div>
+        <div class="eyebrow">ZH Homes Construction</div>
 
         <h1>
-          Honest, quality<br>
-          construction that's<br>
-          <span class="accent">fair &amp; affordable.</span>
+          Remodel.<br>
+          <span class="accent">Reimagine.</span><br>
+          Love Where<br>
+          You Live.
         </h1>
 
         <p class="subheadline">
-          From remodels to repairs, ZH Homes delivers trusted craftsmanship and lasting results without overcharging.
-          Serving Salem, Eugene, Portland and surrounding areas depending on the job size.
+          Thoughtful remodels, repairs, and home upgrades built with precision, quality, and care.
+          Built for homeowners who want reliable work, fair pricing, and clean communication from start to finish.
         </p>
 
         <div class="hero-actions">
-          <a href="tel:5038849153" class="btn btn-primary">Call (503) 884-9153</a>
-          <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
+          <a href="#contact" class="btn btn-primary">Start Your Project</a>
+          <a href="tel:5038849153" class="btn btn-secondary btn-call">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.3.56 3.52.56a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.99a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.22.19 2.4.56 3.52a1 1 0 0 1-.24 1.02l-2.2 2.26Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Talk to ZH Homes
+          </a>
         </div>
 
         <div class="hero-mobile-collage" aria-label="Recent project highlights">
@@ -3858,41 +4306,78 @@
             <div class="hero-mobile-collage-small">
               <img decoding="async" loading="lazy" src="2026-05-13 (1).jpg" alt="Entryway upgrade project">
             </div>
-
           </div>
         </div>
+      </div>
 
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-line-cluster hero-line-cluster-left">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="hero-line-cluster hero-line-cluster-right">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img decoding="async" fetchpriority="high" src="ChatGPT Image May 14, 2026, 09_29_45 PM.png" alt="Kitchen remodel showcase">
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="quick-stats" aria-label="ZH Homes quick facts">
+  <section class="quick-stats" aria-label="Why homeowners choose ZH Homes">
     <div class="quick-stats-inner">
       <div class="stat-box">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 3v5c0 4.42-2.99 8.53-7 9.7-4.01-1.17-7-5.28-7-9.7V6l7-3Z" stroke="currentColor" stroke-width="1.8"/>
+            <path d="m9 12 2 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div>
-          <strong>CCB</strong>
-          <span>#260679 Licensed Contractor</span>
+          <strong>Quality Craftsmanship</strong>
+          <span>Built to last with careful attention to detail, clean finishes, and work you can feel good about.</span>
         </div>
       </div>
 
       <div class="stat-box">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12a9 9 0 1 1-3.07-6.78" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M21 4v5h-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div>
-          <strong>Free</strong>
-          <span>Estimates Available</span>
+          <strong>On-Time Delivery</strong>
+          <span>Respectful scheduling, clear updates, and a team that shows up ready to keep your project moving.</span>
         </div>
       </div>
 
       <div class="stat-box">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M14 3H7a2 2 0 0 0-2 2v14l4-3 4 3 4-3 4 3V9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 3v6h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 8h2.5a1.5 1.5 0 0 1 0 3H9.5a1.5 1.5 0 0 0 0 3H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div>
-          <strong>3</strong>
-          <span>Construction · Remodeling · Handyman</span>
+          <strong>Transparent Pricing</strong>
+          <span>Honest quotes, straight answers, and no confusing upsells or surprise costs halfway through the job.</span>
         </div>
       </div>
 
       <div class="stat-box">
+        <div class="stat-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 10.5 12 4l8 6.5V20H4v-9.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div>
-          <strong>Local</strong>
-          <span>Salem to Portland &amp; Eugene</span>
+          <strong>Expert Remodelers</strong>
+          <span>Trusted help for remodels, upgrades, and repairs that improve the way your home looks and works.</span>
         </div>
       </div>
     </div>
