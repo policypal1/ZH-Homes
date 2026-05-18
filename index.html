@@ -2206,6 +2206,168 @@
       font-size: 13px;
     }
 
+
+
+    .hero-mobile-collage {
+      display: none;
+    }
+
+    .gallery-mobile-carousel {
+      display: none;
+    }
+
+    .gallery-mobile-stage {
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .gallery-mobile-track {
+      display: flex;
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+
+    .gallery-mobile-slide {
+      min-width: 100%;
+      flex: 0 0 100%;
+    }
+
+    .gallery-mobile-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 52px rgba(0,0,0,0.26);
+    }
+
+    .gallery-mobile-feature {
+      position: relative;
+      min-height: 280px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .gallery-mobile-feature img,
+    .gallery-mobile-mini img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-mobile-feature-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-mobile-split-half {
+      position: relative;
+      min-height: 280px;
+    }
+
+    .gallery-mobile-split-half::after,
+    .gallery-mobile-feature-single::after,
+    .gallery-mobile-mini::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.00) 38%, rgba(0,0,0,0.64));
+      pointer-events: none;
+    }
+
+    .gallery-mobile-split-half::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.18);
+      z-index: 2;
+    }
+
+    .gallery-mobile-split-half:last-child::before {
+      display: none;
+    }
+
+    .gallery-mobile-pill {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(20,20,20,0.72);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.1px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .gallery-mobile-mini-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px;
+      background: rgba(6,7,8,0.42);
+    }
+
+    .gallery-mobile-mini {
+      position: relative;
+      min-height: 144px;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+
+    .gallery-mobile-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .gallery-mobile-arrow {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .gallery-mobile-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-mobile-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,0.28);
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .gallery-mobile-dot.active {
+      width: 26px;
+      border-radius: 999px;
+      background: var(--orange);
+    }
+
     /* Mobile sticky CTA bar — hidden by default, shown on mobile */
     .mobile-cta-bar {
       display: none;
@@ -2378,7 +2540,7 @@
       .subheadline {
         font-size: 15px;
         line-height: 1.55;
-        margin-bottom: 26px;
+        margin-bottom: 38px;
         max-width: 100%;
       }
 
@@ -2504,7 +2666,7 @@
         height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        gap: 8px;
         position: relative;
       }
 
@@ -2513,8 +2675,9 @@
         left: auto;
         top: auto;
         width: 100%;
-        height: 220px;
+        height: 260px;
         grid-column: 1 / -1;
+        border-radius: 0;
       }
 
       .photo-small {
@@ -2522,7 +2685,8 @@
         left: auto !important;
         bottom: auto;
         width: 100% !important;
-        height: 140px;
+        height: 165px;
+        border-radius: 0;
       }
 
       .floating-badge {
@@ -3263,6 +3427,43 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .hero-mobile-collage {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 10px;
+        margin-top: 8px;
+      }
+
+      .hero-mobile-collage-main,
+      .hero-mobile-collage-small {
+        position: relative;
+        overflow: hidden;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.08);
+        box-shadow: 0 16px 36px rgba(0,0,0,0.24);
+      }
+
+      .hero-mobile-collage-main {
+        min-height: 230px;
+      }
+
+      .hero-mobile-collage-side {
+        display: grid;
+        gap: 10px;
+      }
+
+      .hero-mobile-collage-small {
+        min-height: 110px;
+      }
+
+      .hero-mobile-collage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
       }
 
       /* About mobile order: headline, photos, bullets, CTA. */
@@ -3288,6 +3489,9 @@
 
       .about-media {
         order: 3;
+        width: calc(100% + 28px);
+        margin-left: -14px;
+        margin-right: -14px;
       }
 
       .about-content p,
@@ -3314,29 +3518,12 @@
 
       /* Mobile gallery becomes a horizontal carousel instead of a long stack. */
       .gallery-grid {
-        display: flex;
-        grid-template-columns: none;
-        grid-auto-rows: unset;
-        overflow-x: auto;
-        overflow-y: hidden;
-        gap: 14px;
-        padding: 2px 4px 18px;
-        margin-top: 28px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-
-      .gallery-grid::-webkit-scrollbar {
         display: none;
       }
 
-      .gallery-item,
-      .gallery-item.large {
-        flex: 0 0 86%;
-        height: 320px;
-        grid-row: auto;
-        scroll-snap-align: start;
+      .gallery-mobile-carousel {
+        display: block;
+        margin-top: 26px;
       }
 
       /* Keep the phone icon beside the project CTA headline on mobile. */
@@ -3344,14 +3531,16 @@
         flex-direction: row;
         align-items: flex-start;
         gap: 14px;
-        padding: 32px 20px;
+        padding: 34px 22px;
+        background:
+          radial-gradient(circle at 16% 18%, rgba(255,255,255,0.12), transparent 24%),
+          radial-gradient(circle at 82% 74%, rgba(255,255,255,0.10), transparent 28%),
+          repeating-linear-gradient(135deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 16px),
+          linear-gradient(135deg, #f37021, #da5d11);
       }
 
       .project-cta-icon {
-        width: 46px;
-        height: 46px;
-        flex: 0 0 46px;
-        margin-top: 2px;
+        display: none;
       }
 
       .project-cta-icon svg {
@@ -3395,14 +3584,7 @@
       }
 
       .testimonials-left p {
-        order: 4;
-        margin-top: -10px;
-        padding: 16px;
-        border-radius: 14px;
-        background: #f8f4ef;
-        border: 1px solid rgba(35,23,18,0.08);
-        font-size: 13.5px;
-        line-height: 1.6;
+        display: none;
       }
 
       /* Contact mobile order: headline, subheadline, quote form, contact info, follow row. */
@@ -3454,6 +3636,18 @@
     @media (max-width: 460px) {
       .header-inner {
         gap: 8px;
+      }
+
+      .hero-mobile-collage {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-mobile-collage-main {
+        min-height: 200px;
+      }
+
+      .hero-mobile-collage-side {
+        grid-template-columns: 1fr 1fr;
       }
 
       .brand-text strong {
@@ -3623,6 +3817,20 @@
         <div class="hero-actions">
           <a href="tel:5038849153" class="btn btn-primary">Call (503) 884-9153</a>
           <a href="#contact" class="btn btn-secondary">Get a Free Quote</a>
+        </div>
+
+        <div class="hero-mobile-collage" aria-label="Recent project highlights">
+          <div class="hero-mobile-collage-main">
+            <img decoding="async" loading="lazy" src="20250703_184659.jpg" alt="Interior remodel project">
+          </div>
+          <div class="hero-mobile-collage-side">
+            <div class="hero-mobile-collage-small">
+              <img decoding="async" loading="lazy" src="2026-05-13 (1).jpg" alt="Entryway upgrade project">
+            </div>
+            <div class="hero-mobile-collage-small">
+              <img decoding="async" loading="lazy" src="2026-05-14 (1).jpg" alt="Tub to shower conversion project">
+            </div>
+          </div>
         </div>
 
         <div class="trust-card">
@@ -3989,6 +4197,85 @@
           </div>
         </div>
       </div>
+
+      <div class="gallery-mobile-carousel" id="projectGalleryMobile" aria-label="Recent project carousel">
+        <div class="gallery-mobile-stage">
+          <div class="gallery-mobile-track">
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-card">
+                <div class="gallery-mobile-feature gallery-mobile-feature-split">
+                  <div class="gallery-mobile-split-half">
+                    <img src="2026-05-13 (3).jpg" alt="Before exterior repair work" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Before</span>
+                  </div>
+                  <div class="gallery-mobile-split-half">
+                    <img src="2026-05-13 (2).jpg" alt="After exterior improvement work" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">After</span>
+                  </div>
+                </div>
+                <div class="gallery-mobile-mini-row">
+                  <div class="gallery-mobile-mini">
+                    <img src="2026-05-13 (1).jpg" alt="Entryway upgrade project" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Entryway Upgrade</span>
+                  </div>
+                  <div class="gallery-mobile-mini">
+                    <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring repair detail" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Flooring Detail</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-card">
+                <div class="gallery-mobile-feature gallery-mobile-feature-single">
+                  <img src="2026-05-14 (1).jpg" alt="Tub to shower conversion" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Tub to Shower Conversion</span>
+                </div>
+                <div class="gallery-mobile-mini-row">
+                  <div class="gallery-mobile-mini">
+                    <img src="20250703_184659.jpg" alt="Interior remodel hallway" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Interior Remodel</span>
+                  </div>
+                  <div class="gallery-mobile-mini">
+                    <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Drywall Repairs</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="gallery-mobile-slide">
+              <div class="gallery-mobile-card">
+                <div class="gallery-mobile-feature gallery-mobile-feature-single">
+                  <img src="20250703_184659.jpg" alt="Interior improvement project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Interior Updates</span>
+                </div>
+                <div class="gallery-mobile-mini-row">
+                  <div class="gallery-mobile-mini">
+                    <img src="2026-05-13 (3).jpg" alt="Exterior repair project" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Exterior Repairs</span>
+                  </div>
+                  <div class="gallery-mobile-mini">
+                    <img src="2026-05-13 (2).jpg" alt="Property improvement project" loading="lazy" decoding="async">
+                    <span class="gallery-mobile-pill">Property Improvements</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="gallery-mobile-controls">
+          <button class="gallery-mobile-arrow prev" type="button" aria-label="Previous project">‹</button>
+          <div class="gallery-mobile-dots" aria-label="Project gallery navigation">
+            <button class="gallery-mobile-dot active" type="button" aria-label="Go to project slide 1"></button>
+            <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 2"></button>
+            <button class="gallery-mobile-dot" type="button" aria-label="Go to project slide 3"></button>
+          </div>
+          <button class="gallery-mobile-arrow next" type="button" aria-label="Next project">›</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -4123,9 +4410,6 @@
       <div class="testimonials-left">
         <div class="testimonials-eyebrow">Testimonials</div>
         <h2>What people are saying about ZH Homes.</h2>
-        <p>
-          ZH Homes focuses on making each project feel clear from the first conversation to the final walkthrough. The goal is simple: honest communication, fair pricing, dependable work, and a finished result customers feel good about.
-        </p>
       </div>
 
       <div class="review-carousel" id="reviewCarousel">
@@ -4418,6 +4702,12 @@
     const quoteForm = document.getElementById("quoteForm");
     const projectPhoto = document.getElementById("projectPhoto");
     const fileError = document.getElementById("fileError");
+    const projectGalleryMobile = document.getElementById("projectGalleryMobile");
+    const projectGalleryTrack = projectGalleryMobile?.querySelector(".gallery-mobile-track");
+    const projectGallerySlides = Array.from(document.querySelectorAll(".gallery-mobile-slide"));
+    const projectGalleryDots = Array.from(document.querySelectorAll(".gallery-mobile-dot"));
+    const prevProjectGalleryBtn = document.querySelector(".gallery-mobile-arrow.prev");
+    const nextProjectGalleryBtn = document.querySelector(".gallery-mobile-arrow.next");
 
     let currentReviewIndex = 0;
     let reviewTimer = null;
@@ -4447,6 +4737,26 @@
       reviewTimer = setInterval(nextReview, 5000);
     }
 
+    function showProjectGallerySlide(index) {
+      if (!projectGalleryTrack || !projectGallerySlides.length) return;
+      const slideIndex = (index + projectGallerySlides.length) % projectGallerySlides.length;
+      projectGalleryTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+      projectGalleryDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === slideIndex);
+      });
+      projectGalleryTrack.dataset.index = String(slideIndex);
+    }
+
+    function nextProjectGallerySlide() {
+      const current = Number(projectGalleryTrack?.dataset.index || 0);
+      showProjectGallerySlide(current + 1);
+    }
+
+    function prevProjectGallerySlide() {
+      const current = Number(projectGalleryTrack?.dataset.index || 0);
+      showProjectGallerySlide(current - 1);
+    }
+
     prevReviewBtn?.addEventListener("click", () => {
       prevReview();
       restartReviewTimer();
@@ -4457,10 +4767,24 @@
       restartReviewTimer();
     });
 
+    prevProjectGalleryBtn?.addEventListener("click", () => {
+      prevProjectGallerySlide();
+    });
+
+    nextProjectGalleryBtn?.addEventListener("click", () => {
+      nextProjectGallerySlide();
+    });
+
     reviewDots.forEach((dot, index) => {
       dot.addEventListener("click", () => {
         showReview(index);
         restartReviewTimer();
+      });
+    });
+
+    projectGalleryDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        showProjectGallerySlide(index);
       });
     });
 
@@ -4503,6 +4827,7 @@
 
     showReview(0);
     restartReviewTimer();
+    showProjectGallerySlide(0);
   </script>
 
 </body>
