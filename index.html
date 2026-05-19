@@ -5194,6 +5194,66 @@
       }
     }
 
+
+
+    /* ===== FINAL REQUESTED SPACING + MOBILE ABOUT CHECKMARK FIX ===== */
+    /* Adds a little more breathing room before the footer starts. */
+    .faq-section {
+      padding-bottom: 132px !important;
+    }
+
+    @media (max-width: 950px) {
+      /* Keep the featured review lower inside the mobile hero. */
+      .hero {
+        min-height: calc(114svh - 58px) !important;
+      }
+
+      .hero-inner {
+        min-height: calc(114svh - 58px) !important;
+        padding-bottom: 76px !important;
+      }
+
+      .hero-inline-review {
+        margin-top: 58px !important;
+      }
+
+      /* About Us checkmarks: mobile only, locked to the left. */
+      .about-grid {
+        width: 100% !important;
+        justify-items: start !important;
+        align-items: start !important;
+        text-align: left !important;
+      }
+
+      .about-check {
+        width: 100% !important;
+        grid-template-columns: 20px minmax(0, 1fr) !important;
+        justify-content: start !important;
+        justify-items: start !important;
+        align-items: start !important;
+        text-align: left !important;
+      }
+
+      .about-check svg {
+        justify-self: start !important;
+        margin-left: 0 !important;
+      }
+
+      .about-check span,
+      .about-check strong {
+        text-align: left !important;
+      }
+
+      .faq-section {
+        padding-bottom: 98px !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-inline-review {
+        margin-top: 54px !important;
+      }
+    }
   </style>
 </head>
 
