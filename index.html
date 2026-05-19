@@ -4323,6 +4323,32 @@
       }
     }
 
+    /* ===== FINAL MOBILE-ONLY CTA WIDTH FIX ===== */
+    @media (max-width: 950px) {
+      .hero-copy {
+        width: 100%;
+        max-width: 100% !important;
+      }
+
+      .hero-actions {
+        width: 100% !important;
+        max-width: none !important;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions .btn {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center;
+      }
+
+      .hero-mobile-title,
+      .hero-mobile-subheadline {
+        max-width: 100% !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -4390,20 +4416,20 @@
         <div class="eyebrow">Quality Work. Fair Prices. Zero Shortcuts.</div>
 
         <h1>
-          Honest, quality<br>
-          construction that's<br>
-          <span class="accent">fair &amp; affordable.</span>
+          The last contractor<br>
+          you'll ever <span class="accent">need.</span>
         </h1>
 
         <p class="subheadline">
-          From remodels to repairs, ZH Homes delivers trusted craftsmanship and lasting results without overcharging.
-          Serving Salem, Eugene, Portland and surrounding areas depending on the job size.
+          Honest, quality construction that's fair &amp; affordable.
         </p>
 
-        <h1 class="hero-mobile-title">The last contractor you'll ever need.</h1>
+        <h1 class="hero-mobile-title">
+          The last contractor you'll ever <span class="accent">need.</span>
+        </h1>
 
         <p class="subheadline hero-mobile-subheadline">
-          Reliable remodels, repairs, and handyman work done clean, fair, and right.
+          Honest, quality construction that's fair &amp; affordable.
         </p>
 
         <div class="hero-actions">
