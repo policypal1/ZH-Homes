@@ -225,7 +225,7 @@
     }
 
     .hero-copy {
-      max-width: 600px;
+      max-width: 720px;
       padding-top: 8px;
     }
 
@@ -250,12 +250,12 @@
     }
 
     h1 {
-      font-size: clamp(48px, 5.8vw, 76px);
+      font-size: clamp(48px, 5.45vw, 76px);
       line-height: 1.02;
-      letter-spacing: -3px;
+      letter-spacing: -2.35px;
       font-weight: 750;
-      margin-bottom: 22px;
-      max-width: 650px;
+      margin-bottom: 34px;
+      max-width: 780px;
     }
 
     h1 .accent {
@@ -263,11 +263,11 @@
     }
 
     .subheadline {
-      max-width: 580px;
-      font-size: 18px;
+      max-width: 660px;
+      font-size: 19px;
       line-height: 1.6;
       color: var(--muted);
-      margin-bottom: 30px;
+      margin-bottom: 34px;
     }
 
     .subheadline strong {
@@ -414,6 +414,65 @@
       font-size: 13px;
       line-height: 1.45;
       color: rgba(255,255,255,0.56);
+    }
+
+    .hero-review-section {
+      position: relative;
+      z-index: 6;
+      background: #fff;
+      color: var(--section-text);
+      padding: 0 0 48px;
+    }
+
+    .hero-review-card {
+      width: min(920px, calc(100% - 36px));
+      margin: -42px auto 0;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 26px 30px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid rgba(35,23,18,0.08);
+      border-left: 5px solid var(--orange);
+      box-shadow: 0 24px 55px rgba(35,23,18,0.13);
+    }
+
+    .hero-review-stars {
+      color: var(--orange);
+      font-size: 16px;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .hero-review-quote {
+      color: #514842;
+      font-size: 16px;
+      line-height: 1.65;
+      font-weight: 750;
+    }
+
+    .hero-review-author {
+      display: grid;
+      gap: 3px;
+      text-align: right;
+      min-width: 130px;
+    }
+
+    .hero-review-author strong {
+      color: var(--brown);
+      font-size: 14px;
+      font-weight: 950;
+      line-height: 1.2;
+    }
+
+    .hero-review-author span {
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.65px;
     }
 
     .quick-stats {
@@ -1665,11 +1724,9 @@
     @keyframes reviewFade {
       from {
         opacity: 0;
-        transform: translateY(10px);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
       }
     }
 
@@ -3175,8 +3232,8 @@
       }
 
       .review-carousel {
-        height: auto;
-        min-height: 340px;
+        height: 410px;
+        min-height: 410px;
         padding: 26px 22px 78px;
         border-radius: 16px;
       }
@@ -3236,6 +3293,28 @@
 
       .review-dots {
         bottom: 32px;
+      }
+
+      .hero-review-section {
+        padding: 0 0 34px;
+      }
+
+      .hero-review-card {
+        width: calc(100% - 28px);
+        margin: -34px auto 0;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 22px 20px;
+        border-radius: 16px;
+      }
+
+      .hero-review-quote {
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+
+      .hero-review-author {
+        text-align: left;
       }
 
       /* ===== CONTACT — form first feel, clean spacing ===== */
@@ -4061,7 +4140,7 @@
       .hero-copy {
         position: relative;
         z-index: 3;
-        max-width: 430px;
+        max-width: 100%;
       }
 
       .hero-copy > h1:not(.hero-mobile-title),
@@ -4071,22 +4150,22 @@
 
       .hero-mobile-title {
         display: block;
-        max-width: 390px;
-        margin: 0 0 20px;
+        max-width: 430px;
+        margin: 0 0 28px;
         color: #fff;
         font-size: clamp(40px, 12vw, 58px);
-        line-height: 0.98;
-        letter-spacing: -2.2px;
+        line-height: 1;
+        letter-spacing: -1.9px;
         font-weight: 900;
       }
 
       .hero-mobile-subheadline {
         display: block;
-        max-width: 335px;
+        max-width: 390px;
         margin: 0 0 52px;
-        color: rgba(255,255,255,0.76);
-        font-size: 14.5px;
-        line-height: 1.55;
+        color: rgba(255,255,255,0.78);
+        font-size: 15px;
+        line-height: 1.58;
         font-weight: 700;
       }
 
@@ -4281,15 +4360,20 @@
       }
 
       .hero-mobile-title {
-        max-width: 350px;
+        max-width: 365px;
         font-size: clamp(39px, 12.8vw, 52px);
-        letter-spacing: -2px;
+        letter-spacing: -1.75px;
       }
 
       .hero-mobile-subheadline {
-        max-width: 310px;
+        max-width: 345px;
         margin-bottom: 50px;
-        font-size: 14px;
+        font-size: 14.5px;
+      }
+
+      .review-carousel {
+        height: 440px;
+        min-height: 440px;
       }
 
       .hero-quick-gallery-card {
@@ -4417,12 +4501,11 @@
         <div class="eyebrow">Quality Work. Fair Prices. Zero Shortcuts.</div>
 
         <h1>
-          The last contractor<br>
-          you'll ever <span class="accent">need.</span>
+          The last contractor you'll ever <span class="accent">need.</span>
         </h1>
 
         <p class="subheadline">
-          Honest, quality construction that's fair &amp; affordable.
+          Honest, quality construction that's fair, affordable, and built to last.
         </p>
 
         <h1 class="hero-mobile-title">
@@ -4430,7 +4513,7 @@
         </h1>
 
         <p class="subheadline hero-mobile-subheadline">
-          Honest, quality construction that's fair &amp; affordable.
+          Honest, quality construction that's fair, affordable, and built to last.
         </p>
 
         <div class="hero-actions">
@@ -4451,6 +4534,19 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-review-section" aria-label="Featured customer review">
+    <div class="hero-review-card">
+      <div class="hero-review-stars">★★★★★</div>
+      <p class="hero-review-quote">
+        “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.”
+      </p>
+      <div class="hero-review-author">
+        <strong>Local Client</strong>
+        <span>Project Review</span>
       </div>
     </div>
   </section>
