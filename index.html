@@ -5006,6 +5006,129 @@
       }
     }
 
+
+    /* ===== MOBILE HERO REVIEW INSIDE HERO + SMOOTHER STICKY CTA ===== */
+    .hero-inline-review {
+      display: none;
+    }
+
+    @media (max-width: 950px) {
+      .hero {
+        min-height: calc(106svh - 58px) !important;
+      }
+
+      .hero-inner {
+        min-height: calc(106svh - 58px) !important;
+        padding: clamp(116px, 15.5svh, 150px) 0 34px !important;
+        align-items: flex-start !important;
+      }
+
+      .hero-copy {
+        transform: translateY(24px) !important;
+      }
+
+      .hero-mobile-title {
+        margin-bottom: 18px !important;
+      }
+
+      .hero-mobile-subheadline {
+        margin-bottom: 30px !important;
+      }
+
+      .hero-actions {
+        margin-bottom: 0 !important;
+      }
+
+      .hero-inline-review {
+        display: block;
+        width: 100%;
+        margin: 20px auto 0;
+      }
+
+      .hero-inline-review .hero-review-card {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 440px;
+        padding: 18px 18px 17px;
+        border-radius: 20px;
+        box-shadow: 0 20px 46px rgba(0,0,0,0.30);
+      }
+
+      .hero-inline-review .hero-review-top {
+        margin-bottom: 12px;
+      }
+
+      .hero-inline-review .hero-review-badge {
+        min-height: 27px;
+        padding: 0 10px;
+        font-size: 9.5px;
+      }
+
+      .hero-inline-review .hero-review-stars {
+        font-size: 13px;
+      }
+
+      .hero-inline-review .hero-review-quote {
+        font-size: 14px;
+        line-height: 1.58;
+        margin-bottom: 15px;
+      }
+
+      .hero-inline-review .hero-review-bottom {
+        padding-top: 12px;
+      }
+
+      .hero-inline-review .hero-review-avatar {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero-review-section {
+        display: none !important;
+      }
+
+      .mobile-cta-bar {
+        display: grid;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(22px);
+        pointer-events: none;
+        transition:
+          opacity 0.48s ease,
+          transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+          visibility 0s linear 0.48s;
+        will-change: opacity, transform;
+      }
+
+      body.hero-cta-visible .mobile-cta-bar {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+        transition:
+          opacity 0.48s ease,
+          transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+          visibility 0s;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-inline-review .hero-review-card {
+        max-width: 100%;
+        padding: 17px 16px 16px;
+      }
+
+      .hero-inline-review .hero-review-top {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero-inline-review .hero-review-quote {
+        font-size: 13.5px;
+      }
+    }
+
   </style>
 </head>
 
@@ -5091,6 +5214,27 @@
         <div class="hero-actions">
           <a href="tel:5038849153" class="btn btn-primary">Call (503) 884-9153</a>
           <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+        </div>
+
+        <div class="hero-inline-review" aria-label="Featured customer review">
+          <div class="hero-review-card">
+            <div class="hero-review-top">
+              <span class="hero-review-badge">Featured Review</span>
+              <div class="hero-review-stars">★★★★★</div>
+            </div>
+
+            <p class="hero-review-quote">
+              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.”
+            </p>
+
+            <div class="hero-review-bottom">
+              <div class="hero-review-avatar">ZH</div>
+              <div class="hero-review-author">
+                <strong>Local Client</strong>
+                <span>Project Review</span>
+              </div>
+            </div>
+          </div>
         </div>
 
 
@@ -6050,6 +6194,7 @@
 
 
     const mobileHeroSection = document.querySelector(".hero");
+    const mobileAboutSection = document.querySelector(".about-section");
     const mobileCtaBar = document.querySelector(".mobile-cta-bar");
     const mobileCtaQuery = window.matchMedia("(max-width: 950px)");
     let mobileCtaTicking = false;
@@ -6062,11 +6207,11 @@
         return;
       }
 
-      const heroBottom = mobileHeroSection.getBoundingClientRect().bottom;
-      const ctaHeight = mobileCtaBar.offsetHeight || 76;
-      const ctaTopWhenFixed = window.innerHeight - ctaHeight - 12;
+      const aboutTop = mobileAboutSection?.getBoundingClientRect().top;
+      const aboutIsEntering = typeof aboutTop === "number" && aboutTop <= window.innerHeight * 0.92;
+      const heroHasCleared = mobileHeroSection.getBoundingClientRect().bottom <= window.innerHeight * 0.92;
 
-      document.body.classList.toggle("hero-cta-visible", heroBottom <= ctaTopWhenFixed);
+      document.body.classList.toggle("hero-cta-visible", aboutIsEntering || heroHasCleared);
     }
 
     function requestMobileCtaUpdate() {
