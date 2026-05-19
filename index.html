@@ -4434,6 +4434,119 @@
       }
     }
 
+
+
+    /* ===== FINAL POLISH: mobile review, CTA image cover, contact bullets ===== */
+    .project-cta-image {
+      background:
+        linear-gradient(135deg, rgba(6,7,8,0.16), rgba(6,7,8,0.00)),
+        url("20251222_142814.jpg") center center / cover no-repeat,
+        #171310 !important;
+    }
+
+    .contact-info-list {
+      gap: 12px;
+    }
+
+    .contact-info-item {
+      position: relative;
+      display: block;
+      padding-left: 19px;
+    }
+
+    .contact-info-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 5px rgba(243,112,33,0.12);
+    }
+
+    .contact-info-icon,
+    .contact-info-item span {
+      display: none !important;
+    }
+
+    .contact-info-item strong {
+      color: rgba(255,255,255,0.92);
+      font-size: 15px;
+      line-height: 1.45;
+      font-weight: 850;
+    }
+
+    .hero-review-section {
+      display: none;
+    }
+
+    @media (max-width: 950px) {
+      .hero-mobile-title {
+        margin-bottom: 14px !important;
+      }
+
+      .hero-mobile-subheadline {
+        margin-bottom: 46px !important;
+      }
+
+      .hero-review-section {
+        display: block;
+        background: #fff;
+        padding: 30px 0 42px;
+      }
+
+      .hero-review-card {
+        width: calc(100% - 28px);
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 24px 22px 22px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #11100e 0%, #1d1713 100%);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-left: 0;
+        box-shadow: 0 22px 46px rgba(35,23,18,0.22);
+        overflow: hidden;
+      }
+
+      .hero-review-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 4px;
+        background: var(--orange);
+      }
+
+      .hero-review-stars {
+        font-size: 14px;
+        letter-spacing: 2px;
+      }
+
+      .hero-review-quote {
+        color: rgba(255,255,255,0.88);
+        font-size: 15px;
+        line-height: 1.62;
+        font-weight: 750;
+      }
+
+      .hero-review-author {
+        text-align: left;
+        min-width: 0;
+      }
+
+      .hero-review-author strong {
+        color: #fff;
+      }
+
+      .hero-review-author span {
+        color: var(--orange);
+      }
+    }
+
   </style>
 </head>
 
