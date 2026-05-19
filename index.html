@@ -4953,40 +4953,50 @@
 
 
 
-    /* ===== MOBILE HERO LOWERING + CTA FADE-IN OVERRIDE ===== */
+    /* ===== MOBILE HERO LOWERING + CTA VISIBILITY FIX ===== */
     @media (max-width: 950px) {
       .hero {
-        min-height: calc(100svh - 88px) !important;
+        min-height: calc(100svh - 58px) !important;
       }
 
       .hero-inner {
-        min-height: calc(100svh - 88px) !important;
-        padding: clamp(78px, 10svh, 104px) 0 42px !important;
+        min-height: calc(100svh - 58px) !important;
+        padding: clamp(96px, 13svh, 128px) 0 48px !important;
         align-items: flex-start !important;
       }
 
       .hero-copy {
-        transform: translateY(10px);
+        transform: translateY(18px);
       }
 
       .hero-mobile-title {
-        margin-bottom: 16px !important;
+        margin-bottom: 18px !important;
       }
 
       .hero-mobile-subheadline {
-        margin-bottom: 0 !important;
+        margin-bottom: 28px !important;
       }
 
       .hero-actions {
-        display: none !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .hero-actions .btn {
+        width: 100% !important;
+        min-height: 56px !important;
+        justify-content: center !important;
       }
 
       .mobile-cta-bar {
         display: grid;
         opacity: 0;
-        transform: translateY(22px);
+        transform: translateY(18px);
         pointer-events: none;
-        transition: opacity 0.32s ease, transform 0.32s ease;
+        transition: opacity 0.22s ease, transform 0.22s ease;
       }
 
       body.hero-cta-visible .mobile-cta-bar {
