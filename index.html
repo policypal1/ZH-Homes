@@ -1077,9 +1077,9 @@
     }
 
     .mission-stat strong {
-      font-size: clamp(28px, 3.4vw, 42px);
-      line-height: 1;
-      letter-spacing: -1.3px;
+      font-size: clamp(23px, 2.3vw, 32px);
+      line-height: 1.02;
+      letter-spacing: -0.9px;
       color: var(--orange);
       margin-bottom: 10px;
       white-space: nowrap;
@@ -3625,11 +3625,11 @@
         display: block;
       }
 
-      /* About mobile order: headline, photos, bullets, CTA. */
+      /* About mobile order: headline, subheadline, photos, bullets, CTA. */
       .about-inner {
         display: flex;
         flex-direction: column;
-        gap: 28px;
+        gap: 24px;
       }
 
       .about-content {
@@ -3638,34 +3638,46 @@
 
       .about-content .section-eyebrow {
         order: 1;
-        margin-bottom: -8px;
+        margin-bottom: -10px;
       }
 
       .about-content h2 {
         order: 2;
-        margin-bottom: 0;
+        margin-bottom: -8px;
+      }
+
+      .about-content p {
+        display: none;
+      }
+
+      .about-content p:first-of-type {
+        order: 3;
+        display: block;
+        color: var(--section-muted);
+        font-size: 15px;
+        line-height: 1.68;
+        margin: 0;
       }
 
       .about-media {
-        order: 3;
+        order: 4;
         width: calc(100% + 28px);
         margin-left: -14px;
         margin-right: -14px;
       }
 
-      .about-content p,
       .license-note,
       .floating-badge {
         display: none;
       }
 
       .about-grid {
-        order: 4;
+        order: 5;
         margin: 0;
       }
 
       .about-bottom {
-        order: 5;
+        order: 6;
         width: 100%;
         margin-top: 0;
       }
@@ -5116,17 +5128,11 @@
       <div class="about-content">
         <div class="section-eyebrow">About Us</div>
 
-        <h2>Reliable construction, remodels, and repairs without the runaround.</h2>
+        <h2>One crew for the jobs that do not fit the box.</h2>
 
         <p>
-          We help homeowners, landlords, realtors, and property managers take care of the projects that are hard to pin down.
-          That could be a small remodel, a rental turnover, a repair list, a property cleanup item, or a custom fix that needs
-          someone practical enough to figure it out and get it done.
-        </p>
-
-        <p>
-          Send a few photos or videos, explain what needs attention, and we can help you get a clear next step without making
-          the process feel bigger than it needs to be.
+          We help homeowners, landlords, realtors, and property managers take care of projects that are hard to pin down.
+          That could be a remodel, a rental turnover, a repair list, a property cleanup, or a custom fix that needs to get handled right.
         </p>
 
         <div class="about-grid">
@@ -5171,7 +5177,7 @@
       <div class="services-top">
         <div class="services-heading">
           <div class="services-eyebrow">Our Services</div>
-          <h2>Practical help for remodels, repairs, and property work.</h2>
+          <h2>Remodels, repairs, and property work handled right.</h2>
         </div>
 
         <a href="#contact" class="services-btn">
@@ -5203,7 +5209,7 @@
           <div class="service-content">
             <div>
               <h3>Construction Projects</h3>
-              <p>Need something built, repaired, or finished? We help with practical construction work, small changes, and unfinished details that need a clean, solid result.</p>
+              <p>Need something built, repaired, or finished? We can look at what needs to change, lay out a clear plan, and get the work completed with a clean, solid result.</p>
             </div>
             <a href="#contact" class="service-link">Learn More</a>
           </div>
@@ -5258,8 +5264,8 @@
           </div>
           <div class="service-content">
             <div>
-              <h3>Custom Jobs</h3>
-              <p>Not every project fits a normal category. Send photos, explain what is going on, and we can help figure out the best way to handle it.</p>
+              <h3>Custom Projects</h3>
+              <p>Not every project fits a normal category. If the work is unusual, mixed, or hard to explain, we can take a look and help get it handled.</p>
             </div>
             <a href="#contact" class="service-link">Learn More</a>
           </div>
@@ -5273,7 +5279,7 @@
       <div class="mission-top">
         <div class="mission-title">
           <div class="mission-eyebrow">Why People Call Us</div>
-          <h2>Practical help when the job is not simple.</h2>
+          <h2>For projects with more than one moving piece.</h2>
         </div>
 
         <div class="mission-image-box">
@@ -5283,8 +5289,8 @@
 
       <div class="mission-strip">
         <div class="mission-stat">
-          <strong>Hands-On</strong>
-          <span>Hands-on work from first look to final cleanup</span>
+          <strong>Many Job Types</strong>
+          <span>Remodels, repairs, turnovers, updates, and custom fixes</span>
         </div>
 
         <div class="mission-stat">
@@ -5294,12 +5300,12 @@
 
         <div class="mission-stat">
           <strong>Fair Pricing</strong>
-          <span>Fair numbers without the confusing runaround</span>
+          <span>Clear numbers before work starts</span>
         </div>
 
         <div class="mission-stat">
-          <strong>Flexible Work</strong>
-          <span>Useful for punch lists, rentals, updates, and odd jobs</span>
+          <strong>Clean Finish</strong>
+          <span>The small details get handled so the work feels complete</span>
         </div>
       </div>
     </div>
@@ -5580,7 +5586,7 @@
       <div class="testimonials-left">
         <div class="testimonials-eyebrow">Testimonials</div>
         <h2>What people are saying.</h2>
-        <p class="testimonials-mobile-subheadline">Straight communication, clean work, and practical help for projects that need to get finished.</p>
+        <p class="testimonials-mobile-subheadline">Straight communication, clean work, and real help for projects that need to get finished.</p>
       </div>
 
       <div class="review-carousel" id="reviewCarousel">
