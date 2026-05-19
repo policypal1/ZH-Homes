@@ -4547,6 +4547,294 @@
       }
     }
 
+
+    /* ===== FINAL MOBILE POLISH OVERRIDES ===== */
+    .service-area-inner {
+      grid-template-rows: auto auto;
+      align-items: center;
+    }
+
+    .service-area-inner > .area-content {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .service-area-inner > .map-card {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .service-area-inner > .area-list {
+      grid-column: 1;
+      grid-row: 2;
+      align-self: start;
+      margin-top: -26px;
+    }
+
+    .contact-info-list {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .contact-info-item {
+      position: relative !important;
+      display: block !important;
+      padding: 0 0 0 20px !important;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+
+    .contact-info-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 0 5px rgba(243,112,33,0.12);
+    }
+
+    .contact-info-icon,
+    .contact-info-item span {
+      display: none !important;
+    }
+
+    .contact-info-item strong {
+      color: rgba(255,255,255,0.94) !important;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 850;
+    }
+
+    .hero-review-section {
+      display: none;
+    }
+
+    @media (max-width: 950px) {
+      .hero-copy {
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-copy .eyebrow {
+        justify-content: center;
+      }
+
+      .hero-copy .eyebrow::before {
+        display: none;
+      }
+
+      .hero-mobile-title,
+      .hero-copy h1 {
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-mobile-subheadline,
+      .hero-copy .subheadline {
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 92%;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-mobile-collage {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .hero-review-section {
+        display: block !important;
+        background: #fff;
+        padding: 34px 0 46px !important;
+      }
+
+      .hero-review-card {
+        position: relative;
+        width: calc(100% - 28px);
+        margin: 0 auto;
+        display: block;
+        padding: 23px 21px 22px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at 14% 0%, rgba(243,112,33,0.22), transparent 34%),
+          linear-gradient(145deg, #0a0c0e 0%, #17110e 62%, #0b0d0f 100%);
+        border: 1px solid rgba(255,255,255,0.10);
+        border-left: 0;
+        box-shadow: 0 24px 54px rgba(35,23,18,0.26);
+        overflow: hidden;
+        color: #fff;
+      }
+
+      .hero-review-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.00) 42%),
+          linear-gradient(90deg, var(--orange), transparent 42%);
+        opacity: 0.42;
+        pointer-events: none;
+      }
+
+      .hero-review-card::after {
+        content: "\201C";
+        position: absolute;
+        right: 18px;
+        top: 40px;
+        color: rgba(243,112,33,0.18);
+        font-size: 110px;
+        line-height: 1;
+        font-weight: 950;
+        pointer-events: none;
+      }
+
+      .hero-review-top,
+      .hero-review-quote,
+      .hero-review-bottom {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-review-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .hero-review-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.84);
+        font-size: 10px;
+        line-height: 1;
+        font-weight: 950;
+        letter-spacing: 0.75px;
+        text-transform: uppercase;
+      }
+
+      .hero-review-stars {
+        color: var(--orange);
+        font-size: 14px;
+        letter-spacing: 1.7px;
+        white-space: nowrap;
+      }
+
+      .hero-review-quote {
+        color: rgba(255,255,255,0.92);
+        font-size: 16px;
+        line-height: 1.72;
+        letter-spacing: -0.15px;
+        font-weight: 750;
+        margin: 0 0 21px;
+      }
+
+      .hero-review-bottom {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255,255,255,0.10);
+      }
+
+      .hero-review-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--orange);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 950;
+        letter-spacing: 0.4px;
+        flex: 0 0 auto;
+        box-shadow: 0 12px 24px rgba(243,112,33,0.20);
+      }
+
+      .hero-review-author {
+        display: grid;
+        gap: 3px;
+        text-align: left !important;
+        min-width: 0;
+      }
+
+      .hero-review-author strong {
+        color: #fff;
+        font-size: 14px;
+        line-height: 1.2;
+        font-weight: 950;
+      }
+
+      .hero-review-author span {
+        color: rgba(255,255,255,0.58);
+        font-size: 10.5px;
+        line-height: 1.2;
+        font-weight: 900;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+
+      .service-area-inner {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto auto auto;
+        gap: 24px !important;
+      }
+
+      .service-area-inner > .area-content {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .service-area-inner > .map-card {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 2px;
+      }
+
+      .service-area-inner > .area-list {
+        grid-column: 1;
+        grid-row: 3;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-review-card {
+        padding: 22px 18px 20px;
+        border-radius: 22px;
+      }
+
+      .hero-review-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-review-quote {
+        font-size: 15px;
+        line-height: 1.68;
+      }
+    }
+
   </style>
 </head>
 
@@ -4653,13 +4941,21 @@
 
   <section class="hero-review-section" aria-label="Featured customer review">
     <div class="hero-review-card">
-      <div class="hero-review-stars">★★★★★</div>
+      <div class="hero-review-top">
+        <span class="hero-review-badge">Featured Review</span>
+        <div class="hero-review-stars">★★★★★</div>
+      </div>
+
       <p class="hero-review-quote">
         “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.”
       </p>
-      <div class="hero-review-author">
-        <strong>Local Client</strong>
-        <span>Project Review</span>
+
+      <div class="hero-review-bottom">
+        <div class="hero-review-avatar">ZH</div>
+        <div class="hero-review-author">
+          <strong>Local Client</strong>
+          <span>Project Review</span>
+        </div>
       </div>
     </div>
   </section>
@@ -5158,16 +5454,6 @@
           Smaller work is usually closer to Salem. Larger projects may have a wider service range.
         </p>
 
-        <div class="area-list">
-          <div class="area-pill">Salem</div>
-          <div class="area-pill">Keizer</div>
-          <div class="area-pill">Portland Area</div>
-          <div class="area-pill">Eugene Area</div>
-          <div class="area-pill">Dallas</div>
-          <div class="area-pill">Grand Ronde</div>
-          <div class="area-pill">Mill City</div>
-          <div class="area-pill">Nearby Areas</div>
-        </div>
       </div>
 
       <div class="map-card">
@@ -5186,6 +5472,17 @@
           <strong>Coverage depends on the project.</strong>
           <span>Most work stays around Salem and nearby communities, with larger jobs reaching farther throughout the area.</span>
         </div>
+      </div>
+
+      <div class="area-list">
+        <div class="area-pill">Salem</div>
+        <div class="area-pill">Keizer</div>
+        <div class="area-pill">Portland Area</div>
+        <div class="area-pill">Eugene Area</div>
+        <div class="area-pill">Dallas</div>
+        <div class="area-pill">Grand Ronde</div>
+        <div class="area-pill">Mill City</div>
+        <div class="area-pill">Nearby Areas</div>
       </div>
     </div>
   </section>
