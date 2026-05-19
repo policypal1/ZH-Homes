@@ -4951,6 +4951,51 @@
       color: var(--orange) !important;
     }
 
+
+
+    /* ===== MOBILE HERO LOWERING + CTA FADE-IN OVERRIDE ===== */
+    @media (max-width: 950px) {
+      .hero {
+        min-height: calc(100svh - 88px) !important;
+      }
+
+      .hero-inner {
+        min-height: calc(100svh - 88px) !important;
+        padding: clamp(78px, 10svh, 104px) 0 42px !important;
+        align-items: flex-start !important;
+      }
+
+      .hero-copy {
+        transform: translateY(10px);
+      }
+
+      .hero-mobile-title {
+        margin-bottom: 16px !important;
+      }
+
+      .hero-mobile-subheadline {
+        margin-bottom: 0 !important;
+      }
+
+      .hero-actions {
+        display: none !important;
+      }
+
+      .mobile-cta-bar {
+        display: grid;
+        opacity: 0;
+        transform: translateY(22px);
+        pointer-events: none;
+        transition: opacity 0.32s ease, transform 0.32s ease;
+      }
+
+      body.hero-cta-visible .mobile-cta-bar {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    }
+
   </style>
 </head>
 
@@ -5992,6 +6037,38 @@
         projectPhoto.focus();
       }
     });
+
+
+    const mobileHeroSection = document.querySelector(".hero");
+    const mobileCtaBar = document.querySelector(".mobile-cta-bar");
+    const mobileCtaQuery = window.matchMedia("(max-width: 950px)");
+    let mobileCtaTicking = false;
+
+    function updateMobileCtaVisibility() {
+      mobileCtaTicking = false;
+
+      if (!mobileHeroSection || !mobileCtaBar || !mobileCtaQuery.matches) {
+        document.body.classList.remove("hero-cta-visible");
+        return;
+      }
+
+      const heroBottom = mobileHeroSection.getBoundingClientRect().bottom;
+      const ctaHeight = mobileCtaBar.offsetHeight || 76;
+      const ctaTopWhenFixed = window.innerHeight - ctaHeight - 12;
+
+      document.body.classList.toggle("hero-cta-visible", heroBottom <= ctaTopWhenFixed);
+    }
+
+    function requestMobileCtaUpdate() {
+      if (mobileCtaTicking) return;
+      mobileCtaTicking = true;
+      window.requestAnimationFrame(updateMobileCtaVisibility);
+    }
+
+    window.addEventListener("scroll", requestMobileCtaUpdate, { passive: true });
+    window.addEventListener("resize", requestMobileCtaUpdate);
+    mobileCtaQuery.addEventListener?.("change", requestMobileCtaUpdate);
+    updateMobileCtaVisibility();
 
     showReview(0);
     restartReviewTimer();
