@@ -1077,11 +1077,12 @@
     }
 
     .mission-stat strong {
-      font-size: clamp(30px, 4vw, 48px);
+      font-size: clamp(28px, 3.4vw, 42px);
       line-height: 1;
-      letter-spacing: -1.6px;
-      color: var(--brown);
+      letter-spacing: -1.3px;
+      color: var(--orange);
       margin-bottom: 10px;
+      white-space: nowrap;
     }
 
     .mission-stat span {
@@ -1298,14 +1299,7 @@
     }
 
     .process-steps::before {
-      content: "";
-      position: absolute;
-      left: 12%;
-      right: 12%;
-      top: 46px;
-      height: 2px;
-      background: rgba(243,112,33,0.18);
-      z-index: 0;
+      display: none;
     }
 
     .process-card {
@@ -1417,8 +1411,8 @@
     .project-cta-copy {
       width: 100%;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 8px 22px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
       align-items: center;
     }
 
@@ -2094,6 +2088,44 @@
       color: #ffb1b1;
       font-size: 12px;
       font-weight: 800;
+    }
+
+    .selected-file-row {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: rgba(255,255,255,0.82);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .selected-file-row[hidden] {
+      display: none;
+    }
+
+    .selected-file-row button {
+      width: 26px;
+      height: 26px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.10);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .selected-file-row button:hover {
+      background: var(--orange);
     }
 
     .submit-btn {
@@ -2936,9 +2968,10 @@
       }
 
       .mission-stat strong {
-        font-size: 26px;
-        letter-spacing: -1px;
+        font-size: 21px;
+        letter-spacing: -0.7px;
         margin-bottom: 6px;
+        white-space: nowrap;
       }
 
       .mission-stat span {
@@ -4977,7 +5010,7 @@
         </h1>
 
         <p class="subheadline">
-          Honest, quality construction that's fair, affordable, and built to last.
+          Honest, quality construction that stays fair, affordable, and built to hold up long after the job is finished.
         </p>
 
         <h1 class="hero-mobile-title">
@@ -4985,7 +5018,7 @@
         </h1>
 
         <p class="subheadline hero-mobile-subheadline">
-          Honest, quality construction that's fair, affordable, and built to last.
+          Honest, quality construction that stays fair, affordable, and built to hold up long after the job is finished.
         </p>
 
         <div class="hero-actions">
@@ -5036,28 +5069,28 @@
       <div class="stat-box">
         <div>
           <strong>CCB</strong>
-          <span>#260679 Oregon Contractor</span>
+          <span>Oregon CCB #260679</span>
         </div>
       </div>
 
       <div class="stat-box">
         <div>
           <strong>Clear</strong>
-          <span>Estimates Available</span>
+          <span>Straightforward Estimates</span>
         </div>
       </div>
 
       <div class="stat-box">
         <div>
           <strong>Hands-On</strong>
-          <span>Small Crew Approach</span>
+          <span>Owner-Led Small Crew</span>
         </div>
       </div>
 
       <div class="stat-box">
         <div>
           <strong>Local</strong>
-          <span>Salem &amp; Nearby Oregon Areas</span>
+          <span>Salem &amp; Nearby Areas</span>
         </div>
       </div>
     </div>
@@ -5083,18 +5116,17 @@
       <div class="about-content">
         <div class="section-eyebrow">About Us</div>
 
-        <h2>One crew for the jobs that do not fit in one box.</h2>
-
-        <p class="about-kicker">Practical project help for homes, rentals, and properties.</p>
+        <h2>Reliable construction, remodels, and repairs without the runaround.</h2>
 
         <p>
-          We help homeowners, landlords, realtors, and property managers handle the work that piles up fast:
-          rental turnover fixes, punch-list items, small remodels, odd jobs, and the construction details that need
-          someone who can figure it out and get it done.
+          We help homeowners, landlords, realtors, and property managers take care of the projects that are hard to pin down.
+          That could be a small remodel, a rental turnover, a repair list, a property cleanup item, or a custom fix that needs
+          someone practical enough to figure it out and get it done.
         </p>
 
         <p>
-          The goal is simple: make the project feel clear, fair, and handled from start to finish.
+          Send a few photos or videos, explain what needs attention, and we can help you get a clear next step without making
+          the process feel bigger than it needs to be.
         </p>
 
         <div class="about-grid">
@@ -5102,21 +5134,21 @@
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Small crew with hands-on work</span>
+            <span>Hands-on work from a small crew</span>
           </div>
 
           <div class="about-check">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Photos and videos help speed up estimates</span>
+            <span>Photos and videos can speed up estimates</span>
           </div>
 
           <div class="about-check">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Homes, rentals, and property projects</span>
+            <span>Help for homes, rentals, and property projects</span>
           </div>
 
           <div class="about-check">
@@ -5129,11 +5161,6 @@
 
         <div class="about-bottom">
           <a href="#contact" class="about-cta">Talk Through Your Project</a>
-
-          <div class="license-note">
-            <strong>Small</strong>
-            <span>Hands-On Crew</span>
-          </div>
         </div>
       </div>
     </div>
@@ -5144,7 +5171,7 @@
       <div class="services-top">
         <div class="services-heading">
           <div class="services-eyebrow">Our Services</div>
-          <h2>Help for the projects that need to get handled.</h2>
+          <h2>Practical help for remodels, repairs, and property work.</h2>
         </div>
 
         <a href="#contact" class="services-btn">
@@ -5176,7 +5203,7 @@
           <div class="service-content">
             <div>
               <h3>Construction Projects</h3>
-              <p>Need something built, changed, repaired, or finished? We can look at the job, talk through what makes sense, and handle the work.</p>
+              <p>Need something built, repaired, or finished? We help with practical construction work, small changes, and unfinished details that need a clean, solid result.</p>
             </div>
             <a href="#contact" class="service-link">Learn More</a>
           </div>
@@ -5204,7 +5231,7 @@
           <div class="service-content">
             <div>
               <h3>Rental Turnovers</h3>
-              <p>Repairs, touch-ups, and small updates that help rentals show better and get ready faster between tenants.</p>
+              <p>Rental turnover repairs, touch-ups, and small updates that help the space show better and get ready faster between tenants.</p>
             </div>
             <a href="#contact" class="service-link">Learn More</a>
           </div>
@@ -5232,7 +5259,7 @@
           <div class="service-content">
             <div>
               <h3>Custom Jobs</h3>
-              <p>Not every project fits a normal category. Send photos, explain what is going on, and we will point you in the right direction.</p>
+              <p>Not every project fits a normal category. Send photos, explain what is going on, and we can help figure out the best way to handle it.</p>
             </div>
             <a href="#contact" class="service-link">Learn More</a>
           </div>
@@ -5246,7 +5273,7 @@
       <div class="mission-top">
         <div class="mission-title">
           <div class="mission-eyebrow">Why People Call Us</div>
-          <h2>One call can cover a lot of different jobs.</h2>
+          <h2>Practical help when the job is not simple.</h2>
         </div>
 
         <div class="mission-image-box">
@@ -5257,22 +5284,22 @@
       <div class="mission-strip">
         <div class="mission-stat">
           <strong>Hands-On</strong>
-          <span>Small crew approach from start to finish</span>
+          <span>Hands-on work from first look to final cleanup</span>
         </div>
 
         <div class="mission-stat">
           <strong>Straight Talk</strong>
-          <span>Clear next steps before work starts</span>
+          <span>Clear answers before the job gets started</span>
         </div>
 
         <div class="mission-stat">
           <strong>Fair Pricing</strong>
-          <span>No confusing runaround or surprise pressure</span>
+          <span>Fair numbers without the confusing runaround</span>
         </div>
 
         <div class="mission-stat">
-          <strong>Flexible</strong>
-          <span>Useful for punch lists, rentals, odd jobs, and updates</span>
+          <strong>Flexible Work</strong>
+          <span>Useful for punch lists, rentals, updates, and odd jobs</span>
         </div>
       </div>
     </div>
@@ -5282,7 +5309,7 @@
     <div class="gallery-inner">
       <div class="gallery-top">
         <div class="gallery-eyebrow">Project Gallery</div>
-        <h2>Recent jobs and project details.</h2>
+        <h2>Recent job and project work.</h2>
         <p>A quick look at real work, from interior updates and repairs to rental prep and custom fixes.</p>
       </div>
 
@@ -5295,9 +5322,9 @@
         </div>
 
         <div class="gallery-item large">
-          <img src="2026-05-13 (3).jpg" alt="Exterior repair and improvement project" loading="lazy" decoding="async">
+          <img src="2026-05-13 (3).jpg" alt="Exterior upgrade project" loading="lazy" decoding="async">
           <div class="gallery-label">
-            <strong>Exterior Repairs</strong>
+            <strong>Exterior Upgrades</strong>
           </div>
         </div>
 
@@ -5330,9 +5357,9 @@
         </div>
 
         <div class="gallery-item">
-          <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring and finish repair detail" loading="lazy" decoding="async">
+          <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring work" loading="lazy" decoding="async">
           <div class="gallery-label">
-            <strong>Flooring Detail</strong>
+            <strong>Flooring Work</strong>
           </div>
         </div>
       </div>
@@ -5343,8 +5370,8 @@
             <article class="gallery-mobile-slide">
               <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
-                  <img src="2026-05-13 (3).jpg" alt="Exterior repair project" loading="lazy" decoding="async">
-                  <span class="gallery-mobile-pill">Exterior Repairs</span>
+                  <img src="2026-05-13 (3).jpg" alt="Exterior upgrade project" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Exterior Upgrades</span>
                 </div>
               </div>
             </article>
@@ -5379,8 +5406,8 @@
             <article class="gallery-mobile-slide">
               <div class="gallery-mobile-single">
                 <div class="gallery-mobile-mini">
-                  <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring and finish repair detail" loading="lazy" decoding="async">
-                  <span class="gallery-mobile-pill">Flooring Detail</span>
+                  <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring work" loading="lazy" decoding="async">
+                  <span class="gallery-mobile-pill">Flooring Work</span>
                 </div>
               </div>
             </article>
@@ -5498,12 +5525,6 @@
         <div class="project-cta-copy">
           <strong>Need help with your project?</strong>
           <span>Call or text to talk through the job and get a clear next step.</span>
-          <a href="tel:5038849153" class="project-cta-button" aria-label="Call now">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-            Call Now
-          </a>
         </div>
       </div>
 
@@ -5517,8 +5538,8 @@
         <div class="area-eyebrow">Service Area</div>
         <h2>Serving Salem and surrounding Oregon communities.</h2>
         <p>
-          Projects are taken throughout the Willamette Valley depending on the type and size of the job.
-          Smaller work is usually closer to Salem. Larger projects may have a wider service range.
+          Projects are taken throughout Salem and nearby Oregon communities, with service range depending on the type and size of the job.
+          Smaller work usually stays closer to Salem. Larger projects may reach farther into the Willamette Valley.
         </p>
 
       </div>
@@ -5559,7 +5580,7 @@
       <div class="testimonials-left">
         <div class="testimonials-eyebrow">Testimonials</div>
         <h2>What people are saying.</h2>
-        <p class="testimonials-mobile-subheadline">Straight communication, clean work, and help for jobs that need to get handled.</p>
+        <p class="testimonials-mobile-subheadline">Straight communication, clean work, and practical help for projects that need to get finished.</p>
       </div>
 
       <div class="review-carousel" id="reviewCarousel">
@@ -5634,7 +5655,7 @@
         <div class="contact-eyebrow">Contact Us</div>
         <h2>Have a question? Get in touch.</h2>
         <p>
-          Tell us what is going on. A few photos, a short description, and the best way to reach you is usually enough to start.
+          Tell us what is going on. A short description, a few photos, and the best way to reach you is usually enough to start.
         </p>
 
         <ul class="contact-info-list" aria-label="Main contact information">
@@ -5650,7 +5671,7 @@
         </ul>
 
         <div class="social-row">
-          <span>Follow:</span>
+          <span>Follow us:</span>
           <div class="social-dot">F</div>
           <div class="social-dot">IG</div>
           <div class="social-dot">G</div>
@@ -5660,7 +5681,7 @@
       <div class="contact-form-card">
         <h3>Get a quote</h3>
         <p>
-          Fill this out with the basics. You can upload a project photo so we can understand the job faster.
+          Fill this out with the basics. You can upload project photos so we can understand the job faster.
         </p>
 
         <form class="quote-form" id="quoteForm" enctype="multipart/form-data">
@@ -5702,7 +5723,11 @@
           <div class="field">
             <label for="projectPhoto">Upload Image</label>
             <input id="projectPhoto" name="projectPhoto" type="file" accept="image/*">
-            <span class="field-note">Optional. Image uploads should stay under 10MB.</span>
+            <div class="selected-file-row" id="selectedFileRow" hidden>
+              <span id="selectedFileName"></span>
+              <button type="button" id="clearProjectPhoto" aria-label="Remove uploaded image">×</button>
+            </div>
+            <span class="field-note">Image uploads should stay under 10MB.</span>
             <span class="file-error" id="fileError">Please upload an image that is 10MB or smaller.</span>
           </div>
 
@@ -5730,12 +5755,12 @@
 
         <details class="faq-item">
           <summary>What areas do you serve?</summary>
-          <p>Most work is based around Salem and nearby areas including Keizer, Dallas, Portland, Eugene, Grand Ronde, Mill City, and surrounding communities depending on job size.</p>
+          <p>Most work is around Salem and nearby communities. Larger projects can reach farther into the Willamette Valley depending on scope and schedule.</p>
         </details>
 
         <details class="faq-item">
           <summary>What kind of work do you take on?</summary>
-          <p>The best fit is usually small remodels, repairs, punch lists, rental turnover work, interior updates, and odd jobs that need someone practical.</p>
+          <p>The best fit is usually small remodels, repairs, punch-list work, rental turnover items, interior updates, exterior upgrades, and custom jobs that do not fit neatly into one category.</p>
         </details>
 
         <details class="faq-item">
@@ -5824,6 +5849,9 @@
     const quoteForm = document.getElementById("quoteForm");
     const projectPhoto = document.getElementById("projectPhoto");
     const fileError = document.getElementById("fileError");
+    const selectedFileRow = document.getElementById("selectedFileRow");
+    const selectedFileName = document.getElementById("selectedFileName");
+    const clearProjectPhoto = document.getElementById("clearProjectPhoto");
     const projectGalleryMobile = document.getElementById("projectGalleryMobile");
     const projectGalleryTrack = projectGalleryMobile?.querySelector(".gallery-mobile-track");
     const projectGallerySlides = Array.from(document.querySelectorAll(".gallery-mobile-slide"));
@@ -5918,24 +5946,36 @@
       restartReviewTimer();
     });
 
+    function clearSelectedProjectPhoto() {
+      if (!projectPhoto) return;
+      projectPhoto.value = "";
+      projectPhoto.setCustomValidity("");
+      if (fileError) fileError.style.display = "none";
+      if (selectedFileName) selectedFileName.textContent = "";
+      if (selectedFileRow) selectedFileRow.hidden = true;
+    }
+
     projectPhoto?.addEventListener("change", () => {
       const file = projectPhoto.files?.[0];
 
       if (!file) {
-        fileError.style.display = "none";
-        projectPhoto.setCustomValidity("");
+        clearSelectedProjectPhoto();
         return;
       }
 
       if (file.size > 10 * 1024 * 1024) {
         fileError.style.display = "block";
-        projectPhoto.value = "";
+        clearSelectedProjectPhoto();
         projectPhoto.setCustomValidity("Please upload an image that is 10MB or smaller.");
       } else {
         fileError.style.display = "none";
         projectPhoto.setCustomValidity("");
+        if (selectedFileName) selectedFileName.textContent = file.name;
+        if (selectedFileRow) selectedFileRow.hidden = false;
       }
     });
+
+    clearProjectPhoto?.addEventListener("click", clearSelectedProjectPhoto);
 
     quoteForm?.addEventListener("submit", (event) => {
       const file = projectPhoto?.files?.[0];
