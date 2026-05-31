@@ -2488,6 +2488,97 @@
       background: var(--orange);
     }
 
+
+    .needs-photo-marker {
+      position: relative;
+    }
+
+    .needs-photo-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: rgba(255,255,255,0.66);
+      backdrop-filter: blur(1.5px);
+      text-align: center;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .needs-photo-message {
+      width: min(250px, calc(100% - 14px));
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(35,23,18,0.10);
+      box-shadow: 0 14px 30px rgba(35,23,18,0.12);
+      color: var(--brown);
+    }
+
+    .needs-photo-message strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--brown);
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 950;
+      letter-spacing: -0.2px;
+    }
+
+    .needs-photo-view-btn {
+      min-height: 32px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(243,112,33,0.18);
+      transition: 0.2s ease;
+    }
+
+    .needs-photo-view-btn:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .needs-photo-marker.photo-overlay-hidden .needs-photo-overlay {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .service-image.needs-photo-marker .service-number,
+    .gallery-item.needs-photo-marker .gallery-label,
+    .gallery-mobile-mini.needs-photo-marker .gallery-mobile-pill {
+      z-index: 9;
+    }
+
+    @media (max-width: 640px) {
+      .needs-photo-overlay {
+        padding: 10px;
+      }
+
+      .needs-photo-message {
+        width: min(230px, calc(100% - 10px));
+        padding: 10px 12px;
+      }
+
+      .needs-photo-message strong {
+        font-size: 12px;
+      }
+
+      .needs-photo-view-btn {
+        min-height: 30px;
+        font-size: 10px;
+      }
+    }
+
     /* Mobile sticky CTA bar — hidden by default, shown on mobile */
     .mobile-cta-bar {
       display: none;
@@ -5374,8 +5465,14 @@
 
 
         <div class="hero-mobile-collage" aria-label="Recent project highlights">
-          <div class="hero-mobile-collage-main">
+          <div class="hero-mobile-collage-main needs-photo-marker">
             <img decoding="async" loading="lazy" src="ChatGPT Image May 18, 2026, 06_06_22 AM.png" alt="Featured ZH Homes remodel project">
+            <div class="needs-photo-overlay" aria-label="Photo reminder">
+              <div class="needs-photo-message">
+                <strong>Needs before or after photo</strong>
+                <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+              </div>
+            </div>
           </div>
           <div class="hero-mobile-collage-side">
             <div class="hero-mobile-collage-small">
@@ -5449,8 +5546,14 @@
           <div class="photo-main">
             <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_03_03 PM.png" alt="Finished home remodel work">
           </div>
-          <div class="photo-small one">
+          <div class="photo-small one needs-photo-marker">
             <img decoding="async" loading="lazy" src="20251130_130636.jpg" alt="Construction project detail">
+            <div class="needs-photo-overlay" aria-label="Photo reminder">
+              <div class="needs-photo-message">
+                <strong>Needs before or after photo</strong>
+                <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+              </div>
+            </div>
           </div>
 
           <div class="photo-small two">
@@ -5550,9 +5653,15 @@
         </article>
 
         <article class="service-card">
-          <div class="service-image">
+          <div class="service-image needs-photo-marker">
             <div class="service-number">03</div>
             <img decoding="async" loading="lazy" class="service-img-3" src="2026-05-13.jpg" alt="Handyman repairs and property work">
+            <div class="needs-photo-overlay" aria-label="Photo reminder">
+              <div class="needs-photo-message">
+                <strong>Needs before or after photo</strong>
+                <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+              </div>
+            </div>
           </div>
           <div class="service-content">
             <div>
@@ -5566,7 +5675,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">04</div>
-            <img decoding="async" loading="lazy" class="service-img-4" src="Messenger_creation_6085CB66-8564-419A-A715-56A63F68BCCE.jpeg" alt="Rental property repairs">
+            <img decoding="async" loading="lazy" class="service-img-4" src="ChatGPT Image May 31, 2026, 04_25_28 PM.png" alt="Rental property repairs">
           </div>
           <div class="service-content">
             <div>
@@ -5578,9 +5687,15 @@
         </article>
 
         <article class="service-card">
-          <div class="service-image">
+          <div class="service-image needs-photo-marker">
             <div class="service-number">05</div>
             <img decoding="async" loading="lazy" class="service-img-5" src="20250703_184659.jpg" alt="Interior remodel updates">
+            <div class="needs-photo-overlay" aria-label="Photo reminder">
+              <div class="needs-photo-message">
+                <strong>Needs before or after photo</strong>
+                <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+              </div>
+            </div>
           </div>
           <div class="service-content">
             <div>
@@ -5594,7 +5709,7 @@
         <article class="service-card">
           <div class="service-image">
             <div class="service-number">06</div>
-            <img decoding="async" loading="lazy" src="Messenger_creation_50D5C2CD-E9C8-4565-9841-5044B9CBCEA0 (1).jpeg" alt="Custom construction work">
+            <img decoding="async" loading="lazy" src="ChatGPT Image May 31, 2026, 04_32_00 PM.png" alt="Custom construction work">
           </div>
           <div class="service-content">
             <div>
@@ -5616,8 +5731,14 @@
           <h2>For projects with more than one moving piece.</h2>
         </div>
 
-        <div class="mission-image-box">
+        <div class="mission-image-box needs-photo-marker">
           <img src="Messenger_creation_7C4BFDBA-1C84-4225-8DCB-39DB75344FCB.jpeg" alt="Recent project work" loading="lazy" decoding="async">
+          <div class="needs-photo-overlay" aria-label="Photo reminder">
+            <div class="needs-photo-message">
+              <strong>Needs before or after photo</strong>
+              <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -5668,10 +5789,16 @@
           </div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item needs-photo-marker">
           <img src="20250703_184659.jpg" alt="Interior remodel project" loading="lazy" decoding="async">
           <div class="gallery-label">
             <strong>Interior Remodel</strong>
+          </div>
+          <div class="needs-photo-overlay" aria-label="Photo reminder">
+            <div class="needs-photo-message">
+              <strong>Needs before or after photo</strong>
+              <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+            </div>
           </div>
         </div>
 
@@ -5689,17 +5816,29 @@
           </div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item needs-photo-marker">
           <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
           <div class="gallery-label">
             <strong>Drywall &amp; Wall Repairs</strong>
           </div>
+          <div class="needs-photo-overlay" aria-label="Photo reminder">
+            <div class="needs-photo-message">
+              <strong>Needs before or after photo</strong>
+              <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+            </div>
+          </div>
         </div>
 
-        <div class="gallery-item">
+        <div class="gallery-item needs-photo-marker">
           <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring work" loading="lazy" decoding="async">
           <div class="gallery-label">
             <strong>Flooring Work</strong>
+          </div>
+          <div class="needs-photo-overlay" aria-label="Photo reminder">
+            <div class="needs-photo-message">
+              <strong>Needs before or after photo</strong>
+              <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+            </div>
           </div>
         </div>
       </div>
@@ -5745,27 +5884,45 @@
 
             <article class="gallery-mobile-slide">
               <div class="gallery-mobile-single">
-                <div class="gallery-mobile-mini">
+                <div class="gallery-mobile-mini needs-photo-marker">
                   <img src="67477f89-1011-48db-b7ba-42922fc22752.jpg" alt="Flooring work" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Flooring Work</span>
+                  <div class="needs-photo-overlay" aria-label="Photo reminder">
+                    <div class="needs-photo-message">
+                      <strong>Needs before or after photo</strong>
+                      <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
 
             <article class="gallery-mobile-slide">
               <div class="gallery-mobile-single">
-                <div class="gallery-mobile-mini">
+                <div class="gallery-mobile-mini needs-photo-marker">
                   <img src="20250703_184659.jpg" alt="Interior remodel project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Interior Remodel</span>
+                  <div class="needs-photo-overlay" aria-label="Photo reminder">
+                    <div class="needs-photo-message">
+                      <strong>Needs before or after photo</strong>
+                      <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
 
             <article class="gallery-mobile-slide">
               <div class="gallery-mobile-single">
-                <div class="gallery-mobile-mini">
+                <div class="gallery-mobile-mini needs-photo-marker">
                   <img src="2026-05-13.jpg" alt="Drywall and wall repair project" loading="lazy" decoding="async">
                   <span class="gallery-mobile-pill">Wall Repairs</span>
+                  <div class="needs-photo-overlay" aria-label="Photo reminder">
+                    <div class="needs-photo-message">
+                      <strong>Needs before or after photo</strong>
+                      <button type="button" class="needs-photo-view-btn">See image without overlay</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -6362,6 +6519,15 @@
     window.addEventListener("resize", requestMobileCtaUpdate);
     mobileCtaQuery.addEventListener?.("change", requestMobileCtaUpdate);
     updateMobileCtaVisibility();
+
+
+    document.querySelectorAll(".needs-photo-view-btn").forEach((button) => {
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        button.closest(".needs-photo-marker")?.classList.add("photo-overlay-hidden");
+      });
+    });
 
     showReview(0);
     restartReviewTimer();
