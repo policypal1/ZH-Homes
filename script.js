@@ -20,7 +20,7 @@ let currentReviewIndex = 0;
 
 function setupTestimonialsContent() {
   const testimonialsLeft = document.querySelector(".testimonials-left");
-  const reviewSlides = Array.from(document.querySelectorAll(".review-slide"));
+  const slides = Array.from(document.querySelectorAll(".review-slide"));
 
   if (testimonialsLeft && !testimonialsLeft.querySelector(".testimonials-actions")) {
     const actions = document.createElement("div");
@@ -28,7 +28,7 @@ function setupTestimonialsContent() {
 
     const googleReviewsButton = document.createElement("a");
     googleReviewsButton.className = "google-reviews-btn";
-    googleReviewsButton.href = "https://www.google.com/search?q=ZH+Homes+Salem+Oregon+Google+Reviews";
+    googleReviewsButton.href = "https://share.google/Ry8oCcymMj5uC";
     googleReviewsButton.target = "_blank";
     googleReviewsButton.rel = "noopener noreferrer";
     googleReviewsButton.textContent = "See Google Reviews";
@@ -37,9 +37,9 @@ function setupTestimonialsContent() {
     testimonialsLeft.appendChild(actions);
   }
 
-  if (reviewSlides[0]) {
-    const tawnyaStars = reviewSlides[0].querySelector(".review-stars");
-    const tawnyaText = reviewSlides[0].querySelector(".review-text");
+  if (slides[0]) {
+    const tawnyaStars = slides[0].querySelector(".review-stars");
+    const tawnyaText = slides[0].querySelector(".review-text");
 
     if (tawnyaStars) {
       tawnyaStars.setAttribute("aria-label", "5 out of 5 stars");
@@ -55,131 +55,27 @@ function setupTestimonialsContent() {
     }
   }
 
-  if (reviewSlides[1]) {
-    const janStars = reviewSlides[1].querySelector(".review-stars");
-    const janText = reviewSlides[1].querySelector(".review-text");
-    const janAuthorLabel = reviewSlides[1].querySelector(".review-person span");
+  if (slides[1]) {
+    const janStars = slides[1].querySelector(".review-stars");
+    const janText = slides[1].querySelector(".review-text");
+    const janAuthorLabel = slides[1].querySelector(".review-person span");
 
     if (janStars) {
       janStars.setAttribute("aria-label", "5 out of 5 stars");
       janStars.innerHTML = `
         <span class="review-star-icons">★★★★★</span>
-        <span class="review-star-label">Google Rating</span>
+        <span class="review-star-label">Google Review</span>
       `;
     }
 
     if (janText) {
-      janText.classList.add("review-rating-only");
-      janText.innerHTML = `
-        <strong>5 out of 5 stars</strong>
-        <span>Rating left by Jan Bryant on Google.</span>
-      `;
+      janText.classList.remove("review-rating-only");
+      janText.textContent = "Jan Bryant left a 5-star rating on Google.";
     }
 
     if (janAuthorLabel) {
-      janAuthorLabel.textContent = "Google Rating";
+      janAuthorLabel.textContent = "Google Review";
     }
-  }
-
-  if (!document.getElementById("testimonial-polish-styles")) {
-    const style = document.createElement("style");
-    style.id = "testimonial-polish-styles";
-    style.textContent = `
-      .testimonials-actions {
-        margin-top: 24px;
-      }
-
-      .google-reviews-btn {
-        min-height: 50px;
-        padding: 0 20px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 9px;
-        background: var(--orange);
-        color: #fff;
-        font-size: 14px;
-        font-weight: 950;
-        box-shadow: 0 14px 28px rgba(243,112,33,0.20);
-        transition: 0.2s ease;
-      }
-
-      .google-reviews-btn:hover {
-        background: var(--orange-dark);
-        transform: translateY(-1px);
-      }
-
-      .review-stars {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--orange);
-        margin-bottom: 20px;
-      }
-
-      .review-star-icons {
-        font-size: 17px;
-        letter-spacing: 2px;
-        line-height: 1;
-      }
-
-      .review-star-label {
-        min-height: 27px;
-        padding: 0 10px;
-        display: inline-flex;
-        align-items: center;
-        border-radius: 999px;
-        background: rgba(243,112,33,0.10);
-        color: var(--orange);
-        font-size: 11px;
-        font-weight: 950;
-        text-transform: uppercase;
-        letter-spacing: 0.7px;
-      }
-
-      .review-rating-only {
-        display: grid;
-        gap: 8px;
-      }
-
-      .review-rating-only strong {
-        display: block;
-        color: var(--brown);
-        font-size: clamp(24px, 3vw, 34px);
-        line-height: 1.1;
-        letter-spacing: -0.8px;
-      }
-
-      .review-rating-only span {
-        display: block;
-        color: var(--section-muted);
-        font-size: 15px;
-        line-height: 1.55;
-        font-weight: 750;
-      }
-
-      @media (max-width: 950px) {
-        .testimonials-actions {
-          order: 4;
-          width: 100%;
-          margin-top: 0;
-        }
-
-        .google-reviews-btn {
-          width: 100%;
-        }
-
-        .review-star-icons {
-          font-size: 15px;
-        }
-
-        .review-star-label {
-          font-size: 10px;
-        }
-      }
-    `;
-
-    document.head.appendChild(style);
   }
 }
 
@@ -302,7 +198,6 @@ quoteForm?.addEventListener("submit", (event) => {
 });
 
 const mobileHeroSection = document.querySelector(".hero");
-const mobileAboutSection = document.querySelector(".about-section");
 const mobileCtaBar = document.querySelector(".mobile-cta-bar");
 const mobileCtaQuery = window.matchMedia("(max-width: 950px)");
 let mobileCtaTicking = false;
