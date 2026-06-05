@@ -5741,7 +5741,24 @@
       }
     }
 
-/* ===== TESTIMONIAL REVIEW BUTTON + RATING POLISH ===== */
+/* ===== FINAL REVIEW FIXES ===== */
+
+.hero-review-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(243,112,33,0.10);
+  color: var(--orange);
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 .testimonials-actions {
   margin-top: 24px;
@@ -5830,32 +5847,55 @@
     width: 100%;
   }
 
+  .review-carousel {
+    width: 100% !important;
+    max-width: none !important;
+    height: 440px !important;
+    min-height: 440px !important;
+    padding: 24px 22px 86px !important;
+    border-radius: 16px;
+  }
+
+  .review-slide.active {
+    display: grid !important;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .review-quote-mark {
+    width: 48px;
+    height: 48px;
+    font-size: 30px;
+    margin: 0 0 16px;
+  }
+
+  .review-stars {
+    margin: 0 0 18px;
+    gap: 10px;
+  }
+
   .review-star-icons {
     font-size: 15px;
   }
 
   .review-star-label {
+    min-height: 25px;
     font-size: 10px;
+    padding: 0 9px;
   }
-}
 
-
-/* ===== REVIEW CAROUSEL CORRECTION ===== */
-/* Keeps Tawnya's mobile review position the same, restores Jan's larger rating layout, and prevents Jan's slide from looking like a short rectangle. */
-.review-text.review-rating-only {
-  margin-bottom: 32px;
-}
-
-@media (max-width: 950px) {
-  .review-carousel {
-    height: 410px;
-    min-height: 410px;
-    padding: 26px 22px 78px;
+  .review-text {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    align-self: start;
   }
 
   .review-text.review-rating-only {
-    min-height: 124px;
-    margin-bottom: 22px;
+    min-height: 0 !important;
+    margin: 0 !important;
     align-content: start;
   }
 
@@ -5868,10 +5908,45 @@
     font-size: 15px;
     line-height: 1.55;
   }
+
+  .review-person {
+    align-self: end;
+    margin: 0 0 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  .review-counter {
+    font-size: 12px;
+  }
+
+  .review-arrow {
+    bottom: 20px;
+  }
+
+  .review-dots {
+    bottom: 30px;
+  }
+
+  .hero-review-top {
+    justify-content: flex-start;
+  }
+
+  .hero-review-badge {
+    min-height: 30px;
+    padding: 0 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.84);
+    font-size: 10px;
+  }
 }
 
-@media (max-width: 420px) {
-  .review-text.review-rating-only {
-    min-height: 136px;
+@media (max-width: 460px) {
+  .review-carousel {
+    width: 100% !important;
+    height: 440px !important;
+    min-height: 440px !important;
   }
 }
