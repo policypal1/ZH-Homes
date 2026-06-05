@@ -18,67 +18,6 @@ const nextProjectGalleryBtn = document.querySelector(".gallery-mobile-arrow.next
 
 let currentReviewIndex = 0;
 
-function setupTestimonialsContent() {
-  const testimonialsLeft = document.querySelector(".testimonials-left");
-  const slides = Array.from(document.querySelectorAll(".review-slide"));
-
-  if (testimonialsLeft && !testimonialsLeft.querySelector(".testimonials-actions")) {
-    const actions = document.createElement("div");
-    actions.className = "testimonials-actions";
-
-    const googleReviewsButton = document.createElement("a");
-    googleReviewsButton.className = "google-reviews-btn";
-    googleReviewsButton.href = "https://share.google/Ry8oCcymMj5uC";
-    googleReviewsButton.target = "_blank";
-    googleReviewsButton.rel = "noopener noreferrer";
-    googleReviewsButton.textContent = "See Google Reviews";
-
-    actions.appendChild(googleReviewsButton);
-    testimonialsLeft.appendChild(actions);
-  }
-
-  if (slides[0]) {
-    const tawnyaStars = slides[0].querySelector(".review-stars");
-    const tawnyaText = slides[0].querySelector(".review-text");
-
-    if (tawnyaStars) {
-      tawnyaStars.setAttribute("aria-label", "5 out of 5 stars");
-      tawnyaStars.innerHTML = `
-        <span class="review-star-icons">★★★★★</span>
-        <span class="review-star-label">Google Review</span>
-      `;
-    }
-
-    if (tawnyaText) {
-      tawnyaText.textContent =
-        "If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule. I know he is in high demand, so don’t wait.";
-    }
-  }
-
-  if (slides[1]) {
-    const janStars = slides[1].querySelector(".review-stars");
-    const janText = slides[1].querySelector(".review-text");
-    const janAuthorLabel = slides[1].querySelector(".review-person span");
-
-    if (janStars) {
-      janStars.setAttribute("aria-label", "5 out of 5 stars");
-      janStars.innerHTML = `
-        <span class="review-star-icons">★★★★★</span>
-        <span class="review-star-label">Google Review</span>
-      `;
-    }
-
-    if (janText) {
-      janText.classList.remove("review-rating-only");
-      janText.textContent = "Jan Bryant left a 5-star rating on Google.";
-    }
-
-    if (janAuthorLabel) {
-      janAuthorLabel.textContent = "Google Review";
-    }
-  }
-}
-
 function showReview(index) {
   if (!reviewSlides.length) return;
 
@@ -314,6 +253,5 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-setupTestimonialsContent();
 showReview(0);
 showProjectGallerySlide(0);
