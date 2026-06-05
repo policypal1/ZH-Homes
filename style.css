@@ -6005,7 +6005,25 @@
 
   .review-person {
     align-self: start;
-    margin-top: 0 !important;
-    transform: translateY(-12px);
+    margin-top: 18px !important;
+    transform: none !important;
+  }
+}
+
+/* Desktop-only: keep the review author row from overlapping the review text.
+   Mobile review layout and Google Reviews link are intentionally untouched. */
+@media (min-width: 951px) {
+  .review-carousel {
+    height: 455px;
+    min-height: 455px;
+  }
+
+  .review-slide.active {
+    grid-template-rows: 62px 42px minmax(175px, auto) auto !important;
+  }
+
+  .review-person {
+    margin-top: 18px !important;
+    transform: none !important;
   }
 }
