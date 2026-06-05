@@ -5517,6 +5517,244 @@
       }
     }
 
+    /* ===== TRUST BADGE IN HEADER + IMAGE EXPAND LIGHTBOX ===== */
+    .header-actions {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+      min-width: max-content;
+    }
+
+    .header-license-badge {
+      display: grid;
+      gap: 3px;
+      text-align: right;
+      line-height: 1.08;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+
+    .header-license-badge span {
+      color: rgba(35,23,18,0.58);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.78px;
+      text-transform: uppercase;
+    }
+
+    .header-license-badge strong {
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: -0.15px;
+    }
+
+    .image-expandable {
+      position: relative;
+    }
+
+    .expand-photo-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 12;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      background: rgba(6,7,8,0.68);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0.2px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.20);
+      transition: 0.2s ease;
+    }
+
+    .expand-photo-btn:hover {
+      background: var(--orange);
+      border-color: rgba(255,255,255,0.34);
+      transform: translateY(-1px);
+    }
+
+    .expand-photo-btn span[aria-hidden="true"] {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(0,0,0,0.84);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    .image-lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .image-lightbox[hidden] {
+      display: none;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: min(1120px, 100%);
+      max-height: 88vh;
+      display: grid;
+      gap: 12px;
+    }
+
+    .lightbox-image-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.42);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .lightbox-image-wrap img {
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      display: block;
+      background: #111;
+    }
+
+    .lightbox-caption {
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      line-height: 1;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(0,0,0,0.30);
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 1120px) {
+      .header-license-badge span {
+        font-size: 9px;
+        letter-spacing: 0.55px;
+      }
+
+      .header-license-badge strong {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 950px) {
+      .header-actions {
+        gap: 8px;
+      }
+
+      .header-license-badge {
+        padding: 7px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(35,23,18,0.08);
+        background: rgba(248,244,239,0.74);
+        text-align: center;
+      }
+
+      .header-license-badge span {
+        display: none;
+      }
+
+      .header-license-badge strong {
+        font-size: 10.5px;
+        letter-spacing: -0.05px;
+      }
+
+      .license-desktop-word {
+        display: none;
+      }
+
+      .expand-photo-btn {
+        top: 10px;
+        right: 10px;
+        min-height: 34px;
+        padding: 0 11px;
+        font-size: 11px;
+        background: rgba(6,7,8,0.74);
+      }
+
+      .image-lightbox {
+        padding: 14px;
+      }
+
+      .lightbox-inner {
+        max-height: 88svh;
+      }
+
+      .lightbox-image-wrap {
+        border-radius: 16px;
+      }
+
+      .lightbox-image-wrap img {
+        max-height: 76svh;
+      }
+
+      .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .header-license-badge {
+        padding: 6px 7px;
+      }
+
+      .header-license-badge strong {
+        font-size: 9.5px;
+      }
+
+      .header-cta {
+        padding: 0 11px !important;
+      }
+    }
+
   </style>
 </head>
 
@@ -5539,7 +5777,13 @@
         <a href="#areas">Areas</a>
       </nav>
 
-      <a href="#contact" class="header-cta">Get a Quote</a>
+      <div class="header-actions" aria-label="License and quote actions">
+        <div class="header-license-badge" aria-label="Licensed, bonded, insured, Oregon CCB number 260679">
+          <span>Licensed • Bonded • Insured</span>
+          <strong><span class="license-desktop-word">Oregon </span>CCB #260679</strong>
+        </div>
+        <a href="#contact" class="header-cta">Get a Quote</a>
+      </div>
     </div>
   </header>
 
@@ -5673,8 +5917,8 @@
     <div class="quick-stats-inner">
       <div class="stat-box">
         <div>
-          <strong>CCB</strong>
-          <span>Oregon CCB #260679</span>
+          <strong>Licensed</strong>
+          <span>Bonded &amp; Insured • Oregon CCB #260679</span>
         </div>
       </div>
 
@@ -6413,7 +6657,7 @@
 
         <details class="faq-item">
           <summary>Are you licensed?</summary>
-          <p>Yes. Oregon CCB #260679.</p>
+          <p>Yes. Licensed, bonded, and insured. Oregon CCB #260679.</p>
         </details>
 
         <details class="faq-item">
@@ -6470,6 +6714,18 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- Image expand lightbox -->
+  <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Expanded project image" hidden>
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close expanded image">×</button>
+      <div class="lightbox-image-wrap">
+        <img id="lightboxImage" src="" alt="">
+      </div>
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 
   <!-- Mobile-only sticky CTA bar -->
   <div class="mobile-cta-bar" aria-label="Quick contact actions">
@@ -6678,6 +6934,91 @@
         button.closest(".needs-photo-marker")?.classList.add("photo-overlay-hidden");
       });
     });
+
+
+    const imageLightbox = document.getElementById("imageLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    function openImageLightbox(src, altText) {
+      if (!imageLightbox || !lightboxImage) return;
+
+      lightboxImage.src = src;
+      lightboxImage.alt = altText || "Expanded project image";
+      if (lightboxCaption) {
+        lightboxCaption.textContent = altText || "";
+      }
+
+      imageLightbox.hidden = false;
+      requestAnimationFrame(() => {
+        imageLightbox.classList.add("is-open");
+        document.body.classList.add("lightbox-open");
+      });
+    }
+
+    function closeImageLightbox() {
+      if (!imageLightbox || !lightboxImage) return;
+
+      imageLightbox.classList.remove("is-open");
+      document.body.classList.remove("lightbox-open");
+
+      window.setTimeout(() => {
+        imageLightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        if (lightboxCaption) {
+          lightboxCaption.textContent = "";
+        }
+      }, 200);
+    }
+
+    const expandableImageSelectors = [
+      ".photo-main",
+      ".photo-small",
+      ".service-image",
+      ".mission-image-box",
+      ".gallery-item",
+      ".gallery-mobile-mini",
+      ".hero-mobile-collage-main",
+      ".hero-mobile-collage-small"
+    ].join(",");
+
+    document.querySelectorAll(expandableImageSelectors).forEach((imageBox) => {
+      const image = imageBox.querySelector("img");
+      if (!image || imageBox.querySelector(".expand-photo-btn")) return;
+
+      imageBox.classList.add("image-expandable");
+
+      const expandButton = document.createElement("button");
+      expandButton.type = "button";
+      expandButton.className = "expand-photo-btn";
+      expandButton.setAttribute("aria-label", `Expand image${image.alt ? ": " + image.alt : ""}`);
+      expandButton.innerHTML = '<span aria-hidden="true">↗</span><span class="expand-photo-label">View</span>';
+
+      imageBox.appendChild(expandButton);
+
+      expandButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        openImageLightbox(image.currentSrc || image.src, image.alt);
+      });
+    });
+
+    lightboxClose?.addEventListener("click", closeImageLightbox);
+
+    imageLightbox?.addEventListener("click", (event) => {
+      if (event.target === imageLightbox) {
+        closeImageLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && imageLightbox?.classList.contains("is-open")) {
+        closeImageLightbox();
+      }
+    });
+
 
     showReview(0);
     restartReviewTimer();
