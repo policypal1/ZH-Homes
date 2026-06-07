@@ -747,14 +747,14 @@
     }
 
     .services-section {
-      position: relative;
-      background:
-        linear-gradient(rgba(10,7,5,0.36), rgba(10,7,5,0.46)),
-        url("ChatGPT Image Jun 6, 2026, 07_30_57 PM.png") center center / cover no-repeat,
-        #0a0705;
-      padding: 92px 0 104px;
-      overflow: hidden;
-    }
+  position: relative;
+  background:
+    linear-gradient(rgba(10,7,5,0.36), rgba(10,7,5,0.46)),
+    url("ChatGPT Image May 14, 2026, 10_21_07 PM.png") center center / cover no-repeat,
+    #0a0705;
+  padding: 92px 0 104px;
+  overflow: hidden;
+}
 
     .services-section::before {
       content: "";
