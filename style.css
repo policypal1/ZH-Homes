@@ -6027,3 +6027,31 @@
     transform: none !important;
   }
 }
+
+/* ===== DESKTOP PROJECT GALLERY FIX =====
+   Keeps the mobile carousel untouched. The desktop gallery now uses a clean
+   3-column / 2-row grid instead of the old masonry layout. */
+@media (min-width: 951px) {
+  .gallery-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-rows: 240px !important;
+    grid-auto-flow: row !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+  }
+
+  .gallery-item,
+  .gallery-item.large {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    min-height: 0 !important;
+  }
+
+  .gallery-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+}
