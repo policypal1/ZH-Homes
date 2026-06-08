@@ -5682,7 +5682,10 @@
       }
 
       .header-license-badge strong {
-        font-size: 10.5px;
+        display: grid;
+        gap: 1px;
+        font-size: 10px;
+        line-height: 1.08;
         letter-spacing: -0.05px;
       }
 
@@ -5691,7 +5694,10 @@
       }
 
       .mobile-license-word {
-        display: inline !important;
+        display: block !important;
+        font-size: 8.8px;
+        line-height: 1.05;
+        letter-spacing: 0.08px;
       }
 
       .expand-photo-btn {
@@ -5733,7 +5739,11 @@
       }
 
       .header-license-badge strong {
-        font-size: 9.5px;
+        font-size: 9px;
+      }
+
+      .mobile-license-word {
+        font-size: 8px;
       }
 
       .header-cta {
