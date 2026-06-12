@@ -6095,3 +6095,130 @@
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+/* Final quote form, favicon-support, and scroll fixes */
+#contact {
+  scroll-margin-top: 112px;
+}
+
+.footer-bottom-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+  color: rgba(255,255,255,0.62);
+  font-weight: 850;
+  transition: 0.2s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: var(--orange);
+}
+
+.contact-form-card.quote-success-active .quote-form {
+  opacity: 0.16;
+  filter: blur(1.5px);
+  pointer-events: none;
+  transition: opacity 0.22s ease, filter 0.22s ease;
+}
+
+.quote-success-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(0,0,0,0.42);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+
+.contact-form-card.quote-success-active .quote-success-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.quote-success-box {
+  width: min(320px, 100%);
+  min-height: 230px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 30px 24px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.96);
+  color: #15351f;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+  transform: translateY(10px) scale(0.94);
+}
+
+.contact-form-card.quote-success-active .quote-success-box {
+  animation: quoteSuccessPop 0.48s cubic-bezier(.2,.9,.25,1.18) forwards;
+}
+
+.quote-success-check {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #19a84a;
+  color: #fff;
+  box-shadow: 0 16px 32px rgba(25,168,74,0.30);
+}
+
+.quote-success-check svg {
+  width: 46px;
+  height: 46px;
+}
+
+.quote-success-box strong {
+  display: block;
+  color: #14351e;
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 950;
+  letter-spacing: -0.5px;
+}
+
+.quote-success-box span {
+  display: block;
+  color: rgba(20,53,30,0.72);
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 750;
+}
+
+@keyframes quoteSuccessPop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.90);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 950px) {
+  #contact {
+    scroll-margin-top: 96px;
+  }
+
+  .footer-bottom-links {
+    justify-content: center;
+  }
+}
+
