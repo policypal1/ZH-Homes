@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZH Homes</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=2">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon.png?v=2">
+  <link rel="icon" href="2.png?v=5" type="image/png">
+  <link rel="shortcut icon" href="2.png?v=5" type="image/png">
+  <link rel="apple-touch-icon" href="2.png?v=5">
 
   <!-- Speed hints for the first visible assets -->
   <link rel="preload" as="image" href="2.png" fetchpriority="high">
@@ -742,12 +742,6 @@
           </li>
         </ul>
 
-        <div class="social-row">
-          <span>Follow us:</span>
-          <div class="social-dot">F</div>
-          <div class="social-dot">IG</div>
-          <div class="social-dot">G</div>
-        </div>
       </div>
 
       <div class="contact-form-card">
@@ -759,15 +753,6 @@
             <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
           </div>
 
-          <div class="field">
-            <label for="contactReason">What are you contacting us about?</label>
-            <select id="contactReason" name="contactReason" required>
-              <option value="project_quote">I need an estimate for a home project</option>
-              <option value="existing_project">I have a question about an existing project</option>
-              <option value="property_work">I need help with rental or property work</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
 
           <div class="form-row">
             <div class="field">
@@ -806,19 +791,31 @@
           </div>
 
           <div class="field">
-            <label for="projectPhoto">Upload Image</label>
-            <input id="projectPhoto" name="projectPhoto" type="file" accept="image/*">
+            <label for="projectPhoto">Upload Images</label>
+            <input id="projectPhoto" name="projectPhotos" type="file" accept="image/*" multiple>
             <div class="selected-file-row" id="selectedFileRow" hidden>
               <span id="selectedFileName"></span>
-              <button type="button" id="clearProjectPhoto" aria-label="Remove uploaded image">×</button>
+              <button type="button" id="clearProjectPhoto" aria-label="Remove uploaded images">×</button>
             </div>
-            <span class="field-note">Image uploads should stay under 10MB.</span>
-            <span class="file-error" id="fileError">Please upload an image that is 10MB or smaller.</span>
+            <span class="field-note">You can upload up to 4 images. Keep each image under 5MB.</span>
+            <span class="file-error" id="fileError">Please upload 1–4 image files, with each image 5MB or smaller and total uploads under 20MB.</span>
           </div>
 
           <button class="submit-btn" type="submit">Submit Quote Request</button>
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
+
+        <div class="quote-success-overlay" id="quoteSuccessOverlay" aria-hidden="true">
+          <div class="quote-success-box">
+            <div class="quote-success-check" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 12.5L9.5 17L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <strong>Request Sent</strong>
+            <span>Thanks. Your quote request was submitted.</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -904,7 +901,10 @@
 
       <div class="footer-bottom">
         <span>© 2026 ZH Homes. All rights reserved.</span>
-        <span>Oregon CCB #260679</span>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <span>Oregon CCB #260679</span>
+        </div>
       </div>
     </div>
   </footer>
