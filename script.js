@@ -26,6 +26,8 @@ const quoteSuccessOverlay = document.getElementById("quoteSuccessOverlay");
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 const MAX_TOTAL_IMAGE_SIZE = 20 * 1024 * 1024;
+const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+const ALLOWED_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
 
 function scrollToQuoteSection(behavior = "smooth") {
   if (!contactSection) return;
@@ -154,6 +156,18 @@ function clearSelectedProjectPhoto() {
   if (selectedFileRow) selectedFileRow.hidden = true;
 }
 
+
+function getFileExtension(fileName) {
+  const parts = String(fileName || "").toLowerCase().split(".");
+  return parts.length > 1 ? parts.pop() : "";
+}
+
+function isAllowedImageFile(file) {
+  const typeAllowed = ALLOWED_IMAGE_TYPES.includes(file.type);
+  const extensionAllowed = ALLOWED_IMAGE_EXTENSIONS.includes(getFileExtension(file.name));
+  return typeAllowed && extensionAllowed;
+}
+
 function validateProjectPhotos(files) {
   if (!projectPhoto) return true;
 
@@ -164,12 +178,15 @@ function validateProjectPhotos(files) {
   }
 
   const totalSize = files.reduce((sum, file) => sum + file.size, 0);
-  const hasNonImage = files.some((file) => !file.type.startsWith("image/"));
+  const hasNonImage = files.some((file) => !isAllowedImageFile(file));
   const hasOversizedFile = files.some((file) => file.size > MAX_IMAGE_SIZE);
 
   if (files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || hasNonImage || hasOversizedFile) {
-    projectPhoto.setCustomValidity("Please upload 1–4 image files, with each image 5MB or smaller and total uploads under 20MB.");
-    if (fileError) fileError.style.display = "block";
+    projectPhoto.setCustomValidity("Please upload 1–4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller and total uploads must stay under 20MB.");
+    if (fileError) {
+      fileError.textContent = "Please upload 1–4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller and total uploads must stay under 20MB.";
+      fileError.style.display = "block";
+    }
     return false;
   }
 
@@ -285,6 +302,8 @@ quoteForm?.addEventListener("submit", async (event) => {
     }
     setFormStatus("Sending your request...", "");
 
+    const projectPhotos = await readFilesAsBase64(files);
+
     const payload = {
       source: "ZH Homes Website",
       pageUrl: window.location.href,
@@ -296,8 +315,7 @@ quoteForm?.addEventListener("submit", async (event) => {
       serviceType: document.getElementById("serviceType")?.value.trim() || "",
       description: document.getElementById("description")?.value.trim() || "",
       companyWebsite: document.getElementById("companyWebsite")?.value.trim() || "",
-      projectPhotos: await readFilesAsBase64(files),
-      projectPhoto: files[0] ? await readFileAsBase64(files[0]) : null
+      projectPhotos: projectPhotos
     };
 
     // Google Apps Script web apps often block browser reads with CORS.
