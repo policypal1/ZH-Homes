@@ -203,18 +203,18 @@ quoteForm?.addEventListener("submit", async (event) => {
 
     // Google Apps Script web apps often block browser reads with CORS.
     // mode: "no-cors" still sends the request, but does not try to read the response.
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "text/plain"
-      },
-      body: JSON.stringify(payload)
-    });
+   await fetch(APPS_SCRIPT_URL, {
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "text/plain;charset=utf-8"
+  },
+  body: JSON.stringify(payload)
+});
 
-    quoteForm.reset();
-    clearSelectedProjectPhoto();
-    setFormStatus("Thanks. Your quote request was sent successfully.", "success");
+quoteForm.reset();
+clearSelectedProjectPhoto();
+setFormStatus("Thanks. Your quote request was submitted.", "success");
   } catch (error) {
     console.error(error);
     setFormStatus("Something went wrong. Please call or text ZH Homes directly.", "error");
