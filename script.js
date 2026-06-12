@@ -201,20 +201,16 @@ quoteForm?.addEventListener("submit", async (event) => {
       projectPhoto: await readFileAsBase64(file)
     };
 
-    const response = await fetch(APPS_SCRIPT_URL, {
+    // Google Apps Script web apps often block browser reads with CORS.
+    // mode: "no-cors" still sends the request, but does not try to read the response.
+    await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      redirect: "follow",
+      mode: "no-cors",
       headers: {
-        "Content-Type": "text/plain;charset=utf-8"
+        "Content-Type": "text/plain"
       },
       body: JSON.stringify(payload)
     });
-
-    const result = await response.json();
-
-    if (!response.ok || !result.success) {
-      throw new Error(result.message || "The request could not be sent.");
-    }
 
     quoteForm.reset();
     clearSelectedProjectPhoto();
