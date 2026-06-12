@@ -21,6 +21,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
     <div class="header-inner">
@@ -52,6 +53,7 @@
     </div>
   </header>
 
+  <main id="main-content" tabindex="-1">
   <section class="hero">
     <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <defs>
@@ -792,13 +794,13 @@
 
           <div class="field">
             <label for="projectPhoto">Upload Images</label>
-            <input id="projectPhoto" name="projectPhotos" type="file" accept="image/*" multiple>
+            <input id="projectPhoto" name="projectPhotos" type="file" accept="image/*" multiple aria-describedby="uploadNote fileError">
             <div class="selected-file-row" id="selectedFileRow" hidden>
               <span id="selectedFileName"></span>
               <button type="button" id="clearProjectPhoto" aria-label="Remove uploaded images">×</button>
             </div>
-            <span class="field-note">Max upload of 20 MB.</span>
-            <span class="file-error" id="fileError">Please upload 1–4 image files, with each image 5MB or smaller and total uploads under 20MB.</span>
+            <span class="field-note" id="uploadNote">You can upload up to 4 images. Keep each image under 5MB.</span>
+            <span class="file-error" id="fileError" role="alert">Please upload 1–4 image files, with each image 5MB or smaller and total uploads under 20MB.</span>
           </div>
 
           <button class="submit-btn" type="submit">Submit Quote Request</button>
@@ -864,6 +866,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-top">
@@ -901,8 +905,10 @@
 
       <div class="footer-bottom">
         <span>© 2026 ZH Homes. All rights reserved.</span>
-        <div class="footer-bottom-links">
+        <div class="footer-bottom-links" aria-label="Footer legal links">
           <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="accessibility.html">Accessibility</a>
           <span>Oregon CCB #260679</span>
         </div>
       </div>
