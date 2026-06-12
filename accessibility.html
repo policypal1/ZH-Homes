@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Accessibility Statement | ZH Homes</title>
+
+  <link rel="icon" href="2.png?v=5" type="image/png">
+  <link rel="shortcut icon" href="2.png?v=5" type="image/png">
+  <link rel="apple-touch-icon" href="2.png?v=5">
+
+  <style>
+
+:root {
+  --bg: #060708;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.72);
+  --orange: #f37021;
+  --orange-dark: #da5d11;
+  --brown: #231712;
+  --cream: #f8f4ef;
+  --section-text: #241814;
+  --section-muted: #706762;
+  --border: rgba(35,23,18,0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: var(--section-text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  z-index: 9999;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 950;
+  transform: translateY(-140%);
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(35,23,18,0.08);
+}
+
+.header-inner {
+  width: min(1100px, calc(100% - 36px));
+  min-height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--brown);
+  font-weight: 950;
+  letter-spacing: -0.4px;
+}
+
+.brand-logo {
+  width: 84px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.back-link {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: var(--orange);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 12px 26px rgba(243,112,33,0.18);
+  transition: 0.2s ease;
+}
+
+.back-link:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+}
+
+.hero {
+  background:
+    linear-gradient(135deg, rgba(6,7,8,0.92), rgba(6,7,8,0.78)),
+    var(--bg);
+  color: #fff;
+  padding: 82px 0 72px;
+}
+
+.hero-inner {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  background: var(--orange);
+}
+
+h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 740px;
+  color: rgba(255,255,255,0.74);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.page-wrap {
+  width: min(980px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 72px 0 88px;
+}
+
+.page-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(35,23,18,0.08);
+  overflow: hidden;
+}
+
+.page-meta {
+  padding: 26px 30px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  color: var(--section-muted);
+  font-size: 14px;
+}
+
+.page-meta strong {
+  color: var(--brown);
+}
+
+.page-content {
+  padding: 34px 30px 38px;
+}
+
+.page-section {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(35,23,18,0.10);
+}
+
+.page-section:first-child {
+  padding-top: 0;
+}
+
+.page-section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+h2 {
+  color: var(--brown);
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+  margin-bottom: 12px;
+}
+
+p {
+  color: var(--section-muted);
+  margin-bottom: 14px;
+}
+
+ul {
+  margin: 12px 0 0 20px;
+  color: var(--section-muted);
+}
+
+li {
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+
+.notice-box {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border-left: 4px solid var(--orange);
+  border-radius: 12px;
+  background: rgba(243,112,33,0.08);
+  color: var(--section-text);
+}
+
+.notice-box p {
+  margin: 0;
+  color: #4b403a;
+  font-weight: 700;
+}
+
+.contact-box {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fbf8f5;
+  border: 1px solid rgba(35,23,18,0.10);
+}
+
+.contact-box p {
+  margin-bottom: 8px;
+}
+
+.contact-box p:last-child {
+  margin-bottom: 0;
+}
+
+.footer {
+  background: var(--bg);
+  color: rgba(255,255,255,0.72);
+  padding: 26px 0;
+}
+
+.footer-inner {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: #fff;
+  font-weight: 850;
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    min-height: 72px;
+  }
+
+  .brand-logo {
+    width: 72px;
+    height: 36px;
+  }
+
+  .back-link {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 64px 0 56px;
+  }
+
+  .page-wrap {
+    padding: 42px 0 64px;
+  }
+
+  .page-meta,
+  .page-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="ZH Homes home">
+        <span class="brand-logo">
+          <img src="2.png" alt="ZH Homes logo">
+        </span>
+        <span>ZH Homes</span>
+      </a>
+
+      <a class="back-link" href="index.html#contact">Get a Quote</a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Accessibility</div>
+        <h1>Accessibility Statement</h1>
+        <p>This page explains ZH Homes’ accessibility goal and gives visitors a direct way to get help if any part of the website is difficult to use.</p>
+      </div>
+    </section>
+
+    <section class="page-wrap">
+      <div class="page-card">
+        <div class="page-meta">
+          <p><strong>Effective Date:</strong> June 12, 2026</p>
+          <p><strong>Business:</strong> ZH Homes</p>
+          <p><strong>Website:</strong> zh-homes.vercel.app</p>
+        </div>
+
+        <div class="page-content">
+
+          <section class="page-section">
+            <h2>1. Our Accessibility Goal</h2>
+            <p>
+              ZH Homes wants this website to be accessible and usable for visitors, including people who use screen readers, keyboard navigation, zoom tools, voice control, or other assistive technology.
+            </p>
+            <p>
+              We aim to follow practical accessibility principles, including readable text, keyboard access, visible focus states, descriptive page structure, form labels, text alternatives for images, and clear contact options.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>2. Help If the Website Is Not Working for You</h2>
+            <p>
+              If you have trouble using the website, reading content, uploading project images, submitting the quote form, or accessing any page, please contact us directly. We can provide the same information or help with your quote request another way.
+            </p>
+
+            <div class="contact-box">
+              <p><strong>Phone/Text:</strong> (503) 910-5466</p>
+              <p><strong>Location:</strong> Salem, Oregon and surrounding areas</p>
+              <p><strong>Website:</strong> Use the quote form or contact options on the main website.</p>
+            </div>
+          </section>
+
+          <section class="page-section">
+            <h2>3. Accessibility Improvements Made</h2>
+            <p>
+              As part of this website update, we added or improved the following accessibility-related items:
+            </p>
+            <ul>
+              <li>A skip link for keyboard users</li>
+              <li>Visible keyboard focus styling</li>
+              <li>Reduced-motion support for visitors who prefer less animation</li>
+              <li>Footer links to Privacy Policy, Terms of Service, and Accessibility pages</li>
+              <li>Clear labels for quote form fields</li>
+              <li>Additional description text for the image upload field</li>
+              <li>A direct phone/text option for users who cannot use the form</li>
+            </ul>
+          </section>
+
+          <section class="page-section">
+            <h2>4. Ongoing Work</h2>
+            <p>
+              Accessibility is an ongoing process. Automated scans can help identify issues, but they do not catch everything. Manual testing with keyboard navigation, screen readers, and real user feedback is also important.
+            </p>
+            <p>
+              If you notice an accessibility problem, please let us know what page you were on, what issue happened, and what device or assistive technology you were using if you are comfortable sharing that information.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>5. Third-Party Content</h2>
+            <p>
+              Some parts of the website may use third-party services, such as maps, hosting, forms, or other embedded tools. ZH Homes does not fully control the accessibility of third-party services, but we try to provide alternate ways to contact us when needed.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>6. Contact</h2>
+            <p>
+              For accessibility help, contact ZH Homes:
+            </p>
+
+            <div class="contact-box">
+              <p><strong>Business:</strong> ZH Homes</p>
+              <p><strong>Phone/Text:</strong> (503) 910-5466</p>
+              <p><strong>Location:</strong> Salem, Oregon and surrounding areas</p>
+              <p><strong>Mailing Address:</strong> Available upon request when needed for a project, legal notice, or written communication.</p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 ZH Homes. All rights reserved.</span>
+      <div class="footer-links" aria-label="Footer legal links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
