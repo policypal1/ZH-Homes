@@ -19,6 +19,47 @@ const projectGalleryDots = Array.from(document.querySelectorAll(".gallery-mobile
 const prevProjectGalleryBtn = document.querySelector(".gallery-mobile-arrow.prev");
 const nextProjectGalleryBtn = document.querySelector(".gallery-mobile-arrow.next");
 
+const contactSection = document.getElementById("contact");
+const siteHeader = document.querySelector(".site-header");
+
+function scrollToQuoteSection(behavior = "smooth") {
+  if (!contactSection) return;
+
+  const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
+  const extraGap = 18;
+  const targetTop =
+    contactSection.getBoundingClientRect().top +
+    window.pageYOffset -
+    headerHeight -
+    extraGap;
+
+  window.scrollTo({
+    top: Math.max(0, targetTop),
+    behavior
+  });
+}
+
+document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    scrollToQuoteSection("smooth");
+
+    window.setTimeout(() => scrollToQuoteSection("auto"), 450);
+    window.setTimeout(() => scrollToQuoteSection("auto"), 900);
+
+    if (history.pushState) {
+      history.pushState(null, "", "#contact");
+    }
+  });
+});
+
+window.addEventListener("load", () => {
+  if (window.location.hash === "#contact") {
+    window.setTimeout(() => scrollToQuoteSection("auto"), 50);
+  }
+});
+
 let currentReviewIndex = 0;
 
 function showReview(index) {
