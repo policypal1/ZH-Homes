@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Terms of Service | ZH Homes</title>
+
+  <link rel="icon" href="2.png?v=5" type="image/png">
+  <link rel="shortcut icon" href="2.png?v=5" type="image/png">
+  <link rel="apple-touch-icon" href="2.png?v=5">
+
+  <style>
+
+:root {
+  --bg: #060708;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.72);
+  --orange: #f37021;
+  --orange-dark: #da5d11;
+  --brown: #231712;
+  --cream: #f8f4ef;
+  --section-text: #241814;
+  --section-muted: #706762;
+  --border: rgba(35,23,18,0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: var(--section-text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  z-index: 9999;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 950;
+  transform: translateY(-140%);
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(35,23,18,0.08);
+}
+
+.header-inner {
+  width: min(1100px, calc(100% - 36px));
+  min-height: 78px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--brown);
+  font-weight: 950;
+  letter-spacing: -0.4px;
+}
+
+.brand-logo {
+  width: 84px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.back-link {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: var(--orange);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 900;
+  box-shadow: 0 12px 26px rgba(243,112,33,0.18);
+  transition: 0.2s ease;
+}
+
+.back-link:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+}
+
+.hero {
+  background:
+    linear-gradient(135deg, rgba(6,7,8,0.92), rgba(6,7,8,0.78)),
+    var(--bg);
+  color: #fff;
+  padding: 82px 0 72px;
+}
+
+.hero-inner {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  background: var(--orange);
+}
+
+h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  max-width: 740px;
+  color: rgba(255,255,255,0.74);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.page-wrap {
+  width: min(980px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 72px 0 88px;
+}
+
+.page-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(35,23,18,0.08);
+  overflow: hidden;
+}
+
+.page-meta {
+  padding: 26px 30px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  color: var(--section-muted);
+  font-size: 14px;
+}
+
+.page-meta strong {
+  color: var(--brown);
+}
+
+.page-content {
+  padding: 34px 30px 38px;
+}
+
+.page-section {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(35,23,18,0.10);
+}
+
+.page-section:first-child {
+  padding-top: 0;
+}
+
+.page-section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+h2 {
+  color: var(--brown);
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+  margin-bottom: 12px;
+}
+
+p {
+  color: var(--section-muted);
+  margin-bottom: 14px;
+}
+
+ul {
+  margin: 12px 0 0 20px;
+  color: var(--section-muted);
+}
+
+li {
+  margin-bottom: 8px;
+  padding-left: 2px;
+}
+
+.notice-box {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border-left: 4px solid var(--orange);
+  border-radius: 12px;
+  background: rgba(243,112,33,0.08);
+  color: var(--section-text);
+}
+
+.notice-box p {
+  margin: 0;
+  color: #4b403a;
+  font-weight: 700;
+}
+
+.contact-box {
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fbf8f5;
+  border: 1px solid rgba(35,23,18,0.10);
+}
+
+.contact-box p {
+  margin-bottom: 8px;
+}
+
+.contact-box p:last-child {
+  margin-bottom: 0;
+}
+
+.footer {
+  background: var(--bg);
+  color: rgba(255,255,255,0.72);
+  padding: 26px 0;
+}
+
+.footer-inner {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: #fff;
+  font-weight: 850;
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    min-height: 72px;
+  }
+
+  .brand-logo {
+    width: 72px;
+    height: 36px;
+  }
+
+  .back-link {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 64px 0 56px;
+  }
+
+  .page-wrap {
+    padding: 42px 0 64px;
+  }
+
+  .page-meta,
+  .page-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="ZH Homes home">
+        <span class="brand-logo">
+          <img src="2.png" alt="ZH Homes logo">
+        </span>
+        <span>ZH Homes</span>
+      </a>
+
+      <a class="back-link" href="index.html#contact">Get a Quote</a>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Website Terms</div>
+        <h1>Terms of Service</h1>
+        <p>These terms explain how this website, quote requests, uploaded images, preliminary estimates, and customer communications should be understood.</p>
+      </div>
+    </section>
+
+    <section class="page-wrap">
+      <div class="page-card">
+        <div class="page-meta">
+          <p><strong>Effective Date:</strong> June 12, 2026</p>
+          <p><strong>Business:</strong> ZH Homes</p>
+          <p><strong>Oregon CCB:</strong> #260679</p>
+        </div>
+
+        <div class="page-content">
+
+          <section class="page-section">
+            <h2>1. Acceptance of These Terms</h2>
+            <p>
+              By using this website, contacting ZH Homes, submitting a quote request, calling, texting, emailing, or uploading project images, you agree to these Terms of Service.
+            </p>
+            <p>
+              If you do not agree with these terms, please do not use the website or submit information through the quote form.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>2. Quote Requests Are Not Binding Contracts</h2>
+            <p>
+              Submitting a quote request does not create a contractor-client relationship, does not guarantee availability, and does not create a binding contract.
+            </p>
+            <p>
+              Any estimate, price range, timeline, or project discussion provided before a written agreement is only preliminary. Final pricing, scheduling, materials, scope, and project terms may change after review, inspection, or further communication.
+            </p>
+            <div class="notice-box">
+              <p>
+                A project is not officially accepted until ZH Homes and the customer agree to the final scope, price, schedule, and any required written terms.
+              </p>
+            </div>
+          </section>
+
+          <section class="page-section">
+            <h2>3. Project Images and Uploaded Content</h2>
+            <p>
+              The quote form may allow you to upload project images. Uploaded images are used to help ZH Homes understand the requested work and respond more accurately.
+            </p>
+            <p>
+              By uploading images, you confirm that you have the right to share those images and that they are related to the project request.
+            </p>
+            <p>Please do not upload:</p>
+            <ul>
+              <li>Images containing IDs, passwords, financial documents, medical documents, or other sensitive information</li>
+              <li>Images of people who have not agreed to be included</li>
+              <li>Images you do not own or do not have permission to share</li>
+              <li>Illegal, harmful, misleading, or unrelated content</li>
+            </ul>
+          </section>
+
+          <section class="page-section">
+            <h2>4. Website Information</h2>
+            <p>
+              The information on this website is provided for general informational and marketing purposes. ZH Homes tries to keep website information accurate, but does not guarantee that all information is complete, current, error-free, or suitable for every project.
+            </p>
+            <p>
+              Service descriptions, service areas, availability, project types, and pricing discussions may change without notice.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>5. Customer Responsibilities</h2>
+            <p>
+              You are responsible for providing accurate contact information, truthful project details, and relevant project images. You are also responsible for obtaining any needed permission to discuss or request work on a property.
+            </p>
+            <p>
+              Depending on the project, permits, approvals, HOA rules, landlord approval, property owner authorization, or other requirements may apply.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>6. Scheduling, Estimates, and Scope</h2>
+            <p>
+              Any timeframes discussed through the website, by phone, by text, or by email are estimates only unless confirmed in a written agreement. Project schedules may be affected by weather, material availability, site conditions, customer changes, access issues, subcontractor availability, or other factors outside of ZH Homes’ control.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>7. No Emergency Services</h2>
+            <p>
+              This website and quote form are not intended for emergency requests. If there is an immediate danger, active leak, electrical hazard, fire, structural emergency, medical emergency, or safety issue, contact the appropriate emergency service or qualified professional immediately.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>8. Third-Party Services</h2>
+            <p>
+              This website may use third-party tools for hosting, maps, form processing, analytics, email delivery, or other basic website functions. Third-party services may have their own terms and privacy practices.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>9. Prohibited Use</h2>
+            <p>You agree not to use this website to:</p>
+            <ul>
+              <li>Submit spam, fake inquiries, marketing solicitations, or automated form submissions</li>
+              <li>Upload malicious files, code, or unrelated content</li>
+              <li>Interfere with the website, form, email system, or connected services</li>
+              <li>Misrepresent your identity, project, ownership, or authority to request work</li>
+              <li>Use the website for unlawful, abusive, or harmful purposes</li>
+            </ul>
+          </section>
+
+          <section class="page-section">
+            <h2>10. Limitation of Liability</h2>
+            <p>
+              To the fullest extent allowed by law, ZH Homes is not responsible for indirect, incidental, special, consequential, or punitive damages related to use of this website, inability to use the website, website errors, form delivery issues, delays, or reliance on preliminary website information.
+            </p>
+            <p>
+              Nothing in these terms is intended to limit rights that cannot legally be limited.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>11. Privacy</h2>
+            <p>
+              Use of this website is also covered by the ZH Homes Privacy Policy. The Privacy Policy explains how information submitted through the website may be collected, used, and protected.
+            </p>
+            <p>
+              <a href="privacy.html" style="color:#f37021;font-weight:900;">Read the Privacy Policy</a>
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>12. Accessibility</h2>
+            <p>
+              ZH Homes wants the website to be usable by as many people as possible. If you have trouble using the website or quote form, please contact us by phone or text so we can help.
+            </p>
+            <p>
+              <a href="accessibility.html" style="color:#f37021;font-weight:900;">Read the Accessibility Statement</a>
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>13. Changes to These Terms</h2>
+            <p>
+              ZH Homes may update these Terms of Service from time to time. Updates will be posted on this page with a new effective date.
+            </p>
+          </section>
+
+          <section class="page-section">
+            <h2>14. Contact</h2>
+            <p>
+              Questions about these terms can be sent to ZH Homes using the contact information below.
+            </p>
+
+            <div class="contact-box">
+              <p><strong>Business:</strong> ZH Homes</p>
+              <p><strong>Phone/Text:</strong> (503) 910-5466</p>
+              <p><strong>Location:</strong> Salem, Oregon and surrounding areas</p>
+              <p><strong>Mailing Address:</strong> Available upon request when needed for a project, legal notice, or written communication.</p>
+              <p><strong>Oregon CCB:</strong> #260679</p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 ZH Homes. All rights reserved.</span>
+      <div class="footer-links" aria-label="Footer legal links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
