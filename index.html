@@ -105,8 +105,8 @@
         </p>
 
         <div class="hero-actions">
-          <a href="tel:5039105466" class="btn btn-primary">Call (503) 910-5466</a>
-          <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+          <a href="#contact" class="btn btn-primary">Get a Quote</a>
+          <a href="tel:5039105466" class="btn btn-secondary">Call / Text (503) 910-5466</a>
         </div>
 
         <div class="hero-inline-review" aria-label="Featured customer review">
@@ -723,23 +723,24 @@
   <section class="contact-section" id="contact">
     <div class="contact-inner">
       <div class="contact-content">
-        <div class="contact-eyebrow">Contact Us</div>
-        <h2>Have a question? Get in touch.</h2>
+        <div class="contact-eyebrow">Get a Quote</div>
+        <h2>Tell us about your project.</h2>
         <p>
-          Tell us what is going on. A short description, a few photos, and the best way to reach you is usually enough to start.
+          The fastest way to get started is by sending the project details below. A short description, a few photos, and the best way to reach you is usually enough to start.
         </p>
 
         <ul class="contact-info-list" aria-label="Main contact information">
           <li class="contact-info-item">
-            <a href="tel:5039105466">(503) 910-5466</a>
-          </li>
-          <li class="contact-info-item">
-            <a href="mailto:&#122;&#97;&#99;&#104;@zhhomeco.com">Email us</a>
+            <a href="tel:5039105466">Call or text: (503) 910-5466</a>
           </li>
           <li class="contact-info-item">
             <span>Salem, Oregon and surrounding areas</span>
           </li>
         </ul>
+
+        <p class="contact-solicitation-note">
+          This page is for homeowners, property managers, real estate professionals, and customers requesting project help. Sales, SEO, marketing, advertising, and vendor solicitations are reviewed separately.
+        </p>
 
         <div class="social-row">
           <span>Follow us:</span>
@@ -755,28 +756,43 @@
           Fill this out with the basics. You can upload project photos so we can understand the job faster.
         </p>
 
-        <form class="quote-form" id="quoteForm" enctype="multipart/form-data">
+        <form class="quote-form" id="quoteForm" enctype="multipart/form-data" novalidate>
+          <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+            <label for="companyWebsite">Company Website</label>
+            <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="contactReason">What are you contacting us about?</label>
+            <select id="contactReason" name="contactReason" required>
+              <option value="project_quote">I need an estimate for a home project</option>
+              <option value="existing_project">I have a question about an existing project</option>
+              <option value="property_work">I need help with rental or property work</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
           <div class="form-row">
             <div class="field">
               <label for="fullName">Full Name</label>
-              <input id="fullName" type="text" placeholder="Your name">
+              <input id="fullName" name="fullName" type="text" placeholder="Your name" required>
             </div>
 
             <div class="field">
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com">
+              <input id="email" name="email" type="email" placeholder="you@example.com">
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
               <label for="phone">Phone</label>
-              <input id="phone" type="tel" placeholder="Your phone number">
+              <input id="phone" name="phone" type="tel" placeholder="Your phone number" required>
             </div>
 
             <div class="field">
               <label for="serviceType">Service Type</label>
-              <select id="serviceType">
+              <select id="serviceType" name="serviceType" required>
                 <option>Home Remodeling</option>
                 <option>Construction Project</option>
                 <option>Handyman / Repairs</option>
@@ -789,7 +805,7 @@
 
           <div class="field">
             <label for="description">Project Description</label>
-            <textarea id="description" placeholder="Tell us what you need help with..."></textarea>
+            <textarea id="description" name="description" placeholder="Tell us what you need help with..." required></textarea>
           </div>
 
           <div class="field">
@@ -803,7 +819,12 @@
             <span class="file-error" id="fileError">Please upload an image that is 10MB or smaller.</span>
           </div>
 
-          <button class="submit-btn" type="submit">Submit Now</button>
+          <p class="field-note">
+            Sales, SEO, marketing, advertising, and vendor messages are not sent directly to the contractor.
+          </p>
+
+          <button class="submit-btn" type="submit">Submit Quote Request</button>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
       </div>
     </div>
@@ -882,7 +903,7 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <span>(503) 910-5466</span>
-          <span>Email us</span>
+          <span>Use the quote form for estimates</span>
           <span>Salem, Oregon</span>
           <span>CCB #260679</span>
         </div>
@@ -908,18 +929,18 @@
 
   <!-- Mobile-only sticky CTA bar -->
   <div class="mobile-cta-bar" aria-label="Quick contact actions">
-    <a href="tel:5039105466" class="cta-call">
+    <a href="#contact" class="cta-quote">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
       </svg>
-      Call Now
+      Get Quote
     </a>
-    <a href="#contact" class="cta-quote">
+    <a href="tel:5039105466" class="cta-call">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="2"/>
         <path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
       </svg>
-      Get Quote
+      Call / Text
     </a>
   </div>
   <script src="script.js"></script>
