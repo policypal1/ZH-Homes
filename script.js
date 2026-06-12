@@ -1,3 +1,5 @@
+const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+
 const reviewCarousel = document.getElementById("reviewCarousel");
 const reviewSlides = Array.from(document.querySelectorAll(".review-slide"));
 const reviewDots = Array.from(document.querySelectorAll(".review-dot"));
@@ -9,6 +11,7 @@ const fileError = document.getElementById("fileError");
 const selectedFileRow = document.getElementById("selectedFileRow");
 const selectedFileName = document.getElementById("selectedFileName");
 const clearProjectPhoto = document.getElementById("clearProjectPhoto");
+const formStatus = document.getElementById("formStatus");
 const projectGalleryMobile = document.getElementById("projectGalleryMobile");
 const projectGalleryTrack = projectGalleryMobile?.querySelector(".gallery-mobile-track");
 const projectGallerySlides = Array.from(document.querySelectorAll(".gallery-mobile-slide"));
@@ -125,14 +128,105 @@ projectPhoto?.addEventListener("change", () => {
 
 clearProjectPhoto?.addEventListener("click", clearSelectedProjectPhoto);
 
-quoteForm?.addEventListener("submit", (event) => {
+function setFormStatus(message, type = "") {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`.trim();
+}
+
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    if (!file) {
+      resolve(null);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      resolve({
+        name: file.name,
+        type: file.type || "application/octet-stream",
+        size: file.size,
+        base64: result.includes(",") ? result.split(",")[1] : result
+      });
+    };
+    reader.onerror = () => reject(new Error("Could not read the uploaded image."));
+    reader.readAsDataURL(file);
+  });
+}
+
+quoteForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
   const file = projectPhoto?.files?.[0];
 
   if (file && file.size > 10 * 1024 * 1024) {
-    event.preventDefault();
-
     if (fileError) fileError.style.display = "block";
     projectPhoto.focus();
+    return;
+  }
+
+  if (!quoteForm.checkValidity()) {
+    quoteForm.reportValidity();
+    return;
+  }
+
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes("PASTE_YOUR")) {
+    setFormStatus("The form is not connected yet. Add your Apps Script web app URL in script.js.", "error");
+    return;
+  }
+
+  const submitBtn = quoteForm.querySelector(".submit-btn");
+  const originalButtonText = submitBtn?.textContent || "Submit Quote Request";
+
+  try {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+    }
+    setFormStatus("Sending your request...", "");
+
+    const payload = {
+      source: "ZH Homes Website",
+      pageUrl: window.location.href,
+      submittedAt: new Date().toISOString(),
+      contactReason: document.getElementById("contactReason")?.value.trim() || "",
+      fullName: document.getElementById("fullName")?.value.trim() || "",
+      email: document.getElementById("email")?.value.trim() || "",
+      phone: document.getElementById("phone")?.value.trim() || "",
+      serviceType: document.getElementById("serviceType")?.value.trim() || "",
+      description: document.getElementById("description")?.value.trim() || "",
+      companyWebsite: document.getElementById("companyWebsite")?.value.trim() || "",
+      projectPhoto: await readFileAsBase64(file)
+    };
+
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      redirect: "follow",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || "The request could not be sent.");
+    }
+
+    quoteForm.reset();
+    clearSelectedProjectPhoto();
+    setFormStatus("Thanks. Your quote request was sent successfully.", "success");
+  } catch (error) {
+    console.error(error);
+    setFormStatus("Something went wrong. Please call or text ZH Homes directly.", "error");
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalButtonText;
+    }
   }
 });
 
