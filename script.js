@@ -21,6 +21,11 @@ const nextProjectGalleryBtn = document.querySelector(".gallery-mobile-arrow.next
 
 const contactSection = document.getElementById("contact");
 const siteHeader = document.querySelector(".site-header");
+const quoteSuccessOverlay = document.getElementById("quoteSuccessOverlay");
+
+const MAX_IMAGE_FILES = 4;
+const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
+const MAX_TOTAL_IMAGE_SIZE = 20 * 1024 * 1024;
 
 function scrollToQuoteSection(behavior = "smooth") {
   if (!contactSection) return;
@@ -42,7 +47,6 @@ function scrollToQuoteSection(behavior = "smooth") {
 document.querySelectorAll('a[href="#contact"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
-
     scrollToQuoteSection("smooth");
 
     window.setTimeout(() => scrollToQuoteSection("auto"), 450);
@@ -135,6 +139,10 @@ projectGalleryDots.forEach((dot, index) => {
   });
 });
 
+function getSelectedProjectPhotos() {
+  return Array.from(projectPhoto?.files || []);
+}
+
 function clearSelectedProjectPhoto() {
   if (!projectPhoto) return;
 
@@ -146,25 +154,58 @@ function clearSelectedProjectPhoto() {
   if (selectedFileRow) selectedFileRow.hidden = true;
 }
 
-projectPhoto?.addEventListener("change", () => {
-  const file = projectPhoto.files?.[0];
+function validateProjectPhotos(files) {
+  if (!projectPhoto) return true;
 
-  if (!file) {
+  if (!files.length) {
+    projectPhoto.setCustomValidity("");
+    if (fileError) fileError.style.display = "none";
+    return true;
+  }
+
+  const totalSize = files.reduce((sum, file) => sum + file.size, 0);
+  const hasNonImage = files.some((file) => !file.type.startsWith("image/"));
+  const hasOversizedFile = files.some((file) => file.size > MAX_IMAGE_SIZE);
+
+  if (files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || hasNonImage || hasOversizedFile) {
+    projectPhoto.setCustomValidity("Please upload 1–4 image files, with each image 5MB or smaller and total uploads under 20MB.");
+    if (fileError) fileError.style.display = "block";
+    return false;
+  }
+
+  projectPhoto.setCustomValidity("");
+  if (fileError) fileError.style.display = "none";
+  return true;
+}
+
+function updateSelectedProjectPhotoText(files) {
+  if (!selectedFileName || !selectedFileRow) return;
+
+  if (!files.length) {
+    selectedFileName.textContent = "";
+    selectedFileRow.hidden = true;
+    return;
+  }
+
+  const names = files.map((file) => file.name);
+  selectedFileName.textContent = names.length === 1 ? names[0] : `${names.length} images selected: ${names.join(", ")}`;
+  selectedFileRow.hidden = false;
+}
+
+projectPhoto?.addEventListener("change", () => {
+  const files = getSelectedProjectPhotos();
+
+  if (!files.length) {
     clearSelectedProjectPhoto();
     return;
   }
 
-  if (file.size > 10 * 1024 * 1024) {
-    if (fileError) fileError.style.display = "block";
-    clearSelectedProjectPhoto();
-    projectPhoto.setCustomValidity("Please upload an image that is 10MB or smaller.");
-  } else {
-    if (fileError) fileError.style.display = "none";
-    projectPhoto.setCustomValidity("");
-
-    if (selectedFileName) selectedFileName.textContent = file.name;
-    if (selectedFileRow) selectedFileRow.hidden = false;
+  if (!validateProjectPhotos(files)) {
+    updateSelectedProjectPhotoText(files);
+    return;
   }
+
+  updateSelectedProjectPhotoText(files);
 });
 
 clearProjectPhoto?.addEventListener("click", clearSelectedProjectPhoto);
@@ -197,14 +238,30 @@ function readFileAsBase64(file) {
   });
 }
 
+async function readFilesAsBase64(files) {
+  return Promise.all(files.map((file) => readFileAsBase64(file)));
+}
+
+function showQuoteSuccessAnimation() {
+  const contactCard = document.querySelector(".contact-form-card");
+  if (!contactCard || !quoteSuccessOverlay) return;
+
+  contactCard.classList.add("quote-success-active");
+  quoteSuccessOverlay.setAttribute("aria-hidden", "false");
+
+  window.setTimeout(() => {
+    contactCard.classList.remove("quote-success-active");
+    quoteSuccessOverlay.setAttribute("aria-hidden", "true");
+  }, 2600);
+}
+
 quoteForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const file = projectPhoto?.files?.[0];
+  const files = getSelectedProjectPhotos();
 
-  if (file && file.size > 10 * 1024 * 1024) {
-    if (fileError) fileError.style.display = "block";
-    projectPhoto.focus();
+  if (!validateProjectPhotos(files)) {
+    projectPhoto?.focus();
     return;
   }
 
@@ -232,14 +289,15 @@ quoteForm?.addEventListener("submit", async (event) => {
       source: "ZH Homes Website",
       pageUrl: window.location.href,
       submittedAt: new Date().toISOString(),
-      contactReason: document.getElementById("contactReason")?.value.trim() || "",
+      contactReason: "project_quote",
       fullName: document.getElementById("fullName")?.value.trim() || "",
       email: document.getElementById("email")?.value.trim() || "",
       phone: document.getElementById("phone")?.value.trim() || "",
       serviceType: document.getElementById("serviceType")?.value.trim() || "",
       description: document.getElementById("description")?.value.trim() || "",
       companyWebsite: document.getElementById("companyWebsite")?.value.trim() || "",
-      projectPhoto: await readFileAsBase64(file)
+      projectPhotos: await readFilesAsBase64(files),
+      projectPhoto: files[0] ? await readFileAsBase64(files[0]) : null
     };
 
     // Google Apps Script web apps often block browser reads with CORS.
@@ -256,6 +314,7 @@ quoteForm?.addEventListener("submit", async (event) => {
 quoteForm.reset();
 clearSelectedProjectPhoto();
 setFormStatus("Thanks. Your quote request was submitted.", "success");
+showQuoteSuccessAnimation();
   } catch (error) {
     console.error(error);
     setFormStatus("Something went wrong. Please call or text ZH Homes directly.", "error");
