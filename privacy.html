@@ -275,6 +275,13 @@
       font-weight: 850;
     }
 
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
     @media (max-width: 700px) {
       .header-inner {
         min-height: 72px;
@@ -433,6 +440,11 @@
             <p>
               You can usually adjust your browser settings to block or delete cookies. Some website features may not work the same if cookies are disabled.
             </p>
+
+            <p>
+              This website does not currently display a cookie consent banner because it is not intended to sell personal data, share personal data for targeted advertising, or use consent-based tracking that would require a banner for this basic local-service website. If the website later adds targeted advertising, remarketing pixels, or tracking that requires additional notice or opt-out controls, this policy and the website controls should be updated.
+            </p>
+
           </section>
 
           <section class="policy-section">
@@ -495,6 +507,7 @@
               <p><strong>Business:</strong> ZH Homes</p>
               <p><strong>Phone/Text:</strong> (503) 910-5466</p>
               <p><strong>Location:</strong> Salem, Oregon and surrounding areas</p>
+              <p><strong>Mailing Address:</strong> Available upon request when needed for a project, legal notice, or written communication.</p>
               <p><strong>Website:</strong> Use the quote form or contact options on the main website.</p>
             </div>
           </section>
@@ -506,7 +519,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <span>© 2026 ZH Homes. All rights reserved.</span>
-      <a href="index.html">Back to Home</a>
+      <div class="footer-links" aria-label="Footer legal links"><a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="accessibility.html">Accessibility</a></div>
     </div>
   </footer>
 </body>
