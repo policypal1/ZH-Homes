@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxL5FvxfIOfmTy-PiNkB_JjrwYubafRcaosIylMwk4oQEmvDoJiW4nxDeuqH4yaG9PDkg/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzxDgwv17OF99qhxanPaIP5-GLZ66nE15axz6zLMiuNpfxwiPNchRmI5IcZo689Q-a74A/exec";
 
 const reviewCarousel = document.getElementById("reviewCarousel");
 const reviewSlides = Array.from(document.querySelectorAll(".review-slide"));
