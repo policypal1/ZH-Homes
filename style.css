@@ -6065,3 +6065,33 @@
     display: block !important;
   }
 }
+/* Add this near your other contact/form CSS */
+.contact-solicitation-note {
+  margin-top: 18px;
+  color: rgba(255,255,255,0.66);
+  font-size: 13px;
+  line-height: 1.55;
+  max-width: 540px;
+}
+
+.form-status {
+  min-height: 22px;
+  margin-top: 14px;
+  color: rgba(255,255,255,0.76);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.form-status.success {
+  color: #c8ffd2;
+}
+
+.form-status.error {
+  color: #ffd0d0;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
