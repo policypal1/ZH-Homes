@@ -6277,3 +6277,39 @@ summary:focus-visible {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Final mobile input zoom fix: keeps pinch zoom available but stops iPhone auto-zoom on form focus. */
+@media (max-width: 950px) {
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px !important;
+  }
+
+  .field input,
+  .field select,
+  .field textarea,
+  .submit-btn {
+    font-size: 16px !important;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Small rendering performance boost for below-the-fold sections. */
+.about-section,
+.services-section,
+.mission-section,
+.gallery-section,
+.process-section,
+.project-cta-section,
+.service-area-section,
+.testimonials-section,
+.contact-section,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
