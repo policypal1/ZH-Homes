@@ -750,7 +750,7 @@
   position: relative;
   background:
     linear-gradient(rgba(10,7,5,0.36), rgba(10,7,5,0.46)),
-    url("ChatGPT Image May 14, 2026, 10_21_07 PM.png") center center / cover no-repeat,
+    url("ChatGPT Image May 14, 2026, 10_21_07 PM (1).webp") center center / cover no-repeat,
     #0a0705;
   padding: 92px 0 104px;
   overflow: hidden;
@@ -1083,7 +1083,7 @@
       position: relative;
       background:
         linear-gradient(rgba(6,7,8,0.58), rgba(6,7,8,0.70)),
-        url("78f73903-bf75-4edb-a889-85c3273fe3f8.png") center center / cover no-repeat,
+        url("78f73903-bf75-4edb-a889-85c3273fe3f8.webp") center center / cover no-repeat,
         #060708;
       color: #fff;
       padding: 110px 0 132px;
@@ -4271,7 +4271,7 @@
         min-height: auto;
         background:
           linear-gradient(180deg, rgba(6,7,8,0.68) 0%, rgba(6,7,8,0.76) 45%, rgba(6,7,8,0.90) 100%),
-          url("874d1223-50ee-45da-a0dd-12cf574aed49.png") center center / cover no-repeat,
+          url("874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp") center center / cover no-repeat,
           #060708 !important;
         overflow: hidden;
       }
