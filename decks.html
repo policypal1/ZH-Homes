@@ -47,7 +47,7 @@
             <span class="license-desktop-word">Oregon </span>CCB #260679
           </strong>
         </div>
-        <a href="#estimate" class="header-cta">Get an Estimate</a>
+        <a href="#hero-estimate" class="header-cta">Get an Estimate</a>
       </div>
     </div>
   </header>
@@ -108,7 +108,7 @@
           </p>
 
           <div class="hero-actions">
-            <a href="#estimate" class="btn btn-primary">Request a Deck Estimate</a>
+            <a href="#hero-estimate" class="btn btn-primary">Request a Deck Estimate</a>
             <a href="tel:5039105466" class="btn btn-secondary tracked-call">Call / Text (503) 910-5466</a>
           </div>
 
@@ -144,60 +144,225 @@
           </div>
         </div>
 
-        <aside class="hero-quick-card" aria-labelledby="hero-form-title">
+        <aside class="hero-quick-card" id="hero-estimate" aria-labelledby="hero-form-title">
           <div class="hero-quick-heading">
             <span>Free Deck Estimate</span>
-            <h2 id="hero-form-title">Start planning your deck</h2>
-            <p>Send the basics and Zach will follow up with the clearest next step.</p>
+            <h2 id="hero-form-title">Get your free deck estimate</h2>
+            <p>Answer a few quick questions, one step at a time, so we can review the project before contacting you.</p>
           </div>
 
-          <form class="hero-quick-form" id="heroDeckQuoteForm" data-form-source="Hero Quick Form" novalidate>
+          <form class="hero-quick-form deck-multistep-form" id="heroDeckQuoteForm" data-form-source="Hero Multi-Step Estimate" enctype="multipart/form-data" novalidate>
             <div class="honeypot" aria-hidden="true">
               <label for="heroCompanyWebsite">Company Website</label>
               <input id="heroCompanyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
             </div>
 
-            <div class="hero-form-row">
-              <div class="field">
-                <label for="heroFullName">Full Name</label>
-                <input id="heroFullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+            <div class="estimate-progress" aria-label="Estimate form progress">
+              <div class="estimate-progress-copy">
+                <span data-progress-label>Step 1 of 5</span>
+                <strong data-progress-title>Contact information</strong>
               </div>
-              <div class="field">
-                <label for="heroPhone">Phone</label>
-                <input id="heroPhone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" required>
-              </div>
-            </div>
-
-            <div class="hero-form-row">
-              <div class="field">
-                <label for="heroEmail">Email <span>Optional</span></label>
-                <input id="heroEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com">
-              </div>
-              <div class="field">
-                <label for="heroZipCode">Project ZIP Code</label>
-                <input id="heroZipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" pattern="[0-9]{5}(-[0-9]{4})?" required>
+              <div class="estimate-progress-track" aria-hidden="true">
+                <span data-progress-bar></span>
               </div>
             </div>
 
-            <div class="field">
-              <label for="heroMaterialPreference">Material Preference</label>
-              <select id="heroMaterialPreference" name="materialPreference">
-                <option value="Unsure">Not sure yet</option>
-                <option value="Wood">Wood</option>
-                <option value="Composite">Composite</option>
-                <option value="Compare both">Compare wood and composite</option>
-              </select>
-            </div>
+            <section class="estimate-step active" data-step="0" data-step-title="Contact information">
+              <div class="estimate-step-heading">
+                <span>First, how can we reach you?</span>
+                <p>We use this information only to respond to your deck request.</p>
+              </div>
 
-            <button class="hero-submit-button submit-button" type="submit">Request My Deck Estimate</button>
-            <p class="hero-form-assurance">Free estimate. No obligation.</p>
-            <div class="form-status hero-form-status" data-form-status role="status" aria-live="polite"></div>
+              <div class="hero-form-row">
+                <div class="field">
+                  <label for="heroFullName">Full Name</label>
+                  <input id="heroFullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+                </div>
+                <div class="field">
+                  <label for="heroPhone">Phone</label>
+                  <input id="heroPhone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="heroEmail">Email</label>
+                <input id="heroEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              </div>
+
+              <div class="estimate-nav single-action">
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="1" data-step-title="Property details" hidden>
+              <div class="estimate-step-heading">
+                <span>Tell us about the property</span>
+                <p>This confirms the location and whether the project fits this new-deck campaign.</p>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>Are you the homeowner?</legend>
+                <div class="choice-grid two-options">
+                  <label class="choice-card"><input type="radio" name="homeownerStatus" value="Yes, homeowner" required><span>Yes, I own the home</span></label>
+                  <label class="choice-card"><input type="radio" name="homeownerStatus" value="No / helping someone else" required><span>No / helping someone else</span></label>
+                </div>
+              </fieldset>
+
+              <div class="hero-form-row">
+                <div class="field">
+                  <label for="heroZipCode">Project ZIP Code</label>
+                  <input id="heroZipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" pattern="[0-9]{5}(-[0-9]{4})?" required>
+                </div>
+                <div class="field">
+                  <label for="heroCurrentSetup">What is there now?</label>
+                  <select id="heroCurrentSetup" name="currentSetup" required>
+                    <option value="">Choose one</option>
+                    <option value="No deck / grass outside">No deck / grass outside</option>
+                    <option value="Small landing or steps">Small landing or steps</option>
+                    <option value="Concrete patio">Concrete patio</option>
+                    <option value="Existing deck to remove">Existing deck to remove</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="estimate-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="2" data-step-title="Deck preferences" hidden>
+              <div class="estimate-step-heading">
+                <span>What kind of deck are you considering?</span>
+                <p>It is fine to be unsure. These answers help us prepare useful options.</p>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>Material preference</legend>
+                <div class="choice-grid material-choice-grid">
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Wood" required><span>Wood</span></label>
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Composite" required><span>Composite</span></label>
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Compare both" required><span>Compare both</span></label>
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Unsure" required><span>Not sure yet</span></label>
+                </div>
+              </fieldset>
+
+              <div class="field">
+                <label for="heroDeckSize">Approximate deck size</label>
+                <select id="heroDeckSize" name="deckSize" required>
+                  <option value="">Choose a rough size</option>
+                  <option value="Under 150 sq ft">Under 150 sq. ft.</option>
+                  <option value="150-300 sq ft">150–300 sq. ft.</option>
+                  <option value="300-500 sq ft">300–500 sq. ft.</option>
+                  <option value="Over 500 sq ft">More than 500 sq. ft.</option>
+                  <option value="Need help sizing">I need help choosing a size</option>
+                </select>
+              </div>
+
+              <fieldset class="choice-fieldset optional-choices">
+                <legend>Features you may want <span>Optional</span></legend>
+                <div class="choice-grid feature-choice-grid">
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Stairs"><span>Stairs</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Railings"><span>Railings</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Privacy screen"><span>Privacy</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Built-in seating"><span>Built-in seating</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Pergola or cover"><span>Pergola / cover</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Lighting"><span>Lighting</span></label>
+                </div>
+              </fieldset>
+
+              <div class="estimate-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="3" data-step-title="Timing and budget" hidden>
+              <div class="estimate-step-heading">
+                <span>When are you hoping to build?</span>
+                <p>Timing and budget help us determine fit before either side spends time on a site visit.</p>
+              </div>
+
+              <div class="field">
+                <label for="heroProjectTiming">Ideal timing</label>
+                <select id="heroProjectTiming" name="projectTiming" required>
+                  <option value="">Choose your timing</option>
+                  <option value="As soon as practical">As soon as practical</option>
+                  <option value="This summer">This summer</option>
+                  <option value="1-3 months">Within 1–3 months</option>
+                  <option value="3-6 months">Within 3–6 months</option>
+                  <option value="6+ months / planning">More than 6 months / planning ahead</option>
+                </select>
+              </div>
+
+              <fieldset class="choice-fieldset budget-fieldset">
+                <legend>Approximate project budget</legend>
+                <div class="choice-grid budget-choice-grid">
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="Under $5,000" required><span>Under $5,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$5,000-$10,000" required><span>$5,000–$10,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$10,000-$20,000" required><span>$10,000–$20,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$20,000-$35,000" required><span>$20,000–$35,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$35,000+" required><span>$35,000+</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="Need budget guidance" required><span>Need guidance</span></label>
+                </div>
+              </fieldset>
+
+              <div class="estimate-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="4" data-step-title="Project details" hidden>
+              <div class="estimate-step-heading">
+                <span>Last step: describe the deck</span>
+                <p>A few details or photos help us give you a more useful response.</p>
+              </div>
+
+              <div class="field">
+                <label for="heroProjectDetails">What do you want from the space?</label>
+                <textarea id="heroProjectDetails" name="projectDetails" minlength="20" placeholder="Example: Room for a grill, dining table, and seating for six. The yard slopes away from the house." required></textarea>
+              </div>
+
+              <div class="field deck-upload-field estimate-upload-field">
+                <label for="heroProjectPhoto">Backyard Photos <span class="optional-label">Optional but helpful</span></label>
+                <input id="heroProjectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple data-project-photo>
+                <div class="selected-file-row" data-selected-file-row hidden>
+                  <span data-selected-file-name></span>
+                  <button type="button" data-clear-files aria-label="Remove uploaded images">×</button>
+                </div>
+                <span class="field-note">Upload up to 4 images, 5MB each.</span>
+                <span class="file-error" data-file-error role="alert"></span>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>Preferred contact method</legend>
+                <div class="choice-grid contact-choice-grid">
+                  <label class="choice-card"><input type="radio" name="contactPreference" value="Text" required><span>Text</span></label>
+                  <label class="choice-card"><input type="radio" name="contactPreference" value="Phone call" required><span>Phone call</span></label>
+                  <label class="choice-card"><input type="radio" name="contactPreference" value="Email" required><span>Email</span></label>
+                </div>
+              </fieldset>
+
+              <label class="campaign-confirmation">
+                <input type="checkbox" name="newDeckConfirmation" value="Confirmed new deck project" required>
+                <span>I understand this estimate is for new deck construction, not staining, cleaning, or individual board repairs.</span>
+              </label>
+
+              <div class="estimate-nav final-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="submit-button estimate-submit" type="submit">Request My Free Deck Estimate</button>
+              </div>
+              <p class="hero-form-assurance">Free estimate. No obligation. We will review the information before following up.</p>
+              <div class="form-status" data-form-status role="status" aria-live="polite"></div>
+            </section>
           </form>
 
           <div class="hero-form-success" data-success-overlay aria-hidden="true">
             <span aria-hidden="true">✓</span>
             <strong>Request Sent</strong>
-            <p>Thanks. Zach will review your deck request and follow up.</p>
+            <p>Thanks. We will review your deck request and follow up using your preferred contact method.</p>
           </div>
         </aside>
       </div>
@@ -253,16 +418,9 @@
     <section class="about-section" id="about">
       <div class="about-inner">
         <div class="about-media">
-          <div class="photo-stack">
-            <div class="photo-main">
-              <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_03_03 PM (2) (1).webp" alt="Finished ZH Homes project">
-            </div>
-            <div class="photo-small one">
-              <img decoding="async" loading="lazy" src="unnamed (1).webp" alt="ZH Homes construction detail">
-            </div>
-            <div class="photo-small two">
-              <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_19_27 PM (2) (1) (1).webp" alt="ZH Homes home improvement project">
-            </div>
+          <div class="about-single-photo">
+            <!-- Replace this src with the completed deck photo when it is uploaded. -->
+            <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_03_03 PM (2) (1).webp" alt="Recent ZH Homes project">
           </div>
         </div>
 
@@ -416,7 +574,7 @@
         <div class="mission-strip">
           <div class="mission-stat">
             <strong>Direct Communication</strong>
-            <span>Talk with Zach instead of being passed through a sales office</span>
+            <span>Talk directly with the local company handling your project</span>
           </div>
           <div class="mission-stat">
             <strong>Clear Scope</strong>
@@ -563,7 +721,7 @@
           <div class="contact-eyebrow">New Deck Estimate</div>
           <h2>Tell us what you want from your backyard.</h2>
           <p>
-            Send the basics below. Zach will review the request and contact you with the clearest next step. You do not need final measurements or a complete design before reaching out.
+            Complete the step-by-step estimate form. We will review the project details, budget, timing, and location before contacting you with the clearest next step.
           </p>
 
           <ul class="contact-info-list" aria-label="Deck estimate information">
@@ -576,85 +734,222 @@
         <div class="contact-form-card deck-form-card">
           <div class="deck-form-heading">
             <h3>Start Planning Your Deck</h3>
-            <p>Tell us the essentials now. Photos and extra details are optional.</p>
+            <p>Complete the same step-by-step estimate form. The added detail helps us determine fit and prepare before following up.</p>
           </div>
 
-          <form class="quote-form" id="deckQuoteForm" data-form-source="Full Deck Estimate Form" enctype="multipart/form-data" novalidate>
+          <form class="quote-form deck-multistep-form" id="deckQuoteForm" data-form-source="Full Multi-Step Estimate" enctype="multipart/form-data" novalidate>
             <div class="honeypot" aria-hidden="true">
-              <label for="companyWebsite">Company Website</label>
-              <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+              <label for="fullCompanyWebsite">Company Website</label>
+              <input id="fullCompanyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
             </div>
 
-            <div class="form-row">
-              <div class="field">
-                <label for="fullName">Full Name</label>
-                <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+            <div class="estimate-progress" aria-label="Estimate form progress">
+              <div class="estimate-progress-copy">
+                <span data-progress-label>Step 1 of 5</span>
+                <strong data-progress-title>Contact information</strong>
               </div>
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" required>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="email">Email <span class="optional-label">Optional</span></label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
-              </div>
-              <div class="field">
-                <label for="zipCode">Project ZIP Code</label>
-                <input id="zipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" pattern="[0-9]{5}(-[0-9]{4})?" required>
+              <div class="estimate-progress-track" aria-hidden="true">
+                <span data-progress-bar></span>
               </div>
             </div>
 
-            <div class="form-row">
+            <section class="estimate-step active" data-step="0" data-step-title="Contact information">
+              <div class="estimate-step-heading">
+                <span>First, how can we reach you?</span>
+                <p>We use this information only to respond to your deck request.</p>
+              </div>
+
+              <div class="hero-form-row">
+                <div class="field">
+                  <label for="fullFullName">Full Name</label>
+                  <input id="fullFullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+                </div>
+                <div class="field">
+                  <label for="fullPhone">Phone</label>
+                  <input id="fullPhone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" required>
+                </div>
+              </div>
+
               <div class="field">
-                <label for="materialPreference">Material Preference</label>
-                <select id="materialPreference" name="materialPreference">
-                  <option value="Unsure">Not sure yet</option>
-                  <option value="Wood">Wood</option>
-                  <option value="Composite">Composite</option>
-                  <option value="Compare both">Compare wood and composite</option>
+                <label for="fullEmail">Email</label>
+                <input id="fullEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              </div>
+
+              <div class="estimate-nav single-action">
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="1" data-step-title="Property details" hidden>
+              <div class="estimate-step-heading">
+                <span>Tell us about the property</span>
+                <p>This confirms the location and whether the project fits this new-deck campaign.</p>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>Are you the homeowner?</legend>
+                <div class="choice-grid two-options">
+                  <label class="choice-card"><input type="radio" name="homeownerStatus" value="Yes, homeowner" required><span>Yes, I own the home</span></label>
+                  <label class="choice-card"><input type="radio" name="homeownerStatus" value="No / helping someone else" required><span>No / helping someone else</span></label>
+                </div>
+              </fieldset>
+
+              <div class="hero-form-row">
+                <div class="field">
+                  <label for="fullZipCode">Project ZIP Code</label>
+                  <input id="fullZipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" pattern="[0-9]{5}(-[0-9]{4})?" required>
+                </div>
+                <div class="field">
+                  <label for="fullCurrentSetup">What is there now?</label>
+                  <select id="fullCurrentSetup" name="currentSetup" required>
+                    <option value="">Choose one</option>
+                    <option value="No deck / grass outside">No deck / grass outside</option>
+                    <option value="Small landing or steps">Small landing or steps</option>
+                    <option value="Concrete patio">Concrete patio</option>
+                    <option value="Existing deck to remove">Existing deck to remove</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="estimate-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="2" data-step-title="Deck preferences" hidden>
+              <div class="estimate-step-heading">
+                <span>What kind of deck are you considering?</span>
+                <p>It is fine to be unsure. These answers help us prepare useful options.</p>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>Material preference</legend>
+                <div class="choice-grid material-choice-grid">
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Wood" required><span>Wood</span></label>
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Composite" required><span>Composite</span></label>
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Compare both" required><span>Compare both</span></label>
+                  <label class="choice-card"><input type="radio" name="materialPreference" value="Unsure" required><span>Not sure yet</span></label>
+                </div>
+              </fieldset>
+
+              <div class="field">
+                <label for="fullDeckSize">Approximate deck size</label>
+                <select id="fullDeckSize" name="deckSize" required>
+                  <option value="">Choose a rough size</option>
+                  <option value="Under 150 sq ft">Under 150 sq. ft.</option>
+                  <option value="150-300 sq ft">150–300 sq. ft.</option>
+                  <option value="300-500 sq ft">300–500 sq. ft.</option>
+                  <option value="Over 500 sq ft">More than 500 sq. ft.</option>
+                  <option value="Need help sizing">I need help choosing a size</option>
                 </select>
               </div>
+
+              <fieldset class="choice-fieldset optional-choices">
+                <legend>Features you may want <span>Optional</span></legend>
+                <div class="choice-grid feature-choice-grid">
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Stairs"><span>Stairs</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Railings"><span>Railings</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Privacy screen"><span>Privacy</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Built-in seating"><span>Built-in seating</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Pergola or cover"><span>Pergola / cover</span></label>
+                  <label class="choice-card"><input type="checkbox" name="desiredFeatures" value="Lighting"><span>Lighting</span></label>
+                </div>
+              </fieldset>
+
+              <div class="estimate-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="estimate-next" type="button" data-next>Next</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="3" data-step-title="Timing and budget" hidden>
+              <div class="estimate-step-heading">
+                <span>When are you hoping to build?</span>
+                <p>Timing and budget help us determine fit before either side spends time on a site visit.</p>
+              </div>
+
               <div class="field">
-                <label for="projectTiming">Ideal Timing</label>
-                <select id="projectTiming" name="projectTiming">
+                <label for="fullProjectTiming">Ideal timing</label>
+                <select id="fullProjectTiming" name="projectTiming" required>
+                  <option value="">Choose your timing</option>
                   <option value="As soon as practical">As soon as practical</option>
                   <option value="This summer">This summer</option>
                   <option value="1-3 months">Within 1–3 months</option>
                   <option value="3-6 months">Within 3–6 months</option>
-                  <option value="Planning ahead">Just planning ahead</option>
+                  <option value="6+ months / planning">More than 6 months / planning ahead</option>
                 </select>
               </div>
-            </div>
 
-            <div class="field">
-              <label for="projectDetails">What do you want from the space? <span class="optional-label">Optional</span></label>
-              <textarea id="projectDetails" name="projectDetails" placeholder="Example: Room for a grill, dining table, and seating for six. The yard slopes away from the house."></textarea>
-            </div>
+              <fieldset class="choice-fieldset budget-fieldset">
+                <legend>Approximate project budget</legend>
+                <div class="choice-grid budget-choice-grid">
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="Under $5,000" required><span>Under $5,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$5,000-$10,000" required><span>$5,000–$10,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$10,000-$20,000" required><span>$10,000–$20,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$20,000-$35,000" required><span>$20,000–$35,000</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="$35,000+" required><span>$35,000+</span></label>
+                  <label class="choice-card"><input type="radio" name="budgetRange" value="Need budget guidance" required><span>Need guidance</span></label>
+                </div>
+              </fieldset>
 
-            <div class="field deck-upload-field">
-              <label for="projectPhoto">Backyard Photos <span class="optional-label">Optional</span></label>
-              <input id="projectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-describedby="uploadNote fileError">
-              <div class="selected-file-row" id="selectedFileRow" hidden>
-                <span id="selectedFileName"></span>
-                <button type="button" id="clearProjectPhoto" aria-label="Remove uploaded images">×</button>
+              <div class="estimate-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="estimate-next" type="button" data-next>Next</button>
               </div>
-              <span class="field-note" id="uploadNote">Upload up to 4 images, 5MB each.</span>
-              <span class="file-error" id="fileError" role="alert"></span>
-            </div>
+            </section>
 
-            <button class="submit-btn submit-button" type="submit">Request My Deck Estimate</button>
-            <p class="deck-form-assurance">No obligation. Your information is used only to respond to your project request.</p>
-            <div class="form-status" id="formStatus" data-form-status role="status" aria-live="polite"></div>
+            <section class="estimate-step" data-step="4" data-step-title="Project details" hidden>
+              <div class="estimate-step-heading">
+                <span>Last step: describe the deck</span>
+                <p>A few details or photos help us give you a more useful response.</p>
+              </div>
+
+              <div class="field">
+                <label for="fullProjectDetails">What do you want from the space?</label>
+                <textarea id="fullProjectDetails" name="projectDetails" minlength="20" placeholder="Example: Room for a grill, dining table, and seating for six. The yard slopes away from the house." required></textarea>
+              </div>
+
+              <div class="field deck-upload-field estimate-upload-field">
+                <label for="fullProjectPhoto">Backyard Photos <span class="optional-label">Optional but helpful</span></label>
+                <input id="fullProjectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple data-project-photo>
+                <div class="selected-file-row" data-selected-file-row hidden>
+                  <span data-selected-file-name></span>
+                  <button type="button" data-clear-files aria-label="Remove uploaded images">×</button>
+                </div>
+                <span class="field-note">Upload up to 4 images, 5MB each.</span>
+                <span class="file-error" data-file-error role="alert"></span>
+              </div>
+
+              <fieldset class="choice-fieldset">
+                <legend>Preferred contact method</legend>
+                <div class="choice-grid contact-choice-grid">
+                  <label class="choice-card"><input type="radio" name="contactPreference" value="Text" required><span>Text</span></label>
+                  <label class="choice-card"><input type="radio" name="contactPreference" value="Phone call" required><span>Phone call</span></label>
+                  <label class="choice-card"><input type="radio" name="contactPreference" value="Email" required><span>Email</span></label>
+                </div>
+              </fieldset>
+
+              <label class="campaign-confirmation">
+                <input type="checkbox" name="newDeckConfirmation" value="Confirmed new deck project" required>
+                <span>I understand this estimate is for new deck construction, not staining, cleaning, or individual board repairs.</span>
+              </label>
+
+              <div class="estimate-nav final-nav">
+                <button class="estimate-back" type="button" data-back>Back</button>
+                <button class="submit-button estimate-submit" type="submit">Request My Free Deck Estimate</button>
+              </div>
+              <p class="hero-form-assurance">Free estimate. No obligation. We will review the information before following up.</p>
+              <div class="form-status" data-form-status role="status" aria-live="polite"></div>
+            </section>
           </form>
 
-          <div class="deck-success-overlay" id="successOverlay" data-success-overlay aria-hidden="true">
+          <div class="deck-success-overlay" data-success-overlay aria-hidden="true">
             <div class="deck-success-box">
               <span class="deck-success-check" aria-hidden="true">✓</span>
               <strong>Request Sent</strong>
-              <p>Thanks. Zach will review your deck request and follow up.</p>
+              <p>Thanks. We will review your deck request and follow up using your preferred contact method.</p>
             </div>
           </div>
         </div>
@@ -696,7 +991,7 @@
           </details>
           <details class="faq-item">
             <summary>Are estimates free?</summary>
-            <p>Yes. Send the basics and any helpful photos. Zach will review the request and contact you with the clearest next step.</p>
+            <p>Yes. Complete the estimate form and include any helpful photos. We will review the request before contacting you with the clearest next step.</p>
           </details>
         </div>
       </div>
@@ -749,7 +1044,7 @@
   </footer>
 
   <div class="mobile-cta-bar" aria-label="Quick deck estimate actions">
-    <a href="#estimate" class="cta-quote">
+    <a href="#hero-estimate" class="cta-quote">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15 4V7H18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.75 11H15.25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.75 15H13.25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       Free Estimate
     </a>
