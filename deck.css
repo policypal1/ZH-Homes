@@ -1153,3 +1153,179 @@
     text-align: center;
   }
 }
+
+
+/* V8 refocus updates */
+.quick-stats {
+  background: #fff !important;
+  border-top: 1px solid rgba(35,23,18,0.08);
+  border-bottom: 1px solid rgba(35,23,18,0.08);
+}
+
+.quick-stats .stat-box strong,
+.quick-stats .stat-box span {
+  color: var(--deck-ink) !important;
+}
+
+.hero-review-section {
+  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
+  color: #fff !important;
+  padding: 68px 0 !important;
+}
+
+.hero-review-section .hero-review-card {
+  max-width: min(1220px, calc(100% - 36px));
+  margin: 0 auto;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 24px 52px rgba(0,0,0,0.25);
+}
+
+.hero-review-section .hero-review-quote,
+.hero-review-section .hero-review-author strong,
+.hero-review-section .hero-review-author span {
+  color: #fff !important;
+}
+
+.deck-project-gallery-section {
+  color: var(--deck-ink) !important;
+  background: #fff !important;
+}
+
+.deck-project-gallery-section::before { display: none !important; }
+
+.deck-project-gallery-heading h2 {
+  color: var(--deck-ink) !important;
+}
+
+.deck-project-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.deck-project-gallery-card {
+  position: relative;
+  min-height: 260px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ddd;
+  box-shadow: 0 22px 55px rgba(35,23,18,0.12);
+  border: 1px solid rgba(35,23,18,0.08);
+}
+
+.deck-project-gallery-card.large {
+  grid-column: span 2;
+  min-height: 360px;
+}
+
+.deck-project-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.deck-project-gallery-card:hover img {
+  transform: scale(1.04);
+}
+
+.deck-project-gallery-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08) 25%, rgba(0,0,0,0.65));
+}
+
+.deck-project-gallery-card figcaption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  color: #fff;
+}
+
+.deck-project-tag {
+  display: inline-flex;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(243,112,33,0.92);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.deck-project-gallery-card strong {
+  display: block;
+  font-size: 23px;
+  line-height: 1.14;
+}
+
+.deck-page .services-section {
+  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
+  color: #fff !important;
+}
+
+.deck-page .services-heading h2,
+.deck-page .services-heading p,
+.deck-page .services-eyebrow,
+.deck-page .services-btn span {
+  color: #fff !important;
+}
+
+.deck-page .services-btn {
+  border-color: rgba(255,255,255,0.16) !important;
+}
+
+.deck-page .mission-section {
+  background: #fff !important;
+}
+
+.deck-page .process-section {
+  color: #fff !important;
+  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
+}
+
+.deck-page .process-section::before {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(243,112,33,0.10), transparent 30%),
+    radial-gradient(circle at 88% 82%, rgba(243,112,33,0.08), transparent 34%) !important;
+}
+
+.deck-page .process-top h2,
+.deck-page .process-card h3,
+.deck-page .process-eyebrow {
+  color: #fff !important;
+}
+
+.deck-page .process-top p,
+.deck-page .process-card p {
+  color: rgba(255,255,255,0.72) !important;
+}
+
+.deck-page .process-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.08)) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.24) !important;
+}
+
+.deck-page .testimonials-section,
+.deck-page .faq-section {
+  background: #fff !important;
+}
+
+@media (max-width: 700px) {
+  .deck-project-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-project-gallery-card.large {
+    grid-column: auto;
+    min-height: 260px;
+  }
+}
