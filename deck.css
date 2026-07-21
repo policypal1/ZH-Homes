@@ -1548,3 +1548,294 @@
     transition: none !important;
   }
 }
+
+/* ==========================================================
+   V10 MOBILE, FORM, CAROUSEL, AND FOOTER FIXES
+   ========================================================== */
+
+/* Remove inherited decorative lines and pseudo-elements from form bubbles. */
+.deck-page .deck-multistep-form .choice-card,
+.deck-page .deck-multistep-form .choice-card span {
+  position: relative;
+  overflow: hidden;
+  background-image: none !important;
+  text-decoration: none !important;
+}
+
+.deck-page .deck-multistep-form .choice-card::before,
+.deck-page .deck-multistep-form .choice-card::after,
+.deck-page .deck-multistep-form .choice-card span::before,
+.deck-page .deck-multistep-form .choice-card span::after,
+.deck-page .deck-multistep-form .choice-grid::before,
+.deck-page .deck-multistep-form .choice-grid::after {
+  display: none !important;
+  content: none !important;
+  border: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.deck-page .deck-multistep-form .choice-card input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  appearance: none !important;
+}
+
+.deck-page .deck-multistep-form .choice-card span {
+  isolation: isolate;
+  box-shadow: none;
+}
+
+.deck-page .deck-multistep-form .choice-card input:checked + span {
+  box-shadow: inset 0 0 0 1px var(--deck-orange) !important;
+}
+
+/* The removed fields stay removed even before JavaScript finishes loading. */
+.deck-page .deck-multistep-form fieldset:has(input[name="contactPreference"]),
+.deck-page .deck-multistep-form .campaign-confirmation {
+  display: none !important;
+}
+
+/* Mobile deck-service carousel controls. Hidden on desktop. */
+.services-carousel-controls {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  /* Keep the trust badge in the header, remove the extra estimate button. */
+  .deck-page .site-header .header-cta {
+    display: none !important;
+  }
+
+  .deck-page .site-header .header-actions {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+  }
+
+  .deck-page .site-header .header-license-badge {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    max-width: 230px;
+  }
+
+  /* Use one review after the hero and trust strip instead of showing it twice. */
+  .deck-page .deck-hero .hero-inline-review {
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-inner {
+    padding-bottom: 34px;
+  }
+
+  .deck-page .quick-stats {
+    margin-top: 0 !important;
+  }
+
+  .deck-page .hero-review-section {
+    margin: 0 !important;
+    padding: 46px 0 !important;
+  }
+
+  .deck-page .hero-review-section .hero-review-card {
+    width: calc(100% - 24px);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .deck-page .deck-project-gallery-section {
+    padding-top: 68px;
+  }
+}
+
+@media (max-width: 700px) {
+  .deck-page .site-header .header-inner {
+    width: calc(100% - 20px) !important;
+    gap: 8px !important;
+  }
+
+  .deck-page .site-header .brand-logo img {
+    width: auto;
+    max-width: 88px;
+    height: 43px;
+  }
+
+  .deck-page .site-header .header-license-badge {
+    max-width: 185px;
+    padding: 7px 9px !important;
+    text-align: right;
+  }
+
+  .deck-page .site-header .header-license-badge span,
+  .deck-page .site-header .header-license-badge strong {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+
+  .deck-page .hero-review-section {
+    padding: 40px 0 !important;
+  }
+
+  .deck-page .hero-review-section .hero-review-card {
+    padding: 24px 20px !important;
+    border-radius: 16px;
+  }
+
+  .deck-page .deck-project-gallery-section {
+    padding-top: 58px;
+  }
+
+  /* Swipeable service carousel on mobile. */
+  .deck-page .services-section {
+    overflow: hidden;
+  }
+
+  .deck-page .services-section .services-inner {
+    width: min(100% - 24px, 1220px) !important;
+    overflow: visible;
+  }
+
+  .deck-page .services-section .services-grid {
+    display: flex !important;
+    gap: 14px !important;
+    width: 100%;
+    margin: 0;
+    padding: 4px 10vw 18px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .deck-page .services-section .services-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .deck-page .services-section .service-card {
+    flex: 0 0 min(84vw, 355px) !important;
+    width: min(84vw, 355px) !important;
+    min-width: min(84vw, 355px) !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .services-carousel-controls {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 12px;
+    align-items: center;
+    width: min(360px, 100%);
+    margin: 16px auto 0;
+  }
+
+  .services-carousel-arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .services-carousel-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .services-carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .services-carousel-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.34);
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: width 160ms ease, background 160ms ease;
+  }
+
+  .services-carousel-dot.active {
+    width: 24px;
+    background: var(--deck-orange);
+  }
+
+  /* Split the footer into balanced columns instead of one long left stack. */
+  .deck-page .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 32px 22px !important;
+    align-items: start;
+  }
+
+  .deck-page .footer-brand {
+    grid-column: 1 / -1;
+    max-width: 520px;
+  }
+
+  .deck-page .footer-col {
+    min-width: 0;
+  }
+
+  .deck-page .footer-col a,
+  .deck-page .footer-col span {
+    overflow-wrap: anywhere;
+  }
+
+  .deck-page .footer-bottom {
+    align-items: flex-start !important;
+    gap: 18px !important;
+  }
+
+  .deck-page .footer-bottom-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 18px !important;
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .deck-page .site-header .header-license-badge {
+    max-width: 165px;
+  }
+
+  .deck-page .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px 16px !important;
+  }
+
+  .deck-page .footer-col h4 {
+    font-size: 13px;
+  }
+
+  .deck-page .footer-col a,
+  .deck-page .footer-col span {
+    font-size: 12px;
+  }
+}
+

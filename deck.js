@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHLveySfQQs0FxeKYvdpn5h9GotlbR36H1ttA5hNUTb-KWyC7oxTH5EZ7jFB9sy92XkQ/exec";
+const APPS_SCRIPT_URL = "PASTE_YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
@@ -143,7 +143,26 @@ function setFormStatus(form, message, type = "") {
   status.className = `form-status ${type}`.trim();
 }
 
+function simplifyDeckEstimateForm(form) {
+  const preferredContactInput = form.querySelector('input[name="contactPreference"]');
+  const preferredContactFieldset = preferredContactInput?.closest("fieldset");
+  preferredContactFieldset?.remove();
+
+  form.querySelector(".campaign-confirmation")?.remove();
+
+  const successMessage = form
+    .closest(".hero-quick-card, .deck-form-card")
+    ?.querySelector("[data-success-overlay] p");
+
+  if (successMessage) {
+    successMessage.textContent =
+      "Thanks. We will review your deck request and follow up using the phone number or email you provided.";
+  }
+}
+
 function initializeMultiStepForm(form) {
+  simplifyDeckEstimateForm(form);
+
   const steps = Array.from(form.querySelectorAll(".estimate-step"));
   const progressLabel = form.querySelector("[data-progress-label]");
   const progressTitle = form.querySelector("[data-progress-title]");
@@ -265,6 +284,12 @@ function initializeMultiStepForm(form) {
     const originalButtonText = submitButton?.textContent || "Request My Deck Estimate";
 
     try {
+      if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(APPS_SCRIPT_URL)) {
+        throw new Error(
+          "Add the deployed Google Apps Script web app URL at the top of deck.js before using the form."
+        );
+      }
+
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = "Sending...";
@@ -285,9 +310,7 @@ function initializeMultiStepForm(form) {
         desiredFeatures,
         projectTiming: String(formData.get("projectTiming") || ""),
         budgetRange: String(formData.get("budgetRange") || ""),
-        projectDetails: String(formData.get("projectDetails") || ""),
-        contactPreference: String(formData.get("contactPreference") || ""),
-        newDeckConfirmation: String(formData.get("newDeckConfirmation") || "")
+        projectDetails: String(formData.get("projectDetails") || "")
       };
 
       const description = [
@@ -299,8 +322,6 @@ function initializeMultiStepForm(form) {
         `Desired features: ${desiredFeatures.length ? desiredFeatures.join(", ") : "None selected"}`,
         `Ideal timing: ${details.projectTiming}`,
         `Budget range: ${details.budgetRange}`,
-        `Preferred contact method: ${details.contactPreference}`,
-        `New deck campaign confirmation: ${details.newDeckConfirmation}`,
         `Deck goals/details: ${details.projectDetails}`
       ].join("\n");
 
@@ -496,13 +517,167 @@ function initializeDeckImageViewer() {
   });
 }
 
+
+function replaceDeckCampaignImages() {
+  const replacements = [
+    {
+      selector: ".deck-project-gallery-card",
+      headingSelector: "figcaption strong",
+      heading: "Low-maintenance composite deck",
+      src: "https://images.pexels.com/photos/37588543/pexels-photo-37588543.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      alt: "Large elevated backyard deck with stairs and modern railing"
+    },
+    {
+      selector: ".services-section .service-card",
+      headingSelector: "h3",
+      heading: "Composite Decks",
+      src: "https://images.pexels.com/photos/29052548/pexels-photo-29052548.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Backyard deck with stairs, railing, and open lawn"
+    },
+    {
+      selector: ".services-section .service-card",
+      headingSelector: "h3",
+      heading: "Outdoor Features",
+      src: "https://images.pexels.com/photos/10855255/pexels-photo-10855255.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      alt: "Outdoor kitchen and pergola designed for backyard entertaining"
+    }
+  ];
+
+  replacements.forEach((replacement) => {
+    const item = Array.from(document.querySelectorAll(replacement.selector)).find((element) =>
+      element
+        .querySelector(replacement.headingSelector)
+        ?.textContent?.trim()
+        .toLowerCase()
+        .includes(replacement.heading.toLowerCase())
+    );
+
+    const image = item?.querySelector("img");
+    if (!image) return;
+
+    image.src = replacement.src;
+    image.removeAttribute("srcset");
+    image.alt = replacement.alt;
+  });
+}
+
+function initializeServiceCarousel() {
+  const section = document.querySelector(".services-section");
+  const track = section?.querySelector(".services-grid");
+  const cards = Array.from(track?.querySelectorAll(".service-card") || []);
+
+  if (!section || !track || cards.length < 2 || section.querySelector(".services-carousel-controls")) {
+    return;
+  }
+
+  track.setAttribute("tabindex", "0");
+  track.setAttribute("aria-label", "Deck services carousel");
+
+  const controls = document.createElement("div");
+  controls.className = "services-carousel-controls";
+  controls.innerHTML = `
+    <button class="services-carousel-arrow services-carousel-prev" type="button" aria-label="Previous deck service">‹</button>
+    <div class="services-carousel-dots" aria-label="Deck service navigation"></div>
+    <button class="services-carousel-arrow services-carousel-next" type="button" aria-label="Next deck service">›</button>
+  `;
+
+  const dotsContainer = controls.querySelector(".services-carousel-dots");
+  const previousButton = controls.querySelector(".services-carousel-prev");
+  const nextButton = controls.querySelector(".services-carousel-next");
+  let currentIndex = 0;
+  let scrollTimer = 0;
+
+  const dots = cards.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.className = "services-carousel-dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Go to deck service ${index + 1}`);
+    dot.addEventListener("click", () => scrollToCard(index));
+    dotsContainer?.appendChild(dot);
+    return dot;
+  });
+
+  function getCardLeft(index) {
+    const card = cards[index];
+    return card ? card.offsetLeft - track.offsetLeft : 0;
+  }
+
+  function updateControls(index) {
+    currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === currentIndex;
+      dot.classList.toggle("active", active);
+      dot.setAttribute("aria-current", active ? "true" : "false");
+    });
+
+    if (previousButton) previousButton.disabled = currentIndex === 0;
+    if (nextButton) nextButton.disabled = currentIndex === cards.length - 1;
+  }
+
+  function scrollToCard(index) {
+    const targetIndex = Math.max(0, Math.min(index, cards.length - 1));
+    track.scrollTo({ left: getCardLeft(targetIndex), behavior: "smooth" });
+    updateControls(targetIndex);
+  }
+
+  function findNearestCard() {
+    const left = track.scrollLeft;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card, index) => {
+      const distance = Math.abs(card.offsetLeft - track.offsetLeft - left);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    updateControls(closestIndex);
+  }
+
+  previousButton?.addEventListener("click", () => scrollToCard(currentIndex - 1));
+  nextButton?.addEventListener("click", () => scrollToCard(currentIndex + 1));
+
+  track.addEventListener(
+    "scroll",
+    () => {
+      window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(findNearestCard, 90);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("resize", findNearestCard, { passive: true });
+  track.insertAdjacentElement("afterend", controls);
+  updateControls(0);
+}
+
+function initializeMobilePageFlow() {
+  const mediaQuery = window.matchMedia("(max-width: 950px)");
+  const inlineReview = document.querySelector(".deck-hero .hero-inline-review");
+  const separateReview = document.querySelector(".hero-review-section");
+
+  function applyMobileFlow() {
+    if (!inlineReview || !separateReview) return;
+    inlineReview.setAttribute("aria-hidden", mediaQuery.matches ? "true" : "false");
+  }
+
+  applyMobileFlow();
+  mediaQuery.addEventListener?.("change", applyMobileFlow);
+}
+
 document.querySelectorAll(".tracked-call").forEach((link) => {
   link.addEventListener("click", () => {
     pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
   });
 });
 
+replaceDeckCampaignImages();
 document.querySelectorAll(".deck-multistep-form").forEach(initializeMultiStepForm);
 initializeReviewCarousel();
 initializeAnchorScrolling();
 initializeDeckImageViewer();
+initializeServiceCarousel();
+initializeMobilePageFlow();
