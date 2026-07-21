@@ -1329,3 +1329,207 @@
     min-height: 260px;
   }
 }
+
+
+/* V9 visual restoration */
+/* Restore the original orange trust strip. */
+.deck-page .quick-stats {
+  background: var(--deck-orange) !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+.deck-page .quick-stats-inner {
+  width: min(1220px, 100%);
+}
+
+.deck-page .quick-stats .stat-box {
+  border-left: 1px solid rgba(255,255,255,0.24) !important;
+}
+
+.deck-page .quick-stats .stat-box:last-child {
+  border-right: 1px solid rgba(255,255,255,0.24) !important;
+}
+
+.deck-page .quick-stats .stat-box strong,
+.deck-page .quick-stats .stat-box span {
+  color: #fff !important;
+}
+
+/* Four-photo project composition: large/small, small/large. */
+.deck-project-gallery-grid-four {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 300px 300px;
+  gap: 20px;
+}
+
+.deck-project-gallery-grid-four .deck-project-gallery-card {
+  min-height: 0;
+}
+
+.deck-project-gallery-grid-four .gallery-large-left {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.deck-project-gallery-grid-four .gallery-small-right {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.deck-project-gallery-grid-four .gallery-small-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.deck-project-gallery-grid-four .gallery-large-right {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+/* Restore the original image-backed section treatments from the main site. */
+.deck-page .services-section {
+  position: relative;
+  background:
+    linear-gradient(rgba(10,7,5,0.36), rgba(10,7,5,0.46)),
+    url("ChatGPT Image May 14, 2026, 10_21_07 PM (1).webp") center center / cover no-repeat,
+    #0a0705 !important;
+  color: #fff !important;
+}
+
+.deck-page .services-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block !important;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.08)),
+    radial-gradient(circle at 82% 20%, rgba(243,112,33,0.08), transparent 34%),
+    radial-gradient(circle at 10% 90%, rgba(243,112,33,0.06), transparent 34%);
+  pointer-events: none;
+}
+
+.deck-page .services-heading h2,
+.deck-page .services-eyebrow {
+  color: #fff !important;
+}
+
+.deck-page .mission-section {
+  position: relative;
+  background:
+    url("ChatGPT Image May 14, 2026, 10_06_01 PM.png") center center / cover no-repeat,
+    #fff !important;
+  color: var(--deck-ink) !important;
+}
+
+.deck-page .mission-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block !important;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.44), rgba(255,255,255,0.70)),
+    radial-gradient(circle at 78% 22%, rgba(243,112,33,0.08), transparent 30%);
+  pointer-events: none;
+}
+
+.deck-page .mission-title h2 {
+  color: var(--deck-ink) !important;
+}
+
+.deck-page .process-section {
+  position: relative;
+  background:
+    linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.72)),
+    url("ChatGPT Image May 15, 2026, 01_46_25 PM.png") center center / cover no-repeat,
+    #fff !important;
+  color: var(--deck-ink) !important;
+}
+
+.deck-page .process-section::before {
+  display: none !important;
+}
+
+.deck-page .process-top h2,
+.deck-page .process-card h3 {
+  color: var(--deck-ink) !important;
+}
+
+.deck-page .process-eyebrow {
+  color: var(--deck-orange) !important;
+}
+
+.deck-page .process-top p,
+.deck-page .process-card p {
+  color: var(--deck-muted) !important;
+}
+
+.deck-page .process-card {
+  color: var(--deck-ink) !important;
+  background: #fff !important;
+  border: 1px solid rgba(35,23,18,0.08) !important;
+  box-shadow: 0 22px 52px rgba(35,23,18,0.10) !important;
+}
+
+.deck-page .process-icon {
+  color: #fff !important;
+  background: var(--deck-orange) !important;
+  border-color: transparent !important;
+}
+
+/* Let the original footer grid and styling apply again. */
+.deck-page .footer-top {
+  grid-template-columns: 1.3fr 0.7fr 0.7fr 0.8fr !important;
+  gap: 54px !important;
+}
+
+@media (max-width: 950px) {
+  .deck-project-gallery-grid-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 260px 260px;
+  }
+
+  .deck-project-gallery-grid-four .gallery-large-left,
+  .deck-project-gallery-grid-four .gallery-small-right,
+  .deck-project-gallery-grid-four .gallery-small-left,
+  .deck-project-gallery-grid-four .gallery-large-right {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .deck-page .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .deck-project-gallery-grid-four {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .deck-project-gallery-grid-four .deck-project-gallery-card {
+    min-height: 260px;
+  }
+
+  .deck-page .quick-stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .deck-page .quick-stats .stat-box:nth-child(odd) {
+    border-left: 0 !important;
+  }
+
+  .deck-page .quick-stats .stat-box:nth-child(n+3) {
+    border-top: 1px solid rgba(255,255,255,0.24) !important;
+  }
+
+  .deck-page .quick-stats .stat-box:last-child {
+    border-right: 0 !important;
+  }
+
+  .deck-page .footer-top {
+    grid-template-columns: 1fr !important;
+  }
+}
