@@ -151,7 +151,8 @@ function simplifyDeckEstimateForm(form) {
   form.querySelector(".campaign-confirmation")?.remove();
 
   /* Remove the entire timing and budget step. */
-  form.querySelector('input[name="projectTiming"]')?.closest(".estimate-step")?.remove();
+  const timingOrBudgetField = form.querySelector('[name="projectTiming"], [name="budgetRange"]');
+  timingOrBudgetField?.closest(".estimate-step")?.remove();
 
   /* Keep only Wood, Composite, and Not sure yet. */
   form
@@ -165,19 +166,19 @@ function simplifyDeckEstimateForm(form) {
     detailsField.required = false;
     detailsField.removeAttribute("required");
     detailsField.removeAttribute("minlength");
-    detailsField.placeholder = "Anything else Zach should know about the yard or the deck? Optional.";
+    detailsField.placeholder = "Share anything else about the yard or deck (optional).";
 
     const detailsLabel = form.querySelector(`label[for="${detailsField.id}"]`);
-    if (detailsLabel) detailsLabel.textContent = "Additional project notes (optional)";
+    detailsLabel?.remove();
   }
 
   /* Rewrite the remaining four steps with short, direct labels. */
   const remainingSteps = Array.from(form.querySelectorAll(".estimate-step"));
   const stepCopy = [
-    ["Contact information", "How can Zach reach you?"],
+    ["Contact information", "How can we reach you?"],
     ["Project location", "Where is the deck project?"],
     ["Deck basics", "What kind of deck are you considering?"],
-    ["Optional details", "Anything else Zach should know?"]
+    ["Optional details", "Anything else we should know?"]
   ];
 
   remainingSteps.forEach((step, index) => {
@@ -196,7 +197,7 @@ function simplifyDeckEstimateForm(form) {
 
   if (successMessage) {
     successMessage.textContent =
-      "Thanks. Zach will review your deck request and follow up using the phone number or email you provided.";
+      "Thanks. ZH Homes will review your deck request and follow up using the phone number or email you provided.";
   }
 }
 
@@ -1061,14 +1062,14 @@ function applyV13CopyAndImagery() {
   );
   setDeckText(
     ".deck-estimate-section .contact-content > p",
-    "Share the property basics and anything else you already know. Zach will review the request and follow up with the clearest next step."
+    "Share the property basics and anything else you already know. ZH Homes will review the request and follow up with the clearest next step."
   );
 
   const contactItems = document.querySelectorAll(
     ".deck-estimate-section .contact-info-item a, .deck-estimate-section .contact-info-item span"
   );
   const contactCopy = [
-    "Call or text Zach: (503) 910-5466",
+    "Call or text: (503) 910-5466",
     "Serving Salem, Keizer, Silverton, and nearby communities",
     "No obligation. No pressure. Just a straightforward conversation about your project."
   ];
@@ -1078,10 +1079,10 @@ function applyV13CopyAndImagery() {
 
   setDeckText(".hero-quick-heading > span", "Custom Deck Estimate");
   setDeckText(".hero-quick-heading h2", "Start Planning Your Deck");
-  setDeckText(".deck-form-heading h3", "Tell Zach About Your Deck");
+  setDeckText(".deck-form-heading h3", "Tell Us About Your Deck");
   setDeckText(
     ".deck-form-heading p",
-    "Share the project basics so Zach can understand the property and deck before following up."
+    "Share the project basics so ZH Homes can understand the property and deck before following up."
   );
 
   document.querySelectorAll(".deck-multistep-form").forEach((form) => {
