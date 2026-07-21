@@ -1088,3 +1088,68 @@
     transition: none !important;
   }
 }
+
+
+/* Refocused campaign flow additions. */
+.deck-project-gallery-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 38px;
+}
+
+.process-section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
+}
+
+.deck-footer-simple {
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr) !important;
+  gap: clamp(44px, 8vw, 110px) !important;
+}
+
+.deck-footer-contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.deck-footer-contact a:hover {
+  color: var(--deck-orange);
+}
+
+.testimonials-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.deck-review-estimate-btn {
+  color: #fff !important;
+  background: var(--deck-orange) !important;
+  border-color: var(--deck-orange) !important;
+}
+
+.deck-review-estimate-btn:hover {
+  background: var(--deck-orange-dark) !important;
+  border-color: var(--deck-orange-dark) !important;
+}
+
+@media (max-width: 900px) {
+  .deck-footer-simple {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .deck-project-gallery-cta,
+  .process-section-cta {
+    margin-top: 30px;
+  }
+
+  .deck-project-gallery-cta .btn,
+  .process-section-cta .about-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
