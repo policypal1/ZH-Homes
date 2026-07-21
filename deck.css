@@ -1843,13 +1843,30 @@
    V11 MOBILE HEADER, HERO, REVIEW, CAROUSEL, AND STICKY CTA
    ========================================================== */
 
-/* The shared stylesheet shifts the logo upward. Keep the deck-page logo
-   centered in the header instead. */
+/* Keep the ZH Homes mark centered and crop the transparent right side
+   of the source image on both desktop and mobile. */
 .deck-page .site-header .brand-logo {
   transform: none !important;
 }
 
 @media (min-width: 951px) {
+  .deck-page .site-header .brand-logo {
+    flex: 0 0 62px !important;
+    width: 62px !important;
+    height: 62px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .deck-page .site-header .brand-logo img {
+    display: block !important;
+    width: 128px !important;
+    max-width: none !important;
+    height: 62px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+  }
+
   .deck-page .mobile-cta-bar {
     display: none !important;
   }
@@ -2010,7 +2027,7 @@
     width: min(100% - 28px, 760px) !important;
     min-height: 0 !important;
     margin: 0 auto !important;
-    padding: 54px 0 30px !important;
+    padding: 86px 0 72px !important;
   }
 
   .deck-page .deck-hero .hero-copy {
@@ -2055,18 +2072,38 @@
 
   .deck-page .deck-hero .hero-actions .btn {
     width: 100% !important;
-    min-height: 55px !important;
-    padding: 0 14px !important;
-    border-radius: 11px !important;
-    font-size: 13px !important;
+    min-height: 60px !important;
+    padding: 0 16px !important;
+    border-radius: 13px !important;
+    font-size: 13.5px !important;
+    font-weight: 950 !important;
     text-align: center;
+    transform: translateZ(0);
+  }
+
+  .deck-page .deck-hero .hero-actions .btn-primary {
+    color: #fff !important;
+    background: linear-gradient(135deg, #ff812f, var(--deck-orange)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    box-shadow: 0 18px 38px rgba(243, 112, 33, 0.38) !important;
+  }
+
+  .deck-page .deck-hero .hero-actions .btn-secondary {
+    color: #241b17 !important;
+    background: rgba(255, 255, 255, 0.97) !important;
+    border: 1px solid #fff !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .deck-page .services-section .services-btn {
+    display: none !important;
   }
 
   /* Put the real five-star review back inside the hero on mobile. */
   .deck-page .deck-hero .hero-inline-review {
     display: block !important;
     width: 100% !important;
-    margin: 27px 0 0 !important;
+    margin: 42px 0 0 !important;
     padding: 0 !important;
   }
 
@@ -2171,33 +2208,34 @@
     z-index: 160 !important;
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
     width: auto !important;
     min-height: 58px !important;
     padding: 0 !important;
-    overflow: hidden !important;
-    background: rgba(9, 10, 11, 0.96) !important;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.34) !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
-    transform: translateY(calc(100% + 28px)) !important;
+    transform: translateY(30px) scale(0.97) !important;
     transition:
-      transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 380ms ease,
-      visibility 0s linear 480ms !important;
-    backdrop-filter: blur(14px);
+      transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 500ms ease,
+      visibility 0s linear 620ms !important;
+    backdrop-filter: none !important;
   }
 
   .deck-page .mobile-cta-bar.is-visible {
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    transform: translateY(0) !important;
+    transform: translateY(0) scale(1) !important;
     transition:
-      transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
-      opacity 380ms ease,
+      transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 500ms ease,
       visibility 0s linear 0s !important;
   }
 
@@ -2209,6 +2247,7 @@
     min-width: 0 !important;
     min-height: 58px !important;
     padding: 0 12px !important;
+    border-radius: 14px !important;
     font-size: 13px !important;
     font-weight: 950 !important;
     line-height: 1.1 !important;
@@ -2217,13 +2256,16 @@
 
   .deck-page .mobile-cta-bar .cta-quote {
     color: #fff !important;
-    background: var(--deck-orange) !important;
+    background: linear-gradient(135deg, #ff812f, var(--deck-orange)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.20) !important;
+    box-shadow: 0 16px 34px rgba(243, 112, 33, 0.34) !important;
   }
 
   .deck-page .mobile-cta-bar .cta-call {
     color: #fff !important;
-    background: transparent !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
+    background: #121314 !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.30) !important;
   }
 
   .deck-page .mobile-cta-bar svg {
@@ -2240,8 +2282,8 @@
 @media (max-width: 700px) {
   .deck-page .deck-hero .hero-inner {
     width: calc(100% - 24px) !important;
-    padding-top: 44px !important;
-    padding-bottom: 26px !important;
+    padding-top: 78px !important;
+    padding-bottom: 64px !important;
   }
 
   .deck-page .deck-hero .hero-actions {
@@ -2307,4 +2349,11 @@
   .deck-page .mobile-cta-bar.is-visible {
     transition: none !important;
   }
+}
+
+
+/* V12: image enlargement controls intentionally removed. */
+.deck-gallery-view-button,
+.deck-image-modal {
+  display: none !important;
 }

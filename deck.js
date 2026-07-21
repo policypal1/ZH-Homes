@@ -524,22 +524,25 @@ function replaceDeckCampaignImages() {
       selector: ".deck-project-gallery-card",
       headingSelector: "figcaption strong",
       heading: "Low-maintenance composite deck",
-      src: "https://images.pexels.com/photos/37588542/pexels-photo-37588542.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      alt: "Open backyard deck connected directly to a modern home"
+      src: "https://images.pexels.com/photos/34053442/pexels-photo-34053442.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      fallbackSrc: "https://images.pexels.com/photos/8031887/pexels-photo-8031887.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      alt: "Straightforward residential backyard deck connected to a home"
     },
     {
       selector: ".services-section .service-card",
       headingSelector: "h3",
       heading: "Composite Decks",
-      src: "https://images.pexels.com/photos/37588543/pexels-photo-37588543.jpeg?auto=compress&cs=tinysrgb&w=1400",
-      alt: "Simple elevated backyard deck with stairs and railing"
+      src: "https://images.pexels.com/photos/34053442/pexels-photo-34053442.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      fallbackSrc: "https://images.pexels.com/photos/8031887/pexels-photo-8031887.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      alt: "Simple residential deck without a gazebo or oversized structure"
     },
     {
       selector: ".services-section .service-card",
       headingSelector: "h3",
       heading: "Outdoor Features",
-      src: "https://images.pexels.com/photos/9121889/pexels-photo-9121889.jpeg?auto=compress&cs=tinysrgb&w=1400",
-      alt: "Wood deck seating area with practical outdoor string lighting"
+      src: "https://images.pexels.com/photos/35806992/pexels-photo-35806992.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      fallbackSrc: "https://images.pexels.com/photos/12700434/pexels-photo-12700434.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      alt: "Outdoor deck features with seating, plants, and string lighting"
     }
   ];
 
@@ -555,6 +558,11 @@ function replaceDeckCampaignImages() {
     const image = item?.querySelector("img");
     if (!image) return;
 
+    image.onerror = () => {
+      if (!replacement.fallbackSrc || image.src === replacement.fallbackSrc) return;
+      image.onerror = null;
+      image.src = replacement.fallbackSrc;
+    };
     image.src = replacement.src;
     image.removeAttribute("srcset");
     image.alt = replacement.alt;
@@ -753,7 +761,6 @@ replaceDeckCampaignImages();
 document.querySelectorAll(".deck-multistep-form").forEach(initializeMultiStepForm);
 initializeReviewCarousel();
 initializeAnchorScrolling();
-initializeDeckImageViewer();
 initializeServiceCarousel();
 initializeMobilePageFlow();
 initializeMobileStickyCta();
