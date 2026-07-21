@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = "PASTE_YOUR_DEPLOYED_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzBw-XwcN0DjhyT_vcgbfwu3LrgqBNozlXW9DYo7vV9qt7sMKqxRVdz1egs-8yVZ0Q/exec";
 
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
