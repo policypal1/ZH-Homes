@@ -1,13 +1,10 @@
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHLveySfQQs0FxeKYvdpn5h9GotlbR36H1ttA5hNUTb-KWyC7oxTH5EZ7jFB9sy92XkQ/exec";
 
-const form = document.getElementById("deckQuoteForm");
-const formStatus = document.getElementById("formStatus");
 const projectPhoto = document.getElementById("projectPhoto");
 const fileError = document.getElementById("fileError");
 const selectedFileRow = document.getElementById("selectedFileRow");
 const selectedFileName = document.getElementById("selectedFileName");
 const clearProjectPhoto = document.getElementById("clearProjectPhoto");
-const successOverlay = document.getElementById("successOverlay");
 
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
@@ -104,14 +101,18 @@ function readFileAsBase64(file) {
   });
 }
 
-function setStatus(message, type = "") {
+function setStatus(form, message, type = "") {
+  const formStatus = form.querySelector("[data-form-status]");
   if (!formStatus) return;
   formStatus.textContent = message;
-  formStatus.className = `form-status ${type}`.trim();
+  formStatus.className = `form-status${form.id === "heroDeckQuoteForm" ? " hero-form-status" : ""} ${type}`.trim();
 }
 
-function showSuccess() {
+function showSuccess(form) {
+  const container = form.closest(".hero-quick-card, .deck-form-card");
+  const successOverlay = container?.querySelector("[data-success-overlay]");
   if (!successOverlay) return;
+
   successOverlay.classList.add("active");
   successOverlay.setAttribute("aria-hidden", "false");
   window.setTimeout(() => {
@@ -129,11 +130,17 @@ function getAttribution() {
   }, {});
 }
 
-form?.addEventListener("submit", async (event) => {
-  event.preventDefault();
+function getFormValue(form, name, fallback = "") {
+  const field = form.elements.namedItem(name);
+  if (!field || typeof field.value !== "string") return fallback;
+  return field.value.trim();
+}
 
-  const files = getSelectedFiles();
-  if (!validateFiles(files)) {
+async function submitDeckForm(form) {
+  const isFullForm = form.id === "deckQuoteForm";
+  const files = isFullForm ? getSelectedFiles() : [];
+
+  if (isFullForm && !validateFiles(files)) {
     projectPhoto?.focus();
     return;
   }
@@ -151,32 +158,34 @@ form?.addEventListener("submit", async (event) => {
       submitButton.disabled = true;
       submitButton.textContent = "Sending...";
     }
-    setStatus("Sending your request...");
+    setStatus(form, "Sending your request...");
 
     const projectPhotos = await Promise.all(files.map(readFileAsBase64));
-    const zipCode = document.getElementById("zipCode")?.value.trim() || "";
-    const materialPreference = document.getElementById("materialPreference")?.value || "Unsure";
-    const projectTiming = document.getElementById("projectTiming")?.value || "";
-    const projectDetails = document.getElementById("projectDetails")?.value.trim() || "";
+    const zipCode = getFormValue(form, "zipCode");
+    const materialPreference = getFormValue(form, "materialPreference", "Unsure");
+    const projectTiming = getFormValue(form, "projectTiming");
+    const projectDetails = getFormValue(form, "projectDetails");
+    const formSource = form.dataset.formSource || "Deck Estimate Form";
 
     const description = [
+      `Form source: ${formSource}`,
       `Project ZIP: ${zipCode}`,
       `Material preference: ${materialPreference}`,
-      `Ideal timing: ${projectTiming}`,
+      `Ideal timing: ${projectTiming || "Not provided"}`,
       projectDetails ? `Deck goals/details: ${projectDetails}` : "Deck goals/details: Not provided"
     ].join("\n");
 
     const payload = {
-      source: "ZH Homes Deck Landing Page",
+      source: `ZH Homes Deck Landing Page - ${formSource}`,
       pageUrl: window.location.href,
       submittedAt: new Date().toISOString(),
       contactReason: "deck_quote",
-      fullName: document.getElementById("fullName")?.value.trim() || "",
-      email: document.getElementById("email")?.value.trim() || "",
-      phone: document.getElementById("phone")?.value.trim() || "",
+      fullName: getFormValue(form, "fullName"),
+      email: getFormValue(form, "email"),
+      phone: getFormValue(form, "phone"),
       serviceType: "New Deck Construction",
       description,
-      companyWebsite: document.getElementById("companyWebsite")?.value.trim() || "",
+      companyWebsite: getFormValue(form, "companyWebsite"),
       projectPhotos,
       zipCode,
       materialPreference,
@@ -193,25 +202,32 @@ form?.addEventListener("submit", async (event) => {
     });
 
     form.reset();
-    clearFiles();
-    setStatus("Thanks. Your deck estimate request was submitted.", "success");
-    showSuccess();
+    if (isFullForm) clearFiles();
+    setStatus(form, "Thanks. Your deck estimate request was submitted.", "success");
+    showSuccess(form);
     pushTrackingEvent("deck_lead_submit", {
-      form_name: "deck_estimate",
+      form_name: form.id,
+      form_source: formSource,
       material_preference: materialPreference,
-      project_timing: projectTiming
+      project_timing: projectTiming || "not_provided"
     });
   } catch (error) {
     console.error(error);
-    setStatus("Something went wrong. Please call or text ZH Homes directly at (503) 910-5466.", "error");
+    setStatus(form, "Something went wrong. Please call or text ZH Homes directly at (503) 910-5466.", "error");
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.textContent = originalText;
     }
   }
-});
+}
 
+document.querySelectorAll("#heroDeckQuoteForm, #deckQuoteForm").forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitDeckForm(form);
+  });
+});
 
 const mobileHeroSection = document.querySelector(".hero");
 const mobileCtaBar = document.querySelector(".mobile-cta-bar");

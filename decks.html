@@ -39,13 +39,6 @@
         </div>
       </a>
 
-      <nav class="nav" aria-label="Deck page navigation">
-        <a href="#services">Deck Options</a>
-        <a href="#work">Why Call Us</a>
-        <a href="#process">Process</a>
-        <a href="#areas">Areas</a>
-      </nav>
-
       <div class="header-actions" aria-label="License and estimate actions">
         <div class="header-license-badge" aria-label="Licensed, bonded, and insured, Oregon CCB number 260679">
           <span>Licensed, Bonded &amp; Insured</span>
@@ -99,7 +92,7 @@
       <div class="hero-inner">
         <div class="hero-copy">
           <h1 id="hero-title">
-            Build the deck you’ve been <span class="accent">talking about.</span>
+            Build the deck you’ve been <span class="accent">dreaming about.</span>
           </h1>
 
           <p class="subheadline">
@@ -107,7 +100,7 @@
           </p>
 
           <h1 class="hero-mobile-title">
-            Build the deck you’ve been <span class="accent">talking about.</span>
+            Build the deck you’ve been <span class="accent">dreaming about.</span>
           </h1>
 
           <p class="subheadline hero-mobile-subheadline">
@@ -150,6 +143,63 @@
             </div>
           </div>
         </div>
+
+        <aside class="hero-quick-card" aria-labelledby="hero-form-title">
+          <div class="hero-quick-heading">
+            <span>Free Deck Estimate</span>
+            <h2 id="hero-form-title">Start planning your deck</h2>
+            <p>Send the basics and Zach will follow up with the clearest next step.</p>
+          </div>
+
+          <form class="hero-quick-form" id="heroDeckQuoteForm" data-form-source="Hero Quick Form" novalidate>
+            <div class="honeypot" aria-hidden="true">
+              <label for="heroCompanyWebsite">Company Website</label>
+              <input id="heroCompanyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="hero-form-row">
+              <div class="field">
+                <label for="heroFullName">Full Name</label>
+                <input id="heroFullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+              </div>
+              <div class="field">
+                <label for="heroPhone">Phone</label>
+                <input id="heroPhone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" required>
+              </div>
+            </div>
+
+            <div class="hero-form-row">
+              <div class="field">
+                <label for="heroEmail">Email <span>Optional</span></label>
+                <input id="heroEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="field">
+                <label for="heroZipCode">Project ZIP Code</label>
+                <input id="heroZipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" pattern="[0-9]{5}(-[0-9]{4})?" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="heroMaterialPreference">Material Preference</label>
+              <select id="heroMaterialPreference" name="materialPreference">
+                <option value="Unsure">Not sure yet</option>
+                <option value="Wood">Wood</option>
+                <option value="Composite">Composite</option>
+                <option value="Compare both">Compare wood and composite</option>
+              </select>
+            </div>
+
+            <button class="hero-submit-button submit-button" type="submit">Request My Deck Estimate</button>
+            <p class="hero-form-assurance">Free estimate. No obligation.</p>
+            <div class="form-status hero-form-status" data-form-status role="status" aria-live="polite"></div>
+          </form>
+
+          <div class="hero-form-success" data-success-overlay aria-hidden="true">
+            <span aria-hidden="true">✓</span>
+            <strong>Request Sent</strong>
+            <p>Thanks. Zach will review your deck request and follow up.</p>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -525,11 +575,11 @@
 
         <div class="contact-form-card deck-form-card">
           <div class="deck-form-heading">
-            <h3>Request Your Free Deck Estimate</h3>
+            <h3>Start Planning Your Deck</h3>
             <p>Tell us the essentials now. Photos and extra details are optional.</p>
           </div>
 
-          <form class="quote-form" id="deckQuoteForm" enctype="multipart/form-data" novalidate>
+          <form class="quote-form" id="deckQuoteForm" data-form-source="Full Deck Estimate Form" enctype="multipart/form-data" novalidate>
             <div class="honeypot" aria-hidden="true">
               <label for="companyWebsite">Company Website</label>
               <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
@@ -597,10 +647,10 @@
 
             <button class="submit-btn submit-button" type="submit">Request My Deck Estimate</button>
             <p class="deck-form-assurance">No obligation. Your information is used only to respond to your project request.</p>
-            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+            <div class="form-status" id="formStatus" data-form-status role="status" aria-live="polite"></div>
           </form>
 
-          <div class="deck-success-overlay" id="successOverlay" aria-hidden="true">
+          <div class="deck-success-overlay" id="successOverlay" data-success-overlay aria-hidden="true">
             <div class="deck-success-box">
               <span class="deck-success-check" aria-hidden="true">✓</span>
               <strong>Request Sent</strong>
