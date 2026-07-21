@@ -524,22 +524,22 @@ function replaceDeckCampaignImages() {
       selector: ".deck-project-gallery-card",
       headingSelector: "figcaption strong",
       heading: "Low-maintenance composite deck",
-      src: "https://images.pexels.com/photos/37588543/pexels-photo-37588543.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      alt: "Large elevated backyard deck with stairs and modern railing"
+      src: "https://images.pexels.com/photos/37588542/pexels-photo-37588542.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      alt: "Open backyard deck connected directly to a modern home"
     },
     {
       selector: ".services-section .service-card",
       headingSelector: "h3",
       heading: "Composite Decks",
-      src: "https://images.pexels.com/photos/29052548/pexels-photo-29052548.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Backyard deck with stairs, railing, and open lawn"
+      src: "https://images.pexels.com/photos/37588543/pexels-photo-37588543.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      alt: "Simple elevated backyard deck with stairs and railing"
     },
     {
       selector: ".services-section .service-card",
       headingSelector: "h3",
       heading: "Outdoor Features",
-      src: "https://images.pexels.com/photos/10855255/pexels-photo-10855255.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      alt: "Outdoor kitchen and pergola designed for backyard entertaining"
+      src: "https://images.pexels.com/photos/9121889/pexels-photo-9121889.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      alt: "Wood deck seating area with practical outdoor string lighting"
     }
   ];
 
@@ -585,7 +585,7 @@ function initializeServiceCarousel() {
   const previousButton = controls.querySelector(".services-carousel-prev");
   const nextButton = controls.querySelector(".services-carousel-next");
   let currentIndex = 0;
-  let scrollTimer = 0;
+  let animationFrame = 0;
 
   const dots = cards.map((_, index) => {
     const dot = document.createElement("button");
@@ -596,11 +596,6 @@ function initializeServiceCarousel() {
     dotsContainer?.appendChild(dot);
     return dot;
   });
-
-  function getCardLeft(index) {
-    const card = cards[index];
-    return card ? card.offsetLeft - track.offsetLeft : 0;
-  }
 
   function updateControls(index) {
     currentIndex = Math.max(0, Math.min(index, cards.length - 1));
@@ -615,19 +610,17 @@ function initializeServiceCarousel() {
     if (nextButton) nextButton.disabled = currentIndex === cards.length - 1;
   }
 
-  function scrollToCard(index) {
-    const targetIndex = Math.max(0, Math.min(index, cards.length - 1));
-    track.scrollTo({ left: getCardLeft(targetIndex), behavior: "smooth" });
-    updateControls(targetIndex);
-  }
-
   function findNearestCard() {
-    const left = track.scrollLeft;
+    const trackRect = track.getBoundingClientRect();
+    const viewportCenter = trackRect.left + trackRect.width / 2;
     let closestIndex = 0;
     let closestDistance = Number.POSITIVE_INFINITY;
 
     cards.forEach((card, index) => {
-      const distance = Math.abs(card.offsetLeft - track.offsetLeft - left);
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(cardCenter - viewportCenter);
+
       if (distance < closestDistance) {
         closestDistance = distance;
         closestIndex = index;
@@ -637,19 +630,42 @@ function initializeServiceCarousel() {
     updateControls(closestIndex);
   }
 
+  function requestControlSync() {
+    if (animationFrame) return;
+
+    animationFrame = window.requestAnimationFrame(() => {
+      animationFrame = 0;
+      findNearestCard();
+    });
+  }
+
+  function getCenteredScrollLeft(index) {
+    const card = cards[index];
+    if (!card) return 0;
+
+    const desiredLeft = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+    const maximumLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+    return Math.max(0, Math.min(desiredLeft, maximumLeft));
+  }
+
+  function scrollToCard(index) {
+    const targetIndex = Math.max(0, Math.min(index, cards.length - 1));
+    track.scrollTo({ left: getCenteredScrollLeft(targetIndex), behavior: "smooth" });
+    updateControls(targetIndex);
+  }
+
   previousButton?.addEventListener("click", () => scrollToCard(currentIndex - 1));
   nextButton?.addEventListener("click", () => scrollToCard(currentIndex + 1));
 
-  track.addEventListener(
-    "scroll",
-    () => {
-      window.clearTimeout(scrollTimer);
-      scrollTimer = window.setTimeout(findNearestCard, 90);
-    },
-    { passive: true }
-  );
+  /* This runs continuously during a finger swipe, so the active bottom dot
+     follows the card instead of updating only after arrow-button clicks. */
+  track.addEventListener("scroll", requestControlSync, { passive: true });
+  track.addEventListener("touchmove", requestControlSync, { passive: true });
+  track.addEventListener("touchend", () => window.setTimeout(findNearestCard, 40), { passive: true });
+  track.addEventListener("pointerup", () => window.setTimeout(findNearestCard, 40), { passive: true });
+  track.addEventListener("scrollend", findNearestCard, { passive: true });
+  window.addEventListener("resize", requestControlSync, { passive: true });
 
-  window.addEventListener("resize", findNearestCard, { passive: true });
   track.insertAdjacentElement("afterend", controls);
   updateControls(0);
 }
@@ -660,12 +676,71 @@ function initializeMobilePageFlow() {
   const separateReview = document.querySelector(".hero-review-section");
 
   function applyMobileFlow() {
-    if (!inlineReview || !separateReview) return;
-    inlineReview.setAttribute("aria-hidden", mediaQuery.matches ? "true" : "false");
+    const mobile = mediaQuery.matches;
+
+    if (inlineReview) inlineReview.setAttribute("aria-hidden", mobile ? "false" : "false");
+    if (separateReview) separateReview.setAttribute("aria-hidden", mobile ? "true" : "false");
   }
 
   applyMobileFlow();
   mediaQuery.addEventListener?.("change", applyMobileFlow);
+}
+
+function replaceVisibleLinkText(link, label) {
+  if (!link) return;
+
+  const textNode = Array.from(link.childNodes).find(
+    (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim()
+  );
+
+  if (textNode) {
+    textNode.textContent = ` ${label}`;
+  } else {
+    link.append(document.createTextNode(` ${label}`));
+  }
+}
+
+function initializeMobileStickyCta() {
+  const mediaQuery = window.matchMedia("(max-width: 950px)");
+  const bar = document.querySelector(".mobile-cta-bar");
+  const hero = document.querySelector(".deck-hero");
+  const quoteLink = bar?.querySelector(".cta-quote");
+  const callLink = bar?.querySelector(".cta-call");
+
+  if (!bar || !hero) return;
+
+  replaceVisibleLinkText(quoteLink, "Get Quote");
+  replaceVisibleLinkText(callLink, "Call / Text");
+
+  let animationFrame = 0;
+
+  function updateVisibility() {
+    animationFrame = 0;
+
+    if (!mediaQuery.matches) {
+      bar.classList.remove("is-visible");
+      document.body.classList.remove("sticky-cta-visible");
+      return;
+    }
+
+    const headerHeight = document.querySelector(".site-header")?.offsetHeight || 0;
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const visible = heroBottom <= headerHeight + 6;
+
+    bar.classList.toggle("is-visible", visible);
+    document.body.classList.toggle("sticky-cta-visible", visible);
+    bar.setAttribute("aria-hidden", visible ? "false" : "true");
+  }
+
+  function requestVisibilityUpdate() {
+    if (animationFrame) return;
+    animationFrame = window.requestAnimationFrame(updateVisibility);
+  }
+
+  window.addEventListener("scroll", requestVisibilityUpdate, { passive: true });
+  window.addEventListener("resize", requestVisibilityUpdate, { passive: true });
+  mediaQuery.addEventListener?.("change", requestVisibilityUpdate);
+  updateVisibility();
 }
 
 document.querySelectorAll(".tracked-call").forEach((link) => {
@@ -681,3 +756,4 @@ initializeAnchorScrolling();
 initializeDeckImageViewer();
 initializeServiceCarousel();
 initializeMobilePageFlow();
+initializeMobileStickyCta();

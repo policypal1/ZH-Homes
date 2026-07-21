@@ -1839,3 +1839,472 @@
   }
 }
 
+/* ==========================================================
+   V11 MOBILE HEADER, HERO, REVIEW, CAROUSEL, AND STICKY CTA
+   ========================================================== */
+
+/* The shared stylesheet shifts the logo upward. Keep the deck-page logo
+   centered in the header instead. */
+.deck-page .site-header .brand-logo {
+  transform: none !important;
+}
+
+@media (min-width: 951px) {
+  .deck-page .mobile-cta-bar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 950px) {
+  /* ---------- Compact, balanced mobile header ---------- */
+  .deck-page .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 120;
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid rgba(35, 23, 18, 0.09);
+    backdrop-filter: blur(14px);
+  }
+
+  .deck-page .site-header .header-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: calc(100% - 24px) !important;
+    min-height: 74px !important;
+    margin: 0 auto !important;
+    padding: 7px 0 !important;
+    gap: 12px !important;
+  }
+
+  .deck-page .site-header .brand {
+    display: flex !important;
+    flex: 1 1 auto;
+    align-items: center !important;
+    min-width: 0 !important;
+    gap: 10px !important;
+  }
+
+  /* Crop the transparent right side of 2.png so the round mark is large. */
+  .deck-page .site-header .brand-logo {
+    flex: 0 0 54px !important;
+    width: 54px !important;
+    height: 54px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  .deck-page .site-header .brand-logo img {
+    display: block !important;
+    width: 112px !important;
+    max-width: none !important;
+    height: 54px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+  }
+
+  .deck-page .site-header .brand-text {
+    min-width: 0;
+  }
+
+  .deck-page .site-header .brand-text strong {
+    color: var(--deck-ink) !important;
+    font-size: 17px !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.35px !important;
+    white-space: nowrap;
+  }
+
+  .deck-page .site-header .header-cta {
+    display: none !important;
+  }
+
+  .deck-page .site-header .header-actions {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+  }
+
+  .deck-page .site-header .header-license-badge {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-items: center !important;
+    justify-items: start !important;
+    width: auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 8px 11px !important;
+    color: var(--deck-ink) !important;
+    background: #faf8f5 !important;
+    border: 1px solid rgba(35, 23, 18, 0.12) !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+    text-align: left !important;
+    overflow: visible !important;
+  }
+
+  .deck-page .site-header .header-license-badge > span {
+    display: block !important;
+    margin: 0 0 2px !important;
+    color: #675c55 !important;
+    font-size: 8.5px !important;
+    font-weight: 950 !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.45px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+
+  .deck-page .site-header .header-license-badge > strong {
+    display: block !important;
+    margin: 0 !important;
+    color: var(--deck-orange) !important;
+    font-size: 9px !important;
+    font-weight: 950 !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.3px !important;
+    white-space: nowrap !important;
+  }
+
+  .deck-page .site-header .header-license-badge .mobile-license-word,
+  .deck-page .site-header .header-license-badge .license-desktop-word {
+    display: none !important;
+  }
+
+  /* ---------- Rebuilt mobile hero ---------- */
+  .deck-page .deck-hero {
+    position: relative;
+    min-height: auto !important;
+    background:
+      linear-gradient(180deg, rgba(4, 5, 6, 0.46), rgba(4, 5, 6, 0.84)),
+      url("874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp") center center / cover no-repeat,
+      #08090a !important;
+    overflow: hidden !important;
+  }
+
+  .deck-page .deck-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(243, 112, 33, 0.15), transparent 32%),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.12), transparent 60%);
+    pointer-events: none;
+  }
+
+  .deck-page .deck-hero .hero-kitchen,
+  .deck-page .deck-hero .curve-stroke,
+  .deck-page .deck-hero .hero-mobile-collage {
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-inner {
+    position: relative !important;
+    z-index: 3 !important;
+    display: block !important;
+    width: min(100% - 28px, 760px) !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 54px 0 30px !important;
+  }
+
+  .deck-page .deck-hero .hero-copy {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .deck-page .deck-hero .hero-copy > h1:not(.hero-mobile-title),
+  .deck-page .deck-hero .hero-copy > .subheadline:not(.hero-mobile-subheadline) {
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-title {
+    display: block !important;
+    max-width: 650px !important;
+    margin: 0 0 18px !important;
+    color: #fff !important;
+    font-size: clamp(38px, 10.6vw, 58px) !important;
+    font-weight: 800 !important;
+    line-height: 1.01 !important;
+    letter-spacing: -1.8px !important;
+    text-wrap: balance;
+  }
+
+  .deck-page .deck-hero .hero-mobile-subheadline {
+    display: block !important;
+    max-width: 580px !important;
+    margin: 0 0 25px !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .deck-page .deck-hero .hero-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 11px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .deck-page .deck-hero .hero-actions .btn {
+    width: 100% !important;
+    min-height: 55px !important;
+    padding: 0 14px !important;
+    border-radius: 11px !important;
+    font-size: 13px !important;
+    text-align: center;
+  }
+
+  /* Put the real five-star review back inside the hero on mobile. */
+  .deck-page .deck-hero .hero-inline-review {
+    display: block !important;
+    width: 100% !important;
+    margin: 27px 0 0 !important;
+    padding: 0 !important;
+  }
+
+  .deck-page .deck-hero .hero-inline-review .hero-review-card {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 19px 18px !important;
+    color: #fff !important;
+    background: rgba(7, 8, 9, 0.68) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-left: 4px solid var(--deck-orange) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28) !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .deck-page .deck-hero .hero-review-top {
+    margin: 0 0 9px !important;
+  }
+
+  .deck-page .deck-hero .hero-review-badge {
+    color: var(--deck-orange) !important;
+    font-size: 10px !important;
+    font-weight: 950 !important;
+    letter-spacing: 0.75px !important;
+    text-transform: uppercase !important;
+  }
+
+  .deck-page .deck-hero .hero-review-quote {
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1.55 !important;
+  }
+
+  .deck-page .deck-hero .hero-review-bottom {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 13px !important;
+  }
+
+  .deck-page .deck-hero .hero-review-avatar {
+    display: grid !important;
+    place-items: center !important;
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px !important;
+    color: #fff !important;
+    background: var(--deck-orange) !important;
+    border-radius: 50% !important;
+    font-size: 10px !important;
+    font-weight: 950 !important;
+  }
+
+  .deck-page .deck-hero .hero-review-author {
+    display: grid !important;
+    gap: 2px !important;
+    min-width: 0 !important;
+    text-align: left !important;
+  }
+
+  .deck-page .deck-hero .hero-review-author strong {
+    color: #fff !important;
+    font-size: 12px !important;
+  }
+
+  .deck-page .deck-hero .hero-review-author span {
+    color: rgba(255, 255, 255, 0.62) !important;
+    font-size: 10px !important;
+  }
+
+  /* The same review exists as its own desktop strip. Hide only that duplicate
+     on mobile, which also removes the oversized gap. */
+  .deck-page .hero-review-section {
+    display: none !important;
+  }
+
+  .deck-page .quick-stats {
+    margin: 0 !important;
+  }
+
+  /* ---------- Mobile service carousel ---------- */
+  .deck-page .services-section .services-grid {
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth;
+    touch-action: pan-x pan-y;
+  }
+
+  .deck-page .services-section .service-card {
+    scroll-snap-align: center !important;
+  }
+
+  /* ---------- Quote/call bar appears only after the hero ---------- */
+  .deck-page .mobile-cta-bar {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+    z-index: 160 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: auto !important;
+    min-height: 58px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: rgba(9, 10, 11, 0.96) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.34) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(calc(100% + 28px)) !important;
+    transition:
+      transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 380ms ease,
+      visibility 0s linear 480ms !important;
+    backdrop-filter: blur(14px);
+  }
+
+  .deck-page .mobile-cta-bar.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+    transition:
+      transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 380ms ease,
+      visibility 0s linear 0s !important;
+  }
+
+  .deck-page .mobile-cta-bar > a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+    min-height: 58px !important;
+    padding: 0 12px !important;
+    font-size: 13px !important;
+    font-weight: 950 !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
+  }
+
+  .deck-page .mobile-cta-bar .cta-quote {
+    color: #fff !important;
+    background: var(--deck-orange) !important;
+  }
+
+  .deck-page .mobile-cta-bar .cta-call {
+    color: #fff !important;
+    background: transparent !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.14) !important;
+  }
+
+  .deck-page .mobile-cta-bar svg {
+    width: 20px !important;
+    height: 20px !important;
+    flex: 0 0 20px !important;
+  }
+
+  .deck-page.sticky-cta-visible {
+    padding-bottom: 84px;
+  }
+}
+
+@media (max-width: 700px) {
+  .deck-page .deck-hero .hero-inner {
+    width: calc(100% - 24px) !important;
+    padding-top: 44px !important;
+    padding-bottom: 26px !important;
+  }
+
+  .deck-page .deck-hero .hero-actions {
+    grid-template-columns: 1fr !important;
+  }
+
+  .deck-page .services-section .services-grid {
+    padding-right: 8vw !important;
+  }
+
+  .deck-page .services-section .service-card {
+    flex-basis: min(86vw, 360px) !important;
+    width: min(86vw, 360px) !important;
+    min-width: min(86vw, 360px) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .deck-page .site-header .header-inner {
+    width: calc(100% - 18px) !important;
+    gap: 8px !important;
+  }
+
+  .deck-page .site-header .brand {
+    gap: 7px !important;
+  }
+
+  .deck-page .site-header .brand-logo {
+    flex-basis: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .deck-page .site-header .brand-logo img {
+    width: 100px !important;
+    height: 48px !important;
+  }
+
+  .deck-page .site-header .brand-text strong {
+    font-size: 15px !important;
+  }
+
+  .deck-page .site-header .header-license-badge {
+    padding: 7px 9px !important;
+  }
+
+  .deck-page .site-header .header-license-badge > span {
+    font-size: 7.6px !important;
+    letter-spacing: 0.25px !important;
+  }
+
+  .deck-page .site-header .header-license-badge > strong {
+    font-size: 8.2px !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-title {
+    font-size: clamp(36px, 11vw, 48px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-page .mobile-cta-bar,
+  .deck-page .mobile-cta-bar.is-visible {
+    transition: none !important;
+  }
+}
