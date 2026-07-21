@@ -1,4 +1,4 @@
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwD777f4p-FFlyUZLynIs69u7xod5TRHTJ7IUqIf_wFFRycV7tt4UwK0P1qbp9UDsju/exec";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmtBDtQo2n_IlfvZ6WhvB0HkEzNIjQjClzpzAi2-jNFsWNDaL1wqdpfCp7n3tQRJqz/exec";
 
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
