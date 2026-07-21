@@ -4,92 +4,104 @@ const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 const MAX_TOTAL_IMAGE_SIZE = 20 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+const ALLOWED_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
 
 function pushTrackingEvent(eventName, details = {}) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: eventName, ...details });
 }
 
-document.querySelectorAll(".tracked-call").forEach((link) => {
-  link.addEventListener("click", () => {
-    pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
-  });
-});
-
-document.querySelectorAll('a[href="#hero-estimate"], a[href="#estimate"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const selector = link.getAttribute("href");
-    const target = selector ? document.querySelector(selector) : null;
-    if (!target) return;
-    event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.replaceState(null, "", selector);
-  });
-});
-
 function getAttribution() {
   const params = new URLSearchParams(window.location.search);
   const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"];
+
   return keys.reduce((result, key) => {
     result[key] = params.get(key) || "";
     return result;
   }, {});
 }
 
-function getFormValue(form, name, fallback = "") {
-  const field = form.elements.namedItem(name);
-  if (!field) return fallback;
-
-  if (typeof RadioNodeList !== "undefined" && field instanceof RadioNodeList) {
-    return String(field.value || fallback).trim();
-  }
-
-  return typeof field.value === "string" ? field.value.trim() : fallback;
+function getFileExtension(fileName) {
+  const parts = String(fileName || "").toLowerCase().split(".");
+  return parts.length > 1 ? parts.pop() : "";
 }
 
-function getCheckedValues(form, name) {
-  return Array.from(form.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
+function isAllowedImage(file) {
+  const typeAllowed = ALLOWED_IMAGE_TYPES.includes(file.type);
+  const extensionAllowed = ALLOWED_IMAGE_EXTENSIONS.includes(getFileExtension(file.name));
+  return typeAllowed || (!file.type && extensionAllowed);
 }
 
-function getFileElements(form) {
-  return {
-    input: form.querySelector("[data-project-photo]"),
-    error: form.querySelector("[data-file-error]"),
-    row: form.querySelector("[data-selected-file-row]"),
-    name: form.querySelector("[data-selected-file-name]")
-  };
-}
-
-function getSelectedFiles(form) {
-  const { input } = getFileElements(form);
-  return Array.from(input?.files || []);
-}
-
-function validateFiles(form) {
-  const { input, error } = getFileElements(form);
-  if (!input) return true;
-
-  const files = getSelectedFiles(form);
+function validateFiles(fileInput, errorElement) {
+  const files = Array.from(fileInput?.files || []);
   const totalSize = files.reduce((sum, file) => sum + file.size, 0);
-  const invalidType = files.some((file) => !ALLOWED_IMAGE_TYPES.includes(file.type));
-  const oversized = files.some((file) => file.size > MAX_IMAGE_SIZE);
-  const invalid = files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || invalidType || oversized;
+  const hasInvalidType = files.some((file) => !isAllowedImage(file));
+  const hasOversizedFile = files.some((file) => file.size > MAX_IMAGE_SIZE);
+  const invalid = files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || hasInvalidType || hasOversizedFile;
 
   if (invalid) {
-    const message = "Please upload up to 4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller.";
-    input.setCustomValidity(message);
-    if (error) error.textContent = message;
+    const message = "Upload up to 4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller.";
+    fileInput?.setCustomValidity(message);
+    if (errorElement) errorElement.textContent = message;
     return false;
   }
 
-  input.setCustomValidity("");
-  if (error) error.textContent = "";
+  fileInput?.setCustomValidity("");
+  if (errorElement) errorElement.textContent = "";
   return true;
 }
 
-function updateSelectedFileText(form) {
-  const files = getSelectedFiles(form);
-  const { row, name } = getFileElements(form);
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      resolve({
+        name: file.name,
+        type: file.type || "application/octet-stream",
+        size: file.size,
+        base64: result.includes(",") ? result.split(",")[1] : result
+      });
+    };
+
+    reader.onerror = () => reject(new Error("Could not read an uploaded image."));
+    reader.readAsDataURL(file);
+  });
+}
+
+function findInvalidControl(step) {
+  const controls = Array.from(step.querySelectorAll("input, select, textarea"))
+    .filter((control) => !control.disabled && control.type !== "hidden");
+
+  const checkedRadioGroups = new Set();
+
+  for (const control of controls) {
+    control.classList.remove("field-invalid");
+
+    if (control.type === "radio") {
+      if (checkedRadioGroups.has(control.name)) continue;
+      checkedRadioGroups.add(control.name);
+
+      const group = Array.from(step.querySelectorAll(`input[type="radio"][name="${CSS.escape(control.name)}"]`));
+      const required = group.some((radio) => radio.required);
+      const checked = group.some((radio) => radio.checked);
+
+      if (required && !checked) return group[0];
+      continue;
+    }
+
+    if (!control.checkValidity()) return control;
+  }
+
+  return null;
+}
+
+function updateSelectedFiles(form, fileInput) {
+  const row = form.querySelector("[data-selected-file-row]");
+  const name = form.querySelector("[data-selected-file-name]");
+  const files = Array.from(fileInput?.files || []);
+
   if (!row || !name) return;
 
   if (!files.length) {
@@ -102,277 +114,287 @@ function updateSelectedFileText(form) {
   row.hidden = false;
 }
 
-function clearFiles(form) {
-  const { input, error } = getFileElements(form);
-  if (!input) return;
-  input.value = "";
-  input.setCustomValidity("");
-  if (error) error.textContent = "";
-  updateSelectedFileText(form);
-}
-
-function readFileAsBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = String(reader.result || "");
-      resolve({
-        name: file.name,
-        type: file.type || "application/octet-stream",
-        size: file.size,
-        base64: result.includes(",") ? result.split(",")[1] : result
-      });
-    };
-    reader.onerror = () => reject(new Error("Could not read an uploaded image."));
-    reader.readAsDataURL(file);
-  });
-}
-
-function setStatus(form, message, type = "") {
-  const status = form.querySelector("[data-form-status]");
-  if (!status) return;
-  status.textContent = message;
-  status.className = `form-status ${type}`.trim();
-}
-
-function showSuccess(form) {
+function showFormSuccess(form) {
   const container = form.closest(".hero-quick-card, .deck-form-card");
   const overlay = container?.querySelector("[data-success-overlay]");
   if (!overlay) return;
 
   overlay.classList.add("active");
   overlay.setAttribute("aria-hidden", "false");
+
   window.setTimeout(() => {
     overlay.classList.remove("active");
     overlay.setAttribute("aria-hidden", "true");
   }, 5000);
 }
 
-function getSteps(form) {
-  return Array.from(form.querySelectorAll(".estimate-step"));
+function setFormStatus(form, message, type = "") {
+  const status = form.querySelector("[data-form-status]");
+  if (!status) return;
+
+  status.textContent = message;
+  status.className = `form-status ${type}`.trim();
 }
 
-function getCurrentStepIndex(form) {
-  return Number(form.dataset.currentStep || 0);
-}
-
-function updateStep(form, requestedIndex, shouldFocus = true) {
-  const steps = getSteps(form);
-  if (!steps.length) return;
-
-  const index = Math.max(0, Math.min(requestedIndex, steps.length - 1));
-  form.dataset.currentStep = String(index);
-
-  steps.forEach((step, stepIndex) => {
-    const active = stepIndex === index;
-    step.classList.toggle("active", active);
-    step.hidden = !active;
-  });
-
+function initializeMultiStepForm(form) {
+  const steps = Array.from(form.querySelectorAll(".estimate-step"));
   const progressLabel = form.querySelector("[data-progress-label]");
   const progressTitle = form.querySelector("[data-progress-title]");
   const progressBar = form.querySelector("[data-progress-bar]");
-  const title = steps[index]?.dataset.stepTitle || "Deck estimate";
+  const fileInput = form.querySelector("[data-project-photo]");
+  const fileError = form.querySelector("[data-file-error]");
+  const clearFilesButton = form.querySelector("[data-clear-files]");
+  let currentStep = 0;
 
-  if (progressLabel) progressLabel.textContent = `Step ${index + 1} of ${steps.length}`;
-  if (progressTitle) progressTitle.textContent = title;
-  if (progressBar) progressBar.style.width = `${((index + 1) / steps.length) * 100}%`;
+  function updateStep(nextStep, shouldFocus = true) {
+    currentStep = Math.max(0, Math.min(nextStep, steps.length - 1));
 
-  if (shouldFocus) {
-    const heading = steps[index]?.querySelector(".estimate-step-heading > span");
-    heading?.setAttribute("tabindex", "-1");
-    heading?.focus({ preventScroll: true });
-  }
+    steps.forEach((step, index) => {
+      const active = index === currentStep;
+      step.hidden = !active;
+      step.classList.toggle("active", active);
+    });
 
-  pushTrackingEvent("deck_estimate_step_view", {
-    form_name: form.id,
-    step_number: index + 1,
-    step_title: title
-  });
-}
+    if (progressLabel) progressLabel.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+    if (progressTitle) progressTitle.textContent = steps[currentStep]?.dataset.stepTitle || "Deck estimate";
+    if (progressBar) progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
 
-function validateCurrentStep(form) {
-  const steps = getSteps(form);
-  const step = steps[getCurrentStepIndex(form)];
-  if (!step) return true;
-
-  const fields = Array.from(step.querySelectorAll("input, select, textarea"));
-  for (const field of fields) {
-    if (!field.checkValidity()) {
-      field.reportValidity();
-      return false;
+    if (shouldFocus) {
+      const heading = steps[currentStep]?.querySelector(".estimate-step-heading > span");
+      heading?.setAttribute("tabindex", "-1");
+      heading?.focus({ preventScroll: true });
     }
   }
 
-  if (step.querySelector("[data-project-photo]") && !validateFiles(form)) {
-    step.querySelector("[data-project-photo]")?.focus();
+  function validateCurrentStep() {
+    const step = steps[currentStep];
+    if (!step) return true;
+
+    if (fileInput && step.contains(fileInput) && !validateFiles(fileInput, fileError)) {
+      fileInput.focus();
+      return false;
+    }
+
+    const invalidControl = findInvalidControl(step);
+    if (!invalidControl) return true;
+
+    invalidControl.classList.add("field-invalid");
+    invalidControl.reportValidity();
+    invalidControl.focus({ preventScroll: false });
     return false;
   }
 
-  return true;
-}
-
-async function submitDeckForm(form) {
-  if (!validateCurrentStep(form) || !form.checkValidity() || !validateFiles(form)) {
-    form.reportValidity();
-    return;
-  }
-
-  const submitButton = form.querySelector(".submit-button");
-  const originalText = submitButton?.textContent || "Request My Free Deck Estimate";
-
-  try {
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
-    }
-    setStatus(form, "Sending your request...");
-
-    const files = getSelectedFiles(form);
-    const projectPhotos = await Promise.all(files.map(readFileAsBase64));
-    const desiredFeatures = getCheckedValues(form, "desiredFeatures");
-    const formSource = form.dataset.formSource || "Deck Estimate Form";
-
-    const details = {
-      zipCode: getFormValue(form, "zipCode"),
-      homeownerStatus: getFormValue(form, "homeownerStatus"),
-      currentSetup: getFormValue(form, "currentSetup"),
-      materialPreference: getFormValue(form, "materialPreference"),
-      deckSize: getFormValue(form, "deckSize"),
-      desiredFeatures,
-      projectTiming: getFormValue(form, "projectTiming"),
-      budgetRange: getFormValue(form, "budgetRange"),
-      projectDetails: getFormValue(form, "projectDetails"),
-      contactPreference: getFormValue(form, "contactPreference"),
-      newDeckConfirmation: getFormValue(form, "newDeckConfirmation")
-    };
-
-    const description = [
-      `Form source: ${formSource}`,
-      `Homeowner status: ${details.homeownerStatus}`,
-      `Project ZIP: ${details.zipCode}`,
-      `Current backyard setup: ${details.currentSetup}`,
-      `Material preference: ${details.materialPreference}`,
-      `Approximate deck size: ${details.deckSize}`,
-      `Desired features: ${details.desiredFeatures.length ? details.desiredFeatures.join(", ") : "None selected"}`,
-      `Ideal timing: ${details.projectTiming}`,
-      `Budget range: ${details.budgetRange}`,
-      `Preferred contact: ${details.contactPreference}`,
-      `New deck campaign confirmation: ${details.newDeckConfirmation}`,
-      `Deck goals/details: ${details.projectDetails}`
-    ].join("\n");
-
-    const payload = {
-      source: `ZH Homes Deck Landing Page - ${formSource}`,
-      pageUrl: window.location.href,
-      submittedAt: new Date().toISOString(),
-      contactReason: "deck_quote",
-      fullName: getFormValue(form, "fullName"),
-      email: getFormValue(form, "email"),
-      phone: getFormValue(form, "phone"),
-      serviceType: "New Deck Construction",
-      description,
-      companyWebsite: getFormValue(form, "companyWebsite"),
-      projectPhotos,
-      ...details,
-      attribution: getAttribution()
-    };
-
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
+  form.querySelectorAll("[data-next]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!validateCurrentStep()) return;
+      updateStep(currentStep + 1);
     });
-
-    form.reset();
-    clearFiles(form);
-    updateStep(form, 0, false);
-    setStatus(form, "Thanks. Your deck estimate request was submitted.", "success");
-    showSuccess(form);
-
-    pushTrackingEvent("deck_lead_submit", {
-      form_name: form.id,
-      form_source: formSource,
-      homeowner_status: details.homeownerStatus,
-      material_preference: details.materialPreference,
-      project_timing: details.projectTiming,
-      budget_range: details.budgetRange
-    });
-  } catch (error) {
-    console.error(error);
-    setStatus(form, "Something went wrong. Please call or text ZH Homes directly at (503) 910-5466.", "error");
-  } finally {
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = originalText;
-    }
-  }
-}
-
-document.querySelectorAll(".deck-multistep-form").forEach((form) => {
-  updateStep(form, 0, false);
-
-  form.addEventListener("click", (event) => {
-    const nextButton = event.target.closest("[data-next]");
-    const backButton = event.target.closest("[data-back]");
-    const clearButton = event.target.closest("[data-clear-files]");
-
-    if (nextButton) {
-      if (!validateCurrentStep(form)) return;
-      updateStep(form, getCurrentStepIndex(form) + 1);
-      return;
-    }
-
-    if (backButton) {
-      updateStep(form, getCurrentStepIndex(form) - 1);
-      return;
-    }
-
-    if (clearButton) {
-      clearFiles(form);
-    }
   });
 
-  form.querySelector("[data-project-photo]")?.addEventListener("change", () => {
-    validateFiles(form);
-    updateSelectedFileText(form);
+  form.querySelectorAll("[data-back]").forEach((button) => {
+    button.addEventListener("click", () => updateStep(currentStep - 1));
   });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("input", (event) => {
+    if (event.target instanceof HTMLElement) event.target.classList.remove("field-invalid");
+  });
+
+  form.addEventListener("change", (event) => {
+    if (event.target instanceof HTMLElement) event.target.classList.remove("field-invalid");
+  });
+
+  fileInput?.addEventListener("change", () => {
+    validateFiles(fileInput, fileError);
+    updateSelectedFiles(form, fileInput);
+  });
+
+  clearFilesButton?.addEventListener("click", () => {
+    if (!fileInput) return;
+    fileInput.value = "";
+    fileInput.setCustomValidity("");
+    if (fileError) fileError.textContent = "";
+    updateSelectedFiles(form, fileInput);
+  });
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    submitDeckForm(form);
+
+    if (!validateCurrentStep()) return;
+
+    const invalidControl = Array.from(form.elements).find((element) =>
+      element instanceof HTMLElement && "checkValidity" in element && !element.checkValidity()
+    );
+
+    if (invalidControl instanceof HTMLElement) {
+      const invalidStep = invalidControl.closest(".estimate-step");
+      const invalidStepIndex = steps.indexOf(invalidStep);
+      if (invalidStepIndex >= 0) updateStep(invalidStepIndex, false);
+      invalidControl.reportValidity?.();
+      invalidControl.focus?.();
+      return;
+    }
+
+    if (fileInput && !validateFiles(fileInput, fileError)) {
+      fileInput.focus();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const honeypot = String(formData.get("companyWebsite") || "").trim();
+
+    if (honeypot) {
+      form.reset();
+      updateStep(0, false);
+      showFormSuccess(form);
+      return;
+    }
+
+    const submitButton = form.querySelector(".estimate-submit");
+    const originalButtonText = submitButton?.textContent || "Request My Deck Estimate";
+
+    try {
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+      setFormStatus(form, "Sending your request...");
+
+      const files = Array.from(fileInput?.files || []);
+      const projectPhotos = await Promise.all(files.map(readFileAsBase64));
+      const desiredFeatures = formData.getAll("desiredFeatures").map(String);
+
+      const details = {
+        homeownerStatus: String(formData.get("homeownerStatus") || ""),
+        zipCode: String(formData.get("zipCode") || ""),
+        currentSetup: String(formData.get("currentSetup") || ""),
+        materialPreference: String(formData.get("materialPreference") || ""),
+        deckSize: String(formData.get("deckSize") || ""),
+        desiredFeatures,
+        projectTiming: String(formData.get("projectTiming") || ""),
+        budgetRange: String(formData.get("budgetRange") || ""),
+        projectDetails: String(formData.get("projectDetails") || ""),
+        contactPreference: String(formData.get("contactPreference") || ""),
+        newDeckConfirmation: String(formData.get("newDeckConfirmation") || "")
+      };
+
+      const description = [
+        `Homeowner status: ${details.homeownerStatus}`,
+        `Project ZIP: ${details.zipCode}`,
+        `Current backyard setup: ${details.currentSetup}`,
+        `Material preference: ${details.materialPreference}`,
+        `Approximate deck size: ${details.deckSize}`,
+        `Desired features: ${desiredFeatures.length ? desiredFeatures.join(", ") : "None selected"}`,
+        `Ideal timing: ${details.projectTiming}`,
+        `Budget range: ${details.budgetRange}`,
+        `Preferred contact method: ${details.contactPreference}`,
+        `New deck campaign confirmation: ${details.newDeckConfirmation}`,
+        `Deck goals/details: ${details.projectDetails}`
+      ].join("\n");
+
+      const payload = {
+        source: `ZH Homes Deck Landing Page - ${form.dataset.formSource || "Deck Estimate"}`,
+        pageUrl: window.location.href,
+        submittedAt: new Date().toISOString(),
+        contactReason: "deck_quote",
+        fullName: String(formData.get("fullName") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        phone: String(formData.get("phone") || "").trim(),
+        serviceType: "New Deck Construction",
+        description,
+        companyWebsite: honeypot,
+        projectPhotos,
+        ...details,
+        attribution: getAttribution()
+      };
+
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+
+      form.reset();
+      if (fileInput) updateSelectedFiles(form, fileInput);
+      updateStep(0, false);
+      setFormStatus(form, "Thanks. Your deck estimate request was submitted.", "success");
+      showFormSuccess(form);
+
+      pushTrackingEvent("deck_lead_submit", {
+        form_name: form.dataset.formSource || "deck_estimate",
+        material_preference: details.materialPreference,
+        project_timing: details.projectTiming,
+        budget_range: details.budgetRange,
+        homeowner_status: details.homeownerStatus
+      });
+    } catch (error) {
+      console.error(error);
+      setFormStatus(form, "Something went wrong. Please call or text ZH Homes at (503) 910-5466.", "error");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    }
+  });
+
+  updateStep(0, false);
+}
+
+function initializeReviewCarousel() {
+  const carousel = document.getElementById("deckReviewCarousel");
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.querySelectorAll(".review-slide"));
+  const dots = Array.from(carousel.querySelectorAll(".review-dot"));
+  const previousButton = carousel.querySelector(".review-arrow.prev");
+  const nextButton = carousel.querySelector(".review-arrow.next");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("active", slideIndex === currentIndex);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("active", dotIndex === currentIndex);
+      dot.setAttribute("aria-current", dotIndex === currentIndex ? "true" : "false");
+    });
+  }
+
+  previousButton?.addEventListener("click", () => showSlide(currentIndex - 1));
+  nextButton?.addEventListener("click", () => showSlide(currentIndex + 1));
+  dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+  showSlide(0);
+}
+
+function initializeAnchorScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      const header = document.querySelector(".site-header");
+      const offset = (header?.offsetHeight || 0) + 16;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      history.replaceState(null, "", href);
+    });
+  });
+}
+
+document.querySelectorAll(".tracked-call").forEach((link) => {
+  link.addEventListener("click", () => {
+    pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
   });
 });
 
-const mobileHeroSection = document.querySelector(".hero");
-const mobileCtaBar = document.querySelector(".mobile-cta-bar");
-const mobileCtaQuery = window.matchMedia("(max-width: 950px)");
-let mobileCtaTicking = false;
-
-function updateMobileCtaVisibility() {
-  mobileCtaTicking = false;
-
-  if (!mobileHeroSection || !mobileCtaBar || !mobileCtaQuery.matches) {
-    document.body.classList.remove("hero-cta-visible");
-    return;
-  }
-
-  const heroRect = mobileHeroSection.getBoundingClientRect();
-  const heroTop = window.scrollY + heroRect.top;
-  const heroHeight = Math.max(heroRect.height, 1);
-  const heroScrollProgress = Math.max(0, (window.scrollY - heroTop) / heroHeight);
-
-  document.body.classList.toggle("hero-cta-visible", heroScrollProgress >= 0.60);
-}
-
-function requestMobileCtaUpdate() {
-  if (mobileCtaTicking) return;
-  mobileCtaTicking = true;
-  window.requestAnimationFrame(updateMobileCtaVisibility);
-}
-
-window.addEventListener("scroll", requestMobileCtaUpdate, { passive: true });
-window.addEventListener("resize", requestMobileCtaUpdate);
-mobileCtaQuery.addEventListener?.("change", requestMobileCtaUpdate);
-updateMobileCtaVisibility();
+document.querySelectorAll(".deck-multistep-form").forEach(initializeMultiStepForm);
+initializeReviewCarousel();
+initializeAnchorScrolling();
