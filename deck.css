@@ -38,7 +38,7 @@
 
 /* Hero */
 .deck-hero {
-  min-height: 900px;
+  min-height: max(900px, calc(100svh - 78px));
   overflow: hidden;
 }
 
@@ -50,9 +50,9 @@
   gap: clamp(38px, 5vw, 78px);
   align-items: center;
   width: min(1280px, calc(100% - 40px));
-  min-height: 900px;
+  min-height: max(900px, calc(100svh - 78px));
   margin: 0 auto;
-  padding: 72px 0 78px;
+  padding: 76px 0 82px;
 }
 
 .deck-hero .hero-copy {
@@ -81,7 +81,7 @@
   z-index: 8;
   width: 100%;
   max-width: 540px;
-  max-height: 735px;
+  max-height: min(760px, calc(100svh - 132px));
   overflow-y: auto;
   justify-self: end;
   padding: clamp(24px, 3vw, 34px);
@@ -126,6 +126,18 @@
   font-size: clamp(27px, 2.5vw, 38px);
   line-height: 1.03;
   letter-spacing: -1.25px;
+}
+
+
+.honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  top: auto !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* Multi-step form */
@@ -221,7 +233,7 @@
   display: block;
   margin-bottom: 7px;
   color: #332923;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 900;
   line-height: 1.25;
 }
@@ -239,12 +251,12 @@
 .deck-multistep-form textarea {
   display: block;
   width: 100%;
-  min-height: 48px;
-  padding: 11px 13px;
+  min-height: 54px;
+  padding: 13px 15px;
   color: #211a16 !important;
   background: #fff !important;
   border: 1px solid #cfc5be !important;
-  border-radius: 9px;
+  border-radius: 14px;
   outline: none;
   box-shadow: none !important;
   caret-color: #211a16;
@@ -327,7 +339,7 @@
   color: #3f342e;
   background: #faf8f6;
   border: 1px solid #d8cec7;
-  border-radius: 9px;
+  border-radius: 12px;
   font-size: 12px;
   font-weight: 850;
   line-height: 1.25;
@@ -391,7 +403,7 @@
 .estimate-submit {
   min-height: 46px;
   padding: 11px 17px;
-  border-radius: 9px;
+  border-radius: 12px;
   font-size: 13px;
   font-weight: 950;
   cursor: pointer;
@@ -439,7 +451,7 @@
   color: #5a4e47;
   background: #f8f5f2 !important;
   border: 1px solid #d3c9c2 !important;
-  border-radius: 9px;
+  border-radius: 12px;
   font-size: 11px;
 }
 
@@ -597,16 +609,136 @@
   object-position: center 48%;
 }
 
-/* How it works uses the homepage Project Gallery background. */
+/* Black project-work placeholder section. */
+.deck-project-gallery-section {
+  position: relative;
+  margin: 0 !important;
+  padding: 104px 0 112px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(243, 112, 33, 0.12), transparent 31%),
+    radial-gradient(circle at 86% 82%, rgba(243, 112, 33, 0.09), transparent 34%),
+    linear-gradient(135deg, #050607, #15100d 58%, #08090a);
+  border: 0;
+  overflow: hidden;
+}
+
+.deck-project-gallery-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.deck-project-gallery-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1220px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.deck-project-gallery-heading {
+  max-width: 760px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.deck-project-gallery-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: var(--deck-orange);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.deck-project-gallery-eyebrow::before,
+.deck-project-gallery-eyebrow::after {
+  content: "";
+  width: 32px;
+  height: 2px;
+  background: var(--deck-orange);
+}
+
+.deck-project-gallery-heading h2 {
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: clamp(36px, 4.4vw, 58px);
+  line-height: 1.04;
+  letter-spacing: -1.8px;
+}
+
+.deck-project-gallery-heading p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.68);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.deck-project-placeholder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.deck-project-placeholder-card {
+  min-height: 260px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.075)),
+    rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  box-shadow: 0 24px 55px rgba(0,0,0,0.24);
+}
+
+.deck-project-placeholder-card span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: auto;
+  color: #fff;
+  background: rgba(243,112,33,0.16);
+  border: 1px solid rgba(243,112,33,0.34);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.deck-project-placeholder-card strong {
+  margin-bottom: 8px;
+  color: #fff;
+  font-size: 23px;
+  line-height: 1.15;
+}
+
+.deck-project-placeholder-card p {
+  margin: 0;
+  color: rgba(255,255,255,0.62);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* How It Works returns to a clean white section. */
 .deck-page .process-section {
   position: relative;
   margin: 0 !important;
-  padding: 104px 0 116px !important;
-  color: #fff !important;
-  background:
-    linear-gradient(rgba(6, 7, 8, 0.60), rgba(6, 7, 8, 0.76)),
-    url("78f73903-bf75-4edb-a889-85c3273fe3f8.webp") center center / cover no-repeat,
-    #060708 !important;
+  padding: 102px 0 112px !important;
+  color: var(--deck-ink) !important;
+  background: #fff !important;
   border: 0 !important;
   overflow: hidden;
 }
@@ -616,8 +748,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 16% 18%, rgba(243, 112, 33, 0.11), transparent 30%),
-    radial-gradient(circle at 82% 88%, rgba(243, 112, 33, 0.09), transparent 34%);
+    radial-gradient(circle at 14% 18%, rgba(243,112,33,0.07), transparent 30%),
+    radial-gradient(circle at 88% 82%, rgba(243,112,33,0.055), transparent 34%);
   pointer-events: none;
 }
 
@@ -628,12 +760,12 @@
 
 .deck-page .process-top h2,
 .deck-page .process-card h3 {
-  color: #fff !important;
+  color: var(--deck-ink) !important;
 }
 
 .deck-page .process-top p,
 .deck-page .process-card p {
-  color: rgba(255, 255, 255, 0.72) !important;
+  color: var(--deck-muted) !important;
 }
 
 .deck-page .process-steps {
@@ -641,27 +773,37 @@
 }
 
 .deck-page .process-card {
-  color: #fff;
-  background: rgba(16, 16, 16, 0.68) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  backdrop-filter: blur(9px);
-  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.20);
+  color: var(--deck-ink) !important;
+  background: linear-gradient(180deg, #fff, #fbf8f5) !important;
+  border: 1px solid rgba(35,23,18,0.10) !important;
+  box-shadow: 0 22px 48px rgba(35,23,18,0.09) !important;
 }
 
 .deck-page .process-icon {
   color: var(--deck-orange) !important;
-  background: rgba(243, 112, 33, 0.13) !important;
-  border-color: rgba(243, 112, 33, 0.25) !important;
+  background: rgba(243,112,33,0.10) !important;
+  border-color: rgba(243,112,33,0.20) !important;
 }
 
 /* Remove the white bands around the orange callout. */
 .deck-page .project-cta-section {
   display: block;
+  min-height: 0 !important;
+  height: auto !important;
   margin: 0 !important;
   padding: 0 !important;
   background: var(--deck-orange) !important;
   border: 0 !important;
   line-height: normal;
+}
+
+
+.deck-page .project-cta-section::before,
+.deck-page .project-cta-section::after,
+.deck-page .project-cta-wrap::before,
+.deck-page .project-cta-wrap::after {
+  display: none !important;
+  content: none !important;
 }
 
 .deck-page .project-cta-wrap {
@@ -804,14 +946,15 @@
   }
 
   .hero-quick-card {
-    justify-self: center;
-    max-width: 720px;
-    max-height: none;
-    overflow: visible;
+    display: none !important;
   }
 
   .about-single-photo {
     height: 470px;
+  }
+
+  .deck-project-gallery-section {
+    padding: 84px 0 92px;
   }
 
   .deck-page .process-section {
@@ -864,6 +1007,18 @@
   .about-single-photo {
     height: 380px;
     border-radius: 18px;
+  }
+
+  .deck-project-gallery-section {
+    padding: 72px 0 80px;
+  }
+
+  .deck-project-placeholder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deck-project-placeholder-card {
+    min-height: 220px;
   }
 
   .deck-page .process-section {
