@@ -1,116 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom Deck Builder in Salem & Keizer, Oregon | ZH Homes</title>
-  <meta name="description" content="Build a custom wood or composite deck designed around your home, yard, and budget. Request a free deck estimate from ZH Homes in Salem and Keizer, Oregon.">
-  <link rel="canonical" href="https://www.zhhomeco.com/decks.html">
+  <meta name="description" content="Build a custom wood or composite deck designed around your home, yard, and budget. Request a free deck estimate from ZH Homes in Salem and Keizer, Oregon." />
+  <link rel="canonical" href="https://www.zhhomeco.com/decks.html" />
 
   <link rel="icon" href="2.png?v=5" type="image/png">
+  <link rel="shortcut icon" href="2.png?v=5" type="image/png">
   <link rel="apple-touch-icon" href="2.png?v=5">
-  <link rel="preload" as="image" href="2026-05-13 (3).jpg" fetchpriority="high">
+
+  <link rel="preload" as="image" href="2.png" fetchpriority="high">
+  <link rel="preload" as="image" href="zh-homes-hero-preload.png" fetchpriority="high">
+  <link rel="preload" as="image" href="874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp" fetchpriority="high">
+
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="deck.css">
 
   <meta property="og:title" content="Custom Deck Builder in Salem & Keizer | ZH Homes">
   <meta property="og:description" content="Turn your backyard into a place your family actually uses with a custom new deck from ZH Homes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.zhhomeco.com/decks.html">
-  <meta property="og:image" content="https://www.zhhomeco.com/2026-05-13%20(3).jpg">
+  <meta property="og:image" content="https://www.zhhomeco.com/874d1223-50ee-45da-a0dd-12cf574aed49%20(1).webp">
 </head>
-<body>
+
+<body class="deck-page">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <div class="license-bar">
-    <span>Licensed, Bonded &amp; Insured</span>
-    <strong>Oregon CCB #260679</strong>
-  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="ZH Homes home">
+        <div class="brand-logo" aria-hidden="true">
+          <img fetchpriority="high" decoding="async" width="112" height="54" src="2.png" alt="ZH Homes logo">
+        </div>
+        <div class="brand-text">
+          <strong>ZH Homes</strong>
+        </div>
+      </a>
 
-  <header class="deck-header" aria-label="ZH Homes deck landing page header">
-    <a class="deck-brand" href="index.html" aria-label="ZH Homes home page">
-      <img src="2.png" width="112" height="54" alt="ZH Homes">
-    </a>
-    <div class="header-contact">
-      <span>Serving Salem, Keizer &amp; nearby areas</span>
-      <a class="header-phone tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
-      <a class="header-button" href="#estimate">Request an Estimate</a>
+      <nav class="nav" aria-label="Deck page navigation">
+        <a href="#services">Deck Options</a>
+        <a href="#work">Why Call Us</a>
+        <a href="#process">Process</a>
+        <a href="#areas">Areas</a>
+      </nav>
+
+      <div class="header-actions" aria-label="License and estimate actions">
+        <div class="header-license-badge" aria-label="Licensed, bonded, and insured, Oregon CCB number 260679">
+          <span>Licensed, Bonded &amp; Insured</span>
+          <strong>
+            <span class="mobile-license-word">Licensed, Bonded &amp; Insured</span>
+            <span class="license-desktop-word">Oregon </span>CCB #260679
+          </strong>
+        </div>
+        <a href="#estimate" class="header-cta">Get an Estimate</a>
+      </div>
     </div>
   </header>
 
-  <main id="main-content">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-overlay"></div>
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Custom New Deck Construction • Salem &amp; Keizer</p>
-          <h1 id="hero-title">Build the Backyard Deck You’ve Been Talking About</h1>
-          <p class="hero-lead">Turn an unfinished backyard into a comfortable place to grill, relax, eat outside, and spend time with family and friends.</p>
+  <main id="main-content" tabindex="-1">
+    <section class="hero deck-hero" aria-labelledby="hero-title">
+      <svg class="hero-kitchen" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <clipPath id="deckHeroClip" clipPathUnits="userSpaceOnUse">
+            <path d="
+              M 900 0
+              C 850 72, 799 155, 784 254
+              C 761 405, 838 488, 820 604
+              C 806 702, 862 814, 1022 900
+              L 1440 900
+              L 1440 0
+              Z
+            " />
+          </clipPath>
+        </defs>
 
-          <ul class="hero-points">
-            <li>Wood and composite deck options</li>
-            <li>Designed around your home, yard, and intended use</li>
-            <li>Clear estimate and direct communication</li>
-          </ul>
+        <image
+          href="874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp"
+          x="500"
+          y="0"
+          width="1040"
+          height="900"
+          preserveAspectRatio="xMidYMid slice"
+          clip-path="url(#deckHeroClip)"
+        ></image>
+      </svg>
+
+      <svg class="curve-stroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+        <path d="
+          M 900 0
+          C 850 72, 799 155, 784 254
+          C 761 405, 838 488, 820 604
+          C 806 702, 862 814, 1022 900
+        " />
+      </svg>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            Build the deck you’ve been <span class="accent">talking about.</span>
+          </h1>
+
+          <p class="subheadline">
+            Turn your backyard into a comfortable place to grill, relax, eat outside, and spend time with family and friends.
+          </p>
+
+          <h1 class="hero-mobile-title">
+            Build the deck you’ve been <span class="accent">talking about.</span>
+          </h1>
+
+          <p class="subheadline hero-mobile-subheadline">
+            Custom new decks for Salem and Keizer homeowners who want a backyard they actually use.
+          </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="#estimate">Request My Free Deck Estimate</a>
-            <a class="button button-secondary tracked-call" href="tel:5039105466">Call / Text Zach</a>
+            <a href="#estimate" class="btn btn-primary">Request a Deck Estimate</a>
+            <a href="tel:5039105466" class="btn btn-secondary tracked-call">Call / Text (503) 910-5466</a>
           </div>
 
-          <div class="hero-proof" aria-label="ZH Homes trust information">
-            <span>Local Salem contractor</span>
-            <span>Owner-led small crew</span>
-            <span>CCB #260679</span>
+          <div class="hero-inline-review" aria-label="Featured customer review">
+            <div class="hero-review-card">
+              <div class="hero-review-top">
+                <span class="hero-review-badge">5-Star Review</span>
+              </div>
+
+              <p class="hero-review-quote">
+                “If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule.”
+              </p>
+
+              <div class="hero-review-bottom">
+                <div class="hero-review-avatar">TB</div>
+                <div class="hero-review-author">
+                  <strong>Tawnya Bacchetti</strong>
+                  <span>Google Review</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-mobile-collage" aria-label="Recent project highlights">
+            <div class="hero-mobile-collage-main">
+              <img decoding="async" loading="lazy" src="ChatGPT Image May 18, 2026, 06_06_22 AM.png" alt="Featured ZH Homes project">
+            </div>
+            <div class="hero-mobile-collage-side">
+              <div class="hero-mobile-collage-small">
+                <img decoding="async" loading="lazy" src="2026-05-13 (1).jpg" alt="ZH Homes exterior project">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero-review-section" aria-label="Featured customer review">
+      <div class="hero-review-card">
+        <div class="hero-review-top">
+          <span class="hero-review-badge">5-Star Review</span>
+        </div>
+        <p class="hero-review-quote">
+          “If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule.”
+        </p>
+        <div class="hero-review-bottom">
+          <div class="hero-review-avatar">TB</div>
+          <div class="hero-review-author">
+            <strong>Tawnya Bacchetti</strong>
+            <span>Google Review</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-stats" aria-label="Deck project facts">
+      <div class="quick-stats-inner">
+        <div class="stat-box">
+          <div>
+            <strong>Licensed</strong>
+            <span>Bonded &amp; Insured • Oregon CCB #260679</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div>
+            <strong>Custom</strong>
+            <span>Designed Around Your Home &amp; Yard</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div>
+            <strong>Flexible</strong>
+            <span>Wood &amp; Composite Options</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <div>
+            <strong>Local</strong>
+            <span>Salem, Keizer &amp; Nearby Areas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-inner">
+        <div class="about-media">
+          <div class="photo-stack">
+            <div class="photo-main">
+              <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_03_03 PM (2) (1).webp" alt="Finished ZH Homes project">
+            </div>
+            <div class="photo-small one">
+              <img decoding="async" loading="lazy" src="unnamed (1).webp" alt="ZH Homes construction detail">
+            </div>
+            <div class="photo-small two">
+              <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_19_27 PM (2) (1) (1).webp" alt="ZH Homes home improvement project">
+            </div>
           </div>
         </div>
 
-        <div class="estimate-card" id="estimate">
-          <div class="estimate-card-heading">
-            <p class="eyebrow">No-Pressure First Step</p>
-            <h2>Request Your Free Deck Estimate</h2>
-            <p>Tell us the basics. Zach will review the project and contact you with the clearest next step.</p>
+        <div class="about-content">
+          <div class="section-eyebrow">A Better Backyard</div>
+          <h2>Turn an unfinished yard into usable outdoor living space.</h2>
+          <p>
+            A new deck gives your home a natural place for grilling, outdoor meals, family time, and relaxing after work. The design should fit the house, the yard, and the way you actually plan to use the space.
+          </p>
+
+          <div class="about-grid">
+            <div class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Room for grills, tables, and seating</span>
+            </div>
+            <div class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Layouts planned around the property</span>
+            </div>
+            <div class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Wood and composite material choices</span>
+            </div>
+            <div class="about-check">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Clear communication from start to finish</span>
+            </div>
           </div>
 
-          <form id="deckQuoteForm" enctype="multipart/form-data" novalidate>
+          <div class="about-bottom">
+            <a href="#estimate" class="about-cta">Start Planning Your Deck</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section" id="services">
+      <div class="services-inner">
+        <div class="services-top">
+          <div class="services-heading">
+            <div class="services-eyebrow">Deck Options</div>
+            <h2>Custom decks built around your backyard.</h2>
+          </div>
+
+          <a href="#estimate" class="services-btn">
+            <span>Request an Estimate</span>
+          </a>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-image">
+              <div class="service-number">01</div>
+              <img decoding="async" loading="lazy" src="ChatGPT Image May 30, 2026, 11_23_01 PM (2) (1).webp" alt="ZH Homes construction planning">
+            </div>
+            <div class="service-content">
+              <div>
+                <h3>Custom Deck Design</h3>
+                <p>Plan the size, shape, stairs, railings, and layout around your house, yard, furniture, and intended use.</p>
+              </div>
+              <a href="#estimate" class="service-link">Start Planning</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image">
+              <div class="service-number">02</div>
+              <img decoding="async" loading="lazy" class="service-img-2" src="ChatGPT Image May 30, 2026, 11_28_06 PM (1) (1).webp" alt="ZH Homes finished construction project">
+            </div>
+            <div class="service-content">
+              <div>
+                <h3>Wood Decks</h3>
+                <p>A natural, familiar option with multiple stain and finish choices and a lower initial cost on many projects.</p>
+              </div>
+              <a href="#estimate" class="service-link">Compare Options</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image">
+              <div class="service-number">03</div>
+              <img decoding="async" loading="lazy" class="service-img-3" src="0fed0344-0475-4d65-bd7c-12fe8c002f3f.png" alt="ZH Homes detailed construction work">
+            </div>
+            <div class="service-content">
+              <div>
+                <h3>Composite Decks</h3>
+                <p>A lower-maintenance choice for homeowners who want consistent color without regular staining or sealing.</p>
+              </div>
+              <a href="#estimate" class="service-link">Compare Options</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image">
+              <div class="service-number">04</div>
+              <img decoding="async" loading="lazy" class="service-img-4" src="unnamed (1).webp" alt="ZH Homes exterior construction work">
+            </div>
+            <div class="service-content">
+              <div>
+                <h3>Stairs &amp; Railings</h3>
+                <p>Plan safe, practical access to the yard with stairs and railing choices that fit the deck and the home.</p>
+              </div>
+              <a href="#estimate" class="service-link">Discuss Your Layout</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image">
+              <div class="service-number">05</div>
+              <img decoding="async" loading="lazy" class="service-img-5" src="ChatGPT Image Jun 7, 2026, 04_12_00 PM.png" alt="ZH Homes custom project work">
+            </div>
+            <div class="service-content">
+              <div>
+                <h3>Sloped-Yard Decks</h3>
+                <p>Elevation, access, drainage, footing conditions, and stair placement are reviewed before the plan is finalized.</p>
+              </div>
+              <a href="#estimate" class="service-link">Send Yard Photos</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-image">
+              <div class="service-number">06</div>
+              <img decoding="async" loading="lazy" src="unnamed (3).webp" alt="ZH Homes custom construction project">
+            </div>
+            <div class="service-content">
+              <div>
+                <h3>Outdoor Features</h3>
+                <p>Plan for privacy screens, gates, benches, lighting, shade structures, and other features that fit the project.</p>
+              </div>
+              <a href="#estimate" class="service-link">Share Your Ideas</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission-section" id="work">
+      <div class="mission-inner">
+        <div class="mission-top">
+          <div class="mission-title">
+            <div class="mission-eyebrow">Why Homeowners Call Us</div>
+            <h2>A clearer way to plan and build a new deck.</h2>
+          </div>
+
+          <div class="mission-image-box">
+            <img src="before_after_exact_originals.jpg" alt="Recent ZH Homes project work" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="mission-strip">
+          <div class="mission-stat">
+            <strong>Direct Communication</strong>
+            <span>Talk with Zach instead of being passed through a sales office</span>
+          </div>
+          <div class="mission-stat">
+            <strong>Clear Scope</strong>
+            <span>Understand the planned work and major choices before scheduling</span>
+          </div>
+          <div class="mission-stat">
+            <strong>Real Options</strong>
+            <span>Compare wood, composite, layout, stairs, railings, and features</span>
+          </div>
+          <div class="mission-stat">
+            <strong>Built for the Property</strong>
+            <span>The deck is planned around the home, yard, and intended use</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-section" id="process">
+      <div class="process-inner">
+        <div class="process-top">
+          <div class="process-eyebrow">How It Works</div>
+          <h2>From a rough idea to a finished deck</h2>
+          <p>You do not need complete plans before reaching out. Start with the backyard, your goals, and what you want the space to do.</p>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-card">
+            <div class="process-number">01</div>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M6 7H18V17H6V7Z" stroke="currentColor" stroke-width="2"/><path d="M8 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Tell Us About the Yard</h3>
+            <p>Send the location, your goals, rough ideas, and any useful photos of the backyard.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">02</div>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 3V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 10H20" stroke="currentColor" stroke-width="2"/></svg>
+            </div>
+            <h3>Review the Site &amp; Goals</h3>
+            <p>We discuss layout, intended use, material options, access, and property conditions.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">03</div>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/><path d="M12 8V12L15 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Review the Estimate</h3>
+            <p>Go over the proposed project, material direction, pricing, and the clearest next step.</p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">04</div>
+            <div class="process-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Schedule &amp; Build</h3>
+            <p>Once the plan is approved, the work is scheduled and communication stays direct through completion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-cta-section" id="quote">
+      <div class="project-cta-wrap">
+        <div class="project-cta-content">
+          <div class="project-cta-icon">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="project-cta-copy">
+            <strong>Ready to talk through your new deck?</strong>
+            <span>Call, text, or send the project details below to get a clear next step.</span>
+          </div>
+        </div>
+        <div class="project-cta-image" aria-label="Project image"></div>
+      </div>
+    </section>
+
+    <section class="service-area-section" id="areas">
+      <div class="service-area-inner">
+        <div class="area-content">
+          <div class="area-eyebrow">Deck Service Area</div>
+          <h2>Building new decks around Salem and Keizer.</h2>
+          <p>
+            ZH Homes serves homeowners in Salem, Keizer, and nearby Oregon communities. Larger deck projects may be considered farther into the Willamette Valley depending on scope and schedule.
+          </p>
+        </div>
+
+        <div class="map-card">
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d659439.8178171889!2d-122.7896336194444!3d44.83307497584451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1778994842845!5m2!1sen!2sus"
+            width="600"
+            height="450"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="ZH Homes deck service area map">
+          </iframe>
+          <div class="map-note">
+            <strong>Coverage depends on the project.</strong>
+            <span>Most work stays around Salem and Keizer, with larger jobs considered farther into the area.</span>
+          </div>
+        </div>
+
+        <div class="area-list">
+          <div class="area-pill">Salem</div>
+          <div class="area-pill">Keizer</div>
+          <div class="area-pill">Silverton</div>
+          <div class="area-pill">Turner</div>
+          <div class="area-pill">Dallas</div>
+          <div class="area-pill">Nearby Areas</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-section" id="testimonials">
+      <div class="testimonials-inner">
+        <div class="testimonials-left">
+          <div class="testimonials-eyebrow">Customer Review</div>
+          <h2>Clear bids and dependable follow-through.</h2>
+          <p class="testimonials-mobile-subheadline">The same communication standards matter on a new deck project.</p>
+          <div class="testimonials-actions">
+            <a class="google-reviews-btn" href="https://share.google/Ry8oCcymMj5uCYeah" target="_blank" rel="noopener noreferrer">See Google Reviews</a>
+          </div>
+        </div>
+
+        <div class="deck-review-card">
+          <div class="deck-review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>“If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule.”</p>
+          <div class="deck-review-person">
+            <strong>Tawnya Bacchetti</strong>
+            <span>Google Review</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section deck-estimate-section" id="estimate">
+      <div class="contact-inner">
+        <div class="contact-content">
+          <div class="contact-eyebrow">New Deck Estimate</div>
+          <h2>Tell us what you want from your backyard.</h2>
+          <p>
+            Send the basics below. Zach will review the request and contact you with the clearest next step. You do not need final measurements or a complete design before reaching out.
+          </p>
+
+          <ul class="contact-info-list" aria-label="Deck estimate information">
+            <li class="contact-info-item"><a class="tracked-call" href="tel:5039105466">Call or text: (503) 910-5466</a></li>
+            <li class="contact-info-item"><span>Salem, Keizer, and nearby Oregon communities</span></li>
+            <li class="contact-info-item"><span>Free, no-pressure deck estimate</span></li>
+          </ul>
+        </div>
+
+        <div class="contact-form-card deck-form-card">
+          <div class="deck-form-heading">
+            <h3>Request Your Free Deck Estimate</h3>
+            <p>Tell us the essentials now. Photos and extra details are optional.</p>
+          </div>
+
+          <form class="quote-form" id="deckQuoteForm" enctype="multipart/form-data" novalidate>
             <div class="honeypot" aria-hidden="true">
               <label for="companyWebsite">Company Website</label>
               <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
             </div>
 
-            <div class="form-grid two-column">
+            <div class="form-row">
               <div class="field">
-                <label for="fullName">Full name</label>
+                <label for="fullName">Full Name</label>
                 <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
               </div>
               <div class="field">
                 <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(503) 555-0123" required>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" required>
               </div>
             </div>
 
-            <div class="form-grid two-column">
+            <div class="form-row">
               <div class="field">
-                <label for="email">Email <span>(optional)</span></label>
+                <label for="email">Email <span class="optional-label">Optional</span></label>
                 <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
               </div>
               <div class="field">
-                <label for="zipCode">Project ZIP code</label>
+                <label for="zipCode">Project ZIP Code</label>
                 <input id="zipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" pattern="[0-9]{5}(-[0-9]{4})?" required>
               </div>
             </div>
 
-            <div class="form-grid two-column">
+            <div class="form-row">
               <div class="field">
-                <label for="materialPreference">Deck material</label>
+                <label for="materialPreference">Material Preference</label>
                 <select id="materialPreference" name="materialPreference">
                   <option value="Unsure">Not sure yet</option>
                   <option value="Wood">Wood</option>
                   <option value="Composite">Composite</option>
-                  <option value="Compare both">I want to compare both</option>
+                  <option value="Compare both">Compare wood and composite</option>
                 </select>
               </div>
               <div class="field">
-                <label for="projectTiming">Ideal timing</label>
+                <label for="projectTiming">Ideal Timing</label>
                 <select id="projectTiming" name="projectTiming">
                   <option value="As soon as practical">As soon as practical</option>
                   <option value="This summer">This summer</option>
@@ -122,12 +580,12 @@
             </div>
 
             <div class="field">
-              <label for="projectDetails">What do you want from the space? <span>(optional)</span></label>
+              <label for="projectDetails">What do you want from the space? <span class="optional-label">Optional</span></label>
               <textarea id="projectDetails" name="projectDetails" placeholder="Example: Room for a grill, dining table, and seating for six. The yard slopes away from the house."></textarea>
             </div>
 
-            <div class="field upload-field">
-              <label for="projectPhoto">Backyard photos <span>(optional)</span></label>
+            <div class="field deck-upload-field">
+              <label for="projectPhoto">Backyard Photos <span class="optional-label">Optional</span></label>
               <input id="projectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-describedby="uploadNote fileError">
               <div class="selected-file-row" id="selectedFileRow" hidden>
                 <span id="selectedFileName"></span>
@@ -137,15 +595,15 @@
               <span class="file-error" id="fileError" role="alert"></span>
             </div>
 
-            <button class="submit-button" type="submit">Request My Deck Estimate</button>
-            <p class="form-assurance">No obligation. Your information is used only to respond to your project request.</p>
+            <button class="submit-btn submit-button" type="submit">Request My Deck Estimate</button>
+            <p class="deck-form-assurance">No obligation. Your information is used only to respond to your project request.</p>
             <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
           </form>
 
-          <div class="success-overlay" id="successOverlay" aria-hidden="true">
-            <div class="success-box">
-              <span class="success-check" aria-hidden="true">✓</span>
-              <strong>Request sent</strong>
+          <div class="deck-success-overlay" id="successOverlay" aria-hidden="true">
+            <div class="deck-success-box">
+              <span class="deck-success-check" aria-hidden="true">✓</span>
+              <strong>Request Sent</strong>
               <p>Thanks. Zach will review your deck request and follow up.</p>
             </div>
           </div>
@@ -153,269 +611,102 @@
       </div>
     </section>
 
-    <section class="trust-strip" aria-label="Reasons to trust ZH Homes">
-      <div>
-        <strong>Licensed</strong>
-        <span>Bonded &amp; insured • CCB #260679</span>
-      </div>
-      <div>
-        <strong>Clear</strong>
-        <span>Straightforward project estimates</span>
-      </div>
-      <div>
-        <strong>Local</strong>
-        <span>Salem, Keizer &amp; nearby areas</span>
-      </div>
-      <div>
-        <strong>Direct</strong>
-        <span>Talk with the owner building your project</span>
-      </div>
-    </section>
-
-    <section class="experience-section section-pad">
-      <div class="section-heading centered">
-        <p class="eyebrow">Make More of Your Backyard</p>
-        <h2>A real outdoor space, not just more square footage</h2>
-        <p>The right deck makes it easier to step outside and actually use the property you already own.</p>
-      </div>
-
-      <div class="experience-grid">
-        <article>
-          <span class="experience-number">01</span>
-          <h3>Grill &amp; Eat Outside</h3>
-          <p>Create a stable, dedicated place for the grill, dining table, and summer meals.</p>
-        </article>
-        <article>
-          <span class="experience-number">02</span>
-          <h3>Relax After Work</h3>
-          <p>Make room for comfortable seating, morning coffee, and quiet evenings outdoors.</p>
-        </article>
-        <article>
-          <span class="experience-number">03</span>
-          <h3>Host Without Crowding</h3>
-          <p>Give family and friends somewhere natural to gather instead of squeezing everyone inside.</p>
-        </article>
-        <article>
-          <span class="experience-number">04</span>
-          <h3>Connect the House &amp; Yard</h3>
-          <p>Turn a bare back step or awkward transition into a finished extension of your home.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="work-section section-pad" id="work">
-      <div class="work-grid">
-        <div class="work-copy">
-          <p class="eyebrow">Built Around Your Property</p>
-          <h2>Your deck should fit the house, the yard, and the way you plan to use it</h2>
-          <p>A good plan accounts for more than a rough width and length. We talk through furniture, stairs, railings, yard slope, access, material preferences, and the features that matter to your family.</p>
-
-          <div class="check-grid">
-            <span>Deck size and layout</span>
-            <span>Wood or composite</span>
-            <span>Stairs and railings</span>
-            <span>Grill and dining space</span>
-            <span>Sloped-yard considerations</span>
-            <span>Future additions</span>
-          </div>
-
-          <a class="text-link" href="#estimate">Tell us about your backyard →</a>
+    <section class="faq-section" id="faq">
+      <div class="faq-inner">
+        <div class="faq-top">
+          <div class="faq-eyebrow">Deck FAQ</div>
+          <h2>Common questions before getting started.</h2>
+          <p>A few direct answers before you request an estimate.</p>
         </div>
 
-        <div class="work-collage" aria-label="Recent ZH Homes project work">
-          <figure class="work-image work-image-main">
-            <img src="before_after_exact_originals.jpg" alt="Recent ZH Homes exterior project work" loading="lazy" decoding="async">
-          </figure>
-          <figure class="work-image work-image-small">
-            <img src="2026-05-13 (2).jpg" alt="Recent ZH Homes property improvement" loading="lazy" decoding="async">
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="materials-section section-pad" id="materials">
-      <div class="section-heading centered light-heading">
-        <p class="eyebrow">Wood or Composite?</p>
-        <h2>Compare the tradeoffs before you decide</h2>
-        <p>You do not need to know the answer before contacting us. We can talk through the choice based on your budget, maintenance expectations, appearance, and how long you plan to stay in the home.</p>
-      </div>
-
-      <div class="material-grid">
-        <article class="material-card">
-          <div class="material-label">Natural &amp; Familiar</div>
-          <h3>Wood Decking</h3>
-          <ul>
-            <li>Natural appearance and familiar feel</li>
-            <li>Often a lower initial investment</li>
-            <li>Multiple stain and finish options</li>
-            <li>Requires ongoing cleaning, staining, or sealing</li>
-          </ul>
-        </article>
-
-        <article class="material-card featured">
-          <div class="material-label">Lower Maintenance</div>
-          <h3>Composite Decking</h3>
-          <ul>
-            <li>No regular staining or sealing</li>
-            <li>Consistent color and finish options</li>
-            <li>Resists splintering and common moisture issues</li>
-            <li>Higher initial investment than many wood options</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="why-section section-pad">
-      <div class="why-grid">
-        <div class="why-image">
-          <img src="2026-05-13 (1).jpg" alt="ZH Homes construction project detail" loading="lazy" decoding="async">
-        </div>
-
-        <div class="why-copy">
-          <p class="eyebrow">Why ZH Homes</p>
-          <h2>Clear answers before work starts</h2>
-          <p>A deck is a substantial home improvement. You should understand the proposed scope, materials, price, and next steps before making a decision.</p>
-
-          <div class="why-list">
-            <article>
-              <h3>Owner-Led Communication</h3>
-              <p>Talk directly with Zach instead of being passed through a sales office.</p>
-            </article>
-            <article>
-              <h3>Thoughtful Planning</h3>
-              <p>The project starts with how you want to use the space, not a one-size-fits-all template.</p>
-            </article>
-            <article>
-              <h3>Straightforward Estimate</h3>
-              <p>Review the planned work and major choices before the project is scheduled.</p>
-            </article>
-            <article>
-              <h3>Local Accountability</h3>
-              <p>ZH Homes is a local Salem contractor licensed, bonded, and insured in Oregon.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="process-section section-pad" id="process">
-      <div class="section-heading centered">
-        <p class="eyebrow">A Clear Project Path</p>
-        <h2>From a rough idea to a finished deck</h2>
-        <p>You do not need complete plans before reaching out. Start with the backyard, your goals, and what you want the space to do.</p>
-      </div>
-
-      <div class="process-grid">
-        <article>
-          <span>01</span>
-          <h3>Tell Us About the Backyard</h3>
-          <p>Submit the form, call, or text with your location, ideas, and any useful photos.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Review the Site &amp; Goals</h3>
-          <p>We discuss the layout, intended use, material options, and property conditions.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Review the Estimate</h3>
-          <p>You receive a clear next step based on the proposed project and major selections.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Schedule &amp; Build</h3>
-          <p>Once the plan is approved, the project is scheduled and communication stays direct through completion.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="review-section section-pad">
-      <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule.”</blockquote>
-        <div class="review-author">
-          <strong>Tawnya Bacchetti</strong>
-          <span>Google Review</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-section section-pad" id="faq">
-      <div class="section-heading centered">
-        <p class="eyebrow">Deck Project FAQ</p>
-        <h2>Common questions before requesting an estimate</h2>
-      </div>
-
-      <div class="faq-list">
-        <details>
-          <summary>How much does a new deck cost?</summary>
-          <p>Deck pricing depends on size, height, access, framing, stairs, railings, material choice, site conditions, and design details. The most useful next step is a project-specific estimate rather than a generic national square-foot number.</p>
-        </details>
-        <details>
-          <summary>Do you build both wood and composite decks?</summary>
-          <p>Yes. We can discuss wood and composite options and help you compare initial cost, appearance, maintenance, and long-term priorities.</p>
-        </details>
-        <details>
-          <summary>Can you help us choose the size and layout?</summary>
-          <p>Yes. Think about the furniture, grill, number of people, stairs, and how you want to move between the house and yard. Those details help shape a practical layout.</p>
-        </details>
-        <details>
-          <summary>Does my deck require a permit?</summary>
-          <p>Permit requirements depend on the deck height, location, and project details. We can discuss what applies to the proposed project and clarify permit responsibility in the project scope.</p>
-        </details>
-        <details>
-          <summary>Can a deck be built on a sloped yard?</summary>
-          <p>Many decks are designed for sloped properties. The slope, access, elevation, footing conditions, stairs, and drainage need to be reviewed before a reliable plan and estimate can be prepared.</p>
-        </details>
-        <details>
-          <summary>What areas do you serve?</summary>
-          <p>ZH Homes serves Salem, Keizer, and nearby Oregon communities. Larger projects may be considered farther into the Willamette Valley depending on scope and schedule.</p>
-        </details>
-        <details>
-          <summary>Are estimates free?</summary>
-          <p>Yes. Submit the project basics and any helpful photos. Zach will review the request and contact you with the clearest next step.</p>
-        </details>
-      </div>
-    </section>
-
-    <section class="final-cta section-pad">
-      <div class="final-cta-inner">
-        <p class="eyebrow">Your Backyard Has More Potential</p>
-        <h2>Start planning the deck that brings it to life</h2>
-        <p>Request a free estimate for custom new-deck construction in Salem, Keizer, or a nearby community.</p>
-        <div class="final-actions">
-          <a class="button button-primary" href="#estimate">Request My Deck Estimate</a>
-          <a class="button button-outline tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How much does a new deck cost?</summary>
+            <p>Pricing depends on size, height, access, framing, stairs, railings, material choice, site conditions, and design details. A project-specific estimate is more useful than a generic national square-foot number.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you build both wood and composite decks?</summary>
+            <p>Yes. We can discuss both options and help you compare initial price, appearance, maintenance, and long-term priorities.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can you help choose the size and layout?</summary>
+            <p>Yes. Furniture, grills, number of people, stairs, yard access, and how you want to move between the house and yard all help shape the layout.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does my deck require a permit?</summary>
+            <p>Permit requirements depend on deck height, location, and project details. We can discuss what applies and clarify permit responsibility in the project scope.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can a deck be built on a sloped yard?</summary>
+            <p>Many decks can be designed for sloped properties. Elevation, access, footing conditions, stairs, and drainage need to be reviewed before a reliable plan and estimate are prepared.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What areas do you serve?</summary>
+            <p>ZH Homes serves Salem, Keizer, and nearby Oregon communities. Larger projects may be considered farther into the Willamette Valley depending on scope and schedule.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Are estimates free?</summary>
+            <p>Yes. Send the basics and any helpful photos. Zach will review the request and contact you with the clearest next step.</p>
+          </details>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="deck-footer">
-    <div class="footer-main">
-      <div>
-        <strong>ZH Homes</strong>
-        <p>Custom deck construction and home improvement work in Salem, Oregon and nearby communities.</p>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>ZH Homes</strong>
+          <p>Custom deck construction and home improvement work for homeowners around Salem and Keizer.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Deck Page</h4>
+          <a href="#services">Deck Options</a>
+          <a href="#work">Why Call Us</a>
+          <a href="#process">Process</a>
+          <a href="#estimate">Estimate</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Deck Options</h4>
+          <span>Custom Deck Design</span>
+          <span>Wood Decks</span>
+          <span>Composite Decks</span>
+          <span>Stairs &amp; Railings</span>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <span>(503) 910-5466</span>
+          <span>Salem, Oregon</span>
+          <span>Licensed, Bonded &amp; Insured</span>
+          <span>CCB #260679</span>
+        </div>
       </div>
-      <div>
-        <strong>Contact</strong>
-        <a class="tracked-call" href="tel:5039105466">(503) 910-5466</a>
-        <span>Salem, Oregon</span>
-        <span>Oregon CCB #260679</span>
-      </div>
-      <div>
-        <strong>Legal</strong>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="accessibility.html">Accessibility</a>
+
+      <div class="footer-bottom">
+        <span>© 2026 ZH Homes. All rights reserved.</span>
+        <div class="footer-bottom-links" aria-label="Footer legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="accessibility.html">Accessibility</a>
+          <span>Oregon CCB #260679</span>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 ZH Homes. All rights reserved.</div>
   </footer>
 
-  <div class="mobile-cta" aria-label="Mobile contact actions">
-    <a href="#estimate">Free Estimate</a>
-    <a class="tracked-call" href="tel:5039105466">Call / Text</a>
+  <div class="mobile-cta-bar" aria-label="Quick deck estimate actions">
+    <a href="#estimate" class="cta-quote">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15 4V7H18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.75 11H15.25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.75 15H13.25" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Free Estimate
+    </a>
+    <a href="tel:5039105466" class="cta-call tracked-call">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
+      Call / Text
+    </a>
   </div>
 
   <script src="deck.js"></script>

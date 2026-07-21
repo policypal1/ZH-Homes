@@ -211,3 +211,36 @@ form?.addEventListener("submit", async (event) => {
     }
   }
 });
+
+
+const mobileHeroSection = document.querySelector(".hero");
+const mobileCtaBar = document.querySelector(".mobile-cta-bar");
+const mobileCtaQuery = window.matchMedia("(max-width: 950px)");
+let mobileCtaTicking = false;
+
+function updateMobileCtaVisibility() {
+  mobileCtaTicking = false;
+
+  if (!mobileHeroSection || !mobileCtaBar || !mobileCtaQuery.matches) {
+    document.body.classList.remove("hero-cta-visible");
+    return;
+  }
+
+  const heroRect = mobileHeroSection.getBoundingClientRect();
+  const heroTop = window.scrollY + heroRect.top;
+  const heroHeight = Math.max(heroRect.height, 1);
+  const heroScrollProgress = Math.max(0, (window.scrollY - heroTop) / heroHeight);
+
+  document.body.classList.toggle("hero-cta-visible", heroScrollProgress >= 0.60);
+}
+
+function requestMobileCtaUpdate() {
+  if (mobileCtaTicking) return;
+  mobileCtaTicking = true;
+  window.requestAnimationFrame(updateMobileCtaVisibility);
+}
+
+window.addEventListener("scroll", requestMobileCtaUpdate, { passive: true });
+window.addEventListener("resize", requestMobileCtaUpdate);
+mobileCtaQuery.addEventListener?.("change", requestMobileCtaUpdate);
+updateMobileCtaVisibility();
