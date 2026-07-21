@@ -718,7 +718,7 @@ function initializeMobileStickyCta() {
   if (!bar || !hero) return;
 
   replaceVisibleLinkText(quoteLink, "Get Quote");
-  replaceVisibleLinkText(callLink, "Call / Text");
+  replaceVisibleLinkText(callLink, "Call 503-910-5466");
 
   let animationFrame = 0;
 
@@ -857,7 +857,7 @@ function applyV13CopyAndImagery() {
   );
 
   setDeckText(".deck-hero .hero-actions .btn-primary", "Get My Deck Estimate");
-  setDeckText(".deck-hero .hero-actions .btn-secondary", "Call / Text Zach");
+  setDeckText(".deck-hero .hero-actions .btn-secondary", "Call 503-910-5466");
   setDeckText(".deck-hero .hero-review-badge", "Verified 5-Star Review");
 
   /* Trust strip */
@@ -957,27 +957,27 @@ function applyV13CopyAndImagery() {
   setDeckText(".mission-eyebrow", "Why Homeowners Choose ZH Homes");
   setDeckText(
     ".mission-title h2",
-    "Know What’s Happening. Know What It Costs. Love What Gets Built."
+    "A Deck You’ll Love. A Process You Can Trust."
   );
 
   updateMissionStat(
     0,
-    "Direct Communication",
+    "Direct Updates",
     "Talk with the person responsible for your project, not a chain of salespeople."
   );
   updateMissionStat(
     1,
-    "Designed for Your Property",
+    "Built for Your Yard",
     "Every layout is planned around your home, yard, access, elevation, and goals."
   );
   updateMissionStat(
     2,
-    "Built for Oregon",
+    "Oregon-Ready",
     "Construction details and materials chosen for safety, durability, and Northwest weather."
   );
   updateMissionStat(
     3,
-    "Clear Written Estimate",
+    "Clear Pricing",
     "See the proposed scope, materials, and price before you decide."
   );
 
