@@ -156,7 +156,7 @@ function simplifyDeckEstimateForm(form) {
 
   if (successMessage) {
     successMessage.textContent =
-      "Thanks. We will review your deck request and follow up using the phone number or email you provided.";
+      "Thanks. Zach will review your deck request and follow up using the phone number or email you provided.";
   }
 }
 
@@ -751,6 +751,355 @@ function initializeMobileStickyCta() {
   updateVisibility();
 }
 
+
+
+/* ==========================================================
+   V13 CONVERSION COPY + USER-SELECTED DECK IMAGERY
+   ========================================================== */
+
+function setDeckText(selector, text, root = document) {
+  const element = root.querySelector(selector);
+  if (element) element.textContent = text;
+  return element;
+}
+
+function setDeckHtml(selector, html, root = document) {
+  const element = root.querySelector(selector);
+  if (element) element.innerHTML = html;
+  return element;
+}
+
+function findDeckCard(containerSelector, headingSelector, heading) {
+  return Array.from(document.querySelectorAll(containerSelector)).find((element) =>
+    element
+      .querySelector(headingSelector)
+      ?.textContent?.trim()
+      .toLowerCase()
+      .includes(heading.toLowerCase())
+  );
+}
+
+function setRemoteDeckImage(image, source, fallbackSource, altText) {
+  if (!image) return;
+
+  image.referrerPolicy = "no-referrer";
+  image.removeAttribute("srcset");
+  image.alt = altText;
+
+  image.onerror = () => {
+    if (!fallbackSource || image.dataset.fallbackApplied === "true") return;
+    image.dataset.fallbackApplied = "true";
+    image.onerror = null;
+    image.src = fallbackSource;
+  };
+
+  image.src = source;
+}
+
+function updateServiceCardCopy(heading, description, linkText) {
+  const card = findDeckCard(".services-section .service-card", "h3", heading);
+  if (!card) return;
+
+  setDeckText(".service-content p", description, card);
+  setDeckText(".service-link", linkText, card);
+}
+
+function updateProcessCard(index, heading, description) {
+  const card = document.querySelectorAll(".process-section .process-card")[index];
+  if (!card) return;
+
+  setDeckText("h3", heading, card);
+  setDeckText("p", description, card);
+}
+
+function updateMissionStat(index, heading, description) {
+  const item = document.querySelectorAll(".mission-section .mission-stat")[index];
+  if (!item) return;
+
+  setDeckText("strong", heading, item);
+  setDeckText("span", description, item);
+}
+
+function applyV13CopyAndImagery() {
+  /* Search and share copy */
+  document.title = "Custom Deck Builder in Salem, Keizer & Silverton | ZH Homes";
+
+  const description =
+    "Turn unfinished backyard space into a custom wood or composite deck built around your home, yard, and lifestyle. Get a clear deck estimate from ZH Homes.";
+
+  document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+  document
+    .querySelector('meta[property="og:title"]')
+    ?.setAttribute("content", "Build a Backyard You’ll Actually Use | ZH Homes");
+  document
+    .querySelector('meta[property="og:description"]')
+    ?.setAttribute(
+      "content",
+      "Custom wood and composite decks with a clear written estimate, direct communication, and a layout built around your property."
+    );
+
+  /* Header */
+  setDeckText(".header-cta", "Get My Estimate");
+
+  /* Hero */
+  const heroHeadline =
+    'Build the deck that finally makes your backyard <span class="accent">feel finished.</span>';
+  setDeckHtml("#hero-title", heroHeadline);
+  setDeckHtml(".hero-mobile-title", heroHeadline);
+
+  setDeckText(
+    ".deck-hero .hero-copy > .subheadline:not(.hero-mobile-subheadline)",
+    "ZH Homes designs and builds custom wood and composite decks around your home, your yard, and the way you want to live outside, with a clear written estimate and direct communication from start to finish."
+  );
+  setDeckText(
+    ".hero-mobile-subheadline",
+    "Turn unfinished outdoor space into a place for grilling, dinners, slow mornings, and summer nights."
+  );
+
+  setDeckText(".deck-hero .hero-actions .btn-primary", "Get My Deck Estimate");
+  setDeckText(".deck-hero .hero-actions .btn-secondary", "Call / Text Zach");
+  setDeckText(".deck-hero .hero-review-badge", "Verified 5-Star Review");
+
+  /* Trust strip */
+  const stats = document.querySelectorAll(".quick-stats .stat-box");
+  const statCopy = [
+    ["Licensed", "Bonded & Insured • Oregon CCB #260679"],
+    ["Local", "Salem-Area Contractor"],
+    ["Clear", "Written Project Estimates"],
+    ["Nearby", "Salem, Keizer & Silverton"]
+  ];
+  stats.forEach((stat, index) => {
+    if (!statCopy[index]) return;
+    setDeckText("strong", statCopy[index][0], stat);
+    setDeckText("span", statCopy[index][1], stat);
+  });
+
+  /* Gallery positioning and copy. These remain inspiration images, not ZH Homes project claims. */
+  setDeckText(".deck-project-gallery-eyebrow", "Deck Design Inspiration");
+  setDeckText("#deck-gallery-title", "See What Your Backyard Could Become");
+
+  const galleryDining = document.querySelector(".deck-project-gallery-card.gallery-large-left");
+  setDeckText(".deck-project-tag", "Outdoor Dining", galleryDining || document);
+  setDeckText("figcaption strong", "A deck made for dinners and summer nights", galleryDining || document);
+  setRemoteDeckImage(
+    galleryDining?.querySelector("img"),
+    "https://decksunlimitedky.com/wp-content/uploads/2023/09/Decks-Unlimited-Louisville-KY-10-Inspiring-Deck-Design-Ideas-7.jpg",
+    "https://images.pexels.com/photos/12700434/pexels-photo-12700434.jpeg?auto=compress&cs=tinysrgb&w=1500",
+    "Wood deck arranged for outdoor dining and entertaining"
+  );
+
+  const galleryComposite = document.querySelector(".deck-project-gallery-card.gallery-small-right");
+  setDeckText(".deck-project-tag", "Composite Deck", galleryComposite || document);
+  setDeckText("figcaption strong", "Low-maintenance space with a finished look", galleryComposite || document);
+  setRemoteDeckImage(
+    galleryComposite?.querySelector("img"),
+    "https://www.kingcitypropertyservice.com/uploads/1/0/1/0/101002410/composite-deck-finish-with-border-vaughan-650_orig.jpg",
+    "https://images.pexels.com/photos/34053442/pexels-photo-34053442.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "Residential composite deck with clean picture-frame border"
+  );
+
+  const galleryRailing = document.querySelector(".deck-project-gallery-card.gallery-small-left");
+  setDeckText("figcaption strong", "Safe access that completes the design", galleryRailing || document);
+
+  const galleryEntertaining = document.querySelector(".deck-project-gallery-card.gallery-large-right");
+  setDeckText(".deck-project-tag", "Outdoor Living", galleryEntertaining || document);
+  setDeckText("figcaption strong", "A backyard built for hosting", galleryEntertaining || document);
+  setRemoteDeckImage(
+    galleryEntertaining?.querySelector("img"),
+    "https://www.upperdauphinvinylproducts.com/wp-content/uploads/Blogs/What-Is-The-Best-Composite-Decking-Wood-Composite-Vs.-Vinyl/Cool-wood-composite-decking-design-768x512.png",
+    "https://images.pexels.com/photos/8031887/pexels-photo-8031887.jpeg?auto=compress&cs=tinysrgb&w=1500",
+    "Finished backyard deck arranged for lounging and entertaining"
+  );
+
+  /* Services */
+  setDeckText(".services-eyebrow", "Built Around Your Backyard");
+  setDeckText(".services-heading h2", "Choose the Deck That Fits Your Home and the Way You Live");
+  setDeckText(".services-btn span", "Plan My Deck");
+
+  updateServiceCardCopy(
+    "Custom Deck Design",
+    "A layout shaped around your house, yard, furniture, grill, traffic flow, and the way you want to use the space.",
+    "Design My Deck"
+  );
+  updateServiceCardCopy(
+    "Wood Decks",
+    "Get the warm, natural look of wood with stain and finish options that make the deck feel like part of the home.",
+    "Explore Wood Decks"
+  );
+  updateServiceCardCopy(
+    "Composite Decks",
+    "Enjoy a finished outdoor space with less staining and sealing, plus durable color options that complement your home.",
+    "Explore Composite"
+  );
+  updateServiceCardCopy(
+    "Stairs & Railings",
+    "Make the transition from deck to yard feel safe, comfortable, and visually finished.",
+    "Plan Stairs & Railings"
+  );
+  updateServiceCardCopy(
+    "Sloped-Yard Decks",
+    "Turn difficult elevation into useful outdoor space with footings, drainage, access, and stairs planned for the property.",
+    "Show Us the Yard"
+  );
+
+  const compositeCard = findDeckCard(".services-section .service-card", "h3", "Composite Decks");
+  setRemoteDeckImage(
+    compositeCard?.querySelector("img"),
+    "https://cdn.shopify.com/s/files/1/0926/6371/0020/files/NeoTimber-Composite-Decking-Patio-3.jpg?v=1751881159",
+    "https://images.pexels.com/photos/34053442/pexels-photo-34053442.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "Composite patio deck with comfortable seating and a residential backyard setting"
+  );
+
+  /* Remove the service the user no longer wants. This runs before the mobile carousel is built. */
+  findDeckCard(".services-section .service-card", "h3", "Outdoor Features")?.remove();
+
+  /* Why ZH Homes */
+  setDeckText(".mission-eyebrow", "Why Homeowners Choose ZH Homes");
+  setDeckText(
+    ".mission-title h2",
+    "Know What’s Happening. Know What It Costs. Love What Gets Built."
+  );
+
+  updateMissionStat(
+    0,
+    "Direct Communication",
+    "Talk with the person responsible for your project, not a chain of salespeople."
+  );
+  updateMissionStat(
+    1,
+    "Designed for Your Property",
+    "Every layout is planned around your home, yard, access, elevation, and goals."
+  );
+  updateMissionStat(
+    2,
+    "Built for Oregon",
+    "Construction details and materials chosen for safety, durability, and Northwest weather."
+  );
+  updateMissionStat(
+    3,
+    "Clear Written Estimate",
+    "See the proposed scope, materials, and price before you decide."
+  );
+
+  /* Process */
+  setDeckText(".process-eyebrow", "A Clearer Way to Build");
+  setDeckText(".process-top h2", "From a Rough Idea to a Finished Deck, Without the Guesswork");
+  setDeckText(
+    ".process-top p",
+    "You do not need drawings or every detail figured out. Start with your backyard and what you want the space to do. We will help turn it into a practical plan."
+  );
+
+  updateProcessCard(
+    0,
+    "Tell Us What You Want",
+    "Share your location, rough size, timing, and how you want to use the deck."
+  );
+  updateProcessCard(
+    1,
+    "Walk the Property",
+    "We look at access, elevation, drainage, layout, stairs, railings, and material options."
+  );
+  updateProcessCard(
+    2,
+    "Review a Written Estimate",
+    "See the proposed scope, materials, pricing, and next steps before work is scheduled."
+  );
+  updateProcessCard(
+    3,
+    "Watch Your Backyard Take Shape",
+    "Once approved, the project is scheduled and built with direct updates through the final walkthrough."
+  );
+
+  /* Reviews */
+  setDeckText(".testimonials-eyebrow", "Proof From Local Homeowners");
+  setDeckText(
+    ".testimonials-left h2",
+    "The Kind of Contractor Homeowners Tell Their Friends to Call"
+  );
+  setDeckText(
+    ".testimonials-mobile-subheadline",
+    "Verified Google feedback about showing up, communicating clearly, bringing useful ideas, and doing the work well."
+  );
+  setDeckText(".google-reviews-btn", "Read Google Reviews");
+
+  /* Final estimate section */
+  setDeckText(".deck-estimate-section .contact-eyebrow", "Start Planning Your Deck");
+  setDeckText(
+    ".deck-estimate-section .contact-content h2",
+    "Your Backyard Is Already There. Let’s Make It Worth Using."
+  );
+  setDeckText(
+    ".deck-estimate-section .contact-content > p",
+    "Tell us what you want the space to do, where the property is, and when you hope to build. Zach will review the details and follow up with the clearest next step."
+  );
+
+  const contactItems = document.querySelectorAll(
+    ".deck-estimate-section .contact-info-item a, .deck-estimate-section .contact-info-item span"
+  );
+  const contactCopy = [
+    "Call or text Zach: (503) 910-5466",
+    "Serving Salem, Keizer, Silverton, and nearby communities",
+    "No obligation. No pressure. Just a straightforward conversation about your project."
+  ];
+  contactItems.forEach((item, index) => {
+    if (contactCopy[index]) item.textContent = contactCopy[index];
+  });
+
+  setDeckText(".hero-quick-heading > span", "Custom Deck Estimate");
+  setDeckText(".hero-quick-heading h2", "Start Planning Your Deck");
+  setDeckText(".deck-form-heading h3", "Tell Zach About Your Deck");
+  setDeckText(
+    ".deck-form-heading p",
+    "Share a few details so he can understand the property, timing, and scope before following up."
+  );
+
+  document.querySelectorAll(".deck-multistep-form").forEach((form) => {
+    const steps = Array.from(form.querySelectorAll(".estimate-step"));
+    const stepCopy = [
+      ["Contact details", "Where should Zach reach you?", "Your information is only used to respond to this request."],
+      ["Your property", "Tell us what is outside now", "The location and existing setup help us understand what the project may involve."],
+      ["Deck ideas", "What would your ideal deck look like?", "It is fine if you are still deciding between wood, composite, size, or features."],
+      ["Timing and budget", "When would you like to enjoy it?", "A rough timeline and budget help Zach recommend the most realistic next step."],
+      ["Your vision", "Help us picture the finished space", "Tell us what you want to do out there. Backyard photos are optional, but useful."]
+    ];
+
+    steps.forEach((step, index) => {
+      if (!stepCopy[index]) return;
+      step.dataset.stepTitle = stepCopy[index][0];
+      setDeckText(".estimate-step-heading > span", stepCopy[index][1], step);
+      setDeckText(".estimate-step-heading p", stepCopy[index][2], step);
+    });
+
+    const detailsField = form.querySelector('textarea[name="projectDetails"]');
+    if (detailsField) {
+      detailsField.placeholder =
+        "Example: We want room for a grill, a table for six, and a seating area. The yard slopes away from the house.";
+      const detailsLabel = form.querySelector(`label[for="${detailsField.id}"]`);
+      if (detailsLabel) detailsLabel.textContent = "How do you want to use the deck?";
+    }
+
+    setDeckText(".estimate-submit", "Get My Deck Estimate", form);
+    setDeckText(
+      ".hero-form-assurance",
+      "No obligation. Just a straightforward follow-up about your project.",
+      form
+    );
+  });
+
+  /* FAQ and footer */
+  setDeckText(".faq-eyebrow", "Deck Planning Questions");
+  setDeckText(".faq-top h2", "What Homeowners Want to Know Before Building a Deck");
+  setDeckText(
+    ".faq-top p",
+    "Clear answers about cost, materials, timing, permits, design, and service area."
+  );
+  setDeckText(
+    ".deck-footer .footer-brand p",
+    "Custom wood and composite decks built for the way Salem-area homeowners want to live outside."
+  );
+}
+
+
 document.querySelectorAll(".tracked-call").forEach((link) => {
   link.addEventListener("click", () => {
     pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
@@ -758,6 +1107,7 @@ document.querySelectorAll(".tracked-call").forEach((link) => {
 });
 
 replaceDeckCampaignImages();
+applyV13CopyAndImagery();
 document.querySelectorAll(".deck-multistep-form").forEach(initializeMultiStepForm);
 initializeReviewCarousel();
 initializeAnchorScrolling();

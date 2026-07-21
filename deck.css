@@ -2357,3 +2357,99 @@
 .deck-image-modal {
   display: none !important;
 }
+
+
+/* ==========================================================
+   V13 STRONGER PRIMARY DECK-ESTIMATE CTA
+   ========================================================== */
+.deck-page .deck-hero .hero-actions .btn-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 66px !important;
+  padding-right: 28px !important;
+  padding-left: 28px !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #ff9a55 0%, #f37021 46%, #d9530a 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow:
+    0 22px 48px rgba(243, 112, 33, 0.43),
+    0 0 0 6px rgba(243, 112, 33, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+  font-size: 15.5px !important;
+  letter-spacing: 0.05px;
+  text-shadow: 0 1px 1px rgba(96, 31, 0, 0.28);
+}
+
+.deck-page .deck-hero .hero-actions .btn-primary::after {
+  content: "→";
+  position: relative;
+  z-index: 2;
+  margin-left: 10px;
+  font-size: 21px;
+  font-weight: 950;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.deck-page .deck-hero .hero-actions .btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.30) 48%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 520ms ease;
+}
+
+.deck-page .deck-hero .hero-actions .btn-primary:hover {
+  transform: translateY(-3px) scale(1.015) !important;
+  box-shadow:
+    0 28px 58px rgba(243, 112, 33, 0.50),
+    0 0 0 7px rgba(243, 112, 33, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38) !important;
+}
+
+.deck-page .deck-hero .hero-actions .btn-primary:hover::before {
+  transform: translateX(120%);
+}
+
+.deck-page .deck-hero .hero-actions .btn-primary:hover::after {
+  transform: translateX(3px);
+}
+
+.deck-page .deck-hero .hero-actions .btn-primary:focus-visible {
+  outline: 4px solid rgba(255, 255, 255, 0.94) !important;
+  outline-offset: 4px !important;
+}
+
+/* Keep the five-card services layout balanced after removing Outdoor Features. */
+@media (min-width: 951px) {
+  .deck-page .services-section .services-grid {
+    align-items: stretch;
+  }
+
+  .deck-page .services-section .service-card:nth-child(4),
+  .deck-page .services-section .service-card:nth-child(5) {
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 950px) {
+  .deck-page .deck-hero .hero-actions .btn-primary {
+    min-height: 68px !important;
+    font-size: 15px !important;
+    box-shadow:
+      0 22px 46px rgba(243, 112, 33, 0.48),
+      0 0 0 5px rgba(243, 112, 33, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-page .deck-hero .hero-actions .btn-primary,
+  .deck-page .deck-hero .hero-actions .btn-primary::before,
+  .deck-page .deck-hero .hero-actions .btn-primary::after {
+    transition: none !important;
+  }
+}
