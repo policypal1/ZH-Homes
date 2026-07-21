@@ -883,7 +883,7 @@ function applyV13CopyAndImagery() {
   setDeckText("figcaption strong", "A deck made for dinners and summer nights", galleryDining || document);
   setRemoteDeckImage(
     galleryDining?.querySelector("img"),
-    "https://decksunlimitedky.com/wp-content/uploads/2023/09/Decks-Unlimited-Louisville-KY-10-Inspiring-Deck-Design-Ideas-7.jpg",
+    "https://reliablehomeexperts.com/hubfs/ReliableHomeExperts_January2026/images/JB-deck-after-2.jpg",
     "https://images.pexels.com/photos/12700434/pexels-photo-12700434.jpeg?auto=compress&cs=tinysrgb&w=1500",
     "Wood deck arranged for outdoor dining and entertaining"
   );
@@ -906,7 +906,7 @@ function applyV13CopyAndImagery() {
   setDeckText("figcaption strong", "A backyard built for hosting", galleryEntertaining || document);
   setRemoteDeckImage(
     galleryEntertaining?.querySelector("img"),
-    "https://www.upperdauphinvinylproducts.com/wp-content/uploads/Blogs/What-Is-The-Best-Composite-Decking-Wood-Composite-Vs.-Vinyl/Cool-wood-composite-decking-design-768x512.png",
+    "https://images.airtasker.com/v7/https://airtasker-seo-assets-prod.s3.amazonaws.com/en_GB/1702273848607-wooden-deck.jpg?gravity=smart&w=1200&h=1200",
     "https://images.pexels.com/photos/8031887/pexels-photo-8031887.jpeg?auto=compress&cs=tinysrgb&w=1500",
     "Finished backyard deck arranged for lounging and entertaining"
   );
