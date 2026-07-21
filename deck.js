@@ -1,95 +1,60 @@
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHLveySfQQs0FxeKYvdpn5h9GotlbR36H1ttA5hNUTb-KWyC7oxTH5EZ7jFB9sy92XkQ/exec";
 
-const form = document.getElementById("deckQuoteForm");
-const formStatus = document.getElementById("formStatus");
-const projectPhoto = document.getElementById("projectPhoto");
-const fileError = document.getElementById("fileError");
-const selectedFileRow = document.getElementById("selectedFileRow");
-const selectedFileName = document.getElementById("selectedFileName");
-const clearProjectPhoto = document.getElementById("clearProjectPhoto");
-const successOverlay = document.getElementById("successOverlay");
-
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 const MAX_TOTAL_IMAGE_SIZE = 20 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+const ALLOWED_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
 
 function pushTrackingEvent(eventName, details = {}) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: eventName, ...details });
 }
 
-document.querySelectorAll(".tracked-call").forEach((link) => {
-  link.addEventListener("click", () => {
-    pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
-  });
-});
+function getAttribution() {
+  const params = new URLSearchParams(window.location.search);
+  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"];
 
-document.querySelectorAll('a[href="#estimate"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const target = document.getElementById("estimate");
-    if (!target) return;
-    event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.replaceState(null, "", "#estimate");
-  });
-});
-
-function getSelectedFiles() {
-  return Array.from(projectPhoto?.files || []);
+  return keys.reduce((result, key) => {
+    result[key] = params.get(key) || "";
+    return result;
+  }, {});
 }
 
-function validateFiles(files) {
-  if (!projectPhoto) return true;
+function getFileExtension(fileName) {
+  const parts = String(fileName || "").toLowerCase().split(".");
+  return parts.length > 1 ? parts.pop() : "";
+}
+
+function isAllowedImage(file) {
+  const typeAllowed = ALLOWED_IMAGE_TYPES.includes(file.type);
+  const extensionAllowed = ALLOWED_IMAGE_EXTENSIONS.includes(getFileExtension(file.name));
+  return typeAllowed || (!file.type && extensionAllowed);
+}
+
+function validateFiles(fileInput, errorElement) {
+  const files = Array.from(fileInput?.files || []);
   const totalSize = files.reduce((sum, file) => sum + file.size, 0);
-  const invalidType = files.some((file) => !ALLOWED_IMAGE_TYPES.includes(file.type));
-  const oversized = files.some((file) => file.size > MAX_IMAGE_SIZE);
-  const invalid = files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || invalidType || oversized;
+  const hasInvalidType = files.some((file) => !isAllowedImage(file));
+  const hasOversizedFile = files.some((file) => file.size > MAX_IMAGE_SIZE);
+  const invalid = files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || hasInvalidType || hasOversizedFile;
 
   if (invalid) {
-    const message = "Please upload up to 4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller.";
-    projectPhoto.setCustomValidity(message);
-    if (fileError) fileError.textContent = message;
+    const message = "Upload up to 4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller.";
+    fileInput?.setCustomValidity(message);
+    if (errorElement) errorElement.textContent = message;
     return false;
   }
 
-  projectPhoto.setCustomValidity("");
-  if (fileError) fileError.textContent = "";
+  fileInput?.setCustomValidity("");
+  if (errorElement) errorElement.textContent = "";
   return true;
 }
-
-function updateSelectedFileText(files) {
-  if (!selectedFileName || !selectedFileRow) return;
-  if (!files.length) {
-    selectedFileName.textContent = "";
-    selectedFileRow.hidden = true;
-    return;
-  }
-
-  selectedFileName.textContent = files.length === 1
-    ? files[0].name
-    : `${files.length} images selected`;
-  selectedFileRow.hidden = false;
-}
-
-function clearFiles() {
-  if (!projectPhoto) return;
-  projectPhoto.value = "";
-  projectPhoto.setCustomValidity("");
-  updateSelectedFileText([]);
-  if (fileError) fileError.textContent = "";
-}
-
-projectPhoto?.addEventListener("change", () => {
-  const files = getSelectedFiles();
-  validateFiles(files);
-  updateSelectedFileText(files);
-});
-clearProjectPhoto?.addEventListener("click", clearFiles);
 
 function readFileAsBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
+
     reader.onload = () => {
       const result = String(reader.result || "");
       resolve({
@@ -99,115 +64,337 @@ function readFileAsBase64(file) {
         base64: result.includes(",") ? result.split(",")[1] : result
       });
     };
+
     reader.onerror = () => reject(new Error("Could not read an uploaded image."));
     reader.readAsDataURL(file);
   });
 }
 
-function setStatus(message, type = "") {
-  if (!formStatus) return;
-  formStatus.textContent = message;
-  formStatus.className = `form-status ${type}`.trim();
+function findInvalidControl(step) {
+  const controls = Array.from(step.querySelectorAll("input, select, textarea"))
+    .filter((control) => !control.disabled && control.type !== "hidden");
+
+  const checkedRadioGroups = new Set();
+
+  for (const control of controls) {
+    control.classList.remove("field-invalid");
+
+    if (control.type === "radio") {
+      if (checkedRadioGroups.has(control.name)) continue;
+      checkedRadioGroups.add(control.name);
+
+      const group = Array.from(step.querySelectorAll(`input[type="radio"][name="${CSS.escape(control.name)}"]`));
+      const required = group.some((radio) => radio.required);
+      const checked = group.some((radio) => radio.checked);
+
+      if (required && !checked) return group[0];
+      continue;
+    }
+
+    if (!control.checkValidity()) return control;
+  }
+
+  return null;
 }
 
-function showSuccess() {
-  if (!successOverlay) return;
-  successOverlay.classList.add("active");
-  successOverlay.setAttribute("aria-hidden", "false");
+function updateSelectedFiles(form, fileInput) {
+  const row = form.querySelector("[data-selected-file-row]");
+  const name = form.querySelector("[data-selected-file-name]");
+  const files = Array.from(fileInput?.files || []);
+
+  if (!row || !name) return;
+
+  if (!files.length) {
+    name.textContent = "";
+    row.hidden = true;
+    return;
+  }
+
+  name.textContent = files.length === 1 ? files[0].name : `${files.length} images selected`;
+  row.hidden = false;
+}
+
+function showFormSuccess(form) {
+  const container = form.closest(".hero-quick-card, .deck-form-card");
+  const overlay = container?.querySelector("[data-success-overlay]");
+  if (!overlay) return;
+
+  overlay.classList.add("active");
+  overlay.setAttribute("aria-hidden", "false");
+
   window.setTimeout(() => {
-    successOverlay.classList.remove("active");
-    successOverlay.setAttribute("aria-hidden", "true");
-  }, 4200);
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+  }, 5000);
 }
 
-function getAttribution() {
-  const params = new URLSearchParams(window.location.search);
-  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"];
-  return keys.reduce((result, key) => {
-    result[key] = params.get(key) || "";
-    return result;
-  }, {});
+function setFormStatus(form, message, type = "") {
+  const status = form.querySelector("[data-form-status]");
+  if (!status) return;
+
+  status.textContent = message;
+  status.className = `form-status ${type}`.trim();
 }
 
-form?.addEventListener("submit", async (event) => {
-  event.preventDefault();
+function initializeMultiStepForm(form) {
+  const steps = Array.from(form.querySelectorAll(".estimate-step"));
+  const progressLabel = form.querySelector("[data-progress-label]");
+  const progressTitle = form.querySelector("[data-progress-title]");
+  const progressBar = form.querySelector("[data-progress-bar]");
+  const fileInput = form.querySelector("[data-project-photo]");
+  const fileError = form.querySelector("[data-file-error]");
+  const clearFilesButton = form.querySelector("[data-clear-files]");
+  let currentStep = 0;
 
-  const files = getSelectedFiles();
-  if (!validateFiles(files)) {
-    projectPhoto?.focus();
-    return;
-  }
+  function updateStep(nextStep, shouldFocus = true) {
+    currentStep = Math.max(0, Math.min(nextStep, steps.length - 1));
 
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-
-  const submitButton = form.querySelector(".submit-button");
-  const originalText = submitButton?.textContent || "Request My Deck Estimate";
-
-  try {
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
-    }
-    setStatus("Sending your request...");
-
-    const projectPhotos = await Promise.all(files.map(readFileAsBase64));
-    const zipCode = document.getElementById("zipCode")?.value.trim() || "";
-    const materialPreference = document.getElementById("materialPreference")?.value || "Unsure";
-    const projectTiming = document.getElementById("projectTiming")?.value || "";
-    const projectDetails = document.getElementById("projectDetails")?.value.trim() || "";
-
-    const description = [
-      `Project ZIP: ${zipCode}`,
-      `Material preference: ${materialPreference}`,
-      `Ideal timing: ${projectTiming}`,
-      projectDetails ? `Deck goals/details: ${projectDetails}` : "Deck goals/details: Not provided"
-    ].join("\n");
-
-    const payload = {
-      source: "ZH Homes Deck Landing Page",
-      pageUrl: window.location.href,
-      submittedAt: new Date().toISOString(),
-      contactReason: "deck_quote",
-      fullName: document.getElementById("fullName")?.value.trim() || "",
-      email: document.getElementById("email")?.value.trim() || "",
-      phone: document.getElementById("phone")?.value.trim() || "",
-      serviceType: "New Deck Construction",
-      description,
-      companyWebsite: document.getElementById("companyWebsite")?.value.trim() || "",
-      projectPhotos,
-      zipCode,
-      materialPreference,
-      projectTiming,
-      projectDetails,
-      attribution: getAttribution()
-    };
-
-    await fetch(APPS_SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
+    steps.forEach((step, index) => {
+      const active = index === currentStep;
+      step.hidden = !active;
+      step.classList.toggle("active", active);
     });
 
-    form.reset();
-    clearFiles();
-    setStatus("Thanks. Your deck estimate request was submitted.", "success");
-    showSuccess();
-    pushTrackingEvent("deck_lead_submit", {
-      form_name: "deck_estimate",
-      material_preference: materialPreference,
-      project_timing: projectTiming
-    });
-  } catch (error) {
-    console.error(error);
-    setStatus("Something went wrong. Please call or text ZH Homes directly at (503) 910-5466.", "error");
-  } finally {
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = originalText;
+    if (progressLabel) progressLabel.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+    if (progressTitle) progressTitle.textContent = steps[currentStep]?.dataset.stepTitle || "Deck estimate";
+    if (progressBar) progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+
+    if (shouldFocus) {
+      const heading = steps[currentStep]?.querySelector(".estimate-step-heading > span");
+      heading?.setAttribute("tabindex", "-1");
+      heading?.focus({ preventScroll: true });
     }
   }
+
+  function validateCurrentStep() {
+    const step = steps[currentStep];
+    if (!step) return true;
+
+    if (fileInput && step.contains(fileInput) && !validateFiles(fileInput, fileError)) {
+      fileInput.focus();
+      return false;
+    }
+
+    const invalidControl = findInvalidControl(step);
+    if (!invalidControl) return true;
+
+    invalidControl.classList.add("field-invalid");
+    invalidControl.reportValidity();
+    invalidControl.focus({ preventScroll: false });
+    return false;
+  }
+
+  form.querySelectorAll("[data-next]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!validateCurrentStep()) return;
+      updateStep(currentStep + 1);
+    });
+  });
+
+  form.querySelectorAll("[data-back]").forEach((button) => {
+    button.addEventListener("click", () => updateStep(currentStep - 1));
+  });
+
+  form.addEventListener("input", (event) => {
+    if (event.target instanceof HTMLElement) event.target.classList.remove("field-invalid");
+  });
+
+  form.addEventListener("change", (event) => {
+    if (event.target instanceof HTMLElement) event.target.classList.remove("field-invalid");
+  });
+
+  fileInput?.addEventListener("change", () => {
+    validateFiles(fileInput, fileError);
+    updateSelectedFiles(form, fileInput);
+  });
+
+  clearFilesButton?.addEventListener("click", () => {
+    if (!fileInput) return;
+    fileInput.value = "";
+    fileInput.setCustomValidity("");
+    if (fileError) fileError.textContent = "";
+    updateSelectedFiles(form, fileInput);
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!validateCurrentStep()) return;
+
+    const invalidControl = Array.from(form.elements).find((element) =>
+      element instanceof HTMLElement && "checkValidity" in element && !element.checkValidity()
+    );
+
+    if (invalidControl instanceof HTMLElement) {
+      const invalidStep = invalidControl.closest(".estimate-step");
+      const invalidStepIndex = steps.indexOf(invalidStep);
+      if (invalidStepIndex >= 0) updateStep(invalidStepIndex, false);
+      invalidControl.reportValidity?.();
+      invalidControl.focus?.();
+      return;
+    }
+
+    if (fileInput && !validateFiles(fileInput, fileError)) {
+      fileInput.focus();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const honeypot = String(formData.get("companyWebsite") || "").trim();
+
+    if (honeypot) {
+      form.reset();
+      updateStep(0, false);
+      showFormSuccess(form);
+      return;
+    }
+
+    const submitButton = form.querySelector(".estimate-submit");
+    const originalButtonText = submitButton?.textContent || "Request My Deck Estimate";
+
+    try {
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+      setFormStatus(form, "Sending your request...");
+
+      const files = Array.from(fileInput?.files || []);
+      const projectPhotos = await Promise.all(files.map(readFileAsBase64));
+      const desiredFeatures = formData.getAll("desiredFeatures").map(String);
+
+      const details = {
+        homeownerStatus: String(formData.get("homeownerStatus") || ""),
+        zipCode: String(formData.get("zipCode") || ""),
+        currentSetup: String(formData.get("currentSetup") || ""),
+        materialPreference: String(formData.get("materialPreference") || ""),
+        deckSize: String(formData.get("deckSize") || ""),
+        desiredFeatures,
+        projectTiming: String(formData.get("projectTiming") || ""),
+        budgetRange: String(formData.get("budgetRange") || ""),
+        projectDetails: String(formData.get("projectDetails") || ""),
+        contactPreference: String(formData.get("contactPreference") || ""),
+        newDeckConfirmation: String(formData.get("newDeckConfirmation") || "")
+      };
+
+      const description = [
+        `Homeowner status: ${details.homeownerStatus}`,
+        `Project ZIP: ${details.zipCode}`,
+        `Current backyard setup: ${details.currentSetup}`,
+        `Material preference: ${details.materialPreference}`,
+        `Approximate deck size: ${details.deckSize}`,
+        `Desired features: ${desiredFeatures.length ? desiredFeatures.join(", ") : "None selected"}`,
+        `Ideal timing: ${details.projectTiming}`,
+        `Budget range: ${details.budgetRange}`,
+        `Preferred contact method: ${details.contactPreference}`,
+        `New deck campaign confirmation: ${details.newDeckConfirmation}`,
+        `Deck goals/details: ${details.projectDetails}`
+      ].join("\n");
+
+      const payload = {
+        source: `ZH Homes Deck Landing Page - ${form.dataset.formSource || "Deck Estimate"}`,
+        pageUrl: window.location.href,
+        submittedAt: new Date().toISOString(),
+        contactReason: "deck_quote",
+        fullName: String(formData.get("fullName") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        phone: String(formData.get("phone") || "").trim(),
+        serviceType: "New Deck Construction",
+        description,
+        companyWebsite: honeypot,
+        projectPhotos,
+        ...details,
+        attribution: getAttribution()
+      };
+
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+
+      form.reset();
+      if (fileInput) updateSelectedFiles(form, fileInput);
+      updateStep(0, false);
+      setFormStatus(form, "Thanks. Your deck estimate request was submitted.", "success");
+      showFormSuccess(form);
+
+      pushTrackingEvent("deck_lead_submit", {
+        form_name: form.dataset.formSource || "deck_estimate",
+        material_preference: details.materialPreference,
+        project_timing: details.projectTiming,
+        budget_range: details.budgetRange,
+        homeowner_status: details.homeownerStatus
+      });
+    } catch (error) {
+      console.error(error);
+      setFormStatus(form, "Something went wrong. Please call or text ZH Homes at (503) 910-5466.", "error");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    }
+  });
+
+  updateStep(0, false);
+}
+
+function initializeReviewCarousel() {
+  const carousel = document.getElementById("deckReviewCarousel");
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.querySelectorAll(".review-slide"));
+  const dots = Array.from(carousel.querySelectorAll(".review-dot"));
+  const previousButton = carousel.querySelector(".review-arrow.prev");
+  const nextButton = carousel.querySelector(".review-arrow.next");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("active", slideIndex === currentIndex);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("active", dotIndex === currentIndex);
+      dot.setAttribute("aria-current", dotIndex === currentIndex ? "true" : "false");
+    });
+  }
+
+  previousButton?.addEventListener("click", () => showSlide(currentIndex - 1));
+  nextButton?.addEventListener("click", () => showSlide(currentIndex + 1));
+  dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+  showSlide(0);
+}
+
+function initializeAnchorScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      event.preventDefault();
+      const header = document.querySelector(".site-header");
+      const offset = (header?.offsetHeight || 0) + 16;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      history.replaceState(null, "", href);
+    });
+  });
+}
+
+document.querySelectorAll(".tracked-call").forEach((link) => {
+  link.addEventListener("click", () => {
+    pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
+  });
 });
+
+document.querySelectorAll(".deck-multistep-form").forEach(initializeMultiStepForm);
+initializeReviewCarousel();
+initializeAnchorScrolling();
