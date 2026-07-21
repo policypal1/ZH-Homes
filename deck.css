@@ -1,7 +1,9 @@
-/* ZH Homes deck landing page overrides.
-   This file loads after the main site style.css and intentionally reuses
-   the homepage header, hero, services, mission, process, reviews, contact,
-   FAQ, footer, and mobile CTA components. */
+/*
+  ZH Homes deck landing page
+  Complete replacement stylesheet for decks.html.
+  This file loads after style.css and keeps the shared site components while
+  applying deck-specific layouts, forms, gallery styling, and responsive rules.
+*/
 
 :root {
   --deck-orange: #f37021;
@@ -11,11 +13,16 @@
   --deck-line: #ddd4cd;
   --deck-cream: #f7f3ef;
   --deck-card: #ffffff;
+  --deck-black: #050607;
   --deck-shadow: 0 28px 68px rgba(20, 12, 8, 0.22);
 }
 
 .deck-page {
   overflow-x: hidden;
+}
+
+.deck-page.deck-image-modal-open {
+  overflow: hidden;
 }
 
 .deck-page main > section {
@@ -76,6 +83,7 @@
   margin-top: 28px;
 }
 
+/* Hero estimate card */
 .hero-quick-card {
   position: relative;
   z-index: 8;
@@ -87,7 +95,7 @@
   padding: clamp(24px, 3vw, 34px);
   color: var(--deck-ink);
   background: rgba(255, 255, 255, 0.985);
-  border: 1px solid rgba(45, 29, 21, 0.10);
+  border: 1px solid rgba(45, 29, 21, 0.1);
   border-radius: 22px;
   box-shadow: var(--deck-shadow);
   scrollbar-width: thin;
@@ -128,7 +136,6 @@
   letter-spacing: -1.25px;
 }
 
-
 .honeypot {
   position: absolute !important;
   left: -10000px !important;
@@ -140,7 +147,7 @@
   pointer-events: none !important;
 }
 
-/* Multi-step form */
+/* Multi-step forms */
 .deck-multistep-form {
   position: relative;
   color: var(--deck-ink);
@@ -193,8 +200,15 @@
 }
 
 @keyframes estimateStepIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .estimate-step-heading {
@@ -288,7 +302,7 @@
 
 .deck-multistep-form .field-invalid {
   border-color: #b42318 !important;
-  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.10) !important;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.1) !important;
 }
 
 .choice-fieldset {
@@ -344,7 +358,8 @@
   font-weight: 850;
   line-height: 1.25;
   text-align: center;
-  transition: border-color 150ms ease, background 150ms ease, color 150ms ease, transform 150ms ease;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease,
+    transform 150ms ease;
 }
 
 .choice-card:hover span {
@@ -376,8 +391,8 @@
   border: 1px solid #ddd3cc;
   border-radius: 10px;
   font-size: 11.5px;
-  line-height: 1.45;
   font-weight: 750;
+  line-height: 1.45;
 }
 
 .campaign-confirmation input {
@@ -421,7 +436,7 @@
   color: #fff;
   background: var(--deck-orange);
   border: 1px solid var(--deck-orange);
-  box-shadow: 0 12px 25px rgba(243, 112, 33, 0.20);
+  box-shadow: 0 12px 25px rgba(243, 112, 33, 0.2);
 }
 
 .estimate-back:hover,
@@ -579,7 +594,7 @@
   line-height: 1.5;
 }
 
-/* Stock imagery used as design examples, not project-gallery claims. */
+/* About and service images */
 .about-single-photo {
   position: relative;
   height: 560px;
@@ -590,11 +605,11 @@
 }
 
 .about-single-photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  display: block;
 }
 
 .services-section .service-image img {
@@ -609,30 +624,64 @@
   object-position: center 48%;
 }
 
-/* Black project-work placeholder section. */
+/* Orange trust strip */
+.deck-page .quick-stats {
+  color: #fff !important;
+  background: var(--deck-orange) !important;
+  border: 0 !important;
+}
+
+.deck-page .quick-stats-inner {
+  width: min(1220px, 100%);
+}
+
+.deck-page .quick-stats .stat-box {
+  border-left: 1px solid rgba(255, 255, 255, 0.24) !important;
+}
+
+.deck-page .quick-stats .stat-box:last-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.24) !important;
+}
+
+.deck-page .quick-stats .stat-box strong,
+.deck-page .quick-stats .stat-box span {
+  color: #fff !important;
+}
+
+/* Featured review strip */
+.hero-review-section {
+  padding: 68px 0 !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
+}
+
+.hero-review-section .hero-review-card {
+  max-width: min(1220px, calc(100% - 36px));
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.25);
+}
+
+.hero-review-section .hero-review-quote,
+.hero-review-section .hero-review-author strong,
+.hero-review-section .hero-review-author span {
+  color: #fff !important;
+}
+
+/* Project gallery */
 .deck-project-gallery-section {
   position: relative;
   margin: 0 !important;
   padding: 104px 0 112px;
-  color: #fff;
-  background:
-    radial-gradient(circle at 14% 18%, rgba(243, 112, 33, 0.12), transparent 31%),
-    radial-gradient(circle at 86% 82%, rgba(243, 112, 33, 0.09), transparent 34%),
-    linear-gradient(135deg, #050607, #15100d 58%, #08090a);
+  color: var(--deck-ink) !important;
+  background: #fff !important;
   border: 0;
   overflow: hidden;
 }
 
 .deck-project-gallery-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
+  display: none !important;
 }
 
 .deck-project-gallery-inner {
@@ -670,7 +719,7 @@
 
 .deck-project-gallery-heading h2 {
   margin: 0 0 16px;
-  color: #fff;
+  color: var(--deck-ink) !important;
   font-size: clamp(36px, 4.4vw, 58px);
   line-height: 1.04;
   letter-spacing: -1.8px;
@@ -679,66 +728,224 @@
 .deck-project-gallery-heading p {
   max-width: 650px;
   margin: 0 auto;
-  color: rgba(255,255,255,0.68);
+  color: var(--deck-muted);
   font-size: 15px;
   line-height: 1.7;
 }
 
-.deck-project-placeholder-grid {
+.deck-project-gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
-.deck-project-placeholder-card {
-  min-height: 260px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.075)),
-    rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 18px;
-  box-shadow: 0 24px 55px rgba(0,0,0,0.24);
+.deck-project-gallery-grid-four {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 300px 300px;
+  gap: 20px;
 }
 
-.deck-project-placeholder-card span {
+.deck-project-gallery-card {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: #ddd;
+  border: 1px solid rgba(35, 23, 18, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 22px 55px rgba(35, 23, 18, 0.12);
+}
+
+.deck-project-gallery-grid-four .deck-project-gallery-card {
+  min-height: 0;
+}
+
+.deck-project-gallery-grid-four .gallery-large-left {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.deck-project-gallery-grid-four .gallery-small-right {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.deck-project-gallery-grid-four .gallery-small-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.deck-project-gallery-grid-four .gallery-large-right {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+}
+
+.deck-project-gallery-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.deck-project-gallery-card:hover img {
+  transform: scale(1.04);
+}
+
+.deck-project-gallery-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 25%, rgba(0, 0, 0, 0.72));
+  pointer-events: none;
+}
+
+.deck-project-gallery-card figcaption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
   display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  margin-bottom: auto;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "tag button"
+    "title button";
+  gap: 5px 14px;
+  align-items: end;
   color: #fff;
-  background: rgba(243,112,33,0.16);
-  border: 1px solid rgba(243,112,33,0.34);
-  border-radius: 50%;
+}
+
+.deck-project-tag {
+  grid-area: tag;
+  justify-self: start;
+  display: inline-flex;
+  margin-bottom: 3px;
+  padding: 6px 10px;
+  color: #fff;
+  background: rgba(243, 112, 33, 0.94);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.deck-project-gallery-card strong {
+  grid-area: title;
+  display: block;
+  font-size: 23px;
+  line-height: 1.14;
+}
+
+.deck-gallery-view-button {
+  grid-area: button;
+  align-self: end;
+  min-width: 76px;
+  min-height: 42px;
+  padding: 9px 16px;
+  color: #fff;
+  background: rgba(10, 10, 10, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
   font-size: 12px;
   font-weight: 950;
+  letter-spacing: 0.35px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
 }
 
-.deck-project-placeholder-card strong {
-  margin-bottom: 8px;
-  color: #fff;
-  font-size: 23px;
-  line-height: 1.15;
+.deck-gallery-view-button:hover {
+  background: var(--deck-orange);
+  border-color: var(--deck-orange);
+  transform: translateY(-2px);
 }
 
-.deck-project-placeholder-card p {
-  margin: 0;
-  color: rgba(255,255,255,0.62);
-  font-size: 13px;
-  line-height: 1.55;
+.deck-gallery-view-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.75);
+  outline-offset: 3px;
 }
 
-/* How It Works returns to a clean white section. */
+.deck-project-gallery-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 38px;
+}
+
+/* Services section */
+.deck-page .services-section {
+  position: relative;
+  color: #fff !important;
+  background:
+    linear-gradient(rgba(10, 7, 5, 0.36), rgba(10, 7, 5, 0.46)),
+    url("ChatGPT Image May 14, 2026, 10_21_07 PM (1).webp") center center / cover no-repeat,
+    #0a0705 !important;
+}
+
+.deck-page .services-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block !important;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.08)),
+    radial-gradient(circle at 82% 20%, rgba(243, 112, 33, 0.08), transparent 34%),
+    radial-gradient(circle at 10% 90%, rgba(243, 112, 33, 0.06), transparent 34%);
+  pointer-events: none;
+}
+
+.deck-page .services-heading h2,
+.deck-page .services-heading p,
+.deck-page .services-eyebrow,
+.deck-page .services-btn span {
+  color: #fff !important;
+}
+
+.deck-page .services-btn {
+  border-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+/* Why choose ZH Homes */
+.deck-page .mission-section {
+  position: relative;
+  color: var(--deck-ink) !important;
+  background:
+    url("ChatGPT Image May 14, 2026, 10_06_01 PM.png") center center / cover no-repeat,
+    #fff !important;
+}
+
+.deck-page .mission-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block !important;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.44), rgba(255, 255, 255, 0.7)),
+    radial-gradient(circle at 78% 22%, rgba(243, 112, 33, 0.08), transparent 30%);
+  pointer-events: none;
+}
+
+.deck-page .mission-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.deck-page .mission-title h2 {
+  color: var(--deck-ink) !important;
+}
+
+/* Dark four-step process section */
 .deck-page .process-section {
   position: relative;
+  isolation: isolate;
   margin: 0 !important;
   padding: 102px 0 112px !important;
-  color: var(--deck-ink) !important;
-  background: #fff !important;
+  color: #fff !important;
+  background:
+    linear-gradient(110deg, rgba(2, 3, 4, 0.96), rgba(4, 5, 6, 0.88) 48%, rgba(7, 7, 7, 0.78)),
+    url("ChatGPT Image Jul 21, 2026, 01_27_28 PM.png") center center / cover no-repeat,
+    #050607 !important;
   border: 0 !important;
   overflow: hidden;
 }
@@ -747,9 +954,25 @@
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -2;
+  display: block !important;
   background:
-    radial-gradient(circle at 14% 18%, rgba(243,112,33,0.07), transparent 30%),
-    radial-gradient(circle at 88% 82%, rgba(243,112,33,0.055), transparent 34%);
+    radial-gradient(circle at 14% 18%, rgba(243, 112, 33, 0.18), transparent 31%),
+    radial-gradient(circle at 88% 82%, rgba(243, 112, 33, 0.13), transparent 35%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+.deck-page .process-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
   pointer-events: none;
 }
 
@@ -758,14 +981,22 @@
   z-index: 2;
 }
 
+.deck-page .process-eyebrow {
+  color: var(--deck-orange) !important;
+}
+
 .deck-page .process-top h2,
 .deck-page .process-card h3 {
-  color: var(--deck-ink) !important;
+  color: #fff !important;
+}
+
+.deck-page .process-top h2 {
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.28);
 }
 
 .deck-page .process-top p,
 .deck-page .process-card p {
-  color: var(--deck-muted) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
 }
 
 .deck-page .process-steps {
@@ -773,19 +1004,36 @@
 }
 
 .deck-page .process-card {
-  color: var(--deck-ink) !important;
-  background: linear-gradient(180deg, #fff, #fbf8f5) !important;
-  border: 1px solid rgba(35,23,18,0.10) !important;
-  box-shadow: 0 22px 48px rgba(35,23,18,0.09) !important;
+  color: #fff !important;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0.88), rgba(8, 8, 8, 0.82)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.36) !important;
+  backdrop-filter: blur(8px);
+}
+
+.deck-page .process-card:hover {
+  border-color: rgba(243, 112, 33, 0.42) !important;
+  box-shadow: 0 28px 68px rgba(0, 0, 0, 0.44) !important;
+}
+
+.deck-page .process-number {
+  color: rgba(255, 255, 255, 0.22) !important;
 }
 
 .deck-page .process-icon {
-  color: var(--deck-orange) !important;
-  background: rgba(243,112,33,0.10) !important;
-  border-color: rgba(243,112,33,0.20) !important;
+  color: #fff !important;
+  background: var(--deck-orange) !important;
+  border-color: transparent !important;
+  box-shadow: 0 12px 26px rgba(243, 112, 33, 0.22);
 }
 
-/* Remove the white bands around the orange callout. */
+.process-section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
+}
+
+/* Orange project callout */
 .deck-page .project-cta-section {
   display: block;
   min-height: 0 !important;
@@ -796,7 +1044,6 @@
   border: 0 !important;
   line-height: normal;
 }
-
 
 .deck-page .project-cta-section::before,
 .deck-page .project-cta-section::after,
@@ -817,7 +1064,7 @@
 
 .deck-page .project-cta-image {
   background:
-    linear-gradient(90deg, rgba(243, 112, 33, 0.10), rgba(0, 0, 0, 0.10)),
+    linear-gradient(90deg, rgba(243, 112, 33, 0.1), rgba(0, 0, 0, 0.1)),
     url("https://images.pexels.com/photos/12700434/pexels-photo-12700434.jpeg?auto=compress&cs=tinysrgb&w=1200") center 48% / cover no-repeat !important;
 }
 
@@ -827,7 +1074,7 @@
   border-top: 0 !important;
 }
 
-/* Reviews: restore the original two-review carousel. */
+/* Reviews */
 .deck-review-carousel {
   min-width: 0;
 }
@@ -848,7 +1095,29 @@
   font-size: 15px;
 }
 
-/* Full estimate section: force a high-contrast white form card. */
+.testimonials-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.deck-review-estimate-btn {
+  color: #fff !important;
+  background: var(--deck-orange) !important;
+  border-color: var(--deck-orange) !important;
+}
+
+.deck-review-estimate-btn:hover {
+  background: var(--deck-orange-dark) !important;
+  border-color: var(--deck-orange-dark) !important;
+}
+
+.deck-page .testimonials-section,
+.deck-page .faq-section {
+  background: #fff !important;
+}
+
+/* Full estimate section */
 .deck-estimate-section {
   margin-top: 0 !important;
   border-top: 0 !important;
@@ -888,22 +1157,21 @@
 }
 
 .deck-estimate-section .contact-info-item {
+  display: flex !important;
   grid-template-columns: 1fr !important;
+  gap: 12px !important;
 }
 
 .deck-estimate-section .contact-info-item::before {
   content: "";
+  flex: 0 0 auto;
   width: 8px;
   height: 8px;
+  margin-top: 7px;
   margin-right: 2px;
   background: var(--deck-orange);
   border-radius: 50%;
   box-shadow: 0 0 0 5px rgba(243, 112, 33, 0.12);
-}
-
-.deck-estimate-section .contact-info-item {
-  display: flex !important;
-  gap: 12px !important;
 }
 
 .deck-estimate-section .contact-info-item a,
@@ -911,7 +1179,105 @@
   color: #fff !important;
 }
 
-/* Stock imagery can fail gracefully without breaking card dimensions. */
+/* Footer */
+.deck-page .footer-top {
+  grid-template-columns: 1.3fr 0.7fr 0.7fr 0.8fr !important;
+  gap: 54px !important;
+}
+
+.deck-footer-contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.deck-footer-contact a:hover {
+  color: var(--deck-orange);
+}
+
+/* Image viewer modal */
+.deck-image-modal[hidden] {
+  display: none !important;
+}
+
+.deck-image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.deck-image-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+}
+
+.deck-image-modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: min(1100px, 96vw);
+  max-height: 92vh;
+  padding: 14px;
+  overflow: auto;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 36px 100px rgba(0, 0, 0, 0.65);
+}
+
+.deck-image-modal-image {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 92px);
+  object-fit: contain;
+  background: #080808;
+  border-radius: 12px;
+}
+
+.deck-image-modal-caption {
+  margin: 12px 50px 2px 4px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.deck-image-modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.deck-image-modal-close:hover {
+  background: var(--deck-orange);
+  transform: scale(1.04);
+}
+
+.deck-image-modal-close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Graceful image fallback */
 .deck-page img[src^="https://images.pexels.com"] {
   background: #d8d0c9;
 }
@@ -959,6 +1325,23 @@
 
   .deck-page .process-section {
     padding: 84px 0 92px !important;
+  }
+
+  .deck-project-gallery-grid-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 260px 260px;
+  }
+
+  .deck-project-gallery-grid-four .gallery-large-left,
+  .deck-project-gallery-grid-four .gallery-small-right,
+  .deck-project-gallery-grid-four .gallery-small-left,
+  .deck-project-gallery-grid-four .gallery-large-right {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .deck-page .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
@@ -1013,16 +1396,44 @@
     padding: 72px 0 80px;
   }
 
-  .deck-project-placeholder-grid {
+  .deck-project-gallery-grid,
+  .deck-project-gallery-grid-four {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
   }
 
-  .deck-project-placeholder-card {
-    min-height: 220px;
+  .deck-project-gallery-grid-four .deck-project-gallery-card {
+    min-height: 270px;
+  }
+
+  .deck-project-gallery-card figcaption {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "tag"
+      "title"
+      "button";
+  }
+
+  .deck-gallery-view-button {
+    justify-self: start;
+    margin-top: 8px;
+  }
+
+  .deck-project-gallery-cta,
+  .process-section-cta {
+    margin-top: 30px;
+  }
+
+  .deck-project-gallery-cta .btn,
+  .process-section-cta .about-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 
   .deck-page .process-section {
     padding: 72px 0 80px !important;
+    background-position: center center !important;
   }
 
   .deck-review-carousel {
@@ -1046,6 +1457,48 @@
 
   .deck-page .project-cta-image {
     display: none !important;
+  }
+
+  .deck-page .quick-stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .deck-page .quick-stats .stat-box:nth-child(odd) {
+    border-left: 0 !important;
+  }
+
+  .deck-page .quick-stats .stat-box:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.24) !important;
+  }
+
+  .deck-page .quick-stats .stat-box:last-child {
+    border-right: 0 !important;
+  }
+
+  .deck-page .footer-top {
+    grid-template-columns: 1fr !important;
+  }
+
+  .deck-image-modal {
+    padding: 10px;
+  }
+
+  .deck-image-modal-dialog {
+    width: 100%;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .deck-image-modal-close {
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .deck-image-modal-caption {
+    margin: 10px 48px 4px 4px;
+    font-size: 13px;
   }
 }
 
@@ -1075,6 +1528,10 @@
     padding-right: 44px !important;
     padding-left: 44px !important;
   }
+
+  .deck-project-gallery-card strong {
+    font-size: 20px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1083,453 +1540,11 @@
   .choice-card span,
   .estimate-back,
   .estimate-next,
-  .estimate-submit {
+  .estimate-submit,
+  .deck-project-gallery-card img,
+  .deck-gallery-view-button,
+  .deck-image-modal-close {
     animation: none !important;
     transition: none !important;
-  }
-}
-
-
-/* Refocused campaign flow additions. */
-.deck-project-gallery-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 38px;
-}
-
-.process-section-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 42px;
-}
-
-.deck-footer-simple {
-  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr) !important;
-  gap: clamp(44px, 8vw, 110px) !important;
-}
-
-.deck-footer-contact a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.deck-footer-contact a:hover {
-  color: var(--deck-orange);
-}
-
-.testimonials-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.deck-review-estimate-btn {
-  color: #fff !important;
-  background: var(--deck-orange) !important;
-  border-color: var(--deck-orange) !important;
-}
-
-.deck-review-estimate-btn:hover {
-  background: var(--deck-orange-dark) !important;
-  border-color: var(--deck-orange-dark) !important;
-}
-
-@media (max-width: 900px) {
-  .deck-footer-simple {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 700px) {
-  .deck-project-gallery-cta,
-  .process-section-cta {
-    margin-top: 30px;
-  }
-
-  .deck-project-gallery-cta .btn,
-  .process-section-cta .about-cta {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-}
-
-
-/* V8 refocus updates */
-.quick-stats {
-  background: #fff !important;
-  border-top: 1px solid rgba(35,23,18,0.08);
-  border-bottom: 1px solid rgba(35,23,18,0.08);
-}
-
-.quick-stats .stat-box strong,
-.quick-stats .stat-box span {
-  color: var(--deck-ink) !important;
-}
-
-.hero-review-section {
-  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
-  color: #fff !important;
-  padding: 68px 0 !important;
-}
-
-.hero-review-section .hero-review-card {
-  max-width: min(1220px, calc(100% - 36px));
-  margin: 0 auto;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 24px 52px rgba(0,0,0,0.25);
-}
-
-.hero-review-section .hero-review-quote,
-.hero-review-section .hero-review-author strong,
-.hero-review-section .hero-review-author span {
-  color: #fff !important;
-}
-
-.deck-project-gallery-section {
-  color: var(--deck-ink) !important;
-  background: #fff !important;
-}
-
-.deck-project-gallery-section::before { display: none !important; }
-
-.deck-project-gallery-heading h2 {
-  color: var(--deck-ink) !important;
-}
-
-.deck-project-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.deck-project-gallery-card {
-  position: relative;
-  min-height: 260px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #ddd;
-  box-shadow: 0 22px 55px rgba(35,23,18,0.12);
-  border: 1px solid rgba(35,23,18,0.08);
-}
-
-.deck-project-gallery-card.large {
-  grid-column: span 2;
-  min-height: 360px;
-}
-
-.deck-project-gallery-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.35s ease;
-}
-
-.deck-project-gallery-card:hover img {
-  transform: scale(1.04);
-}
-
-.deck-project-gallery-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.08) 25%, rgba(0,0,0,0.65));
-}
-
-.deck-project-gallery-card figcaption {
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
-  z-index: 2;
-  color: #fff;
-}
-
-.deck-project-tag {
-  display: inline-flex;
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  color: #fff;
-  background: rgba(243,112,33,0.92);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-}
-
-.deck-project-gallery-card strong {
-  display: block;
-  font-size: 23px;
-  line-height: 1.14;
-}
-
-.deck-page .services-section {
-  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
-  color: #fff !important;
-}
-
-.deck-page .services-heading h2,
-.deck-page .services-heading p,
-.deck-page .services-eyebrow,
-.deck-page .services-btn span {
-  color: #fff !important;
-}
-
-.deck-page .services-btn {
-  border-color: rgba(255,255,255,0.16) !important;
-}
-
-.deck-page .mission-section {
-  background: #fff !important;
-}
-
-.deck-page .process-section {
-  color: #fff !important;
-  background: linear-gradient(135deg, #050607, #15100d 58%, #08090a) !important;
-}
-
-.deck-page .process-section::before {
-  background:
-    radial-gradient(circle at 14% 18%, rgba(243,112,33,0.10), transparent 30%),
-    radial-gradient(circle at 88% 82%, rgba(243,112,33,0.08), transparent 34%) !important;
-}
-
-.deck-page .process-top h2,
-.deck-page .process-card h3,
-.deck-page .process-eyebrow {
-  color: #fff !important;
-}
-
-.deck-page .process-top p,
-.deck-page .process-card p {
-  color: rgba(255,255,255,0.72) !important;
-}
-
-.deck-page .process-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.08)) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
-  box-shadow: 0 22px 48px rgba(0,0,0,0.24) !important;
-}
-
-.deck-page .testimonials-section,
-.deck-page .faq-section {
-  background: #fff !important;
-}
-
-@media (max-width: 700px) {
-  .deck-project-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .deck-project-gallery-card.large {
-    grid-column: auto;
-    min-height: 260px;
-  }
-}
-
-
-/* V9 visual restoration */
-/* Restore the original orange trust strip. */
-.deck-page .quick-stats {
-  background: var(--deck-orange) !important;
-  color: #fff !important;
-  border: 0 !important;
-}
-
-.deck-page .quick-stats-inner {
-  width: min(1220px, 100%);
-}
-
-.deck-page .quick-stats .stat-box {
-  border-left: 1px solid rgba(255,255,255,0.24) !important;
-}
-
-.deck-page .quick-stats .stat-box:last-child {
-  border-right: 1px solid rgba(255,255,255,0.24) !important;
-}
-
-.deck-page .quick-stats .stat-box strong,
-.deck-page .quick-stats .stat-box span {
-  color: #fff !important;
-}
-
-/* Four-photo project composition: large/small, small/large. */
-.deck-project-gallery-grid-four {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: 300px 300px;
-  gap: 20px;
-}
-
-.deck-project-gallery-grid-four .deck-project-gallery-card {
-  min-height: 0;
-}
-
-.deck-project-gallery-grid-four .gallery-large-left {
-  grid-column: 1 / span 2;
-  grid-row: 1;
-}
-
-.deck-project-gallery-grid-four .gallery-small-right {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.deck-project-gallery-grid-four .gallery-small-left {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.deck-project-gallery-grid-four .gallery-large-right {
-  grid-column: 2 / span 2;
-  grid-row: 2;
-}
-
-/* Restore the original image-backed section treatments from the main site. */
-.deck-page .services-section {
-  position: relative;
-  background:
-    linear-gradient(rgba(10,7,5,0.36), rgba(10,7,5,0.46)),
-    url("ChatGPT Image May 14, 2026, 10_21_07 PM (1).webp") center center / cover no-repeat,
-    #0a0705 !important;
-  color: #fff !important;
-}
-
-.deck-page .services-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block !important;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.08)),
-    radial-gradient(circle at 82% 20%, rgba(243,112,33,0.08), transparent 34%),
-    radial-gradient(circle at 10% 90%, rgba(243,112,33,0.06), transparent 34%);
-  pointer-events: none;
-}
-
-.deck-page .services-heading h2,
-.deck-page .services-eyebrow {
-  color: #fff !important;
-}
-
-.deck-page .mission-section {
-  position: relative;
-  background:
-    url("ChatGPT Image May 14, 2026, 10_06_01 PM.png") center center / cover no-repeat,
-    #fff !important;
-  color: var(--deck-ink) !important;
-}
-
-.deck-page .mission-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  display: block !important;
-  background:
-    linear-gradient(90deg, rgba(255,255,255,0.44), rgba(255,255,255,0.70)),
-    radial-gradient(circle at 78% 22%, rgba(243,112,33,0.08), transparent 30%);
-  pointer-events: none;
-}
-
-.deck-page .mission-title h2 {
-  color: var(--deck-ink) !important;
-}
-
-.deck-page .process-section {
-  position: relative;
-  background:
-    linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.72)),
-    url("ChatGPT Image May 15, 2026, 01_46_25 PM.png") center center / cover no-repeat,
-    #fff !important;
-  color: var(--deck-ink) !important;
-}
-
-.deck-page .process-section::before {
-  display: none !important;
-}
-
-.deck-page .process-top h2,
-.deck-page .process-card h3 {
-  color: var(--deck-ink) !important;
-}
-
-.deck-page .process-eyebrow {
-  color: var(--deck-orange) !important;
-}
-
-.deck-page .process-top p,
-.deck-page .process-card p {
-  color: var(--deck-muted) !important;
-}
-
-.deck-page .process-card {
-  color: var(--deck-ink) !important;
-  background: #fff !important;
-  border: 1px solid rgba(35,23,18,0.08) !important;
-  box-shadow: 0 22px 52px rgba(35,23,18,0.10) !important;
-}
-
-.deck-page .process-icon {
-  color: #fff !important;
-  background: var(--deck-orange) !important;
-  border-color: transparent !important;
-}
-
-/* Let the original footer grid and styling apply again. */
-.deck-page .footer-top {
-  grid-template-columns: 1.3fr 0.7fr 0.7fr 0.8fr !important;
-  gap: 54px !important;
-}
-
-@media (max-width: 950px) {
-  .deck-project-gallery-grid-four {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 260px 260px;
-  }
-
-  .deck-project-gallery-grid-four .gallery-large-left,
-  .deck-project-gallery-grid-four .gallery-small-right,
-  .deck-project-gallery-grid-four .gallery-small-left,
-  .deck-project-gallery-grid-four .gallery-large-right {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .deck-page .footer-top {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-}
-
-@media (max-width: 700px) {
-  .deck-project-gallery-grid-four {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-  }
-
-  .deck-project-gallery-grid-four .deck-project-gallery-card {
-    min-height: 260px;
-  }
-
-  .deck-page .quick-stats-inner {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .deck-page .quick-stats .stat-box:nth-child(odd) {
-    border-left: 0 !important;
-  }
-
-  .deck-page .quick-stats .stat-box:nth-child(n+3) {
-    border-top: 1px solid rgba(255,255,255,0.24) !important;
-  }
-
-  .deck-page .quick-stats .stat-box:last-child {
-    border-right: 0 !important;
-  }
-
-  .deck-page .footer-top {
-    grid-template-columns: 1fr !important;
   }
 }

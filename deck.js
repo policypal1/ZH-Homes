@@ -37,7 +37,11 @@ function validateFiles(fileInput, errorElement) {
   const totalSize = files.reduce((sum, file) => sum + file.size, 0);
   const hasInvalidType = files.some((file) => !isAllowedImage(file));
   const hasOversizedFile = files.some((file) => file.size > MAX_IMAGE_SIZE);
-  const invalid = files.length > MAX_IMAGE_FILES || totalSize > MAX_TOTAL_IMAGE_SIZE || hasInvalidType || hasOversizedFile;
+  const invalid =
+    files.length > MAX_IMAGE_FILES ||
+    totalSize > MAX_TOTAL_IMAGE_SIZE ||
+    hasInvalidType ||
+    hasOversizedFile;
 
   if (invalid) {
     const message = "Upload up to 4 JPG, PNG, WEBP, or GIF images. Each image must be 5MB or smaller.";
@@ -71,8 +75,9 @@ function readFileAsBase64(file) {
 }
 
 function findInvalidControl(step) {
-  const controls = Array.from(step.querySelectorAll("input, select, textarea"))
-    .filter((control) => !control.disabled && control.type !== "hidden");
+  const controls = Array.from(step.querySelectorAll("input, select, textarea")).filter(
+    (control) => !control.disabled && control.type !== "hidden"
+  );
 
   const checkedRadioGroups = new Set();
 
@@ -83,7 +88,9 @@ function findInvalidControl(step) {
       if (checkedRadioGroups.has(control.name)) continue;
       checkedRadioGroups.add(control.name);
 
-      const group = Array.from(step.querySelectorAll(`input[type="radio"][name="${CSS.escape(control.name)}"]`));
+      const group = Array.from(
+        step.querySelectorAll(`input[type="radio"][name="${CSS.escape(control.name)}"]`)
+      );
       const required = group.some((radio) => radio.required);
       const checked = group.some((radio) => radio.checked);
 
@@ -145,6 +152,8 @@ function initializeMultiStepForm(form) {
   const fileError = form.querySelector("[data-file-error]");
   const clearFilesButton = form.querySelector("[data-clear-files]");
   let currentStep = 0;
+
+  if (!steps.length) return;
 
   function updateStep(nextStep, shouldFocus = true) {
     currentStep = Math.max(0, Math.min(nextStep, steps.length - 1));
@@ -221,8 +230,11 @@ function initializeMultiStepForm(form) {
 
     if (!validateCurrentStep()) return;
 
-    const invalidControl = Array.from(form.elements).find((element) =>
-      element instanceof HTMLElement && "checkValidity" in element && !element.checkValidity()
+    const invalidControl = Array.from(form.elements).find(
+      (element) =>
+        element instanceof HTMLElement &&
+        "checkValidity" in element &&
+        !element.checkValidity()
     );
 
     if (invalidControl instanceof HTMLElement) {
@@ -257,6 +269,7 @@ function initializeMultiStepForm(form) {
         submitButton.disabled = true;
         submitButton.textContent = "Sending...";
       }
+
       setFormStatus(form, "Sending your request...");
 
       const files = Array.from(fileInput?.files || []);
@@ -329,7 +342,11 @@ function initializeMultiStepForm(form) {
       });
     } catch (error) {
       console.error(error);
-      setFormStatus(form, "Something went wrong. Please call or text ZH Homes at (503) 910-5466.", "error");
+      setFormStatus(
+        form,
+        "Something went wrong. Please call or text ZH Homes at (503) 910-5466.",
+        "error"
+      );
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
@@ -350,6 +367,8 @@ function initializeReviewCarousel() {
   const previousButton = carousel.querySelector(".review-arrow.prev");
   const nextButton = carousel.querySelector(".review-arrow.next");
   let currentIndex = 0;
+
+  if (!slides.length) return;
 
   function showSlide(index) {
     currentIndex = (index + slides.length) % slides.length;
@@ -389,6 +408,94 @@ function initializeAnchorScrolling() {
   });
 }
 
+function initializeDeckImageViewer() {
+  const galleryCards = Array.from(document.querySelectorAll(".deck-project-gallery-card"));
+  if (!galleryCards.length) return;
+
+  const modal = document.createElement("div");
+  modal.className = "deck-image-modal";
+  modal.hidden = true;
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-label", "Deck image viewer");
+  modal.innerHTML = `
+    <div class="deck-image-modal-backdrop" data-close-image-modal></div>
+    <div class="deck-image-modal-dialog">
+      <button class="deck-image-modal-close" type="button" aria-label="Close image viewer" data-close-image-modal>×</button>
+      <img class="deck-image-modal-image" src="" alt="" />
+      <p class="deck-image-modal-caption"></p>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const modalImage = modal.querySelector(".deck-image-modal-image");
+  const modalCaption = modal.querySelector(".deck-image-modal-caption");
+  const closeButton = modal.querySelector(".deck-image-modal-close");
+  let lastFocusedElement = null;
+
+  function openModal(image, caption) {
+    if (!modalImage || !modalCaption) return;
+
+    lastFocusedElement = document.activeElement;
+    modalImage.src = image.currentSrc || image.src;
+    modalImage.alt = image.alt || caption || "Deck project image";
+    modalCaption.textContent = caption || image.alt || "Deck project image";
+    modal.hidden = false;
+    document.body.classList.add("deck-image-modal-open");
+    closeButton?.focus();
+
+    pushTrackingEvent("deck_gallery_image_view", {
+      image_alt: image.alt || "",
+      image_src: image.currentSrc || image.src
+    });
+  }
+
+  function closeModal() {
+    if (modal.hidden) return;
+
+    modal.hidden = true;
+    document.body.classList.remove("deck-image-modal-open");
+
+    if (modalImage) {
+      modalImage.src = "";
+      modalImage.alt = "";
+    }
+
+    if (modalCaption) modalCaption.textContent = "";
+    lastFocusedElement?.focus?.();
+  }
+
+  galleryCards.forEach((card) => {
+    const image = card.querySelector("img");
+    const captionContainer = card.querySelector("figcaption");
+    const captionText = card.querySelector("figcaption strong")?.textContent?.trim() || image?.alt || "";
+
+    if (!image || !captionContainer || captionContainer.querySelector(".deck-gallery-view-button")) return;
+
+    const button = document.createElement("button");
+    button.className = "deck-gallery-view-button";
+    button.type = "button";
+    button.textContent = "View";
+    button.setAttribute("aria-label", `View larger image${captionText ? `: ${captionText}` : ""}`);
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openModal(image, captionText);
+    });
+
+    captionContainer.appendChild(button);
+  });
+
+  modal.querySelectorAll("[data-close-image-modal]").forEach((element) => {
+    element.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !modal.hidden) closeModal();
+  });
+}
+
 document.querySelectorAll(".tracked-call").forEach((link) => {
   link.addEventListener("click", () => {
     pushTrackingEvent("deck_phone_click", { page_path: window.location.pathname });
@@ -398,3 +505,4 @@ document.querySelectorAll(".tracked-call").forEach((link) => {
 document.querySelectorAll(".deck-multistep-form").forEach(initializeMultiStepForm);
 initializeReviewCarousel();
 initializeAnchorScrolling();
+initializeDeckImageViewer();
