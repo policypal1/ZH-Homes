@@ -144,11 +144,51 @@ function setFormStatus(form, message, type = "") {
 }
 
 function simplifyDeckEstimateForm(form) {
-  const preferredContactInput = form.querySelector('input[name="contactPreference"]');
-  const preferredContactFieldset = preferredContactInput?.closest("fieldset");
-  preferredContactFieldset?.remove();
-
+  /* Remove questions that are not needed for the first estimate request. */
+  form.querySelector('input[name="homeownerStatus"]')?.closest("fieldset")?.remove();
+  form.querySelector('input[name="desiredFeatures"]')?.closest("fieldset")?.remove();
+  form.querySelector('input[name="contactPreference"]')?.closest("fieldset")?.remove();
   form.querySelector(".campaign-confirmation")?.remove();
+
+  /* Remove the entire timing and budget step. */
+  form.querySelector('input[name="projectTiming"]')?.closest(".estimate-step")?.remove();
+
+  /* Keep only Wood, Composite, and Not sure yet. */
+  form
+    .querySelector('input[name="materialPreference"][value="Compare both"]')
+    ?.closest("label")
+    ?.remove();
+
+  /* Notes and photos are optional. */
+  const detailsField = form.querySelector('textarea[name="projectDetails"]');
+  if (detailsField) {
+    detailsField.required = false;
+    detailsField.removeAttribute("required");
+    detailsField.removeAttribute("minlength");
+    detailsField.placeholder = "Anything else Zach should know about the yard or the deck? Optional.";
+
+    const detailsLabel = form.querySelector(`label[for="${detailsField.id}"]`);
+    if (detailsLabel) detailsLabel.textContent = "Additional project notes (optional)";
+  }
+
+  /* Rewrite the remaining four steps with short, direct labels. */
+  const remainingSteps = Array.from(form.querySelectorAll(".estimate-step"));
+  const stepCopy = [
+    ["Contact information", "How can Zach reach you?"],
+    ["Project location", "Where is the deck project?"],
+    ["Deck basics", "What kind of deck are you considering?"],
+    ["Optional details", "Anything else Zach should know?"]
+  ];
+
+  remainingSteps.forEach((step, index) => {
+    const copy = stepCopy[index];
+    if (!copy) return;
+
+    step.dataset.stepTitle = copy[0];
+    const heading = step.querySelector(".estimate-step-heading > span");
+    if (heading) heading.textContent = copy[1];
+    step.querySelector(".estimate-step-heading p")?.remove();
+  });
 
   const successMessage = form
     .closest(".hero-quick-card, .deck-form-card")
@@ -299,30 +339,22 @@ function initializeMultiStepForm(form) {
 
       const files = Array.from(fileInput?.files || []);
       const projectPhotos = await Promise.all(files.map(readFileAsBase64));
-      const desiredFeatures = formData.getAll("desiredFeatures").map(String);
+      const optionalProjectDetails = String(formData.get("projectDetails") || "").trim();
 
       const details = {
-        homeownerStatus: String(formData.get("homeownerStatus") || ""),
-        zipCode: String(formData.get("zipCode") || ""),
-        currentSetup: String(formData.get("currentSetup") || ""),
-        materialPreference: String(formData.get("materialPreference") || ""),
-        deckSize: String(formData.get("deckSize") || ""),
-        desiredFeatures,
-        projectTiming: String(formData.get("projectTiming") || ""),
-        budgetRange: String(formData.get("budgetRange") || ""),
-        projectDetails: String(formData.get("projectDetails") || "")
+        zipCode: String(formData.get("zipCode") || "").trim(),
+        currentSetup: String(formData.get("currentSetup") || "").trim(),
+        materialPreference: String(formData.get("materialPreference") || "").trim(),
+        deckSize: String(formData.get("deckSize") || "").trim(),
+        projectDetails: optionalProjectDetails || "No additional details provided."
       };
 
       const description = [
-        `Homeowner status: ${details.homeownerStatus}`,
         `Project ZIP: ${details.zipCode}`,
         `Current backyard setup: ${details.currentSetup}`,
         `Material preference: ${details.materialPreference}`,
         `Approximate deck size: ${details.deckSize}`,
-        `Desired features: ${desiredFeatures.length ? desiredFeatures.join(", ") : "None selected"}`,
-        `Ideal timing: ${details.projectTiming}`,
-        `Budget range: ${details.budgetRange}`,
-        `Deck goals/details: ${details.projectDetails}`
+        `Additional notes: ${details.projectDetails}`
       ].join("\n");
 
       const payload = {
@@ -357,9 +389,8 @@ function initializeMultiStepForm(form) {
       pushTrackingEvent("deck_lead_submit", {
         form_name: form.dataset.formSource || "deck_estimate",
         material_preference: details.materialPreference,
-        project_timing: details.projectTiming,
-        budget_range: details.budgetRange,
-        homeowner_status: details.homeownerStatus
+        current_setup: details.currentSetup,
+        deck_size: details.deckSize
       });
     } catch (error) {
       console.error(error);
@@ -992,7 +1023,7 @@ function applyV13CopyAndImagery() {
   updateProcessCard(
     0,
     "Tell Us What You Want",
-    "Share your location, rough size, timing, and how you want to use the deck."
+    "Share your location, rough size, material preference, and anything else you already know."
   );
   updateProcessCard(
     1,
@@ -1030,7 +1061,7 @@ function applyV13CopyAndImagery() {
   );
   setDeckText(
     ".deck-estimate-section .contact-content > p",
-    "Tell us what you want the space to do, where the property is, and when you hope to build. Zach will review the details and follow up with the clearest next step."
+    "Share the property basics and anything else you already know. Zach will review the request and follow up with the clearest next step."
   );
 
   const contactItems = document.querySelectorAll(
@@ -1050,34 +1081,10 @@ function applyV13CopyAndImagery() {
   setDeckText(".deck-form-heading h3", "Tell Zach About Your Deck");
   setDeckText(
     ".deck-form-heading p",
-    "Share a few details so he can understand the property, timing, and scope before following up."
+    "Share the project basics so Zach can understand the property and deck before following up."
   );
 
   document.querySelectorAll(".deck-multistep-form").forEach((form) => {
-    const steps = Array.from(form.querySelectorAll(".estimate-step"));
-    const stepCopy = [
-      ["Contact details", "Where should Zach reach you?", "Your information is only used to respond to this request."],
-      ["Your property", "Tell us what is outside now", "The location and existing setup help us understand what the project may involve."],
-      ["Deck ideas", "What would your ideal deck look like?", "It is fine if you are still deciding between wood, composite, size, or features."],
-      ["Timing and budget", "When would you like to enjoy it?", "A rough timeline and budget help Zach recommend the most realistic next step."],
-      ["Your vision", "Help us picture the finished space", "Tell us what you want to do out there. Backyard photos are optional, but useful."]
-    ];
-
-    steps.forEach((step, index) => {
-      if (!stepCopy[index]) return;
-      step.dataset.stepTitle = stepCopy[index][0];
-      setDeckText(".estimate-step-heading > span", stepCopy[index][1], step);
-      setDeckText(".estimate-step-heading p", stepCopy[index][2], step);
-    });
-
-    const detailsField = form.querySelector('textarea[name="projectDetails"]');
-    if (detailsField) {
-      detailsField.placeholder =
-        "Example: We want room for a grill, a table for six, and a seating area. The yard slopes away from the house.";
-      const detailsLabel = form.querySelector(`label[for="${detailsField.id}"]`);
-      if (detailsLabel) detailsLabel.textContent = "How do you want to use the deck?";
-    }
-
     setDeckText(".estimate-submit", "Get My Deck Estimate", form);
     setDeckText(
       ".hero-form-assurance",
