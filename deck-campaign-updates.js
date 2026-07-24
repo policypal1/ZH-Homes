@@ -77,6 +77,16 @@
     });
   }
 
+  function removeOptionalFeatureQuestions() {
+    document
+      .querySelectorAll('input[name="desiredFeatures"]')
+      .forEach((input) => {
+        input
+          .closest("fieldset.choice-fieldset.optional-choices")
+          ?.remove();
+      });
+  }
+
   function updateMarketingCopy() {
     document.title =
       "Custom Deck Builder in Salem, Keizer & Silverton, Oregon | ZH Homes";
@@ -187,6 +197,7 @@
   function applyUpdates() {
     updateImages();
     removeOutdoorFeaturesCard();
+    removeOptionalFeatureQuestions();
     updateMarketingCopy();
   }
 
