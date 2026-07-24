@@ -178,7 +178,7 @@
   window.gtag =
     window.gtag ||
     function gtag() {
-      nativeDataLayerPush(arguments);
+      window.dataLayer.push(arguments);
     };
 
   function sendEvent(eventName, parameters = {}, options = {}) {
