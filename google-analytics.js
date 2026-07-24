@@ -246,6 +246,9 @@
     debug_mode: DEBUG_MODE
   });
 
+  // Connect the existing Google tag to the ZH Homes Google Ads account.
+  window.gtag("config", "AW-18215005784");
+
   function elementLocation(element) {
     const container = element.closest(
       "section[id], header, footer, .mobile-cta-bar, .hero-quick-card, .deck-form-card"
