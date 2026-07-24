@@ -2453,3 +2453,60 @@
     transition: none !important;
   }
 }
+
+/* ==========================================================
+   V14 REQUESTED HEADER AND WHY-CHOOSE FIT FIXES
+   ========================================================== */
+
+/* Keep the logo container clean and vertically centered. */
+.deck-page .site-header .brand,
+.deck-page .site-header .brand-logo,
+.deck-page .site-header .brand-logo::before,
+.deck-page .site-header .brand-logo::after,
+.deck-page .site-header .brand-logo img {
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.deck-page .site-header .brand-logo {
+  transform: none !important;
+}
+
+.deck-page .site-header .brand-logo img {
+  display: block !important;
+  filter: none !important;
+}
+
+/* Let every Why Choose ZH Homes item wrap naturally instead of clipping. */
+.deck-page .mission-strip {
+  align-items: stretch;
+}
+
+.deck-page .mission-stat {
+  min-width: 0;
+  height: auto !important;
+  min-height: 168px;
+  overflow: visible !important;
+}
+
+.deck-page .mission-stat strong {
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.deck-page .mission-stat span {
+  display: block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-height: 1.45;
+}
+
+@media (max-width: 950px) {
+  .deck-page .mission-stat {
+    min-height: 0;
+  }
+}

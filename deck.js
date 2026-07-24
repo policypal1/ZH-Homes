@@ -197,7 +197,6 @@ function updateSelectedFiles(form, fileInput) {
     row.hidden = true;
     return;
   }
-
   name.textContent =
     files.length === 1
       ? files[0].name
@@ -1397,7 +1396,6 @@ function initializeServiceCarousel() {
           index + 1
         }`
       );
-
       dot.addEventListener(
         "click",
         () => {
@@ -1797,7 +1795,6 @@ function initializeCallTracking() {
       );
     });
 }
-
 function initializeDeckLandingPage() {
   getAttribution();
 
