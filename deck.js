@@ -1,4 +1,5 @@
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmtBDtQo2n_IlfvZ6WhvB0HkEzNIjQjClzpzAi2-jNFsWNDaL1wqdpfCp7n3tQRJqz/exec";
+const GOOGLE_ADS_DECK_QUOTE_SEND_TO = "AW-18215005784/HQ8iCKjUzdUcENjcy-1D";
 
 const MAX_IMAGE_FILES = 4;
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
@@ -9,6 +10,20 @@ const ALLOWED_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "webp", "gif"];
 function pushTrackingEvent(eventName, details = {}) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: eventName, ...details });
+}
+
+function trackGoogleAdsDeckQuoteConversion() {
+  window.dataLayer = window.dataLayer || [];
+
+  if (typeof window.gtag !== "function") {
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+  }
+
+  window.gtag("event", "conversion", {
+    send_to: GOOGLE_ADS_DECK_QUOTE_SEND_TO
+  });
 }
 
 function getAttribution() {
@@ -393,6 +408,8 @@ function initializeMultiStepForm(form) {
         current_setup: details.currentSetup,
         deck_size: details.deckSize
       });
+
+      trackGoogleAdsDeckQuoteConversion();
     } catch (error) {
       console.error(error);
       setFormStatus(
