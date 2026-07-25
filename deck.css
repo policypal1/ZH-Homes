@@ -2510,3 +2510,15 @@
     min-height: 0;
   }
 }
+
+/* ==========================================================
+   V14 FORM QUALIFICATION FIELD VISIBILITY FIX
+   These required fields must remain visible and selectable.
+   ========================================================== */
+.deck-page .deck-multistep-form fieldset:has(input[name="contactPreference"]) {
+  display: block !important;
+}
+
+.deck-page .deck-multistep-form .campaign-confirmation {
+  display: grid !important;
+}
