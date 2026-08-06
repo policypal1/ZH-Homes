@@ -133,13 +133,32 @@
 <div aria-label="Estimate form progress" class="estimate-progress">
 <div class="estimate-progress-copy">
 <span data-progress-label="">Step 1 of 2</span>
-<strong data-progress-title="">Deck information</strong>
+<strong data-progress-title="">Basic information</strong>
 </div>
 <div aria-hidden="true" class="estimate-progress-track">
 <span data-progress-bar=""></span>
 </div>
 </div>
-<section class="estimate-step active" data-step="0" data-step-title="Deck information">
+<section class="estimate-step active" data-step="0" data-step-title="Basic information">
+<div class="hero-form-row">
+<div class="field">
+<label for="heroFullName">Full Name</label>
+<input autocomplete="name" id="heroFullName" name="fullName" placeholder="Your name" required="" type="text"/>
+</div>
+<div class="field">
+<label for="heroPhone">Phone</label>
+<input autocomplete="tel" id="heroPhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
+</div>
+</div>
+<div class="field">
+<label for="heroEmail">Email</label>
+<input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="estimate-nav single-action">
+<button class="estimate-next" data-next="" type="button">Next</button>
+</div>
+</section>
+<section class="estimate-step" data-step="1" data-step-title="Deck information" hidden="">
 <div class="hero-form-row">
 <div class="field">
 <label for="heroZipCode">Project ZIP Code</label>
@@ -165,25 +184,6 @@
 <option value="Other">Other</option>
 </select>
 </div>
-<div class="estimate-nav single-action">
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="1" data-step-title="Basic information" hidden="">
-<div class="hero-form-row">
-<div class="field">
-<label for="heroFullName">Full Name</label>
-<input autocomplete="name" id="heroFullName" name="fullName" placeholder="Your name" required="" type="text"/>
-</div>
-<div class="field">
-<label for="heroPhone">Phone</label>
-<input autocomplete="tel" id="heroPhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
-</div>
-</div>
-<div class="field">
-<label for="heroEmail">Email</label>
-<input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
 <div class="field">
 <label for="heroProjectDetails">Anything else we should know? <span class="optional-label">Optional</span></label>
 <textarea id="heroProjectDetails" name="projectDetails" placeholder="Tell us anything helpful about the deck or backyard."></textarea>
@@ -198,14 +198,6 @@
 <span class="field-note">Upload up to 4 images, 5MB each.</span>
 <span class="file-error" data-file-error="" role="alert"></span>
 </div>
-<fieldset class="choice-fieldset">
-<legend>Preferred contact method</legend>
-<div class="choice-grid contact-choice-grid">
-<label class="choice-card"><input name="contactPreference" required="" type="radio" value="Text"/><span>Text</span></label>
-<label class="choice-card"><input name="contactPreference" required="" type="radio" value="Phone call"/><span>Phone call</span></label>
-<label class="choice-card"><input name="contactPreference" required="" type="radio" value="Email"/><span>Email</span></label>
-</div>
-</fieldset>
 <div class="estimate-nav final-nav">
 <button class="estimate-back" data-back="" type="button">Back</button>
 <button class="submit-button estimate-submit" type="submit">Request My Deck Estimate</button>
@@ -550,13 +542,32 @@
 <div aria-label="Estimate form progress" class="estimate-progress">
 <div class="estimate-progress-copy">
 <span data-progress-label="">Step 1 of 2</span>
-<strong data-progress-title="">Deck information</strong>
+<strong data-progress-title="">Basic information</strong>
 </div>
 <div aria-hidden="true" class="estimate-progress-track">
 <span data-progress-bar=""></span>
 </div>
 </div>
-<section class="estimate-step active" data-step="0" data-step-title="Deck information">
+<section class="estimate-step active" data-step="0" data-step-title="Basic information">
+<div class="hero-form-row">
+<div class="field">
+<label for="fullFullName">Full Name</label>
+<input autocomplete="name" id="fullFullName" name="fullName" placeholder="Your name" required="" type="text"/>
+</div>
+<div class="field">
+<label for="fullPhone">Phone</label>
+<input autocomplete="tel" id="fullPhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
+</div>
+</div>
+<div class="field">
+<label for="fullEmail">Email</label>
+<input autocomplete="email" id="fullEmail" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="estimate-nav single-action">
+<button class="estimate-next" data-next="" type="button">Next</button>
+</div>
+</section>
+<section class="estimate-step" data-step="1" data-step-title="Deck information" hidden="">
 <div class="hero-form-row">
 <div class="field">
 <label for="fullZipCode">Project ZIP Code</label>
@@ -582,25 +593,6 @@
 <option value="Other">Other</option>
 </select>
 </div>
-<div class="estimate-nav single-action">
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="1" data-step-title="Basic information" hidden="">
-<div class="hero-form-row">
-<div class="field">
-<label for="fullFullName">Full Name</label>
-<input autocomplete="name" id="fullFullName" name="fullName" placeholder="Your name" required="" type="text"/>
-</div>
-<div class="field">
-<label for="fullPhone">Phone</label>
-<input autocomplete="tel" id="fullPhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
-</div>
-</div>
-<div class="field">
-<label for="fullEmail">Email</label>
-<input autocomplete="email" id="fullEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
 <div class="field">
 <label for="fullProjectDetails">Anything else we should know? <span class="optional-label">Optional</span></label>
 <textarea id="fullProjectDetails" name="projectDetails" placeholder="Tell us anything helpful about the deck or backyard."></textarea>
@@ -615,14 +607,6 @@
 <span class="field-note">Upload up to 4 images, 5MB each.</span>
 <span class="file-error" data-file-error="" role="alert"></span>
 </div>
-<fieldset class="choice-fieldset">
-<legend>Preferred contact method</legend>
-<div class="choice-grid contact-choice-grid">
-<label class="choice-card"><input name="contactPreference" required="" type="radio" value="Text"/><span>Text</span></label>
-<label class="choice-card"><input name="contactPreference" required="" type="radio" value="Phone call"/><span>Phone call</span></label>
-<label class="choice-card"><input name="contactPreference" required="" type="radio" value="Email"/><span>Email</span></label>
-</div>
-</fieldset>
 <div class="estimate-nav final-nav">
 <button class="estimate-back" data-back="" type="button">Back</button>
 <button class="submit-button estimate-submit" type="submit">Get My Deck Estimate</button>
