@@ -132,18 +132,44 @@
 </div>
 <div aria-label="Estimate form progress" class="estimate-progress">
 <div class="estimate-progress-copy">
-<span data-progress-label="">Step 1 of 5</span>
-<strong data-progress-title="">Contact information</strong>
+<span data-progress-label="">Step 1 of 2</span>
+<strong data-progress-title="">Deck information</strong>
 </div>
 <div aria-hidden="true" class="estimate-progress-track">
 <span data-progress-bar=""></span>
 </div>
 </div>
-<section class="estimate-step active" data-step="0" data-step-title="Contact information">
-<div class="estimate-step-heading">
-<span>First, how can we reach you?</span>
-<p>We use this information only to respond to your deck request.</p>
+<section class="estimate-step active" data-step="0" data-step-title="Deck information">
+<div class="hero-form-row">
+<div class="field">
+<label for="heroZipCode">Project ZIP Code</label>
+<input autocomplete="postal-code" id="heroZipCode" inputmode="numeric" name="zipCode" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="97301" required="" type="text"/>
 </div>
+<div class="field">
+<label for="heroProjectType">What type of deck project?</label>
+<select id="heroProjectType" name="projectType" required="">
+<option value="">Choose one</option>
+<option value="Build a new deck">Build a new deck</option>
+<option value="Replace an existing deck">Replace an existing deck</option>
+</select>
+</div>
+</div>
+<div class="field">
+<label for="heroCurrentSetup">What is there now?</label>
+<select id="heroCurrentSetup" name="currentSetup" required="">
+<option value="">Choose one</option>
+<option value="No deck / grass outside">No deck / grass outside</option>
+<option value="Small landing or steps">Small landing or steps</option>
+<option value="Concrete patio">Concrete patio</option>
+<option value="Existing deck to remove">Existing deck to remove</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="estimate-nav single-action">
+<button class="estimate-next" data-next="" type="button">Next</button>
+</div>
+</section>
+<section class="estimate-step" data-step="1" data-step-title="Basic information" hidden="">
 <div class="hero-form-row">
 <div class="field">
 <label for="heroFullName">Full Name</label>
@@ -158,125 +184,9 @@
 <label for="heroEmail">Email</label>
 <input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required="" type="email"/>
 </div>
-<div class="estimate-nav single-action">
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="1" data-step-title="Property details" hidden="">
-<div class="estimate-step-heading">
-<span>Tell us about the property</span>
-<p>This confirms the location and whether the project fits this new-deck campaign.</p>
-</div>
-<fieldset class="choice-fieldset">
-<legend>Are you the homeowner?</legend>
-<div class="choice-grid two-options">
-<label class="choice-card"><input name="homeownerStatus" required="" type="radio" value="Yes, homeowner"/><span>Yes, I own the home</span></label>
-<label class="choice-card"><input name="homeownerStatus" required="" type="radio" value="No / helping someone else"/><span>No / helping someone else</span></label>
-</div>
-</fieldset>
-<div class="hero-form-row">
 <div class="field">
-<label for="heroZipCode">Project ZIP Code</label>
-<input autocomplete="postal-code" id="heroZipCode" inputmode="numeric" name="zipCode" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="97301" required="" type="text"/>
-</div>
-<div class="field">
-<label for="heroCurrentSetup">What is there now?</label>
-<select id="heroCurrentSetup" name="currentSetup" required="">
-<option value="">Choose one</option>
-<option value="No deck / grass outside">No deck / grass outside</option>
-<option value="Small landing or steps">Small landing or steps</option>
-<option value="Concrete patio">Concrete patio</option>
-<option value="Existing deck to remove">Existing deck to remove</option>
-<option value="Other">Other</option>
-</select>
-</div>
-</div>
-<div class="estimate-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="2" data-step-title="Deck preferences" hidden="">
-<div class="estimate-step-heading">
-<span>What kind of deck are you considering?</span>
-<p>It is fine to be unsure. These answers help us prepare useful options.</p>
-</div>
-<fieldset class="choice-fieldset">
-<legend>Material preference</legend>
-<div class="choice-grid material-choice-grid">
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Wood"/><span>Wood</span></label>
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Composite"/><span>Composite</span></label>
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Compare both"/><span>Compare both</span></label>
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Unsure"/><span>Not sure yet</span></label>
-</div>
-</fieldset>
-<div class="field">
-<label for="heroDeckSize">Approximate deck size</label>
-<select id="heroDeckSize" name="deckSize" required="">
-<option value="">Choose a rough size</option>
-<option value="Under 150 sq ft">Under 150 sq. ft.</option>
-<option value="150-300 sq ft">150–300 sq. ft.</option>
-<option value="300-500 sq ft">300–500 sq. ft.</option>
-<option value="Over 500 sq ft">More than 500 sq. ft.</option>
-<option value="Need help sizing">I need help choosing a size</option>
-</select>
-</div>
-<fieldset class="choice-fieldset optional-choices">
-<legend>Features you may want <span>Optional</span></legend>
-<div class="choice-grid feature-choice-grid">
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Stairs"/><span>Stairs</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Railings"/><span>Railings</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Privacy screen"/><span>Privacy</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Built-in seating"/><span>Built-in seating</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Pergola or cover"/><span>Pergola / cover</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Lighting"/><span>Lighting</span></label>
-</div>
-</fieldset>
-<div class="estimate-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="3" data-step-title="Timing and budget" hidden="">
-<div class="estimate-step-heading">
-<span>When are you hoping to build?</span>
-<p>Timing and budget help us determine fit before either side spends time on a site visit.</p>
-</div>
-<div class="field">
-<label for="heroProjectTiming">Ideal timing</label>
-<select id="heroProjectTiming" name="projectTiming" required="">
-<option value="">Choose your timing</option>
-<option value="As soon as practical">As soon as practical</option>
-<option value="This summer">This summer</option>
-<option value="1-3 months">Within 1–3 months</option>
-<option value="3-6 months">Within 3–6 months</option>
-<option value="6+ months / planning">More than 6 months / planning ahead</option>
-</select>
-</div>
-<fieldset class="choice-fieldset budget-fieldset">
-<legend>Approximate project budget</legend>
-<div class="choice-grid budget-choice-grid">
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="Under $5,000"/><span>Under $5,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$5,000-$10,000"/><span>$5,000–$10,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$10,000-$20,000"/><span>$10,000–$20,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$20,000-$35,000"/><span>$20,000–$35,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$35,000+"/><span>$35,000+</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="Need budget guidance"/><span>Need guidance</span></label>
-</div>
-</fieldset>
-<div class="estimate-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="4" data-step-title="Project details" hidden="">
-<div class="estimate-step-heading">
-<span>Last step: describe the deck</span>
-<p>A few details or photos help us give you a more useful response.</p>
-</div>
-<div class="field">
-<label for="heroProjectDetails">What do you want from the space?</label>
-<textarea id="heroProjectDetails" minlength="20" name="projectDetails" placeholder="Example: Room for a grill, dining table, and seating for six. The yard slopes away from the house." required=""></textarea>
+<label for="heroProjectDetails">Anything else we should know? <span class="optional-label">Optional</span></label>
+<textarea id="heroProjectDetails" name="projectDetails" placeholder="Tell us anything helpful about the deck or backyard."></textarea>
 </div>
 <div class="field deck-upload-field estimate-upload-field">
 <label for="heroProjectPhoto">Backyard Photos <span class="optional-label">Optional but helpful</span></label>
@@ -296,10 +206,6 @@
 <label class="choice-card"><input name="contactPreference" required="" type="radio" value="Email"/><span>Email</span></label>
 </div>
 </fieldset>
-<label class="campaign-confirmation">
-<input name="newDeckConfirmation" required="" type="checkbox" value="Confirmed new deck project"/>
-<span>I understand this estimate is for new deck construction, not staining, cleaning, or individual board repairs.</span>
-</label>
 <div class="estimate-nav final-nav">
 <button class="estimate-back" data-back="" type="button">Back</button>
 <button class="submit-button estimate-submit" type="submit">Request My Deck Estimate</button>
@@ -643,18 +549,44 @@
 </div>
 <div aria-label="Estimate form progress" class="estimate-progress">
 <div class="estimate-progress-copy">
-<span data-progress-label="">Step 1 of 5</span>
-<strong data-progress-title="">Contact information</strong>
+<span data-progress-label="">Step 1 of 2</span>
+<strong data-progress-title="">Deck information</strong>
 </div>
 <div aria-hidden="true" class="estimate-progress-track">
 <span data-progress-bar=""></span>
 </div>
 </div>
-<section class="estimate-step active" data-step="0" data-step-title="Contact information">
-<div class="estimate-step-heading">
-<span>First, how can we reach you?</span>
-<p>We use this information only to respond to your deck request.</p>
+<section class="estimate-step active" data-step="0" data-step-title="Deck information">
+<div class="hero-form-row">
+<div class="field">
+<label for="fullZipCode">Project ZIP Code</label>
+<input autocomplete="postal-code" id="fullZipCode" inputmode="numeric" name="zipCode" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="97301" required="" type="text"/>
 </div>
+<div class="field">
+<label for="fullProjectType">What type of deck project?</label>
+<select id="fullProjectType" name="projectType" required="">
+<option value="">Choose one</option>
+<option value="Build a new deck">Build a new deck</option>
+<option value="Replace an existing deck">Replace an existing deck</option>
+</select>
+</div>
+</div>
+<div class="field">
+<label for="fullCurrentSetup">What is there now?</label>
+<select id="fullCurrentSetup" name="currentSetup" required="">
+<option value="">Choose one</option>
+<option value="No deck / grass outside">No deck / grass outside</option>
+<option value="Small landing or steps">Small landing or steps</option>
+<option value="Concrete patio">Concrete patio</option>
+<option value="Existing deck to remove">Existing deck to remove</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="estimate-nav single-action">
+<button class="estimate-next" data-next="" type="button">Next</button>
+</div>
+</section>
+<section class="estimate-step" data-step="1" data-step-title="Basic information" hidden="">
 <div class="hero-form-row">
 <div class="field">
 <label for="fullFullName">Full Name</label>
@@ -669,125 +601,9 @@
 <label for="fullEmail">Email</label>
 <input autocomplete="email" id="fullEmail" name="email" placeholder="you@example.com" required="" type="email"/>
 </div>
-<div class="estimate-nav single-action">
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="1" data-step-title="Property details" hidden="">
-<div class="estimate-step-heading">
-<span>Tell us about the property</span>
-<p>This confirms the location and whether the project fits this new-deck campaign.</p>
-</div>
-<fieldset class="choice-fieldset">
-<legend>Are you the homeowner?</legend>
-<div class="choice-grid two-options">
-<label class="choice-card"><input name="homeownerStatus" required="" type="radio" value="Yes, homeowner"/><span>Yes, I own the home</span></label>
-<label class="choice-card"><input name="homeownerStatus" required="" type="radio" value="No / helping someone else"/><span>No / helping someone else</span></label>
-</div>
-</fieldset>
-<div class="hero-form-row">
 <div class="field">
-<label for="fullZipCode">Project ZIP Code</label>
-<input autocomplete="postal-code" id="fullZipCode" inputmode="numeric" name="zipCode" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="97301" required="" type="text"/>
-</div>
-<div class="field">
-<label for="fullCurrentSetup">What is there now?</label>
-<select id="fullCurrentSetup" name="currentSetup" required="">
-<option value="">Choose one</option>
-<option value="No deck / grass outside">No deck / grass outside</option>
-<option value="Small landing or steps">Small landing or steps</option>
-<option value="Concrete patio">Concrete patio</option>
-<option value="Existing deck to remove">Existing deck to remove</option>
-<option value="Other">Other</option>
-</select>
-</div>
-</div>
-<div class="estimate-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="2" data-step-title="Deck preferences" hidden="">
-<div class="estimate-step-heading">
-<span>What kind of deck are you considering?</span>
-<p>It is fine to be unsure. These answers help us prepare useful options.</p>
-</div>
-<fieldset class="choice-fieldset">
-<legend>Material preference</legend>
-<div class="choice-grid material-choice-grid">
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Wood"/><span>Wood</span></label>
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Composite"/><span>Composite</span></label>
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Compare both"/><span>Compare both</span></label>
-<label class="choice-card"><input name="materialPreference" required="" type="radio" value="Unsure"/><span>Not sure yet</span></label>
-</div>
-</fieldset>
-<div class="field">
-<label for="fullDeckSize">Approximate deck size</label>
-<select id="fullDeckSize" name="deckSize" required="">
-<option value="">Choose a rough size</option>
-<option value="Under 150 sq ft">Under 150 sq. ft.</option>
-<option value="150-300 sq ft">150–300 sq. ft.</option>
-<option value="300-500 sq ft">300–500 sq. ft.</option>
-<option value="Over 500 sq ft">More than 500 sq. ft.</option>
-<option value="Need help sizing">I need help choosing a size</option>
-</select>
-</div>
-<fieldset class="choice-fieldset optional-choices">
-<legend>Features you may want <span>Optional</span></legend>
-<div class="choice-grid feature-choice-grid">
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Stairs"/><span>Stairs</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Railings"/><span>Railings</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Privacy screen"/><span>Privacy</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Built-in seating"/><span>Built-in seating</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Pergola or cover"/><span>Pergola / cover</span></label>
-<label class="choice-card"><input name="desiredFeatures" type="checkbox" value="Lighting"/><span>Lighting</span></label>
-</div>
-</fieldset>
-<div class="estimate-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="3" data-step-title="Timing and budget" hidden="">
-<div class="estimate-step-heading">
-<span>When are you hoping to build?</span>
-<p>Timing and budget help us determine fit before either side spends time on a site visit.</p>
-</div>
-<div class="field">
-<label for="fullProjectTiming">Ideal timing</label>
-<select id="fullProjectTiming" name="projectTiming" required="">
-<option value="">Choose your timing</option>
-<option value="As soon as practical">As soon as practical</option>
-<option value="This summer">This summer</option>
-<option value="1-3 months">Within 1–3 months</option>
-<option value="3-6 months">Within 3–6 months</option>
-<option value="6+ months / planning">More than 6 months / planning ahead</option>
-</select>
-</div>
-<fieldset class="choice-fieldset budget-fieldset">
-<legend>Approximate project budget</legend>
-<div class="choice-grid budget-choice-grid">
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="Under $5,000"/><span>Under $5,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$5,000-$10,000"/><span>$5,000–$10,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$10,000-$20,000"/><span>$10,000–$20,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$20,000-$35,000"/><span>$20,000–$35,000</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="$35,000+"/><span>$35,000+</span></label>
-<label class="choice-card"><input name="budgetRange" required="" type="radio" value="Need budget guidance"/><span>Need guidance</span></label>
-</div>
-</fieldset>
-<div class="estimate-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="4" data-step-title="Project details" hidden="">
-<div class="estimate-step-heading">
-<span>Last step: describe the deck</span>
-<p>A few details or photos help us give you a more useful response.</p>
-</div>
-<div class="field">
-<label for="fullProjectDetails">What do you want from the space?</label>
-<textarea id="fullProjectDetails" minlength="20" name="projectDetails" placeholder="Example: Room for a grill, dining table, and seating for six. The yard slopes away from the house." required=""></textarea>
+<label for="fullProjectDetails">Anything else we should know? <span class="optional-label">Optional</span></label>
+<textarea id="fullProjectDetails" name="projectDetails" placeholder="Tell us anything helpful about the deck or backyard."></textarea>
 </div>
 <div class="field deck-upload-field estimate-upload-field">
 <label for="fullProjectPhoto">Backyard Photos <span class="optional-label">Optional but helpful</span></label>
@@ -807,10 +623,6 @@
 <label class="choice-card"><input name="contactPreference" required="" type="radio" value="Email"/><span>Email</span></label>
 </div>
 </fieldset>
-<label class="campaign-confirmation">
-<input name="newDeckConfirmation" required="" type="checkbox" value="Confirmed new deck project"/>
-<span>I understand this estimate is for new deck construction, not staining, cleaning, or individual board repairs.</span>
-</label>
 <div class="estimate-nav final-nav">
 <button class="estimate-back" data-back="" type="button">Back</button>
 <button class="submit-button estimate-submit" type="submit">Get My Deck Estimate</button>
