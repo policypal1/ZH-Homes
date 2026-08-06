@@ -1,7 +1,7 @@
 "use strict";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzT_ID_SvILwBpn5CuKUiVmKVGOtckPAdQ6m2PbkhrcbggK9DM_6tU1xKQmJKXd6WZprA/exec";
+  "https://script.google.com/macros/s/AKfycbwBorH28Zp-w4PXl0mYK2PV3IP0FmjLIaBqfpEmUes4_8g2e1sYoLChMptCA_6D3Nbd/exec";
 
 const GOOGLE_ADS_DECK_QUOTE_SEND_TO =
   "AW-18215005784/HQ8iCKjUzdUcENjcy-1D";
