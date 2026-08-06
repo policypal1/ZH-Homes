@@ -157,7 +157,12 @@
           </div>
         </div>
 
-        <aside class="hero-quick-card" id="hero-estimate" aria-label="Free deck estimate form">
+        <aside class="hero-quick-card" id="hero-estimate" aria-labelledby="hero-form-title">
+          <div class="hero-quick-heading">
+            <h2 id="hero-form-title">Get Your Free Deck Estimate</h2>
+            <p>Answer a few quick questions and ZH Homes will contact you about your project.</p>
+          </div>
+
           <form
             class="hero-quick-form deck-multistep-form"
             id="heroDeckQuoteForm"
@@ -176,7 +181,20 @@
             <input type="hidden" name="contactPreference" value="Text" />
             <input type="hidden" name="newDeckConfirmation" value="Confirmed new deck project" />
 
-            <section class="estimate-step active" data-step="0" data-step-title="Deck estimate request">
+            <div class="estimate-progress" aria-label="Estimate form progress">
+              <div class="estimate-progress-copy">
+                <span data-progress-label>Step 1 of 2</span>
+                <strong data-progress-title>Contact information</strong>
+              </div>
+              <div class="estimate-progress-track" aria-hidden="true"><span data-progress-bar></span></div>
+            </div>
+
+            <section class="estimate-step active" data-step="0" data-step-title="Contact information">
+              <div class="estimate-step-heading">
+                <span>First, how can we reach you?</span>
+                <p>Enter your contact information to start your free estimate request.</p>
+              </div>
+
               <div class="hero-form-row">
                 <div class="field">
                   <label for="heroFullName">Full Name</label>
@@ -199,6 +217,17 @@
                 </div>
               </div>
 
+              <div class="estimate-nav single-action">
+                <button class="estimate-next" data-next type="button">Next: Project Details</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="1" data-step-title="Project details" hidden>
+              <div class="estimate-step-heading">
+                <span>Tell us about your deck project</span>
+                <p>Select the project type, then add any notes or photos that may help.</p>
+              </div>
+
               <fieldset class="choice-fieldset">
                 <legend>What kind of project is this?</legend>
                 <div class="choice-grid material-choice-grid">
@@ -209,10 +238,28 @@
                 </div>
               </fieldset>
 
-              <div class="estimate-nav single-action final-nav">
+              <div class="field">
+                <label for="heroProjectDetails">Project Notes <span class="optional-label">Optional</span></label>
+                <textarea id="heroProjectDetails" name="projectDetails" maxlength="1200" placeholder="Briefly describe what you want built or anything we should know."></textarea>
+              </div>
+
+              <div class="field deck-upload-field estimate-upload-field">
+                <label for="heroProjectPhoto">Project Photos <span class="optional-label">Optional</span></label>
+                <input id="heroProjectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple data-project-photo />
+                <div class="selected-file-row" data-selected-file-row hidden>
+                  <span data-selected-file-name></span>
+                  <button type="button" data-clear-files aria-label="Remove uploaded images">×</button>
+                </div>
+                <span class="field-note">Upload up to 4 images, 5MB each.</span>
+                <span class="file-error" data-file-error role="alert"></span>
+              </div>
+
+              <div class="estimate-nav final-nav">
+                <button class="estimate-back" data-back type="button">Back</button>
                 <button class="submit-button estimate-submit" type="submit">Request My Free Estimate</button>
               </div>
 
+              <p class="hero-form-assurance">Free and no obligation.</p>
               <div class="form-status" data-form-status role="status" aria-live="polite"></div>
             </section>
           </form>
@@ -470,6 +517,11 @@
         </div>
 
         <div class="contact-form-card deck-form-card">
+          <div class="deck-form-heading">
+            <h3>Get Your Free Deck Estimate</h3>
+            <p>Answer a few quick questions and ZH Homes will contact you about your project.</p>
+          </div>
+
           <form
             class="quote-form deck-multistep-form"
             id="deckQuoteForm"
@@ -488,7 +540,20 @@
             <input type="hidden" name="contactPreference" value="Text" />
             <input type="hidden" name="newDeckConfirmation" value="Confirmed new deck project" />
 
-            <section class="estimate-step active" data-step="0" data-step-title="Deck estimate request">
+            <div class="estimate-progress" aria-label="Estimate form progress">
+              <div class="estimate-progress-copy">
+                <span data-progress-label>Step 1 of 2</span>
+                <strong data-progress-title>Contact information</strong>
+              </div>
+              <div class="estimate-progress-track" aria-hidden="true"><span data-progress-bar></span></div>
+            </div>
+
+            <section class="estimate-step active" data-step="0" data-step-title="Contact information">
+              <div class="estimate-step-heading">
+                <span>First, how can we reach you?</span>
+                <p>Enter your contact information to start your free estimate request.</p>
+              </div>
+
               <div class="hero-form-row">
                 <div class="field">
                   <label for="fullFullName">Full Name</label>
@@ -511,6 +576,17 @@
                 </div>
               </div>
 
+              <div class="estimate-nav single-action">
+                <button class="estimate-next" data-next type="button">Next: Project Details</button>
+              </div>
+            </section>
+
+            <section class="estimate-step" data-step="1" data-step-title="Project details" hidden>
+              <div class="estimate-step-heading">
+                <span>Tell us about your deck project</span>
+                <p>Select the project type, then add any notes or photos that may help.</p>
+              </div>
+
               <fieldset class="choice-fieldset">
                 <legend>What kind of project is this?</legend>
                 <div class="choice-grid material-choice-grid">
@@ -521,10 +597,28 @@
                 </div>
               </fieldset>
 
-              <div class="estimate-nav single-action final-nav">
+              <div class="field">
+                <label for="fullProjectDetails">Project Notes <span class="optional-label">Optional</span></label>
+                <textarea id="fullProjectDetails" name="projectDetails" maxlength="1200" placeholder="Briefly describe what you want built or anything we should know."></textarea>
+              </div>
+
+              <div class="field deck-upload-field estimate-upload-field">
+                <label for="fullProjectPhoto">Project Photos <span class="optional-label">Optional</span></label>
+                <input id="fullProjectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple data-project-photo />
+                <div class="selected-file-row" data-selected-file-row hidden>
+                  <span data-selected-file-name></span>
+                  <button type="button" data-clear-files aria-label="Remove uploaded images">×</button>
+                </div>
+                <span class="field-note">Upload up to 4 images, 5MB each.</span>
+                <span class="file-error" data-file-error role="alert"></span>
+              </div>
+
+              <div class="estimate-nav final-nav">
+                <button class="estimate-back" data-back type="button">Back</button>
                 <button class="submit-button estimate-submit" type="submit">Request My Free Estimate</button>
               </div>
 
+              <p class="hero-form-assurance">Free and no obligation.</p>
               <div class="form-status" data-form-status role="status" aria-live="polite"></div>
             </section>
           </form>
