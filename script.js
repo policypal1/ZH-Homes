@@ -1,7 +1,7 @@
 'use strict';
 
 // Paste the /exec URL from the new Google Apps Script deployment here.
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgqlQeLegMo_7JraxEY-fj13QwjoiWSimmIVCVKlmxK-XFeczhwYSxyNnxxSbLLZim/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXdvFAXW1rGwvgUCFWu0KSfQ9OiVlFRXNgiicvmZ8EuJL01IBV2QOypYKFLJxkSkne/exec';
 
 const quoteForm = document.getElementById('quoteForm');
 const projectPhoto = document.getElementById('projectPhoto');
