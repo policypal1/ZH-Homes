@@ -266,70 +266,6 @@ function findInvalidControl(step) {
   return null;
 }
 
-function getRadioValue(formData, fieldName) {
-  return String(formData.get(fieldName) || "").trim();
-}
-
-function scoreLead(details) {
-  let score = 0;
-  const signals = [];
-
-  if (details.homeownerStatus === "Yes, homeowner") {
-    score += 2;
-    signals.push("Confirmed homeowner");
-  } else {
-    signals.push("Homeowner status needs review");
-  }
-
-  if (
-    details.currentSetup === "No deck / grass outside" ||
-    details.currentSetup === "Existing deck to remove"
-  ) {
-    score += 2;
-    signals.push("Clear full-project setup");
-  } else if (details.currentSetup) {
-    score += 1;
-    signals.push("Existing setup provided");
-  }
-
-  if (details.materialPreference) {
-    score += 1;
-    signals.push("Material preference provided");
-  }
-
-  if (details.deckSize && details.deckSize !== "Need help sizing") {
-    score += 1;
-    signals.push("Approximate size provided");
-  } else if (details.deckSize) {
-    signals.push("Needs sizing help");
-  }
-
-  if (details.newDeckConfirmation) {
-    score += 2;
-    signals.push("Confirmed new-deck request");
-  }
-
-  if (details.projectDetails.length >= 40) {
-    score += 1;
-    signals.push("Useful project description");
-  }
-
-  if (details.projectPhotoCount > 0) {
-    score += 1;
-    signals.push("Backyard photos included");
-  }
-
-  let tier = "Needs review";
-
-  if (score >= 8) {
-    tier = "High intent";
-  } else if (score >= 5) {
-    tier = "Potential fit";
-  }
-
-  return { score, tier, signals };
-}
-
 function initializeMultiStepForm(form) {
   if (
     !(form instanceof HTMLFormElement) ||
@@ -541,38 +477,23 @@ function initializeMultiStepForm(form) {
     const selectedFiles = Array.from(fileInput?.files || []);
 
     const details = {
-      homeownerStatus: getRadioValue(formData, "homeownerStatus"),
       zipCode: String(formData.get("zipCode") || "").trim(),
+      projectType: String(formData.get("projectType") || "").trim(),
       currentSetup: String(formData.get("currentSetup") || "").trim(),
-      materialPreference: getRadioValue(formData, "materialPreference"),
-      deckSize: String(formData.get("deckSize") || "").trim(),
       projectDetails: detailsText || "No additional details provided.",
-      contactPreference: getRadioValue(formData, "contactPreference"),
-      newDeckConfirmation:
-        formData.get("newDeckConfirmation") === "Confirmed new deck project",
       projectPhotoCount: selectedFiles.length
     };
 
-    const qualification = scoreLead(details);
-
     const description = [
-      `Lead quality: ${qualification.tier} (${qualification.score}/10)`,
-      `Qualification signals: ${qualification.signals.join(", ") || "None"}`,
-      `Homeowner status: ${details.homeownerStatus}`,
-      `Project ZIP: ${details.zipCode}`,
-      `Current backyard setup: ${details.currentSetup}`,
-      `Material preference: ${details.materialPreference}`,
-      `Approximate deck size: ${details.deckSize}`,
-      `Backyard photos attached: ${details.projectPhotoCount}`,
-      `Preferred contact method: ${details.contactPreference}`,
-      `Confirmed new deck construction: ${details.newDeckConfirmation ? "Yes" : "No"}`,
-      `Offer requested: Free on-site deck planning visit`,
-      `Estimate promise: Written estimate within 48 hours after site visit`,
-      `Project details: ${details.projectDetails}`
+      `Project type: ${details.projectType || "Not provided"}`,
+      `Project ZIP: ${details.zipCode || "Not provided"}`,
+      `What is there now: ${details.currentSetup || "Not provided"}`,
+      `Backyard photos uploaded: ${details.projectPhotoCount}`,
+      `Additional notes: ${details.projectDetails}`
     ].join("\n");
 
     const originalButtonText =
-      submitButton?.textContent || "Request My Free Site Visit";
+      submitButton?.textContent || "Request My Deck Estimate";
 
     isSubmitting = true;
 
@@ -590,29 +511,18 @@ function initializeMultiStepForm(form) {
 
       const payload = {
         source: `ZH Homes Deck Landing Page - ${
-          form.dataset.formSource || "Free On-Site Deck Estimate"
+          form.dataset.formSource || "Deck Estimate"
         }`,
         pageUrl: window.location.href,
         submittedAt: new Date().toISOString(),
-        contactReason: "free_on_site_deck_estimate",
-        serviceType: "New Deck Construction",
-        offerName: "Free On-Site Deck Planning Visit",
-        estimateTurnaround: "Within 48 hours after site visit",
+        contactReason: "deck_estimate",
+        serviceType: details.projectType || "Deck Project",
         fullName: String(formData.get("fullName") || "").trim(),
         email: String(formData.get("email") || "").trim(),
         phone: String(formData.get("phone") || "").trim(),
         description,
         companyWebsite: honeypot,
         projectPhotos,
-        leadQualityTier: qualification.tier,
-        leadQualityScore: qualification.score,
-        qualificationSignals: qualification.signals,
-
-        // Kept as blank values for compatibility with the existing Apps Script.
-        desiredFeatures: [],
-        projectTiming: "",
-        budgetRange: "",
-
         ...details,
         attribution: getAttribution()
       };
@@ -632,7 +542,7 @@ function initializeMultiStepForm(form) {
 
       setFormStatus(
         form,
-        "Thanks. Your free on-site deck visit request was submitted.",
+        "Thanks. Your deck estimate request was submitted.",
         "success"
       );
 
@@ -640,16 +550,10 @@ function initializeMultiStepForm(form) {
 
       pushTrackingEvent("deck_lead_submit", {
         form_name: form.dataset.formSource || "deck_estimate",
-        offer_name: "free_on_site_deck_planning_visit",
-        homeowner_status: details.homeownerStatus,
         project_zip: details.zipCode,
+        project_type: details.projectType,
         current_setup: details.currentSetup,
-        material_preference: details.materialPreference,
-        deck_size: details.deckSize,
-        photo_count: details.projectPhotoCount,
-        contact_preference: details.contactPreference,
-        lead_quality_tier: qualification.tier,
-        lead_quality_score: qualification.score
+        photo_count: details.projectPhotoCount
       });
 
       trackGoogleAdsDeckQuoteConversion();
