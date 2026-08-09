@@ -1902,6 +1902,7 @@
     gap: 10px !important;
   }
 
+  /* Crop the transparent right side of 2.png so the round mark is large. */
   .deck-page .site-header .brand-logo {
     flex: 0 0 54px !important;
     width: 54px !important;
@@ -2098,6 +2099,7 @@
     display: none !important;
   }
 
+  /* Put the real five-star review back inside the hero on mobile. */
   .deck-page .deck-hero .hero-inline-review {
     display: block !important;
     width: 100% !important;
@@ -2176,6 +2178,8 @@
     font-size: 10px !important;
   }
 
+  /* The same review exists as its own desktop strip. Hide only that duplicate
+     on mobile, which also removes the oversized gap. */
   .deck-page .hero-review-section {
     display: none !important;
   }
@@ -2184,6 +2188,7 @@
     margin: 0 !important;
   }
 
+  /* ---------- Mobile service carousel ---------- */
   .deck-page .services-section .services-grid {
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth;
@@ -2194,6 +2199,7 @@
     scroll-snap-align: center !important;
   }
 
+  /* ---------- Quote/call bar appears only after the hero ---------- */
   .deck-page .mobile-cta-bar {
     position: fixed !important;
     left: 12px !important;
@@ -2345,11 +2351,13 @@
   }
 }
 
+
 /* V12: image enlargement controls intentionally removed. */
 .deck-gallery-view-button,
 .deck-image-modal {
   display: none !important;
 }
+
 
 /* ==========================================================
    V13 STRONGER PRIMARY DECK-ESTIMATE CTA
@@ -2415,6 +2423,7 @@
   outline-offset: 4px !important;
 }
 
+/* Keep the five-card services layout balanced after removing Outdoor Features. */
 @media (min-width: 951px) {
   .deck-page .services-section .services-grid {
     align-items: stretch;
@@ -2449,6 +2458,7 @@
    V14 REQUESTED HEADER AND WHY-CHOOSE FIT FIXES
    ========================================================== */
 
+/* Keep the logo container clean and vertically centered. */
 .deck-page .site-header .brand,
 .deck-page .site-header .brand-logo,
 .deck-page .site-header .brand-logo::before,
@@ -2469,6 +2479,7 @@
   filter: none !important;
 }
 
+/* Let every Why Choose ZH Homes item wrap naturally instead of clipping. */
 .deck-page .mission-strip {
   align-items: stretch;
 }
@@ -2510,48 +2521,4 @@
 
 .deck-page .deck-multistep-form .campaign-confirmation {
   display: grid !important;
-}
-
-/* ==========================================================
-   FINAL MOBILE HERO POSITION OVERRIDE
-   Pushes the ENTIRE hero content substantially farther down.
-   This intentionally overrides the older 78px mobile padding
-   and the padding placed on .hero-copy in decks.html.
-   ========================================================== */
-
-@media (max-width: 767px) {
-
-  body.deck-page .deck-hero .hero-inner {
-    display: block !important;
-    width: calc(100% - 24px) !important;
-    min-height: auto !important;
-
-    /* Main vertical-position control */
-    padding-top: 72vh !important;
-    padding-bottom: 68px !important;
-  }
-
-  /* Remove the old 86vh padding from hero-copy.
-     The parent now controls the position instead. */
-  body.deck-page .deck-hero .hero-inner .hero-copy {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-
-  body.deck-page .deck-hero .hero-mobile-title {
-    margin-top: 0 !important;
-    margin-bottom: 28px !important;
-  }
-
-  body.deck-page .deck-hero .hero-mobile-subheadline {
-    margin-top: 0 !important;
-    margin-bottom: 58px !important;
-  }
-
-  body.deck-page .deck-hero .hero-actions {
-    margin-top: 0 !important;
-    margin-bottom: 46px !important;
-  }
 }
