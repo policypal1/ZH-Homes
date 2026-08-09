@@ -25,9 +25,28 @@
 <meta content="https://www.zhhomeco.com/874d1223-50ee-45da-a0dd-12cf574aed49%20(1).webp" property="og:image"/>
 <style>
 /* Final placement/visibility fixes only */
+html,
+body.deck-page {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
 .site-header,
 .site-header .header-inner {
   background: #ffffff !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.site-header::before,
+.site-header::after,
+.site-header .header-inner::before,
+.site-header .header-inner::after {
+  content: none !important;
+  display: none !important;
+  box-shadow: none !important;
 }
 
 .mobile-inline-estimate-section {
@@ -35,25 +54,27 @@
 }
 
 @media (max-width: 767px) {
-  .hero-review-section,
-  .hero-inline-review {
+  body.deck-page .hero-copy > .hero-inline-review,
+  body.deck-page .hero-review-section {
     display: none !important;
   }
 
-  .mobile-inline-estimate-section {
-    display: block;
+  body.deck-page .hero-copy > .mobile-inline-estimate-section {
+    display: block !important;
+    width: 100%;
     padding: 24px 16px 32px;
+    margin: 0;
     box-sizing: border-box;
   }
 
-  .mobile-inline-estimate-inner {
+  body.deck-page .hero-copy > .mobile-inline-estimate-section .mobile-inline-estimate-inner {
     width: 100%;
     max-width: 560px;
     margin: 0 auto;
     box-sizing: border-box;
   }
 
-  .mobile-inline-estimate-section .contact-form-card {
+  body.deck-page .hero-copy > .mobile-inline-estimate-section .contact-form-card {
     width: 100%;
     box-sizing: border-box;
   }
@@ -145,6 +166,104 @@
 </div>
 </div>
 </div>
+<section aria-label="Request your in-person deck estimate" class="mobile-inline-estimate-section">
+<div class="mobile-inline-estimate-inner">
+<div class="contact-form-card deck-form-card">
+<div class="deck-form-heading">
+<h3>Request Your In-Person Deck Estimate</h3>
+<p>Answer a few quick questions so we can prepare for your visit and follow up within 48 hours.</p>
+</div>
+<form class="quote-form deck-multistep-form" data-form-source="Mobile Inline Multi-Step Estimate" enctype="multipart/form-data" id="mobileInlineDeckQuoteForm" novalidate="">
+<div aria-hidden="true" class="honeypot">
+<label for="mobileInlineCompanyWebsite">Company Website</label>
+<input autocomplete="off" id="mobileInlineCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
+</div>
+<div aria-label="Estimate form progress" class="estimate-progress">
+<div class="estimate-progress-copy">
+<span data-progress-label="">Step 1 of 2</span>
+<strong data-progress-title="">Basic information</strong>
+</div>
+<div aria-hidden="true" class="estimate-progress-track">
+<span data-progress-bar=""></span>
+</div>
+</div>
+<section class="estimate-step active" data-step="0" data-step-title="Basic information">
+<div class="hero-form-row">
+<div class="field">
+<label for="mobileInlineFullName">Full Name</label>
+<input autocomplete="name" id="mobileInlineFullName" name="fullName" placeholder="Your name" required="" type="text"/>
+</div>
+<div class="field">
+<label for="mobileInlinePhone">Phone</label>
+<input autocomplete="tel" id="mobileInlinePhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
+</div>
+</div>
+<div class="field">
+<label for="mobileInlineEmail">Email</label>
+<input autocomplete="email" id="mobileInlineEmail" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+<div class="estimate-nav single-action">
+<button class="estimate-next" data-next="" type="button">Next</button>
+</div>
+</section>
+<section class="estimate-step" data-step="1" data-step-title="Deck information" hidden="">
+<div class="hero-form-row">
+<div class="field">
+<label for="mobileInlineZipCode">Project ZIP Code</label>
+<input autocomplete="postal-code" id="mobileInlineZipCode" inputmode="numeric" name="zipCode" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="97301" required="" type="text"/>
+</div>
+<div class="field">
+<label for="mobileInlineProjectType">What type of deck project?</label>
+<select id="mobileInlineProjectType" name="projectType" required="">
+<option value="">Choose one</option>
+<option value="Build a new deck">Build a new deck</option>
+<option value="Replace an existing deck">Replace an existing deck</option>
+</select>
+</div>
+</div>
+<div class="field">
+<label for="mobileInlineCurrentSetup">What is there now?</label>
+<select id="mobileInlineCurrentSetup" name="currentSetup" required="">
+<option value="">Choose one</option>
+<option value="No deck / grass outside">No deck / grass outside</option>
+<option value="Small landing or steps">Small landing or steps</option>
+<option value="Concrete patio">Concrete patio</option>
+<option value="Existing deck to remove">Existing deck to remove</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div class="field">
+<label for="mobileInlineProjectDetails">Anything else we should know? <span class="optional-label">Optional</span></label>
+<textarea id="mobileInlineProjectDetails" name="projectDetails" placeholder="Tell us anything helpful about the deck or backyard."></textarea>
+</div>
+<div class="field deck-upload-field estimate-upload-field">
+<label for="mobileInlineProjectPhoto">Backyard Photos <span class="optional-label">Optional but helpful</span></label>
+<input accept="image/jpeg,image/png,image/webp,image/gif" data-project-photo="" id="mobileInlineProjectPhoto" multiple="" name="projectPhotos" type="file"/>
+<div class="selected-file-row" data-selected-file-row="" hidden="">
+<span data-selected-file-name=""></span>
+<button aria-label="Remove uploaded images" data-clear-files="" type="button">×</button>
+</div>
+<span class="field-note">Upload up to 4 images, 5MB each.</span>
+<span class="file-error" data-file-error="" role="alert"></span>
+</div>
+<div class="estimate-nav final-nav">
+<button class="estimate-back" data-back="" type="button">Back</button>
+<button class="submit-button estimate-submit" type="submit">Get My In-Person Estimate</button>
+</div>
+<p class="hero-form-assurance">No obligation. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
+<div aria-live="polite" class="form-status" data-form-status="" role="status"></div>
+</section>
+</form>
+<div aria-hidden="true" class="deck-success-overlay" data-success-overlay="">
+<div class="deck-success-box">
+<span aria-hidden="true" class="deck-success-check">✓</span>
+<strong>Request Sent</strong>
+<p>Thanks. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 <div aria-label="Recent project highlights" class="hero-mobile-collage">
 <div class="hero-mobile-collage-main">
 <img alt="Deck and outdoor living design inspiration" decoding="async" loading="lazy" src="https://images.pexels.com/photos/37588542/pexels-photo-37588542.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100"/>
@@ -297,104 +416,7 @@
 </div>
 </div>
 </section>
-<section aria-label="Request your in-person deck estimate" class="mobile-inline-estimate-section">
-<div class="mobile-inline-estimate-inner">
-<div class="contact-form-card deck-form-card">
-<div class="deck-form-heading">
-<h3>Request Your In-Person Deck Estimate</h3>
-<p>Answer a few quick questions so we can prepare for your visit and follow up within 48 hours.</p>
-</div>
-<form class="quote-form deck-multistep-form" data-form-source="Mobile Inline Multi-Step Estimate" enctype="multipart/form-data" id="mobileInlineDeckQuoteForm" novalidate="">
-<div aria-hidden="true" class="honeypot">
-<label for="mobileInlineCompanyWebsite">Company Website</label>
-<input autocomplete="off" id="mobileInlineCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-</div>
-<div aria-label="Estimate form progress" class="estimate-progress">
-<div class="estimate-progress-copy">
-<span data-progress-label="">Step 1 of 2</span>
-<strong data-progress-title="">Basic information</strong>
-</div>
-<div aria-hidden="true" class="estimate-progress-track">
-<span data-progress-bar=""></span>
-</div>
-</div>
-<section class="estimate-step active" data-step="0" data-step-title="Basic information">
-<div class="hero-form-row">
-<div class="field">
-<label for="mobileInlineFullName">Full Name</label>
-<input autocomplete="name" id="mobileInlineFullName" name="fullName" placeholder="Your name" required="" type="text"/>
-</div>
-<div class="field">
-<label for="mobileInlinePhone">Phone</label>
-<input autocomplete="tel" id="mobileInlinePhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
-</div>
-</div>
-<div class="field">
-<label for="mobileInlineEmail">Email</label>
-<input autocomplete="email" id="mobileInlineEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
-<div class="estimate-nav single-action">
-<button class="estimate-next" data-next="" type="button">Next</button>
-</div>
-</section>
-<section class="estimate-step" data-step="1" data-step-title="Deck information" hidden="">
-<div class="hero-form-row">
-<div class="field">
-<label for="mobileInlineZipCode">Project ZIP Code</label>
-<input autocomplete="postal-code" id="mobileInlineZipCode" inputmode="numeric" name="zipCode" pattern="[0-9]{5}(-[0-9]{4})?" placeholder="97301" required="" type="text"/>
-</div>
-<div class="field">
-<label for="mobileInlineProjectType">What type of deck project?</label>
-<select id="mobileInlineProjectType" name="projectType" required="">
-<option value="">Choose one</option>
-<option value="Build a new deck">Build a new deck</option>
-<option value="Replace an existing deck">Replace an existing deck</option>
-</select>
-</div>
-</div>
-<div class="field">
-<label for="mobileInlineCurrentSetup">What is there now?</label>
-<select id="mobileInlineCurrentSetup" name="currentSetup" required="">
-<option value="">Choose one</option>
-<option value="No deck / grass outside">No deck / grass outside</option>
-<option value="Small landing or steps">Small landing or steps</option>
-<option value="Concrete patio">Concrete patio</option>
-<option value="Existing deck to remove">Existing deck to remove</option>
-<option value="Other">Other</option>
-</select>
-</div>
-<div class="field">
-<label for="mobileInlineProjectDetails">Anything else we should know? <span class="optional-label">Optional</span></label>
-<textarea id="mobileInlineProjectDetails" name="projectDetails" placeholder="Tell us anything helpful about the deck or backyard."></textarea>
-</div>
-<div class="field deck-upload-field estimate-upload-field">
-<label for="mobileInlineProjectPhoto">Backyard Photos <span class="optional-label">Optional but helpful</span></label>
-<input accept="image/jpeg,image/png,image/webp,image/gif" data-project-photo="" id="mobileInlineProjectPhoto" multiple="" name="projectPhotos" type="file"/>
-<div class="selected-file-row" data-selected-file-row="" hidden="">
-<span data-selected-file-name=""></span>
-<button aria-label="Remove uploaded images" data-clear-files="" type="button">×</button>
-</div>
-<span class="field-note">Upload up to 4 images, 5MB each.</span>
-<span class="file-error" data-file-error="" role="alert"></span>
-</div>
-<div class="estimate-nav final-nav">
-<button class="estimate-back" data-back="" type="button">Back</button>
-<button class="submit-button estimate-submit" type="submit">Get My In-Person Estimate</button>
-</div>
-<p class="hero-form-assurance">No obligation. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-<div aria-live="polite" class="form-status" data-form-status="" role="status"></div>
-</section>
-</form>
-<div aria-hidden="true" class="deck-success-overlay" data-success-overlay="">
-<div class="deck-success-box">
-<span aria-hidden="true" class="deck-success-check">✓</span>
-<strong>Request Sent</strong>
-<p>Thanks. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
+
 <section aria-labelledby="deck-gallery-title" class="deck-project-gallery-section" id="gallery">
 <div class="deck-project-gallery-inner">
 <div class="deck-project-gallery-heading">
