@@ -59,19 +59,24 @@ body.deck-page {
     display: none !important;
   }
 
-  /* Mobile hero spacing only */
+  /* Mobile hero positioning + spacing only */
+  body.deck-page .hero-copy {
+    padding-top: 34vh !important;
+  }
+
   body.deck-page .hero-copy .hero-mobile-title {
-    margin-bottom: 24px !important;
+    margin-top: 0 !important;
+    margin-bottom: 28px !important;
   }
 
   body.deck-page .hero-copy .hero-mobile-subheadline {
     margin-top: 0 !important;
-    margin-bottom: 32px !important;
+    margin-bottom: 36px !important;
   }
 
   body.deck-page .hero-copy .hero-actions {
     margin-top: 0 !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 46px !important;
   }
 
   body.deck-page .hero-copy > .mobile-inline-estimate-section {
@@ -212,7 +217,7 @@ body.deck-page {
 </div>
 </div>
 </div>
-<section aria-label="Request your in-person deck estimate" class="mobile-inline-estimate-section">
+<section aria-label="Request your in-person deck estimate" class="mobile-inline-estimate-section" id="mobile-estimate">
 <div class="mobile-inline-estimate-inner">
 <div class="contact-form-card deck-form-card">
 <div class="deck-form-heading">
@@ -922,6 +927,22 @@ body.deck-page {
       Call / Text
     </a>
 </div>
+
+<script>
+(function () {
+  var heroEstimateButton = document.querySelector('.hero-actions .btn-primary');
+  var mobileEstimate = document.getElementById('mobile-estimate');
+
+  if (!heroEstimateButton || !mobileEstimate) return;
+
+  heroEstimateButton.addEventListener('click', function (event) {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      event.preventDefault();
+      mobileEstimate.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+})();
+</script>
 <script src="deck.js"></script>
 </body>
 </html>
