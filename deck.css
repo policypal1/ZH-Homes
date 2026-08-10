@@ -2887,7 +2887,7 @@
   /* Move the mobile hero content noticeably higher. */
   .deck-page .deck-hero .hero-copy {
     min-height: 0 !important;
-    padding: clamp(145px, 23svh, 225px) 0 48px !important;
+    padding: clamp(120px, 19svh, 195px) 0 48px !important;
   }
 
   /* Slightly larger, lighter/translucent message box. */
@@ -2920,9 +2920,13 @@
     color: rgba(255, 255, 255, 0.90) !important;
   }
 
-  /* More breathing room between the hero CTA and the form. */
+  /* Mobile flow: offer card, then the estimate form directly below it. */
+  .deck-page .deck-hero .hero-actions {
+    display: none !important;
+  }
+
   .deck-page .deck-hero .mobile-inline-estimate-section {
-    margin: 48px 0 0 !important;
+    margin: 18px 0 0 !important;
     scroll-margin-top: 90px !important;
   }
 
@@ -3021,7 +3025,7 @@
 
 @media (max-width: 430px) {
   .deck-page .deck-hero .hero-copy {
-    padding-top: clamp(135px, 21svh, 205px) !important;
+    padding-top: clamp(112px, 18svh, 178px) !important;
   }
 }
 
