@@ -2866,3 +2866,162 @@
     font-size: clamp(29px, 8.8vw, 36px) !important;
   }
 }
+
+/* ==========================================================
+   V17 REQUESTED MOBILE HERO + ONE-PAGE FORM REFINEMENTS
+   Only the requested hero/form behavior is changed here.
+   ========================================================== */
+
+/* All estimate forms are now one-page forms. Keep the desktop white-card look. */
+.deck-page .one-page-deck-form .estimate-step,
+.deck-page .mobile-hero-estimate-form .estimate-step {
+  animation: none !important;
+}
+
+.deck-page .one-page-deck-form .estimate-nav.single-action,
+.deck-page .mobile-hero-estimate-form .estimate-nav.single-action {
+  margin-top: 6px;
+}
+
+@media (max-width: 767px) {
+  /* Move the mobile hero content noticeably higher. */
+  .deck-page .deck-hero .hero-copy {
+    min-height: 0 !important;
+    padding: clamp(145px, 23svh, 225px) 0 48px !important;
+  }
+
+  /* Slightly larger, lighter/translucent message box. */
+  .deck-page .deck-hero .hero-message-card {
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    padding: 23px 20px 21px !important;
+    background: rgba(5, 6, 7, 0.48) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
+
+  /* Entire mobile headline is white again. */
+  .deck-page .deck-hero .hero-mobile-title,
+  .deck-page .deck-hero .hero-mobile-title span,
+  .deck-page .deck-hero .hero-mobile-title .hero-mobile-accent,
+  .deck-page .deck-hero .hero-mobile-title .accent {
+    color: #fff !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-title {
+    font-size: clamp(31px, 9vw, 39px) !important;
+    line-height: 1.03 !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-subheadline {
+    color: rgba(255, 255, 255, 0.90) !important;
+  }
+
+  /* More breathing room between the hero CTA and the form. */
+  .deck-page .deck-hero .mobile-inline-estimate-section {
+    margin: 48px 0 0 !important;
+    scroll-margin-top: 90px !important;
+  }
+
+  /* Mobile form now visually matches the clean desktop white form. */
+  .deck-page .deck-hero .mobile-hero-form-card {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24px 19px 20px !important;
+    color: var(--deck-ink) !important;
+    background: rgba(255, 255, 255, 0.985) !important;
+    border: 1px solid rgba(45, 29, 21, 0.10) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.24) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-form-heading {
+    margin: 0 0 20px !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-form-heading h3 {
+    margin: 0 0 7px !important;
+    color: var(--deck-ink) !important;
+    font-size: 27px !important;
+    font-weight: 900 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.8px !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-form-heading p {
+    margin: 0 !important;
+    color: var(--deck-muted) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form .hero-form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form .field {
+    margin: 0 0 13px !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form .field label {
+    margin: 0 0 7px !important;
+    color: #332923 !important;
+    font-size: 12.5px !important;
+    font-weight: 900 !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form input[type="text"],
+  .deck-page .deck-hero .mobile-hero-estimate-form input[type="email"],
+  .deck-page .deck-hero .mobile-hero-estimate-form input[type="tel"],
+  .deck-page .deck-hero .mobile-hero-estimate-form select {
+    min-height: 54px !important;
+    padding: 13px 15px !important;
+    color: #211a16 !important;
+    background: #fff !important;
+    border: 1px solid #cfc5be !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    font-size: 14px !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form input:focus,
+  .deck-page .deck-hero .mobile-hero-estimate-form select:focus {
+    border-color: var(--deck-orange) !important;
+    box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.15) !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form .estimate-submit {
+    min-height: 52px !important;
+    padding: 11px 17px !important;
+    color: #fff !important;
+    background: var(--deck-orange) !important;
+    border: 1px solid var(--deck-orange) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 12px 25px rgba(243, 112, 33, 0.20) !important;
+    font-size: 13.5px !important;
+    font-weight: 950 !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form .hero-form-assurance {
+    margin: 10px 0 0 !important;
+    color: #7b6e67 !important;
+    font-size: 10.5px !important;
+  }
+
+  .deck-page .deck-hero .mobile-hero-estimate-form .form-status {
+    color: #4b403a !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .deck-page .deck-hero .hero-copy {
+    padding-top: clamp(135px, 21svh, 205px) !important;
+  }
+}
+
