@@ -49,86 +49,14 @@ body.deck-page {
   box-shadow: none !important;
 }
 
+/* The old inline mobile estimate stays hidden; the hero CTA now goes to #estimate. */
 .mobile-inline-estimate-section {
-  display: none;
+  display: none !important;
 }
 
-@media (max-width: 767px) {
-  body.deck-page .hero-copy > .hero-inline-review,
-  body.deck-page .hero-review-section {
-    display: none !important;
-  }
-
-  /* Mobile hero positioning + spacing only */
-  body.deck-page .hero-copy {
-    padding-top: 86vh !important;
-  }
-
-  body.deck-page .hero-copy .hero-mobile-title {
-    margin-top: 0 !important;
-    margin-bottom: 28px !important;
-  }
-
-  body.deck-page .hero-copy .hero-mobile-subheadline {
-    margin-top: 0 !important;
-    margin-bottom: 58px !important;
-  }
-
-  body.deck-page .hero-copy .hero-actions {
-    margin-top: 0 !important;
-    margin-bottom: 46px !important;
-  }
-
-  body.deck-page .hero-copy > .mobile-inline-estimate-section {
-    display: block !important;
-    width: 100%;
-    padding: 0 16px 32px;
-    margin: 0;
-    box-sizing: border-box;
-    text-align: left !important;
-  }
-
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .mobile-inline-estimate-inner {
-    width: 100%;
-    max-width: 560px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    text-align: left !important;
-  }
-
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .contact-form-card,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .deck-form-heading,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .estimate-progress,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .estimate-progress-copy,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .estimate-step,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .hero-form-row,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .field {
-    width: 100%;
-    box-sizing: border-box;
-    text-align: left !important;
-  }
-
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .field {
-    align-items: flex-start !important;
-  }
-
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .field label,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .deck-form-heading h3,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .deck-form-heading p,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .estimate-progress-copy span,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section .estimate-progress-copy strong {
-    width: 100%;
-    text-align: left !important;
-    align-self: flex-start !important;
-  }
-
-  body.deck-page .hero-copy > .mobile-inline-estimate-section input,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section select,
-  body.deck-page .hero-copy > .mobile-inline-estimate-section textarea {
-    width: 100%;
-    box-sizing: border-box;
-    text-align: left;
-  }
+/* On desktop the wrapper has no visual effect. Mobile styling lives in deck.css. */
+.hero-message-card {
+  display: contents;
 }
 </style>
 </head>
@@ -195,16 +123,18 @@ body.deck-page {
 </h1>
 
 <p class="subheadline">
-            Tell us about your deck project and get a straightforward, in-person estimate at your property within 48 hours.
+            Professional deck construction and replacement throughout Salem, Keizer, Silverton, and the Willamette Valley.
 </p>
 
+<div class="hero-message-card">
 <h1 class="hero-mobile-title">
             Get your in-person deck estimate <span class="accent">within 48 hours.</span>
 </h1>
 
 <p class="subheadline hero-mobile-subheadline">
-            Salem, Keizer, and Silverton homeowners can request an in-person deck estimate at their property within 48 hours.
+            Professional deck construction and replacement throughout Salem, Keizer, Silverton, and the Willamette Valley.
 </p>
+</div>
 
 <div class="hero-actions">
 <a class="btn btn-primary" href="#estimate">Get My In-Person Estimate</a>
@@ -1177,22 +1107,6 @@ body.deck-page {
 </a>
 
 </div>
-
-<script>
-(function () {
-  var heroEstimateButton = document.querySelector('.hero-actions .btn-primary');
-  var mobileEstimate = document.getElementById('mobile-estimate');
-
-  if (!heroEstimateButton || !mobileEstimate) return;
-
-  heroEstimateButton.addEventListener('click', function (event) {
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      event.preventDefault();
-      mobileEstimate.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-})();
-</script>
 
 <script src="deck.js"></script>
 

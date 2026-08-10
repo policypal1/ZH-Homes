@@ -2522,3 +2522,152 @@
 .deck-page .deck-multistep-form .campaign-confirmation {
   display: grid !important;
 }
+
+/* ==========================================================
+   V15 SIMPLE MOBILE HERO - REFERENCE LAYOUT
+   Phone-only override. Desktop and the rest of the page stay unchanged.
+   ========================================================== */
+@media (max-width: 767px) {
+  .deck-page .deck-hero {
+    position: relative !important;
+    min-height: calc(100svh - 74px) !important;
+    background:
+      linear-gradient(180deg, rgba(4, 5, 6, 0.12) 0%, rgba(4, 5, 6, 0.20) 42%, rgba(4, 5, 6, 0.50) 100%),
+      url("874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp") center center / cover no-repeat,
+      #08090a !important;
+    overflow: hidden !important;
+  }
+
+  .deck-page .deck-hero::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    display: block !important;
+    background: linear-gradient(180deg, transparent 46%, rgba(0, 0, 0, 0.18) 100%) !important;
+    pointer-events: none !important;
+  }
+
+  .deck-page .deck-hero .hero-kitchen,
+  .deck-page .deck-hero .curve-stroke,
+  .deck-page .deck-hero .hero-mobile-collage,
+  .deck-page .deck-hero .hero-inline-review,
+  .deck-page .hero-review-section,
+  .deck-page .deck-hero .mobile-inline-estimate-section {
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-inner {
+    position: relative !important;
+    z-index: 3 !important;
+    display: block !important;
+    width: calc(100% - 20px) !important;
+    min-height: calc(100svh - 74px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  .deck-page .deck-hero .hero-copy {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: calc(100svh - 74px) !important;
+    padding: 0 0 clamp(72px, 11svh, 104px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .deck-page .deck-hero .hero-copy > h1:not(.hero-mobile-title),
+  .deck-page .deck-hero .hero-copy > .subheadline:not(.hero-mobile-subheadline) {
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-message-card {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 12px !important;
+    padding: 18px 17px 17px !important;
+    box-sizing: border-box !important;
+    color: #fff !important;
+    background: rgba(5, 6, 7, 0.70) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 15px !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.27) !important;
+    backdrop-filter: blur(7px) !important;
+    -webkit-backdrop-filter: blur(7px) !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-title {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 0 10px !important;
+    color: #fff !important;
+    font-size: clamp(30px, 8.6vw, 38px) !important;
+    font-weight: 800 !important;
+    line-height: 1.02 !important;
+    letter-spacing: -1.1px !important;
+    text-wrap: balance !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-title .accent {
+    color: inherit !important;
+  }
+
+  .deck-page .deck-hero .hero-mobile-subheadline {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    line-height: 1.48 !important;
+  }
+
+  .deck-page .deck-hero .hero-actions {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .deck-page .deck-hero .hero-actions .btn-secondary {
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-actions .btn-primary {
+    position: relative !important;
+    isolation: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 58px !important;
+    padding: 0 18px !important;
+    overflow: visible !important;
+    color: #fff !important;
+    background: var(--deck-orange) !important;
+    border: 0 !important;
+    border-radius: 13px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24) !important;
+    font-size: 14.5px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0 !important;
+    text-shadow: none !important;
+    transform: none !important;
+  }
+
+  .deck-page .deck-hero .hero-actions .btn-primary::before,
+  .deck-page .deck-hero .hero-actions .btn-primary::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .deck-page .deck-hero .hero-actions .btn-primary:hover,
+  .deck-page .deck-hero .hero-actions .btn-primary:active {
+    background: var(--deck-orange-dark) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24) !important;
+    transform: none !important;
+  }
+}
