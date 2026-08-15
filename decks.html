@@ -1,948 +1,1523 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<!-- Google Analytics 4: ZH Homes deck campaign -->
-<script src="google-analytics.js"></script>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>In-Person Deck Estimate Within 48 Hours | ZH Homes</title>
-<meta content="Request an in-person deck estimate within 48 hours from ZH Homes for new or replacement decks in Salem, Keizer, Silverton, and nearby Oregon communities." name="description"/>
-<link href="https://www.zhhomeco.com/decks.html" rel="canonical"/>
-<link href="2.png?v=5" rel="icon" type="image/png"/>
-<link href="2.png?v=5" rel="shortcut icon" type="image/png"/>
-<link href="2.png?v=5" rel="apple-touch-icon"/>
-<link as="image" fetchpriority="high" href="2.png" rel="preload"/>
-<link as="image" fetchpriority="high" href="zh-homes-hero-preload.png" rel="preload"/>
-<link as="image" fetchpriority="high" href="874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp" rel="preload"/>
-<link crossorigin="" href="https://images.pexels.com" rel="preconnect"/>
-<link href="style.css" rel="stylesheet"/>
-<link href="deck.css" rel="stylesheet"/>
-<meta content="In-Person Deck Estimate Within 48 Hours | ZH Homes" property="og:title"/>
-<meta content="Request your in-person deck estimate within 48 hours from ZH Homes." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://www.zhhomeco.com/decks.html" property="og:url"/>
-<meta content="https://www.zhhomeco.com/874d1223-50ee-45da-a0dd-12cf574aed49%20(1).webp" property="og:image"/>
-<style>
-/* Final placement/visibility fixes only */
-html,
-body.deck-page {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
+  <!-- Google Analytics 4: ZH Homes deck campaign -->
+  <script src="google-analytics.js"></script>
 
-.site-header,
-.site-header .header-inner {
-  background: #ffffff !important;
-  box-shadow: none !important;
-  filter: none !important;
-  border-top: 0 !important;
-  margin-top: 0 !important;
-}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free In-Person Deck Estimate Within 48 Hours | ZH Homes</title>
+  <meta name="description" content="Get a free in-person deck estimate within 48 hours from ZH Homes for new decks and deck replacements in Salem, Keizer, Silverton, and nearby Oregon communities.">
+  <link rel="canonical" href="https://www.zhhomeco.com/decks.html">
 
-.site-header::before,
-.site-header::after,
-.site-header .header-inner::before,
-.site-header .header-inner::after {
-  content: none !important;
-  display: none !important;
-  box-shadow: none !important;
-}
+  <link rel="icon" href="2.png?v=5" type="image/png">
+  <link rel="shortcut icon" href="2.png?v=5" type="image/png">
+  <link rel="apple-touch-icon" href="2.png?v=5">
 
-/* Mobile hero estimate form is hidden by default and enabled only on phones in deck.css. */
-.mobile-inline-estimate-section {
-  display: none;
-}
+  <link rel="preload" as="image" href="2.png">
+  <link rel="preload" as="image" href="874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp" fetchpriority="high">
 
-/* On desktop the wrapper has no visual effect. Mobile styling lives in deck.css. */
-.hero-message-card {
-  display: contents;
-}
-</style>
+  <meta property="og:title" content="Free In-Person Deck Estimate Within 48 Hours | ZH Homes">
+  <meta property="og:description" content="Planning a new deck or replacing an old one? Get a free, no-obligation in-person estimate from a local licensed contractor.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.zhhomeco.com/decks.html">
+  <meta property="og:image" content="https://www.zhhomeco.com/874d1223-50ee-45da-a0dd-12cf574aed49%20(1).webp">
+
+  <style>
+    :root {
+      --ink: #161616;
+      --muted: #646464;
+      --line: #e6e6e6;
+      --soft: #f7f7f5;
+      --white: #ffffff;
+      --orange: #e85f0d;
+      --orange-dark: #c64a00;
+      --orange-soft: #fff2e9;
+      --green: #16784b;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.13);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body.deck-page {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 12px;
+      top: 12px;
+      z-index: 9999;
+      transform: translateY(-160%);
+      background: #000;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+
+    .skip-link:focus {
+      transform: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: 78px;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+
+    .brand img {
+      width: 82px;
+      height: auto;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .license-mini {
+      text-align: right;
+      line-height: 1.15;
+    }
+
+    .license-mini strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .license-mini span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .header-cta,
+    .primary-cta,
+    .submit-button {
+      border: 0;
+      border-radius: 12px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 850;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+
+    .header-cta {
+      padding: 12px 17px;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover,
+    .primary-cta:hover,
+    .submit-button:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .deck-hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(232,95,13,.13), transparent 32%),
+        linear-gradient(180deg, #fff 0%, #faf9f7 100%);
+    }
+
+    .hero-shell {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 74px 22px 54px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(390px, .82fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 8px 11px;
+      border: 1px solid #ffd7bc;
+      border-radius: 999px;
+      background: var(--orange-soft);
+      color: #8f3703;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      max-width: 800px;
+      font-size: clamp(45px, 5.1vw, 76px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 900;
+    }
+
+    .hero-copy h1 .accent {
+      color: var(--orange);
+    }
+
+    .hero-lede {
+      max-width: 720px;
+      margin: 25px 0 0;
+      color: #4f4f4f;
+      font-size: clamp(18px, 1.55vw, 22px);
+      line-height: 1.55;
+    }
+
+    .offer-points {
+      margin: 27px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px 18px;
+      list-style: none;
+    }
+
+    .offer-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-weight: 750;
+      font-size: 14px;
+    }
+
+    .offer-points li::before {
+      content: "✓";
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #e9f7ef;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .hero-call-row {
+      margin-top: 31px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-call-row .primary-cta {
+      padding: 15px 20px;
+    }
+
+    .phone-link {
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .phone-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .offer-note {
+      margin-top: 24px;
+      padding: 16px 18px;
+      max-width: 690px;
+      border-left: 4px solid var(--orange);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(0,0,0,.055);
+      color: #444;
+      font-size: 14px;
+    }
+
+    .offer-note strong {
+      color: var(--ink);
+    }
+
+    .hero-quick-card {
+      position: relative;
+      border-radius: 24px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .form-top {
+      padding: 25px 26px 18px;
+      background: #171717;
+      color: #fff;
+    }
+
+    .free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      color: #ffd4b9;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .form-top h2 {
+      margin: 0;
+      font-size: 29px;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .form-top p {
+      margin: 9px 0 0;
+      color: #d7d7d7;
+      font-size: 14px;
+    }
+
+    .form-body {
+      padding: 23px 26px 26px;
+    }
+
+    .progress-wrap {
+      margin-bottom: 18px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      height: 6px;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #ececec;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 50%;
+      border-radius: inherit;
+      background: var(--orange);
+      transition: width .2s ease;
+    }
+
+    .estimate-step[hidden] {
+      display: none !important;
+    }
+
+    .estimate-step-heading {
+      margin-bottom: 14px;
+    }
+
+    .estimate-step-heading span {
+      display: block;
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .estimate-step-heading small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .field {
+      margin-bottom: 13px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: #333;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 13px;
+      border: 1px solid #d5d5d5;
+      border-radius: 10px;
+      background: #fff;
+      color: #111;
+      outline: none;
+      transition: border .16s ease, box-shadow .16s ease;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(232,95,13,.13);
+    }
+
+    .field-invalid {
+      border-color: #c61b1b !important;
+      box-shadow: 0 0 0 3px rgba(198,27,27,.1) !important;
+    }
+
+    .estimate-nav {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 16px;
+    }
+
+    .estimate-nav .submit-button,
+    .next-button {
+      min-height: 52px;
+      flex: 1;
+      padding: 13px 16px;
+    }
+
+    .next-button {
+      border: 0;
+      border-radius: 12px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .back-button {
+      min-height: 52px;
+      padding: 13px 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      background: #fff;
+      color: #333;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .form-assurance {
+      margin: 13px 0 0;
+      color: #696969;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .form-status {
+      min-height: 18px;
+      margin-top: 8px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .form-status.error {
+      color: #b01616;
+    }
+
+    .form-status.success {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
+
+    .hero-form-success {
+      position: absolute;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      place-items: center;
+      padding: 25px;
+      text-align: center;
+      background: rgba(255,255,255,.98);
+    }
+
+    .hero-form-success.active {
+      display: grid;
+    }
+
+    .success-inner span {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #e8f7ef;
+      color: var(--green);
+      font-size: 28px;
+      font-weight: 950;
+    }
+
+    .success-inner strong {
+      display: block;
+      font-size: 24px;
+    }
+
+    .success-inner p {
+      margin: 8px auto 0;
+      max-width: 320px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .trust-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .trust-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 19px 22px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .trust-item {
+      padding: 4px 22px;
+      border-right: 1px solid var(--line);
+    }
+
+    .trust-item:first-child {
+      padding-left: 0;
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .trust-item span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section {
+      padding: 88px 22px;
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .section h2 {
+      margin: 10px 0 0;
+      max-width: 780px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .benefits {
+      background: var(--soft);
+    }
+
+    .benefit-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .benefit-card {
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .benefit-number {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--orange-soft);
+      color: var(--orange-dark);
+      font-weight: 950;
+    }
+
+    .benefit-card h3 {
+      margin: 17px 0 8px;
+      font-size: 21px;
+      letter-spacing: -.025em;
+    }
+
+    .benefit-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .proof-image {
+      overflow: hidden;
+      min-height: 430px;
+      border-radius: 22px;
+      background: #eee;
+    }
+
+    .proof-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+    }
+
+    .review-card {
+      margin-top: 24px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .stars {
+      color: var(--orange);
+      font-size: 17px;
+      letter-spacing: 2px;
+    }
+
+    .review-card blockquote {
+      margin: 12px 0 15px;
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .review-card cite {
+      color: var(--muted);
+      font-size: 13px;
+      font-style: normal;
+    }
+
+    .services {
+      background: #171717;
+      color: #fff;
+    }
+
+    .services .section-intro {
+      color: #bcbcbc;
+    }
+
+    .service-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .service-card {
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 17px;
+      background: rgba(255,255,255,.045);
+    }
+
+    .service-card h3 {
+      margin: 0 0 7px;
+      font-size: 21px;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: #bdbdbd;
+      font-size: 14px;
+    }
+
+    .process-grid {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .process-step {
+      padding-top: 22px;
+      border-top: 3px solid #202020;
+    }
+
+    .process-step strong {
+      color: var(--orange);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .process-step h3 {
+      margin: 10px 0 7px;
+      font-size: 21px;
+    }
+
+    .process-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .final-cta {
+      padding: 78px 22px;
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+    }
+
+    .final-cta-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      margin: 0;
+      font-size: clamp(36px, 4.5vw, 58px);
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .final-cta p {
+      max-width: 640px;
+      margin: 16px auto 0;
+      color: rgba(255,255,255,.88);
+      font-size: 17px;
+    }
+
+    .final-actions {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .final-actions a {
+      min-width: 200px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .final-actions .light {
+      background: #fff;
+      color: #111;
+    }
+
+    .final-actions .outline {
+      border: 1px solid rgba(255,255,255,.55);
+      color: #fff;
+    }
+
+    .faq-grid {
+      margin-top: 32px;
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+      padding: 0 18px;
+    }
+
+    summary {
+      padding: 18px 0;
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    details p {
+      margin: -3px 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer {
+      background: #101010;
+      color: #fff;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 38px 22px 100px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      max-width: 420px;
+    }
+
+    .footer-brand strong {
+      font-size: 20px;
+    }
+
+    .footer-brand p {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .mobile-cta-bar {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 2000;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 8px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 14px 44px rgba(0,0,0,.22);
+    }
+
+    .mobile-cta-bar.is-visible {
+      display: grid;
+    }
+
+    .mobile-cta-bar a {
+      min-height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .cta-quote {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .cta-call {
+      background: #171717;
+      color: #fff;
+    }
+
+    .mobile-cta-bar svg {
+      display: none;
+    }
+
+    @media (max-width: 950px) {
+      .hero-shell {
+        grid-template-columns: 1fr;
+        gap: 34px;
+        padding-top: 46px;
+      }
+
+      .hero-copy {
+        text-align: left;
+      }
+
+      .hero-copy h1 {
+        max-width: 760px;
+      }
+
+      .offer-points {
+        max-width: 680px;
+      }
+
+      .hero-quick-card {
+        max-width: 680px;
+      }
+
+      .trust-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(-n+2) {
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .trust-item:nth-child(n+3) {
+        padding-top: 14px;
+      }
+
+      .benefit-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        min-height: 68px;
+        padding: 8px 14px;
+      }
+
+      .brand img {
+        width: 69px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .license-mini {
+        display: none;
+      }
+
+      .header-cta {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+
+      .hero-shell {
+        padding: 36px 16px 34px;
+        gap: 28px;
+      }
+
+      .eyebrow {
+        margin-bottom: 15px;
+        font-size: 10px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(40px, 12vw, 58px);
+      }
+
+      .hero-lede {
+        margin-top: 18px;
+        font-size: 17px;
+      }
+
+      .offer-points {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .hero-call-row {
+        margin-top: 24px;
+      }
+
+      .hero-call-row .primary-cta {
+        width: 100%;
+        text-align: center;
+      }
+
+      .offer-note {
+        margin-top: 18px;
+        font-size: 13px;
+      }
+
+      .form-top,
+      .form-body {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .form-top h2 {
+        font-size: 25px;
+      }
+
+      .trust-inner {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .trust-item {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .trust-item:first-child {
+        padding-left: 0;
+      }
+
+      .trust-item strong {
+        font-size: 12px;
+      }
+
+      .trust-item span {
+        font-size: 10px;
+      }
+
+      .section {
+        padding: 66px 16px;
+      }
+
+      .benefit-grid {
+        margin-top: 28px;
+      }
+
+      .proof-image,
+      .proof-image img {
+        min-height: 300px;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta {
+        padding: 64px 16px 86px;
+      }
+
+      .footer-inner {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      body.sticky-cta-visible {
+        padding-bottom: 78px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
+
 <body class="deck-page">
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header">
-<div class="header-inner">
-<a aria-label="ZH Homes home" class="brand" href="index.html">
-<div aria-hidden="true" class="brand-logo">
-<img alt="ZH Homes logo" decoding="async" fetchpriority="high" height="54" src="2.png" width="112"/>
-</div>
-<div class="brand-text">
-<strong>ZH Homes</strong>
-</div>
-</a>
-<div aria-label="License and estimate actions" class="header-actions">
-<div aria-label="Licensed, bonded, and insured, Oregon CCB number 260679" class="header-license-badge">
-<span>Licensed, Bonded &amp; Insured</span>
-<strong>
-<span class="mobile-license-word">Licensed, Bonded &amp; Insured</span>
-<span class="license-desktop-word">Oregon </span>CCB #260679
-          </strong>
-</div>
-<a class="header-cta" href="#estimate">Get My Estimate</a>
-</div>
-</div>
-</header>
-
-<main id="main-content" tabindex="-1">
-
-<section aria-labelledby="hero-title" class="hero deck-hero">
-
-<svg aria-hidden="true" class="hero-kitchen" preserveaspectratio="none" viewbox="0 0 1440 900">
-<defs>
-<clippath clippathunits="userSpaceOnUse" id="deckHeroClip">
-<path d="
-              M 900 0
-              C 850 72, 799 155, 784 254
-              C 761 405, 838 488, 820 604
-              C 806 702, 862 814, 1022 900
-              L 1440 900
-              L 1440 0
-              Z
-            "></path>
-</clippath>
-</defs>
-<image clip-path="url(#deckHeroClip)" height="900" href="874d1223-50ee-45da-a0dd-12cf574aed49 (1).webp" preserveaspectratio="xMidYMid slice" width="1040" x="500" y="0"/>
-</svg>
-
-<svg aria-hidden="true" class="curve-stroke" preserveaspectratio="none" viewbox="0 0 1440 900">
-<path d="
-          M 900 0
-          C 850 72, 799 155, 784 254
-          C 761 405, 838 488, 820 604
-          C 806 702, 862 814, 1022 900
-        "></path>
-</svg>
-
-<div class="hero-inner">
-<div class="hero-copy">
-
-<h1 id="hero-title">
-            Get your in-person deck estimate <span class="accent">within 48 hours.</span>
-</h1>
-
-<p class="subheadline">
-            Professional deck construction and replacement throughout Salem, Keizer, Silverton, and the Willamette Valley.
-</p>
-
-<div class="hero-message-card">
-<h1 class="hero-mobile-title">
-            Get your in-person deck estimate within 48 hours.
-</h1>
-
-<p class="subheadline hero-mobile-subheadline">
-            Professional deck construction and replacement throughout Salem, Keizer, Silverton, and the Willamette Valley.
-</p>
-</div>
-
-<div class="hero-actions">
-<a class="btn btn-primary" href="#estimate">Get My In-Person Estimate</a>
-<a class="btn btn-secondary tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
-</div>
-
-<div aria-label="Featured customer review" class="hero-inline-review">
-<div class="hero-review-card">
-<div class="hero-review-top">
-<span class="hero-review-badge">5-Star Review</span>
-</div>
-<p class="hero-review-quote">
-                “If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule.”
-</p>
-<div class="hero-review-bottom">
-<div class="hero-review-avatar">TB</div>
-<div class="hero-review-author">
-<strong>Tawnya Bacchetti</strong>
-<span>Google Review</span>
-</div>
-</div>
-</div>
-</div>
-
-<section aria-label="Request your in-person deck estimate" class="mobile-inline-estimate-section" id="mobile-estimate">
-<div class="mobile-inline-estimate-inner">
-<div class="contact-form-card deck-form-card mobile-hero-form-card">
-
-<div class="deck-form-heading mobile-hero-form-heading">
-<h3>Request Your In-Person Deck Estimate</h3>
-<p>Enter your contact information and choose whether you need a new deck build or a deck replacement.</p>
-</div>
-
-<form class="quote-form deck-multistep-form mobile-hero-estimate-form" data-form-source="Mobile Hero One-Page Estimate" id="mobileInlineDeckQuoteForm" novalidate="">
-
-<div aria-hidden="true" class="honeypot">
-<label for="mobileInlineCompanyWebsite">Company Website</label>
-<input autocomplete="off" id="mobileInlineCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-</div>
-
-<section class="estimate-step active" data-step="0" data-step-title="Estimate information">
-
-<div class="hero-form-row">
-<div class="field">
-<label for="mobileInlineFullName">Full Name</label>
-<input autocomplete="name" id="mobileInlineFullName" name="fullName" placeholder="Your name" required="" type="text"/>
-</div>
-
-<div class="field">
-<label for="mobileInlinePhone">Phone Number</label>
-<input autocomplete="tel" id="mobileInlinePhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
-</div>
-</div>
-
-<div class="hero-form-row">
-<div class="field">
-<label for="mobileInlineEmail">Email</label>
-<input autocomplete="email" id="mobileInlineEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
-
-<div class="field">
-<label for="mobileInlineProjectType">Deck Project</label>
-<select id="mobileInlineProjectType" name="projectType" required="">
-<option value="">Choose one</option>
-<option value="Build a new deck">Brand-new deck build</option>
-<option value="Replace an existing deck">Deck replacement</option>
-</select>
-</div>
-</div>
-
-<div class="estimate-nav single-action mobile-hero-submit-wrap">
-<button class="submit-button estimate-submit" type="submit">Request My In-Person Estimate</button>
-</div>
-
-<p class="hero-form-assurance">No obligation. We’ll follow up to schedule your in-person estimate within 48 hours.</p>
-<div aria-live="polite" class="form-status" data-form-status="" role="status"></div>
-
-</section>
-</form>
-
-<div aria-hidden="true" class="deck-success-overlay" data-success-overlay="">
-<div class="deck-success-box">
-<span aria-hidden="true" class="deck-success-check">✓</span>
-<strong>Request Sent</strong>
-<p>Thanks. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<div aria-label="Recent project highlights" class="hero-mobile-collage">
-
-<div class="hero-mobile-collage-main">
-<img alt="Deck and outdoor living design inspiration" decoding="async" loading="lazy" src="https://images.pexels.com/photos/37588542/pexels-photo-37588542.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100"/>
-</div>
-
-<div class="hero-mobile-collage-side">
-<div class="hero-mobile-collage-small">
-<img alt="Wood deck with dining and grilling space" decoding="async" loading="lazy" src="https://images.pexels.com/photos/12700434/pexels-photo-12700434.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900"/>
-</div>
-</div>
-
-</div>
-</div>
-
-<aside aria-labelledby="hero-form-title" class="hero-quick-card" id="hero-estimate">
-
-<div class="hero-quick-heading">
-<span>48-Hour Deck Estimate</span>
-<h2 id="hero-form-title">Request your in-person deck estimate</h2>
-</div>
-
-<form class="hero-quick-form deck-multistep-form one-page-deck-form" data-form-source="Hero One-Page Estimate" id="heroDeckQuoteForm" novalidate="">
-
-<div aria-hidden="true" class="honeypot">
-<label for="heroCompanyWebsite">Company Website</label>
-<input autocomplete="off" id="heroCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-</div>
-
-<section class="estimate-step active" data-step="0" data-step-title="Estimate information">
-
-<div class="hero-form-row">
-<div class="field">
-<label for="heroFullName">Full Name</label>
-<input autocomplete="name" id="heroFullName" name="fullName" placeholder="Your name" required="" type="text"/>
-</div>
-
-<div class="field">
-<label for="heroPhone">Phone Number</label>
-<input autocomplete="tel" id="heroPhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
-</div>
-</div>
-
-<div class="hero-form-row">
-<div class="field">
-<label for="heroEmail">Email</label>
-<input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
-
-<div class="field">
-<label for="heroProjectType">Deck Project</label>
-<select id="heroProjectType" name="projectType" required="">
-<option value="">Choose one</option>
-<option value="Build a new deck">Brand-new deck build</option>
-<option value="Replace an existing deck">Deck replacement</option>
-</select>
-</div>
-</div>
-
-<div class="estimate-nav single-action">
-<button class="submit-button estimate-submit" type="submit">Get My In-Person Estimate</button>
-</div>
-
-<p class="hero-form-assurance">No obligation. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-<div aria-live="polite" class="form-status" data-form-status="" role="status"></div>
-
-</section>
-</form>
-
-<div aria-hidden="true" class="hero-form-success" data-success-overlay="">
-<span aria-hidden="true">✓</span>
-<strong>Request Sent</strong>
-<p>Thanks. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-</div>
-
-</aside>
-</div>
-</section>
-
-<section aria-label="ZH Homes deck project trust points" class="quick-stats">
-<div class="quick-stats-inner">
-
-<div class="stat-box">
-<div>
-<strong>Licensed</strong>
-<span>Bonded &amp; Insured • Oregon CCB #260679</span>
-</div>
-</div>
-
-<div class="stat-box">
-<div>
-<strong>Locally Owned</strong>
-<span>Salem-Area Contractor</span>
-</div>
-</div>
-
-<div class="stat-box">
-<div>
-<strong>48-Hour Estimates</strong>
-<span>In-Person at Your Property</span>
-</div>
-</div>
-
-<div class="stat-box">
-<div>
-<strong>Service Area</strong>
-<span>Salem, Keizer &amp; Silverton</span>
-</div>
-</div>
-
-</div>
-</section>
-
-<!-- Illustrative imagery in the Deck Options section is sourced from Pexels. See PHOTO-CREDITS.txt. -->
-
-<section aria-label="Featured customer review" class="hero-review-section">
-
-<div class="hero-review-card">
-
-<div class="hero-review-top">
-<span class="hero-review-badge">5-Star Review</span>
-</div>
-
-<p class="hero-review-quote">
-          “If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule.”
-</p>
-
-<div class="hero-review-bottom">
-
-<div class="hero-review-avatar">TB</div>
-
-<div class="hero-review-author">
-<strong>Tawnya Bacchetti</strong>
-<span>Google Review</span>
-</div>
-
-</div>
-</div>
-</section>
-
-<section aria-labelledby="deck-gallery-title" class="deck-project-gallery-section" id="gallery">
-
-<div class="deck-project-gallery-inner">
-
-<div class="deck-project-gallery-heading">
-<div class="deck-project-gallery-eyebrow">Deck Project Ideas</div>
-<h2 id="deck-gallery-title">See What’s Possible, Then Get an In-Person Estimate</h2>
-</div>
-
-<div aria-label="Deck design inspiration gallery" class="deck-project-gallery-grid deck-project-gallery-grid-four">
-
-<figure class="deck-project-gallery-card gallery-large-left">
-<img alt="Custom wood deck with outdoor dining area" decoding="async" loading="lazy" src="https://3rdgenpainting.com/wp-content/uploads/2025/04/covered-deck-ideas-and-designs.jpg"/>
-<figcaption>
-<span class="deck-project-tag">Wood Deck</span>
-<strong>Custom outdoor dining deck</strong>
-</figcaption>
-</figure>
-
-<figure class="deck-project-gallery-card gallery-small-right">
-<img alt="Low-maintenance composite deck with covered seating" decoding="async" loading="lazy" src="https://apdecks.com/wp-content/uploads/2024/01/Deckorators-composite-decking-contractors-near-me-in-san-antonio-texas.webp"/>
-<figcaption>
-<span class="deck-project-tag">Composite Deck</span>
-<strong>Low-maintenance composite deck</strong>
-</figcaption>
-</figure>
-
-<figure class="deck-project-gallery-card gallery-small-left">
-<img alt="Deck stairs and railing detail" decoding="async" loading="lazy" src="https://images.pexels.com/photos/10847201/pexels-photo-10847201.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1100"/>
-<figcaption>
-<span class="deck-project-tag">Stairs &amp; Railing</span>
-<strong>New stairs and railing</strong>
-</figcaption>
-</figure>
-
-<figure class="deck-project-gallery-card gallery-large-right">
-<img alt="Backyard deck with lounge seating connected to the home" decoding="async" loading="lazy" src="https://images.pexels.com/photos/8031887/pexels-photo-8031887.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1500"/>
-<figcaption>
-<span class="deck-project-tag">Outdoor Living</span>
-<strong>Backyard entertaining deck</strong>
-</figcaption>
-</figure>
-
-</div>
-</div>
-</section>
-
-<section class="services-section" id="services">
-
-<div class="services-inner">
-
-<div class="services-top">
-
-<div class="services-heading">
-<div class="services-eyebrow">Decks We Can Estimate</div>
-<h2>Choose Your Deck, Then Get an In-Person Estimate Within 48 Hours</h2>
-</div>
-
-<a class="services-btn" href="#estimate">
-<span>Get My Estimate</span>
-</a>
-
-</div>
-
-<div class="services-grid">
-
-<article class="service-card">
-<div class="service-image">
-<div class="service-number">01</div>
-<img alt="Backyard wood deck with seating connected to a home" decoding="async" loading="lazy" src="https://images.pexels.com/photos/8031887/pexels-photo-8031887.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/>
-</div>
-<div class="service-content">
-<div>
-<h3>Custom Deck Design</h3>
-<p>Get a layout planned around your home, yard, furniture, and the way you want to use the space.</p>
-</div>
-<a class="service-link" href="#estimate">Get an Estimate</a>
-</div>
-</article>
-
-<article class="service-card">
-<div class="service-image">
-<div class="service-number">02</div>
-<img alt="Wood deck with outdoor dining furniture and grill" class="service-img-2" decoding="async" loading="lazy" src="https://images.pexels.com/photos/12700434/pexels-photo-12700434.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/>
-</div>
-<div class="service-content">
-<div>
-<h3>Wood Decks</h3>
-<p>Get the warm, natural look of wood with flexible stain and finish options and a lower upfront cost on many projects.</p>
-</div>
-<a class="service-link" href="#estimate">Get an Estimate</a>
-</div>
-</article>
-
-<article class="service-card">
-<div class="service-image">
-<div class="service-number">03</div>
-<img alt="Composite deck with a contrasting border and finished railing" class="service-img-3" decoding="async" loading="lazy" src="https://www.kingcitypropertyservice.com/uploads/1/0/1/0/101002410/composite-deck-finish-with-border-vaughan-650_orig.jpg"/>
-</div>
-<div class="service-content">
-<div>
-<h3>Composite Decks</h3>
-<p>Enjoy a clean, consistent look with less staining, sealing, and ongoing maintenance.</p>
-</div>
-<a class="service-link" href="#estimate">Get an Estimate</a>
-</div>
-</article>
-
-<article class="service-card">
-<div class="service-image">
-<div class="service-number">04</div>
-<img alt="Elevated wood deck stairs and framing" class="service-img-4" decoding="async" loading="lazy" src="https://images.pexels.com/photos/10847201/pexels-photo-10847201.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/>
-</div>
-<div class="service-content">
-<div>
-<h3>Stairs &amp; Railings</h3>
-<p>Create safe, comfortable access with stairs and railings designed to fit the deck and your home.</p>
-</div>
-<a class="service-link" href="#estimate">Get an Estimate</a>
-</div>
-</article>
-
-<article class="service-card">
-<div class="service-image">
-<div class="service-number">05</div>
-<img alt="Elevated backyard deck on an open property" class="service-img-5" decoding="async" loading="lazy" src="https://images.pexels.com/photos/36777949/pexels-photo-36777949.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"/>
-</div>
-<div class="service-content">
-<div>
-<h3>Sloped-Yard Decks</h3>
-<p>Turn difficult elevation into usable outdoor space with a plan that accounts for footings, drainage, access, and stairs.</p>
-</div>
-<a class="service-link" href="#estimate">Get an Estimate</a>
-</div>
-</article>
-
-</div>
-</div>
-</section>
-
-<section class="mission-section" id="work">
-
-<div class="mission-inner">
-
-<div class="mission-top">
-
-<div class="mission-title">
-<div class="mission-eyebrow">Why Start With ZH Homes</div>
-<h2>A Clearer Way to Get Your Deck Project Priced</h2>
-</div>
-
-<div class="mission-image-box">
-<img alt="Recent ZH Homes project work" decoding="async" loading="lazy" src="before_after_exact_originals.jpg"/>
-</div>
-
-</div>
-
-<div class="mission-strip">
-
-<div class="mission-stat">
-<strong>In-Person Within 48 Hours</strong>
-<span>Get someone at your property quickly so you can move the project forward.</span>
-</div>
-
-<div class="mission-stat">
-<strong>Estimate at Your Property</strong>
-<span>We can see the yard, access, existing structure, and project conditions in person.</span>
-</div>
-
-<div class="mission-stat">
-<strong>Local Deck Contractor</strong>
-<span>Work with a licensed, bonded, and insured Salem-area contractor.</span>
-</div>
-
-<div class="mission-stat">
-<strong>Clear Next Step</strong>
-<span>Understand the project and estimate before deciding whether to move forward.</span>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="process-section" id="process">
-
-<div class="process-inner">
-
-<div class="process-top">
-<div class="process-eyebrow">The 48-Hour Estimate Process</div>
-<h2>Get Your In-Person Deck Estimate in Four Simple Steps</h2>
-<p>Request an estimate, schedule the visit, walk the property, and get a clear next step.</p>
-</div>
-
-<div class="process-steps">
-
-<div class="process-card">
-<div class="process-number">01</div>
-<div class="process-icon">
-<svg fill="none" viewbox="0 0 24 24">
-<path d="M6 7H18V17H6V7Z" stroke="currentColor" stroke-width="2"></path>
-<path d="M8 10H16" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-<path d="M8 14H13" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-</svg>
-</div>
-<h3>Request Your Estimate</h3>
-<p>Share your contact information, project location, deck type, and any helpful yard photos.</p>
-</div>
-
-<div class="process-card">
-<div class="process-number">02</div>
-<div class="process-icon">
-<svg fill="none" viewbox="0 0 24 24">
-<path d="M7 3V6" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-<path d="M17 3V6" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-<rect height="15" rx="2" stroke="currentColor" stroke-width="2" width="16" x="4" y="5"></rect>
-<path d="M4 10H20" stroke="currentColor" stroke-width="2"></path>
-</svg>
-</div>
-<h3>Schedule Within 48 Hours</h3>
-<p>We follow up to arrange an in-person deck estimate at your property within 48 hours.</p>
-</div>
-
-<div class="process-card">
-<div class="process-number">03</div>
-<div class="process-icon">
-<svg fill="none" viewbox="0 0 24 24">
-<circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"></circle>
-<path d="M12 8V12L15 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</div>
-<h3>Walk the Property</h3>
-<p>We review the site, measurements, access, existing conditions, materials, and project goals in person.</p>
-</div>
-
-<div class="process-card">
-<div class="process-number">04</div>
-<div class="process-icon">
-<svg fill="none" viewbox="0 0 24 24">
-<path d="M4 12L9.5 17.5L20 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path>
-</svg>
-</div>
-<h3>Get a Clear Estimate</h3>
-<p>Get a project-specific estimate and a clear next step before deciding whether to move forward.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="testimonials-section" id="testimonials">
-
-<div class="testimonials-inner">
-
-<div class="testimonials-left">
-<div class="testimonials-eyebrow">Customer Reviews</div>
-<h2>Why Homeowners Trust ZH Homes With Their Projects</h2>
-<p class="testimonials-mobile-subheadline">Verified Google feedback from homeowners who value dependable communication, fair pricing, and work done right.</p>
-
-<div class="testimonials-actions">
-<a class="google-reviews-btn" href="https://share.google/Ry8oCcymMj5uCYeah" rel="noopener noreferrer" target="_blank">See Google Reviews</a>
-</div>
-</div>
-
-<div class="review-carousel deck-review-carousel" id="deckReviewCarousel">
-
-<button aria-label="Previous review" class="review-arrow prev" type="button">‹</button>
-<button aria-label="Next review" class="review-arrow next" type="button">›</button>
-
-<article class="review-slide active">
-<div class="review-quote-mark">"</div>
-<div aria-label="5 out of 5 stars" class="review-stars">
-<span class="review-star-icons">★★★★★</span>
-<span class="review-star-label">Google Review</span>
-</div>
-<p class="review-text">If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule. I know he is in high demand, so don’t wait.</p>
-<div class="review-person">
-<div>
-<strong>Tawnya Bacchetti</strong>
-<span>Google Review</span>
-</div>
-<div class="review-counter">01 / 03</div>
-</div>
-</article>
-
-<article class="review-slide">
-<div class="review-quote-mark">"</div>
-<div aria-label="5 out of 5 stars" class="review-stars">
-<span class="review-star-icons">★★★★★</span>
-<span class="review-star-label">Google Review</span>
-</div>
-<p class="review-text">ZH homes replaced our kitchen, lightening, flooring, deck and railing. The owner, Zach, brings creative ideas and suggestions. The work is very well done and prices very reasonable.</p>
-<div class="review-person">
-<div>
-<strong>Amy Wray</strong>
-<span>Google Review</span>
-</div>
-<div class="review-counter">02 / 03</div>
-</div>
-</article>
-
-<article class="review-slide">
-<div class="review-quote-mark">"</div>
-<div aria-label="5 out of 5 stars" class="review-stars">
-<span class="review-star-icons">★★★★★</span>
-<span class="review-star-label">Google Rating</span>
-</div>
-
-<p class="review-text review-rating-only">
-<strong>5 out of 5 stars</strong>
-<span>Rating left by Jan Bryant on Google.</span>
-</p>
-
-<div class="review-person">
-<div>
-<strong>Jan Bryant</strong>
-<span>Google Rating</span>
-</div>
-<div class="review-counter">03 / 03</div>
-</div>
-
-</article>
-
-<div aria-label="Review navigation" class="review-dots">
-<button aria-label="Go to review 1" class="review-dot active" type="button"></button>
-<button aria-label="Go to review 2" class="review-dot" type="button"></button>
-<button aria-label="Go to review 3" class="review-dot" type="button"></button>
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="contact-section deck-estimate-section" id="estimate">
-
-<div class="contact-inner">
-
-<div class="contact-content">
-
-<div class="contact-eyebrow">48-Hour In-Person Estimate</div>
-
-<h2>Get Your In-Person Deck Estimate Within 48 Hours</h2>
-
-<p>
-            Tell us about your deck project. We’ll review the details and contact you to schedule an in-person visit at your property within 48 hours.
-</p>
-
-<ul aria-label="Deck estimate information" class="contact-info-list">
-<li class="contact-info-item">
-<a class="tracked-call" href="tel:5039105466">Call or text: (503) 910-5466</a>
-</li>
-<li class="contact-info-item">
-<span>Serving Salem, Keizer, Silverton, and nearby communities</span>
-</li>
-<li class="contact-info-item">
-<span>No obligation. Get a clear, project-specific estimate before deciding what to do next.</span>
-</li>
-</ul>
-
-</div>
-
-<div class="contact-form-card deck-form-card">
-
-<div class="deck-form-heading">
-<h3>Request Your In-Person Deck Estimate</h3>
-<p>Enter your contact information and choose whether you need a new deck build or a deck replacement.</p>
-</div>
-
-<form class="quote-form deck-multistep-form one-page-deck-form" data-form-source="Full One-Page Estimate" id="deckQuoteForm" novalidate="">
-
-<div aria-hidden="true" class="honeypot">
-<label for="fullCompanyWebsite">Company Website</label>
-<input autocomplete="off" id="fullCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-</div>
-
-<section class="estimate-step active" data-step="0" data-step-title="Estimate information">
-
-<div class="hero-form-row">
-<div class="field">
-<label for="fullFullName">Full Name</label>
-<input autocomplete="name" id="fullFullName" name="fullName" placeholder="Your name" required="" type="text"/>
-</div>
-
-<div class="field">
-<label for="fullPhone">Phone Number</label>
-<input autocomplete="tel" id="fullPhone" name="phone" placeholder="Your phone number" required="" type="tel"/>
-</div>
-</div>
-
-<div class="hero-form-row">
-<div class="field">
-<label for="fullEmail">Email</label>
-<input autocomplete="email" id="fullEmail" name="email" placeholder="you@example.com" required="" type="email"/>
-</div>
-
-<div class="field">
-<label for="fullProjectType">Deck Project</label>
-<select id="fullProjectType" name="projectType" required="">
-<option value="">Choose one</option>
-<option value="Build a new deck">Brand-new deck build</option>
-<option value="Replace an existing deck">Deck replacement</option>
-</select>
-</div>
-</div>
-
-<div class="estimate-nav single-action">
-<button class="submit-button estimate-submit" type="submit">Get My In-Person Estimate</button>
-</div>
-
-<p class="hero-form-assurance">No obligation. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-<div aria-live="polite" class="form-status" data-form-status="" role="status"></div>
-
-</section>
-</form>
-
-<div aria-hidden="true" class="deck-success-overlay" data-success-overlay="">
-
-<div class="deck-success-box">
-<span aria-hidden="true" class="deck-success-check">✓</span>
-<strong>Request Sent</strong>
-<p>Thanks. We’ll follow up to schedule your in-person deck estimate within 48 hours.</p>
-</div>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<section class="faq-section" id="faq">
-
-<div class="faq-inner">
-
-<div class="faq-top">
-<div class="faq-eyebrow">Deck Estimate FAQ</div>
-<h2>Questions About Your In-Person Deck Estimate</h2>
-<p>Direct answers about the 48-hour estimate offer, pricing, materials, timing, permits, and service areas.</p>
-</div>
-
-<div class="faq-list">
-
-<details class="faq-item">
-<summary>How much does a new deck cost?</summary>
-<p>Pricing depends on size, height, site access, framing, material choice, railings, stairs, site conditions, and custom features. The in-person estimate lets us price the actual property and project instead of relying on a generic square-foot number.</p>
-</details>
-
-<details class="faq-item">
-<summary>Should I choose wood or composite decking?</summary>
-<p>Wood usually offers a natural appearance and a lower initial price on many projects, but it requires ongoing maintenance. Composite generally costs more upfront but reduces regular staining and sealing. We can help you compare appearance, maintenance, and long-term priorities.</p>
-</details>
-
-<details class="faq-item">
-<summary>How quickly can I get an in-person deck estimate?</summary>
-<p>Request your estimate through the form and we’ll follow up to schedule an in-person deck estimate at your property within 48 hours.</p>
-</details>
-
-<details class="faq-item">
-<summary>Do I need a permit?</summary>
-<p>Requirements vary by location, deck height, size, and design. Any permit and inspection responsibilities are clarified in the written project scope before construction begins.</p>
-</details>
-
-<details class="faq-item">
-<summary>Can you help me design the deck?</summary>
-<p>Yes. The consultation considers furniture, grills, number of people, stairs, railings, yard access, elevation, materials, and how you want to move between the house and yard.</p>
-</details>
-
-<details class="faq-item">
-<summary>Can a deck be built on a sloped yard?</summary>
-<p>Many sloped properties can support a well-designed deck. Elevation, footing conditions, drainage, access, stairs, and structural requirements need to be reviewed before a reliable plan is prepared.</p>
-</details>
-
-<details class="faq-item">
-<summary>What areas do you serve?</summary>
-<p>ZH Homes serves Salem, Keizer, Silverton, and nearby Oregon communities. Project availability outside those cities depends on scope, location, and the current schedule.</p>
-</details>
-
-<details class="faq-item">
-<summary>Do you provide deck estimates?</summary>
-<p>Yes. Complete the step-by-step form or call us to request an in-person deck estimate within 48 hours. The project details help us prepare for the property visit.</p>
-</details>
-
-</div>
-</div>
-</section>
-
-</main>
-
-<footer class="footer deck-footer">
-
-<div class="footer-inner">
-
-<div class="footer-top">
-
-<div class="footer-brand">
-<strong>ZH Homes</strong>
-<p>In-person deck estimates within 48 hours for homeowners in Salem, Keizer, Silverton, and nearby Oregon communities.</p>
-</div>
-
-<div class="footer-col">
-<h4>Navigation</h4>
-<a href="index.html">Main Website</a>
-<a href="#services">Deck Options</a>
-<a href="#process">Process</a>
-<a href="#testimonials">Reviews</a>
-</div>
-
-<div class="footer-col">
-<h4>Deck Services</h4>
-<span>Custom Deck Design</span>
-<span>Wood Decks</span>
-<span>Composite Decks</span>
-<span>Stairs &amp; Railings</span>
-</div>
-
-<div class="footer-col">
-<h4>Contact</h4>
-<a class="tracked-call" href="tel:5039105466">(503) 910-5466</a>
-<a href="#estimate">Get an in-person estimate</a>
-<span>Salem, Oregon</span>
-<span>CCB #260679</span>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-
-<span>© 2026 ZH Homes. All rights reserved.</span>
-
-<div aria-label="Footer legal links" class="footer-bottom-links">
-<a href="privacy.html">Privacy Policy</a>
-<a href="terms.html">Terms of Service</a>
-<a href="accessibility.html">Accessibility</a>
-<span>Oregon CCB #260679</span>
-</div>
-
-</div>
-</div>
-</footer>
-
-<div aria-label="Quick deck estimate actions" class="mobile-cta-bar">
-
-<a class="cta-quote" href="#estimate">
-<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
-<path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-<path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-<path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-</svg>
-      Get Estimate
-</a>
-
-<a class="cta-call tracked-call" href="tel:5039105466">
-<svg aria-hidden="true" fill="none" viewbox="0 0 24 24">
-<path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2.2"></path>
-</svg>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="ZH Homes home">
+        <img src="2.png" alt="ZH Homes logo" width="112" height="54" fetchpriority="high">
+        <span>ZH Homes</span>
+      </a>
+
+      <div class="header-right">
+        <div class="license-mini">
+          <strong>Licensed, Bonded &amp; Insured</strong>
+          <span>Oregon CCB #260679</span>
+        </div>
+        <a class="header-cta" href="#hero-estimate">Free Estimate</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="deck-hero" id="top">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="eyebrow">Salem • Keizer • Silverton</div>
+
+          <h1>
+            Get a <span class="accent">FREE</span> in-person deck estimate within 48 hours.
+          </h1>
+
+          <p class="hero-lede">
+            Planning a new deck or replacing an old one? ZH Homes will come to your property,
+            look at the site, talk through your options, and give you a project-specific estimate.
+            <strong>No charge. No obligation.</strong>
+          </p>
+
+          <ul class="offer-points" aria-label="Deck estimate benefits">
+            <li>New deck builds &amp; full replacements</li>
+            <li>Wood &amp; composite options</li>
+            <li>Licensed, bonded &amp; insured</li>
+            <li>Local Salem-area contractor</li>
+          </ul>
+
+          <div class="hero-call-row">
+            <a class="primary-cta" href="#hero-estimate">Get My Free Estimate</a>
+            <a class="phone-link tracked-call" href="tel:5039105466">
+              <span>Prefer to talk?</span>
+              Call / Text (503) 910-5466
+            </a>
+          </div>
+
+          <div class="offer-note">
+            <strong>Not sure on the exact layout or materials yet?</strong>
+            That’s fine. The site visit is the first step. We can look at the space and talk through
+            what makes sense before you decide whether to move forward.
+          </div>
+        </div>
+
+        <aside class="hero-quick-card" id="hero-estimate" aria-labelledby="hero-form-title">
+          <div class="form-top">
+            <div class="free-badge">Free • No Obligation</div>
+            <h2 id="hero-form-title">Request Your Free Deck Estimate</h2>
+            <p>Two quick steps. We’ll follow up to arrange the in-person visit.</p>
+          </div>
+
+          <div class="form-body">
+            <form
+              class="deck-multistep-form"
+              id="heroDeckQuoteForm"
+              data-form-source="Hero Free Deck Estimate"
+              novalidate
+            >
+              <div class="honeypot" aria-hidden="true">
+                <label for="heroCompanyWebsite">Company Website</label>
+                <input id="heroCompanyWebsite" name="companyWebsite" type="text" autocomplete="off" tabindex="-1">
+              </div>
+
+              <div class="progress-wrap" aria-hidden="true">
+                <div class="progress-meta">
+                  <span data-progress-label>Step 1 of 2</span>
+                  <span data-progress-title>Your project</span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-bar" data-progress-bar></div>
+                </div>
+              </div>
+
+              <section class="estimate-step active" data-step="0" data-step-title="Your project">
+                <div class="estimate-step-heading">
+                  <span>What kind of deck project do you need?</span>
+                  <small>This helps us know what we’re coming out to look at.</small>
+                </div>
+
+                <div class="field">
+                  <label for="heroProjectType">Deck Project</label>
+                  <select id="heroProjectType" name="projectType" required>
+                    <option value="">Choose one</option>
+                    <option value="Build a new deck">Build a brand-new deck</option>
+                    <option value="Replace an existing deck">Replace an existing deck</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="heroZipCode">Project ZIP Code</label>
+                  <input
+                    id="heroZipCode"
+                    name="zipCode"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="postal-code"
+                    placeholder="97301"
+                    maxlength="10"
+                    required
+                  >
+                </div>
+
+                <div class="estimate-nav">
+                  <button class="next-button" type="button" data-next>Continue</button>
+                </div>
+              </section>
+
+              <section class="estimate-step" data-step="1" data-step-title="Contact info" hidden>
+                <div class="estimate-step-heading">
+                  <span>Where should we reach you?</span>
+                  <small>We’ll use this to arrange the free in-person estimate.</small>
+                </div>
+
+                <div class="field">
+                  <label for="heroFullName">Full Name</label>
+                  <input id="heroFullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+                </div>
+
+                <div class="field">
+                  <label for="heroPhone">Phone Number</label>
+                  <input id="heroPhone" name="phone" type="tel" autocomplete="tel" placeholder="(503) 555-1234" required>
+                </div>
+
+                <div class="estimate-nav">
+                  <button class="back-button" type="button" data-back>Back</button>
+                  <button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button>
+                </div>
+              </section>
+
+              <p class="form-assurance">
+                Free estimate. No obligation. Your information is only used to follow up about your deck project.
+              </p>
+
+              <div class="form-status" data-form-status role="status" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <div class="hero-form-success" data-success-overlay aria-hidden="true">
+            <div class="success-inner">
+              <span aria-hidden="true">✓</span>
+              <strong>Request Sent</strong>
+              <p>Thanks. We’ll follow up to arrange your free in-person deck estimate.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="ZH Homes trust points">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <strong>FREE Estimate</strong>
+          <span>No-obligation site visit</span>
+        </div>
+        <div class="trust-item">
+          <strong>Within 48 Hours</strong>
+          <span>Fast local response</span>
+        </div>
+        <div class="trust-item">
+          <strong>Licensed &amp; Insured</strong>
+          <span>Oregon CCB #260679</span>
+        </div>
+        <div class="trust-item">
+          <strong>Local Contractor</strong>
+          <span>Salem-area service</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="why">
+      <div class="section-inner">
+        <div class="section-kicker">A Better First Step</div>
+        <h2>Get real answers about your deck before you commit to anything.</h2>
+        <p class="section-intro">
+          You should not have to guess at pricing from a generic online calculator. We look at the actual
+          property, access, existing structure, size, materials, stairs, railings, and project goals.
+        </p>
+
+        <div class="benefit-grid">
+          <article class="benefit-card">
+            <div class="benefit-number">1</div>
+            <h3>We come to the property</h3>
+            <p>
+              A deck estimate is more useful when the contractor can see the yard, access, elevation,
+              existing structure, and site conditions in person.
+            </p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-number">2</div>
+            <h3>Talk through your options</h3>
+            <p>
+              Compare new construction vs. replacement, wood vs. composite, stairs, railings, layout,
+              and the features that matter to you.
+            </p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-number">3</div>
+            <h3>Decide after the estimate</h3>
+            <p>
+              The estimate is free and there is no obligation to hire us. Get the information first,
+              then decide what you want to do.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="section-inner proof-grid">
+        <div class="proof-image">
+          <img
+            src="before_after_exact_originals.jpg"
+            alt="Recent ZH Homes project work"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+
+        <div>
+          <div class="section-kicker">Local Proof</div>
+          <h2>Work with a contractor homeowners already trust.</h2>
+          <p class="section-intro">
+            ZH Homes serves homeowners in Salem, Keizer, Silverton, and nearby Oregon communities.
+          </p>
+
+          <div class="review-card">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              “If you need someone who shows up, gives a professional bid, and gets things done on time
+              and within the agreed bid contract, you need to call and get on their schedule.”
+            </blockquote>
+            <cite>Tawnya Bacchetti • Google Review</cite>
+          </div>
+
+          <div class="review-card">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>
+              “ZH homes replaced our kitchen, lightening, flooring, deck and railing. The owner, Zach,
+              brings creative ideas and suggestions. The work is very well done and prices very reasonable.”
+            </blockquote>
+            <cite>Amy Wray • Google Review</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="section-inner">
+        <div class="section-kicker">Deck Projects</div>
+        <h2>New decks and full deck replacements.</h2>
+        <p class="section-intro">
+          If the project is about building a new outdoor space or replacing an existing deck,
+          start with the free site visit.
+        </p>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <h3>New Deck Construction</h3>
+            <p>Plan a new deck around your home, yard, access, seating, stairs, and the way you want to use the space.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Deck Replacement</h3>
+            <p>Replace an aging or unwanted deck with a new structure designed around your current property and goals.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Wood Decks</h3>
+            <p>Discuss natural wood options, appearance, finishing, maintenance, and the right fit for your project.</p>
+          </article>
+
+          <article class="service-card">
+            <h3>Composite Decks</h3>
+            <p>Compare low-maintenance composite options, long-term upkeep, colors, and design possibilities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="section-inner">
+        <div class="section-kicker">How It Works</div>
+        <h2>Three simple steps from click to estimate.</h2>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <strong>Step 01</strong>
+            <h3>Request the free estimate</h3>
+            <p>Tell us whether you need a new deck or a replacement and give us the best number to reach you.</p>
+          </div>
+
+          <div class="process-step">
+            <strong>Step 02</strong>
+            <h3>Schedule the site visit</h3>
+            <p>We’ll follow up to arrange the in-person estimate at your property within 48 hours.</p>
+          </div>
+
+          <div class="process-step">
+            <strong>Step 03</strong>
+            <h3>Get a project-specific estimate</h3>
+            <p>Walk the site with us, talk through the project, and get a clear next step before deciding whether to move forward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="final-cta-inner">
+        <h2>Ready to get your deck priced?</h2>
+        <p>
+          Start with a free, no-obligation in-person estimate from a local licensed contractor.
+        </p>
+
+        <div class="final-actions">
+          <a class="light" href="#hero-estimate">Get My Free Estimate</a>
+          <a class="outline tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-inner">
+        <div class="section-kicker">Deck Estimate FAQ</div>
+        <h2>Questions before you request an estimate?</h2>
+
+        <div class="faq-grid">
+          <details>
+            <summary>Is the in-person deck estimate really free?</summary>
+            <p>Yes. The site visit and deck estimate are free, and there is no obligation to move forward with ZH Homes.</p>
+          </details>
+
+          <details>
+            <summary>What areas do you serve?</summary>
+            <p>ZH Homes serves Salem, Keizer, Silverton, and nearby Oregon communities. Availability outside those areas depends on the project and location.</p>
+          </details>
+
+          <details>
+            <summary>Do I need to know the exact deck design already?</summary>
+            <p>No. If you are still deciding on layout, wood vs. composite, stairs, railings, or other details, those can be discussed during the site visit.</p>
+          </details>
+
+          <details>
+            <summary>Do you build new decks and replace existing decks?</summary>
+            <p>Yes. This page is focused on brand-new deck construction and full deck replacements.</p>
+          </details>
+
+          <details>
+            <summary>How quickly can I get the estimate?</summary>
+            <p>Submit the form and ZH Homes will follow up to arrange the in-person estimate within 48 hours.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>ZH Homes</strong>
+        <p>
+          Free in-person deck estimates for new deck construction and deck replacements in Salem,
+          Keizer, Silverton, and nearby Oregon communities. Oregon CCB #260679.
+        </p>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="index.html">Main Website</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta-bar" aria-label="Quick deck estimate actions" aria-hidden="true">
+    <a class="cta-quote" href="#hero-estimate">
+      <svg aria-hidden="true" viewBox="0 0 24 24"></svg>
+      Get Free Estimate
+    </a>
+    <a class="cta-call tracked-call" href="tel:5039105466">
+      <svg aria-hidden="true" viewBox="0 0 24 24"></svg>
       Call / Text
-</a>
+    </a>
+  </div>
 
-</div>
-
-<script>
-(function () {
-  var heroEstimateButton = document.querySelector('.deck-hero .hero-actions .btn-primary');
-  var mobileEstimate = document.getElementById('mobile-estimate');
-
-  if (!heroEstimateButton || !mobileEstimate) return;
-
-  heroEstimateButton.addEventListener('click', function (event) {
-    if (!window.matchMedia('(max-width: 767px)').matches) return;
-
-    event.preventDefault();
-    mobileEstimate.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-})();
-</script>
-
-<script src="deck.js"></script>
-
+  <script src="deck.js"></script>
 </body>
 </html>
