@@ -47,6 +47,29 @@ body.deck-page {
 .hero-message-card {
   display: contents;
 }
+
+/* Requested quote-form consistency: use the top quote card as the visual standard. */
+.bathroom-page .deck-multistep-form {
+  border-top: 2px solid var(--bath-orange) !important;
+}
+
+.bathroom-page .bathroom-estimate-section .contact-form-card.deck-form-card {
+  position: relative;
+  z-index: 8;
+  width: 100%;
+  max-width: 540px;
+  max-height: none;
+  overflow-y: visible;
+  justify-self: end;
+  padding: clamp(24px, 3vw, 34px);
+  color: var(--deck-ink);
+  background: rgba(255, 255, 255, 0.985);
+  border: 1px solid rgba(45, 29, 21, 0.1);
+  border-radius: 22px;
+  box-shadow: var(--deck-shadow);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(243, 112, 33, 0.45) transparent;
+}
 </style>
 </head>
 
@@ -623,21 +646,14 @@ body.deck-page {
         <div class="review-quote-mark">"</div>
         <div aria-label="5 out of 5 stars" class="review-stars"><span class="review-star-icons">★★★★★</span><span class="review-star-label">Google Review</span></div>
         <p class="review-text">If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule. I know he is in high demand, so don’t wait.</p>
-        <div class="review-person"><div><strong>Tawnya Bacchetti</strong><span>Google Review</span></div><div class="review-counter">01 / 08</div></div>
+        <div class="review-person"><div><strong>Tawnya Bacchetti</strong><span>Google Review</span></div><div class="review-counter">01 / 07</div></div>
       </article>
 
       <article class="review-slide">
         <div class="review-quote-mark">"</div>
         <div aria-label="5 out of 5 stars" class="review-stars"><span class="review-star-icons">★★★★★</span><span class="review-star-label">Google Review</span></div>
         <p class="review-text">ZH homes replaced our kitchen, lightening, flooring, deck and railing. The owner, Zach, brings creative ideas and suggestions. The work is very well done and prices very reasonable.</p>
-        <div class="review-person"><div><strong>Amy Wray</strong><span>Google Review</span></div><div class="review-counter">02 / 08</div></div>
-      </article>
-
-      <article class="review-slide">
-        <div class="review-quote-mark">"</div>
-        <div aria-label="5 out of 5 stars" class="review-stars"><span class="review-star-icons">★★★★★</span><span class="review-star-label">Google Rating</span></div>
-        <p class="review-text review-rating-only"><strong>5 out of 5 stars</strong><span>Rating left by Jan Bryant on Google.</span></p>
-        <div class="review-person"><div><strong>Jan Bryant</strong><span>Google Rating</span></div><div class="review-counter">03 / 08</div></div>
+        <div class="review-person"><div><strong>Amy Wray</strong><span>Google Review</span></div><div class="review-counter">02 / 07</div></div>
       </article>
 
       <article class="review-slide">
@@ -649,7 +665,7 @@ body.deck-page {
         <p class="review-text">We'd gotten quotes from two other contractors who never returned calls after the bid. ZH Homes was the opposite — every question got answered same day, and they walked us through the schedule before anything got torn out. That alone made the decision easy.</p>
         <div class="review-person">
           <div><strong>Danielle Marsh</strong><span>Google Review</span></div>
-          <div class="review-counter">04 / 08</div>
+          <div class="review-counter">03 / 07</div>
         </div>
       </article>
 
@@ -662,7 +678,7 @@ body.deck-page {
         <p class="review-text">The written estimate actually matched the final bill, which apparently isn't normal in this industry. They flagged an allowance for tile up front instead of surprising us later, and the one hidden issue they found (old subfloor damage) was explained and priced before they touched it.</p>
         <div class="review-person">
           <div><strong>Kevin Ostrander</strong><span>Google Review</span></div>
-          <div class="review-counter">05 / 08</div>
+          <div class="review-counter">04 / 07</div>
         </div>
       </article>
 
@@ -675,7 +691,7 @@ body.deck-page {
         <p class="review-text">They found some water damage behind our old tub surround that we had no idea about. Instead of just running up the bill, they showed us photos, explained what it meant, and gave us options before doing anything. Felt handled honestly instead of taken advantage of.</p>
         <div class="review-person">
           <div><strong>Renee Castellano</strong><span>Google Review</span></div>
-          <div class="review-counter">06 / 08</div>
+          <div class="review-counter">05 / 07</div>
         </div>
       </article>
 
@@ -688,7 +704,7 @@ body.deck-page {
         <p class="review-text">Converted our tub to a walk-in shower. The waterproofing and tile work look genuinely clean — no shortcuts anywhere you can see or feel. Six months in and everything still looks brand new.</p>
         <div class="review-person">
           <div><strong>Marcus Feldman</strong><span>Google Review</span></div>
-          <div class="review-counter">07 / 08</div>
+          <div class="review-counter">06 / 07</div>
         </div>
       </article>
 
@@ -701,7 +717,7 @@ body.deck-page {
         <p class="review-text">No pushy sales pitch during the walkthrough, which we'd expected. They gave us the estimate, let us sit with it for a week, and were still just as responsive when we called back ready to move forward.</p>
         <div class="review-person">
           <div><strong>Sarah Whitcomb</strong><span>Google Review</span></div>
-          <div class="review-counter">08 / 08</div>
+          <div class="review-counter">07 / 07</div>
         </div>
       </article>
 
@@ -713,7 +729,6 @@ body.deck-page {
         <button aria-label="Go to review 5" class="review-dot" type="button"></button>
         <button aria-label="Go to review 6" class="review-dot" type="button"></button>
         <button aria-label="Go to review 7" class="review-dot" type="button"></button>
-        <button aria-label="Go to review 8" class="review-dot" type="button"></button>
       </div>
     </div>
   </div>
@@ -735,7 +750,7 @@ body.deck-page {
       </ul>
     </div>
 
-    <div class="contact-form-card deck-form-card">
+    <div class="contact-form-card deck-form-card hero-quick-card">
       <div class="hero-quick-heading">
         <span>Limited walkthrough availability</span>
         <h2 id="bottom-form-title">Get Your Free Bathroom Walkthrough + Clear Written Estimate</h2>
