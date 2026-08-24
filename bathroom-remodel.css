@@ -546,3 +546,27 @@
     min-height: 49px !important;
   }
 }
+
+/* ==========================================================
+   FINAL QUOTE FORM CLEANUP
+   Hide progress/step UI on every bathroom quote form and use
+   one consistent divider before the first question.
+   ========================================================== */
+.bathroom-page .deck-multistep-form .estimate-progress {
+  display: none !important;
+}
+
+.bathroom-page .deck-multistep-form {
+  border-top: 1px solid rgba(36, 27, 23, 0.14);
+  padding-top: 18px;
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .mobile-hero-form-heading {
+    margin-bottom: 14px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form {
+    padding-top: 16px !important;
+  }
+}
