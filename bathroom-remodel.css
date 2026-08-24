@@ -246,3 +246,76 @@
     font-size: 7px;
   }
 }
+
+
+.bathroom-page .header-cta-mobile {
+  display: none;
+}
+
+/* ==========================================================
+   MOBILE-ONLY CAMPAIGN REFINEMENTS
+   Keep the deck-derived layout intact.
+   ========================================================== */
+@media (max-width: 767px) {
+  /* The offer now lives in the quote card, so remove the extra hero strip. */
+  .bathroom-page .bathroom-offer-line {
+    display: none !important;
+  }
+
+  /* Keep the ZH Homes brand, but use a single conversion action on mobile. */
+  .bathroom-page .site-header .header-license-badge {
+    display: none !important;
+  }
+
+  .bathroom-page .site-header .header-actions {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    margin-left: auto !important;
+  }
+
+  .bathroom-page .site-header .header-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    padding: 0 15px !important;
+    color: #fff !important;
+    background: var(--bath-orange) !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    font-size: 12.5px !important;
+    font-weight: 950 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    box-shadow: 0 8px 20px rgba(243, 112, 33, 0.22) !important;
+  }
+
+  .bathroom-page .header-cta-desktop {
+    display: none !important;
+  }
+
+  .bathroom-page .header-cta-mobile {
+    display: inline !important;
+  }
+
+  /* Availability first, offer second, then the unchanged 3-step form. */
+  .bathroom-page .mobile-hero-form-card .compact-countdown {
+    margin: 0 0 14px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-heading {
+    margin: 0 0 16px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-heading h3 {
+    margin: 0 !important;
+  }
+
+  /* Explicitly preserve the transformation headline on mobile. */
+  .bathroom-page .deck-project-gallery-heading,
+  .bathroom-page .deck-project-gallery-eyebrow,
+  .bathroom-page #bathroom-gallery-title {
+    display: block !important;
+  }
+}

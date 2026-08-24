@@ -70,7 +70,10 @@ body.deck-page {
           <span class="license-desktop-word">Oregon </span>CCB #260679
         </strong>
       </div>
-      <a class="header-cta" href="#estimate">Get My Estimate</a>
+      <a class="header-cta" href="#estimate" aria-label="Get a bathroom quote">
+        <span class="header-cta-desktop">Get My Estimate</span>
+        <span class="header-cta-mobile">Get Quote</span>
+      </a>
     </div>
   </div>
 </header>
@@ -152,23 +155,21 @@ body.deck-page {
       <section aria-label="Request your bathroom estimate" class="mobile-inline-estimate-section" id="mobile-estimate">
         <div class="mobile-inline-estimate-inner">
           <div class="contact-form-card deck-form-card mobile-hero-form-card">
-            <div class="deck-form-heading mobile-hero-form-heading">
-              <span>Free 24-Hour Bathroom Estimate</span>
-              <h3>See what your bathroom could take to fix</h3>
-              <p>Three quick steps. No long questionnaire.</p>
-            </div>
-
-            <div class="weekly-offer-countdown compact-countdown" data-weekly-countdown>
+            <div class="weekly-offer-countdown compact-countdown" data-four-day-countdown>
               <div class="countdown-copy">
-                <span>Limited weekly availability</span>
-                <strong>Free walkthrough scheduling closes Sunday</strong>
+                <span>Limited availability</span>
+                <strong>Current free walkthrough scheduling window closes in</strong>
               </div>
-              <div class="countdown-clock" aria-label="Time until this week's scheduling window closes">
+              <div class="countdown-clock" aria-label="Time until the current free walkthrough scheduling window closes">
                 <div><strong data-days>00</strong><span>Days</span></div>
                 <div><strong data-hours>00</strong><span>Hours</span></div>
                 <div><strong data-minutes>00</strong><span>Min</span></div>
                 <div><strong data-seconds>00</strong><span>Sec</span></div>
               </div>
+            </div>
+
+            <div class="deck-form-heading mobile-hero-form-heading">
+              <h3>Get Your Free Bathroom Walkthrough + In-Person Estimate</h3>
             </div>
 
             <form class="quote-form deck-multistep-form mobile-hero-estimate-form" data-form-source="Mobile Hero 3-Step Estimate" id="mobileBathroomQuoteForm" novalidate>

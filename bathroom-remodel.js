@@ -676,9 +676,7 @@ function initializeCallTracking() {
 }
 
 /*
-  Weekly urgency tied to a real recurring scheduling cutoff:
-  every Sunday at 11:59:59 PM in the visitor's local timezone.
-  When the cutoff passes, the next week's scheduling window begins automatically.
+  Desktop countdowns keep the approved weekly Sunday cutoff.
 */
 function getNextSundayCutoff(now = new Date()) {
   const cutoff = new Date(now);
@@ -695,11 +693,25 @@ function getNextSundayCutoff(now = new Date()) {
   return cutoff;
 }
 
-function initializeWeeklyCountdowns() {
-  const countdowns = Array.from(
-    document.querySelectorAll("[data-weekly-countdown]")
-  );
+/*
+  Mobile-only recurring four-day scheduling window, anchored to
+  August 24, 2026 at midnight in the visitor's local timezone.
+  Use this only if it matches the actual booking cadence.
+*/
+function getCurrentFourDayCutoff(now = new Date()) {
+  const anchor = new Date(2026, 7, 24, 0, 0, 0, 0);
+  const windowMs = 4 * 24 * 60 * 60 * 1000;
 
+  if (now.getTime() < anchor.getTime()) {
+    return new Date(anchor.getTime() + windowMs);
+  }
+
+  const elapsed = now.getTime() - anchor.getTime();
+  const completedWindows = Math.floor(elapsed / windowMs);
+  return new Date(anchor.getTime() + (completedWindows + 1) * windowMs);
+}
+
+function updateCountdownSet(countdowns, targetFactory) {
   if (!countdowns.length) return;
 
   function pad(value) {
@@ -708,7 +720,7 @@ function initializeWeeklyCountdowns() {
 
   function update() {
     const now = new Date();
-    const target = getNextSundayCutoff(now);
+    const target = targetFactory(now);
     const remaining = Math.max(0, target.getTime() - now.getTime());
 
     const totalSeconds = Math.floor(remaining / 1000);
@@ -734,6 +746,20 @@ function initializeWeeklyCountdowns() {
   window.setInterval(update, 1000);
 }
 
+function initializeWeeklyCountdowns() {
+  updateCountdownSet(
+    Array.from(document.querySelectorAll("[data-weekly-countdown]")),
+    getNextSundayCutoff
+  );
+}
+
+function initializeFourDayCountdowns() {
+  updateCountdownSet(
+    Array.from(document.querySelectorAll("[data-four-day-countdown]")),
+    getCurrentFourDayCutoff
+  );
+}
+
 function initializeBathroomLandingPage() {
   getAttribution();
   initializeAnchorScrolling();
@@ -747,6 +773,7 @@ function initializeBathroomLandingPage() {
   initializeMobileStickyCta();
   initializeCallTracking();
   initializeWeeklyCountdowns();
+  initializeFourDayCountdowns();
 }
 
 if (document.readyState === "loading") {
