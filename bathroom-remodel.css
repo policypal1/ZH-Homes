@@ -404,16 +404,16 @@
 
   /* Move the hero and form substantially higher. */
   .bathroom-page .deck-hero .hero-copy {
-    padding-top: clamp(78px, 12svh, 118px) !important;
+    padding-top: clamp(118px, 18svh, 175px) !important;
     padding-bottom: 34px !important;
   }
 
   .bathroom-page .deck-hero .hero-message-card {
-    margin-bottom: 6px !important;
+    margin-bottom: 10px !important;
   }
 
   .bathroom-page .deck-hero .mobile-inline-estimate-section {
-    margin-top: 14px !important;
+    margin-top: 10px !important;
   }
 
   .bathroom-page .mobile-hero-form-card {
@@ -457,7 +457,7 @@
   }
 
   .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy span {
-    color: rgba(36,27,23,.68) !important;
+    color: rgba(255,255,255,.78) !important;
     font-size: 10px !important;
     font-weight: 900 !important;
     letter-spacing: .35px !important;
@@ -477,10 +477,11 @@
 
   .bathroom-page .mobile-step-numbers > span {
     display: grid !important;
-    grid-template-columns: 1fr !important;
-    place-items: center !important;
+    grid-template-columns: 24px minmax(0, 1fr) !important;
+    gap: 5px !important;
+    align-items: center !important;
     min-width: 0 !important;
-    color: rgba(36,27,23,.54) !important;
+    color: rgba(255,255,255,.52) !important;
   }
 
   .bathroom-page .mobile-step-numbers b {
@@ -488,18 +489,23 @@
     place-items: center !important;
     width: 24px !important;
     height: 24px !important;
-    border: 1px solid rgba(36,27,23,.22) !important;
+    border: 1px solid rgba(255,255,255,.22) !important;
     border-radius: 50% !important;
     font-size: 10px !important;
     font-weight: 950 !important;
   }
 
   .bathroom-page .mobile-step-numbers small {
-    display: none !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    font-size: 9px !important;
+    font-weight: 850 !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
   }
 
   .bathroom-page .mobile-step-numbers > span.active {
-    color: var(--bath-ink) !important;
+    color: #fff !important;
   }
 
   .bathroom-page .mobile-step-numbers > span.active b,
@@ -510,12 +516,12 @@
   }
 
   .bathroom-page .mobile-step-numbers > span.complete {
-    color: rgba(36,27,23,.72) !important;
+    color: rgba(255,255,255,.72) !important;
   }
 
   .bathroom-page .mobile-hero-estimate-form .estimate-progress-track {
     height: 4px !important;
-    background: rgba(36,27,23,.14) !important;
+    background: rgba(255,255,255,.14) !important;
   }
 
   .bathroom-page .mobile-hero-estimate-form .estimate-step-heading {
@@ -524,7 +530,7 @@
 
   .bathroom-page .mobile-hero-estimate-form .estimate-step-heading > span {
     margin: 0 !important;
-    color: var(--bath-ink) !important;
+    color: #fff !important;
     font-size: 20px !important;
     line-height: 1.1 !important;
   }
@@ -547,26 +553,49 @@
   }
 }
 
+
 /* ==========================================================
-   FINAL QUOTE FORM CLEANUP
-   Hide progress/step UI on every bathroom quote form and use
-   one consistent divider before the first question.
+   FORM SPAM HONEYPOT — HARD HIDE
+   Kept in the markup for spam filtering, never visible to visitors.
    ========================================================== */
-.bathroom-page .deck-multistep-form .estimate-progress {
-  display: none !important;
+.bathroom-page .honeypot,
+.bathroom-page .honeypot label,
+.bathroom-page .honeypot input {
+  position: fixed !important;
+  top: -10000px !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  min-width: 1px !important;
+  min-height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
 }
 
-.bathroom-page .deck-multistep-form {
-  border-top: 1px solid rgba(36, 27, 23, 0.14);
-  padding-top: 18px;
-}
 
+/* One semantic hero H1 on all breakpoints. */
 @media (max-width: 767px) {
-  .bathroom-page .mobile-hero-form-heading {
-    margin-bottom: 14px !important;
+  .bathroom-page .deck-hero #hero-title {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 0 10px !important;
+    color: #fff !important;
+    font-size: clamp(30px, 8.6vw, 38px) !important;
+    font-weight: 800 !important;
+    line-height: 1.02 !important;
+    letter-spacing: -1.1px !important;
+    text-wrap: balance !important;
   }
 
-  .bathroom-page .mobile-hero-estimate-form {
-    padding-top: 16px !important;
+  .bathroom-page .deck-hero #hero-title .accent {
+    color: inherit !important;
   }
 }

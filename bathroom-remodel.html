@@ -118,9 +118,6 @@ body.deck-page {
       </p>
 
       <div class="hero-message-card">
-        <h1 class="hero-mobile-title">
-          A bathroom remodel without the contractor horror story.
-        </h1>
         <p class="subheadline hero-mobile-subheadline">
           Clear scope, clear pricing, calls returned, and attention to the work you do not want to pay twice to fix.
         </p>
@@ -643,6 +640,65 @@ body.deck-page {
         <p class="review-text review-rating-only"><strong>5 out of 5 stars</strong><span>Rating left by Jan Bryant on Google.</span></p>
         <div class="review-person"><div><strong>Jan Bryant</strong><span>Google Rating</span></div><div class="review-counter">03 / 03</div></div>
       </article>
+
+
+      <!--
+        Incoming real-review slots.
+        These are intentionally inside <template>, so they are NOT rendered
+        to visitors. Replace the bracketed fields with genuine customer review
+        text/name, then move each <article> above the review-dots block.
+      -->
+      <template id="incomingBathroomReviewSlots">
+        <article class="review-slide">
+          <div class="review-quote-mark">"</div>
+          <div aria-label="5 out of 5 stars" class="review-stars">
+            <span class="review-star-icons">★★★★★</span>
+            <span class="review-star-label">Google Review</span>
+          </div>
+          <p class="review-text">[PASTE REAL REVIEW 4 TEXT]</p>
+          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 4]</strong><span>Google Review</span></div><div class="review-counter">04 / 08</div></div>
+        </article>
+
+        <article class="review-slide">
+          <div class="review-quote-mark">"</div>
+          <div aria-label="5 out of 5 stars" class="review-stars">
+            <span class="review-star-icons">★★★★★</span>
+            <span class="review-star-label">Google Review</span>
+          </div>
+          <p class="review-text">[PASTE REAL REVIEW 5 TEXT]</p>
+          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 5]</strong><span>Google Review</span></div><div class="review-counter">05 / 08</div></div>
+        </article>
+
+        <article class="review-slide">
+          <div class="review-quote-mark">"</div>
+          <div aria-label="5 out of 5 stars" class="review-stars">
+            <span class="review-star-icons">★★★★★</span>
+            <span class="review-star-label">Google Review</span>
+          </div>
+          <p class="review-text">[PASTE REAL REVIEW 6 TEXT]</p>
+          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 6]</strong><span>Google Review</span></div><div class="review-counter">06 / 08</div></div>
+        </article>
+
+        <article class="review-slide">
+          <div class="review-quote-mark">"</div>
+          <div aria-label="5 out of 5 stars" class="review-stars">
+            <span class="review-star-icons">★★★★★</span>
+            <span class="review-star-label">Google Review</span>
+          </div>
+          <p class="review-text">[PASTE REAL REVIEW 7 TEXT]</p>
+          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 7]</strong><span>Google Review</span></div><div class="review-counter">07 / 08</div></div>
+        </article>
+
+        <article class="review-slide">
+          <div class="review-quote-mark">"</div>
+          <div aria-label="5 out of 5 stars" class="review-stars">
+            <span class="review-star-icons">★★★★★</span>
+            <span class="review-star-label">Google Review</span>
+          </div>
+          <p class="review-text">[PASTE REAL REVIEW 8 TEXT]</p>
+          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 8]</strong><span>Google Review</span></div><div class="review-counter">08 / 08</div></div>
+        </article>
+      </template>
 
       <div aria-label="Review navigation" class="review-dots">
         <button aria-label="Go to review 1" class="review-dot active" type="button"></button>
