@@ -404,16 +404,16 @@
 
   /* Move the hero and form substantially higher. */
   .bathroom-page .deck-hero .hero-copy {
-    padding-top: clamp(118px, 18svh, 175px) !important;
+    padding-top: clamp(88px, 13svh, 128px) !important;
     padding-bottom: 34px !important;
   }
 
   .bathroom-page .deck-hero .hero-message-card {
-    margin-bottom: 10px !important;
+    margin-bottom: 6px !important;
   }
 
   .bathroom-page .deck-hero .mobile-inline-estimate-section {
-    margin-top: 10px !important;
+    margin-top: 4px !important;
   }
 
   .bathroom-page .mobile-hero-form-card {
@@ -457,7 +457,7 @@
   }
 
   .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy span {
-    color: rgba(255,255,255,.78) !important;
+    color: rgba(36,27,23,.68) !important;
     font-size: 10px !important;
     font-weight: 900 !important;
     letter-spacing: .35px !important;
@@ -481,7 +481,7 @@
     gap: 5px !important;
     align-items: center !important;
     min-width: 0 !important;
-    color: rgba(255,255,255,.52) !important;
+    color: rgba(36,27,23,.54) !important;
   }
 
   .bathroom-page .mobile-step-numbers b {
@@ -489,7 +489,7 @@
     place-items: center !important;
     width: 24px !important;
     height: 24px !important;
-    border: 1px solid rgba(255,255,255,.22) !important;
+    border: 1px solid rgba(36,27,23,.22) !important;
     border-radius: 50% !important;
     font-size: 10px !important;
     font-weight: 950 !important;
@@ -505,7 +505,7 @@
   }
 
   .bathroom-page .mobile-step-numbers > span.active {
-    color: #fff !important;
+    color: var(--bath-ink) !important;
   }
 
   .bathroom-page .mobile-step-numbers > span.active b,
@@ -516,12 +516,12 @@
   }
 
   .bathroom-page .mobile-step-numbers > span.complete {
-    color: rgba(255,255,255,.72) !important;
+    color: rgba(36,27,23,.72) !important;
   }
 
   .bathroom-page .mobile-hero-estimate-form .estimate-progress-track {
     height: 4px !important;
-    background: rgba(255,255,255,.14) !important;
+    background: rgba(36,27,23,.14) !important;
   }
 
   .bathroom-page .mobile-hero-estimate-form .estimate-step-heading {
@@ -530,7 +530,7 @@
 
   .bathroom-page .mobile-hero-estimate-form .estimate-step-heading > span {
     margin: 0 !important;
-    color: #fff !important;
+    color: var(--bath-ink) !important;
     font-size: 20px !important;
     line-height: 1.1 !important;
   }
