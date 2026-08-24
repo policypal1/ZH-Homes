@@ -26,22 +26,24 @@
   gap: 8px 12px;
   width: fit-content;
   max-width: 640px;
-  margin: -12px 0 24px;
-  padding: 10px 14px;
+  margin: -4px 0 26px;
+  padding: 14px 18px;
   color: rgba(255,255,255,.82);
   background: rgba(255,255,255,.055);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 12px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.35;
 }
 
 .bathroom-offer-line span {
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 850;
 }
 
 .bathroom-offer-line strong {
   color: #fff;
+  font-size: 15.5px;
   font-weight: 950;
 }
 
