@@ -47,11 +47,6 @@
   font-weight: 950;
 }
 
-.bathroom-offer-line strong::before {
-  content: "•";
-  margin-right: 10px;
-  color: var(--bath-orange);
-}
 
 .weekly-offer-countdown {
   margin: 0 0 18px;
@@ -172,6 +167,81 @@
   margin-bottom: 14px;
 }
 
+.bathroom-page .bathroom-hero .hero-copy > h1 {
+  max-width: 11.2ch;
+  font-size: clamp(58px, 5vw, 78px);
+  line-height: .96;
+}
+
+.bathroom-page .bathroom-hero .hero-inner {
+  align-items: start;
+}
+
+.bathroom-page .hero-quick-card {
+  margin-top: -10px;
+}
+
+.bathroom-page .bathroom-offer-line {
+  margin: -2px 0 24px;
+}
+
+.bathroom-page .bathroom-offer-line span {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.bathroom-page .deck-project-gallery-grid-three {
+  display: grid;
+  grid-template-columns: 1.25fr .85fr .85fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.bathroom-page .bathroom-before-after-card {
+  overflow: hidden;
+}
+
+.bathroom-page .before-after-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.bathroom-page .before-after-panel {
+  position: relative;
+  min-height: 340px;
+}
+
+.bathroom-page .before-after-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bathroom-page .before-after-panel:first-child {
+  border-right: 1px solid rgba(255,255,255,.12);
+}
+
+.bathroom-page .before-after-chip {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  color: #fff;
+  background: rgba(7,8,9,.72);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
 @media (max-width: 950px) {
   /*
     deck.css changes the hero composition on mobile.
@@ -185,6 +255,19 @@
 
   .bathroom-page .bathroom-offer-line {
     margin: 4px 0 18px;
+  }
+
+  .bathroom-page .hero-quick-card {
+    margin-top: 0;
+  }
+
+  .bathroom-page .deck-project-gallery-grid-three {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .bathroom-page .before-after-panel {
+    min-height: 220px;
   }
 
   .bathroom-page .bathroom-offer-line strong::before {
@@ -236,6 +319,21 @@
   .bathroom-gallery-subhead {
     margin-top: 10px;
     font-size: 13px;
+  }
+
+  .bathroom-page .deck-project-gallery-grid-three {
+    grid-template-columns: 1fr;
+  }
+
+  .bathroom-page .before-after-panel {
+    min-height: 180px;
+  }
+
+  .bathroom-page .before-after-chip {
+    left: 10px;
+    bottom: 10px;
+    padding: 6px 9px;
+    font-size: 10px;
   }
 }
 

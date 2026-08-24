@@ -281,7 +281,7 @@ function initializeMultiStepForm(form) {
     const description = [
       `Bathroom project: ${projectType || "Not provided"}`,
       `Project ZIP: ${zipCode || "Not provided"}`,
-      "Offer: Free bathroom walkthrough + written estimate within 24 hours"
+      "Offer: Free bathroom walkthrough + clear written estimate"
     ].join("\n");
 
     const originalButtonText =
