@@ -354,3 +354,201 @@
     display: none !important;
   }
 }
+
+
+/* ==========================================================
+   MOBILE TOP-SECTION FINAL FIX
+   Mobile-only. Desktop remains unchanged.
+   ========================================================== */
+@media (max-width: 767px) {
+  .bathroom-page .site-header .header-license-badge {
+    display: none !important;
+  }
+
+  .bathroom-page .site-header .header-actions {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    margin-left: auto !important;
+  }
+
+  .bathroom-page .site-header .header-cta {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 42px !important;
+    padding: 0 15px !important;
+    color: #fff !important;
+    background: var(--bath-orange) !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 20px rgba(243, 112, 33, 0.22) !important;
+    font-size: 12.5px !important;
+    font-weight: 950 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+  }
+
+  .bathroom-page .header-cta-desktop {
+    display: none !important;
+  }
+
+  .bathroom-page .header-cta-mobile {
+    display: inline !important;
+  }
+
+  /* Remove the duplicate offer strip between hero message and CTA. */
+  .bathroom-page .bathroom-offer-line {
+    display: none !important;
+  }
+
+  /* Move the hero and form substantially higher. */
+  .bathroom-page .deck-hero .hero-copy {
+    padding-top: clamp(118px, 18svh, 175px) !important;
+    padding-bottom: 34px !important;
+  }
+
+  .bathroom-page .deck-hero .hero-message-card {
+    margin-bottom: 10px !important;
+  }
+
+  .bathroom-page .deck-hero .mobile-inline-estimate-section {
+    margin-top: 10px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-card {
+    padding: 16px 15px 15px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-card .compact-countdown {
+    margin: 0 0 9px !important;
+    padding: 9px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-card .countdown-copy {
+    margin-bottom: 7px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-heading {
+    margin: 0 0 9px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-heading h3 {
+    margin: 0 !important;
+    font-size: 20px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.4px !important;
+  }
+
+  /* Progress sits ABOVE the question and clearly shows all three steps. */
+  .bathroom-page .mobile-hero-estimate-form {
+    display: block !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress {
+    margin: 0 0 9px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 6px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy span {
+    color: rgba(255,255,255,.78) !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: .35px !important;
+    text-transform: uppercase !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy strong {
+    display: none !important;
+  }
+
+  .bathroom-page .mobile-step-numbers {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 7px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .bathroom-page .mobile-step-numbers > span {
+    display: grid !important;
+    grid-template-columns: 24px minmax(0, 1fr) !important;
+    gap: 5px !important;
+    align-items: center !important;
+    min-width: 0 !important;
+    color: rgba(255,255,255,.52) !important;
+  }
+
+  .bathroom-page .mobile-step-numbers b {
+    display: grid !important;
+    place-items: center !important;
+    width: 24px !important;
+    height: 24px !important;
+    border: 1px solid rgba(255,255,255,.22) !important;
+    border-radius: 50% !important;
+    font-size: 10px !important;
+    font-weight: 950 !important;
+  }
+
+  .bathroom-page .mobile-step-numbers small {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    font-size: 9px !important;
+    font-weight: 850 !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .bathroom-page .mobile-step-numbers > span.active {
+    color: #fff !important;
+  }
+
+  .bathroom-page .mobile-step-numbers > span.active b,
+  .bathroom-page .mobile-step-numbers > span.complete b {
+    color: #fff !important;
+    background: var(--bath-orange) !important;
+    border-color: var(--bath-orange) !important;
+  }
+
+  .bathroom-page .mobile-step-numbers > span.complete {
+    color: rgba(255,255,255,.72) !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-track {
+    height: 4px !important;
+    background: rgba(255,255,255,.14) !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading {
+    margin: 0 0 8px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading > span {
+    margin: 0 !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    line-height: 1.1 !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading p {
+    display: none !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .field {
+    margin-bottom: 9px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-nav {
+    margin-top: 0 !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-next,
+  .bathroom-page .mobile-hero-estimate-form .estimate-submit {
+    min-height: 49px !important;
+  }
+}

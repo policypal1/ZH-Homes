@@ -164,6 +164,15 @@ function initializeMultiStepForm(form) {
       progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
     }
 
+    form.querySelectorAll("[data-progress-step]").forEach((marker, index) => {
+      marker.classList.toggle("active", index === currentStep);
+      marker.classList.toggle("complete", index < currentStep);
+      marker.setAttribute(
+        "aria-current",
+        index === currentStep ? "step" : "false"
+      );
+    });
+
     if (focusHeading) {
       const heading = steps[currentStep]?.querySelector(
         ".estimate-step-heading > span"
@@ -734,6 +743,64 @@ function initializeWeeklyCountdowns() {
   window.setInterval(update, 1000);
 }
 
+
+/*
+  Mobile walkthrough availability uses one shared recurring four-day window.
+  Everyone sees the same current booking window.
+*/
+function getCurrentFourDayCutoff(now = new Date()) {
+  const anchor = new Date(2026, 7, 24, 0, 0, 0, 0);
+  const windowMs = 4 * 24 * 60 * 60 * 1000;
+
+  if (now.getTime() < anchor.getTime()) {
+    return new Date(anchor.getTime() + windowMs);
+  }
+
+  const elapsed = now.getTime() - anchor.getTime();
+  const completedWindows = Math.floor(elapsed / windowMs);
+
+  return new Date(anchor.getTime() + (completedWindows + 1) * windowMs);
+}
+
+function initializeFourDayCountdowns() {
+  const countdowns = Array.from(
+    document.querySelectorAll("[data-four-day-countdown]")
+  );
+
+  if (!countdowns.length) return;
+
+  function pad(value) {
+    return String(Math.max(0, value)).padStart(2, "0");
+  }
+
+  function update() {
+    const now = new Date();
+    const target = getCurrentFourDayCutoff(now);
+    const remaining = Math.max(0, target.getTime() - now.getTime());
+
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    countdowns.forEach((countdown) => {
+      const daysNode = countdown.querySelector("[data-days]");
+      const hoursNode = countdown.querySelector("[data-hours]");
+      const minutesNode = countdown.querySelector("[data-minutes]");
+      const secondsNode = countdown.querySelector("[data-seconds]");
+
+      if (daysNode) daysNode.textContent = pad(days);
+      if (hoursNode) hoursNode.textContent = pad(hours);
+      if (minutesNode) minutesNode.textContent = pad(minutes);
+      if (secondsNode) secondsNode.textContent = pad(seconds);
+    });
+  }
+
+  update();
+  window.setInterval(update, 1000);
+}
+
 function initializeBathroomLandingPage() {
   getAttribution();
   initializeAnchorScrolling();
@@ -747,6 +814,7 @@ function initializeBathroomLandingPage() {
   initializeMobileStickyCta();
   initializeCallTracking();
   initializeWeeklyCountdowns();
+  initializeFourDayCountdowns();
 }
 
 if (document.readyState === "loading") {
