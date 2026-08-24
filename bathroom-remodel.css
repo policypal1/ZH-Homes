@@ -404,7 +404,7 @@
 
   /* Move the hero and form substantially higher. */
   .bathroom-page .deck-hero .hero-copy {
-    padding-top: clamp(88px, 13svh, 128px) !important;
+    padding-top: clamp(78px, 12svh, 118px) !important;
     padding-bottom: 34px !important;
   }
 
@@ -413,7 +413,7 @@
   }
 
   .bathroom-page .deck-hero .mobile-inline-estimate-section {
-    margin-top: 4px !important;
+    margin-top: 14px !important;
   }
 
   .bathroom-page .mobile-hero-form-card {
@@ -477,9 +477,8 @@
 
   .bathroom-page .mobile-step-numbers > span {
     display: grid !important;
-    grid-template-columns: 24px minmax(0, 1fr) !important;
-    gap: 5px !important;
-    align-items: center !important;
+    grid-template-columns: 1fr !important;
+    place-items: center !important;
     min-width: 0 !important;
     color: rgba(36,27,23,.54) !important;
   }
@@ -496,12 +495,7 @@
   }
 
   .bathroom-page .mobile-step-numbers small {
-    min-width: 0 !important;
-    overflow: hidden !important;
-    font-size: 9px !important;
-    font-weight: 850 !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
+    display: none !important;
   }
 
   .bathroom-page .mobile-step-numbers > span.active {
