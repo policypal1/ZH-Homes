@@ -570,3 +570,59 @@
     padding-top: 16px !important;
   }
 }
+
+/* ==========================================================
+   HERO LOCAL + REVIEW PROOF
+   Requested additions only. No structural, form, countdown,
+   image, or JavaScript changes.
+   ========================================================== */
+
+/* Keep the headline emphasis unmistakably orange. */
+.bathroom-page .hero-mobile-title .accent {
+  color: var(--bath-orange) !important;
+}
+
+/* Local relevance tag above the hero headline. */
+.bathroom-page .hero-mobile-title::before {
+  content: "Salem • Keizer • Silverton, Oregon";
+  display: block;
+  width: fit-content;
+  margin: 0 0 12px;
+  padding: 7px 10px;
+  color: var(--bath-orange);
+  background: rgba(243, 112, 33, 0.10);
+  border: 1px solid rgba(243, 112, 33, 0.52);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+/* Numerical review proof directly below the first hero support line. */
+.bathroom-page .hero-mobile-subheadline::after {
+  content: "★★★★★  4.9 Stars • 7 Google Reviews";
+  display: block;
+  width: fit-content;
+  margin-top: 11px;
+  color: var(--bath-orange);
+  font-size: 13px;
+  font-weight: 950;
+  line-height: 1.25;
+  letter-spacing: .1px;
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .hero-mobile-title::before {
+    margin-bottom: 10px;
+    padding: 6px 9px;
+    font-size: 9.5px;
+    letter-spacing: .55px;
+  }
+
+  .bathroom-page .hero-mobile-subheadline::after {
+    margin-top: 9px;
+    font-size: 12px;
+  }
+}
