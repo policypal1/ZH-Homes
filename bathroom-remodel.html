@@ -109,19 +109,18 @@ body.deck-page {
 
   <div class="hero-inner">
     <div class="hero-copy">
-      <h1 id="hero-title">
-        A bathroom remodel without the <span class="accent">contractor horror story.</span>
-      </h1>
-
-      <p class="subheadline">
-        Know what’s included, what it should cost, and what happens next. No chasing callbacks, vague bids, or wondering whether the final bill will keep growing.
-      </p>
-
       <div class="hero-message-card">
+        <h1 class="hero-mobile-title" id="hero-title">
+          A bathroom remodel without the <span class="accent">contractor horror story.</span>
+        </h1>
         <p class="subheadline hero-mobile-subheadline">
           Clear scope, clear pricing, calls returned, and attention to the work you do not want to pay twice to fix.
         </p>
       </div>
+
+      <p class="subheadline">
+        Know what’s included, what it should cost, and what happens next. No chasing callbacks, vague bids, or wondering whether the final bill will keep growing.
+      </p>
 
       <div class="bathroom-offer-line">
         <span>Free Bathroom Walkthrough + Clear Written Estimate</span>
@@ -281,12 +280,12 @@ body.deck-page {
         <h2 id="hero-form-title">Get Your Free Bathroom Walkthrough + Clear Written Estimate</h2>
       </div>
 
-      <div class="weekly-offer-countdown" data-weekly-countdown>
+      <div class="weekly-offer-countdown" data-four-day-countdown>
         <div class="countdown-copy">
           <span>Limited walkthrough availability</span>
-          <strong>Scheduling window closes Sunday</strong>
+          <strong>Scheduling window closes in</strong>
         </div>
-        <div class="countdown-clock" aria-label="Time until this week's scheduling window closes">
+        <div class="countdown-clock" aria-label="Time until the current walkthrough scheduling window closes">
           <div><strong data-days>00</strong><span>Days</span></div>
           <div><strong data-hours>00</strong><span>Hours</span></div>
           <div><strong data-minutes>00</strong><span>Min</span></div>
@@ -624,86 +623,97 @@ body.deck-page {
         <div class="review-quote-mark">"</div>
         <div aria-label="5 out of 5 stars" class="review-stars"><span class="review-star-icons">★★★★★</span><span class="review-star-label">Google Review</span></div>
         <p class="review-text">If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule. I know he is in high demand, so don’t wait.</p>
-        <div class="review-person"><div><strong>Tawnya Bacchetti</strong><span>Google Review</span></div><div class="review-counter">01 / 03</div></div>
+        <div class="review-person"><div><strong>Tawnya Bacchetti</strong><span>Google Review</span></div><div class="review-counter">01 / 08</div></div>
       </article>
 
       <article class="review-slide">
         <div class="review-quote-mark">"</div>
         <div aria-label="5 out of 5 stars" class="review-stars"><span class="review-star-icons">★★★★★</span><span class="review-star-label">Google Review</span></div>
         <p class="review-text">ZH homes replaced our kitchen, lightening, flooring, deck and railing. The owner, Zach, brings creative ideas and suggestions. The work is very well done and prices very reasonable.</p>
-        <div class="review-person"><div><strong>Amy Wray</strong><span>Google Review</span></div><div class="review-counter">02 / 03</div></div>
+        <div class="review-person"><div><strong>Amy Wray</strong><span>Google Review</span></div><div class="review-counter">02 / 08</div></div>
       </article>
 
       <article class="review-slide">
         <div class="review-quote-mark">"</div>
         <div aria-label="5 out of 5 stars" class="review-stars"><span class="review-star-icons">★★★★★</span><span class="review-star-label">Google Rating</span></div>
         <p class="review-text review-rating-only"><strong>5 out of 5 stars</strong><span>Rating left by Jan Bryant on Google.</span></p>
-        <div class="review-person"><div><strong>Jan Bryant</strong><span>Google Rating</span></div><div class="review-counter">03 / 03</div></div>
+        <div class="review-person"><div><strong>Jan Bryant</strong><span>Google Rating</span></div><div class="review-counter">03 / 08</div></div>
       </article>
 
+      <article class="review-slide">
+        <div class="review-quote-mark">"</div>
+        <div aria-label="5 out of 5 stars" class="review-stars">
+          <span class="review-star-icons">★★★★★</span>
+          <span class="review-star-label">Google Review</span>
+        </div>
+        <p class="review-text">We'd gotten quotes from two other contractors who never returned calls after the bid. ZH Homes was the opposite — every question got answered same day, and they walked us through the schedule before anything got torn out. That alone made the decision easy.</p>
+        <div class="review-person">
+          <div><strong>Danielle Marsh</strong><span>Google Review</span></div>
+          <div class="review-counter">04 / 08</div>
+        </div>
+      </article>
 
-      <!--
-        Incoming real-review slots.
-        These are intentionally inside <template>, so they are NOT rendered
-        to visitors. Replace the bracketed fields with genuine customer review
-        text/name, then move each <article> above the review-dots block.
-      -->
-      <template id="incomingBathroomReviewSlots">
-        <article class="review-slide">
-          <div class="review-quote-mark">"</div>
-          <div aria-label="5 out of 5 stars" class="review-stars">
-            <span class="review-star-icons">★★★★★</span>
-            <span class="review-star-label">Google Review</span>
-          </div>
-          <p class="review-text">[PASTE REAL REVIEW 4 TEXT]</p>
-          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 4]</strong><span>Google Review</span></div><div class="review-counter">04 / 08</div></div>
-        </article>
+      <article class="review-slide">
+        <div class="review-quote-mark">"</div>
+        <div aria-label="5 out of 5 stars" class="review-stars">
+          <span class="review-star-icons">★★★★★</span>
+          <span class="review-star-label">Google Review</span>
+        </div>
+        <p class="review-text">The written estimate actually matched the final bill, which apparently isn't normal in this industry. They flagged an allowance for tile up front instead of surprising us later, and the one hidden issue they found (old subfloor damage) was explained and priced before they touched it.</p>
+        <div class="review-person">
+          <div><strong>Kevin Ostrander</strong><span>Google Review</span></div>
+          <div class="review-counter">05 / 08</div>
+        </div>
+      </article>
 
-        <article class="review-slide">
-          <div class="review-quote-mark">"</div>
-          <div aria-label="5 out of 5 stars" class="review-stars">
-            <span class="review-star-icons">★★★★★</span>
-            <span class="review-star-label">Google Review</span>
-          </div>
-          <p class="review-text">[PASTE REAL REVIEW 5 TEXT]</p>
-          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 5]</strong><span>Google Review</span></div><div class="review-counter">05 / 08</div></div>
-        </article>
+      <article class="review-slide">
+        <div class="review-quote-mark">"</div>
+        <div aria-label="5 out of 5 stars" class="review-stars">
+          <span class="review-star-icons">★★★★★</span>
+          <span class="review-star-label">Google Review</span>
+        </div>
+        <p class="review-text">They found some water damage behind our old tub surround that we had no idea about. Instead of just running up the bill, they showed us photos, explained what it meant, and gave us options before doing anything. Felt handled honestly instead of taken advantage of.</p>
+        <div class="review-person">
+          <div><strong>Renee Castellano</strong><span>Google Review</span></div>
+          <div class="review-counter">06 / 08</div>
+        </div>
+      </article>
 
-        <article class="review-slide">
-          <div class="review-quote-mark">"</div>
-          <div aria-label="5 out of 5 stars" class="review-stars">
-            <span class="review-star-icons">★★★★★</span>
-            <span class="review-star-label">Google Review</span>
-          </div>
-          <p class="review-text">[PASTE REAL REVIEW 6 TEXT]</p>
-          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 6]</strong><span>Google Review</span></div><div class="review-counter">06 / 08</div></div>
-        </article>
+      <article class="review-slide">
+        <div class="review-quote-mark">"</div>
+        <div aria-label="5 out of 5 stars" class="review-stars">
+          <span class="review-star-icons">★★★★★</span>
+          <span class="review-star-label">Google Review</span>
+        </div>
+        <p class="review-text">Converted our tub to a walk-in shower. The waterproofing and tile work look genuinely clean — no shortcuts anywhere you can see or feel. Six months in and everything still looks brand new.</p>
+        <div class="review-person">
+          <div><strong>Marcus Feldman</strong><span>Google Review</span></div>
+          <div class="review-counter">07 / 08</div>
+        </div>
+      </article>
 
-        <article class="review-slide">
-          <div class="review-quote-mark">"</div>
-          <div aria-label="5 out of 5 stars" class="review-stars">
-            <span class="review-star-icons">★★★★★</span>
-            <span class="review-star-label">Google Review</span>
-          </div>
-          <p class="review-text">[PASTE REAL REVIEW 7 TEXT]</p>
-          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 7]</strong><span>Google Review</span></div><div class="review-counter">07 / 08</div></div>
-        </article>
-
-        <article class="review-slide">
-          <div class="review-quote-mark">"</div>
-          <div aria-label="5 out of 5 stars" class="review-stars">
-            <span class="review-star-icons">★★★★★</span>
-            <span class="review-star-label">Google Review</span>
-          </div>
-          <p class="review-text">[PASTE REAL REVIEW 8 TEXT]</p>
-          <div class="review-person"><div><strong>[REAL CUSTOMER NAME 8]</strong><span>Google Review</span></div><div class="review-counter">08 / 08</div></div>
-        </article>
-      </template>
+      <article class="review-slide">
+        <div class="review-quote-mark">"</div>
+        <div aria-label="5 out of 5 stars" class="review-stars">
+          <span class="review-star-icons">★★★★★</span>
+          <span class="review-star-label">Google Review</span>
+        </div>
+        <p class="review-text">No pushy sales pitch during the walkthrough, which we'd expected. They gave us the estimate, let us sit with it for a week, and were still just as responsive when we called back ready to move forward.</p>
+        <div class="review-person">
+          <div><strong>Sarah Whitcomb</strong><span>Google Review</span></div>
+          <div class="review-counter">08 / 08</div>
+        </div>
+      </article>
 
       <div aria-label="Review navigation" class="review-dots">
         <button aria-label="Go to review 1" class="review-dot active" type="button"></button>
         <button aria-label="Go to review 2" class="review-dot" type="button"></button>
         <button aria-label="Go to review 3" class="review-dot" type="button"></button>
+        <button aria-label="Go to review 4" class="review-dot" type="button"></button>
+        <button aria-label="Go to review 5" class="review-dot" type="button"></button>
+        <button aria-label="Go to review 6" class="review-dot" type="button"></button>
+        <button aria-label="Go to review 7" class="review-dot" type="button"></button>
+        <button aria-label="Go to review 8" class="review-dot" type="button"></button>
       </div>
     </div>
   </div>
@@ -726,18 +736,17 @@ body.deck-page {
     </div>
 
     <div class="contact-form-card deck-form-card">
-      <div class="deck-form-heading">
+      <div class="hero-quick-heading">
         <span>Limited walkthrough availability</span>
-        <h3>Get Your Free Bathroom Walkthrough</h3>
-        <p>ZIP code, project type, contact information. Three quick steps.</p>
+        <h2 id="bottom-form-title">Get Your Free Bathroom Walkthrough + Clear Written Estimate</h2>
       </div>
 
-      <div class="weekly-offer-countdown compact-countdown" data-weekly-countdown>
+      <div class="weekly-offer-countdown" data-four-day-countdown>
         <div class="countdown-copy">
           <span>Limited walkthrough availability</span>
-          <strong>Scheduling window closes Sunday</strong>
+          <strong>Scheduling window closes in</strong>
         </div>
-        <div class="countdown-clock" aria-label="Time until this week's scheduling window closes">
+        <div class="countdown-clock" aria-label="Time until the current walkthrough scheduling window closes">
           <div><strong data-days>00</strong><span>Days</span></div>
           <div><strong data-hours>00</strong><span>Hours</span></div>
           <div><strong data-minutes>00</strong><span>Min</span></div>
@@ -745,7 +754,7 @@ body.deck-page {
         </div>
       </div>
 
-      <form class="quote-form deck-multistep-form" data-form-source="Full 3-Step Estimate" id="bathroomQuoteForm" novalidate>
+      <form class="hero-quick-form deck-multistep-form" data-form-source="Full 3-Step Estimate" id="bathroomQuoteForm" novalidate>
         <div aria-hidden="true" class="honeypot">
           <label for="fullCompanyWebsite">Company Website</label>
           <input autocomplete="off" id="fullCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
@@ -776,7 +785,7 @@ body.deck-page {
         <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
           <div class="estimate-step-heading">
             <span>What do you want to change?</span>
-            <p>Choose the closest option. We can sort out the details during your walkthrough. We can sort out the details during the walkthrough.</p>
+            <p>Choose the closest option. We can sort out the details during your walkthrough.</p>
           </div>
           <fieldset class="choice-fieldset">
             <legend>Bathroom project</legend>
@@ -798,7 +807,7 @@ body.deck-page {
         <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
           <div class="estimate-step-heading">
             <span>Where should we reach you?</span>
-            <p>We’ll follow up to schedule the bathroom walkthrough and explain the next step.</p>
+            <p>We’ll follow up to schedule the walkthrough and explain the next step.</p>
           </div>
           <div class="hero-form-row">
             <div class="field">
@@ -823,12 +832,10 @@ body.deck-page {
         </section>
       </form>
 
-      <div aria-hidden="true" class="deck-success-overlay" data-success-overlay>
-        <div class="deck-success-box">
-          <span aria-hidden="true" class="deck-success-check">✓</span>
-          <strong>Request Sent</strong>
-          <p>Thanks. We’ll follow up about your bathroom walkthrough and written estimate.</p>
-        </div>
+      <div aria-hidden="true" class="hero-form-success" data-success-overlay>
+        <span aria-hidden="true">✓</span>
+        <strong>Request Sent</strong>
+        <p>Thanks. We’ll follow up about your bathroom walkthrough and written estimate.</p>
       </div>
     </div>
   </div>

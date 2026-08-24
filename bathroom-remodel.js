@@ -801,39 +801,7 @@ function initializeFourDayCountdowns() {
   window.setInterval(update, 1000);
 }
 
-
-function initializeResponsiveHeroTitle() {
-  const mediaQuery = window.matchMedia("(max-width: 767px)");
-  const heroCopy = document.querySelector(".bathroom-hero .hero-copy");
-  const title = document.getElementById("hero-title");
-  const mobileCard = heroCopy?.querySelector(".hero-message-card");
-  const desktopSubheadline = heroCopy?.querySelector(
-    ":scope > .subheadline:not(.hero-mobile-subheadline)"
-  );
-
-  if (!heroCopy || !title || !mobileCard || !desktopSubheadline) {
-    return;
-  }
-
-  function placeTitle() {
-    if (mediaQuery.matches) {
-      if (title.parentElement !== mobileCard) {
-        mobileCard.prepend(title);
-      }
-      return;
-    }
-
-    if (title.parentElement !== heroCopy) {
-      heroCopy.insertBefore(title, desktopSubheadline);
-    }
-  }
-
-  mediaQuery.addEventListener?.("change", placeTitle);
-  placeTitle();
-}
-
 function initializeBathroomLandingPage() {
-  initializeResponsiveHeroTitle();
   getAttribution();
   initializeAnchorScrolling();
 

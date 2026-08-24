@@ -554,10 +554,8 @@
 }
 
 
-/* ==========================================================
-   FORM SPAM HONEYPOT — HARD HIDE
-   Kept in the markup for spam filtering, never visible to visitors.
-   ========================================================== */
+/* FORM HONEYPOT HARD HIDE
+   Required for spam filtering; never visible to visitors. */
 .bathroom-page .honeypot,
 .bathroom-page .honeypot label,
 .bathroom-page .honeypot input {
@@ -581,21 +579,18 @@
 }
 
 
-/* One semantic hero H1 on all breakpoints. */
-@media (max-width: 767px) {
-  .bathroom-page .deck-hero #hero-title {
-    display: block !important;
-    max-width: none !important;
-    margin: 0 0 10px !important;
-    color: #fff !important;
-    font-size: clamp(30px, 8.6vw, 38px) !important;
-    font-weight: 800 !important;
-    line-height: 1.02 !important;
-    letter-spacing: -1.1px !important;
-    text-wrap: balance !important;
+/* SINGLE HERO H1 DESKTOP PRESERVATION */
+@media (min-width: 768px) {
+  .bathroom-page .hero-message-card {
+    display: contents !important;
   }
 
-  .bathroom-page .deck-hero #hero-title .accent {
-    color: inherit !important;
+  .bathroom-page .hero-message-card #hero-title {
+    display: block !important;
+    max-width: 690px !important;
+  }
+
+  .bathroom-page .hero-message-card .hero-mobile-subheadline {
+    display: none !important;
   }
 }
