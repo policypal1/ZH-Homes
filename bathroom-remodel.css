@@ -26,27 +26,30 @@
   gap: 8px 12px;
   width: fit-content;
   max-width: 640px;
-  margin: -4px 0 26px;
-  padding: 14px 18px;
+  margin: -12px 0 24px;
+  padding: 10px 14px;
   color: rgba(255,255,255,.82);
   background: rgba(255,255,255,.055);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 12px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.35;
 }
 
 .bathroom-offer-line span {
-  font-size: 14px;
-  font-weight: 850;
+  font-weight: 800;
 }
 
 .bathroom-offer-line strong {
   color: #fff;
-  font-size: 15.5px;
   font-weight: 950;
 }
 
+.bathroom-offer-line strong::before {
+  content: "•";
+  margin-right: 10px;
+  color: var(--bath-orange);
+}
 
 .weekly-offer-countdown {
   margin: 0 0 18px;
@@ -167,81 +170,6 @@
   margin-bottom: 14px;
 }
 
-.bathroom-page .bathroom-hero .hero-copy > h1 {
-  max-width: 11.2ch;
-  font-size: clamp(58px, 5vw, 78px);
-  line-height: .96;
-}
-
-.bathroom-page .bathroom-hero .hero-inner {
-  align-items: start;
-}
-
-.bathroom-page .hero-quick-card {
-  margin-top: -10px;
-}
-
-.bathroom-page .bathroom-offer-line {
-  margin: -2px 0 24px;
-}
-
-.bathroom-page .bathroom-offer-line span {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 950;
-}
-
-.bathroom-page .deck-project-gallery-grid-three {
-  display: grid;
-  grid-template-columns: 1.25fr .85fr .85fr;
-  gap: 18px;
-  align-items: stretch;
-}
-
-.bathroom-page .bathroom-before-after-card {
-  overflow: hidden;
-}
-
-.bathroom-page .before-after-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-
-.bathroom-page .before-after-panel {
-  position: relative;
-  min-height: 340px;
-}
-
-.bathroom-page .before-after-panel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.bathroom-page .before-after-panel:first-child {
-  border-right: 1px solid rgba(255,255,255,.12);
-}
-
-.bathroom-page .before-after-chip {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 10px;
-  color: #fff;
-  background: rgba(7,8,9,.72);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .5px;
-  text-transform: uppercase;
-  backdrop-filter: blur(4px);
-}
-
 @media (max-width: 950px) {
   /*
     deck.css changes the hero composition on mobile.
@@ -255,19 +183,6 @@
 
   .bathroom-page .bathroom-offer-line {
     margin: 4px 0 18px;
-  }
-
-  .bathroom-page .hero-quick-card {
-    margin-top: 0;
-  }
-
-  .bathroom-page .deck-project-gallery-grid-three {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .bathroom-page .before-after-panel {
-    min-height: 220px;
   }
 
   .bathroom-page .bathroom-offer-line strong::before {
@@ -320,21 +235,6 @@
     margin-top: 10px;
     font-size: 13px;
   }
-
-  .bathroom-page .deck-project-gallery-grid-three {
-    grid-template-columns: 1fr;
-  }
-
-  .bathroom-page .before-after-panel {
-    min-height: 180px;
-  }
-
-  .bathroom-page .before-after-chip {
-    left: 10px;
-    bottom: 10px;
-    padding: 6px 9px;
-    font-size: 10px;
-  }
 }
 
 @media (max-width: 420px) {
@@ -348,74 +248,109 @@
 }
 
 
-.bathroom-page .header-cta-mobile {
-  display: none;
-}
-
 /* ==========================================================
-   MOBILE-ONLY CAMPAIGN REFINEMENTS
-   Keep the deck-derived layout intact.
+   FINAL MOBILE QUOTE-CARD CLEANUP
+   Preserve the ZH Homes deck-derived design, reduce visual noise.
    ========================================================== */
 @media (max-width: 767px) {
-  /* The offer now lives in the quote card, so remove the extra hero strip. */
-  .bathroom-page .bathroom-offer-line {
-    display: none !important;
+  /* Bring the headline/form cluster higher under the header. */
+  .bathroom-page .deck-hero .hero-copy {
+    padding-top: clamp(190px, 31svh, 305px) !important;
   }
 
-  /* Keep the ZH Homes brand, but use a single conversion action on mobile. */
-  .bathroom-page .site-header .header-license-badge {
-    display: none !important;
+  .bathroom-page .deck-hero .hero-mobile-title {
+    font-size: clamp(34px, 9.3vw, 42px) !important;
+    line-height: .99 !important;
+    letter-spacing: -1.25px !important;
   }
 
-  .bathroom-page .site-header .header-actions {
+  /* Keep the form hierarchy simple: availability -> offer -> question -> action -> progress. */
+  .bathroom-page .mobile-hero-estimate-form {
     display: flex !important;
-    flex: 0 0 auto !important;
-    align-items: center !important;
-    margin-left: auto !important;
+    flex-direction: column !important;
   }
 
-  .bathroom-page .site-header .header-cta {
-    display: inline-flex !important;
-    align-items: center !important;
+  .bathroom-page .mobile-hero-estimate-form .estimate-step {
+    order: 1 !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress {
+    order: 2 !important;
+    margin: 13px 0 0 !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy {
     justify-content: center !important;
-    min-height: 42px !important;
-    padding: 0 15px !important;
-    color: #fff !important;
-    background: var(--bath-orange) !important;
-    border: 0 !important;
-    border-radius: 10px !important;
-    font-size: 12.5px !important;
-    font-weight: 950 !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    box-shadow: 0 8px 20px rgba(243, 112, 33, 0.22) !important;
+    margin-bottom: 7px !important;
   }
 
-  .bathroom-page .header-cta-desktop {
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy strong {
     display: none !important;
   }
 
-  .bathroom-page .header-cta-mobile {
-    display: inline !important;
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy span {
+    color: rgba(255,255,255,.70) !important;
+    font-size: 10px !important;
+    font-weight: 850 !important;
+    letter-spacing: .35px !important;
+    text-transform: uppercase !important;
   }
 
-  /* Availability first, offer second, then the unchanged 3-step form. */
-  .bathroom-page .mobile-hero-form-card .compact-countdown {
-    margin: 0 0 14px !important;
+  .bathroom-page .mobile-hero-estimate-form .estimate-progress-track {
+    height: 4px !important;
+    background: rgba(255,255,255,.16) !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading {
+    margin-bottom: 12px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading > span {
+    margin-bottom: 0 !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    line-height: 1.12 !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading p {
+    display: none !important;
   }
 
   .bathroom-page .mobile-hero-form-heading {
-    margin: 0 0 16px !important;
+    margin-bottom: 15px !important;
   }
 
   .bathroom-page .mobile-hero-form-heading h3 {
-    margin: 0 !important;
+    font-size: 21px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.45px !important;
   }
 
-  /* Explicitly preserve the transformation headline on mobile. */
-  .bathroom-page .deck-project-gallery-heading,
-  .bathroom-page .deck-project-gallery-eyebrow,
-  .bathroom-page #bathroom-gallery-title {
-    display: block !important;
+  .bathroom-page .mobile-hero-form-card .weekly-offer-countdown {
+    margin-bottom: 13px !important;
+    padding: 10px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-card .countdown-copy {
+    margin-bottom: 8px !important;
+  }
+
+  .bathroom-page .mobile-hero-form-card .countdown-copy > strong {
+    font-size: 11px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-nav {
+    margin-top: 2px !important;
+  }
+
+  .bathroom-page .mobile-hero-estimate-form .estimate-next,
+  .bathroom-page .mobile-hero-estimate-form .estimate-submit {
+    min-height: 50px !important;
+  }
+
+  /* Transformation card: photos tell the story without extra labels. */
+  .bathroom-page .bathroom-before-after-card .before-after-chip,
+  .bathroom-page .bathroom-before-after-card .deck-project-tag {
+    display: none !important;
   }
 }
