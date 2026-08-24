@@ -48,7 +48,7 @@
             <span class="license-desktop-word">Oregon </span>CCB #260679
           </strong>
         </div>
-        <a href="#contact" class="header-cta">Free Estimate</a>
+        <a href="#contact" class="header-cta">24-Hour Estimate</a>
       </div>
     </div>
   </header>
@@ -102,6 +102,11 @@
             Clear scope. Straightforward pricing. Calls returned. Quality work done right, with a timeline you can actually plan around.
           </p>
 
+          <div class="hero-offer-pill">
+            <strong>Free Bathroom Walkthrough</strong>
+            <span>+ written estimate within 24 hours</span>
+          </div>
+
           <h1 class="hero-mobile-title">
             A bathroom remodel without the contractor <span class="accent">horror story.</span>
           </h1>
@@ -110,8 +115,13 @@
             Clear scope. Straightforward pricing. Calls returned. Quality work done right, with a timeline you can actually plan around.
           </p>
 
+          <div class="hero-offer-pill hero-offer-pill-mobile">
+            <strong>Free Bathroom Walkthrough</strong>
+            <span>+ written estimate within 24 hours</span>
+          </div>
+
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Get a Free Bathroom Estimate</a>
+            <a href="#contact" class="btn btn-primary">Claim My 24-Hour Estimate</a>
             <a href="tel:5039105466" class="btn btn-secondary">Call / Text (503) 910-5466</a>
           </div>
 
@@ -201,6 +211,152 @@
         </div>
       </div>
     </section>
+
+    <section class="lead-capture-section" id="contact">
+      <div class="lead-capture-inner">
+        <div class="lead-offer-panel">
+          <div class="lead-offer-eyebrow">Free Bathroom Remodel Walkthrough</div>
+          <h2>Get a clear written estimate within 24 hours.</h2>
+          <p>
+            No vague ballpark number. Tell us what you want to change, and we’ll follow up to schedule the walkthrough and give you a clear next step.
+          </p>
+
+          <div class="offer-countdown-card" data-offer-deadline="2026-08-27T00:00:00-07:00">
+            <span class="offer-countdown-kicker">Don’t miss out. This offer expires in:</span>
+            <div class="offer-countdown" aria-live="polite">
+              <div><strong id="countdownDays">03</strong><span>Days</span></div>
+              <div><strong id="countdownHours">00</strong><span>Hours</span></div>
+              <div><strong id="countdownMinutes">00</strong><span>Min</span></div>
+              <div><strong id="countdownSeconds">00</strong><span>Sec</span></div>
+            </div>
+            <small>Current estimate-offer window. Deadline does not reset when the page refreshes.</small>
+          </div>
+
+          <div class="lead-proof-row">
+            <span>Licensed, Bonded &amp; Insured</span>
+            <span>Oregon CCB #260679</span>
+            <span>No pressure to sign</span>
+          </div>
+        </div>
+
+        <div class="contact-form-card multistep-card">
+          <div class="multistep-heading">
+            <span class="multistep-kicker">Free 24-Hour Estimate</span>
+            <h3>Tell us about your bathroom.</h3>
+            <div class="form-progress" aria-label="Quote form progress">
+              <div class="form-progress-track"><span id="formProgressBar"></span></div>
+              <span id="formProgressText">Step 1 of 4</span>
+            </div>
+          </div>
+
+          <form class="quote-form multistep-form" id="quoteForm" novalidate>
+            <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+              <label for="companyWebsite">Company Website</label>
+              <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <input id="description" name="description" type="hidden" value="">
+
+            <div class="form-step active" data-step="0">
+              <div class="form-step-copy">
+                <span>First, let’s make sure you’re in the service area.</span>
+                <h4>What’s your ZIP code?</h4>
+              </div>
+              <div class="field field-large">
+                <label for="zipCode">ZIP Code</label>
+                <input id="zipCode" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="97301" maxlength="5" pattern="[0-9]{5}" required>
+              </div>
+              <button class="step-btn step-next" type="button">Continue</button>
+            </div>
+
+            <div class="form-step" data-step="1" hidden>
+              <div class="form-step-copy">
+                <span>Now the project.</span>
+                <h4>What are you looking to remodel?</h4>
+              </div>
+              <div class="field">
+                <label for="serviceType">Project Type</label>
+                <select id="serviceType" name="serviceType" required>
+                  <option value="" selected disabled>Select your project</option>
+                  <option>Full Bathroom Remodel</option>
+                  <option>Tub-to-Shower Conversion</option>
+                  <option>Shower Remodel / Waterproofing</option>
+                  <option>Vanity / Storage Update</option>
+                  <option>Flooring / Lighting / Ventilation</option>
+                  <option>Accessibility / Easier-to-Use Bathroom</option>
+                  <option>Not Sure Yet</option>
+                </select>
+              </div>
+              <div class="step-actions">
+                <button class="step-btn step-back" type="button">Back</button>
+                <button class="step-btn step-next" type="button">Continue</button>
+              </div>
+            </div>
+
+            <div class="form-step" data-step="2" hidden>
+              <div class="form-step-copy">
+                <span>One quick qualifier.</span>
+                <h4>Do you own or rent the property?</h4>
+              </div>
+              <div class="choice-grid" role="radiogroup" aria-label="Property ownership">
+                <label class="choice-card">
+                  <input type="radio" name="ownershipStatus" value="Own" required>
+                  <span><strong>I own it</strong><small>Homeowner / property owner</small></span>
+                </label>
+                <label class="choice-card">
+                  <input type="radio" name="ownershipStatus" value="Rent" required>
+                  <span><strong>I rent it</strong><small>Owner approval may be needed</small></span>
+                </label>
+              </div>
+              <div class="step-actions">
+                <button class="step-btn step-back" type="button">Back</button>
+                <button class="step-btn step-next" type="button">Continue</button>
+              </div>
+            </div>
+
+            <div class="form-step" data-step="3" hidden>
+              <div class="form-step-copy">
+                <span>Last step.</span>
+                <h4>Where should we send your estimate follow-up?</h4>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="fullName">Full Name</label>
+                  <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(503) 555-1234" required>
+                </div>
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="optional-label">Optional</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div class="step-actions final-step-actions">
+                <button class="step-btn step-back" type="button">Back</button>
+                <button class="submit-btn" type="submit">Claim My Free 24-Hour Estimate</button>
+              </div>
+              <div class="form-microcopy">No obligation. No sign-today pressure. Just a clear next step for your bathroom.</div>
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+            </div>
+          </form>
+
+          <div class="quote-success-overlay" id="quoteSuccessOverlay" aria-hidden="true">
+            <div class="quote-success-box">
+              <div class="quote-success-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12.5L9.5 17L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <strong>Request Sent</strong>
+              <span>Thanks. ZH Homes received your bathroom estimate request.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section class="about-section" id="about">
       <div class="about-inner">
@@ -593,8 +749,8 @@
           </div>
 
           <div class="project-cta-copy">
-            <strong>Not sure what your bathroom needs yet?</strong>
-            <span>Call or text. We can talk through what is frustrating you, what matters most, and the clearest next step.</span>
+            <strong>Ready to get a real number for your bathroom?</strong>
+            <span>Claim the free walkthrough and 24-hour written estimate. Clear scope, straightforward pricing, and no pressure to sign.</span>
           </div>
         </div>
 
@@ -706,101 +862,6 @@
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <div class="contact-inner">
-        <div class="contact-content">
-          <div class="contact-eyebrow">Free Bathroom Remodel Walkthrough + Estimate</div>
-          <h2>Tell us what you want to change.</h2>
-          <p>
-            Start with the basics. Tell us what is frustrating you, what you want the bathroom to become, and where the project is located.
-            ZH Homes will follow up to talk through the next step. No pressure to sign on the spot.
-          </p>
-
-          <ul class="contact-info-list" aria-label="Main contact information">
-            <li class="contact-info-item">
-              <a href="tel:5039105466">Call or text: (503) 910-5466</a>
-            </li>
-            <li class="contact-info-item">
-              <span>Salem, Keizer, and nearby Oregon communities</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="contact-form-card">
-          <h3>Request your free bathroom estimate</h3>
-
-          <form class="quote-form" id="quoteForm" enctype="multipart/form-data" novalidate>
-            <div style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
-              <label for="companyWebsite">Company Website</label>
-              <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="fullName">Full Name</label>
-                <input id="fullName" name="fullName" type="text" placeholder="Your name" required>
-              </div>
-
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="you@example.com">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="Your phone number" required>
-              </div>
-
-              <div class="field">
-                <label for="serviceType">What are you considering?</label>
-                <select id="serviceType" name="serviceType" required>
-                  <option>Full Bathroom Remodel</option>
-                  <option>Tub-to-Shower Conversion</option>
-                  <option>Shower Remodel / Waterproofing</option>
-                  <option>Vanity / Storage Update</option>
-                  <option>Flooring / Lighting / Ventilation</option>
-                  <option>Accessibility / Easier-to-Use Bathroom</option>
-                  <option>Not Sure Yet</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="description">What is bothering you most about the bathroom?</label>
-              <textarea id="description" name="description" placeholder="Old tub, cramped layout, stained grout, no storage, leaks, poor lighting, hard to step into..." required></textarea>
-            </div>
-
-            <div class="field">
-              <label for="projectPhoto">Upload Images</label>
-              <input id="projectPhoto" name="projectPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-describedby="uploadNote fileError">
-              <div class="selected-file-row" id="selectedFileRow" hidden>
-                <span id="selectedFileName"></span>
-                <button type="button" id="clearProjectPhoto" aria-label="Remove uploaded images">×</button>
-              </div>
-              <span class="field-note" id="uploadNote">Optional, but photos can make the first conversation much easier. Up to 4 images, 5MB each.</span>
-              <span class="file-error" id="fileError" role="alert">Please upload 1–4 image files, with each image 5MB or smaller and total uploads under 20MB.</span>
-            </div>
-
-            <button class="submit-btn" type="submit">Request My Free Estimate</button>
-            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
-          </form>
-
-          <div class="quote-success-overlay" id="quoteSuccessOverlay" aria-hidden="true">
-            <div class="quote-success-box">
-              <div class="quote-success-check" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M5 12.5L9.5 17L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <strong>Request Sent</strong>
-              <span>Thanks. Your bathroom estimate request was submitted.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="faq-section" id="faq">
       <div class="faq-inner">
@@ -920,6 +981,112 @@
   </div>
 
   <!-- Reuse the main site's working quote form, carousel, lightbox, and mobile CTA logic. -->
+
+  <script>
+    (() => {
+      const form = document.getElementById('quoteForm');
+      if (!form) return;
+
+      const steps = Array.from(form.querySelectorAll('.form-step'));
+      const progressBar = document.getElementById('formProgressBar');
+      const progressText = document.getElementById('formProgressText');
+      const description = document.getElementById('description');
+      let currentStep = 0;
+
+      function updateLeadDetails() {
+        const zip = document.getElementById('zipCode')?.value.trim() || '';
+        const ownership = form.querySelector('input[name="ownershipStatus"]:checked')?.value || '';
+        const project = document.getElementById('serviceType')?.value || '';
+        if (description) {
+          description.value = [
+            zip ? `ZIP Code: ${zip}` : '',
+            ownership ? `Property Status: ${ownership}` : '',
+            project ? `Project Type: ${project}` : ''
+          ].filter(Boolean).join(' | ');
+        }
+      }
+
+      function showStep(index) {
+        currentStep = Math.max(0, Math.min(index, steps.length - 1));
+        steps.forEach((step, i) => {
+          const active = i === currentStep;
+          step.classList.toggle('active', active);
+          step.hidden = !active;
+        });
+        const percent = ((currentStep + 1) / steps.length) * 100;
+        if (progressBar) progressBar.style.width = `${percent}%`;
+        if (progressText) progressText.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+        const firstInput = steps[currentStep]?.querySelector('input:not([type="hidden"]), select');
+        window.setTimeout(() => firstInput?.focus({ preventScroll: true }), 80);
+      }
+
+      function validateCurrentStep() {
+        const inputs = Array.from(steps[currentStep].querySelectorAll('input, select, textarea'));
+        for (const input of inputs) {
+          if (!input.checkValidity()) {
+            input.reportValidity();
+            input.focus();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      form.querySelectorAll('.step-next').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (!validateCurrentStep()) return;
+          updateLeadDetails();
+          showStep(currentStep + 1);
+        });
+      });
+
+      form.querySelectorAll('.step-back').forEach((button) => {
+        button.addEventListener('click', () => showStep(currentStep - 1));
+      });
+
+      form.addEventListener('input', updateLeadDetails);
+      form.addEventListener('change', updateLeadDetails);
+      form.addEventListener('submit', updateLeadDetails);
+      form.addEventListener('reset', () => window.setTimeout(() => showStep(0), 0));
+      showStep(0);
+
+      const countdownCard = document.querySelector('.offer-countdown-card');
+      const deadlineText = countdownCard?.dataset.offerDeadline;
+      const deadline = deadlineText ? new Date(deadlineText) : null;
+      const fields = {
+        days: document.getElementById('countdownDays'),
+        hours: document.getElementById('countdownHours'),
+        minutes: document.getElementById('countdownMinutes'),
+        seconds: document.getElementById('countdownSeconds')
+      };
+
+      function pad(value) {
+        return String(Math.max(0, value)).padStart(2, '0');
+      }
+
+      function tickCountdown() {
+        if (!deadline || Number.isNaN(deadline.getTime())) return;
+        const remaining = Math.max(0, deadline.getTime() - Date.now());
+        const totalSeconds = Math.floor(remaining / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        if (fields.days) fields.days.textContent = pad(days);
+        if (fields.hours) fields.hours.textContent = pad(hours);
+        if (fields.minutes) fields.minutes.textContent = pad(minutes);
+        if (fields.seconds) fields.seconds.textContent = pad(seconds);
+        if (remaining === 0 && countdownCard) {
+          countdownCard.classList.add('offer-expired');
+          const kicker = countdownCard.querySelector('.offer-countdown-kicker');
+          if (kicker) kicker.textContent = 'This estimate-offer window has closed.';
+        }
+      }
+
+      tickCountdown();
+      window.setInterval(tickCountdown, 1000);
+    })();
+  </script>
   <script src="script.js?v=20260806-2"></script>
 </body>
 </html>
