@@ -572,9 +572,9 @@
 }
 
 /* ==========================================================
-   HERO LOCAL + REVIEW PROOF
-   Requested additions only. No structural, form, countdown,
-   image, or JavaScript changes.
+   HERO REVIEW PROOF FINAL TWEAK
+   Keep the review proof, remove the local tag, and center the
+   hero text + review line exactly as requested.
    ========================================================== */
 
 /* Keep the headline emphasis unmistakably orange. */
@@ -582,45 +582,35 @@
   color: var(--bath-orange) !important;
 }
 
-/* Local relevance tag above the hero headline. */
+/* Remove the local relevance tag. */
 .bathroom-page .hero-mobile-title::before {
-  content: "Salem • Keizer • Silverton, Oregon";
-  display: block;
-  width: fit-content;
-  margin: 0 0 12px;
-  padding: 7px 10px;
-  color: var(--bath-orange);
-  background: rgba(243, 112, 33, 0.10);
-  border: 1px solid rgba(243, 112, 33, 0.52);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 950;
-  line-height: 1;
-  letter-spacing: .7px;
-  text-transform: uppercase;
+  content: none !important;
+  display: none !important;
 }
 
-/* Numerical review proof directly below the first hero support line. */
+/* Center the hero headline block. */
+.bathroom-page .hero-mobile-title,
+.bathroom-page .hero-mobile-subheadline {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Center the numerical review proof directly below the first hero support line. */
 .bathroom-page .hero-mobile-subheadline::after {
-  content: "★★★★★  4.9 Stars • 7 Google Reviews";
+  content: "★★★★★  4.7 Stars • 7 Google Reviews";
   display: block;
-  width: fit-content;
+  width: 100%;
   margin-top: 11px;
   color: var(--bath-orange);
   font-size: 13px;
   font-weight: 950;
   line-height: 1.25;
   letter-spacing: .1px;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
-  .bathroom-page .hero-mobile-title::before {
-    margin-bottom: 10px;
-    padding: 6px 9px;
-    font-size: 9.5px;
-    letter-spacing: .55px;
-  }
-
   .bathroom-page .hero-mobile-subheadline::after {
     margin-top: 9px;
     font-size: 12px;
