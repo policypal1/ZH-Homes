@@ -1,301 +1,758 @@
 "use strict";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzkP7uw_JmciP2Qr66GUHT4VT-4Qx1ZlhACFkGM3mzKzheInsua1ItBdHzXWFqq8RcO/exec";
+  "https://script.google.com/macros/s/AKfycbwBorH28Zp-w4PXl0mYK2PV3IP0FmjLIaBqfpEmUes4_8g2e1sYoLChMptCA_6D3Nbd/exec";
 
-const form = document.getElementById("bathroomQuoteForm");
-const estimateCard = document.getElementById("estimate");
-const formSuccess = document.getElementById("formSuccess");
-const formStatus = document.getElementById("formStatus");
-const stepLabel = document.getElementById("formStepLabel");
-const progressBar = document.getElementById("formProgressBar");
-const nextButton = document.getElementById("nextFormStep");
-const backButton = document.getElementById("backFormStep");
-const projectTypeError = document.getElementById("projectTypeError");
-const projectCity = document.getElementById("projectCity");
-const projectPhoto = document.getElementById("projectPhoto");
-const fileError = document.getElementById("fileError");
-const selectedFiles = document.getElementById("selectedFiles");
-const selectedFileName = document.getElementById("selectedFileName");
-const clearProjectPhoto = document.getElementById("clearProjectPhoto");
+const ATTRIBUTION_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "gclid",
+  "gbraid",
+  "wbraid"
+];
 
-const MAX_FILES = 4;
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
-const MAX_TOTAL_SIZE = 20 * 1024 * 1024;
-const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif"]);
-const ALLOWED_EXTENSIONS = new Set(["jpg", "jpeg", "png", "webp", "gif"]);
-
-let currentStep = 1;
-
-function setStatus(message, type = "") {
-  if (!formStatus) return;
-  formStatus.textContent = message;
-  formStatus.className = `form-status ${type}`.trim();
-}
-
-function showStep(step, options = {}) {
-  if (!form) return;
-  currentStep = step;
-
-  form.querySelectorAll("[data-form-step]").forEach((panel) => {
-    panel.hidden = Number(panel.dataset.formStep) !== step;
+function pushTrackingEvent(eventName, details = {}) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: eventName,
+    page_path: window.location.pathname,
+    ...details
   });
-
-  if (stepLabel) stepLabel.textContent = `Step ${step} of 2`;
-  if (progressBar) progressBar.style.width = step === 1 ? "50%" : "100%";
-  setStatus("");
-
-  if (options.focus) {
-    const firstField = form.querySelector(`[data-form-step="${step}"] input:not([type="hidden"]), [data-form-step="${step}"] select, [data-form-step="${step}"] textarea`);
-    window.setTimeout(() => firstField?.focus({ preventScroll: true }), 0);
-  }
-
 }
 
-function selectedProjectType() {
-  return form?.querySelector('input[name="serviceType"]:checked')?.value || "";
+function readCurrentAttribution() {
+  const params = new URLSearchParams(window.location.search);
+
+  return ATTRIBUTION_KEYS.reduce((result, key) => {
+    result[key] = params.get(key) || "";
+    return result;
+  }, {});
 }
 
-function validateStepOne() {
-  let valid = true;
-  const projectType = selectedProjectType();
+function getAttribution() {
+  const storageKey = "zhHomesBathroomAttribution";
+  const current = readCurrentAttribution();
+  const hasCurrentValues = Object.values(current).some(Boolean);
 
-  if (!projectType) {
-    valid = false;
-    if (projectTypeError) projectTypeError.textContent = "Choose the option that is closest to your project.";
-  } else if (projectTypeError) {
-    projectTypeError.textContent = "";
-  }
-
-  if (projectCity && !projectCity.value.trim()) {
-    valid = false;
-    projectCity.setAttribute("aria-invalid", "true");
-  } else {
-    projectCity?.removeAttribute("aria-invalid");
-  }
-
-  if (!valid) {
-    if (!projectType) {
-      form?.querySelector('input[name="serviceType"]')?.focus();
-    } else {
-      projectCity?.focus();
+  if (hasCurrentValues) {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(current));
+    } catch (error) {
+      console.warn("Attribution data could not be saved.", error);
     }
+    return current;
   }
-
-  return valid;
-}
-
-function getExtension(fileName) {
-  const pieces = String(fileName || "").toLowerCase().split(".");
-  return pieces.length > 1 ? pieces.pop() : "";
-}
-
-function validImage(file) {
-  return ALLOWED_TYPES.has(file.type) || (!file.type && ALLOWED_EXTENSIONS.has(getExtension(file.name)));
-}
-
-function selectedPhotoFiles() {
-  return Array.from(projectPhoto?.files || []);
-}
-
-function validateFiles(files) {
-  if (!projectPhoto) return true;
-
-  const totalSize = files.reduce((sum, file) => sum + file.size, 0);
-  const invalid =
-    files.length > MAX_FILES ||
-    totalSize > MAX_TOTAL_SIZE ||
-    files.some((file) => file.size > MAX_FILE_SIZE || !validImage(file));
-
-  const message = invalid
-    ? "Upload up to 4 JPG, PNG, WEBP, or GIF images. Keep each image under 5MB."
-    : "";
-
-  projectPhoto.setCustomValidity(message);
-  projectPhoto.toggleAttribute("aria-invalid", invalid);
-  if (fileError) fileError.textContent = message;
-  return !invalid;
-}
-
-function updateSelectedFiles(files) {
-  if (!selectedFiles || !selectedFileName) return;
-
-  if (!files.length) {
-    selectedFiles.hidden = true;
-    selectedFileName.textContent = "";
-    return;
-  }
-
-  selectedFileName.textContent =
-    files.length === 1 ? files[0].name : `${files.length} project photos selected`;
-  selectedFiles.hidden = false;
-}
-
-function clearFiles() {
-  if (!projectPhoto) return;
-  projectPhoto.value = "";
-  projectPhoto.setCustomValidity("");
-  projectPhoto.removeAttribute("aria-invalid");
-  if (fileError) fileError.textContent = "";
-  updateSelectedFiles([]);
-}
-
-function readFile(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = String(reader.result || "");
-      resolve({
-        name: file.name,
-        type: file.type || "application/octet-stream",
-        size: file.size,
-        base64: result.includes(",") ? result.split(",")[1] : result,
-      });
-    };
-    reader.onerror = () => reject(new Error(`Could not read ${file.name}.`));
-    reader.readAsDataURL(file);
-  });
-}
-
-nextButton?.addEventListener("click", () => {
-  if (!validateStepOne()) return;
-  showStep(2, { focus: true });
-});
-
-backButton?.addEventListener("click", () => showStep(1, { focus: true }));
-
-form?.querySelectorAll('input[name="serviceType"]').forEach((input) => {
-  input.addEventListener("change", () => {
-    if (projectTypeError) projectTypeError.textContent = "";
-  });
-});
-
-projectCity?.addEventListener("input", () => projectCity.removeAttribute("aria-invalid"));
-
-projectPhoto?.addEventListener("change", () => {
-  const files = selectedPhotoFiles();
-  validateFiles(files);
-  updateSelectedFiles(files);
-});
-
-clearProjectPhoto?.addEventListener("click", clearFiles);
-
-form?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
-  if (!validateStepOne()) {
-    showStep(1);
-    return;
-  }
-
-  if (currentStep !== 2) {
-    showStep(2, { focus: true });
-    return;
-  }
-
-  const files = selectedPhotoFiles();
-  if (!validateFiles(files)) {
-    projectPhoto?.focus();
-    return;
-  }
-
-  if (!form.checkValidity()) {
-    form.querySelectorAll(":invalid").forEach((field) => field.setAttribute("aria-invalid", "true"));
-    form.reportValidity();
-    return;
-  }
-
-  if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(APPS_SCRIPT_URL)) {
-    setStatus("The form connection needs attention. Please call or text (503) 910-5466.", "error");
-    return;
-  }
-
-  const submitButton = form.querySelector(".submit-button");
-  const originalText = submitButton?.textContent || "Send my request";
-  const honeypot = document.getElementById("companyWebsite")?.value.trim() || "";
 
   try {
-    document.body.classList.add("form-busy");
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending…";
+    const saved = JSON.parse(sessionStorage.getItem(storageKey) || "{}");
+    return ATTRIBUTION_KEYS.reduce((result, key) => {
+      result[key] = String(saved[key] || "");
+      return result;
+    }, {});
+  } catch (error) {
+    return current;
+  }
+}
+
+function setFormStatus(form, message, type = "") {
+  const status = form.querySelector("[data-form-status]");
+  if (!status) return;
+  status.textContent = message;
+  status.className = `form-status ${type}`.trim();
+}
+
+function showFormSuccess(form) {
+  const container = form.closest(".hero-quick-card, .deck-form-card");
+  const overlay = container?.querySelector("[data-success-overlay]");
+  if (!overlay) return;
+
+  overlay.classList.add("active");
+  overlay.setAttribute("aria-hidden", "false");
+
+  window.setTimeout(() => {
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+  }, 6000);
+}
+
+function clearInvalidState(control) {
+  if (!(control instanceof HTMLElement)) return;
+  control.classList.remove("field-invalid");
+  control.closest("fieldset")?.classList.remove("field-invalid-group");
+}
+
+function findInvalidControl(step) {
+  const controls = Array.from(
+    step.querySelectorAll("input, select, textarea")
+  ).filter((control) => !control.disabled && control.type !== "hidden");
+
+  const checkedRadioGroups = new Set();
+
+  for (const control of controls) {
+    clearInvalidState(control);
+
+    if (control.type === "radio") {
+      if (checkedRadioGroups.has(control.name)) continue;
+      checkedRadioGroups.add(control.name);
+
+      const group = Array.from(
+        step.querySelectorAll(
+          `input[type="radio"][name="${CSS.escape(control.name)}"]`
+        )
+      );
+
+      const isRequired = group.some((radio) => radio.required);
+      const hasSelection = group.some((radio) => radio.checked);
+
+      if (isRequired && !hasSelection) {
+        group[0]?.closest("fieldset")?.classList.add("field-invalid-group");
+        return group[0];
+      }
+      continue;
     }
-    setStatus("Sending your request…");
+
+    if (!control.checkValidity()) return control;
+  }
+
+  return null;
+}
+
+function initializeMultiStepForm(form) {
+  if (
+    !(form instanceof HTMLFormElement) ||
+    form.dataset.bathroomFormInitialized === "true"
+  ) {
+    return;
+  }
+
+  form.dataset.bathroomFormInitialized = "true";
+
+  const steps = Array.from(form.querySelectorAll(".estimate-step"));
+  const progressLabel = form.querySelector("[data-progress-label]");
+  const progressTitle = form.querySelector("[data-progress-title]");
+  const progressBar = form.querySelector("[data-progress-bar]");
+  const submitButton = form.querySelector(".estimate-submit");
+
+  let currentStep = 0;
+  let formStarted = false;
+  let isSubmitting = false;
+
+  if (!steps.length) return;
+
+  function updateStep(nextStep, focusHeading = true) {
+    currentStep = Math.max(0, Math.min(nextStep, steps.length - 1));
+
+    steps.forEach((step, index) => {
+      const isActive = index === currentStep;
+      step.hidden = !isActive;
+      step.classList.toggle("active", isActive);
+    });
+
+    if (progressLabel) {
+      progressLabel.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+    }
+
+    if (progressTitle) {
+      progressTitle.textContent =
+        steps[currentStep]?.dataset.stepTitle || "Bathroom estimate";
+    }
+
+    if (progressBar) {
+      progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+    }
+
+    if (focusHeading) {
+      const heading = steps[currentStep]?.querySelector(
+        ".estimate-step-heading > span"
+      );
+      if (heading) {
+        heading.setAttribute("tabindex", "-1");
+        heading.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  function validateStep(step) {
+    if (!step) return true;
+
+    const invalidControl = findInvalidControl(step);
+    if (!invalidControl) return true;
+
+    invalidControl.classList.add("field-invalid");
+    invalidControl.reportValidity?.();
+    invalidControl.focus?.({ preventScroll: false });
+    return false;
+  }
+
+  function trackFormStart() {
+    if (formStarted) return;
+    formStarted = true;
+    pushTrackingEvent("bathroom_form_start", {
+      form_name: form.dataset.formSource || "bathroom_estimate"
+    });
+  }
+
+  form.addEventListener("focusin", trackFormStart, { once: true });
+
+  form.addEventListener("input", (event) => {
+    trackFormStart();
+    clearInvalidState(event.target);
+  });
+
+  form.addEventListener("change", (event) => {
+    trackFormStart();
+    clearInvalidState(event.target);
+  });
+
+  form.querySelectorAll("[data-next]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const activeStep = steps[currentStep];
+      if (!validateStep(activeStep)) return;
+
+      pushTrackingEvent("bathroom_form_step_complete", {
+        form_name: form.dataset.formSource || "bathroom_estimate",
+        completed_step: currentStep + 1,
+        completed_step_name: activeStep?.dataset.stepTitle || ""
+      });
+
+      updateStep(currentStep + 1);
+    });
+  });
+
+  form.querySelectorAll("[data-back]").forEach((button) => {
+    button.addEventListener("click", () => {
+      updateStep(currentStep - 1);
+    });
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting || !validateStep(steps[currentStep])) return;
+
+    const invalidControl = Array.from(form.elements).find(
+      (element) =>
+        element instanceof HTMLElement &&
+        typeof element.checkValidity === "function" &&
+        !element.checkValidity()
+    );
+
+    if (invalidControl instanceof HTMLElement) {
+      const invalidStep = invalidControl.closest(".estimate-step");
+      const invalidStepIndex = steps.indexOf(invalidStep);
+
+      if (invalidStepIndex >= 0) {
+        updateStep(invalidStepIndex, false);
+      }
+
+      invalidControl.reportValidity?.();
+      invalidControl.focus?.();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const honeypot = String(formData.get("companyWebsite") || "").trim();
 
     if (honeypot) {
-      await new Promise((resolve) => window.setTimeout(resolve, 450));
-    } else {
-      const projectPhotos = await Promise.all(files.map(readFile));
-      const city = projectCity?.value.trim() || "";
-      const timing = document.getElementById("projectTiming")?.value.trim() || "Not selected";
-      const customerDescription = document.getElementById("description")?.value.trim() || "";
+      form.reset();
+      updateStep(0, false);
+      showFormSuccess(form);
+      return;
+    }
+
+    if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(APPS_SCRIPT_URL)) {
+      setFormStatus(
+        form,
+        "The form is not connected. Please call or text ZH Homes at (503) 910-5466.",
+        "error"
+      );
+      return;
+    }
+
+    const zipCode = String(formData.get("zipCode") || "").trim();
+    const projectType = String(formData.get("projectType") || "").trim();
+    const fullName = String(formData.get("fullName") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+
+    const description = [
+      `Bathroom project: ${projectType || "Not provided"}`,
+      `Project ZIP: ${zipCode || "Not provided"}`,
+      "Offer: Free bathroom walkthrough + written estimate within 24 hours"
+    ].join("\n");
+
+    const originalButtonText =
+      submitButton?.textContent || "Get My Free Estimate";
+
+    isSubmitting = true;
+
+    try {
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+
+      setFormStatus(form, "Sending your request...");
 
       const payload = {
-        source: "ZH Homes Bathroom Remodel Landing Page",
-        fullName: document.getElementById("fullName")?.value.trim() || "",
-        email: document.getElementById("email")?.value.trim() || "",
-        phone: document.getElementById("phone")?.value.trim() || "",
-        serviceType: selectedProjectType(),
-        projectCity: city,
-        projectTiming: timing,
-        description: `Project city: ${city}\nIdeal timing: ${timing}\n\n${customerDescription}`,
-        companyWebsite: "",
-        projectPhotos,
+        source: `ZH Homes Bathroom Landing Page - ${
+          form.dataset.formSource || "Bathroom Estimate"
+        }`,
+        pageUrl: window.location.href,
+        submittedAt: new Date().toISOString(),
+        contactReason: "bathroom_estimate",
+        serviceType: projectType || "Bathroom Remodel",
+        fullName,
+        email,
+        phone,
+        description,
+        companyWebsite: honeypot,
+        projectPhotos: [],
+        zipCode,
+        projectType,
+        attribution: getAttribution()
       };
 
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload)
       });
-    }
 
-    form.reset();
-    clearFiles();
-    form.hidden = true;
-    document.querySelector(".estimate-heading")?.setAttribute("hidden", "");
-    formSuccess.hidden = false;
-    formSuccess.focus({ preventScroll: true });
-    setStatus("");
-  } catch (error) {
-    console.error(error);
-    setStatus("Something went wrong. Please call or text ZH Homes at (503) 910-5466.", "error");
-  } finally {
-    document.body.classList.remove("form-busy");
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent = originalText;
-    }
-  }
-});
+      form.reset();
+      updateStep(0, false);
 
-form?.querySelectorAll("input, select, textarea").forEach((field) => {
-  field.addEventListener("input", () => field.removeAttribute("aria-invalid"));
-  field.addEventListener("change", () => field.removeAttribute("aria-invalid"));
-});
+      setFormStatus(
+        form,
+        "Thanks. Your bathroom estimate request was submitted.",
+        "success"
+      );
 
-document.querySelectorAll('.faq-list details').forEach((details) => {
-  details.addEventListener("toggle", () => {
-    if (!details.open) return;
-    document.querySelectorAll('.faq-list details[open]').forEach((other) => {
-      if (other !== details) other.open = false;
-    });
-  });
-});
+      showFormSuccess(form);
 
-document.querySelectorAll('a[href="#estimate"]').forEach((link) => {
-  link.addEventListener("click", () => {
-    window.setTimeout(() => {
-      if (currentStep === 1) {
-        form?.querySelector('input[name="serviceType"]')?.focus({ preventScroll: true });
+      pushTrackingEvent("bathroom_lead_submit", {
+        form_name: form.dataset.formSource || "bathroom_estimate",
+        project_zip: zipCode,
+        project_type: projectType
+      });
+    } catch (error) {
+      console.error(error);
+      setFormStatus(
+        form,
+        "Something went wrong. Please call or text ZH Homes at (503) 910-5466.",
+        "error"
+      );
+    } finally {
+      isSubmitting = false;
+
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
       }
-    }, 500);
+    }
   });
-});
 
-if (estimateCard && window.location.hash === "#estimate") {
-  window.setTimeout(() => estimateCard.scrollIntoView({ block: "start" }), 60);
+  updateStep(0, false);
 }
 
-showStep(1);
+function initializeAnchorScrolling() {
+  const style = document.createElement("style");
+  style.id = "bathroom-anchor-offset";
+  style.textContent = `
+    .bathroom-page main > section[id],
+    .bathroom-page [id="hero-estimate"] {
+      scroll-margin-top: 112px;
+    }
+  `;
+
+  if (!document.getElementById(style.id)) {
+    document.head.appendChild(style);
+  }
+
+  function normalizePath(pathname) {
+    return pathname.replace(/\/+$/, "") || "/";
+  }
+
+  function getTarget(hash) {
+    if (!hash || hash === "#") return null;
+    try {
+      return document.getElementById(decodeURIComponent(hash.slice(1)));
+    } catch (error) {
+      return document.getElementById(hash.slice(1));
+    }
+  }
+
+  function getHeaderOffset() {
+    const header = document.querySelector(".site-header");
+    if (!header) return 20;
+
+    const position = getComputedStyle(header).position;
+    const overlapsContent = position === "sticky" || position === "fixed";
+
+    return (overlapsContent ? header.getBoundingClientRect().height : 0) + 20;
+  }
+
+  function scrollToHash(hash, behavior = "smooth") {
+    const target = getTarget(hash);
+    if (!target) return false;
+
+    const top =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      getHeaderOffset();
+
+    window.scrollTo({
+      top: Math.max(0, Math.round(top)),
+      behavior
+    });
+
+    return true;
+  }
+
+  document.addEventListener("click", (event) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      !(event.target instanceof Element)
+    ) {
+      return;
+    }
+
+    const link = event.target.closest('a[href*="#"]');
+    if (!link || link.target === "_blank" || link.hasAttribute("download")) {
+      return;
+    }
+
+    const destination = new URL(link.href, window.location.href);
+    const samePage =
+      destination.origin === window.location.origin &&
+      normalizePath(destination.pathname) ===
+        normalizePath(window.location.pathname) &&
+      destination.search === window.location.search;
+
+    if (!samePage || !destination.hash || !getTarget(destination.hash)) {
+      return;
+    }
+
+    event.preventDefault();
+    history.pushState(
+      null,
+      "",
+      `${destination.pathname}${destination.search}${destination.hash}`
+    );
+    scrollToHash(destination.hash);
+  });
+
+  function correctDirectHashVisit() {
+    if (!window.location.hash) return;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        scrollToHash(window.location.hash, "auto");
+      });
+    });
+  }
+
+  correctDirectHashVisit();
+  window.addEventListener("load", correctDirectHashVisit, { once: true });
+  window.addEventListener("pageshow", correctDirectHashVisit);
+  window.addEventListener("hashchange", () => {
+    scrollToHash(window.location.hash);
+  });
+  document.fonts?.ready?.then(correctDirectHashVisit);
+}
+
+function initializeReviewCarousel() {
+  const carousel = document.getElementById("deckReviewCarousel");
+  if (!carousel) return;
+
+  const slides = Array.from(carousel.querySelectorAll(".review-slide"));
+  const dots = Array.from(carousel.querySelectorAll(".review-dot"));
+  const previousButton = carousel.querySelector(".review-arrow.prev");
+  const nextButton = carousel.querySelector(".review-arrow.next");
+  let currentIndex = 0;
+
+  if (!slides.length) return;
+
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("active", slideIndex === currentIndex);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === currentIndex;
+      dot.classList.toggle("active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  }
+
+  previousButton?.addEventListener("click", () => showSlide(currentIndex - 1));
+  nextButton?.addEventListener("click", () => showSlide(currentIndex + 1));
+  dots.forEach((dot, index) => dot.addEventListener("click", () => showSlide(index)));
+  showSlide(0);
+}
+
+function initializeServiceCarousel() {
+  const section = document.querySelector(".services-section");
+  const track = section?.querySelector(".services-grid");
+  const cards = Array.from(track?.querySelectorAll(".service-card") || []);
+
+  if (
+    !section ||
+    !track ||
+    cards.length < 2 ||
+    section.querySelector(".services-carousel-controls")
+  ) {
+    return;
+  }
+
+  track.setAttribute("tabindex", "0");
+  track.setAttribute("aria-label", "Bathroom services carousel");
+
+  const controls = document.createElement("div");
+  controls.className = "services-carousel-controls";
+  controls.innerHTML = `
+    <button class="services-carousel-arrow services-carousel-prev" type="button" aria-label="Previous bathroom service">‹</button>
+    <div class="services-carousel-dots" aria-label="Bathroom service navigation"></div>
+    <button class="services-carousel-arrow services-carousel-next" type="button" aria-label="Next bathroom service">›</button>
+  `;
+
+  const dotsContainer = controls.querySelector(".services-carousel-dots");
+  const previousButton = controls.querySelector(".services-carousel-prev");
+  const nextButton = controls.querySelector(".services-carousel-next");
+  let currentIndex = 0;
+  let animationFrame = 0;
+
+  const dots = cards.map((card, index) => {
+    const dot = document.createElement("button");
+    dot.className = "services-carousel-dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Go to bathroom service ${index + 1}`);
+    dot.addEventListener("click", () => scrollToCard(index));
+    dotsContainer?.appendChild(dot);
+    return dot;
+  });
+
+  function updateControls(index) {
+    currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === currentIndex;
+      dot.classList.toggle("active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+
+    if (previousButton) previousButton.disabled = currentIndex === 0;
+    if (nextButton) nextButton.disabled = currentIndex === cards.length - 1;
+  }
+
+  function getCenteredScrollLeft(index) {
+    const card = cards[index];
+    if (!card) return 0;
+
+    const requestedLeft =
+      card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+    const maximumLeft = Math.max(0, track.scrollWidth - track.clientWidth);
+
+    return Math.max(0, Math.min(requestedLeft, maximumLeft));
+  }
+
+  function scrollToCard(index) {
+    const targetIndex = Math.max(0, Math.min(index, cards.length - 1));
+
+    track.scrollTo({
+      left: getCenteredScrollLeft(targetIndex),
+      behavior: "smooth"
+    });
+
+    updateControls(targetIndex);
+  }
+
+  function findNearestCard() {
+    const trackRect = track.getBoundingClientRect();
+    const viewportCenter = trackRect.left + trackRect.width / 2;
+    let nearestIndex = 0;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card, index) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenter = cardRect.left + cardRect.width / 2;
+      const distance = Math.abs(cardCenter - viewportCenter);
+
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    updateControls(nearestIndex);
+  }
+
+  function requestControlUpdate() {
+    if (animationFrame) return;
+
+    animationFrame = requestAnimationFrame(() => {
+      animationFrame = 0;
+      findNearestCard();
+    });
+  }
+
+  previousButton?.addEventListener("click", () => scrollToCard(currentIndex - 1));
+  nextButton?.addEventListener("click", () => scrollToCard(currentIndex + 1));
+  track.addEventListener("scroll", requestControlUpdate, { passive: true });
+  track.addEventListener("touchmove", requestControlUpdate, { passive: true });
+  track.addEventListener("touchend", () => window.setTimeout(findNearestCard, 40), { passive: true });
+  track.addEventListener("pointerup", () => window.setTimeout(findNearestCard, 40), { passive: true });
+  window.addEventListener("resize", requestControlUpdate, { passive: true });
+
+  track.insertAdjacentElement("afterend", controls);
+  updateControls(0);
+}
+
+function initializeMobileStickyCta() {
+  const mediaQuery = window.matchMedia("(max-width: 950px)");
+  const bar = document.querySelector(".mobile-cta-bar");
+  const hero = document.querySelector(".deck-hero");
+
+  if (!bar || !hero) return;
+
+  let animationFrame = 0;
+
+  function updateVisibility() {
+    animationFrame = 0;
+
+    if (!mediaQuery.matches) {
+      bar.classList.remove("is-visible");
+      document.body.classList.remove("sticky-cta-visible");
+      bar.setAttribute("aria-hidden", "true");
+      return;
+    }
+
+    const headerHeight =
+      document.querySelector(".site-header")?.offsetHeight || 0;
+    const isVisible =
+      hero.getBoundingClientRect().bottom <= headerHeight + 6;
+
+    bar.classList.toggle("is-visible", isVisible);
+    document.body.classList.toggle("sticky-cta-visible", isVisible);
+    bar.setAttribute("aria-hidden", isVisible ? "false" : "true");
+  }
+
+  function requestVisibilityUpdate() {
+    if (animationFrame) return;
+    animationFrame = requestAnimationFrame(updateVisibility);
+  }
+
+  window.addEventListener("scroll", requestVisibilityUpdate, { passive: true });
+  window.addEventListener("resize", requestVisibilityUpdate, { passive: true });
+  mediaQuery.addEventListener?.("change", requestVisibilityUpdate);
+  updateVisibility();
+}
+
+function initializeCallTracking() {
+  document.querySelectorAll(".tracked-call").forEach((link) => {
+    link.addEventListener("click", () => {
+      pushTrackingEvent("bathroom_phone_click", {
+        link_location: link.closest("header")
+          ? "header"
+          : link.closest(".mobile-cta-bar")
+            ? "mobile_sticky_cta"
+            : "page"
+      });
+    });
+  });
+}
+
+/*
+  Weekly urgency tied to a real recurring scheduling cutoff:
+  every Sunday at 11:59:59 PM in the visitor's local timezone.
+  When the cutoff passes, the next week's scheduling window begins automatically.
+*/
+function getNextSundayCutoff(now = new Date()) {
+  const cutoff = new Date(now);
+  const day = cutoff.getDay();
+  const daysUntilSunday = (7 - day) % 7;
+
+  cutoff.setDate(cutoff.getDate() + daysUntilSunday);
+  cutoff.setHours(23, 59, 59, 999);
+
+  if (cutoff.getTime() <= now.getTime()) {
+    cutoff.setDate(cutoff.getDate() + 7);
+  }
+
+  return cutoff;
+}
+
+function initializeWeeklyCountdowns() {
+  const countdowns = Array.from(
+    document.querySelectorAll("[data-weekly-countdown]")
+  );
+
+  if (!countdowns.length) return;
+
+  function pad(value) {
+    return String(Math.max(0, value)).padStart(2, "0");
+  }
+
+  function update() {
+    const now = new Date();
+    const target = getNextSundayCutoff(now);
+    const remaining = Math.max(0, target.getTime() - now.getTime());
+
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    countdowns.forEach((countdown) => {
+      const daysNode = countdown.querySelector("[data-days]");
+      const hoursNode = countdown.querySelector("[data-hours]");
+      const minutesNode = countdown.querySelector("[data-minutes]");
+      const secondsNode = countdown.querySelector("[data-seconds]");
+
+      if (daysNode) daysNode.textContent = pad(days);
+      if (hoursNode) hoursNode.textContent = pad(hours);
+      if (minutesNode) minutesNode.textContent = pad(minutes);
+      if (secondsNode) secondsNode.textContent = pad(seconds);
+    });
+  }
+
+  update();
+  window.setInterval(update, 1000);
+}
+
+function initializeBathroomLandingPage() {
+  getAttribution();
+  initializeAnchorScrolling();
+
+  document
+    .querySelectorAll(".deck-multistep-form")
+    .forEach(initializeMultiStepForm);
+
+  initializeReviewCarousel();
+  initializeServiceCarousel();
+  initializeMobileStickyCta();
+  initializeCallTracking();
+  initializeWeeklyCountdowns();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initializeBathroomLandingPage, {
+    once: true
+  });
+} else {
+  initializeBathroomLandingPage();
+}

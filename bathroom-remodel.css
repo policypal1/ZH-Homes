@@ -1,568 +1,248 @@
 /*
-  Bathroom-remodel landing page overrides.
-  This file intentionally sits on top of style.css so the page keeps the exact
-  layout/system from index.html without duplicating the site's 100KB+ stylesheet.
+  Bathroom campaign override.
+  The page intentionally inherits the full decks.html layout from style.css + deck.css.
+  This file changes only bathroom imagery, offer elements, and small campaign-specific details.
 */
 
-.bathroom-remodel-page .hero-kitchen {
-  filter: saturate(.92) contrast(1.02);
+:root {
+  --bath-orange: #f37021;
+  --bath-ink: #241b17;
 }
 
-.bathroom-remodel-page .hero-mobile-collage img,
-.bathroom-remodel-page .about-media img,
-.bathroom-remodel-page .service-image img,
-.bathroom-remodel-page .gallery-item img,
-.bathroom-remodel-page .gallery-mobile-mini img,
-.bathroom-remodel-page .mission-image-box img {
-  object-position: center;
+/* Prevent the base site hero from leaking the old deck/home background through. */
+.bathroom-page .bathroom-hero {
+  background: #050607 !important;
 }
 
-.bathroom-remodel-page .bathroom-project-cta-image {
-  background-image: url("bathroom-vanity.webp") !important;
-  background-size: cover !important;
-  background-position: center !important;
+/* Bathroom hero image is supplied by the clipped SVG on desktop. */
+.bathroom-page .bathroom-hero .hero-kitchen image {
+  filter: saturate(0.96) contrast(1.02);
 }
 
-.bathroom-remodel-page .contact-content p,
-.bathroom-remodel-page .about-content p,
-.bathroom-remodel-page .process-top p {
-  max-width: 64ch;
-}
-
-.bathroom-remodel-page .service-content p {
-  text-wrap: pretty;
-}
-
-.bathroom-remodel-page .mission-stat span {
-  text-wrap: pretty;
-}
-
-@media (max-width: 950px) {
-  .bathroom-remodel-page .hero-mobile-collage-main img {
-    object-position: center 58%;
-  }
-
-  .bathroom-remodel-page .hero-mobile-collage-small img {
-    object-position: center;
-  }
-}
-
-
-/* --- Ad landing page refinements: preserve the original ZH Homes layout --- */
-
-/* Header: keep the full brand and navigation, remove only the license block. */
-.bathroom-remodel-page .bathroom-header-inner {
-  min-height: 76px;
-  gap: 22px;
-}
-.bathroom-remodel-page .bathroom-brand .brand-logo {
-  transform: none;
-  width: 82px;
-  height: 42px;
-}
-.bathroom-remodel-page .bathroom-brand .brand-text {
-  display: block !important;
-}
-.bathroom-remodel-page .bathroom-brand .brand-text strong {
-  white-space: nowrap;
-}
-.bathroom-remodel-page .bathroom-nav {
-  margin-left: auto;
-}
-.bathroom-remodel-page .bathroom-header-cta {
-  flex: 0 0 auto;
-  min-width: 126px;
-}
-
-/* Never inherit the deck hero background from style.css. */
-.bathroom-remodel-page .bathroom-hero {
-  background: #060708 !important;
-}
-
-/* Desktop keeps the original curved ZH Homes hero composition with a real bathroom image. */
-.bathroom-remodel-page .bathroom-mobile-hero-photo {
-  display: none;
-}
-.bathroom-remodel-page .bathroom-hero .hero-kitchen {
-  filter: saturate(.95) contrast(1.03);
-}
-.bathroom-remodel-page .bathroom-hero-card {
-  width: min(625px, 100%);
-  max-width: none;
-  padding: 34px 34px 32px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
-  background: rgba(6,7,8,.78);
-  box-shadow: 0 24px 60px rgba(0,0,0,.22);
-  backdrop-filter: blur(4px);
-}
-.bathroom-remodel-page .bathroom-hero-card h1 {
-  max-width: 600px;
-  margin-bottom: 22px;
-  font-size: clamp(46px, 5vw, 70px);
-}
-.bathroom-remodel-page .bathroom-hero-card .subheadline {
-  margin-bottom: 22px;
-  max-width: 560px;
-}
-.bathroom-remodel-page .hero-offer-line {
+.bathroom-offer-line {
   display: flex;
-  align-items: center;
-  gap: 12px 16px;
   flex-wrap: wrap;
-  margin: 0 0 24px;
-  padding: 13px 15px;
-  border-left: 3px solid var(--orange);
-  border-radius: 0 10px 10px 0;
-  background: rgba(255,255,255,.055);
-}
-.bathroom-remodel-page .hero-offer-line strong {
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.3;
-}
-.bathroom-remodel-page .hero-offer-line span {
-  color: rgba(255,255,255,.72);
-  font-size: 13px;
-  font-weight: 750;
-  line-height: 1.3;
-}
-.bathroom-remodel-page .bathroom-hero-card .hero-actions {
-  margin-top: 0;
-}
-
-/* Quote section: one clean card that still matches ZH Homes. */
-.bathroom-remodel-page .lead-capture-section {
-  background: #f8f4ef;
-  color: var(--section-text);
-  padding: 82px 0 92px;
-}
-.bathroom-remodel-page .lead-capture-inner {
-  width: min(790px, calc(100% - 36px));
-  margin: 0 auto;
-}
-.bathroom-remodel-page .multistep-card {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(28px, 5vw, 46px);
-  border: 1px solid rgba(35,23,18,.10);
-  border-top: 4px solid var(--orange);
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 22px 50px rgba(35,23,18,.10);
-}
-.bathroom-remodel-page .quote-card-brand {
-  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-.bathroom-remodel-page .quote-card-brand img {
-  width: 54px;
-  height: 30px;
-  object-fit: contain;
-}
-.bathroom-remodel-page .quote-card-brand strong {
-  color: var(--brown);
-  font-size: 16px;
-  font-weight: 950;
-}
-.bathroom-remodel-page .multistep-heading {
-  margin-bottom: 30px;
-}
-.bathroom-remodel-page .multistep-kicker {
-  margin-bottom: 8px;
-  color: var(--orange);
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: .8px;
-  text-transform: uppercase;
-}
-.bathroom-remodel-page .multistep-heading h2 {
-  margin: 0;
-  color: var(--brown);
-  font-size: clamp(36px, 5vw, 50px);
-  line-height: 1.04;
-  letter-spacing: -1.6px;
-}
-.bathroom-remodel-page .multistep-heading > p {
+  gap: 8px 12px;
+  width: fit-content;
   max-width: 640px;
-  margin: 13px 0 22px;
-  color: #706762;
-  font-size: 16px;
-  line-height: 1.58;
-}
-
-/* Urgency belongs inside the quote card, not all over the hero. */
-.bathroom-remodel-page .quote-urgency {
-  display: grid;
-  grid-template-columns: minmax(190px, 1fr) auto;
-  gap: 14px 22px;
-  align-items: center;
-  margin: 0 0 24px;
-  padding: 16px 18px;
-  border: 1px solid rgba(243,112,33,.18);
+  margin: -12px 0 24px;
+  padding: 10px 14px;
+  color: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.12);
   border-radius: 12px;
-  background: #fff8f3;
-}
-.bathroom-remodel-page .quote-urgency-copy strong {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--brown);
-  font-size: 14px;
-}
-.bathroom-remodel-page .quote-urgency-copy span {
-  display: block;
-  color: #766b64;
-  font-size: 12px;
-}
-.bathroom-remodel-page .quote-countdown {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(50px, 1fr));
-  gap: 7px;
-}
-.bathroom-remodel-page .quote-countdown > div {
-  min-width: 52px;
-  padding: 8px 7px;
-  text-align: center;
-  border-radius: 8px;
-  background: var(--brown);
-  color: #fff;
-}
-.bathroom-remodel-page .quote-countdown strong {
-  display: block;
-  font-size: 19px;
-  line-height: 1;
-}
-.bathroom-remodel-page .quote-countdown span {
-  display: block;
-  margin-top: 4px;
-  color: rgba(255,255,255,.66);
-  font-size: 8px;
-  font-weight: 850;
-  letter-spacing: .55px;
-  text-transform: uppercase;
-}
-.bathroom-remodel-page .quote-countdown.expired {
-  opacity: .48;
-}
-.bathroom-remodel-page .quote-deadline-note {
-  grid-column: 1 / -1;
-  margin-top: -5px;
-  color: #8a7f77;
-  font-size: 11px;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
-/* Four-step form */
-.bathroom-remodel-page .form-progress {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.bathroom-remodel-page .form-progress-track {
-  height: 5px;
-  flex: 1;
-  overflow: hidden;
-  border-radius: 999px;
-  background: #eee8e2;
-}
-.bathroom-remodel-page .form-progress-track span {
-  display: block;
-  width: 25%;
-  height: 100%;
-  background: var(--orange);
-  transition: width .2s ease;
-}
-.bathroom-remodel-page #formProgressText {
-  color: #8a8079;
-  font-size: 12px;
+.bathroom-offer-line span {
   font-weight: 800;
-  white-space: nowrap;
 }
-.bathroom-remodel-page .form-step-copy {
-  margin-bottom: 20px;
+
+.bathroom-offer-line strong {
+  color: #fff;
+  font-weight: 950;
 }
-.bathroom-remodel-page .form-step-copy span {
-  display: block;
-  margin-bottom: 5px;
-  color: #9a8f88;
-  font-size: 11px;
-  font-weight: 900;
+
+.bathroom-offer-line strong::before {
+  content: "•";
+  margin-right: 10px;
+  color: var(--bath-orange);
+}
+
+.weekly-offer-countdown {
+  margin: 0 0 18px;
+  padding: 13px 14px;
+  background: #fff7f1;
+  border: 1px solid rgba(243,112,33,.28);
+  border-radius: 14px;
+}
+
+.countdown-copy {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.countdown-copy > span {
+  color: #a64713;
+  font-size: 10px;
+  font-weight: 950;
   letter-spacing: .7px;
   text-transform: uppercase;
 }
-.bathroom-remodel-page .form-step-copy h4 {
-  margin: 0;
-  color: var(--brown);
-  font-size: clamp(25px, 4vw, 32px);
-  line-height: 1.15;
-  letter-spacing: -.6px;
-}
-.bathroom-remodel-page .multistep-form .field {
-  display: grid;
-  gap: 7px;
-  margin-bottom: 16px;
-}
-.bathroom-remodel-page .multistep-form .field label {
-  color: #514842;
-  font-size: 13px;
-  font-weight: 850;
-}
-.bathroom-remodel-page .multistep-form input,
-.bathroom-remodel-page .multistep-form select {
-  width: 100%;
-  min-height: 54px;
-  padding: 0 15px;
-  border: 1px solid #d9d0c9;
-  border-radius: 9px;
-  outline: none;
-  background: #fff;
-  color: var(--brown);
-}
-.bathroom-remodel-page .multistep-form input:focus,
-.bathroom-remodel-page .multistep-form select:focus {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(243,112,33,.10);
-}
-.bathroom-remodel-page .multistep-form .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-.bathroom-remodel-page .choice-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 22px;
-}
-.bathroom-remodel-page .choice-card {
-  position: relative;
-  cursor: pointer;
-}
-.bathroom-remodel-page .choice-card input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-.bathroom-remodel-page .choice-card > span {
-  min-height: 92px;
-  display: grid;
-  align-content: center;
-  gap: 4px;
-  padding: 16px 18px;
-  border: 1px solid #d9d0c9;
-  border-radius: 10px;
-  background: #fff;
-  transition: .15s ease;
-}
-.bathroom-remodel-page .choice-card strong {
-  color: var(--brown);
-  font-size: 16px;
-}
-.bathroom-remodel-page .choice-card small {
-  color: #81756e;
+
+.countdown-copy > strong {
+  color: #33251e;
   font-size: 12px;
-}
-.bathroom-remodel-page .choice-card input:checked + span {
-  border-color: var(--orange);
-  background: #fffaf6;
-  box-shadow: 0 0 0 3px rgba(243,112,33,.10);
-}
-.bathroom-remodel-page .step-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-.bathroom-remodel-page .step-btn,
-.bathroom-remodel-page .multistep-form .submit-btn {
-  min-height: 52px;
-  padding: 0 20px;
-  border: 0;
-  border-radius: 9px;
-  cursor: pointer;
+  line-height: 1.35;
   font-weight: 900;
 }
-.bathroom-remodel-page .step-next,
-.bathroom-remodel-page .multistep-form .submit-btn {
-  background: var(--orange);
-  color: #fff;
+
+.countdown-clock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
 }
-.bathroom-remodel-page .step-next:hover,
-.bathroom-remodel-page .multistep-form .submit-btn:hover {
-  background: var(--orange-dark);
+
+.countdown-clock > div {
+  min-width: 0;
+  padding: 8px 5px 7px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ead9ce;
+  border-radius: 9px;
 }
-.bathroom-remodel-page .step-back {
-  background: #eee8e2;
-  color: var(--brown);
+
+.countdown-clock strong {
+  display: block;
+  color: #241b17;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
 }
-.bathroom-remodel-page .form-step > .step-next {
-  min-width: 142px;
+
+.countdown-clock span {
+  display: block;
+  margin-top: 4px;
+  color: #806f65;
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .4px;
+  text-transform: uppercase;
 }
-.bathroom-remodel-page .final-step-actions .submit-btn {
-  flex: 1;
+
+.compact-countdown {
+  margin-bottom: 17px;
 }
-.bathroom-remodel-page .optional-label {
-  color: #948981;
-  font-weight: 600;
+
+.bathroom-project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-.bathroom-remodel-page .form-microcopy {
-  margin-top: 13px;
-  color: #8a8079;
-  font-size: 12px;
+
+.bathroom-gallery-subhead {
+  max-width: 680px;
+  margin: 12px auto 0;
+  color: #776a63;
+  font-size: 15px;
+  line-height: 1.6;
   text-align: center;
 }
 
-/* Mobile: keep ZH Homes brand visible, use a real bathroom image, and keep the hero scan-friendly. */
+/* Keep bathroom photos framed consistently inside the deck-page gallery system. */
+.bathroom-page .deck-project-gallery-card img,
+.bathroom-page .service-image img,
+.bathroom-page .mission-image-box img {
+  object-fit: cover;
+}
+
+.bathroom-page .gallery-large-left img {
+  object-position: center center;
+}
+
+.bathroom-page .gallery-small-right img {
+  object-position: center center;
+}
+
+/* Keep form progress at three steps. */
+.bathroom-page .estimate-progress-track > span {
+  width: 33.333%;
+}
+
+/* Make the 3-step card slightly easier to scan than the original long deck form. */
+.bathroom-page .hero-quick-card {
+  overflow-y: visible;
+  max-height: none;
+}
+
+.bathroom-page .hero-quick-heading {
+  margin-bottom: 14px;
+}
+
+.bathroom-page .hero-quick-heading h2 {
+  font-size: clamp(27px, 2.3vw, 36px);
+}
+
+.bathroom-page .hero-quick-card .estimate-step-heading {
+  margin-bottom: 14px;
+}
+
 @media (max-width: 950px) {
-  .bathroom-remodel-page .bathroom-header-inner {
-    width: min(100% - 24px, 1220px);
-    min-height: 66px;
-  }
-  .bathroom-remodel-page .bathroom-brand .brand-logo {
-    width: 66px;
-    height: 34px;
-  }
-  .bathroom-remodel-page .bathroom-brand .brand-text {
-    display: block !important;
-  }
-  .bathroom-remodel-page .bathroom-brand .brand-text strong {
-    font-size: 16px;
-  }
-  .bathroom-remodel-page .bathroom-nav {
-    display: none;
-  }
-  .bathroom-remodel-page .bathroom-header-cta {
-    min-width: 110px;
-    min-height: 42px;
-    padding: 0 14px;
-    font-size: 13px;
+  /*
+    deck.css changes the hero composition on mobile.
+    Explicitly paint a bathroom image so the original site's deck background can never appear.
+  */
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(180deg, rgba(3,4,5,.30) 0%, rgba(3,4,5,.70) 52%, #050607 100%),
+      url("bathroom-hero-960.webp") center 24% / cover no-repeat !important;
   }
 
-  .bathroom-remodel-page .bathroom-hero {
-    min-height: 620px;
-    background: #060708 !important;
-  }
-  .bathroom-remodel-page .bathroom-hero .hero-kitchen,
-  .bathroom-remodel-page .bathroom-hero .curve-stroke {
-    display: none;
-  }
-  .bathroom-remodel-page .bathroom-mobile-hero-photo {
-    display: block;
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-  }
-  .bathroom-remodel-page .bathroom-mobile-hero-photo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(6,7,8,.14) 0%, rgba(6,7,8,.32) 38%, rgba(6,7,8,.82) 100%);
-  }
-  .bathroom-remodel-page .bathroom-mobile-hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-  .bathroom-remodel-page .bathroom-hero-inner {
-    min-height: 620px;
-    padding: 56px 0 58px;
-    align-items: flex-end;
-  }
-  .bathroom-remodel-page .bathroom-hero-card {
-    width: 100%;
-    padding: 25px 22px;
-    border-radius: 14px;
-    background: rgba(6,7,8,.86);
-  }
-  .bathroom-remodel-page .bathroom-hero-card h1 {
-    font-size: clamp(39px, 10.5vw, 52px);
-    letter-spacing: -1.5px;
-  }
-  .bathroom-remodel-page .bathroom-hero-card .subheadline {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  .bathroom-remodel-page .hero-offer-line {
-    gap: 4px;
-    padding: 11px 13px;
-  }
-  .bathroom-remodel-page .hero-offer-line strong,
-  .bathroom-remodel-page .hero-offer-line span {
-    width: 100%;
-  }
-  .bathroom-remodel-page .bathroom-hero-card .hero-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .bathroom-remodel-page .bathroom-hero-card .btn {
-    width: 100%;
-    min-height: 54px;
-    padding: 0 14px;
+  .bathroom-page .bathroom-offer-line {
+    margin: 4px 0 18px;
   }
 
-  .bathroom-remodel-page .lead-capture-section {
-    padding: 64px 0 72px;
-  }
-  .bathroom-remodel-page .lead-capture-inner {
-    width: min(100% - 24px, 790px);
-  }
-  .bathroom-remodel-page .multistep-card {
-    padding: 26px 20px;
-    border-radius: 13px;
-  }
-  .bathroom-remodel-page .quote-urgency {
-    grid-template-columns: 1fr;
-  }
-  .bathroom-remodel-page .quote-countdown {
-    width: 100%;
-  }
-  .bathroom-remodel-page .multistep-form .form-row,
-  .bathroom-remodel-page .choice-grid {
-    grid-template-columns: 1fr;
+  .bathroom-page .bathroom-offer-line strong::before {
+    display: none;
   }
 }
 
-@media (max-width: 560px) {
-  .bathroom-remodel-page .bathroom-brand .brand-logo {
-    width: 58px;
-    height: 31px;
+@media (max-width: 767px) {
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(180deg, rgba(3,4,5,.18) 0%, rgba(3,4,5,.58) 36%, #050607 67%, #050607 100%),
+      url("bathroom-hero-960.webp") center top / 100% auto no-repeat !important;
   }
-  .bathroom-remodel-page .bathroom-brand .brand-text strong {
-    font-size: 15px;
+
+  .bathroom-offer-line {
+    width: 100%;
+    margin: 8px 0 18px;
+    padding: 10px 12px;
+    gap: 3px;
   }
-  .bathroom-remodel-page .bathroom-header-cta {
-    min-width: 102px;
-    padding: 0 12px;
+
+  .bathroom-offer-line span,
+  .bathroom-offer-line strong {
+    width: 100%;
   }
-  .bathroom-remodel-page .bathroom-hero,
-  .bathroom-remodel-page .bathroom-hero-inner {
-    min-height: 590px;
+
+  .weekly-offer-countdown {
+    padding: 11px;
   }
-  .bathroom-remodel-page .bathroom-hero-inner {
-    width: calc(100% - 20px);
-  }
-  .bathroom-remodel-page .bathroom-hero-card {
-    padding: 23px 18px;
-  }
-  .bathroom-remodel-page .bathroom-hero-card h1 {
-    font-size: 39px;
-    margin-bottom: 16px;
-  }
-  .bathroom-remodel-page .bathroom-hero-card .hero-actions {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .bathroom-remodel-page .quote-countdown {
+
+  .countdown-clock {
     gap: 5px;
   }
-  .bathroom-remodel-page .quote-countdown > div {
-    min-width: 0;
-    padding: 8px 4px;
+
+  .countdown-clock strong {
+    font-size: 16px;
   }
-  .bathroom-remodel-page .quote-countdown strong {
-    font-size: 18px;
+
+  .bathroom-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bathroom-project-grid .choice-card span {
+    min-height: 48px;
+    padding: 8px 7px;
+    font-size: 11px;
+  }
+
+  .bathroom-gallery-subhead {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 420px) {
+  .countdown-copy > strong {
+    font-size: 11px;
+  }
+
+  .countdown-clock span {
+    font-size: 7px;
   }
 }
