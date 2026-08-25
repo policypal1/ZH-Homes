@@ -974,6 +974,22 @@ body.deck-page {
   </a>
 </div>
 
+<style>
+@media (min-width: 951px) {
+  .bathroom-page .hero-mobile-title {
+    display: block !important;
+  }
+
+  .bathroom-page .header-cta-mobile {
+    display: none !important;
+  }
+
+  .bathroom-page .header-cta-desktop {
+    display: inline !important;
+  }
+}
+</style>
+
 <script>
 (function () {
   var heroEstimateButton = document.querySelector('.deck-hero .hero-actions .btn-primary');
@@ -987,6 +1003,44 @@ body.deck-page {
 })();
 </script>
 <script src="google-analytics.js"></script>
+
+<!-- Event snippet for ZH Homes – Deck Quote Submitted. conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18215005784/HQ8iCKjUzdUcENjcy-1D',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
+
+<script>
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  var previousPush = window.dataLayer.push.bind(window.dataLayer);
+
+  window.dataLayer.push = function () {
+    var result = previousPush.apply(null, arguments);
+
+    for (var i = 0; i < arguments.length; i += 1) {
+      var item = arguments[i];
+      if (item && typeof item === 'object' && item.event === 'bathroom_lead_submit') {
+        gtag_report_conversion();
+      }
+    }
+
+    return result;
+  };
+})();
+</script>
+
 <script src="bathroom-remodel.js"></script>
 </body>
 </html>
