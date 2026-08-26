@@ -2,6 +2,32 @@
 
 const LEAD_API_URL = "/api/bathroom-lead";
 
+
+const BATHROOM_GOOGLE_ADS_CONVERSION =
+  "AW-18215005784/R-utCL2htegcENjcy-1D";
+
+/*
+  bathroom-remodel.html already listens for bathroom_lead_submit and calls
+  gtag_report_conversion(). Override that legacy helper here so the existing
+  listener sends ONLY to the dedicated Bathroom Remodel Lead conversion action.
+*/
+window.gtag_report_conversion = function gtag_report_conversion(url) {
+  const callback = function () {
+    if (typeof url !== "undefined") {
+      window.location = url;
+    }
+  };
+
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "conversion", {
+      send_to: BATHROOM_GOOGLE_ADS_CONVERSION,
+      event_callback: callback
+    });
+  }
+
+  return false;
+};
+
 const ATTRIBUTION_KEYS = [
   "utm_source",
   "utm_medium",
