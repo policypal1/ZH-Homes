@@ -1,7 +1,6 @@
 "use strict";
 
-const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwBorH28Zp-w4PXl0mYK2PV3IP0FmjLIaBqfpEmUes4_8g2e1sYoLChMptCA_6D3Nbd/exec";
+const LEAD_API_URL = "/api/bathroom-lead";
 
 const ATTRIBUTION_KEYS = [
   "utm_source",
@@ -272,15 +271,6 @@ function initializeMultiStepForm(form) {
       return;
     }
 
-    if (!/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/i.test(APPS_SCRIPT_URL)) {
-      setFormStatus(
-        form,
-        "The form is not connected. Please call or text ZH Homes at (503) 910-5466.",
-        "error"
-      );
-      return;
-    }
-
     const zipCode = String(formData.get("zipCode") || "").trim();
     const projectType = String(formData.get("projectType") || "").trim();
     const fullName = String(formData.get("fullName") || "").trim();
@@ -325,14 +315,24 @@ function initializeMultiStepForm(form) {
         attribution: getAttribution()
       };
 
-      await fetch(APPS_SCRIPT_URL, {
+      const response = await fetch(LEAD_API_URL, {
         method: "POST",
-        mode: "no-cors",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
       });
+
+      let result = null;
+      try {
+        result = await response.json();
+      } catch (error) {
+        result = null;
+      }
+
+      if (!response.ok || !result?.ok) {
+        throw new Error("Lead delivery was not confirmed.");
+      }
 
       form.reset();
       updateStep(0, false);
@@ -742,7 +742,6 @@ function initializeWeeklyCountdowns() {
   update();
   window.setInterval(update, 1000);
 }
-
 
 /*
   Mobile walkthrough availability uses one shared recurring four-day window.
