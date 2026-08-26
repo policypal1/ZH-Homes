@@ -1,7 +1,7 @@
 "use strict";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyMJDCW2qBnilnn6Legd0rVPKboekqZm23qnDmRIHgLyM_l_k-0CUkzGxuRz2duspJKyA/exec";
+  "https://script.google.com/macros/s/AKfycbwNPWrqLG4p0L-vWaYmms6i_QjDbh-_USsN0Mt6qp-FwtJ_5TijUTd40ipzXnCF-hurcg/exec";
 
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
