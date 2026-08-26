@@ -764,6 +764,7 @@ function initializeFourDayCountdowns() {
   window.setInterval(update, 1000);
 }
 
+
 function initializeBathroomLandingPage() {
   getAttribution();
   initializeAnchorScrolling();
