@@ -345,6 +345,7 @@ function initializeMultiStepForm(form) {
 
       showFormSuccess(form);
 
+      // This only fires after the API confirms Apps Script returned "ok".
       pushTrackingEvent("bathroom_lead_submit", {
         form_name: form.dataset.formSource || "bathroom_estimate",
         project_zip: zipCode,
@@ -684,69 +685,6 @@ function initializeCallTracking() {
   });
 }
 
-/*
-  Weekly urgency tied to a real recurring scheduling cutoff:
-  every Sunday at 11:59:59 PM in the visitor's local timezone.
-  When the cutoff passes, the next week's scheduling window begins automatically.
-*/
-function getNextSundayCutoff(now = new Date()) {
-  const cutoff = new Date(now);
-  const day = cutoff.getDay();
-  const daysUntilSunday = (7 - day) % 7;
-
-  cutoff.setDate(cutoff.getDate() + daysUntilSunday);
-  cutoff.setHours(23, 59, 59, 999);
-
-  if (cutoff.getTime() <= now.getTime()) {
-    cutoff.setDate(cutoff.getDate() + 7);
-  }
-
-  return cutoff;
-}
-
-function initializeWeeklyCountdowns() {
-  const countdowns = Array.from(
-    document.querySelectorAll("[data-weekly-countdown]")
-  );
-
-  if (!countdowns.length) return;
-
-  function pad(value) {
-    return String(Math.max(0, value)).padStart(2, "0");
-  }
-
-  function update() {
-    const now = new Date();
-    const target = getNextSundayCutoff(now);
-    const remaining = Math.max(0, target.getTime() - now.getTime());
-
-    const totalSeconds = Math.floor(remaining / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    countdowns.forEach((countdown) => {
-      const daysNode = countdown.querySelector("[data-days]");
-      const hoursNode = countdown.querySelector("[data-hours]");
-      const minutesNode = countdown.querySelector("[data-minutes]");
-      const secondsNode = countdown.querySelector("[data-seconds]");
-
-      if (daysNode) daysNode.textContent = pad(days);
-      if (hoursNode) hoursNode.textContent = pad(hours);
-      if (minutesNode) minutesNode.textContent = pad(minutes);
-      if (secondsNode) secondsNode.textContent = pad(seconds);
-    });
-  }
-
-  update();
-  window.setInterval(update, 1000);
-}
-
-/*
-  Mobile walkthrough availability uses one shared recurring four-day window.
-  Everyone sees the same current booking window.
-*/
 function getCurrentFourDayCutoff(now = new Date()) {
   const anchor = new Date(2026, 7, 24, 0, 0, 0, 0);
   const windowMs = 4 * 24 * 60 * 60 * 1000;
@@ -812,7 +750,6 @@ function initializeBathroomLandingPage() {
   initializeServiceCarousel();
   initializeMobileStickyCta();
   initializeCallTracking();
-  initializeWeeklyCountdowns();
   initializeFourDayCountdowns();
 }
 
