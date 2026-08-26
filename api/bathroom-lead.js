@@ -1,7 +1,7 @@
 "use strict";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwNPWrqLG4p0L-vWaYmms6i_QjDbh-_USsN0Mt6qp-FwtJ_5TijUTd40ipzXnCF-hurcg/exec";
+  "https://script.google.com/macros/s/AKfycbxNcL_ubhB_C2lWr0UJ086kj5XzhmTu_i_umh3Y6BBLrwceEW8qkyERc0H_qc1A0CXlyA/exec";
 
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
@@ -28,9 +28,15 @@ module.exports = async function handler(req, res) {
       redirect: "follow"
     });
 
-    const responseText = (await appsScriptResponse.text()).trim().toLowerCase();
+    const responseText = (await appsScriptResponse.text()).trim();
+    const normalizedResponse = responseText.toLowerCase();
 
-    if (!appsScriptResponse.ok || responseText !== "ok") {
+    const appsScriptConfirmed =
+      normalizedResponse === "ok" ||
+      normalizedResponse === '{"ok":true}' ||
+      normalizedResponse.includes('"ok":true');
+
+    if (!appsScriptResponse.ok || !appsScriptConfirmed) {
       console.error("Apps Script lead submission failed", {
         status: appsScriptResponse.status,
         response: responseText.slice(0, 200)
