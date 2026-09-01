@@ -616,3 +616,60 @@
     font-size: 12px;
   }
 }
+
+
+/* ==========================================================
+   DESKTOP BATHROOM REMODEL ADJUSTMENTS
+   Desktop only. Mobile/tablet layout remains untouched.
+   ========================================================== */
+@media (min-width: 951px) {
+  /* Match the main index hero's dark architectural background treatment. */
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.46) 100%),
+      url("zh-homes-hero-preload.png") center center / cover no-repeat,
+      #050607 !important;
+  }
+
+  /* Restore the normal left-aligned desktop hero composition. */
+  .bathroom-page .hero-mobile-title,
+  .bathroom-page .hero-mobile-subheadline {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .bathroom-page .hero-mobile-subheadline::after {
+    text-align: left !important;
+  }
+
+  /* Remove the "Free Bathroom Walkthrough + Clear Written Estimate" strip on desktop. */
+  .bathroom-page .bathroom-offer-line {
+    display: none !important;
+  }
+
+  /* Change only the desktop hero CTA label without touching the mobile markup. */
+  .bathroom-page .deck-hero .hero-actions .btn-primary {
+    font-size: 0 !important;
+  }
+
+  .bathroom-page .deck-hero .hero-actions .btn-primary::after {
+    content: "Get My Free Quote" !important;
+    position: relative !important;
+    margin-left: 0 !important;
+    color: inherit !important;
+    font-size: 15px !important;
+    font-weight: 950 !important;
+    line-height: 1.2 !important;
+    transform: none !important;
+  }
+
+  /* Flip only the center in-progress tub-to-shower gallery photo. */
+  .bathroom-page .deck-project-gallery-card.gallery-small-left > img {
+    transform: scaleX(-1) !important;
+  }
+
+  .bathroom-page .deck-project-gallery-card.gallery-small-left:hover > img {
+    transform: scaleX(-1) scale(1.04) !important;
+  }
+}
