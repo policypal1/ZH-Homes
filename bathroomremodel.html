@@ -117,14 +117,26 @@ body.deck-page {
   line-height: 1.45;
 }
 @media (max-width: 767px) {
-  .direct-hero-eyebrow {
-    margin-bottom: 10px;
-    font-size: 10px;
+  /* Mobile-first cleanup: keep the hero direct and uncluttered. */
+  .direct-hero-eyebrow,
+  .hero-direct-proof,
+  .direct-cta-note,
+  .mobile-hero-form-card .form-intro-note,
+  .hero-title-desktop,
+  .hero-subheadline-desktop {
+    display: none !important;
   }
-  .hero-direct-proof {
-    gap: 6px 10px;
-    margin-bottom: 14px;
-    font-size: 11px;
+
+  .hero-title-mobile,
+  .hero-subheadline-mobile {
+    display: inline !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title-mobile,
+  .hero-subheadline-mobile {
+    display: none !important;
   }
 }
 @media (min-width: 951px) {
@@ -190,10 +202,12 @@ body.deck-page {
       <div class="hero-message-card">
         <div class="direct-hero-eyebrow">Salem Area Bathroom Remodeling</div>
         <h1 class="hero-mobile-title" id="hero-title">
-          Salem Bathroom Remodeling Without the <span class="accent">Contractor Horror Story.</span>
+          <span class="hero-title-desktop">Salem Bathroom Remodeling Without the <span class="accent">Contractor Horror Story.</span></span>
+          <span class="hero-title-mobile">Salem Bathroom Remodeling</span>
         </h1>
         <p class="subheadline hero-mobile-subheadline">
-          Licensed, bonded and insured bathroom remodeling with clear scope, written pricing, calls returned, and no high-pressure sales.
+          <span class="hero-subheadline-desktop">Licensed, bonded and insured bathroom remodeling with clear scope, written pricing, calls returned, and no high-pressure sales.</span>
+          <span class="hero-subheadline-mobile">Licensed, bonded and insured bathroom remodeling with clear scope and written pricing.</span>
         </p>
       </div>
 
