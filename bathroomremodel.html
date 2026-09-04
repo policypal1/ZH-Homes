@@ -294,6 +294,44 @@ body.deck-page {
   }
 }
 
+
+/* Subtle mobile hero fade: keep the photo visible, only darken gently near the bottom. */
+@media (max-width: 950px) {
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,4,5,.08) 0%,
+        rgba(3,4,5,.10) 40%,
+        rgba(3,4,5,.17) 68%,
+        rgba(3,4,5,.30) 100%
+      ),
+      url("bathroom-hero-960.webp") center 28% / cover no-repeat !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(98px, 14.5svh, 130px) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,4,5,.05) 0%,
+        rgba(3,4,5,.08) 42%,
+        rgba(3,4,5,.15) 70%,
+        rgba(3,4,5,.28) 100%
+      ),
+      url("bathroom-hero-960.webp") center 27% / cover no-repeat !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(70px, 10.5svh, 92px) !important;
+  }
+}
+
 </style>
 </head>
 
