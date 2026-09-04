@@ -150,6 +150,17 @@ body.deck-page {
     display: inline !important;
   }
 }
+
+/* Dedicated quote-page update: keep this landing page informational. */
+.bathroom-page .bathroom-hero .hero-inner {grid-template-columns:minmax(0,760px)!important;}
+.bathroom-page .bathroom-hero .hero-copy {max-width:760px!important;}
+.bathroom-page .quote-page-cta-section .contact-inner {grid-template-columns:minmax(0,760px)!important;justify-content:center!important;}
+.bathroom-page .quote-page-cta-section .contact-content {max-width:760px!important;margin:0 auto!important;text-align:center!important;}
+.bathroom-page .quote-page-cta-section .quote-page-link {margin-top:24px!important;}
+.bathroom-page .mobile-cta-bar {grid-template-columns:minmax(0,1fr)!important;}
+.bathroom-page .mobile-cta-bar .cta-quote {grid-column:1/-1!important;width:100%!important;}
+@media (max-width:950px){.bathroom-page .bathroom-hero .hero-inner{display:block!important;}}
+
 </style>
 </head>
 
@@ -173,7 +184,7 @@ body.deck-page {
           <span class="license-desktop-word">Oregon </span>CCB #260679
         </strong>
       </div>
-      <a class="header-cta" href="#estimate" aria-label="Get a bathroom remodel estimate">
+      <a class="header-cta" href="quote.html" aria-label="Get a bathroom remodel estimate">
         <span class="header-cta-desktop">Get My Estimate</span>
         <span class="header-cta-mobile">Get Quote</span>
       </a>
@@ -226,7 +237,7 @@ body.deck-page {
       </div>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#estimate">Get My Free Bathroom Estimate</a>
+        <a class="btn btn-primary" href="quote.html">Get My Free Bathroom Estimate</a>
         <a class="btn btn-secondary tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
       </div>
       <p class="direct-cta-note">No obligation. No “sign today” pressure. Start with your ZIP code.</p>
@@ -247,108 +258,6 @@ body.deck-page {
         </div>
       </div>
 
-      <section aria-label="Request your bathroom estimate" class="mobile-inline-estimate-section" id="mobile-estimate">
-        <div class="mobile-inline-estimate-inner">
-          <div class="contact-form-card deck-form-card mobile-hero-form-card">
-            <div class="deck-form-heading mobile-hero-form-heading">
-              <h3>Get Your Free Bathroom Remodel Estimate</h3>
-            </div>
-            <p class="form-intro-note">Tell us where the project is and what you want changed. We’ll follow up to discuss the bathroom and your next step.</p>
-
-            <form class="quote-form deck-multistep-form mobile-hero-estimate-form" data-form-source="Direct Mobile Hero 3-Step Estimate" id="mobileBathroomQuoteForm" novalidate>
-              <div aria-hidden="true" class="honeypot">
-                <label for="mobileCompanyWebsite">Company Website</label>
-                <input autocomplete="off" id="mobileCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-              </div>
-
-              <div class="estimate-progress mobile-step-progress">
-                <div class="estimate-progress-copy">
-                  <span data-progress-label>Step 1 of 3</span>
-                  <strong data-progress-title>Project ZIP</strong>
-                </div>
-                <div class="mobile-step-numbers" aria-label="Quote form progress">
-                  <span class="active" data-progress-step="0"><b>1</b><small>ZIP</small></span>
-                  <span data-progress-step="1"><b>2</b><small>Project</small></span>
-                  <span data-progress-step="2"><b>3</b><small>Contact</small></span>
-                </div>
-                <div class="estimate-progress-track"><span data-progress-bar></span></div>
-              </div>
-
-              <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
-                <div class="estimate-step-heading">
-                  <span>What’s your ZIP code?</span>
-                  <p>This confirms your bathroom is in our service area.</p>
-                </div>
-                <div class="field">
-                  <label for="mobileZip">ZIP Code</label>
-                  <input autocomplete="postal-code" id="mobileZip" inputmode="numeric" maxlength="10" name="zipCode" placeholder="97302" required type="text"/>
-                </div>
-                <div class="estimate-nav single-action">
-                  <button class="estimate-next" data-next type="button">Next</button>
-                </div>
-              </section>
-
-              <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
-                <div class="estimate-step-heading">
-                  <span>What do you want to change?</span>
-                  <p>Pick the closest option. You do not need every detail figured out.</p>
-                </div>
-                <fieldset class="choice-fieldset">
-                  <legend>Bathroom project</legend>
-                  <div class="choice-grid bathroom-project-grid">
-                    <label class="choice-card"><input name="projectType" required type="radio" value="Full Bathroom Remodel"/><span>Full Remodel</span></label>
-                    <label class="choice-card"><input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/><span>Tub-to-Shower</span></label>
-                    <label class="choice-card"><input name="projectType" required type="radio" value="Shower / Waterproofing"/><span>Shower / Waterproofing</span></label>
-                    <label class="choice-card"><input name="projectType" required type="radio" value="Vanity / Storage Update"/><span>Vanity / Storage</span></label>
-                    <label class="choice-card"><input name="projectType" required type="radio" value="Flooring / Lighting / Ventilation"/><span>Floor / Light / Vent</span></label>
-                    <label class="choice-card"><input name="projectType" required type="radio" value="Not Sure Yet"/><span>Not Sure Yet</span></label>
-                  </div>
-                </fieldset>
-                <div class="estimate-nav">
-                  <button class="estimate-back" data-back type="button">Back</button>
-                  <button class="estimate-next" data-next type="button">Next</button>
-                </div>
-              </section>
-
-              <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
-                <div class="estimate-step-heading">
-                  <span>Where should we reach you?</span>
-                  <p>We’ll follow up to discuss the project and schedule the walkthrough.</p>
-                </div>
-                <div class="hero-form-row">
-                  <div class="field">
-                    <label for="mobileFullName">Full Name</label>
-                    <input autocomplete="name" id="mobileFullName" name="fullName" placeholder="Your name" required type="text"/>
-                  </div>
-                  <div class="field">
-                    <label for="mobilePhone">Phone Number</label>
-                    <input autocomplete="tel" id="mobilePhone" name="phone" placeholder="Your phone number" required type="tel"/>
-                  </div>
-                </div>
-                <div class="field">
-                  <label for="mobileEmail">Email</label>
-                  <input autocomplete="email" id="mobileEmail" name="email" placeholder="you@example.com" required type="email"/>
-                </div>
-                <div class="estimate-nav">
-                  <button class="estimate-back" data-back type="button">Back</button>
-                  <button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button>
-                </div>
-                <p class="hero-form-assurance">No obligation. No pressure to sign on the spot.</p>
-                <div aria-live="polite" class="form-status" data-form-status role="status"></div>
-              </section>
-            </form>
-
-            <div aria-hidden="true" class="deck-success-overlay" data-success-overlay>
-              <div class="deck-success-box">
-                <span aria-hidden="true" class="deck-success-check">✓</span>
-                <strong>Request Sent</strong>
-                <p>Thanks. We’ll follow up about your bathroom remodel estimate.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <div aria-label="Recent bathroom project highlights" class="hero-mobile-collage">
         <div class="hero-mobile-collage-main">
           <img alt="Finished bathroom remodel by ZH Homes" decoding="async" loading="lazy" src="bathroom-after.webp"/>
@@ -361,98 +270,7 @@ body.deck-page {
       </div>
     </div>
 
-    <aside aria-labelledby="hero-form-title" class="hero-quick-card" id="hero-estimate">
-      <div class="hero-quick-heading">
-        <span>Free Bathroom Estimate</span>
-        <h2 id="hero-form-title">Get Your Free Bathroom Remodel Estimate</h2>
-      </div>
-      <p class="form-intro-note">Start with your ZIP code. No obligation and no pressure to sign.</p>
-
-      <form class="hero-quick-form deck-multistep-form" data-form-source="Direct Hero 3-Step Estimate" id="heroBathroomQuoteForm" novalidate>
-        <div aria-hidden="true" class="honeypot">
-          <label for="heroCompanyWebsite">Company Website</label>
-          <input autocomplete="off" id="heroCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-        </div>
-
-        <div class="estimate-progress">
-          <div class="estimate-progress-copy">
-            <span data-progress-label>Step 1 of 3</span>
-            <strong data-progress-title>Project ZIP</strong>
-          </div>
-          <div class="estimate-progress-track"><span data-progress-bar></span></div>
-        </div>
-
-        <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
-          <div class="estimate-step-heading">
-            <span>What’s your ZIP code?</span>
-            <p>We’ll confirm your home is in our service area.</p>
-          </div>
-          <div class="field">
-            <label for="heroZip">ZIP Code</label>
-            <input autocomplete="postal-code" id="heroZip" inputmode="numeric" maxlength="10" name="zipCode" placeholder="97302" required type="text"/>
-          </div>
-          <div class="estimate-nav single-action">
-            <button class="estimate-next" data-next type="button">Next</button>
-          </div>
-        </section>
-
-        <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
-          <div class="estimate-step-heading">
-            <span>What do you want to change?</span>
-            <p>Choose the closest option. We can sort out the details during your walkthrough.</p>
-          </div>
-          <fieldset class="choice-fieldset">
-            <legend>Bathroom project</legend>
-            <div class="choice-grid bathroom-project-grid">
-              <label class="choice-card"><input name="projectType" required type="radio" value="Full Bathroom Remodel"/><span>Full Remodel</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/><span>Tub-to-Shower</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Shower / Waterproofing"/><span>Shower / Waterproofing</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Vanity / Storage Update"/><span>Vanity / Storage</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Flooring / Lighting / Ventilation"/><span>Floor / Light / Vent</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Not Sure Yet"/><span>Not Sure Yet</span></label>
-            </div>
-          </fieldset>
-          <div class="estimate-nav">
-            <button class="estimate-back" data-back type="button">Back</button>
-            <button class="estimate-next" data-next type="button">Next</button>
-          </div>
-        </section>
-
-        <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
-          <div class="estimate-step-heading">
-            <span>Where should we reach you?</span>
-            <p>We’ll follow up to schedule the walkthrough and explain the next step.</p>
-          </div>
-          <div class="hero-form-row">
-            <div class="field">
-              <label for="heroFullName">Full Name</label>
-              <input autocomplete="name" id="heroFullName" name="fullName" placeholder="Your name" required type="text"/>
-            </div>
-            <div class="field">
-              <label for="heroPhone">Phone Number</label>
-              <input autocomplete="tel" id="heroPhone" name="phone" placeholder="Your phone number" required type="tel"/>
-            </div>
-          </div>
-          <div class="field">
-            <label for="heroEmail">Email</label>
-            <input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required type="email"/>
-          </div>
-          <div class="estimate-nav">
-            <button class="estimate-back" data-back type="button">Back</button>
-            <button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button>
-          </div>
-          <p class="hero-form-assurance">Free walkthrough. Clear written estimate. No obligation and no pressure to sign.</p>
-          <div aria-live="polite" class="form-status" data-form-status role="status"></div>
-        </section>
-      </form>
-
-      <div aria-hidden="true" class="hero-form-success" data-success-overlay>
-        <span aria-hidden="true">✓</span>
-        <strong>Request Sent</strong>
-        <p>Thanks. We’ll follow up about your bathroom remodel estimate.</p>
-      </div>
-    </aside>
-  </div>
+    </div>
 </section>
 
 <section aria-label="ZH Homes bathroom remodeling trust points" class="quick-stats">
@@ -499,29 +317,29 @@ body.deck-page {
         <div class="services-eyebrow">Bathroom Remodeling Services</div>
         <h2>Hire a Contractor to Fix What Is Not Working</h2>
       </div>
-      <a class="services-btn" href="#estimate"><span>Get My Estimate</span></a>
+      <a class="services-btn" href="quote.html"><span>Get My Estimate</span></a>
     </div>
 
     <div class="services-grid">
       <article class="service-card">
         <div class="service-image"><div class="service-number">01</div><img alt="Finished full bathroom remodel" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Full Bathroom Remodels</h3><p>Turn a dated, cramped, hard-to-clean bathroom into a brighter space with a layout, storage, and finishes that work better every day.</p></div><a class="service-link" href="#estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Full Bathroom Remodels</h3><p>Turn a dated, cramped, hard-to-clean bathroom into a brighter space with a layout, storage, and finishes that work better every day.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">02</div><img alt="Tub to shower bathroom conversion" class="service-img-2" decoding="async" loading="lazy" src="tub-to-shower-progress.webp"/></div>
-        <div class="service-content"><div><h3>Tub-to-Shower Conversions</h3><p>Replace a high, awkward tub with a shower that is easier to enter, easier to clean, and better suited to how you use the bathroom.</p></div><a class="service-link" href="#estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Tub-to-Shower Conversions</h3><p>Replace a high, awkward tub with a shower that is easier to enter, easier to clean, and better suited to how you use the bathroom.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">03</div><img alt="Bathroom shower and waterproofing work" class="service-img-3" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Shower &amp; Waterproofing</h3><p>Fix leaks, failed surfaces, cracked grout, and shower problems with attention to the waterproofing and details underneath the finished tile.</p></div><a class="service-link" href="#estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Shower &amp; Waterproofing</h3><p>Fix leaks, failed surfaces, cracked grout, and shower problems with attention to the waterproofing and details underneath the finished tile.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">04</div><img alt="Bathroom vanity and storage" class="service-img-4" decoding="async" loading="lazy" src="bathroom-vanity.webp"/></div>
-        <div class="service-content"><div><h3>Vanity &amp; Storage Updates</h3><p>Add usable counter space and storage so the bathroom feels less cluttered and the things you use every day actually have a place.</p></div><a class="service-link" href="#estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Vanity &amp; Storage Updates</h3><p>Add usable counter space and storage so the bathroom feels less cluttered and the things you use every day actually have a place.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">05</div><img alt="Updated bathroom flooring, lighting and ventilation" class="service-img-5" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Flooring, Lighting &amp; Ventilation</h3><p>Make a dark, slippery, moisture-prone bathroom feel brighter, safer, and easier to live with through the right finish upgrades.</p></div><a class="service-link" href="#estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Flooring, Lighting &amp; Ventilation</h3><p>Make a dark, slippery, moisture-prone bathroom feel brighter, safer, and easier to live with through the right finish upgrades.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
     </div>
   </div>
@@ -595,68 +413,13 @@ body.deck-page {
   </div>
 </section>
 
-<section class="contact-section deck-estimate-section bathroom-estimate-section" id="estimate">
+<section class="contact-section deck-estimate-section bathroom-estimate-section quote-page-cta-section">
   <div class="contact-inner">
     <div class="contact-content">
       <div class="contact-eyebrow">Free Bathroom Remodel Estimate</div>
       <h2>Know What You’re Getting Into Before You Say Yes</h2>
       <p>Tell us where the bathroom is and what you want changed. We’ll follow up to schedule the walkthrough, talk through the scope, and put the estimate in writing so you can make the next decision with clarity.</p>
-      <ul aria-label="Bathroom estimate information" class="contact-info-list">
-        <li class="contact-info-item"><a class="tracked-call" href="tel:5039105466">Call or text: (503) 910-5466</a></li>
-        <li class="contact-info-item"><span>Serving Salem, Keizer, Silverton, and nearby communities</span></li>
-        <li class="contact-info-item"><span>No obligation. No “sign today” pressure. Get clarity before you decide.</span></li>
-      </ul>
-    </div>
-
-    <div class="contact-form-card deck-form-card">
-      <div class="hero-quick-heading">
-        <span>Free Bathroom Estimate</span>
-        <h2 id="bottom-form-title">Get Your Free Bathroom Remodel Estimate</h2>
-      </div>
-      <p class="form-intro-note">Start with your ZIP code. It takes about a minute.</p>
-
-      <form class="hero-quick-form deck-multistep-form" data-form-source="Direct Full 3-Step Estimate" id="bathroomQuoteForm" novalidate>
-        <div aria-hidden="true" class="honeypot">
-          <label for="fullCompanyWebsite">Company Website</label>
-          <input autocomplete="off" id="fullCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
-        </div>
-        <div class="estimate-progress">
-          <div class="estimate-progress-copy"><span data-progress-label>Step 1 of 3</span><strong data-progress-title>Project ZIP</strong></div>
-          <div class="estimate-progress-track"><span data-progress-bar></span></div>
-        </div>
-        <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
-          <div class="estimate-step-heading"><span>What’s your ZIP code?</span><p>We’ll confirm your home is in our service area.</p></div>
-          <div class="field"><label for="fullZip">ZIP Code</label><input autocomplete="postal-code" id="fullZip" inputmode="numeric" maxlength="10" name="zipCode" placeholder="97302" required type="text"/></div>
-          <div class="estimate-nav single-action"><button class="estimate-next" data-next type="button">Next</button></div>
-        </section>
-        <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
-          <div class="estimate-step-heading"><span>What do you want to change?</span><p>Choose the closest option. We can sort out the details during your walkthrough.</p></div>
-          <fieldset class="choice-fieldset">
-            <legend>Bathroom project</legend>
-            <div class="choice-grid bathroom-project-grid">
-              <label class="choice-card"><input name="projectType" required type="radio" value="Full Bathroom Remodel"/><span>Full Remodel</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/><span>Tub-to-Shower</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Shower / Waterproofing"/><span>Shower / Waterproofing</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Vanity / Storage Update"/><span>Vanity / Storage</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Flooring / Lighting / Ventilation"/><span>Floor / Light / Vent</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Not Sure Yet"/><span>Not Sure Yet</span></label>
-            </div>
-          </fieldset>
-          <div class="estimate-nav"><button class="estimate-back" data-back type="button">Back</button><button class="estimate-next" data-next type="button">Next</button></div>
-        </section>
-        <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
-          <div class="estimate-step-heading"><span>Where should we reach you?</span><p>We’ll follow up to schedule the walkthrough and explain the next step.</p></div>
-          <div class="hero-form-row">
-            <div class="field"><label for="fullFullName">Full Name</label><input autocomplete="name" id="fullFullName" name="fullName" placeholder="Your name" required type="text"/></div>
-            <div class="field"><label for="fullPhone">Phone Number</label><input autocomplete="tel" id="fullPhone" name="phone" placeholder="Your phone number" required type="tel"/></div>
-          </div>
-          <div class="field"><label for="fullEmail">Email</label><input autocomplete="email" id="fullEmail" name="email" placeholder="you@example.com" required type="email"/></div>
-          <div class="estimate-nav"><button class="estimate-back" data-back type="button">Back</button><button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button></div>
-          <p class="hero-form-assurance">Free walkthrough. Clear written estimate. No obligation and no pressure to sign.</p>
-          <div aria-live="polite" class="form-status" data-form-status role="status"></div>
-        </section>
-      </form>
-      <div aria-hidden="true" class="hero-form-success" data-success-overlay><span aria-hidden="true">✓</span><strong>Request Sent</strong><p>Thanks. We’ll follow up about your bathroom remodel estimate.</p></div>
+      <a class="btn btn-primary quote-page-link" href="quote.html">Get My Free Bathroom Estimate</a>
     </div>
   </div>
 </section>
@@ -689,29 +452,15 @@ body.deck-page {
       <div class="footer-brand"><strong>ZH Homes</strong><p>Bathroom remodeling with clear communication, straightforward estimates, and work done right for homeowners in Salem, Keizer, and nearby Oregon communities.</p></div>
       <div class="footer-col"><h4>Navigation</h4><a href="index.html">Main Website</a><a href="#gallery">Bathroom Work</a><a href="#process">Process</a><a href="#testimonials">Reviews</a></div>
       <div class="footer-col"><h4>Bathroom Services</h4><span>Full Bathroom Remodels</span><span>Tub-to-Shower Conversions</span><span>Shower &amp; Waterproofing</span><span>Vanity &amp; Storage</span></div>
-      <div class="footer-col"><h4>Contact</h4><a class="tracked-call" href="tel:5039105466">(503) 910-5466</a><a href="#estimate">Get a bathroom estimate</a><span>Salem, Oregon</span><span>CCB #260679</span></div>
+      <div class="footer-col"><h4>Contact</h4><a class="tracked-call" href="tel:5039105466">(503) 910-5466</a><a href="quote.html">Get a bathroom estimate</a><span>Salem, Oregon</span><span>CCB #260679</span></div>
     </div>
     <div class="footer-bottom"><span>© 2026 ZH Homes. All rights reserved.</span><div aria-label="Footer legal links" class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="accessibility.html">Accessibility</a><span>Oregon CCB #260679</span></div></div>
   </div>
 </footer>
 
-<div aria-label="Quick bathroom estimate actions" class="mobile-cta-bar">
-  <a class="cta-quote" href="#estimate"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>Free Estimate</a>
-  <a class="cta-call tracked-call" href="tel:5039105466"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M5 4H9L11 9L8.5 10.5C9.6 12.7 11.3 14.4 13.5 15.5L15 13L20 15V19C20 20.1 19.1 21 18 21C9.7 21 3 14.3 3 6C3 4.9 3.9 4 5 4Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2.2"></path></svg>Call / Text</a>
+<div aria-label="Quick bathroom estimate action" class="mobile-cta-bar">
+  <a class="cta-quote" href="quote.html"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>Get Free Estimate</a>
 </div>
-
-<script>
-(function () {
-  var heroEstimateButton = document.querySelector('.deck-hero .hero-actions .btn-primary');
-  var mobileEstimate = document.getElementById('mobile-estimate');
-  if (!heroEstimateButton || !mobileEstimate) return;
-  heroEstimateButton.addEventListener('click', function (event) {
-    if (!window.matchMedia('(max-width: 767px)').matches) return;
-    event.preventDefault();
-    mobileEstimate.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-})();
-</script>
 <script src="google-analytics.js"></script>
 <script src="bathroom-remodel.js"></script>
 <script>
