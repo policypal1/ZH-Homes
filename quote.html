@@ -352,6 +352,142 @@ body.quote-page {
   cursor: wait !important;
 }
 
+
+/* Self-contained quote form behavior and full-card states */
+.quote-page .estimate-step[hidden] {
+  display: none !important;
+}
+
+.quote-page .quote-form-wrap {
+  overflow: hidden;
+}
+
+.quote-page .quote-state-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  min-height: 100%;
+  padding: 36px 26px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255,255,255,.99);
+  border-radius: inherit;
+}
+
+.quote-page .quote-state-overlay.active {
+  display: flex;
+}
+
+.quote-page .quote-state-inner {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+}
+
+.quote-page .quote-state-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.quote-page .quote-state-overlay h3 {
+  margin: 0;
+  color: #241b17;
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  font-weight: 950;
+}
+
+.quote-page .quote-state-overlay p {
+  margin: 13px auto 0;
+  max-width: 390px;
+  color: #6f625b;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+
+.quote-page .quote-success-overlay .quote-state-icon {
+  background: #e8f5ec;
+  color: #2f7548;
+}
+
+.quote-page .quote-error-overlay {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(243,112,33,.09), transparent 36%),
+    rgba(255,255,255,.995);
+}
+
+.quote-page .quote-error-overlay .quote-state-icon {
+  background: #fff0e8;
+  color: #b14619;
+}
+
+.quote-page .quote-error-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #b14619;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.quote-page .quote-state-primary,
+.quote-page .quote-state-secondary {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.quote-page .quote-state-primary {
+  border: 0;
+  background: #f37021;
+  color: #fff;
+}
+
+.quote-page .quote-state-secondary {
+  min-height: 48px;
+  margin-top: 9px;
+  border: 1px solid #dbcfc8;
+  background: #fff;
+  color: #6b5d55;
+}
+
+.quote-page .estimate-submit.is-sending {
+  opacity: .70;
+  pointer-events: none;
+}
+
+@media (max-width:560px) {
+  .quote-page .quote-state-overlay {
+    padding: 28px 20px;
+  }
+  .quote-page .quote-state-overlay h3 {
+    font-size: 31px;
+  }
+}
+
 </style>
 </head>
 <body class="deck-page bathroom-page quote-page">
@@ -457,11 +593,25 @@ body.quote-page {
           <div aria-live="polite" class="form-status" data-form-status role="status"></div>
         </section>
       </form>
+      <div aria-hidden="true" class="quote-state-overlay quote-success-overlay" id="quoteSuccessOverlay">
+        <div class="quote-state-inner">
+          <div class="quote-state-icon" aria-hidden="true">✓</div>
+          <h3>Request Sent</h3>
+          <p>Thanks. ZH Homes received your bathroom remodel estimate request and will follow up with you.</p>
+          <a class="quote-state-secondary" href="bathroomremodel.html">Back to Bathroom Remodeling</a>
+        </div>
+      </div>
 
-      <div aria-hidden="true" class="hero-form-success" data-success-overlay>
-        <span aria-hidden="true">✓</span>
-        <strong>Request Sent</strong>
-        <p>Thanks. We’ll follow up about your bathroom remodel estimate.</p>
+      <div aria-hidden="true" class="quote-state-overlay quote-error-overlay" id="quoteErrorOverlay">
+        <div class="quote-state-inner">
+          <div class="quote-state-icon" aria-hidden="true">!</div>
+          <span class="quote-error-label">Submission Error</span>
+          <h3>We couldn’t send your request.</h3>
+          <p>Please call or text ZH Homes directly so your bathroom estimate does not get missed.</p>
+          <a class="quote-state-primary" href="tel:5039105466">Call ZH Homes · (503) 910-5466</a>
+          <a class="quote-state-secondary" href="sms:5039105466">Text ZH Homes</a>
+          <button class="quote-state-secondary" id="quoteTryAgain" type="button">Try Again</button>
+        </div>
       </div>
     </div>
   </section>
@@ -478,84 +628,52 @@ body.quote-page {
 
 <script>
 (function () {
-  if (window.__zhBathroomLeadFetchHardened || typeof window.fetch !== "function") return;
-  window.__zhBathroomLeadFetchHardened = true;
+  "use strict";
 
-  var originalFetch = window.fetch.bind(window);
-
-  function isBathroomLeadRequest(input, init) {
-    var url = typeof input === "string" ? input : (input && input.url) || "";
-    var method = String((init && init.method) || "GET").toUpperCase();
-    return method === "POST" && /\/api\/bathroom-lead(?:$|\?)/.test(url);
-  }
-
-  function wait(ms) {
-    return new Promise(function (resolve) { window.setTimeout(resolve, ms); });
-  }
-
-  window.fetch = async function (input, init) {
-    if (!isBathroomLeadRequest(input, init)) {
-      return originalFetch(input, init);
-    }
-
-    var attempts = 2;
-    var lastError = null;
-
-    for (var attempt = 0; attempt < attempts; attempt += 1) {
-      var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-      var timeoutId = controller
-        ? window.setTimeout(function () { controller.abort(); }, 15000)
-        : null;
-
-      try {
-        var requestInit = Object.assign({}, init || {});
-        if (controller) requestInit.signal = controller.signal;
-
-        var response = await originalFetch(input, requestInit);
-
-        if (timeoutId) window.clearTimeout(timeoutId);
-
-        // Retry only temporary gateway/server-unavailable responses.
-        if (
-          attempt < attempts - 1 &&
-          (response.status === 502 || response.status === 503 || response.status === 504)
-        ) {
-          await wait(650);
-          continue;
-        }
-
-        return response;
-      } catch (error) {
-        if (timeoutId) window.clearTimeout(timeoutId);
-        lastError = error;
-
-        if (attempt < attempts - 1) {
-          await wait(650);
-          continue;
-        }
-
-        throw error;
-      }
-    }
-
-    throw lastError || new Error("Bathroom lead request failed.");
-  };
-})();
-</script>
-
-<script src="bathroom-remodel.js"></script>
-
-<script>
-(function () {
-  var LEAD_API_URL = "/api/bathroom-lead";
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzikh0E8I1FoKLisU_1B6QLk_jp6TGP6yMSVKWV-pCQJ1HxNHrAqsg88gO2uS60tIP4/exec';
+  var STORAGE_KEY = "zhBathroomPendingLeadV1";
+  var ATTRIBUTION_KEY = "zhHomesBathroomAttribution";
   var ATTRIBUTION_KEYS = [
     "utm_source", "utm_medium", "utm_campaign", "utm_term",
     "utm_content", "gclid", "gbraid", "wbraid"
   ];
 
+  var form = document.getElementById("quotePageBathroomForm");
+  if (!form) return;
+
+  var steps = Array.prototype.slice.call(form.querySelectorAll(".estimate-step"));
+  var progressBar = form.querySelector("[data-progress-bar]");
+  var submitButton = form.querySelector(".estimate-submit");
+  var successOverlay = document.getElementById("quoteSuccessOverlay");
+  var errorOverlay = document.getElementById("quoteErrorOverlay");
+  var tryAgainButton = document.getElementById("quoteTryAgain");
+  var currentStep = 0;
+  var sending = false;
+  var lastPayload = null;
+
+  function safeStorageSet(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function safeStorageGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+
+  function safeStorageRemove(key) {
+    try { localStorage.removeItem(key); } catch (e) {}
+  }
+
+  function sessionSet(key, value) {
+    try { sessionStorage.setItem(key, value); } catch (e) {}
+  }
+
+  function sessionGet(key) {
+    try { return sessionStorage.getItem(key); } catch (e) { return null; }
+  }
+
   function getAttribution() {
-    var current = {};
     var params = new URLSearchParams(window.location.search);
+    var current = {};
     var hasCurrent = false;
 
     ATTRIBUTION_KEYS.forEach(function (key) {
@@ -564,14 +682,12 @@ body.quote-page {
     });
 
     if (hasCurrent) {
-      try {
-        sessionStorage.setItem("zhHomesBathroomAttribution", JSON.stringify(current));
-      } catch (e) {}
+      sessionSet(ATTRIBUTION_KEY, JSON.stringify(current));
       return current;
     }
 
     try {
-      var saved = JSON.parse(sessionStorage.getItem("zhHomesBathroomAttribution") || "{}");
+      var saved = JSON.parse(sessionGet(ATTRIBUTION_KEY) || "{}");
       ATTRIBUTION_KEYS.forEach(function (key) {
         current[key] = String(saved[key] || "");
       });
@@ -580,231 +696,341 @@ body.quote-page {
     return current;
   }
 
-  function initializeFallback() {
-    var form = document.getElementById("quotePageBathroomForm");
-    if (!form) return;
+  function getLeadSource(attribution) {
+    attribution = attribution || {};
 
-    // Normal bathroom-remodel.js is the primary handler.
-    if (form.dataset.bathroomFormInitialized === "true") return;
-    if (form.dataset.quoteFallbackInitialized === "true") return;
-
-    form.dataset.quoteFallbackInitialized = "true";
-
-    var steps = Array.from(form.querySelectorAll(".estimate-step"));
-    var progressBar = form.querySelector("[data-progress-bar]");
-    var submitButton = form.querySelector(".estimate-submit");
-    var status = form.querySelector("[data-form-status]");
-    var currentStep = 0;
-    var submitting = false;
-
-    function setStatus(message, type) {
-      if (!status) return;
-      status.textContent = message;
-      status.className = ("form-status " + (type || "")).trim();
+    if (attribution.gclid || attribution.gbraid || attribution.wbraid) {
+      return "Google Ads";
     }
 
-    function updateStep(index) {
-      currentStep = Math.max(0, Math.min(index, steps.length - 1));
+    var source = String(attribution.utm_source || "");
+    var medium = String(attribution.utm_medium || "").toLowerCase();
 
-      steps.forEach(function (step, stepIndex) {
-        var active = stepIndex === currentStep;
-        step.hidden = !active;
-        step.classList.toggle("active", active);
-      });
-
-      if (progressBar) {
-        progressBar.style.width = (((currentStep + 1) / steps.length) * 100) + "%";
+    if (source) {
+      if (/google/i.test(source) && /(cpc|ppc|paid)/i.test(medium)) {
+        return "Google Ads";
       }
-
-      form.querySelectorAll("[data-progress-step]").forEach(function (marker, markerIndex) {
-        marker.classList.toggle("active", markerIndex === currentStep);
-        marker.classList.toggle("complete", markerIndex < currentStep);
-      });
+      return source;
     }
 
-    function validateStep(step) {
-      if (!step) return true;
+    return "Website";
+  }
 
-      var controls = Array.from(step.querySelectorAll("input, select, textarea"))
-        .filter(function (control) {
-          return !control.disabled && control.type !== "hidden";
-        });
+  function updateStep(index) {
+    currentStep = Math.max(0, Math.min(index, steps.length - 1));
 
-      for (var i = 0; i < controls.length; i += 1) {
-        var control = controls[i];
+    steps.forEach(function (step, index) {
+      var active = index === currentStep;
+      step.hidden = !active;
+      step.classList.toggle("active", active);
+    });
 
-        if (control.type === "radio") {
-          var group = Array.from(
-            step.querySelectorAll('input[type="radio"][name="' + CSS.escape(control.name) + '"]')
-          );
-          var required = group.some(function (radio) { return radio.required; });
-          var selected = group.some(function (radio) { return radio.checked; });
+    if (progressBar) {
+      progressBar.style.width = (((currentStep + 1) / steps.length) * 100) + "%";
+    }
 
-          if (required && !selected) {
-            group[0].reportValidity && group[0].reportValidity();
-            group[0].focus && group[0].focus();
-            return false;
-          }
-          i += Math.max(0, group.length - 1);
-          continue;
-        }
+    window.scrollTo({
+      top: Math.max(0, form.getBoundingClientRect().top + window.scrollY - 110),
+      behavior: "smooth"
+    });
+  }
 
-        if (typeof control.checkValidity === "function" && !control.checkValidity()) {
-          control.reportValidity && control.reportValidity();
-          control.focus && control.focus();
+  function validateStep(step) {
+    if (!step) return true;
+
+    var inputs = Array.prototype.slice.call(
+      step.querySelectorAll("input, select, textarea")
+    ).filter(function (input) {
+      return !input.disabled && input.type !== "hidden";
+    });
+
+    for (var i = 0; i < inputs.length; i += 1) {
+      var input = inputs[i];
+
+      if (input.type === "radio") {
+        var radios = Array.prototype.slice.call(
+          step.querySelectorAll('input[type="radio"][name="' + input.name + '"]')
+        );
+        var required = radios.some(function (radio) { return radio.required; });
+        var selected = radios.some(function (radio) { return radio.checked; });
+
+        if (required && !selected) {
+          radios[0].focus();
           return false;
         }
+
+        i += Math.max(0, radios.length - 1);
+        continue;
+      }
+
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        input.focus();
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function setOverlay(overlay, active) {
+    if (!overlay) return;
+    overlay.classList.toggle("active", active);
+    overlay.setAttribute("aria-hidden", active ? "false" : "true");
+  }
+
+  function showError() {
+    setOverlay(successOverlay, false);
+    setOverlay(errorOverlay, true);
+  }
+
+  function showSuccess() {
+    setOverlay(errorOverlay, false);
+    setOverlay(successOverlay, true);
+  }
+
+  function makeSubmissionId() {
+    if (window.crypto && typeof window.crypto.randomUUID === "function") {
+      return window.crypto.randomUUID();
+    }
+
+    return (
+      Date.now().toString(36) +
+      "-" +
+      Math.random().toString(36).slice(2) +
+      Math.random().toString(36).slice(2)
+    );
+  }
+
+  function buildPayload() {
+    var data = new FormData(form);
+    var attribution = getAttribution();
+
+    return {
+      submissionId: makeSubmissionId(),
+      source: "ZH Homes Bathroom Quote Page",
+      pageUrl: window.location.href,
+      submittedAt: new Date().toISOString(),
+      contactReason: "bathroom_estimate",
+      fullName: String(data.get("fullName") || "").trim(),
+      phone: String(data.get("phone") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      zipCode: String(data.get("zipCode") || "").trim(),
+      projectType: String(data.get("projectType") || "").trim(),
+      serviceType: String(data.get("projectType") || "Bathroom Remodel").trim(),
+      leadSource: getLeadSource(attribution),
+      companyWebsite: String(data.get("companyWebsite") || "").trim(),
+      attribution: attribution
+    };
+  }
+
+  async function postDirectlyToAppsScript(payload) {
+    var controller =
+      typeof AbortController !== "undefined" ? new AbortController() : null;
+
+    var timeoutId = controller
+      ? window.setTimeout(function () { controller.abort(); }, 18000)
+      : null;
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        cache: "no-store",
+        keepalive: true,
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(payload),
+        signal: controller ? controller.signal : undefined
+      });
+
+      return true;
+    } finally {
+      if (timeoutId) window.clearTimeout(timeoutId);
+    }
+  }
+
+  function beaconFallback(payload) {
+    if (!navigator.sendBeacon) return false;
+
+    try {
+      var blob = new Blob(
+        [JSON.stringify(payload)],
+        { type: "text/plain;charset=utf-8" }
+      );
+      return navigator.sendBeacon(APPS_SCRIPT_URL, blob);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function recordPending(payload) {
+    safeStorageSet(
+      STORAGE_KEY,
+      JSON.stringify({
+        savedAt: Date.now(),
+        payload: payload
+      })
+    );
+  }
+
+  function clearPending() {
+    safeStorageRemove(STORAGE_KEY);
+  }
+
+  async function deliver(payload, showUI) {
+    if (sending) return false;
+    sending = true;
+    lastPayload = payload;
+    recordPending(payload);
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.classList.add("is-sending");
+      submitButton.dataset.originalText =
+        submitButton.dataset.originalText || submitButton.textContent;
+      submitButton.textContent = "Sending...";
+    }
+
+    try {
+      await postDirectlyToAppsScript(payload);
+
+      clearPending();
+
+      if (showUI) {
+        showSuccess();
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "bathroom_lead_submit",
+        form_name: "Dedicated Bathroom Quote Page",
+        project_zip: payload.zipCode,
+        project_type: payload.projectType
+      });
+
+      if (typeof window.gtag_report_conversion === "function") {
+        try { window.gtag_report_conversion(); } catch (e) {}
       }
 
       return true;
-    }
+    } catch (error) {
+      console.error("Direct Apps Script submission failed:", error);
 
-    function showSuccess() {
-      var container = form.closest(".deck-form-card");
-      var overlay = container && container.querySelector("[data-success-overlay]");
+      // One last transport fallback if fetch itself could not dispatch.
+      if (beaconFallback(payload)) {
+        clearPending();
 
-      if (overlay) {
-        overlay.classList.add("active");
-        overlay.setAttribute("aria-hidden", "false");
-      }
-
-      setStatus("Thanks. Your bathroom estimate request was submitted.", "success");
-    }
-
-    form.querySelectorAll("[data-next]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        if (!validateStep(steps[currentStep])) return;
-        updateStep(currentStep + 1);
-      });
-    });
-
-    form.querySelectorAll("[data-back]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        updateStep(currentStep - 1);
-      });
-    });
-
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
-
-      if (submitting || !validateStep(steps[currentStep])) return;
-
-      var formData = new FormData(form);
-      var honeypot = String(formData.get("companyWebsite") || "").trim();
-
-      if (honeypot) {
-        form.reset();
-        updateStep(0);
-        showSuccess();
-        return;
-      }
-
-      var zipCode = String(formData.get("zipCode") || "").trim();
-      var projectType = String(formData.get("projectType") || "").trim();
-      var fullName = String(formData.get("fullName") || "").trim();
-      var phone = String(formData.get("phone") || "").trim();
-      var email = String(formData.get("email") || "").trim();
-
-      var payload = {
-        source: "ZH Homes Bathroom Landing Page - Dedicated Bathroom Quote Page Fallback",
-        pageUrl: window.location.href,
-        submittedAt: new Date().toISOString(),
-        contactReason: "bathroom_estimate",
-        serviceType: projectType || "Bathroom Remodel",
-        fullName: fullName,
-        email: email,
-        phone: phone,
-        zipCode: zipCode,
-        projectType: projectType,
-        description: [
-          "Bathroom project: " + (projectType || "Not provided"),
-          "Project ZIP: " + (zipCode || "Not provided"),
-          "Offer: Free bathroom walkthrough + written estimate"
-        ].join("\n"),
-        companyWebsite: honeypot,
-        projectPhotos: [],
-        attribution: getAttribution()
-      };
-
-      submitting = true;
-      var oldText = submitButton ? submitButton.textContent : "";
-
-      try {
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = "Sending...";
+        if (showUI) {
+          showSuccess();
         }
-
-        setStatus("Sending your request...");
-
-        var response = await fetch(LEAD_API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        var result = null;
-        try { result = await response.json(); } catch (e) {}
-
-        if (!response.ok || !result || !result.ok) {
-          throw new Error("Lead delivery was not confirmed.");
-        }
-
-        form.reset();
-        updateStep(0);
-        showSuccess();
 
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "bathroom_lead_submit",
-          form_name: "Dedicated Bathroom Quote Page Fallback",
-          project_zip: zipCode,
-          project_type: projectType
+          form_name: "Dedicated Bathroom Quote Page Beacon Fallback",
+          project_zip: payload.zipCode,
+          project_type: payload.projectType
         });
-      } catch (error) {
-        console.error("Bathroom quote fallback submission failed:", error);
-        setStatus(
-          "We could not confirm the request was sent. Please call or text ZH Homes at (503) 910-5466.",
-          "error"
-        );
-      } finally {
-        submitting = false;
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = oldText || "Get My Free Estimate";
-        }
+
+        return true;
       }
-    });
 
-    updateStep(0);
-  }
+      if (showUI) {
+        showError();
+      }
 
-  // Give the normal external script time to initialize first.
-  if (document.readyState === "complete") {
-    window.setTimeout(initializeFallback, 900);
-  } else {
-    window.addEventListener("load", function () {
-      window.setTimeout(initializeFallback, 900);
-    }, { once: true });
-  }
-})();
-</script>
+      return false;
+    } finally {
+      sending = false;
 
-<script>
-(function () {
-  window.dataLayer = window.dataLayer || [];
-  var previousPush = window.dataLayer.push.bind(window.dataLayer);
-  window.dataLayer.push = function () {
-    var result = previousPush.apply(null, arguments);
-    for (var i = 0; i < arguments.length; i += 1) {
-      var item = arguments[i];
-      if (item && typeof item === 'object' && item.event === 'bathroom_lead_submit' && typeof window.gtag_report_conversion === 'function') {
-        window.gtag_report_conversion();
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.classList.remove("is-sending");
+        submitButton.textContent =
+          submitButton.dataset.originalText || "Get My Free Estimate";
       }
     }
-    return result;
-  };
+  }
+
+  form.querySelectorAll("[data-next]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (!validateStep(steps[currentStep])) return;
+      updateStep(currentStep + 1);
+    });
+  });
+
+  form.querySelectorAll("[data-back]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      updateStep(currentStep - 1);
+    });
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!validateStep(steps[currentStep])) return;
+
+    var payload = buildPayload();
+
+    // Honeypot spam: do not deliver, but do not reveal the trap.
+    if (payload.companyWebsite) {
+      showSuccess();
+      return;
+    }
+
+    deliver(payload, true);
+  });
+
+  if (tryAgainButton) {
+    tryAgainButton.addEventListener("click", function () {
+      setOverlay(errorOverlay, false);
+
+      if (lastPayload) {
+        deliver(lastPayload, true);
+        return;
+      }
+
+      var saved;
+      try {
+        saved = JSON.parse(safeStorageGet(STORAGE_KEY) || "null");
+      } catch (e) {
+        saved = null;
+      }
+
+      if (saved && saved.payload) {
+        deliver(saved.payload, true);
+      }
+    });
+  }
+
+  // If a real user submitted while briefly offline, keep one short-lived
+  // local copy and retry when the connection comes back.
+  window.addEventListener("online", function () {
+    var saved;
+
+    try {
+      saved = JSON.parse(safeStorageGet(STORAGE_KEY) || "null");
+    } catch (e) {
+      saved = null;
+    }
+
+    if (
+      !saved ||
+      !saved.payload ||
+      !saved.savedAt ||
+      Date.now() - saved.savedAt > 12 * 60 * 60 * 1000
+    ) {
+      return;
+    }
+
+    deliver(saved.payload, false);
+  });
+
+  updateStep(0);
 })();
 </script>
+
 </body>
 </html>
