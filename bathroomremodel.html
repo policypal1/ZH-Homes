@@ -220,6 +220,34 @@ body.deck-page {
   }
 }
 
+
+/* Final mobile hero placement + matched CTA width */
+@media (max-width: 950px) {
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(135px, 20svh, 175px) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(105px, 16svh, 140px) !important;
+  }
+
+  .bathroom-page .deck-hero .hero-actions {
+    display: block !important;
+    width: 100% !important;
+    margin: 22px 0 0 !important;
+  }
+
+  .bathroom-page .deck-hero .hero-actions .btn-primary {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    min-height: 56px !important;
+  }
+}
+
 </style>
 </head>
 
