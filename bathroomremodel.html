@@ -248,6 +248,52 @@ body.deck-page {
   }
 }
 
+
+/* Fix extended mobile hero: keep the bathroom image behind the full hero. */
+@media (max-width: 950px) {
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,4,5,.16) 0%,
+        rgba(3,4,5,.25) 34%,
+        rgba(3,4,5,.42) 68%,
+        rgba(3,4,5,.56) 100%
+      ),
+      url("bathroom-hero-960.webp") center 30% / cover no-repeat !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(112px, 17svh, 150px) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .bathroom-hero {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3,4,5,.12) 0%,
+        rgba(3,4,5,.20) 32%,
+        rgba(3,4,5,.38) 66%,
+        rgba(3,4,5,.54) 100%
+      ),
+      url("bathroom-hero-960.webp") center 28% / cover no-repeat !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(82px, 12svh, 108px) !important;
+  }
+
+  /* Keep the CTA exactly aligned with the black message card. */
+  .bathroom-page .deck-hero .hero-actions,
+  .bathroom-page .deck-hero .hero-actions .btn-primary {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+}
+
 </style>
 </head>
 
