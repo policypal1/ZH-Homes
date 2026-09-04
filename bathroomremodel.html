@@ -161,6 +161,65 @@ body.deck-page {
 .bathroom-page .mobile-cta-bar .cta-quote {grid-column:1/-1!important;width:100%!important;}
 @media (max-width:950px){.bathroom-page .bathroom-hero .hero-inner{display:block!important;}}
 
+
+/* Final hero-height pass after removing the embedded quote form. */
+.bathroom-page .bathroom-hero {
+  min-height: 720px !important;
+}
+.bathroom-page .bathroom-hero .hero-inner {
+  min-height: 720px !important;
+  align-items: center !important;
+}
+.bathroom-page .bathroom-hero .hero-copy {
+  padding-top: 56px !important;
+  padding-bottom: 64px !important;
+}
+.bathroom-page .bathroom-hero .hero-actions {
+  margin-top: 24px !important;
+}
+.bathroom-page .bathroom-hero .hero-actions .btn-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 56px !important;
+  padding: 0 24px !important;
+}
+
+@media (max-width: 950px) {
+  .bathroom-page .bathroom-hero {
+    min-height: 650px !important;
+  }
+  .bathroom-page .bathroom-hero .hero-inner {
+    min-height: 650px !important;
+  }
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(260px, 42svh, 350px) !important;
+    padding-bottom: 54px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .bathroom-hero {
+    min-height: 640px !important;
+  }
+  .bathroom-page .bathroom-hero .hero-inner {
+    min-height: 640px !important;
+  }
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-top: clamp(250px, 40svh, 330px) !important;
+    padding-bottom: 50px !important;
+  }
+  .bathroom-page .bathroom-hero .hero-actions {
+    display: block !important;
+    margin-top: 22px !important;
+  }
+  .bathroom-page .bathroom-hero .hero-actions .btn-primary {
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
+  }
+}
+
 </style>
 </head>
 
@@ -237,7 +296,7 @@ body.deck-page {
       </div>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="quote.html">Get My Free Bathroom Estimate</a>
+        <a class="btn btn-primary" href="quote.html">Get My Free Estimate</a>
         <a class="btn btn-secondary tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
       </div>
       <p class="direct-cta-note">No obligation. No “sign today” pressure. Start with your ZIP code.</p>

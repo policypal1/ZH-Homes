@@ -28,86 +28,14 @@ body.quote-page {
 .quote-page .quote-shell {
   width:min(1180px,calc(100% - 48px));
   margin:0 auto;
-  padding:72px 0 86px;
-  display:grid;
-  grid-template-columns:minmax(0,.86fr) minmax(520px,1.14fr);
-  gap:clamp(48px,6vw,86px);
-  align-items:start;
-}
-.quote-page .quote-copy {
-  position:sticky;
-  top:118px;
-  padding-top:22px;
-}
-.quote-page .quote-eyebrow {
-  margin:0 0 14px;
-  color:#a64713;
-  font-size:11px;
-  line-height:1;
-  font-weight:950;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-}
-.quote-page .quote-copy h1 {
-  margin:0;
-  max-width:520px;
-  color:#241b17;
-  font-size:clamp(46px,4.8vw,66px);
-  line-height:.98;
-  font-weight:950;
-  letter-spacing:-.05em;
-}
-.quote-page .quote-copy > p {
-  max-width:520px;
-  margin:20px 0 0;
-  color:#695a52;
-  font-size:16px;
-  line-height:1.65;
-  font-weight:600;
-}
-.quote-page .quote-trust {
-  display:grid;
-  gap:14px;
-  margin-top:30px;
-  padding-top:24px;
-  border-top:1px solid rgba(45,29,21,.11);
-}
-.quote-page .quote-trust-item {
-  display:grid;
-  grid-template-columns:28px minmax(0,1fr);
-  gap:11px;
-  align-items:start;
-}
-.quote-page .quote-trust-check {
-  display:grid;
-  place-items:center;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:#fff0e6;
-  color:#a64713;
-  font-size:13px;
-  font-weight:950;
-}
-.quote-page .quote-trust-item strong {
+  padding:54px 0 70px;
   display:block;
-  color:#241b17;
-  font-size:14px;
-  font-weight:900;
-}
-.quote-page .quote-trust-item span {
-  display:block;
-  margin-top:4px;
-  color:#75665d;
-  font-size:12px;
-  line-height:1.5;
-  font-weight:600;
 }
 .quote-page .quote-form-wrap {
   position:relative;
   width:100%;
   max-width:650px;
-  justify-self:end;
+  margin:0 auto;
   padding:clamp(28px,3vw,42px);
   border:1px solid rgba(45,29,21,.10);
   border-radius:22px;
@@ -115,7 +43,7 @@ body.quote-page {
   box-shadow:0 24px 70px rgba(45,29,21,.12);
 }
 .quote-page .quote-form-heading {
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 .quote-page .quote-form-heading span {
   display:block;
@@ -337,27 +265,9 @@ body.quote-page {
 @media (max-width: 900px) {
   .quote-page .quote-shell {
     width:calc(100% - 28px);
-    padding:34px 0 54px;
+    padding:28px 0 48px;
     grid-template-columns:1fr;
     gap:26px;
-  }
-  .quote-page .quote-copy {
-    position:static;
-    padding-top:0;
-    text-align:center;
-  }
-  .quote-page .quote-copy h1,
-  .quote-page .quote-copy > p {
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .quote-page .quote-copy h1 {
-    font-size:clamp(36px,10vw,48px);
-  }
-  .quote-page .quote-trust {
-    max-width:520px;
-    margin:24px auto 0;
-    text-align:left;
   }
   .quote-page .quote-form-wrap {
     max-width:620px;
@@ -370,7 +280,6 @@ body.quote-page {
   .quote-page .header-cta { min-width:auto !important; padding:0 13px !important; }
   .quote-page .quote-copy h1 { font-size:38px; }
   .quote-page .quote-copy > p { font-size:14px; }
-  .quote-page .quote-trust { display:none; }
   .quote-page .quote-form-heading h2 { font-size:29px; }
   .quote-page .bathroom-project-grid { grid-template-columns:1fr 1fr; }
   .quote-page .hero-form-row { grid-template-columns:1fr; gap:0; }
@@ -409,32 +318,12 @@ body.quote-page {
 
 <main id="quote-main">
   <section class="quote-shell">
-    <div class="quote-copy">
-      <div class="quote-eyebrow">Salem Area Bathroom Remodeling</div>
-      <h1>Get Your Free Bathroom Remodel Estimate</h1>
-      <p>Answer three quick steps. We’ll follow up to talk through the bathroom, schedule the walkthrough, and put the estimate in writing.</p>
-
-      <div class="quote-trust" aria-label="Estimate benefits">
-        <div class="quote-trust-item">
-          <span class="quote-trust-check">✓</span>
-          <div><strong>Clear written estimate</strong><span>Know the project scope before you decide.</span></div>
-        </div>
-        <div class="quote-trust-item">
-          <span class="quote-trust-check">✓</span>
-          <div><strong>No high-pressure sales pitch</strong><span>No obligation and no “sign today” pressure.</span></div>
-        </div>
-        <div class="quote-trust-item">
-          <span class="quote-trust-check">✓</span>
-          <div><strong>Local Salem-area contractor</strong><span>Licensed, bonded and insured. Oregon CCB #260679.</span></div>
-        </div>
-      </div>
-    </div>
 
     <div class="quote-form-wrap deck-form-card">
       <div class="quote-form-heading">
         <span>Free Bathroom Estimate</span>
         <h2>Tell us about your bathroom.</h2>
-        <p>Start with the project ZIP. You do not need every detail figured out yet.</p>
+        
       </div>
 
       <form class="deck-multistep-form" data-form-source="Dedicated Bathroom Quote Page" id="quotePageBathroomForm" novalidate>
