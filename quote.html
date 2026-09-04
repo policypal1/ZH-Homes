@@ -488,6 +488,35 @@ body.quote-page {
   }
 }
 
+
+/* Quote page: intentionally de-emphasize navigation away from the form. */
+.quote-page .header-actions {
+  justify-content: flex-end !important;
+}
+
+
+.quote-page .quote-footer-links {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.quote-page .quote-footer-back {
+  color:#b9b0aa !important;
+  opacity:.62;
+  font-weight:650 !important;
+}
+.quote-page .quote-footer-back:hover {
+  opacity:.9;
+}
+
+
+.quote-page .quote-state-overlay.active {
+  display:flex !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+
 </style>
 </head>
 <body class="deck-page bathroom-page quote-page">
@@ -506,9 +535,6 @@ body.quote-page {
         <span>Licensed, Bonded &amp; Insured</span>
         <strong>Oregon CCB #260679</strong>
       </div>
-      <a class="header-cta" href="bathroomremodel.html" aria-label="Back to bathroom remodeling page">
-        <span>Back</span>
-      </a>
     </div>
   </div>
 </header>
@@ -620,7 +646,7 @@ body.quote-page {
 <footer class="simple-quote-footer">
   <div class="simple-quote-footer-inner">
     <span>© 2026 ZH Homes · Oregon CCB #260679</span>
-    <a href="privacy.html">Privacy Policy</a>
+    <span class="quote-footer-links"><a class="quote-footer-back" href="bathroomremodel.html">Back</a><a href="privacy.html">Privacy Policy</a></span>
   </div>
 </footer>
 
@@ -631,13 +657,6 @@ body.quote-page {
   "use strict";
 
   var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzikh0E8I1FoKLisU_1B6QLk_jp6TGP6yMSVKWV-pCQJ1HxNHrAqsg88gO2uS60tIP4/exec';
-  var STORAGE_KEY = "zhBathroomPendingLeadV1";
-  var ATTRIBUTION_KEY = "zhHomesBathroomAttribution";
-  var ATTRIBUTION_KEYS = [
-    "utm_source", "utm_medium", "utm_campaign", "utm_term",
-    "utm_content", "gclid", "gbraid", "wbraid"
-  ];
-
   var form = document.getElementById("quotePageBathroomForm");
   if (!form) return;
 
@@ -648,52 +667,41 @@ body.quote-page {
   var errorOverlay = document.getElementById("quoteErrorOverlay");
   var tryAgainButton = document.getElementById("quoteTryAgain");
   var currentStep = 0;
-  var sending = false;
+  var submitting = false;
   var lastPayload = null;
 
-  function safeStorageSet(key, value) {
-    try { localStorage.setItem(key, value); } catch (e) {}
-  }
-
-  function safeStorageGet(key) {
-    try { return localStorage.getItem(key); } catch (e) { return null; }
-  }
-
-  function safeStorageRemove(key) {
-    try { localStorage.removeItem(key); } catch (e) {}
-  }
-
-  function sessionSet(key, value) {
-    try { sessionStorage.setItem(key, value); } catch (e) {}
-  }
-
-  function sessionGet(key) {
-    try { return sessionStorage.getItem(key); } catch (e) { return null; }
-  }
+  var ATTRIBUTION_KEYS = [
+    "utm_source", "utm_medium", "utm_campaign", "utm_term",
+    "utm_content", "gclid", "gbraid", "wbraid"
+  ];
 
   function getAttribution() {
     var params = new URLSearchParams(window.location.search);
-    var current = {};
+    var result = {};
     var hasCurrent = false;
 
     ATTRIBUTION_KEYS.forEach(function (key) {
-      current[key] = params.get(key) || "";
-      if (current[key]) hasCurrent = true;
+      result[key] = params.get(key) || "";
+      if (result[key]) hasCurrent = true;
     });
 
     if (hasCurrent) {
-      sessionSet(ATTRIBUTION_KEY, JSON.stringify(current));
-      return current;
+      try {
+        sessionStorage.setItem("zhHomesBathroomAttribution", JSON.stringify(result));
+      } catch (e) {}
+      return result;
     }
 
     try {
-      var saved = JSON.parse(sessionGet(ATTRIBUTION_KEY) || "{}");
+      var saved = JSON.parse(
+        sessionStorage.getItem("zhHomesBathroomAttribution") || "{}"
+      );
       ATTRIBUTION_KEYS.forEach(function (key) {
-        current[key] = String(saved[key] || "");
+        result[key] = String(saved[key] || "");
       });
     } catch (e) {}
 
-    return current;
+    return result;
   }
 
   function getLeadSource(attribution) {
@@ -716,40 +724,54 @@ body.quote-page {
     return "Website";
   }
 
+  function setOverlay(element, active) {
+    if (!element) return;
+    element.classList.toggle("active", active);
+    element.setAttribute("aria-hidden", active ? "false" : "true");
+  }
+
+  function showSuccess() {
+    setOverlay(errorOverlay, false);
+    setOverlay(successOverlay, true);
+  }
+
+  function showError() {
+    setOverlay(successOverlay, false);
+    setOverlay(errorOverlay, true);
+  }
+
   function updateStep(index) {
     currentStep = Math.max(0, Math.min(index, steps.length - 1));
 
-    steps.forEach(function (step, index) {
-      var active = index === currentStep;
+    steps.forEach(function (step, stepIndex) {
+      var active = stepIndex === currentStep;
       step.hidden = !active;
       step.classList.toggle("active", active);
     });
 
     if (progressBar) {
-      progressBar.style.width = (((currentStep + 1) / steps.length) * 100) + "%";
+      progressBar.style.width =
+        (((currentStep + 1) / steps.length) * 100) + "%";
     }
-
-    window.scrollTo({
-      top: Math.max(0, form.getBoundingClientRect().top + window.scrollY - 110),
-      behavior: "smooth"
-    });
   }
 
   function validateStep(step) {
     if (!step) return true;
 
-    var inputs = Array.prototype.slice.call(
+    var controls = Array.prototype.slice.call(
       step.querySelectorAll("input, select, textarea")
-    ).filter(function (input) {
-      return !input.disabled && input.type !== "hidden";
+    ).filter(function (control) {
+      return !control.disabled && control.type !== "hidden";
     });
 
-    for (var i = 0; i < inputs.length; i += 1) {
-      var input = inputs[i];
+    for (var i = 0; i < controls.length; i += 1) {
+      var control = controls[i];
 
-      if (input.type === "radio") {
+      if (control.type === "radio") {
         var radios = Array.prototype.slice.call(
-          step.querySelectorAll('input[type="radio"][name="' + input.name + '"]')
+          step.querySelectorAll(
+            'input[type="radio"][name="' + control.name + '"]'
+          )
         );
         var required = radios.some(function (radio) { return radio.required; });
         var selected = radios.some(function (radio) { return radio.checked; });
@@ -763,9 +785,9 @@ body.quote-page {
         continue;
       }
 
-      if (!input.checkValidity()) {
-        input.reportValidity();
-        input.focus();
+      if (!control.checkValidity()) {
+        control.reportValidity();
+        control.focus();
         return false;
       }
     }
@@ -773,45 +795,12 @@ body.quote-page {
     return true;
   }
 
-  function setOverlay(overlay, active) {
-    if (!overlay) return;
-    overlay.classList.toggle("active", active);
-    overlay.setAttribute("aria-hidden", active ? "false" : "true");
-  }
-
-  function showError() {
-    setOverlay(successOverlay, false);
-    setOverlay(errorOverlay, true);
-  }
-
-  function showSuccess() {
-    setOverlay(errorOverlay, false);
-    setOverlay(successOverlay, true);
-  }
-
-  function makeSubmissionId() {
-    if (window.crypto && typeof window.crypto.randomUUID === "function") {
-      return window.crypto.randomUUID();
-    }
-
-    return (
-      Date.now().toString(36) +
-      "-" +
-      Math.random().toString(36).slice(2) +
-      Math.random().toString(36).slice(2)
-    );
-  }
-
   function buildPayload() {
     var data = new FormData(form);
     var attribution = getAttribution();
 
     return {
-      submissionId: makeSubmissionId(),
-      source: "ZH Homes Bathroom Quote Page",
-      pageUrl: window.location.href,
       submittedAt: new Date().toISOString(),
-      contactReason: "bathroom_estimate",
       fullName: String(data.get("fullName") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
       email: String(data.get("email") || "").trim(),
@@ -820,137 +809,114 @@ body.quote-page {
       serviceType: String(data.get("projectType") || "Bathroom Remodel").trim(),
       leadSource: getLeadSource(attribution),
       companyWebsite: String(data.get("companyWebsite") || "").trim(),
-      attribution: attribution
+
+      // Scalars below allow Apps Script e.parameter parsing with a normal
+      // cross-origin HTML form POST. No CORS response is required.
+      utm_source: attribution.utm_source || "",
+      utm_medium: attribution.utm_medium || "",
+      utm_campaign: attribution.utm_campaign || "",
+      utm_term: attribution.utm_term || "",
+      utm_content: attribution.utm_content || "",
+      gclid: attribution.gclid || "",
+      gbraid: attribution.gbraid || "",
+      wbraid: attribution.wbraid || ""
     };
   }
 
-  async function postDirectlyToAppsScript(payload) {
-    var controller =
-      typeof AbortController !== "undefined" ? new AbortController() : null;
+  function dispatchToAppsScript(payload) {
+    var frameName = "zhLeadSubmitFrame";
 
-    var timeoutId = controller
-      ? window.setTimeout(function () { controller.abort(); }, 18000)
-      : null;
-
-    try {
-      await fetch(APPS_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        cache: "no-store",
-        keepalive: true,
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(payload),
-        signal: controller ? controller.signal : undefined
-      });
-
-      return true;
-    } finally {
-      if (timeoutId) window.clearTimeout(timeoutId);
+    var iframe = document.getElementById(frameName);
+    if (!iframe) {
+      iframe = document.createElement("iframe");
+      iframe.id = frameName;
+      iframe.name = frameName;
+      iframe.title = "Lead submission";
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
     }
-  }
 
-  function beaconFallback(payload) {
-    if (!navigator.sendBeacon) return false;
+    var deliveryForm = document.createElement("form");
+    deliveryForm.method = "POST";
+    deliveryForm.action = APPS_SCRIPT_URL;
+    deliveryForm.target = frameName;
+    deliveryForm.style.display = "none";
+
+    Object.keys(payload).forEach(function (key) {
+      var input = document.createElement("input");
+      input.type = "hidden";
+      input.name = key;
+      input.value = payload[key] == null ? "" : String(payload[key]);
+      deliveryForm.appendChild(input);
+    });
+
+    document.body.appendChild(deliveryForm);
 
     try {
-      var blob = new Blob(
-        [JSON.stringify(payload)],
-        { type: "text/plain;charset=utf-8" }
-      );
-      return navigator.sendBeacon(APPS_SCRIPT_URL, blob);
-    } catch (e) {
+      deliveryForm.submit();
+      window.setTimeout(function () {
+        deliveryForm.remove();
+      }, 1500);
+      return true;
+    } catch (error) {
+      console.error("Apps Script form dispatch failed:", error);
+      deliveryForm.remove();
       return false;
     }
   }
 
-  function recordPending(payload) {
-    safeStorageSet(
-      STORAGE_KEY,
-      JSON.stringify({
-        savedAt: Date.now(),
-        payload: payload
-      })
-    );
+  function recordAnalytics(payload) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "bathroom_lead_submit",
+      form_name: "Dedicated Bathroom Quote Page",
+      project_type: payload.projectType
+    });
   }
 
-  function clearPending() {
-    safeStorageRemove(STORAGE_KEY);
-  }
+  function submitLead(payload) {
+    if (submitting) return;
 
-  async function deliver(payload, showUI) {
-    if (sending) return false;
-    sending = true;
+    submitting = true;
     lastPayload = payload;
-    recordPending(payload);
 
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.classList.add("is-sending");
       submitButton.dataset.originalText =
         submitButton.dataset.originalText || submitButton.textContent;
       submitButton.textContent = "Sending...";
     }
 
-    try {
-      await postDirectlyToAppsScript(payload);
-
-      clearPending();
-
-      if (showUI) {
-        showSuccess();
-      }
-
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "bathroom_lead_submit",
-        form_name: "Dedicated Bathroom Quote Page",
-        project_zip: payload.zipCode,
-        project_type: payload.projectType
-      });
-
-      if (typeof window.gtag_report_conversion === "function") {
-        try { window.gtag_report_conversion(); } catch (e) {}
-      }
-
-      return true;
-    } catch (error) {
-      console.error("Direct Apps Script submission failed:", error);
-
-      // One last transport fallback if fetch itself could not dispatch.
-      if (beaconFallback(payload)) {
-        clearPending();
-
-        if (showUI) {
-          showSuccess();
-        }
-
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "bathroom_lead_submit",
-          form_name: "Dedicated Bathroom Quote Page Beacon Fallback",
-          project_zip: payload.zipCode,
-          project_type: payload.projectType
-        });
-
-        return true;
-      }
-
-      if (showUI) {
-        showError();
-      }
-
-      return false;
-    } finally {
-      sending = false;
-
+    if (!navigator.onLine) {
+      showError();
+      submitting = false;
       if (submitButton) {
         submitButton.disabled = false;
-        submitButton.classList.remove("is-sending");
         submitButton.textContent =
           submitButton.dataset.originalText || "Get My Free Estimate";
       }
+      return;
+    }
+
+    var dispatched = dispatchToAppsScript(payload);
+
+    // Cross-origin Apps Script responses are intentionally not inspected.
+    // If the browser accepted the form POST, show success immediately.
+    if (dispatched) {
+      showSuccess();
+      recordAnalytics(payload);
+      form.reset();
+      updateStep(0);
+    } else {
+      showError();
+    }
+
+    submitting = false;
+
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent =
+        submitButton.dataset.originalText || "Get My Free Estimate";
     }
   }
 
@@ -974,59 +940,20 @@ body.quote-page {
 
     var payload = buildPayload();
 
-    // Honeypot spam: do not deliver, but do not reveal the trap.
     if (payload.companyWebsite) {
       showSuccess();
       return;
     }
 
-    deliver(payload, true);
+    submitLead(payload);
   });
 
   if (tryAgainButton) {
     tryAgainButton.addEventListener("click", function () {
       setOverlay(errorOverlay, false);
-
-      if (lastPayload) {
-        deliver(lastPayload, true);
-        return;
-      }
-
-      var saved;
-      try {
-        saved = JSON.parse(safeStorageGet(STORAGE_KEY) || "null");
-      } catch (e) {
-        saved = null;
-      }
-
-      if (saved && saved.payload) {
-        deliver(saved.payload, true);
-      }
+      if (lastPayload) submitLead(lastPayload);
     });
   }
-
-  // If a real user submitted while briefly offline, keep one short-lived
-  // local copy and retry when the connection comes back.
-  window.addEventListener("online", function () {
-    var saved;
-
-    try {
-      saved = JSON.parse(safeStorageGet(STORAGE_KEY) || "null");
-    } catch (e) {
-      saved = null;
-    }
-
-    if (
-      !saved ||
-      !saved.payload ||
-      !saved.savedAt ||
-      Date.now() - saved.savedAt > 12 * 60 * 60 * 1000
-    ) {
-      return;
-    }
-
-    deliver(saved.payload, false);
-  });
 
   updateStep(0);
 })();
