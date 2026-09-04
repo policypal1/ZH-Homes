@@ -517,6 +517,31 @@ body.quote-page {
   pointer-events:auto !important;
 }
 
+
+/* Final page-height fix: keep footer at the bottom of the viewport. */
+html,
+body.quote-page {
+  min-height: 100%;
+}
+
+body.quote-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-page > main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.quote-page .simple-quote-footer {
+  margin-top: auto;
+  flex-shrink: 0;
+  width: 100%;
+}
+
 </style>
 </head>
 <body class="deck-page bathroom-page quote-page">
@@ -624,7 +649,6 @@ body.quote-page {
           <div class="quote-state-icon" aria-hidden="true">✓</div>
           <h3>Request Sent</h3>
           <p>Thanks. ZH Homes received your bathroom remodel estimate request and will follow up with you.</p>
-          <a class="quote-state-secondary" href="bathroomremodel.html">Back to Bathroom Remodeling</a>
         </div>
       </div>
 
