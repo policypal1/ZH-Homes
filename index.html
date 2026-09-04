@@ -18,6 +18,207 @@
 
     <link rel="stylesheet" href="style.css">
 
+  <!-- Main-site mobile fixes: mobile only; desktop is unchanged. -->
+  <style id="zh-main-mobile-fixes">
+    @media (max-width: 950px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        overflow-x: clip;
+        overscroll-behavior-x: none;
+      }
+
+      body {
+        position: relative;
+      }
+
+      .site-header,
+      .header-inner,
+      main,
+      .footer {
+        max-width: 100%;
+      }
+
+      .site-header .header-inner {
+        width: calc(100% - 24px) !important;
+        min-width: 0 !important;
+      }
+
+      .site-header .brand {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+      }
+
+      .site-header .brand-text {
+        min-width: 0 !important;
+      }
+
+      /* Remove only the mobile header quote button. */
+      .site-header .header-cta {
+        display: none !important;
+      }
+
+      /* Use the freed header space for the license badge and keep it inside the viewport. */
+      .site-header .header-actions {
+        display: flex !important;
+        flex: 0 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - 118px) !important;
+        margin-left: auto !important;
+        justify-content: flex-end !important;
+      }
+
+      .site-header .header-license-badge {
+        width: auto !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-left: auto !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+      }
+
+      .site-header .header-license-badge strong,
+      .site-header .header-license-badge .mobile-license-word {
+        white-space: nowrap !important;
+      }
+
+      /* Keep oversized visual effects from creating page-level horizontal drag. */
+      .hero,
+      .about-section,
+      .services-section,
+      .mission-section,
+      .gallery-section,
+      .process-section,
+      .project-cta-section,
+      .service-area-section,
+      .testimonials-section,
+      .contact-section,
+      .faq-section,
+      .footer {
+        max-width: 100% !important;
+      }
+
+      /* Call/Text choice sheet */
+      .call-text-sheet {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: grid;
+        align-items: end;
+        padding: 14px;
+        background: rgba(0, 0, 0, 0.48);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.18s ease, visibility 0.18s ease;
+      }
+
+      .call-text-sheet.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .call-text-sheet-card {
+        width: min(100%, 460px);
+        margin: 0 auto;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid rgba(35, 23, 18, 0.12);
+        border-radius: 18px;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+        transform: translateY(18px);
+        transition: transform 0.18s ease;
+      }
+
+      .call-text-sheet.is-open .call-text-sheet-card {
+        transform: translateY(0);
+      }
+
+      .call-text-sheet-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #231712;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .call-text-sheet-card p {
+        margin: 0 0 14px;
+        color: #6b615b;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .call-text-sheet-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .call-text-sheet-action {
+        min-height: 52px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 11px;
+        font-size: 14px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .call-text-sheet-action.call {
+        color: #fff;
+        background: #f37021;
+      }
+
+      .call-text-sheet-action.text {
+        color: #231712;
+        background: #f6f1ed;
+        border: 1px solid rgba(35, 23, 18, 0.12);
+      }
+
+      .call-text-sheet-cancel {
+        width: 100%;
+        min-height: 44px;
+        margin-top: 10px;
+        border: 0;
+        border-radius: 10px;
+        color: #6b615b;
+        background: transparent;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 850;
+        cursor: pointer;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .site-header .header-inner {
+        width: calc(100% - 18px) !important;
+        gap: 7px !important;
+      }
+
+      .site-header .header-actions {
+        max-width: calc(100% - 104px) !important;
+      }
+
+      .site-header .header-license-badge {
+        padding: 6px 7px !important;
+      }
+
+      .site-header .header-license-badge strong {
+        font-size: 9px !important;
+      }
+
+      .site-header .header-license-badge .mobile-license-word {
+        font-size: 8px !important;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -944,6 +1145,75 @@
       Call / Text
     </a>
   </div>
+
+  <!-- Mobile Call/Text chooser. The original tel: links still work normally on desktop. -->
+  <div class="call-text-sheet" id="callTextSheet" role="dialog" aria-modal="true" aria-labelledby="callTextSheetTitle" aria-hidden="true">
+    <div class="call-text-sheet-card">
+      <strong id="callTextSheetTitle">Contact ZH Homes</strong>
+      <p>Choose how you want to reach us.</p>
+      <div class="call-text-sheet-actions">
+        <a class="call-text-sheet-action call" href="tel:+15039105466" data-direct-contact>Call</a>
+        <a class="call-text-sheet-action text" href="sms:+15039105466" data-direct-contact>Text</a>
+      </div>
+      <button class="call-text-sheet-cancel" id="callTextSheetCancel" type="button">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var mobileQuery = window.matchMedia('(max-width: 950px)');
+    var sheet = document.getElementById('callTextSheet');
+    var cancel = document.getElementById('callTextSheetCancel');
+    if (!sheet) return;
+
+    var previousOverflow = '';
+
+    function openSheet() {
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      sheet.classList.add('is-open');
+      sheet.setAttribute('aria-hidden', 'false');
+      window.setTimeout(function () {
+        cancel && cancel.focus();
+      }, 0);
+    }
+
+    function closeSheet() {
+      sheet.classList.remove('is-open');
+      sheet.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = previousOverflow;
+    }
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+      if (link.closest('#callTextSheet')) return;
+
+      link.addEventListener('click', function (event) {
+        if (!mobileQuery.matches) return;
+        event.preventDefault();
+        openSheet();
+      });
+    });
+
+    cancel && cancel.addEventListener('click', closeSheet);
+
+    sheet.addEventListener('click', function (event) {
+      if (event.target === sheet) closeSheet();
+    });
+
+    sheet.querySelectorAll('[data-direct-contact]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeSheet();
+      });
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && sheet.classList.contains('is-open')) {
+        closeSheet();
+      }
+    });
+  })();
+  </script>
+
   <script src="script.js?v=20260806-2"></script>
 </body>
 </html>
