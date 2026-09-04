@@ -291,6 +291,48 @@ body.quote-page {
     gap:4px;
   }
 }
+
+/* Final simplified quote-flow treatment */
+.quote-page .simple-progress {
+  margin: 0 0 24px !important;
+}
+.quote-page .simple-progress .estimate-progress-track {
+  height: 5px !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background: #eee4de !important;
+}
+.quote-page .simple-progress .estimate-progress-track > span {
+  display: block !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  background: #f37021 !important;
+  transition: width .2s ease !important;
+}
+.quote-page .estimate-progress-copy,
+.quote-page .quote-step-numbers {
+  display: none !important;
+}
+.quote-page .estimate-step-heading {
+  margin-bottom: 16px !important;
+}
+.quote-page .estimate-step-heading > span {
+  font-size: clamp(24px, 3vw, 30px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+}
+.quote-page .estimate-step-heading p {
+  display: none !important;
+}
+@media (max-width: 560px) {
+  .quote-page .simple-progress {
+    margin-bottom: 20px !important;
+  }
+  .quote-page .estimate-step-heading > span {
+    font-size: 25px !important;
+  }
+}
+
 </style>
 </head>
 <body class="deck-page bathroom-page quote-page">
@@ -332,23 +374,13 @@ body.quote-page {
           <input autocomplete="off" id="quoteCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
         </div>
 
-        <div class="estimate-progress">
-          <div class="estimate-progress-copy">
-            <span data-progress-label>Step 1 of 3</span>
-            <strong data-progress-title>Project ZIP</strong>
-          </div>
-          <div class="quote-step-numbers" aria-label="Estimate progress">
-            <span class="active" data-progress-step="0">1 · ZIP</span>
-            <span data-progress-step="1">2 · Project</span>
-            <span data-progress-step="2">3 · Contact</span>
-          </div>
+        <div class="estimate-progress simple-progress" aria-label="Estimate progress">
           <div class="estimate-progress-track"><span data-progress-bar></span></div>
         </div>
 
         <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
           <div class="estimate-step-heading">
             <span>What’s your ZIP code?</span>
-            <p>We’ll confirm your bathroom is in our service area.</p>
           </div>
           <div class="field">
             <label for="quoteZip">ZIP Code</label>
@@ -362,7 +394,6 @@ body.quote-page {
         <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
           <div class="estimate-step-heading">
             <span>What do you want to change?</span>
-            <p>Pick the closest option. We can sort out the details during your walkthrough.</p>
           </div>
           <fieldset class="choice-fieldset">
             <legend>Bathroom project</legend>
@@ -384,7 +415,6 @@ body.quote-page {
         <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
           <div class="estimate-step-heading">
             <span>Where should we reach you?</span>
-            <p>We’ll follow up to discuss the project and schedule the walkthrough.</p>
           </div>
           <div class="hero-form-row">
             <div class="field">
