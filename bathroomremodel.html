@@ -332,6 +332,392 @@ body.deck-page {
   }
 }
 
+
+/* =========================================================
+   V2: DIRECT LEAD CAPTURE
+   Keep the existing landing-page proof, but let paid visitors
+   begin the estimate without loading a second page.
+   ========================================================= */
+.bathroom-page .bathroom-hero .hero-inner {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.08fr) minmax(390px, 500px) !important;
+  gap: clamp(34px, 4vw, 68px) !important;
+  min-height: 780px !important;
+  align-items: center !important;
+}
+
+.bathroom-page .bathroom-hero .hero-copy {
+  max-width: 680px !important;
+  padding-top: 52px !important;
+  padding-bottom: 52px !important;
+}
+
+.landing-hero-form-card {
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  max-width: 500px;
+  justify-self: end;
+  box-sizing: border-box;
+  padding: clamp(24px, 2.5vw, 34px);
+  color: #241b17;
+  background: rgba(255,255,255,.985);
+  border: 1px solid rgba(45,29,21,.10);
+  border-radius: 22px;
+  box-shadow: 0 28px 75px rgba(0,0,0,.28);
+  overflow: hidden;
+}
+
+.landing-hero-form-card .hero-quick-heading {
+  margin-bottom: 18px;
+}
+
+.landing-hero-form-card .hero-quick-heading > span {
+  display: block;
+  margin-bottom: 8px;
+  color: #a64713;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+.landing-hero-form-card .hero-quick-heading h2 {
+  margin: 0;
+  color: #241b17;
+  font-size: clamp(28px, 2.35vw, 36px);
+  line-height: 1.03;
+  letter-spacing: -.035em;
+  font-weight: 950;
+}
+
+.landing-hero-form-card .form-intro-note {
+  margin: 10px 0 0;
+  color: #75665d;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 650;
+}
+
+.landing-hero-form-card .deck-multistep-form {
+  padding-top: 20px;
+  border-top: 2px solid #f37021 !important;
+}
+
+.landing-hero-form-card .estimate-step[hidden] {
+  display: none !important;
+}
+
+.landing-hero-form-card .estimate-progress {
+  margin-bottom: 20px;
+}
+
+.landing-hero-form-card .estimate-progress-track {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eee4de;
+}
+
+.landing-hero-form-card .estimate-progress-track > span {
+  display: block;
+  width: 33.333%;
+  height: 100%;
+  border-radius: inherit;
+  background: #f37021;
+  transition: width .2s ease;
+}
+
+.landing-hero-form-card .estimate-step-heading {
+  margin-bottom: 14px;
+}
+
+.landing-hero-form-card .estimate-step-heading > span {
+  display: block;
+  color: #241b17;
+  font-size: 23px;
+  line-height: 1.12;
+  font-weight: 950;
+  letter-spacing: -.025em;
+}
+
+.landing-hero-form-card .field {
+  margin-top: 15px;
+}
+
+.landing-hero-form-card .field label,
+.landing-hero-form-card .choice-fieldset legend {
+  color: #4b3a31;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.landing-hero-form-card .field input {
+  width: 100%;
+  min-height: 54px;
+  box-sizing: border-box;
+  margin-top: 7px;
+  padding: 0 14px;
+  border: 1px solid #ddcec4;
+  border-radius: 10px;
+  background: #fff;
+  color: #241b17;
+  font: inherit;
+  font-size: 15px;
+}
+
+.landing-hero-form-card .field input:focus {
+  outline: 3px solid rgba(243,112,33,.13);
+  border-color: #f37021;
+}
+
+.landing-hero-form-card .choice-fieldset {
+  margin: 17px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.landing-hero-form-card .bathroom-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 9px;
+}
+
+.landing-hero-form-card .choice-card {
+  position: relative;
+  display: block;
+}
+
+.landing-hero-form-card .choice-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.landing-hero-form-card .choice-card span {
+  min-height: 54px;
+  box-sizing: border-box;
+  padding: 9px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddcec4;
+  border-radius: 10px;
+  background: #fff;
+  color: #4d3d34;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.22;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.landing-hero-form-card .choice-card input:checked + span {
+  border-color: #f37021;
+  background: #fff4ec;
+  color: #923b0d;
+  box-shadow: 0 0 0 2px rgba(243,112,33,.08);
+}
+
+.landing-hero-form-card .hero-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.landing-hero-form-card .estimate-nav {
+  display: grid;
+  grid-template-columns: 96px minmax(0,1fr);
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.landing-hero-form-card .estimate-nav.single-action {
+  grid-template-columns: 1fr;
+}
+
+.landing-hero-form-card .estimate-back,
+.landing-hero-form-card .estimate-next,
+.landing-hero-form-card .estimate-submit {
+  min-height: 54px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.landing-hero-form-card .estimate-back {
+  border: 1px solid #d9cbc2;
+  background: #fff;
+  color: #6d5e55;
+}
+
+.landing-hero-form-card .estimate-next,
+.landing-hero-form-card .estimate-submit {
+  border: 0;
+  background: #f37021;
+  color: #fff;
+}
+
+.landing-hero-form-card .hero-form-assurance {
+  margin: 12px 0 0;
+  color: #8a786c;
+  font-size: 10.5px;
+  line-height: 1.45;
+  text-align: center;
+  font-weight: 650;
+}
+
+.landing-hero-form-card .form-status {
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.landing-hero-form-card .form-status.error {
+  padding: 9px 10px;
+  border: 1px solid rgba(150,48,20,.18);
+  border-radius: 9px;
+  background: #fff4ef;
+  color: #8f3218;
+  font-weight: 750;
+}
+
+.landing-hero-form-card .form-status.success {
+  color: #2f6b45;
+  font-weight: 800;
+}
+
+.landing-form-success {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 24px;
+  box-sizing: border-box;
+  text-align: center;
+  background: rgba(255,255,255,.995);
+}
+
+.landing-form-success.active {
+  display: flex !important;
+}
+
+.landing-form-success-inner {
+  max-width: 360px;
+}
+
+.landing-form-success-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8f5ec;
+  color: #2f7548;
+  font-size: 26px;
+  font-weight: 950;
+}
+
+.landing-form-success h3 {
+  margin: 0;
+  color: #241b17;
+  font-size: 32px;
+  line-height: 1.05;
+  font-weight: 950;
+  letter-spacing: -.035em;
+}
+
+.landing-form-success p {
+  margin: 11px 0 0;
+  color: #6f625b;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 650;
+}
+
+@media (max-width: 1100px) and (min-width: 951px) {
+  .bathroom-page .bathroom-hero .hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 430px) !important;
+    gap: 28px !important;
+  }
+
+  .landing-hero-form-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 950px) {
+  .bathroom-page .bathroom-hero {
+    min-height: auto !important;
+    padding-bottom: 44px !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-inner {
+    display: block !important;
+    min-height: auto !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-copy {
+    max-width: 720px !important;
+    padding-bottom: 26px !important;
+  }
+
+  .landing-hero-form-card {
+    max-width: 620px;
+    margin: 0 auto;
+    justify-self: auto;
+  }
+
+  /* Get the form in front of mobile paid traffic instead of making them
+     scroll through extra proof before they can start. */
+  .bathroom-page .hero-mobile-collage {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .bathroom-page .bathroom-hero {
+    padding-bottom: 28px !important;
+  }
+
+  .bathroom-page .bathroom-hero .hero-copy {
+    padding-bottom: 18px !important;
+  }
+
+  .bathroom-page .hero-copy > p.subheadline:not(.hero-mobile-subheadline),
+  .bathroom-page .bathroom-offer-line,
+  .bathroom-page .hero-inline-review {
+    display: none !important;
+  }
+
+  .landing-hero-form-card {
+    width: 100%;
+    padding: 21px 16px 20px;
+    border-radius: 18px;
+  }
+
+  .landing-hero-form-card .hero-quick-heading h2 {
+    font-size: 28px;
+  }
+
+  .landing-hero-form-card .hero-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .landing-hero-form-card .bathroom-project-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 </style>
 </head>
 
@@ -355,7 +741,7 @@ body.deck-page {
           <span class="license-desktop-word">Oregon </span>CCB #260679
         </strong>
       </div>
-      <a class="header-cta" href="quote.html" aria-label="Get a bathroom remodel estimate">
+      <a class="header-cta" href="#hero-estimate" aria-label="Get a bathroom remodel estimate">
         <span class="header-cta-desktop">Get My Estimate</span>
         <span class="header-cta-mobile">Get Quote</span>
       </a>
@@ -408,7 +794,7 @@ body.deck-page {
       </div>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="quote.html">Get My Free Estimate</a>
+        <a class="btn btn-primary" href="#hero-estimate">Start My Free Estimate</a>
         <a class="btn btn-secondary tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
       </div>
       <p class="direct-cta-note">No obligation. No “sign today” pressure. Start with your ZIP code.</p>
@@ -441,7 +827,86 @@ body.deck-page {
       </div>
     </div>
 
-    </div>
+
+    <aside class="landing-hero-form-card deck-form-card hero-quick-card" id="hero-estimate" aria-label="Free bathroom remodel estimate">
+      <div class="hero-quick-heading">
+        <span>Free Bathroom Estimate</span>
+        <h2>Start with your ZIP code.</h2>
+        <p class="form-intro-note">About 60 seconds. No obligation and no high-pressure sales.</p>
+      </div>
+
+      <form class="deck-multistep-form" data-form-source="Bathroom Hero Estimate" id="bathroomHeroEstimateForm" novalidate>
+        <div aria-hidden="true" class="honeypot">
+          <label for="heroCompanyWebsite">Company Website</label>
+          <input autocomplete="off" id="heroCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
+        </div>
+
+        <div class="estimate-progress" aria-label="Estimate progress">
+          <div class="estimate-progress-track"><span data-progress-bar></span></div>
+        </div>
+
+        <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
+          <div class="estimate-step-heading"><span>What’s your ZIP code?</span></div>
+          <div class="field">
+            <label for="heroZip">ZIP Code</label>
+            <input autocomplete="postal-code" id="heroZip" inputmode="numeric" maxlength="10" name="zipCode" placeholder="97302" required type="text"/>
+          </div>
+          <div class="estimate-nav single-action">
+            <button class="estimate-next" data-next type="button">Next</button>
+          </div>
+        </section>
+
+        <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
+          <div class="estimate-step-heading"><span>What do you want to change?</span></div>
+          <fieldset class="choice-fieldset">
+            <legend>Bathroom project</legend>
+            <div class="choice-grid bathroom-project-grid">
+              <label class="choice-card"><input name="projectType" required type="radio" value="Full Bathroom Remodel"/><span>Full Remodel</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/><span>Tub-to-Shower</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Shower / Waterproofing"/><span>Shower / Waterproofing</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Not Sure Yet"/><span>Not Sure Yet</span></label>
+            </div>
+          </fieldset>
+          <div class="estimate-nav">
+            <button class="estimate-back" data-back type="button">Back</button>
+            <button class="estimate-next" data-next type="button">Next</button>
+          </div>
+        </section>
+
+        <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
+          <div class="estimate-step-heading"><span>Where should we reach you?</span></div>
+          <div class="hero-form-row">
+            <div class="field">
+              <label for="heroFullName">Full Name</label>
+              <input autocomplete="name" id="heroFullName" name="fullName" placeholder="Your name" required type="text"/>
+            </div>
+            <div class="field">
+              <label for="heroPhone">Phone Number</label>
+              <input autocomplete="tel" id="heroPhone" name="phone" placeholder="Your phone number" required type="tel"/>
+            </div>
+          </div>
+          <div class="field">
+            <label for="heroEmail">Email</label>
+            <input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required type="email"/>
+          </div>
+          <div class="estimate-nav">
+            <button class="estimate-back" data-back type="button">Back</button>
+            <button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button>
+          </div>
+          <p class="hero-form-assurance">Free walkthrough. Clear written estimate. No obligation.</p>
+          <div aria-live="polite" class="form-status" data-form-status role="status"></div>
+        </section>
+      </form>
+
+      <div aria-hidden="true" class="landing-form-success" data-success-overlay>
+        <div class="landing-form-success-inner">
+          <div class="landing-form-success-icon" aria-hidden="true">✓</div>
+          <h3>Request Sent</h3>
+          <p>ZH Homes received your bathroom estimate request and will follow up with you.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
 </section>
 
 <section aria-label="ZH Homes bathroom remodeling trust points" class="quick-stats">
@@ -488,29 +953,29 @@ body.deck-page {
         <div class="services-eyebrow">Bathroom Remodeling Services</div>
         <h2>Hire a Contractor to Fix What Is Not Working</h2>
       </div>
-      <a class="services-btn" href="quote.html"><span>Get My Estimate</span></a>
+      <a class="services-btn" href="#hero-estimate"><span>Get My Estimate</span></a>
     </div>
 
     <div class="services-grid">
       <article class="service-card">
         <div class="service-image"><div class="service-number">01</div><img alt="Finished full bathroom remodel" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Full Bathroom Remodels</h3><p>Turn a dated, cramped, hard-to-clean bathroom into a brighter space with a layout, storage, and finishes that work better every day.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Full Bathroom Remodels</h3><p>Turn a dated, cramped, hard-to-clean bathroom into a brighter space with a layout, storage, and finishes that work better every day.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">02</div><img alt="Tub to shower bathroom conversion" class="service-img-2" decoding="async" loading="lazy" src="tub-to-shower-progress.webp"/></div>
-        <div class="service-content"><div><h3>Tub-to-Shower Conversions</h3><p>Replace a high, awkward tub with a shower that is easier to enter, easier to clean, and better suited to how you use the bathroom.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Tub-to-Shower Conversions</h3><p>Replace a high, awkward tub with a shower that is easier to enter, easier to clean, and better suited to how you use the bathroom.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">03</div><img alt="Bathroom shower and waterproofing work" class="service-img-3" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Shower &amp; Waterproofing</h3><p>Fix leaks, failed surfaces, cracked grout, and shower problems with attention to the waterproofing and details underneath the finished tile.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Shower &amp; Waterproofing</h3><p>Fix leaks, failed surfaces, cracked grout, and shower problems with attention to the waterproofing and details underneath the finished tile.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">04</div><img alt="Bathroom vanity and storage" class="service-img-4" decoding="async" loading="lazy" src="bathroom-vanity.webp"/></div>
-        <div class="service-content"><div><h3>Vanity &amp; Storage Updates</h3><p>Add usable counter space and storage so the bathroom feels less cluttered and the things you use every day actually have a place.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Vanity &amp; Storage Updates</h3><p>Add usable counter space and storage so the bathroom feels less cluttered and the things you use every day actually have a place.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">05</div><img alt="Updated bathroom flooring, lighting and ventilation" class="service-img-5" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Flooring, Lighting &amp; Ventilation</h3><p>Make a dark, slippery, moisture-prone bathroom feel brighter, safer, and easier to live with through the right finish upgrades.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Flooring, Lighting &amp; Ventilation</h3><p>Make a dark, slippery, moisture-prone bathroom feel brighter, safer, and easier to live with through the right finish upgrades.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
       </article>
     </div>
   </div>
@@ -590,7 +1055,7 @@ body.deck-page {
       <div class="contact-eyebrow">Free Bathroom Remodel Estimate</div>
       <h2>Know What You’re Getting Into Before You Say Yes</h2>
       <p>Tell us where the bathroom is and what you want changed. We’ll follow up to schedule the walkthrough, talk through the scope, and put the estimate in writing so you can make the next decision with clarity.</p>
-      <a class="btn btn-primary quote-page-link" href="quote.html">Get My Free Bathroom Estimate</a>
+      <a class="btn btn-primary quote-page-link" href="#hero-estimate">Get My Free Bathroom Estimate</a>
     </div>
   </div>
 </section>
@@ -630,7 +1095,7 @@ body.deck-page {
 </footer>
 
 <div aria-label="Quick bathroom estimate action" class="mobile-cta-bar">
-  <a class="cta-quote" href="quote.html"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>Get Free Estimate</a>
+  <a class="cta-quote" href="#hero-estimate"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>Get Free Estimate</a>
 </div>
 <script src="google-analytics.js"></script>
 <script src="bathroom-remodel.js"></script>
