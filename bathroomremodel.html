@@ -760,6 +760,43 @@ body.deck-page {
   }
 }
 
+
+/* V4: form-only estimate section before Real Bathroom Work */
+.form-only-estimate-section {
+  padding: clamp(44px, 6vw, 76px) 0 !important;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(243,112,33,.07), transparent 28%),
+    #f7f3f0 !important;
+}
+
+.form-only-estimate-inner {
+  width: min(760px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.form-only-estimate-section .landing-hero-form-card {
+  width: 100% !important;
+  max-width: 650px !important;
+  margin: 0 auto !important;
+  justify-self: auto !important;
+}
+
+@media (max-width: 767px) {
+  .form-only-estimate-section {
+    padding: 28px 0 36px !important;
+  }
+
+  .form-only-estimate-inner {
+    width: calc(100% - 24px) !important;
+  }
+
+  .form-only-estimate-section .landing-hero-form-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
 </style>
 </head>
 
@@ -882,19 +919,8 @@ body.deck-page {
 </section>
 
 
-<section class="inline-estimate-section" id="estimate" aria-labelledby="inline-estimate-title">
-  <div class="inline-estimate-inner">
-    <div class="inline-estimate-copy">
-      <div class="inline-estimate-eyebrow">Free Bathroom Remodel Estimate</div>
-      <h2 id="inline-estimate-title">Ready to Talk About Your Bathroom?</h2>
-      <p>Start with your ZIP code and the closest project type. ZH Homes will follow up to schedule the walkthrough and put the scope and pricing in writing.</p>
-      <div class="inline-estimate-proof" aria-label="Estimate benefits">
-        <span>About 60 seconds to request an estimate</span>
-        <span>Licensed, bonded and insured Oregon contractor</span>
-        <span>No obligation and no high-pressure sales pitch</span>
-      </div>
-    </div>
-
+<section class="inline-estimate-section form-only-estimate-section" id="estimate" aria-label="Free bathroom remodel estimate">
+  <div class="form-only-estimate-inner">
     <aside class="landing-hero-form-card deck-form-card hero-quick-card" id="inline-estimate-card" aria-label="Free bathroom remodel estimate">
       <div class="hero-quick-heading">
         <span>Free Bathroom Estimate</span>
