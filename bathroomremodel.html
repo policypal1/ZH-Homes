@@ -332,26 +332,6 @@ body.deck-page {
   }
 }
 
-
-/* =========================================================
-   V2: DIRECT LEAD CAPTURE
-   Keep the existing landing-page proof, but let paid visitors
-   begin the estimate without loading a second page.
-   ========================================================= */
-.bathroom-page .bathroom-hero .hero-inner {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1.08fr) minmax(390px, 500px) !important;
-  gap: clamp(34px, 4vw, 68px) !important;
-  min-height: 780px !important;
-  align-items: center !important;
-}
-
-.bathroom-page .bathroom-hero .hero-copy {
-  max-width: 680px !important;
-  padding-top: 52px !important;
-  padding-bottom: 52px !important;
-}
-
 .landing-hero-form-card {
   position: relative;
   z-index: 12;
@@ -643,77 +623,139 @@ body.deck-page {
   font-weight: 650;
 }
 
-@media (max-width: 1100px) and (min-width: 951px) {
-  .bathroom-page .bathroom-hero .hero-inner {
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 430px) !important;
-    gap: 28px !important;
-  }
+/* V3: embedded estimate section before Real Bathroom Work */
+.inline-estimate-section {
+  padding: clamp(54px, 7vw, 92px) 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(243,112,33,.08), transparent 28%),
+    #f7f3f0;
+  border-top: 1px solid rgba(45,29,21,.06);
+  border-bottom: 1px solid rgba(45,29,21,.08);
+}
 
-  .landing-hero-form-card {
-    padding: 22px;
-  }
+.inline-estimate-inner {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,.9fr) minmax(430px,520px);
+  gap: clamp(42px,6vw,82px);
+  align-items: center;
+}
+
+.inline-estimate-copy {
+  max-width: 560px;
+}
+
+.inline-estimate-eyebrow {
+  margin-bottom: 12px;
+  color: #a64713;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.inline-estimate-copy h2 {
+  margin: 0;
+  color: #241b17;
+  font-size: clamp(36px,4vw,56px);
+  line-height: 1.01;
+  letter-spacing: -.045em;
+  font-weight: 950;
+}
+
+.inline-estimate-copy > p {
+  max-width: 520px;
+  margin: 18px 0 0;
+  color: #6f625b;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 600;
+}
+
+.inline-estimate-proof {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.inline-estimate-proof span {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #4f4038;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.inline-estimate-proof span::before {
+  content: "✓";
+  flex: 0 0 auto;
+  color: #f37021;
+  font-weight: 950;
+}
+
+.inline-estimate-section .landing-hero-form-card {
+  max-width: 520px;
+  justify-self: end;
+  box-shadow: 0 24px 70px rgba(45,29,21,.12);
 }
 
 @media (max-width: 950px) {
-  .bathroom-page .bathroom-hero {
-    min-height: auto !important;
-    padding-bottom: 44px !important;
+  .inline-estimate-section {
+    padding: 46px 0 58px;
   }
 
-  .bathroom-page .bathroom-hero .hero-inner {
-    display: block !important;
-    min-height: auto !important;
+  .inline-estimate-inner {
+    width: min(680px, calc(100% - 32px));
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
 
-  .bathroom-page .bathroom-hero .hero-copy {
-    max-width: 720px !important;
-    padding-bottom: 26px !important;
+  .inline-estimate-copy {
+    max-width: none;
   }
 
-  .landing-hero-form-card {
+  .inline-estimate-section .landing-hero-form-card {
+    width: 100%;
     max-width: 620px;
     margin: 0 auto;
     justify-self: auto;
   }
-
-  /* Get the form in front of mobile paid traffic instead of making them
-     scroll through extra proof before they can start. */
-  .bathroom-page .hero-mobile-collage {
-    display: none !important;
-  }
 }
 
 @media (max-width: 767px) {
-  .bathroom-page .bathroom-hero {
-    padding-bottom: 28px !important;
+  .inline-estimate-section {
+    padding: 38px 0 46px;
   }
 
-  .bathroom-page .bathroom-hero .hero-copy {
-    padding-bottom: 18px !important;
+  .inline-estimate-inner {
+    width: calc(100% - 28px);
+    gap: 22px;
   }
 
-  .bathroom-page .hero-copy > p.subheadline:not(.hero-mobile-subheadline),
-  .bathroom-page .bathroom-offer-line,
-  .bathroom-page .hero-inline-review {
-    display: none !important;
+  .inline-estimate-copy h2 {
+    font-size: 34px;
   }
 
-  .landing-hero-form-card {
-    width: 100%;
+  .inline-estimate-copy > p {
+    font-size: 14px;
+    line-height: 1.58;
+  }
+
+  .inline-estimate-section .landing-hero-form-card {
     padding: 21px 16px 20px;
     border-radius: 18px;
   }
 
-  .landing-hero-form-card .hero-quick-heading h2 {
-    font-size: 28px;
-  }
-
-  .landing-hero-form-card .hero-form-row {
+  .inline-estimate-section .landing-hero-form-card .hero-form-row {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  .landing-hero-form-card .bathroom-project-grid {
+  .inline-estimate-section .landing-hero-form-card .bathroom-project-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -741,7 +783,7 @@ body.deck-page {
           <span class="license-desktop-word">Oregon </span>CCB #260679
         </strong>
       </div>
-      <a class="header-cta" href="#hero-estimate" aria-label="Get a bathroom remodel estimate">
+      <a class="header-cta" href="quote.html" aria-label="Get a bathroom remodel estimate">
         <span class="header-cta-desktop">Get My Estimate</span>
         <span class="header-cta-mobile">Get Quote</span>
       </a>
@@ -794,7 +836,7 @@ body.deck-page {
       </div>
 
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#hero-estimate">Start My Free Estimate</a>
+        <a class="btn btn-primary" href="quote.html">Start My Free Estimate</a>
         <a class="btn btn-secondary tracked-call" href="tel:5039105466">Call / Text (503) 910-5466</a>
       </div>
       <p class="direct-cta-note">No obligation. No “sign today” pressure. Start with your ZIP code.</p>
@@ -827,15 +869,40 @@ body.deck-page {
       </div>
     </div>
 
+    </div>
+</section>
 
-    <aside class="landing-hero-form-card deck-form-card hero-quick-card" id="hero-estimate" aria-label="Free bathroom remodel estimate">
+<section aria-label="ZH Homes bathroom remodeling trust points" class="quick-stats">
+  <div class="quick-stats-inner">
+    <div class="stat-box"><div><strong>Licensed</strong><span>Bonded &amp; Insured • Oregon CCB #260679</span></div></div>
+    <div class="stat-box"><div><strong>Clear Scope</strong><span>Know What Is Included Before Work Starts</span></div></div>
+    <div class="stat-box"><div><strong>Written Estimate</strong><span>Project-Specific &amp; Straightforward</span></div></div>
+    <div class="stat-box"><div><strong>Responsive</strong><span>Calls Returned • Clear Communication</span></div></div>
+  </div>
+</section>
+
+
+<section class="inline-estimate-section" id="estimate" aria-labelledby="inline-estimate-title">
+  <div class="inline-estimate-inner">
+    <div class="inline-estimate-copy">
+      <div class="inline-estimate-eyebrow">Free Bathroom Remodel Estimate</div>
+      <h2 id="inline-estimate-title">Ready to Talk About Your Bathroom?</h2>
+      <p>Start with your ZIP code and the closest project type. ZH Homes will follow up to schedule the walkthrough and put the scope and pricing in writing.</p>
+      <div class="inline-estimate-proof" aria-label="Estimate benefits">
+        <span>About 60 seconds to request an estimate</span>
+        <span>Licensed, bonded and insured Oregon contractor</span>
+        <span>No obligation and no high-pressure sales pitch</span>
+      </div>
+    </div>
+
+    <aside class="landing-hero-form-card deck-form-card hero-quick-card" id="inline-estimate-card" aria-label="Free bathroom remodel estimate">
       <div class="hero-quick-heading">
         <span>Free Bathroom Estimate</span>
         <h2>Start with your ZIP code.</h2>
         <p class="form-intro-note">About 60 seconds. No obligation and no high-pressure sales.</p>
       </div>
 
-      <form class="deck-multistep-form" data-form-source="Bathroom Hero Estimate" id="bathroomHeroEstimateForm" novalidate>
+      <form class="deck-multistep-form" data-form-source="Bathroom Inline Estimate" id="bathroomInlineEstimateForm" novalidate>
         <div aria-hidden="true" class="honeypot">
           <label for="heroCompanyWebsite">Company Website</label>
           <input autocomplete="off" id="heroCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
@@ -909,15 +976,6 @@ body.deck-page {
   </div>
 </section>
 
-<section aria-label="ZH Homes bathroom remodeling trust points" class="quick-stats">
-  <div class="quick-stats-inner">
-    <div class="stat-box"><div><strong>Licensed</strong><span>Bonded &amp; Insured • Oregon CCB #260679</span></div></div>
-    <div class="stat-box"><div><strong>Clear Scope</strong><span>Know What Is Included Before Work Starts</span></div></div>
-    <div class="stat-box"><div><strong>Written Estimate</strong><span>Project-Specific &amp; Straightforward</span></div></div>
-    <div class="stat-box"><div><strong>Responsive</strong><span>Calls Returned • Clear Communication</span></div></div>
-  </div>
-</section>
-
 <section aria-labelledby="bathroom-gallery-title" class="deck-project-gallery-section" id="gallery">
   <div class="deck-project-gallery-inner">
     <div class="deck-project-gallery-heading">
@@ -953,29 +1011,29 @@ body.deck-page {
         <div class="services-eyebrow">Bathroom Remodeling Services</div>
         <h2>Hire a Contractor to Fix What Is Not Working</h2>
       </div>
-      <a class="services-btn" href="#hero-estimate"><span>Get My Estimate</span></a>
+      <a class="services-btn" href="quote.html"><span>Get My Estimate</span></a>
     </div>
 
     <div class="services-grid">
       <article class="service-card">
         <div class="service-image"><div class="service-number">01</div><img alt="Finished full bathroom remodel" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Full Bathroom Remodels</h3><p>Turn a dated, cramped, hard-to-clean bathroom into a brighter space with a layout, storage, and finishes that work better every day.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Full Bathroom Remodels</h3><p>Turn a dated, cramped, hard-to-clean bathroom into a brighter space with a layout, storage, and finishes that work better every day.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">02</div><img alt="Tub to shower bathroom conversion" class="service-img-2" decoding="async" loading="lazy" src="tub-to-shower-progress.webp"/></div>
-        <div class="service-content"><div><h3>Tub-to-Shower Conversions</h3><p>Replace a high, awkward tub with a shower that is easier to enter, easier to clean, and better suited to how you use the bathroom.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Tub-to-Shower Conversions</h3><p>Replace a high, awkward tub with a shower that is easier to enter, easier to clean, and better suited to how you use the bathroom.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">03</div><img alt="Bathroom shower and waterproofing work" class="service-img-3" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Shower &amp; Waterproofing</h3><p>Fix leaks, failed surfaces, cracked grout, and shower problems with attention to the waterproofing and details underneath the finished tile.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Shower &amp; Waterproofing</h3><p>Fix leaks, failed surfaces, cracked grout, and shower problems with attention to the waterproofing and details underneath the finished tile.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">04</div><img alt="Bathroom vanity and storage" class="service-img-4" decoding="async" loading="lazy" src="bathroom-vanity.webp"/></div>
-        <div class="service-content"><div><h3>Vanity &amp; Storage Updates</h3><p>Add usable counter space and storage so the bathroom feels less cluttered and the things you use every day actually have a place.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Vanity &amp; Storage Updates</h3><p>Add usable counter space and storage so the bathroom feels less cluttered and the things you use every day actually have a place.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
       <article class="service-card">
         <div class="service-image"><div class="service-number">05</div><img alt="Updated bathroom flooring, lighting and ventilation" class="service-img-5" decoding="async" loading="lazy" src="bathroom-after.webp"/></div>
-        <div class="service-content"><div><h3>Flooring, Lighting &amp; Ventilation</h3><p>Make a dark, slippery, moisture-prone bathroom feel brighter, safer, and easier to live with through the right finish upgrades.</p></div><a class="service-link" href="#hero-estimate">Get an Estimate</a></div>
+        <div class="service-content"><div><h3>Flooring, Lighting &amp; Ventilation</h3><p>Make a dark, slippery, moisture-prone bathroom feel brighter, safer, and easier to live with through the right finish upgrades.</p></div><a class="service-link" href="quote.html">Get an Estimate</a></div>
       </article>
     </div>
   </div>
@@ -1055,7 +1113,7 @@ body.deck-page {
       <div class="contact-eyebrow">Free Bathroom Remodel Estimate</div>
       <h2>Know What You’re Getting Into Before You Say Yes</h2>
       <p>Tell us where the bathroom is and what you want changed. We’ll follow up to schedule the walkthrough, talk through the scope, and put the estimate in writing so you can make the next decision with clarity.</p>
-      <a class="btn btn-primary quote-page-link" href="#hero-estimate">Get My Free Bathroom Estimate</a>
+      <a class="btn btn-primary quote-page-link" href="quote.html">Get My Free Bathroom Estimate</a>
     </div>
   </div>
 </section>
@@ -1095,7 +1153,7 @@ body.deck-page {
 </footer>
 
 <div aria-label="Quick bathroom estimate action" class="mobile-cta-bar">
-  <a class="cta-quote" href="#hero-estimate"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>Get Free Estimate</a>
+  <a class="cta-quote" href="quote.html"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.75H15.25L18 6.5V20.25H6V3.75Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M15 4V7H18" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M8.75 11H15.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M8.75 15H13.25" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg>Get Free Estimate</a>
 </div>
 <script src="google-analytics.js"></script>
 <script src="bathroom-remodel.js"></script>
