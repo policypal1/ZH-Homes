@@ -797,6 +797,16 @@ body.deck-page {
   }
 }
 
+
+/* V5: inline form must remain visible on mobile.
+   deck.css intentionally hides .hero-quick-card below 950px, but this card
+   is no longer inside the hero. */
+.form-only-estimate-section .landing-hero-form-card {
+  display: block !important;
+  max-height: none !important;
+  overflow: hidden !important;
+}
+
 </style>
 </head>
 
@@ -921,7 +931,7 @@ body.deck-page {
 
 <section class="inline-estimate-section form-only-estimate-section" id="estimate" aria-label="Free bathroom remodel estimate">
   <div class="form-only-estimate-inner">
-    <aside class="landing-hero-form-card deck-form-card hero-quick-card" id="inline-estimate-card" aria-label="Free bathroom remodel estimate">
+    <aside class="landing-hero-form-card deck-form-card" id="inline-estimate-card" aria-label="Free bathroom remodel estimate">
       <div class="hero-quick-heading">
         <span>Free Bathroom Estimate</span>
         <h2>Start with your ZIP code.</h2>
