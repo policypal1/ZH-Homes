@@ -333,7 +333,6 @@ body.quote-page {
   }
 }
 
-
 /* Quote delivery state visibility */
 .quote-page .form-status.error {
   padding: 10px 12px !important;
@@ -352,16 +351,13 @@ body.quote-page {
   cursor: wait !important;
 }
 
-
 /* Self-contained quote form behavior and full-card states */
 .quote-page .estimate-step[hidden] {
   display: none !important;
 }
-
 .quote-page .quote-form-wrap {
   overflow: hidden;
 }
-
 .quote-page .quote-state-overlay {
   position: absolute;
   inset: 0;
@@ -376,17 +372,14 @@ body.quote-page {
   background: rgba(255,255,255,.99);
   border-radius: inherit;
 }
-
 .quote-page .quote-state-overlay.active {
   display: flex;
 }
-
 .quote-page .quote-state-inner {
   width: 100%;
   max-width: 440px;
   margin: auto;
 }
-
 .quote-page .quote-state-icon {
   width: 58px;
   height: 58px;
@@ -398,7 +391,6 @@ body.quote-page {
   line-height: 1;
   font-weight: 950;
 }
-
 .quote-page .quote-state-overlay h3 {
   margin: 0;
   color: #241b17;
@@ -407,7 +399,6 @@ body.quote-page {
   letter-spacing: -.04em;
   font-weight: 950;
 }
-
 .quote-page .quote-state-overlay p {
   margin: 13px auto 0;
   max-width: 390px;
@@ -416,23 +407,19 @@ body.quote-page {
   line-height: 1.55;
   font-weight: 650;
 }
-
 .quote-page .quote-success-overlay .quote-state-icon {
   background: #e8f5ec;
   color: #2f7548;
 }
-
 .quote-page .quote-error-overlay {
   background:
     radial-gradient(circle at 50% 0%, rgba(243,112,33,.09), transparent 36%),
     rgba(255,255,255,.995);
 }
-
 .quote-page .quote-error-overlay .quote-state-icon {
   background: #fff0e8;
   color: #b14619;
 }
-
 .quote-page .quote-error-label {
   display: inline-block;
   margin-bottom: 10px;
@@ -443,7 +430,6 @@ body.quote-page {
   letter-spacing: .11em;
   text-transform: uppercase;
 }
-
 .quote-page .quote-state-primary,
 .quote-page .quote-state-secondary {
   width: 100%;
@@ -459,13 +445,11 @@ body.quote-page {
   font-weight: 950;
   cursor: pointer;
 }
-
 .quote-page .quote-state-primary {
   border: 0;
   background: #f37021;
   color: #fff;
 }
-
 .quote-page .quote-state-secondary {
   min-height: 48px;
   margin-top: 9px;
@@ -473,12 +457,10 @@ body.quote-page {
   background: #fff;
   color: #6b5d55;
 }
-
 .quote-page .estimate-submit.is-sending {
   opacity: .70;
   pointer-events: none;
 }
-
 @media (max-width:560px) {
   .quote-page .quote-state-overlay {
     padding: 28px 20px;
@@ -488,13 +470,10 @@ body.quote-page {
   }
 }
 
-
 /* Quote page: intentionally de-emphasize navigation away from the form. */
 .quote-page .header-actions {
   justify-content: flex-end !important;
 }
-
-
 .quote-page .quote-footer-links {
   display:flex;
   align-items:center;
@@ -508,8 +487,6 @@ body.quote-page {
 .quote-page .quote-footer-back:hover {
   opacity:.9;
 }
-
-
 .quote-page .quote-state-overlay.active {
   display:flex !important;
   visibility:visible !important;
@@ -517,31 +494,26 @@ body.quote-page {
   pointer-events:auto !important;
 }
 
-
 /* Final page-height fix: keep footer at the bottom of the viewport. */
 html,
 body.quote-page {
   min-height: 100%;
 }
-
 body.quote-page {
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
-
 .quote-page > main {
   flex: 1 0 auto;
   width: 100%;
 }
-
 .quote-page .simple-quote-footer {
   margin-top: auto;
   flex-shrink: 0;
   width: 100%;
 }
-
 </style>
 </head>
 <body class="deck-page bathroom-page quote-page">
@@ -566,12 +538,10 @@ body.quote-page {
 
 <main id="quote-main">
   <section class="quote-shell">
-
     <div class="quote-form-wrap deck-form-card">
       <div class="quote-form-heading">
         <span>Free Bathroom Estimate</span>
         <h2>Tell us about your bathroom.</h2>
-        
       </div>
 
       <form class="deck-multistep-form" data-form-source="Dedicated Bathroom Quote Page" id="quotePageBathroomForm" novalidate>
@@ -644,6 +614,7 @@ body.quote-page {
           <div aria-live="polite" class="form-status" data-form-status role="status"></div>
         </section>
       </form>
+
       <div aria-hidden="true" class="quote-state-overlay quote-success-overlay" id="quoteSuccessOverlay">
         <div class="quote-state-inner">
           <div class="quote-state-icon" aria-hidden="true">✓</div>
@@ -680,16 +651,20 @@ body.quote-page {
 (function () {
   "use strict";
 
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzikh0E8I1FoKLisU_1B6QLk_jp6TGP6yMSVKWV-pCQJ1HxNHrAqsg88gO2uS60tIP4/exec';
+  var LEAD_API_URL = "/api/bathroom-lead";
+  var GOOGLE_ADS_CONVERSION = "AW-18215005784/R-utCL2htegcENjcy-1D";
+
   var form = document.getElementById("quotePageBathroomForm");
   if (!form) return;
 
   var steps = Array.prototype.slice.call(form.querySelectorAll(".estimate-step"));
   var progressBar = form.querySelector("[data-progress-bar]");
   var submitButton = form.querySelector(".estimate-submit");
+  var statusEl = form.querySelector("[data-form-status]");
   var successOverlay = document.getElementById("quoteSuccessOverlay");
   var errorOverlay = document.getElementById("quoteErrorOverlay");
   var tryAgainButton = document.getElementById("quoteTryAgain");
+
   var currentStep = 0;
   var submitting = false;
   var lastPayload = null;
@@ -698,6 +673,82 @@ body.quote-page {
     "utm_source", "utm_medium", "utm_campaign", "utm_term",
     "utm_content", "gclid", "gbraid", "wbraid"
   ];
+
+  function setOverlay(element, active) {
+    if (!element) return;
+    element.classList.toggle("active", active);
+    element.setAttribute("aria-hidden", active ? "false" : "true");
+  }
+
+  function setStatus(message, type) {
+    if (!statusEl) return;
+    statusEl.textContent = message || "";
+    statusEl.className = ("form-status " + (type || "")).trim();
+  }
+
+  function updateStep(index) {
+    currentStep = Math.max(0, Math.min(index, steps.length - 1));
+
+    steps.forEach(function (step, stepIndex) {
+      var active = stepIndex === currentStep;
+      step.hidden = !active;
+      step.classList.toggle("active", active);
+    });
+
+    if (progressBar) {
+      progressBar.style.width =
+        (((currentStep + 1) / steps.length) * 100) + "%";
+    }
+  }
+
+  function validateStep(step) {
+    if (!step) return true;
+
+    var controls = Array.prototype.slice.call(
+      step.querySelectorAll("input, select, textarea")
+    ).filter(function (control) {
+      return !control.disabled && control.type !== "hidden";
+    });
+
+    var handledRadioNames = {};
+
+    for (var i = 0; i < controls.length; i += 1) {
+      var control = controls[i];
+
+      if (control.type === "radio") {
+        if (handledRadioNames[control.name]) continue;
+        handledRadioNames[control.name] = true;
+
+        var radios = Array.prototype.slice.call(
+          step.querySelectorAll(
+            'input[type="radio"][name="' + control.name + '"]'
+          )
+        );
+
+        var required = radios.some(function (radio) {
+          return radio.required;
+        });
+        var selected = radios.some(function (radio) {
+          return radio.checked;
+        });
+
+        if (required && !selected) {
+          if (radios[0]) radios[0].focus();
+          return false;
+        }
+
+        continue;
+      }
+
+      if (!control.checkValidity()) {
+        control.reportValidity();
+        control.focus();
+        return false;
+      }
+    }
+
+    return true;
+  }
 
   function getAttribution() {
     var params = new URLSearchParams(window.location.search);
@@ -711,7 +762,10 @@ body.quote-page {
 
     if (hasCurrent) {
       try {
-        sessionStorage.setItem("zhHomesBathroomAttribution", JSON.stringify(result));
+        sessionStorage.setItem(
+          "zhHomesBathroomAttribution",
+          JSON.stringify(result)
+        );
       } catch (e) {}
       return result;
     }
@@ -720,6 +774,7 @@ body.quote-page {
       var saved = JSON.parse(
         sessionStorage.getItem("zhHomesBathroomAttribution") || "{}"
       );
+
       ATTRIBUTION_KEYS.forEach(function (key) {
         result[key] = String(saved[key] || "");
       });
@@ -748,199 +803,127 @@ body.quote-page {
     return "Website";
   }
 
-  function setOverlay(element, active) {
-    if (!element) return;
-    element.classList.toggle("active", active);
-    element.setAttribute("aria-hidden", active ? "false" : "true");
-  }
-
-  function showSuccess() {
-    setOverlay(errorOverlay, false);
-    setOverlay(successOverlay, true);
-  }
-
-  function showError() {
-    setOverlay(successOverlay, false);
-    setOverlay(errorOverlay, true);
-  }
-
-  function updateStep(index) {
-    currentStep = Math.max(0, Math.min(index, steps.length - 1));
-
-    steps.forEach(function (step, stepIndex) {
-      var active = stepIndex === currentStep;
-      step.hidden = !active;
-      step.classList.toggle("active", active);
-    });
-
-    if (progressBar) {
-      progressBar.style.width =
-        (((currentStep + 1) / steps.length) * 100) + "%";
-    }
-  }
-
-  function validateStep(step) {
-    if (!step) return true;
-
-    var controls = Array.prototype.slice.call(
-      step.querySelectorAll("input, select, textarea")
-    ).filter(function (control) {
-      return !control.disabled && control.type !== "hidden";
-    });
-
-    for (var i = 0; i < controls.length; i += 1) {
-      var control = controls[i];
-
-      if (control.type === "radio") {
-        var radios = Array.prototype.slice.call(
-          step.querySelectorAll(
-            'input[type="radio"][name="' + control.name + '"]'
-          )
-        );
-        var required = radios.some(function (radio) { return radio.required; });
-        var selected = radios.some(function (radio) { return radio.checked; });
-
-        if (required && !selected) {
-          radios[0].focus();
-          return false;
-        }
-
-        i += Math.max(0, radios.length - 1);
-        continue;
-      }
-
-      if (!control.checkValidity()) {
-        control.reportValidity();
-        control.focus();
-        return false;
-      }
-    }
-
-    return true;
-  }
-
   function buildPayload() {
     var data = new FormData(form);
     var attribution = getAttribution();
 
+    var zipCode = String(data.get("zipCode") || "").trim();
+    var projectType = String(data.get("projectType") || "").trim();
+
     return {
+      source: "ZH Homes Bathroom Quote Page",
+      pageUrl: window.location.href,
       submittedAt: new Date().toISOString(),
+      contactReason: "bathroom_estimate",
+      serviceType: projectType || "Bathroom Remodel",
+      leadSource: getLeadSource(attribution),
       fullName: String(data.get("fullName") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
       email: String(data.get("email") || "").trim(),
-      zipCode: String(data.get("zipCode") || "").trim(),
-      projectType: String(data.get("projectType") || "").trim(),
-      serviceType: String(data.get("projectType") || "Bathroom Remodel").trim(),
-      leadSource: getLeadSource(attribution),
+      zipCode: zipCode,
+      projectType: projectType,
       companyWebsite: String(data.get("companyWebsite") || "").trim(),
-
-      // Scalars below allow Apps Script e.parameter parsing with a normal
-      // cross-origin HTML form POST. No CORS response is required.
-      utm_source: attribution.utm_source || "",
-      utm_medium: attribution.utm_medium || "",
-      utm_campaign: attribution.utm_campaign || "",
-      utm_term: attribution.utm_term || "",
-      utm_content: attribution.utm_content || "",
-      gclid: attribution.gclid || "",
-      gbraid: attribution.gbraid || "",
-      wbraid: attribution.wbraid || ""
+      projectPhotos: [],
+      description: [
+        "Bathroom project: " + (projectType || "Not provided"),
+        "Project ZIP: " + (zipCode || "Not provided"),
+        "Offer: Free bathroom walkthrough + written estimate"
+      ].join("\n"),
+      attribution: attribution
     };
   }
 
-  function dispatchToAppsScript(payload) {
-    var frameName = "zhLeadSubmitFrame";
-
-    var iframe = document.getElementById(frameName);
-    if (!iframe) {
-      iframe = document.createElement("iframe");
-      iframe.id = frameName;
-      iframe.name = frameName;
-      iframe.title = "Lead submission";
-      iframe.style.display = "none";
-      document.body.appendChild(iframe);
-    }
-
-    var deliveryForm = document.createElement("form");
-    deliveryForm.method = "POST";
-    deliveryForm.action = APPS_SCRIPT_URL;
-    deliveryForm.target = frameName;
-    deliveryForm.style.display = "none";
-
-    Object.keys(payload).forEach(function (key) {
-      var input = document.createElement("input");
-      input.type = "hidden";
-      input.name = key;
-      input.value = payload[key] == null ? "" : String(payload[key]);
-      deliveryForm.appendChild(input);
-    });
-
-    document.body.appendChild(deliveryForm);
-
-    try {
-      deliveryForm.submit();
-      window.setTimeout(function () {
-        deliveryForm.remove();
-      }, 1500);
-      return true;
-    } catch (error) {
-      console.error("Apps Script form dispatch failed:", error);
-      deliveryForm.remove();
-      return false;
-    }
-  }
-
-  function recordAnalytics(payload) {
+  function recordConfirmedLead(payload) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: "bathroom_lead_submit",
       form_name: "Dedicated Bathroom Quote Page",
-      project_type: payload.projectType
+      project_type: payload.projectType,
+      lead_source: payload.leadSource
     });
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_CONVERSION
+      });
+    }
   }
 
-  function submitLead(payload) {
+  async function submitLead(payload) {
     if (submitting) return;
 
     submitting = true;
     lastPayload = payload;
 
+    var originalText =
+      (submitButton && submitButton.dataset.originalText) ||
+      (submitButton && submitButton.textContent) ||
+      "Get My Free Estimate";
+
     if (submitButton) {
+      submitButton.dataset.originalText = originalText;
       submitButton.disabled = true;
-      submitButton.dataset.originalText =
-        submitButton.dataset.originalText || submitButton.textContent;
+      submitButton.classList.add("is-sending");
       submitButton.textContent = "Sending...";
     }
 
-    if (!navigator.onLine) {
-      showError();
-      submitting = false;
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent =
-          submitButton.dataset.originalText || "Get My Free Estimate";
+    setOverlay(successOverlay, false);
+    setOverlay(errorOverlay, false);
+    setStatus("Sending your request...", "");
+
+    try {
+      var response = await fetch(LEAD_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      var result = null;
+      try {
+        result = await response.json();
+      } catch (e) {}
+
+      /*
+        CRITICAL FIX:
+        We only show success after /api/bathroom-lead confirms that
+        Google Apps Script returned an explicit success response.
+      */
+      if (!response.ok || !result || result.ok !== true) {
+        throw new Error(
+          "Lead delivery was not confirmed. HTTP " + response.status
+        );
       }
-      return;
-    }
 
-    var dispatched = dispatchToAppsScript(payload);
+      recordConfirmedLead(payload);
 
-    // Cross-origin Apps Script responses are intentionally not inspected.
-    // If the browser accepted the form POST, show success immediately.
-    if (dispatched) {
-      showSuccess();
-      recordAnalytics(payload);
+      setStatus(
+        "Thanks. Your bathroom estimate request was submitted.",
+        "success"
+      );
+      setOverlay(successOverlay, true);
+
       form.reset();
       updateStep(0);
-    } else {
-      showError();
-    }
+      lastPayload = null;
+    } catch (error) {
+      console.error("Bathroom lead submission failed:", error);
 
-    submitting = false;
+      setStatus(
+        "We could not confirm delivery. Please call or text ZH Homes at (503) 910-5466.",
+        "error"
+      );
+      setOverlay(errorOverlay, true);
+    } finally {
+      submitting = false;
 
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.textContent =
-        submitButton.dataset.originalText || "Get My Free Estimate";
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.classList.remove("is-sending");
+        submitButton.textContent =
+          submitButton.dataset.originalText || originalText;
+      }
     }
   }
 
@@ -964,8 +947,10 @@ body.quote-page {
 
     var payload = buildPayload();
 
+    /* Honeypot: silently ignore bot submissions. */
     if (payload.companyWebsite) {
-      showSuccess();
+      form.reset();
+      updateStep(0);
       return;
     }
 
@@ -975,7 +960,9 @@ body.quote-page {
   if (tryAgainButton) {
     tryAgainButton.addEventListener("click", function () {
       setOverlay(errorOverlay, false);
-      if (lastPayload) submitLead(lastPayload);
+      if (lastPayload) {
+        submitLead(lastPayload);
+      }
     });
   }
 
