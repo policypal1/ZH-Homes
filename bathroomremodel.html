@@ -761,6 +761,7 @@ body.deck-page {
 }
 
 
+
 /* V4: form-only estimate section before Real Bathroom Work */
 .form-only-estimate-section {
   padding: clamp(44px, 6vw, 76px) 0 !important;
@@ -779,6 +780,23 @@ body.deck-page {
   max-width: 650px !important;
   margin: 0 auto !important;
   justify-self: auto !important;
+  display: block !important;
+  max-height: none !important;
+  overflow: hidden !important;
+}
+
+/* Simplified inline form: only show the prompt needed for the current step. */
+.form-only-estimate-section .deck-multistep-form {
+  padding-top: 0 !important;
+  border-top: 0 !important;
+}
+
+.form-only-estimate-section .inline-step-heading {
+  margin-bottom: 16px;
+}
+
+.form-only-estimate-section .estimate-step > .field:first-of-type {
+  margin-top: 0;
 }
 
 @media (max-width: 767px) {
@@ -794,17 +812,18 @@ body.deck-page {
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
+    padding: 21px 16px 20px !important;
+    border-radius: 18px !important;
   }
-}
 
+  .form-only-estimate-section .landing-hero-form-card .hero-form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
 
-/* V5: inline form must remain visible on mobile.
-   deck.css intentionally hides .hero-quick-card below 950px, but this card
-   is no longer inside the hero. */
-.form-only-estimate-section .landing-hero-form-card {
-  display: block !important;
-  max-height: none !important;
-  overflow: hidden !important;
+  .form-only-estimate-section .landing-hero-form-card .bathroom-project-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
 }
 
 </style>
@@ -929,14 +948,9 @@ body.deck-page {
 </section>
 
 
-<section class="inline-estimate-section form-only-estimate-section" id="estimate" aria-label="Free bathroom remodel estimate">
+<section class="inline-estimate-section form-only-estimate-section" id="estimate" aria-label="Free bathroom estimate">
   <div class="form-only-estimate-inner">
-    <aside class="landing-hero-form-card deck-form-card" id="inline-estimate-card" aria-label="Free bathroom remodel estimate">
-      <div class="hero-quick-heading">
-        <span>Free Bathroom Estimate</span>
-        <h2>Start with your ZIP code.</h2>
-        <p class="form-intro-note">About 60 seconds. No obligation and no high-pressure sales.</p>
-      </div>
+    <aside class="landing-hero-form-card deck-form-card" id="inline-estimate-card" aria-label="Free bathroom estimate">
 
       <form class="deck-multistep-form" data-form-source="Bathroom Inline Estimate" id="bathroomInlineEstimateForm" novalidate>
         <div aria-hidden="true" class="honeypot">
@@ -944,32 +958,70 @@ body.deck-page {
           <input autocomplete="off" id="heroCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
         </div>
 
-        <div class="estimate-progress" aria-label="Estimate progress">
-          <div class="estimate-progress-track"><span data-progress-bar></span></div>
-        </div>
-
         <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
-          <div class="estimate-step-heading"><span>What’s your ZIP code?</span></div>
-          <div class="field">
-            <label for="heroZip">ZIP Code</label>
-            <input autocomplete="postal-code" id="heroZip" inputmode="numeric" maxlength="10" name="zipCode" placeholder="97302" required type="text"/>
+          <div class="hero-quick-heading inline-step-heading">
+            <span>Free Bathroom Estimate</span>
+            <h2>Start with your ZIP code.</h2>
           </div>
+
+          <div class="field">
+            <input
+              aria-label="ZIP Code"
+              autocomplete="postal-code"
+              id="heroZip"
+              inputmode="numeric"
+              maxlength="10"
+              name="zipCode"
+              placeholder="ZIP code"
+              required
+              type="text"
+            />
+          </div>
+
           <div class="estimate-nav single-action">
             <button class="estimate-next" data-next type="button">Next</button>
           </div>
         </section>
 
         <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
-          <div class="estimate-step-heading"><span>What do you want to change?</span></div>
-          <fieldset class="choice-fieldset">
-            <legend>Bathroom project</legend>
+          <div class="estimate-step-heading">
+            <span>What do you want to change?</span>
+          </div>
+
+          <fieldset class="choice-fieldset" aria-label="Bathroom project">
             <div class="choice-grid bathroom-project-grid">
-              <label class="choice-card"><input name="projectType" required type="radio" value="Full Bathroom Remodel"/><span>Full Remodel</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/><span>Tub-to-Shower</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Shower / Waterproofing"/><span>Shower / Waterproofing</span></label>
-              <label class="choice-card"><input name="projectType" required type="radio" value="Not Sure Yet"/><span>Not Sure Yet</span></label>
+              <label class="choice-card">
+                <input name="projectType" required type="radio" value="Full Bathroom Remodel"/>
+                <span>Full Remodel</span>
+              </label>
+
+              <label class="choice-card">
+                <input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/>
+                <span>Tub-to-Shower</span>
+              </label>
+
+              <label class="choice-card">
+                <input name="projectType" required type="radio" value="Shower / Waterproofing"/>
+                <span>Shower</span>
+              </label>
+
+              <label class="choice-card">
+                <input name="projectType" required type="radio" value="Vanity / Storage Update"/>
+                <span>Vanity / Storage</span>
+              </label>
+
+              <label class="choice-card">
+                <input name="projectType" required type="radio" value="Flooring / Lighting / Ventilation"/>
+                <span>Floor / Light / Vent</span>
+              </label>
+
+              <label class="choice-card">
+                <input name="projectType" required type="radio" value="Other / Not Sure Yet"/>
+                <span>Other / Not Sure</span>
+              </label>
             </div>
           </fieldset>
+
           <div class="estimate-nav">
             <button class="estimate-back" data-back type="button">Back</button>
             <button class="estimate-next" data-next type="button">Next</button>
@@ -977,26 +1029,53 @@ body.deck-page {
         </section>
 
         <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
-          <div class="estimate-step-heading"><span>Where should we reach you?</span></div>
+          <div class="estimate-step-heading">
+            <span>How should we reach you?</span>
+          </div>
+
           <div class="hero-form-row">
             <div class="field">
-              <label for="heroFullName">Full Name</label>
-              <input autocomplete="name" id="heroFullName" name="fullName" placeholder="Your name" required type="text"/>
+              <input
+                aria-label="Full Name"
+                autocomplete="name"
+                id="heroFullName"
+                name="fullName"
+                placeholder="Full name"
+                required
+                type="text"
+              />
             </div>
+
             <div class="field">
-              <label for="heroPhone">Phone Number</label>
-              <input autocomplete="tel" id="heroPhone" name="phone" placeholder="Your phone number" required type="tel"/>
+              <input
+                aria-label="Phone Number"
+                autocomplete="tel"
+                id="heroPhone"
+                name="phone"
+                placeholder="Phone number"
+                required
+                type="tel"
+              />
             </div>
           </div>
+
           <div class="field">
-            <label for="heroEmail">Email</label>
-            <input autocomplete="email" id="heroEmail" name="email" placeholder="you@example.com" required type="email"/>
+            <input
+              aria-label="Email"
+              autocomplete="email"
+              id="heroEmail"
+              name="email"
+              placeholder="Email"
+              required
+              type="email"
+            />
           </div>
+
           <div class="estimate-nav">
             <button class="estimate-back" data-back type="button">Back</button>
-            <button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button>
+            <button class="submit-button estimate-submit" type="submit">Get My Estimate</button>
           </div>
-          <p class="hero-form-assurance">Free walkthrough. Clear written estimate. No obligation.</p>
+
           <div aria-live="polite" class="form-status" data-form-status role="status"></div>
         </section>
       </form>
@@ -1005,7 +1084,7 @@ body.deck-page {
         <div class="landing-form-success-inner">
           <div class="landing-form-success-icon" aria-hidden="true">✓</div>
           <h3>Request Sent</h3>
-          <p>ZH Homes received your bathroom estimate request and will follow up with you.</p>
+          <p>ZH Homes will follow up with you shortly.</p>
         </div>
       </div>
     </aside>
