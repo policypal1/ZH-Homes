@@ -43,7 +43,21 @@ body.quote-page {
   box-shadow:0 24px 70px rgba(45,29,21,.12);
 }
 .quote-page .quote-form-heading {
+  position:relative;
   margin-bottom:16px;
+}
+.quote-page .quote-form-heading .quote-step-counter {
+  position:absolute;
+  top:0;
+  right:0;
+  display:block;
+  margin:0;
+  color:#a64713;
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:0;
+  text-transform:none;
 }
 .quote-page .quote-form-heading span {
   display:block;
@@ -71,8 +85,8 @@ body.quote-page {
   font-weight:600;
 }
 .quote-page .deck-multistep-form {
-  border-top:2px solid #f37021 !important;
-  padding-top:22px;
+  border-top:0 !important;
+  padding-top:0;
 }
 .quote-page .estimate-progress {
   margin-bottom:24px;
@@ -541,6 +555,7 @@ body.quote-page {
     <div class="quote-form-wrap deck-form-card">
       <div class="quote-form-heading">
         <span>Free Bathroom Estimate</span>
+        <span class="quote-step-counter" id="quoteStepCounter" aria-live="polite">Step 1 of 3</span>
         <h2>Tell us about your bathroom.</h2>
       </div>
 
@@ -659,6 +674,7 @@ body.quote-page {
 
   var steps = Array.prototype.slice.call(form.querySelectorAll(".estimate-step"));
   var progressBar = form.querySelector("[data-progress-bar]");
+  var stepCounter = document.getElementById("quoteStepCounter");
   var submitButton = form.querySelector(".estimate-submit");
   var statusEl = form.querySelector("[data-form-status]");
   var successOverlay = document.getElementById("quoteSuccessOverlay");
@@ -694,6 +710,10 @@ body.quote-page {
       step.hidden = !active;
       step.classList.toggle("active", active);
     });
+
+    if (stepCounter) {
+      stepCounter.textContent = "Step " + (currentStep + 1) + " of " + steps.length;
+    }
 
     if (progressBar) {
       progressBar.style.width =
