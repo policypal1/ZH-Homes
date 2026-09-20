@@ -1,675 +1,106 @@
-/*
-  Bathroom campaign override.
-  The page intentionally inherits the full decks.html layout from style.css + deck.css.
-  This file changes only bathroom imagery, offer elements, and small campaign-specific details.
-*/
+/* ZH Homes minimal visual patch.
+   IMPORTANT: Add these rules to the BOTTOM of your EXISTING
+   bathroom-remodel.css. Do not replace the whole stylesheet.
+   No HTML, quote form, ad tracking, or image URLs are changed. */
 
-:root {
-  --bath-orange: #f37021;
-  --bath-ink: #241b17;
-}
-
-/* Prevent the base site hero from leaking the old deck/home background through. */
-.bathroom-page .bathroom-hero {
-  background: #050607 !important;
-}
-
-/* Bathroom hero image is supplied by the clipped SVG on desktop. */
-.bathroom-page .bathroom-hero .hero-kitchen image {
-  filter: saturate(0.96) contrast(1.02);
-}
-
-.bathroom-offer-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 12px;
-  width: fit-content;
-  max-width: 640px;
-  margin: -12px 0 24px;
-  padding: 10px 14px;
-  color: rgba(255,255,255,.82);
-  background: rgba(255,255,255,.055);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px;
-  font-size: 13px;
-  line-height: 1.35;
-}
-
-.bathroom-offer-line span {
-  font-weight: 800;
-}
-
-.bathroom-offer-line strong {
-  color: #fff;
-  font-weight: 950;
-}
-
-.bathroom-offer-line strong::before {
-  content: "•";
-  margin-right: 10px;
-  color: var(--bath-orange);
-}
-
-.weekly-offer-countdown {
-  margin: 0 0 18px;
-  padding: 13px 14px;
-  background: #fff7f1;
-  border: 1px solid rgba(243,112,33,.28);
-  border-radius: 14px;
-}
-
-.countdown-copy {
-  display: grid;
-  gap: 2px;
-  margin-bottom: 10px;
-}
-
-.countdown-copy > span {
-  color: #a64713;
-  font-size: 10px;
-  font-weight: 950;
-  letter-spacing: .7px;
-  text-transform: uppercase;
-}
-
-.countdown-copy > strong {
-  color: #33251e;
-  font-size: 12px;
-  line-height: 1.35;
-  font-weight: 900;
-}
-
-.countdown-clock {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 7px;
-}
-
-.countdown-clock > div {
-  min-width: 0;
-  padding: 8px 5px 7px;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #ead9ce;
-  border-radius: 9px;
-}
-
-.countdown-clock strong {
-  display: block;
-  color: #241b17;
-  font-size: 18px;
-  line-height: 1;
-  font-weight: 950;
-  font-variant-numeric: tabular-nums;
-}
-
-.countdown-clock span {
-  display: block;
-  margin-top: 4px;
-  color: #806f65;
-  font-size: 8px;
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: .4px;
-  text-transform: uppercase;
-}
-
-.compact-countdown {
-  margin-bottom: 17px;
-}
-
-.bathroom-project-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.bathroom-gallery-subhead {
-  max-width: 680px;
-  margin: 12px auto 0;
-  color: #776a63;
-  font-size: 15px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* Keep bathroom photos framed consistently inside the deck-page gallery system. */
-.bathroom-page .deck-project-gallery-card img,
-.bathroom-page .service-image img,
-.bathroom-page .mission-image-box img {
-  object-fit: cover;
-}
-
-.bathroom-page .gallery-large-left img {
-  object-position: center center;
-}
-
-.bathroom-page .gallery-small-right img {
-  object-position: center center;
-}
-
-/* Keep form progress at three steps. */
-.bathroom-page .estimate-progress-track > span {
-  width: 33.333%;
-}
-
-/* Make the 3-step card slightly easier to scan than the original long deck form. */
-.bathroom-page .hero-quick-card {
-  overflow-y: visible;
-  max-height: none;
-}
-
-.bathroom-page .hero-quick-heading {
-  margin-bottom: 14px;
-}
-
-.bathroom-page .hero-quick-heading h2 {
-  font-size: clamp(27px, 2.3vw, 36px);
-}
-
-.bathroom-page .hero-quick-card .estimate-step-heading {
-  margin-bottom: 14px;
-}
-
-@media (max-width: 950px) {
-  /*
-    deck.css changes the hero composition on mobile.
-    Explicitly paint a bathroom image so the original site's deck background can never appear.
-  */
-  .bathroom-page .bathroom-hero {
-    background:
-      linear-gradient(180deg, rgba(3,4,5,.30) 0%, rgba(3,4,5,.70) 52%, #050607 100%),
-      url("bathroom-hero-960.webp") center 24% / cover no-repeat !important;
-  }
-
-  .bathroom-page .bathroom-offer-line {
-    margin: 4px 0 18px;
-  }
-
-  .bathroom-page .bathroom-offer-line strong::before {
-    display: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .bathroom-page .bathroom-hero {
-    background:
-      linear-gradient(180deg, rgba(3,4,5,.18) 0%, rgba(3,4,5,.58) 36%, #050607 67%, #050607 100%),
-      url("bathroom-hero-960.webp") center top / 100% auto no-repeat !important;
-  }
-
-  .bathroom-offer-line {
-    width: 100%;
-    margin: 8px 0 18px;
-    padding: 10px 12px;
-    gap: 3px;
-  }
-
-  .bathroom-offer-line span,
-  .bathroom-offer-line strong {
-    width: 100%;
-  }
-
-  .weekly-offer-countdown {
-    padding: 11px;
-  }
-
-  .countdown-clock {
-    gap: 5px;
-  }
-
-  .countdown-clock strong {
-    font-size: 16px;
-  }
-
-  .bathroom-project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .bathroom-project-grid .choice-card span {
-    min-height: 48px;
-    padding: 8px 7px;
-    font-size: 11px;
-  }
-
-  .bathroom-gallery-subhead {
-    margin-top: 10px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 420px) {
-  .countdown-copy > strong {
-    font-size: 11px;
-  }
-
-  .countdown-clock span {
-    font-size: 7px;
-  }
-}
-
-
-/* ==========================================================
-   FINAL MOBILE QUOTE-CARD CLEANUP
-   Preserve the ZH Homes deck-derived design, reduce visual noise.
-   ========================================================== */
-@media (max-width: 767px) {
-  /* Bring the headline/form cluster higher under the header. */
-  .bathroom-page .deck-hero .hero-copy {
-    padding-top: clamp(190px, 31svh, 305px) !important;
-  }
-
-  .bathroom-page .deck-hero .hero-mobile-title {
-    font-size: clamp(34px, 9.3vw, 42px) !important;
-    line-height: .99 !important;
-    letter-spacing: -1.25px !important;
-  }
-
-  /* Keep the form hierarchy simple: availability -> offer -> question -> action -> progress. */
-  .bathroom-page .mobile-hero-estimate-form {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step {
-    order: 1 !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress {
-    order: 2 !important;
-    margin: 13px 0 0 !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy {
-    justify-content: center !important;
-    margin-bottom: 7px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy strong {
-    display: none !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy span {
-    color: rgba(255,255,255,.70) !important;
-    font-size: 10px !important;
-    font-weight: 850 !important;
-    letter-spacing: .35px !important;
-    text-transform: uppercase !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-track {
-    height: 4px !important;
-    background: rgba(255,255,255,.16) !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading {
-    margin-bottom: 12px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading > span {
-    margin-bottom: 0 !important;
-    color: #fff !important;
-    font-size: 20px !important;
-    line-height: 1.12 !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading p {
-    display: none !important;
-  }
-
-  .bathroom-page .mobile-hero-form-heading {
-    margin-bottom: 15px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-heading h3 {
-    font-size: 21px !important;
-    line-height: 1.08 !important;
-    letter-spacing: -.45px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-card .weekly-offer-countdown {
-    margin-bottom: 13px !important;
-    padding: 10px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-card .countdown-copy {
-    margin-bottom: 8px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-card .countdown-copy > strong {
-    font-size: 11px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-nav {
-    margin-top: 2px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-next,
-  .bathroom-page .mobile-hero-estimate-form .estimate-submit {
-    min-height: 50px !important;
-  }
-
-  /* Transformation card: photos tell the story without extra labels. */
-  .bathroom-page .bathroom-before-after-card .before-after-chip,
-  .bathroom-page .bathroom-before-after-card .deck-project-tag {
+@media (min-width: 951px) {
+  /* Remove only the desktop elements requested. */
+  .bathroom-page .direct-hero-eyebrow,
+  .bathroom-page .hero-direct-proof,
+  .bathroom-page .direct-cta-note,
+  .bathroom-page .form-only-estimate-section {
     display: none !important;
   }
 }
 
-
-/* ==========================================================
-   MOBILE TOP-SECTION FINAL FIX
-   Mobile-only. Desktop remains unchanged.
-   ========================================================== */
-@media (max-width: 767px) {
-  .bathroom-page .site-header .header-license-badge {
-    display: none !important;
-  }
-
-  .bathroom-page .site-header .header-actions {
-    display: flex !important;
-    flex: 0 0 auto !important;
-    align-items: center !important;
-    margin-left: auto !important;
-  }
-
-  .bathroom-page .site-header .header-cta {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-height: 42px !important;
-    padding: 0 15px !important;
-    color: #fff !important;
-    background: var(--bath-orange) !important;
-    border: 0 !important;
-    border-radius: 10px !important;
-    box-shadow: 0 8px 20px rgba(243, 112, 33, 0.22) !important;
-    font-size: 12.5px !important;
-    font-weight: 950 !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-  }
-
-  .bathroom-page .header-cta-desktop {
-    display: none !important;
-  }
-
-  .bathroom-page .header-cta-mobile {
-    display: inline !important;
-  }
-
-  /* Remove the duplicate offer strip between hero message and CTA. */
-  .bathroom-page .bathroom-offer-line {
-    display: none !important;
-  }
-
-  /* Move the hero and form substantially higher. */
-  .bathroom-page .deck-hero .hero-copy {
-    padding-top: clamp(78px, 12svh, 118px) !important;
-    padding-bottom: 34px !important;
-  }
-
-  .bathroom-page .deck-hero .hero-message-card {
-    margin-bottom: 6px !important;
-  }
-
-  .bathroom-page .deck-hero .mobile-inline-estimate-section {
-    margin-top: 14px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-card {
-    padding: 16px 15px 15px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-card .compact-countdown {
-    margin: 0 0 9px !important;
-    padding: 9px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-card .countdown-copy {
-    margin-bottom: 7px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-heading {
-    margin: 0 0 9px !important;
-  }
-
-  .bathroom-page .mobile-hero-form-heading h3 {
-    margin: 0 !important;
-    font-size: 20px !important;
-    line-height: 1.08 !important;
-    letter-spacing: -0.4px !important;
-  }
-
-  /* Progress sits ABOVE the question and clearly shows all three steps. */
-  .bathroom-page .mobile-hero-estimate-form {
-    display: block !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress {
-    margin: 0 0 9px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    margin-bottom: 6px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy span {
-    color: rgba(36,27,23,.68) !important;
-    font-size: 10px !important;
-    font-weight: 900 !important;
-    letter-spacing: .35px !important;
-    text-transform: uppercase !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-copy strong {
-    display: none !important;
-  }
-
-  .bathroom-page .mobile-step-numbers {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 7px !important;
-    margin-bottom: 6px !important;
-  }
-
-  .bathroom-page .mobile-step-numbers > span {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    place-items: center !important;
-    min-width: 0 !important;
-    color: rgba(36,27,23,.54) !important;
-  }
-
-  .bathroom-page .mobile-step-numbers b {
-    display: grid !important;
-    place-items: center !important;
-    width: 24px !important;
-    height: 24px !important;
-    border: 1px solid rgba(36,27,23,.22) !important;
-    border-radius: 50% !important;
-    font-size: 10px !important;
-    font-weight: 950 !important;
-  }
-
-  .bathroom-page .mobile-step-numbers small {
-    display: none !important;
-  }
-
-  .bathroom-page .mobile-step-numbers > span.active {
-    color: var(--bath-ink) !important;
-  }
-
-  .bathroom-page .mobile-step-numbers > span.active b,
-  .bathroom-page .mobile-step-numbers > span.complete b {
-    color: #fff !important;
-    background: var(--bath-orange) !important;
-    border-color: var(--bath-orange) !important;
-  }
-
-  .bathroom-page .mobile-step-numbers > span.complete {
-    color: rgba(36,27,23,.72) !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-progress-track {
-    height: 4px !important;
-    background: rgba(36,27,23,.14) !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading {
-    margin: 0 0 8px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading > span {
-    margin: 0 !important;
-    color: var(--bath-ink) !important;
-    font-size: 20px !important;
-    line-height: 1.1 !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-step-heading p {
-    display: none !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .field {
-    margin-bottom: 9px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-nav {
-    margin-top: 0 !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form .estimate-next,
-  .bathroom-page .mobile-hero-estimate-form .estimate-submit {
-    min-height: 49px !important;
-  }
+/* The existing gallery stays intact, but cards are no longer
+   squeezed into three narrow side-by-side columns. */
+.bathroom-page #gallery .deck-project-gallery-grid-three {
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-template-rows: none !important;
+  width: min(840px, 100%);
+  margin-inline: auto;
+  gap: 22px;
 }
 
-/* ==========================================================
-   FINAL QUOTE FORM CLEANUP
-   Hide progress/step UI on every bathroom quote form and use
-   one consistent divider before the first question.
-   ========================================================== */
-.bathroom-page .deck-multistep-form .estimate-progress {
-  display: none !important;
+.bathroom-page #gallery .deck-project-gallery-grid-three > .deck-project-gallery-card {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  width: 100%;
+  min-height: 0 !important;
+  aspect-ratio: 16 / 10;
 }
 
-.bathroom-page .deck-multistep-form {
-  border-top: 1px solid rgba(36, 27, 23, 0.14);
-  padding-top: 18px;
+/* Stack the original before and after photos vertically. */
+.bathroom-page #gallery .bathroom-before-after-card {
+  aspect-ratio: auto !important;
 }
 
-@media (max-width: 767px) {
-  .bathroom-page .mobile-hero-form-heading {
-    margin-bottom: 14px !important;
-  }
-
-  .bathroom-page .mobile-hero-estimate-form {
-    padding-top: 16px !important;
-  }
+.bathroom-page #gallery .bathroom-before-after-card .before-after-split {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
 }
 
-/* ==========================================================
-   HERO REVIEW PROOF FINAL TWEAK
-   Keep the review proof, remove the local tag, and center the
-   hero text + review line exactly as requested.
-   ========================================================== */
-
-/* Keep the headline emphasis unmistakably orange. */
-.bathroom-page .hero-mobile-title .accent {
-  color: var(--bath-orange) !important;
+.bathroom-page #gallery .bathroom-before-after-card .before-after-panel {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
 }
 
-/* Remove the local relevance tag. */
-.bathroom-page .hero-mobile-title::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* Center the hero headline block. */
-.bathroom-page .hero-mobile-title,
-.bathroom-page .hero-mobile-subheadline {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Center the numerical review proof directly below the first hero support line. */
-.bathroom-page .hero-mobile-subheadline::after {
-  content: "★★★★★  4.7 Stars • 7 Google Reviews";
+.bathroom-page #gallery .bathroom-before-after-card .before-after-panel img {
   display: block;
   width: 100%;
-  margin-top: 11px;
-  color: var(--bath-orange);
-  font-size: 13px;
-  font-weight: 950;
-  line-height: 1.25;
-  letter-spacing: .1px;
-  text-align: center;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hide only the orange "In Progress" and "Finish Details" chips. */
+.bathroom-page #gallery .deck-project-tag {
+  display: none !important;
+}
+
+/* Lighten dark overlays without changing the rest of the theme. */
+.bathroom-page #gallery .deck-project-gallery-card::after {
+  background: linear-gradient(180deg, transparent 65%, rgba(0,0,0,.36) 100%) !important;
+}
+
+.bathroom-page #gallery .bathroom-before-after-card::after {
+  display: none !important;
+}
+
+.bathroom-page #gallery .bathroom-before-after-card figcaption {
+  position: static !important;
+  padding: 14px 18px;
+  background: #fff;
+  color: #241b17;
+}
+
+/* Brighter rendering for existing finished photos, not AI replacements. */
+.bathroom-page #gallery img[src="bathroom-after.webp"],
+.bathroom-page #gallery img[src="bathroom-vanity.webp"] {
+  filter: brightness(1.12) contrast(1.03) saturate(1.04);
+}
+
+/* Remove the old horizontal flip on the progress photo. */
+.bathroom-page #gallery .deck-project-gallery-card.gallery-small-left > img,
+.bathroom-page #gallery .deck-project-gallery-card.gallery-small-left:hover > img {
+  transform: none !important;
 }
 
 @media (max-width: 767px) {
-  .bathroom-page .hero-mobile-subheadline::after {
-    margin-top: 9px;
-    font-size: 12px;
-  }
-}
-
-
-/* ==========================================================
-   DESKTOP BATHROOM REMODEL ADJUSTMENTS
-   Desktop only. Mobile/tablet layout remains untouched.
-   ========================================================== */
-@media (min-width: 951px) {
-  /* Match the main index hero's dark architectural background treatment. */
-  .bathroom-page .bathroom-hero {
-    background:
-      linear-gradient(90deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.46) 100%),
-      url("zh-homes-hero-preload.png") center center / cover no-repeat,
-      #050607 !important;
+  .bathroom-page #gallery .deck-project-gallery-grid-three > .deck-project-gallery-card {
+    aspect-ratio: 4 / 3;
   }
 
-  /* Restore the normal left-aligned desktop hero composition. */
-  .bathroom-page .hero-mobile-title,
-  .bathroom-page .hero-mobile-subheadline {
-    text-align: left !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  .bathroom-page #gallery .bathroom-before-after-card {
+    aspect-ratio: auto !important;
   }
 
-  .bathroom-page .hero-mobile-subheadline::after {
-    text-align: left !important;
-  }
-
-  /* Remove the "Free Bathroom Walkthrough + Clear Written Estimate" strip on desktop. */
-  .bathroom-page .bathroom-offer-line {
-    display: none !important;
-  }
-
-  /* Change only the desktop hero CTA label without touching the mobile markup. */
-  .bathroom-page .deck-hero .hero-actions .btn-primary {
-    font-size: 0 !important;
-  }
-
-  .bathroom-page .deck-hero .hero-actions .btn-primary::after {
-    content: "Get My Free Quote" !important;
-    position: relative !important;
-    margin-left: 0 !important;
-    color: inherit !important;
-    font-size: 15px !important;
-    font-weight: 950 !important;
-    line-height: 1.2 !important;
-    transform: none !important;
-  }
-
-  /* Flip only the center in-progress tub-to-shower gallery photo. */
-  .bathroom-page .deck-project-gallery-card.gallery-small-left > img {
-    transform: scaleX(-1) !important;
-  }
-
-  .bathroom-page .deck-project-gallery-card.gallery-small-left:hover > img {
-    transform: scaleX(-1) scale(1.04) !important;
+  .bathroom-page #gallery .bathroom-before-after-card .before-after-panel {
+    aspect-ratio: 4 / 3;
   }
 }
