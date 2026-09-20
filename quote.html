@@ -1,218 +1,981 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Request a free bathroom remodeling estimate from ZH Homes in Salem, Keizer, and nearby Oregon communities.">
-  <title>Get a Free Bathroom Estimate | ZH Homes</title>
-  <link rel="canonical" href="https://www.zhhomeco.com/quote.html">
-  <link rel="icon" href="2.png?v=5" type="image/png">
-  <style>
-    :root {color-scheme:light;--ink:#29221d;--muted:#6f635b;--orange:#e96825;--cream:#faf7f3;--line:#e7ded6}
-    *,*::before,*::after {box-sizing:border-box}
-    html {scroll-behavior:smooth}
-    body {margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-    img {display:block;max-width:100%}
-    a {color:inherit}
-    .wrap {width:min(1120px,calc(100% - 48px));margin-inline:auto}
-    .skip {position:absolute;left:-9999px;top:0;padding:12px;background:#fff;z-index:100}
-    .skip:focus {left:16px}
-    .header {background:#fff;border-bottom:1px solid var(--line)}
-    .header-inner {min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand {display:inline-flex;align-items:center;gap:10px;font-weight:850;font-size:22px;text-decoration:none;white-space:nowrap}
-    .brand img {width:50px;height:43px;object-fit:contain}
-    .header-link {font-weight:800;font-size:14px;text-decoration:none;color:#974217}
-    .header-link:hover,.footer a:hover {text-decoration:underline}
-    .main {padding:50px 0 72px}
-    .layout {display:grid;grid-template-columns:minmax(0,625px) minmax(0,1fr);align-items:start;gap:30px}
-    .form-card,.proof-card {min-width:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 17px 48px rgba(57,35,20,.09)}
-    .form-card {padding:clamp(23px,3vw,40px)}
-    .eyebrow {display:block;color:#a64614;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
-    h1 {font-size:clamp(30px,3.3vw,43px);letter-spacing:-.043em;line-height:1.06;margin:0 0 12px}
-    .lead {margin:0 0 25px;color:var(--muted);font-size:15px;line-height:1.55}
-    .progress {height:5px;border-radius:99px;overflow:hidden;background:#eee5df;margin:0 0 27px}
-    .progress span {display:block;height:100%;width:33.333%;border-radius:99px;background:var(--orange);transition:width .2s ease}
-    fieldset {border:0;min-width:0;padding:0;margin:0}
-    legend {font-size:22px;font-weight:850;line-height:1.2;margin:0 0 20px;padding:0}
-    label.field {display:block;font-size:13px;font-weight:800;margin:0 0 16px}
-    .field span {display:block;margin-bottom:8px}
-    .field input {display:block;width:100%;height:52px;padding:12px 14px;border:1px solid #cfc5be;border-radius:9px;background:#fff;color:var(--ink);font:500 16px Arial,Helvetica,sans-serif;min-width:0}
-    .field input:focus {outline:2px solid var(--orange);outline-offset:2px;border-color:var(--orange)}
-    .choice-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:20px}
-    .choice {display:block;position:relative;cursor:pointer}
-    .choice input {position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;margin:0}
-    .choice span {display:flex;align-items:center;justify-content:center;min-height:58px;padding:11px 8px;border:1px solid #d8cfc8;border-radius:10px;text-align:center;font-size:13px;font-weight:800;line-height:1.25;background:#fcfaf9}
-    .choice input:checked+span {border:2px solid var(--orange);background:#fff1e9;color:#8d390f}
-    .choice input:focus-visible+span {outline:3px solid #3e87d7;outline-offset:2px}
-    .form-row {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .actions {display:flex;gap:10px;margin-top:12px}
-    button {font:800 15px Arial,Helvetica,sans-serif;cursor:pointer}
-    .button {display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:13px 20px;background:var(--orange);color:#fff;border:0;border-radius:10px;flex:1}
-    .button:hover {background:#ce541b}
-    .button:disabled {opacity:.65;cursor:wait}
-    .button.back {flex:0 0 90px;background:#fff;color:var(--ink);border:1px solid #d4cac2}
-    .button.back:hover {background:#faf7f3}
-    .step[hidden] {display:none !important}
-    .status {min-height:18px;margin-top:12px;color:var(--muted);font-size:13px;line-height:1.5}
-    .status.error {color:#9b2c20;font-weight:750}
-    .status.success {color:#267446;font-weight:750}
-    .success-box {padding:35px 7px 18px;text-align:center}
-    .success-icon {display:grid;place-items:center;margin:0 auto 18px;width:58px;height:58px;border-radius:50%;background:#e0f4e8;color:#237443;font-size:30px;font-weight:800}
-    .success-box h2 {margin:0 0 12px;font-size:31px}
-    .success-box p {margin:0 0 22px;color:var(--muted);line-height:1.6}
-    .proof-image {aspect-ratio:4/3;overflow:hidden;background:#e8e0d9}
-    .proof-image img {width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(1.12) contrast(1.035) saturate(1.06)}
-    .proof-text {padding:26px}
-    .proof-text h2 {margin:0 0 12px;font-size:clamp(25px,2.5vw,33px);line-height:1.1;letter-spacing:-.03em}
-    .proof-text p {margin:0 0 18px;color:var(--muted);font-size:15px;line-height:1.58}
-    .proof-text a {color:#a44819;font-weight:800;font-size:14px;text-underline-offset:3px}
-    .footer {padding:24px 0;border-top:1px solid var(--line);color:#756c66;font-size:12px;line-height:1.5;background:#fff}
-    .footer-inner {display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px}
-    .footer a {margin-left:14px;text-decoration:none}
-    .trap {position:absolute !important;left:-9999px !important;width:1px !important;height:1px !important;opacity:0 !important;pointer-events:none !important}
-    @media(max-width:900px) {.layout {grid-template-columns:1fr}.proof-card {max-width:625px;width:100%;margin-inline:auto}.form-card {max-width:625px;width:100%;margin-inline:auto}.proof-image {aspect-ratio:16/9}}
-    @media(max-width:560px) {
-      .wrap {width:calc(100% - 28px)}
-      .header-inner {min-height:70px}
-      .brand {font-size:19px}.brand img {width:42px;height:36px}
-      .header-link {font-size:12px}
-      .main {padding:20px 0 38px}
-      .form-card {padding:22px 16px}
-      .form-row {grid-template-columns:1fr;gap:0}
-      .choice-grid {gap:8px}
-      .choice span {font-size:12px;min-height:54px}
-      .proof-text {padding:22px}
-      .footer a:first-child {margin-left:0}
-    }
-    @media(prefers-reduced-motion:reduce) {html {scroll-behavior:auto}.progress span {transition:none}}
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Free Bathroom Remodel Estimate | ZH Homes</title>
+<meta content="Request a free bathroom remodel estimate from ZH Homes in Salem, Keizer, Silverton, and nearby Oregon communities." name="description"/>
+<link href="https://www.zhhomeco.com/quote.html" rel="canonical"/>
+<link href="2.png?v=5" rel="icon" type="image/png"/>
+<link href="2.png?v=5" rel="shortcut icon" type="image/png"/>
+<link href="2.png?v=5" rel="apple-touch-icon"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="deck.css" rel="stylesheet"/>
+<link href="bathroom-remodel.css" rel="stylesheet"/>
+<style>
+html, body { margin:0; min-height:100%; }
+body.quote-page {
+  background:
+    radial-gradient(circle at 9% 15%, rgba(243,112,33,.10), transparent 26%),
+    linear-gradient(135deg,#f7f1ec 0%,#fff 58%,#f4eee9 100%);
+  color:#241b17;
+}
+.quote-page .site-header,
+.quote-page .site-header .header-inner {
+  background:#fff !important;
+  box-shadow:none !important;
+}
+.quote-page .quote-shell {
+  width:min(1180px,calc(100% - 48px));
+  margin:0 auto;
+  padding:54px 0 70px;
+  display:block;
+}
+.quote-page .quote-form-wrap {
+  position:relative;
+  width:100%;
+  max-width:650px;
+  margin:0 auto;
+  padding:clamp(28px,3vw,42px);
+  border:1px solid rgba(45,29,21,.10);
+  border-radius:22px;
+  background:rgba(255,255,255,.99);
+  box-shadow:0 24px 70px rgba(45,29,21,.12);
+}
+.quote-page .quote-form-heading {
+  margin-bottom:16px;
+}
+.quote-page .quote-form-heading span {
+  display:block;
+  margin-bottom:8px;
+  color:#a64713;
+  font-size:10px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.quote-page .quote-form-heading h2 {
+  margin:0;
+  color:#241b17;
+  font-size:clamp(30px,3vw,40px);
+  line-height:1.02;
+  font-weight:950;
+  letter-spacing:-.04em;
+}
+.quote-page .quote-form-heading p {
+  margin:11px 0 0;
+  color:#75665d;
+  font-size:13px;
+  line-height:1.5;
+  font-weight:600;
+}
+.quote-page .deck-multistep-form {
+  border-top:2px solid #f37021 !important;
+  padding-top:22px;
+}
+.quote-page .estimate-progress {
+  margin-bottom:24px;
+}
+.quote-page .estimate-progress-copy {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.quote-page .estimate-progress-copy span {
+  color:#a64713;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.quote-page .estimate-progress-copy strong {
+  color:#4b3a31;
+  font-size:11px;
+  font-weight:850;
+}
+.quote-page .quote-step-numbers {
+  display:flex;
+  gap:8px;
+  margin:12px 0 10px;
+}
+.quote-page .quote-step-numbers span {
+  min-width:0;
+  flex:1;
+  padding:8px 6px;
+  border:1px solid #eadfd8;
+  border-radius:9px;
+  background:#faf7f4;
+  color:#8a776b;
+  text-align:center;
+  font-size:9px;
+  font-weight:850;
+}
+.quote-page .quote-step-numbers span.active,
+.quote-page .quote-step-numbers span.complete {
+  color:#a64713;
+  border-color:rgba(243,112,33,.25);
+  background:#fff4ec;
+}
+.quote-page .estimate-step-heading > span {
+  display:block;
+  color:#241b17;
+  font-size:23px;
+  line-height:1.15;
+  font-weight:950;
+  letter-spacing:-.025em;
+}
+.quote-page .estimate-step-heading p {
+  margin:7px 0 0;
+  color:#75665d;
+  font-size:13px;
+  line-height:1.5;
+}
+.quote-page .field { margin-top:18px; }
+.quote-page .field label,
+.quote-page .choice-fieldset legend {
+  color:#4b3a31;
+  font-size:11px;
+  font-weight:850;
+}
+.quote-page .field input {
+  width:100%;
+  min-height:58px;
+  margin-top:8px;
+  padding:0 15px;
+  border:1px solid #ddcec4;
+  border-radius:10px;
+  background:#fff;
+  color:#241b17;
+  font:inherit;
+  font-size:15px;
+}
+.quote-page .choice-fieldset {
+  margin:20px 0 0;
+  padding:0;
+  border:0;
+}
+.quote-page .bathroom-project-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+.quote-page .choice-card {
+  position:relative;
+  display:block;
+}
+.quote-page .choice-card input {
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.quote-page .choice-card span {
+  min-height:58px;
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #ddcec4;
+  border-radius:10px;
+  background:#fff;
+  color:#4d3d34;
+  text-align:center;
+  font-size:12px;
+  line-height:1.25;
+  font-weight:800;
+  cursor:pointer;
+}
+.quote-page .choice-card input:checked + span {
+  border-color:#f37021;
+  background:#fff4ec;
+  color:#923b0d;
+  box-shadow:0 0 0 2px rgba(243,112,33,.08);
+}
+.quote-page .hero-form-row {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.quote-page .estimate-nav {
+  display:grid;
+  grid-template-columns:110px minmax(0,1fr);
+  gap:10px;
+  margin-top:24px;
+}
+.quote-page .estimate-nav.single-action {
+  grid-template-columns:1fr;
+}
+.quote-page .estimate-back,
+.quote-page .estimate-next,
+.quote-page .estimate-submit {
+  min-height:56px;
+  border-radius:10px;
+  font:inherit;
+  font-size:13px;
+  font-weight:950;
+  cursor:pointer;
+}
+.quote-page .estimate-back {
+  border:1px solid #d9cbc2;
+  background:#fff;
+  color:#6d5e55;
+}
+.quote-page .estimate-next,
+.quote-page .estimate-submit {
+  border:0;
+  background:#f37021;
+  color:#fff;
+}
+.quote-page .hero-form-assurance {
+  margin:13px 0 0;
+  color:#8a786c;
+  font-size:10.5px;
+  line-height:1.45;
+  text-align:center;
+  font-weight:650;
+}
+.quote-page .form-status {
+  margin-top:12px;
+  font-size:12px;
+  line-height:1.45;
+  text-align:center;
+}
+.quote-page .simple-quote-footer {
+  border-top:1px solid rgba(45,29,21,.09);
+  background:#fff;
+}
+.quote-page .simple-quote-footer-inner {
+  width:min(1180px,calc(100% - 28px));
+  min-height:72px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#8b7d75;
+  font-size:10px;
+}
+.quote-page .simple-quote-footer a {
+  color:#6e5c52;
+  text-decoration:none;
+  font-weight:800;
+}
+@media (max-width: 900px) {
+  .quote-page .quote-shell {
+    width:calc(100% - 28px);
+    padding:28px 0 48px;
+    grid-template-columns:1fr;
+    gap:26px;
+  }
+  .quote-page .quote-form-wrap {
+    max-width:620px;
+    justify-self:center;
+    padding:24px 18px;
+  }
+}
+@media (max-width: 560px) {
+  .quote-page .header-license-badge { display:none !important; }
+  .quote-page .header-cta { min-width:auto !important; padding:0 13px !important; }
+  .quote-page .quote-copy h1 { font-size:38px; }
+  .quote-page .quote-copy > p { font-size:14px; }
+  .quote-page .quote-form-heading h2 { font-size:29px; }
+  .quote-page .bathroom-project-grid { grid-template-columns:1fr 1fr; }
+  .quote-page .hero-form-row { grid-template-columns:1fr; gap:0; }
+  .quote-page .estimate-nav { grid-template-columns:92px minmax(0,1fr); }
+  .quote-page .simple-quote-footer-inner {
+    min-height:64px;
+    flex-direction:column;
+    justify-content:center;
+    gap:4px;
+  }
+}
+
+/* Final simplified quote-flow treatment */
+.quote-page .simple-progress {
+  margin: 0 0 24px !important;
+}
+.quote-page .simple-progress .estimate-progress-track {
+  height: 5px !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background: #eee4de !important;
+}
+.quote-page .simple-progress .estimate-progress-track > span {
+  display: block !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  background: #f37021 !important;
+  transition: width .2s ease !important;
+}
+.quote-page .estimate-progress-copy,
+.quote-page .quote-step-numbers {
+  display: none !important;
+}
+.quote-page .estimate-step-heading {
+  margin-bottom: 16px !important;
+}
+.quote-page .estimate-step-heading > span {
+  font-size: clamp(24px, 3vw, 30px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+}
+.quote-page .estimate-step-heading p {
+  display: none !important;
+}
+@media (max-width: 560px) {
+  .quote-page .simple-progress {
+    margin-bottom: 20px !important;
+  }
+  .quote-page .estimate-step-heading > span {
+    font-size: 25px !important;
+  }
+}
+
+/* Quote delivery state visibility */
+.quote-page .form-status.error {
+  padding: 10px 12px !important;
+  border: 1px solid rgba(150, 48, 20, .18) !important;
+  border-radius: 9px !important;
+  background: #fff4ef !important;
+  color: #8f3218 !important;
+  font-weight: 750 !important;
+}
+.quote-page .form-status.success {
+  color: #2f6b45 !important;
+  font-weight: 800 !important;
+}
+.quote-page .estimate-submit:disabled {
+  opacity: .72 !important;
+  cursor: wait !important;
+}
+
+/* Self-contained quote form behavior and full-card states */
+.quote-page .estimate-step[hidden] {
+  display: none !important;
+}
+.quote-page .quote-form-wrap {
+  overflow: hidden;
+}
+.quote-page .quote-state-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  min-height: 100%;
+  padding: 36px 26px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255,255,255,.99);
+  border-radius: inherit;
+}
+.quote-page .quote-state-overlay.active {
+  display: flex;
+}
+.quote-page .quote-state-inner {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+}
+.quote-page .quote-state-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 950;
+}
+.quote-page .quote-state-overlay h3 {
+  margin: 0;
+  color: #241b17;
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  font-weight: 950;
+}
+.quote-page .quote-state-overlay p {
+  margin: 13px auto 0;
+  max-width: 390px;
+  color: #6f625b;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 650;
+}
+.quote-page .quote-success-overlay .quote-state-icon {
+  background: #e8f5ec;
+  color: #2f7548;
+}
+.quote-page .quote-error-overlay {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(243,112,33,.09), transparent 36%),
+    rgba(255,255,255,.995);
+}
+.quote-page .quote-error-overlay .quote-state-icon {
+  background: #fff0e8;
+  color: #b14619;
+}
+.quote-page .quote-error-label {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #b14619;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.quote-page .quote-state-primary,
+.quote-page .quote-state-secondary {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+}
+.quote-page .quote-state-primary {
+  border: 0;
+  background: #f37021;
+  color: #fff;
+}
+.quote-page .quote-state-secondary {
+  min-height: 48px;
+  margin-top: 9px;
+  border: 1px solid #dbcfc8;
+  background: #fff;
+  color: #6b5d55;
+}
+.quote-page .estimate-submit.is-sending {
+  opacity: .70;
+  pointer-events: none;
+}
+@media (max-width:560px) {
+  .quote-page .quote-state-overlay {
+    padding: 28px 20px;
+  }
+  .quote-page .quote-state-overlay h3 {
+    font-size: 31px;
+  }
+}
+
+/* Quote page: intentionally de-emphasize navigation away from the form. */
+.quote-page .header-actions {
+  justify-content: flex-end !important;
+}
+.quote-page .quote-footer-links {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.quote-page .quote-footer-back {
+  color:#b9b0aa !important;
+  opacity:.62;
+  font-weight:650 !important;
+}
+.quote-page .quote-footer-back:hover {
+  opacity:.9;
+}
+.quote-page .quote-state-overlay.active {
+  display:flex !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+
+/* Final page-height fix: keep footer at the bottom of the viewport. */
+html,
+body.quote-page {
+  min-height: 100%;
+}
+body.quote-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.quote-page > main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.quote-page .simple-quote-footer {
+  margin-top: auto;
+  flex-shrink: 0;
+  width: 100%;
+}
+</style>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to estimate form</a>
-  <header class="header">
-    <div class="wrap header-inner">
-      <a class="brand" href="bathroomremodel.html" aria-label="ZH Homes bathroom remodeling"><img src="zh-homes-logo.webp" alt="" width="50" height="43">ZH Homes</a>
-      <a class="header-link" href="tel:5039105466">Call (503) 910-5466</a>
+<body class="deck-page bathroom-page quote-page">
+<a class="skip-link" href="#quote-main">Skip to estimate form</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a aria-label="ZH Homes bathroom remodeling page" class="brand" href="bathroomremodel.html">
+      <div aria-hidden="true" class="brand-logo">
+        <img alt="ZH Homes logo" decoding="async" fetchpriority="high" height="54" src="zh-homes-logo.webp" width="112"/>
+      </div>
+      <div class="brand-text"><strong>ZH Homes</strong></div>
+    </a>
+    <div class="header-actions">
+      <div aria-label="Licensed, bonded, and insured, Oregon CCB number 260679" class="header-license-badge">
+        <span>Licensed, Bonded &amp; Insured</span>
+        <strong>Oregon CCB #260679</strong>
+      </div>
     </div>
-  </header>
-  <main id="main" class="main">
-    <div class="wrap layout">
-      <section class="form-card" aria-labelledby="form-title">
-        <div id="formIntro">
-          <span class="eyebrow">Free Bathroom Estimate</span>
-          <h1 id="form-title">Tell us about your bathroom.</h1>
-          <p class="lead">Start with your ZIP code. It takes just a few short steps to request your estimate.</p>
+  </div>
+</header>
+
+<main id="quote-main">
+  <section class="quote-shell">
+    <div class="quote-form-wrap deck-form-card">
+      <div class="quote-form-heading">
+        <span>Free Bathroom Estimate</span>
+        <h2>Tell us about your bathroom.</h2>
+      </div>
+
+      <form class="deck-multistep-form" data-form-source="Dedicated Bathroom Quote Page" id="quotePageBathroomForm" novalidate>
+        <div aria-hidden="true" class="honeypot">
+          <label for="quoteCompanyWebsite">Company Website</label>
+          <input autocomplete="off" id="quoteCompanyWebsite" name="companyWebsite" tabindex="-1" type="text"/>
         </div>
-        <div class="progress" id="estimateProgress" aria-label="Estimate progress"><span id="progressBar"></span></div>
-        <form id="quotePageBathroomForm" data-form-source="Dedicated Bathroom Quote Page" novalidate>
-          <div class="trap" aria-hidden="true"><label for="quoteCompanyWebsite">Company Website</label><input id="quoteCompanyWebsite" name="companyWebsite" type="text" autocomplete="off" tabindex="-1"></div>
-          <fieldset class="step" data-step="0">
-            <legend>What's your ZIP code?</legend>
-            <label class="field" for="quoteZip"><span>ZIP Code</span><input id="quoteZip" name="zipCode" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="97302" required pattern="[0-9]{5}(-[0-9]{4})?" title="Enter a five-digit ZIP code"></label>
-            <div class="actions"><button type="button" class="button next">Next</button></div>
-          </fieldset>
-          <fieldset class="step" data-step="1" hidden>
-            <legend>What do you want to change?</legend>
-            <div class="choice-grid" role="group" aria-label="Bathroom project">
-              <label class="choice"><input type="radio" name="projectType" value="Full Bathroom Remodel" required><span>Full Remodel</span></label>
-              <label class="choice"><input type="radio" name="projectType" value="Tub-to-Shower Conversion" required><span>Tub-to-Shower</span></label>
-              <label class="choice"><input type="radio" name="projectType" value="Shower / Waterproofing" required><span>Shower</span></label>
-              <label class="choice"><input type="radio" name="projectType" value="Vanity / Storage Update" required><span>Vanity / Storage</span></label>
-              <label class="choice"><input type="radio" name="projectType" value="Flooring / Lighting / Ventilation" required><span>Floor / Light / Vent</span></label>
-              <label class="choice"><input type="radio" name="projectType" value="Other / Not Sure Yet" required><span>Other / Not Sure</span></label>
+
+        <div class="estimate-progress simple-progress" aria-label="Estimate progress">
+          <div class="estimate-progress-track"><span data-progress-bar></span></div>
+        </div>
+
+        <section class="estimate-step active" data-step="0" data-step-title="Project ZIP">
+          <div class="estimate-step-heading">
+            <span>What’s your ZIP code?</span>
+          </div>
+          <div class="field">
+            <label for="quoteZip">ZIP Code</label>
+            <input autocomplete="postal-code" id="quoteZip" inputmode="numeric" maxlength="10" name="zipCode" placeholder="97302" required type="text"/>
+          </div>
+          <div class="estimate-nav single-action">
+            <button class="estimate-next" data-next type="button">Next</button>
+          </div>
+        </section>
+
+        <section class="estimate-step" data-step="1" data-step-title="Bathroom Project" hidden>
+          <div class="estimate-step-heading">
+            <span>What do you want to change?</span>
+          </div>
+          <fieldset class="choice-fieldset">
+            <legend>Bathroom project</legend>
+            <div class="choice-grid bathroom-project-grid">
+              <label class="choice-card"><input name="projectType" required type="radio" value="Full Bathroom Remodel"/><span>Full Remodel</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Tub-to-Shower Conversion"/><span>Tub-to-Shower</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Shower / Waterproofing"/><span>Shower / Waterproofing</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Vanity / Storage Update"/><span>Vanity / Storage</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Flooring / Lighting / Ventilation"/><span>Floor / Light / Vent</span></label>
+              <label class="choice-card"><input name="projectType" required type="radio" value="Not Sure Yet"/><span>Not Sure Yet</span></label>
             </div>
-            <div class="actions"><button type="button" class="button back">Back</button><button type="button" class="button next">Next</button></div>
           </fieldset>
-          <fieldset class="step" data-step="2" hidden>
-            <legend>How should we reach you?</legend>
-            <div class="form-row">
-              <label class="field" for="quoteFullName"><span>Full Name</span><input id="quoteFullName" name="fullName" type="text" autocomplete="name" placeholder="Your name" required></label>
-              <label class="field" for="quotePhone"><span>Phone Number</span><input id="quotePhone" name="phone" type="tel" autocomplete="tel" placeholder="(503) 555-0123" required minlength="7"></label>
+          <div class="estimate-nav">
+            <button class="estimate-back" data-back type="button">Back</button>
+            <button class="estimate-next" data-next type="button">Next</button>
+          </div>
+        </section>
+
+        <section class="estimate-step" data-step="2" data-step-title="Contact Information" hidden>
+          <div class="estimate-step-heading">
+            <span>Where should we reach you?</span>
+          </div>
+          <div class="hero-form-row">
+            <div class="field">
+              <label for="quoteFullName">Full Name</label>
+              <input autocomplete="name" id="quoteFullName" name="fullName" placeholder="Your name" required type="text"/>
             </div>
-            <label class="field" for="quoteEmail"><span>Email</span><input id="quoteEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
-            <div class="actions"><button type="button" class="button back">Back</button><button id="submitLeadButton" type="submit" class="button">Get My Free Estimate</button></div>
-          </fieldset>
-          <div id="formStatus" class="status" role="status" aria-live="polite"></div>
-        </form>
-        <div id="thankYou" class="success-box" role="status" aria-live="polite" hidden>
-          <div class="success-icon" aria-hidden="true">✓</div>
-          <h2>Request sent.</h2>
-          <p>ZH Homes received your estimate request and will follow up with you.</p>
-          <a class="button" href="bathroomremodel.html">Back to Bathroom Remodeling</a>
+            <div class="field">
+              <label for="quotePhone">Phone Number</label>
+              <input autocomplete="tel" id="quotePhone" name="phone" placeholder="Your phone number" required type="tel"/>
+            </div>
+          </div>
+          <div class="field">
+            <label for="quoteEmail">Email</label>
+            <input autocomplete="email" id="quoteEmail" name="email" placeholder="you@example.com" required type="email"/>
+          </div>
+          <div class="estimate-nav">
+            <button class="estimate-back" data-back type="button">Back</button>
+            <button class="submit-button estimate-submit" type="submit">Get My Free Estimate</button>
+          </div>
+          <p class="hero-form-assurance">Free walkthrough. Clear written estimate. No obligation and no pressure to sign.</p>
+          <div aria-live="polite" class="form-status" data-form-status role="status"></div>
+        </section>
+      </form>
+
+      <div aria-hidden="true" class="quote-state-overlay quote-success-overlay" id="quoteSuccessOverlay">
+        <div class="quote-state-inner">
+          <div class="quote-state-icon" aria-hidden="true">✓</div>
+          <h3>Request Sent</h3>
+          <p>Thanks. ZH Homes received your bathroom remodel estimate request and will follow up with you.</p>
         </div>
-      </section>
-      <aside class="proof-card" aria-labelledby="proof-title">
-        <div class="proof-image"><img src="bathroom-after.webp" width="800" height="600" alt="Finished bathroom remodeling project photograph" decoding="async" fetchpriority="high"></div>
-        <div class="proof-text">
-          <h2 id="proof-title">Picture your new bathroom.</h2>
-          <p>See a finished bathroom project while you tell us about your own space. ZH Homes serves Salem, Keizer, and nearby communities.</p>
-          <a href="tel:5039105466">Prefer to talk? Call (503) 910-5466</a>
+      </div>
+
+      <div aria-hidden="true" class="quote-state-overlay quote-error-overlay" id="quoteErrorOverlay">
+        <div class="quote-state-inner">
+          <div class="quote-state-icon" aria-hidden="true">!</div>
+          <span class="quote-error-label">Submission Error</span>
+          <h3>We couldn’t send your request.</h3>
+          <p>Please call or text ZH Homes directly so your bathroom estimate does not get missed.</p>
+          <a class="quote-state-primary" href="tel:5039105466">Call ZH Homes · (503) 910-5466</a>
+          <a class="quote-state-secondary" href="sms:5039105466">Text ZH Homes</a>
+          <button class="quote-state-secondary" id="quoteTryAgain" type="button">Try Again</button>
         </div>
-      </aside>
+      </div>
     </div>
-  </main>
-  <footer class="footer"><div class="wrap footer-inner"><span>© 2026 ZH Homes · Oregon CCB #260679</span><span><a href="bathroomremodel.html">Bathroom Remodeling</a><a href="privacy.html">Privacy Policy</a></span></div></footer>
-  <script src="google-analytics.js"></script>
-  <script>
-  (function(){
-    'use strict';
-    var LEAD_API_URL='/api/bathroom-lead';
-    var GOOGLE_ADS_CONVERSION='AW-18215005784/R-utCL2htegcENjcy-1D';
-    var form=document.getElementById('quotePageBathroomForm');
-    var steps=Array.prototype.slice.call(form.querySelectorAll('.step'));
-    var progressBar=document.getElementById('progressBar');
-    var status=document.getElementById('formStatus');
-    var submitButton=document.getElementById('submitLeadButton');
-    var currentStep=0;
-    var submitting=false;
-    var ATTRIBUTION_KEYS=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid'];
-    function track(eventName,details){window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:eventName,form_name:'Dedicated Bathroom Quote Page'},details||{}));}
-    function setStatus(message,error){status.textContent=message||'';status.className='status'+(error?' error':'');}
-    function showStep(next){currentStep=Math.max(0,Math.min(next,steps.length-1));steps.forEach(function(step,index){step.hidden=index!==currentStep;});progressBar.style.width=((currentStep+1)/steps.length*100)+'%';}
-    function validStep(){
-      var step=steps[currentStep];
-      if(currentStep===1){var selected=step.querySelector('input[name="projectType"]:checked');if(!selected){step.querySelector('input[name="projectType"]').focus();setStatus('Choose a bathroom project to continue.',true);return false;}}
-      var controls=step.querySelectorAll('input:not([type="radio"])');
-      for(var i=0;i<controls.length;i++){if(!controls[i].checkValidity()){controls[i].reportValidity();controls[i].focus();return false;}}
-      setStatus('');return true;
+  </section>
+</main>
+
+<footer class="simple-quote-footer">
+  <div class="simple-quote-footer-inner">
+    <span>© 2026 ZH Homes · Oregon CCB #260679</span>
+    <span class="quote-footer-links"><a class="quote-footer-back" href="bathroomremodel.html">Back</a><a href="privacy.html">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<script src="google-analytics.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var LEAD_API_URL = "/api/bathroom-lead";
+  var GOOGLE_ADS_CONVERSION = "AW-18215005784/R-utCL2htegcENjcy-1D";
+
+  var form = document.getElementById("quotePageBathroomForm");
+  if (!form) return;
+
+  var steps = Array.prototype.slice.call(form.querySelectorAll(".estimate-step"));
+  var progressBar = form.querySelector("[data-progress-bar]");
+  var submitButton = form.querySelector(".estimate-submit");
+  var statusEl = form.querySelector("[data-form-status]");
+  var successOverlay = document.getElementById("quoteSuccessOverlay");
+  var errorOverlay = document.getElementById("quoteErrorOverlay");
+  var tryAgainButton = document.getElementById("quoteTryAgain");
+
+  var currentStep = 0;
+  var submitting = false;
+  var lastPayload = null;
+
+  var ATTRIBUTION_KEYS = [
+    "utm_source", "utm_medium", "utm_campaign", "utm_term",
+    "utm_content", "gclid", "gbraid", "wbraid"
+  ];
+
+  function setOverlay(element, active) {
+    if (!element) return;
+    element.classList.toggle("active", active);
+    element.setAttribute("aria-hidden", active ? "false" : "true");
+  }
+
+  function setStatus(message, type) {
+    if (!statusEl) return;
+    statusEl.textContent = message || "";
+    statusEl.className = ("form-status " + (type || "")).trim();
+  }
+
+  function updateStep(index) {
+    currentStep = Math.max(0, Math.min(index, steps.length - 1));
+
+    steps.forEach(function (step, stepIndex) {
+      var active = stepIndex === currentStep;
+      step.hidden = !active;
+      step.classList.toggle("active", active);
+    });
+
+    if (progressBar) {
+      progressBar.style.width =
+        (((currentStep + 1) / steps.length) * 100) + "%";
     }
-    function getAttribution(){
-      var params=new URLSearchParams(window.location.search),result={},hasCurrent=false;
-      ATTRIBUTION_KEYS.forEach(function(key){result[key]=params.get(key)||'';if(result[key])hasCurrent=true;});
-      if(hasCurrent){try{sessionStorage.setItem('zhHomesBathroomAttribution',JSON.stringify(result));}catch(e){}return result;}
-      try{var saved=JSON.parse(sessionStorage.getItem('zhHomesBathroomAttribution')||'{}');ATTRIBUTION_KEYS.forEach(function(key){result[key]=String(saved[key]||'');});}catch(e){}
+  }
+
+  function validateStep(step) {
+    if (!step) return true;
+
+    var controls = Array.prototype.slice.call(
+      step.querySelectorAll("input, select, textarea")
+    ).filter(function (control) {
+      return !control.disabled && control.type !== "hidden";
+    });
+
+    var handledRadioNames = {};
+
+    for (var i = 0; i < controls.length; i += 1) {
+      var control = controls[i];
+
+      if (control.type === "radio") {
+        if (handledRadioNames[control.name]) continue;
+        handledRadioNames[control.name] = true;
+
+        var radios = Array.prototype.slice.call(
+          step.querySelectorAll(
+            'input[type="radio"][name="' + control.name + '"]'
+          )
+        );
+
+        var required = radios.some(function (radio) {
+          return radio.required;
+        });
+        var selected = radios.some(function (radio) {
+          return radio.checked;
+        });
+
+        if (required && !selected) {
+          if (radios[0]) radios[0].focus();
+          return false;
+        }
+
+        continue;
+      }
+
+      if (!control.checkValidity()) {
+        control.reportValidity();
+        control.focus();
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function getAttribution() {
+    var params = new URLSearchParams(window.location.search);
+    var result = {};
+    var hasCurrent = false;
+
+    ATTRIBUTION_KEYS.forEach(function (key) {
+      result[key] = params.get(key) || "";
+      if (result[key]) hasCurrent = true;
+    });
+
+    if (hasCurrent) {
+      try {
+        sessionStorage.setItem(
+          "zhHomesBathroomAttribution",
+          JSON.stringify(result)
+        );
+      } catch (e) {}
       return result;
     }
-    function getLeadSource(attribution){
-      if(attribution.gclid||attribution.gbraid||attribution.wbraid)return 'Google Ads';
-      var source=String(attribution.utm_source||''),medium=String(attribution.utm_medium||'').toLowerCase();
-      if(source){if(/google/i.test(source)&&/(cpc|ppc|paid)/i.test(medium))return 'Google Ads';return source;}
-      return 'Website';
+
+    try {
+      var saved = JSON.parse(
+        sessionStorage.getItem("zhHomesBathroomAttribution") || "{}"
+      );
+
+      ATTRIBUTION_KEYS.forEach(function (key) {
+        result[key] = String(saved[key] || "");
+      });
+    } catch (e) {}
+
+    return result;
+  }
+
+  function getLeadSource(attribution) {
+    attribution = attribution || {};
+
+    if (attribution.gclid || attribution.gbraid || attribution.wbraid) {
+      return "Google Ads";
     }
-    function buildPayload(){
-      var data=new FormData(form),attribution=getAttribution(),zipCode=String(data.get('zipCode')||'').trim(),projectType=String(data.get('projectType')||'').trim();
-      return {source:'ZH Homes Bathroom Quote Page',pageUrl:window.location.href,submittedAt:new Date().toISOString(),contactReason:'bathroom_estimate',serviceType:projectType||'Bathroom Remodel',leadSource:getLeadSource(attribution),fullName:String(data.get('fullName')||'').trim(),phone:String(data.get('phone')||'').trim(),email:String(data.get('email')||'').trim(),zipCode:zipCode,projectType:projectType,companyWebsite:String(data.get('companyWebsite')||'').trim(),projectPhotos:[],description:['Bathroom project: '+(projectType||'Not provided'),'Project ZIP: '+(zipCode||'Not provided'),'Offer: Free bathroom walkthrough + written estimate'].join('\n'),attribution:attribution};
+
+    var source = String(attribution.utm_source || "");
+    var medium = String(attribution.utm_medium || "").toLowerCase();
+
+    if (source) {
+      if (/google/i.test(source) && /(cpc|ppc|paid)/i.test(medium)) {
+        return "Google Ads";
+      }
+      return source;
     }
-    form.querySelectorAll('.next').forEach(function(button){button.addEventListener('click',function(){if(!validStep())return;track(currentStep===0?'bathroom_form_start':'bathroom_form_step_complete',{step:currentStep+1});showStep(currentStep+1);});});
-    form.querySelectorAll('.back').forEach(function(button){button.addEventListener('click',function(){setStatus('');showStep(currentStep-1);});});
-    form.addEventListener('submit',async function(event){
-      event.preventDefault();if(submitting||!validStep())return;
-      var payload=buildPayload();if(payload.companyWebsite){form.reset();showStep(0);return;}
-      submitting=true;submitButton.disabled=true;submitButton.textContent='Sending...';setStatus('Sending your request...');
-      try{
-        var response=await fetch(LEAD_API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-        var result=null;try{result=await response.json();}catch(e){}
-        if(!response.ok||!result||result.ok!==true)throw new Error('Lead delivery not confirmed. HTTP '+response.status);
-        track('bathroom_lead_submit',{project_type:payload.projectType,lead_source:payload.leadSource});
-        if(typeof window.gtag==='function')window.gtag('event','conversion',{send_to:GOOGLE_ADS_CONVERSION});
-        form.hidden=true;document.getElementById('formIntro').hidden=true;document.getElementById('estimateProgress').hidden=true;status.hidden=true;document.getElementById('thankYou').hidden=false;form.reset();showStep(0);
-      }catch(error){console.error('Bathroom lead submission failed:',error);setStatus('We could not confirm delivery. Please try again or call (503) 910-5466.',true);}
-      finally{submitting=false;submitButton.disabled=false;submitButton.textContent='Get My Free Estimate';}
+
+    return "Website";
+  }
+
+  function buildPayload() {
+    var data = new FormData(form);
+    var attribution = getAttribution();
+
+    var zipCode = String(data.get("zipCode") || "").trim();
+    var projectType = String(data.get("projectType") || "").trim();
+
+    return {
+      source: "ZH Homes Bathroom Quote Page",
+      pageUrl: window.location.href,
+      submittedAt: new Date().toISOString(),
+      contactReason: "bathroom_estimate",
+      serviceType: projectType || "Bathroom Remodel",
+      leadSource: getLeadSource(attribution),
+      fullName: String(data.get("fullName") || "").trim(),
+      phone: String(data.get("phone") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      zipCode: zipCode,
+      projectType: projectType,
+      companyWebsite: String(data.get("companyWebsite") || "").trim(),
+      projectPhotos: [],
+      description: [
+        "Bathroom project: " + (projectType || "Not provided"),
+        "Project ZIP: " + (zipCode || "Not provided"),
+        "Offer: Free bathroom walkthrough + written estimate"
+      ].join("\n"),
+      attribution: attribution
+    };
+  }
+
+  function recordConfirmedLead(payload) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "bathroom_lead_submit",
+      form_name: "Dedicated Bathroom Quote Page",
+      project_type: payload.projectType,
+      lead_source: payload.leadSource
     });
-    showStep(0);
-  })();
-  </script>
-  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
-  <script defer src="/_vercel/insights/script.js"></script>
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_CONVERSION
+      });
+    }
+  }
+
+  async function submitLead(payload) {
+    if (submitting) return;
+
+    submitting = true;
+    lastPayload = payload;
+
+    var originalText =
+      (submitButton && submitButton.dataset.originalText) ||
+      (submitButton && submitButton.textContent) ||
+      "Get My Free Estimate";
+
+    if (submitButton) {
+      submitButton.dataset.originalText = originalText;
+      submitButton.disabled = true;
+      submitButton.classList.add("is-sending");
+      submitButton.textContent = "Sending...";
+    }
+
+    setOverlay(successOverlay, false);
+    setOverlay(errorOverlay, false);
+    setStatus("Sending your request...", "");
+
+    try {
+      var response = await fetch(LEAD_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      var result = null;
+      try {
+        result = await response.json();
+      } catch (e) {}
+
+      /*
+        CRITICAL FIX:
+        We only show success after /api/bathroom-lead confirms that
+        Google Apps Script returned an explicit success response.
+      */
+      if (!response.ok || !result || result.ok !== true) {
+        throw new Error(
+          "Lead delivery was not confirmed. HTTP " + response.status
+        );
+      }
+
+      recordConfirmedLead(payload);
+
+      setStatus(
+        "Thanks. Your bathroom estimate request was submitted.",
+        "success"
+      );
+      setOverlay(successOverlay, true);
+
+      form.reset();
+      updateStep(0);
+      lastPayload = null;
+    } catch (error) {
+      console.error("Bathroom lead submission failed:", error);
+
+      setStatus(
+        "We could not confirm delivery. Please call or text ZH Homes at (503) 910-5466.",
+        "error"
+      );
+      setOverlay(errorOverlay, true);
+    } finally {
+      submitting = false;
+
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.classList.remove("is-sending");
+        submitButton.textContent =
+          submitButton.dataset.originalText || originalText;
+      }
+    }
+  }
+
+  form.querySelectorAll("[data-next]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (!validateStep(steps[currentStep])) return;
+      updateStep(currentStep + 1);
+    });
+  });
+
+  form.querySelectorAll("[data-back]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      updateStep(currentStep - 1);
+    });
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!validateStep(steps[currentStep])) return;
+
+    var payload = buildPayload();
+
+    /* Honeypot: silently ignore bot submissions. */
+    if (payload.companyWebsite) {
+      form.reset();
+      updateStep(0);
+      return;
+    }
+
+    submitLead(payload);
+  });
+
+  if (tryAgainButton) {
+    tryAgainButton.addEventListener("click", function () {
+      setOverlay(errorOverlay, false);
+      if (lastPayload) {
+        submitLead(lastPayload);
+      }
+    });
+  }
+
+  updateStep(0);
+})();
+</script>
+
+<!-- Vercel Web Analytics: page-view tracking -->
+<script>
+  window.va = window.va || function () {
+    (window.vaq = window.vaq || []).push(arguments);
+  };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
