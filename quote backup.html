@@ -9,7 +9,7 @@
 <meta content="Request a free bathroom remodeling estimate from ZH Homes. Serving Salem, Keizer, Silverton and nearby Oregon communities." name="description"/>
 <link href="https://www.zhhomeco.com/quote.html" rel="canonical"/>
 <link href="2.png?v=5" rel="icon" type="image/png"/>
-<link as="image" href="bathroom-after.webp" rel="preload"/>
+<link as="image" fetchpriority="high" href="bathroom-hero-960.webp" rel="preload"/>
 <style>
 :root{--dark:#1c211e;--ink:#23231f;--muted:#6e716b;--orange:#eb6c28;--orange-dark:#c74f15;--paper:#fffdfa;--warm:#f7f3ee;--line:#e8e0d8;--radius:22px;--shadow:0 24px 68px rgba(26,28,22,.09)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:94px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.74}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #e9844c;outline-offset:3px}img{display:block;max-width:100%}.container{width:min(1180px,calc(100% - 40px));margin-inline:auto}.eyebrow{display:inline-block;color:var(--orange-dark);font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:11px;min-height:54px;background:var(--orange);color:white;font-weight:800;font-size:14px;text-decoration:none;padding:14px 22px;box-shadow:0 8px 20px rgba(235,108,40,.16);transition:background .15s,transform .15s}.button:hover{background:var(--orange-dark);transform:translateY(-1px)}.button-outline{background:transparent;color:var(--dark);box-shadow:none;border:1px solid #cfc6bd}.button-outline:hover{background:#f1e8df;color:var(--dark)}.skip{position:absolute;transform:translateY(-160%);padding:12px;background:white;z-index:300}.skip:focus{transform:translateY(0)}
@@ -186,13 +186,107 @@ img {max-width:100%}
  .floating-cta .button {max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){.reviews-track{transition:none!important}}
+
+/* Site-matched ZH Homes quote page: black, white, and #f37021 from style.css / deck.css */
+:root { --dark:#050607; --ink:#241814; --muted:#706762; --orange:#f37021; --orange-dark:#da5d11; --paper:#ffffff; --warm:#f8f4ef; --line:#ddd4cd; }
+html,body{width:100%;max-width:100%;overflow-x:clip!important;overscroll-behavior-x:none}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}
+main,main>section,.site-header,.footer{max-width:100%;min-width:0;box-sizing:border-box}
+.site-header{background:#fff;border-bottom:1px solid rgba(35,23,18,.08);height:78px}
+.site-header .header-inner{width:min(1220px,calc(100% - 36px))}
+.brand{color:#231712;font-size:18px;letter-spacing:-.025em}
+.brand img{width:44px;height:44px}
+.button{background:#f37021;border-radius:10px;color:#fff;box-shadow:none}
+.button:hover{background:#da5d11;color:#fff}
+.hero{padding:clamp(74px,8vw,120px) 0 100px;min-height:calc(100svh - 78px);display:flex;align-items:flex-start;
+background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.23)),url('bathroom-hero-1600.webp') center center/cover no-repeat;background-color:#353b38}
+.hero-inner{width:min(1180px,calc(100% - 36px));display:flex;justify-content:center;align-items:flex-start;gap:0}
+.form-card{width:min(650px,100%);margin:0 auto;background:#fff;padding:clamp(24px,3.4vw,39px);border-radius:21px;border:1px solid rgba(45,29,21,.10);box-shadow:0 22px 80px rgba(0,0,0,.27)}
+.form-card h2{font-size:clamp(27px,3.1vw,36px);font-weight:950;color:#241814;text-align:center;letter-spacing:-.045em;max-width:480px;margin:14px auto 20px;line-height:1.1}
+.form-top .eyebrow,.step-counter{color:#a64713}
+.form-progress span,.gallery-dot[aria-current=true],.review-dot[aria-current=true]{background:#f37021}
+.choice input:checked+span{background:#fff4ec;border-color:#f37021}
+.field input:focus{border-color:#f37021;outline:3px solid rgba(243,112,33,.14)}
+/* Work images have no labels, captions, intro blurbs or black side cards. */
+.work-section{padding:clamp(60px,7vw,96px) 0;background:#fff}
+.work-section .container{width:min(1260px,calc(100% - 32px))}
+.work-section .section-head{margin:0 0 30px;justify-content:center;text-align:center}
+.work-section .section-head h2{font-size:clamp(36px,4.8vw,66px);font-weight:950;letter-spacing:-.06em;color:#241814;max-width:none;position:relative;display:inline-block;margin:0 auto;padding-bottom:17px}
+.work-section .section-head h2::after{content:'';position:absolute;bottom:0;left:16%;right:16%;height:6px;border-radius:4px;background:#f37021}
+.gallery,.gallery-viewport,.gallery-track,.gallery-slide,.gallery-media{min-width:0;max-width:100%}
+.gallery-viewport{position:relative;overflow:hidden;border-radius:12px;background:#fff;touch-action:pan-y}
+.gallery-track{display:flex;transition:transform .38s cubic-bezier(.2,.75,.3,1)}
+.gallery-slide{display:block;flex:0 0 100%;width:100%;min-height:0;background:#fff}
+.gallery-media.user-project-pair{height:auto!important;min-height:0!important;aspect-ratio:4/3;display:block;position:relative;background:#fff;overflow:hidden}
+.gallery-media .desktop-pair{display:block;position:relative;inset:auto;width:100%;height:100%;object-fit:cover}
+.gallery-media .mobile-pair{display:none}
+.gallery-btns{position:absolute!important;inset:0 12px 0 12px!important;transform:none!important;display:flex;align-items:center;justify-content:space-between;pointer-events:none;z-index:7}
+.gallery-btns .round-btn{pointer-events:auto;flex:0 0 auto;width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.95);color:#241814;box-shadow:0 6px 22px rgba(0,0,0,.2);font-size:24px}
+.gallery-btns .round-btn:hover{background:#f37021;color:#fff}
+.gallery-controls{justify-content:center;gap:18px;margin-top:16px}
+.gallery-count{color:#706762!important}
+.reviews-section{padding:clamp(60px,7vw,96px) 0;background:#f8f4ef}
+.reviews-section .section-head{justify-content:center;text-align:center;margin:0 0 27px}
+.reviews-section .section-head h2{color:#241814;font-weight:950;font-size:clamp(34px,4.6vw,58px);margin:0}
+.reviews-viewport{background:#fff;border-radius:18px}
+.review-slide{background:#fff;border:1px solid #e8e0d8;min-height:290px;justify-content:center}
+.review-slide blockquote{color:#241814}
+.review-slide cite{color:#241814}
+.review-controls .round-btn:hover{background:#f37021;color:#fff}
+.reviews-link{color:#a64713}
+.final-cta{background:#050607;color:#fff;padding:clamp(76px,9vw,120px) 14px}
+.final-cta h2{color:#fff}
+.final-cta .final-cta-button{background:#f37021;box-shadow:0 14px 40px rgba(243,112,33,.2)}
+.final-cta .final-cta-button:hover{background:#da5d11}
+.floating-cta .button{background:#f37021}
+/* Footer structure and styling aligned with original bathroomremodel.html footer. */
+.footer.deck-footer{background:#050607;color:#fff;padding:72px 0 28px;border-top:1px solid rgba(255,255,255,.07);overflow:hidden}
+.footer-inner{width:min(1220px,calc(100% - 36px));margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.1fr .8fr .8fr .9fr;gap:42px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-brand strong{display:block;font-size:25px;letter-spacing:-.8px;margin-bottom:12px}
+.footer-brand p{color:rgba(255,255,255,.60);font-size:14px;line-height:1.7;max-width:360px;margin:0}
+.footer-col h4{font-size:14px;text-transform:uppercase;letter-spacing:.8px;margin:0 0 18px;color:#fff}
+.footer-col a,.footer-col span{display:block;color:rgba(255,255,255,.60);font-size:14px;line-height:1.6;margin-bottom:10px;text-decoration:none}
+.footer-col a:hover,.footer-bottom a:hover{color:#f37021}
+.footer-bottom{padding-top:26px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:rgba(255,255,255,.46);font-size:13px}
+.footer-bottom-links{display:flex;flex-wrap:wrap;gap:13px;align-items:center}
+.footer-bottom-links a{color:inherit;text-decoration:none}
+@media(max-width:900px){.footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px}}
+@media(max-width:600px){
+ html,body{overflow-x:hidden!important}
+ .hero{padding:clamp(112px,18svh,160px) 0 74px;min-height:calc(100svh - 78px);background:linear-gradient(180deg,rgba(0,0,0,.07),rgba(0,0,0,.30)),url('bathroom-hero-960.webp') center 28%/cover no-repeat;background-color:#353b38}
+ .hero-inner{width:calc(100% - 28px);max-width:calc(100% - 28px)}
+ .form-card{padding:24px 18px 25px;border-radius:19px}
+ .form-card h2{font-size:clamp(26px,7vw,31px);margin:13px auto 19px}
+ .work-section{padding:60px 0 70px}
+ .work-section .container{width:calc(100% - 20px);max-width:calc(100% - 20px)}
+ .work-section .section-head{margin-bottom:22px}
+ .work-section .section-head h2{font-size:39px;padding-bottom:14px}
+ .work-section .section-head h2::after{height:5px}
+ .gallery-viewport{border-radius:9px}
+ .gallery-media.user-project-pair{aspect-ratio:auto;height:auto!important;min-height:0!important;display:flex;flex-direction:column}
+ .gallery-media .desktop-pair{display:none!important}
+ .gallery-media .mobile-pair{display:flex;flex-direction:column;width:100%;height:auto;gap:4px}
+ .gallery-media .mobile-pair img{display:block;position:relative!important;inset:auto!important;flex:none;width:100%;height:auto!important;aspect-ratio:2/3;object-fit:cover;background:#fff}
+ .gallery-btns{left:8px!important;right:8px!important}
+ .gallery-btns .round-btn{width:40px;height:40px;font-size:21px}
+ .reviews-section{padding:65px 0}
+ .review-slide{min-height:330px;padding:25px 22px}
+ .footer.deck-footer{padding:56px 0 28px}
+ .footer-inner{width:calc(100% - 36px)}
+ .footer-top{grid-template-columns:repeat(2,minmax(0,1fr));gap:29px 20px;padding-bottom:31px}
+ .footer-brand{grid-column:1/-1}
+ .footer-bottom{align-items:flex-start;flex-direction:column;gap:15px}
+ .footer-bottom-links{gap:10px 14px}
+}
+@media(max-width:380px){.footer-top{grid-template-columns:1fr 1fr;gap:24px 12px}.footer-col h4{font-size:12px}.footer-col a,.footer-col span{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.gallery-track{transition:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#estimate">Skip to free estimate</a>
 <header class="site-header"><div class="header-inner">
 <a aria-label="ZH Homes bathroom remodeling" class="brand" href="bathroomremodel.html"><img alt="ZH Homes logo" height="44" src="zh-homes-logo.webp" width="44"/><span>ZH Homes</span></a>
-
 </div></header>
 <main>
 <section class="hero"><div class="container hero-inner">
@@ -215,15 +309,11 @@ img {max-width:100%}
 </div>
 </div></section>
 <section class="work-section" id="work"><div class="container"><div class="section-head"><div><h2>See the work</h2></div></div>
-<div aria-label="Bathroom remodeling gallery" aria-roledescription="carousel" class="gallery" role="region"><div class="gallery-viewport" id="galleryViewport" tabindex="0"><div class="gallery-track" id="galleryTrack">
-<article aria-label="1 of 3, before and after" aria-roledescription="slide" class="gallery-slide"><div class="gallery-media pair"><figure><img alt="Bathroom before renovation shown in existing ZH Homes gallery" loading="lazy" src="bathroom-before.webp"/><figcaption>Before</figcaption></figure><figure><img alt="Finished bathroom shown as the after image on the existing ZH Homes website" loading="lazy" src="bathroom-after.webp"/><figcaption>After</figcaption></figure></div></article>
-<article aria-label="2 of 3, tub to shower work" aria-roledescription="slide" class="gallery-slide"><div class="gallery-media"><img alt="Tub-to-shower work in progress shown on the ZH Homes website" loading="lazy" src="tub-to-shower-progress.webp"/></div></article>
-<article aria-label="3 of 3, bathroom details" aria-roledescription="slide" class="gallery-slide"><div class="gallery-media"><img alt="Bathroom vanity and finish detail shown on the ZH Homes website" loading="lazy" src="bathroom-vanity.webp"/></div></article>
-</div><div class="gallery-btns"><button aria-label="Previous gallery slide" class="round-btn" id="galleryPrev" type="button">←</button><button aria-label="Next gallery slide" class="round-btn" id="galleryNext" type="button">→</button></div></div><div class="gallery-controls"><div aria-label="Choose gallery slide" class="gallery-dots" id="galleryDots"><button aria-current="true" aria-label="Go to slide 1" class="gallery-dot" type="button"></button><button aria-current="false" aria-label="Go to slide 2" class="gallery-dot" type="button"></button><button aria-current="false" aria-label="Go to slide 3" class="gallery-dot" type="button"></button></div><span aria-live="polite" id="galleryCount" style="font-size:12px;color:#626960;font-weight:750">01 / 03</span></div>
+<div aria-label="Bathroom remodeling gallery" aria-roledescription="carousel" class="gallery" role="region"><div class="gallery-viewport" id="galleryViewport" tabindex="0"><div class="gallery-track" id="galleryTrack"><article aria-label="Bathroom transformation 1 of 4" aria-roledescription="slide" class="gallery-slide" role="group"><div class="gallery-media user-project-pair"><img alt="Bathroom transformation comparison 1" class="desktop-pair" decoding="async" height="1086" loading="lazy" src="zh-bathroom-01.webp" width="1448"/><div class="mobile-pair"><img alt="Bathroom transformation 1, first view" decoding="async" loading="lazy" src="zh-bathroom-01-left.webp"/><img alt="Bathroom transformation 1, second view" decoding="async" loading="lazy" src="zh-bathroom-01-right.webp"/></div></div></article><article aria-label="Bathroom transformation 2 of 4" aria-roledescription="slide" class="gallery-slide" role="group"><div class="gallery-media user-project-pair"><img alt="Bathroom transformation comparison 2" class="desktop-pair" decoding="async" height="1086" loading="lazy" src="zh-bathroom-02.webp" width="1448"/><div class="mobile-pair"><img alt="Bathroom transformation 2, first view" decoding="async" loading="lazy" src="zh-bathroom-02-left.webp"/><img alt="Bathroom transformation 2, second view" decoding="async" loading="lazy" src="zh-bathroom-02-right.webp"/></div></div></article><article aria-label="Bathroom transformation 3 of 4" aria-roledescription="slide" class="gallery-slide" role="group"><div class="gallery-media user-project-pair"><img alt="Bathroom transformation comparison 3" class="desktop-pair" decoding="async" height="1086" loading="lazy" src="zh-bathroom-03.webp" width="1448"/><div class="mobile-pair"><img alt="Bathroom transformation 3, first view" decoding="async" loading="lazy" src="zh-bathroom-03-left.webp"/><img alt="Bathroom transformation 3, second view" decoding="async" loading="lazy" src="zh-bathroom-03-right.webp"/></div></div></article><article aria-label="Bathroom transformation 4 of 4" aria-roledescription="slide" class="gallery-slide" role="group"><div class="gallery-media user-project-pair"><img alt="Bathroom transformation comparison 4" class="desktop-pair" decoding="async" height="1086" loading="lazy" src="zh-bathroom-04.webp" width="1448"/><div class="mobile-pair"><img alt="Bathroom transformation 4, first view" decoding="async" loading="lazy" src="zh-bathroom-04-left.webp"/><img alt="Bathroom transformation 4, second view" decoding="async" loading="lazy" src="zh-bathroom-04-right.webp"/></div></div></article></div><div class="gallery-btns"><button aria-label="Previous gallery slide" class="round-btn" id="galleryPrev" type="button">←</button><button aria-label="Next gallery slide" class="round-btn" id="galleryNext" type="button">→</button></div></div><div class="gallery-controls"><div aria-label="Choose gallery slide" class="gallery-dots" id="galleryDots"><button aria-current="true" aria-label="Go to image 1" class="gallery-dot" type="button"></button><button aria-current="false" aria-label="Go to image 2" class="gallery-dot" type="button"></button><button aria-current="false" aria-label="Go to image 3" class="gallery-dot" type="button"></button><button aria-current="false" aria-label="Go to image 4" class="gallery-dot" type="button"></button></div><span aria-live="polite" id="galleryCount" style="font-size:12px;color:#626960;font-weight:750">01 / 04</span></div>
 </div></div></section>
 <section class="reviews-section" id="reviews"><div class="container"><div class="section-head"><div><h2>What customers say</h2></div></div><div aria-label="Customer reviews carousel" aria-roledescription="carousel" class="reviews-viewport" id="reviewsViewport" role="region" tabindex="0"><div class="reviews-track"><article aria-label="Review 1 of 3" aria-roledescription="slide" class="review review-slide" role="group"><div aria-label="5 out of 5 stars" class="stars">★★★★★</div><blockquote>“If you need someone who shows up, gives a professional bid, and gets things done on time and within the agreed bid contract, you need to call and get on their schedule. I know he is in high demand, so don’t wait.”</blockquote><cite>Tawnya Bacchetti <span>· Google Review</span></cite></article><article aria-label="Review 2 of 3" aria-roledescription="slide" class="review review-slide" role="group"><div aria-label="5 out of 5 stars" class="stars">★★★★★</div><blockquote>“ZH homes replaced our kitchen, lightening, flooring, deck and railing. The owner, Zach, brings creative ideas and suggestions. The work is very well done and prices very reasonable.”</blockquote><cite>Amy Wray <span>· Google Review</span></cite></article><article aria-label="Review 3 of 3" aria-roledescription="slide" class="review review-slide" role="group"><div aria-label="5 out of 5 stars" class="stars">★★★★★</div><div class="rating-only">5 out of 5 stars</div><p class="rating-description">Google rating from Jan Bryant. No written review was provided.</p><cite>Jan Bryant <span>· Google Rating</span></cite></article></div></div><div class="review-controls"><button aria-label="Previous review" class="round-btn review-prev" id="reviewPrev" type="button">←</button><div aria-label="Choose review" class="review-dots" id="reviewDots"><button aria-current="true" aria-label="Go to review 1" class="review-dot" type="button"></button><button aria-current="false" aria-label="Go to review 2" class="review-dot" type="button"></button><button aria-current="false" aria-label="Go to review 3" class="review-dot" type="button"></button></div><button aria-label="Next review" class="round-btn review-next" id="reviewNext" type="button">→</button></div><a class="reviews-link" href="https://share.google/Ry8oCcymMj5uCYeah" rel="noopener noreferrer" target="_blank">Read Google reviews ↗</a></div></section>
 <section class="final-cta"><div class="container"><h2>Ready to start your bathroom remodel?</h2><a class="button final-cta-button" href="#estimate">Get My Free Estimate<span aria-hidden="true">↗</span></a></div></section>
-</main><footer class="footer"><div class="container"><span>© 2026 ZH Homes</span><div><a href="bathroomremodel.html">Bathroom remodeling</a>  ·  <a href="privacy.html">Privacy policy</a></div></div></footer>
+</main><footer class="footer deck-footer" id="site-footer"><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><strong>ZH Homes</strong><p>Bathroom remodeling with clear communication, straightforward estimates, and work done right for homeowners in Salem, Keizer, and nearby Oregon communities.</p></div><div class="footer-col"><h4>Navigation</h4><a href="index.html">Main Website</a><a href="#work">Bathroom Work</a><a href="#reviews">Reviews</a><a href="#estimate">Free Estimate</a></div><div class="footer-col"><h4>Bathroom Services</h4><span>Full Bathroom Remodels</span><span>Tub-to-Shower Conversions</span><span>Shower &amp; Waterproofing</span><span>Vanity &amp; Storage</span></div><div class="footer-col"><h4>Contact</h4><a class="tracked-call" href="tel:5039105466">(503) 910-5466</a><a href="#estimate">Get a bathroom estimate</a><span>Salem, Oregon</span><span>CCB #260679</span></div></div><div class="footer-bottom"><span>© 2026 ZH Homes. All rights reserved.</span><div aria-label="Footer legal links" class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="accessibility.html">Accessibility</a><span>Oregon CCB #260679</span></div></div></div></footer>
 <div class="floating-cta" id="floatingCTA"><a class="button" href="#estimate" id="floatingCTALink">Get Free Estimate <span aria-hidden="true">↑</span></a></div>
 <script src="google-analytics.js"></script>
 <script>
