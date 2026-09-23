@@ -7,3 +7,6 @@ New: top-right Get Quote link, shorter photo/form hero on mobile, side-by-side g
 Only previously published testimonials are included. Add additional customer reviews only when their genuine text, attribution and permission are available.
 
 Check lead delivery and tracking on deployment before turning ads back on.
+
+
+Update notes: Added 4 new before/after image slides (8 total), inserted 8 supplied customer reviews, and made the floating estimate button background transparent on mobile.
