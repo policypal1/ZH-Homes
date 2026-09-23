@@ -357,6 +357,9 @@ html{scroll-behavior:auto!important}
 .floating-cta{transition:opacity .13s ease!important;transform:none!important;visibility:hidden;opacity:0;pointer-events:none}
 .floating-cta.show{visibility:visible;opacity:1;pointer-events:auto;transform:none!important}
 @media (prefers-reduced-motion:reduce){.gallery-track,.reviews-track{transition:none!important}}
+
+/* Form heading: retain a single estimate headline, no redundant eyebrow. */
+.form-card .form-top{justify-content:flex-end;margin-bottom:0}
 </style>
 </head>
 <body>
@@ -366,7 +369,7 @@ html{scroll-behavior:auto!important}
 <a aria-label="Get a free bathroom estimate" class="header-estimate-link" href="#estimate">Get Quote</a></div></header>
 <main>
 <section class="hero"><div class="container hero-inner">
-<div class="form-card" id="estimate"><div class="form-top"><span class="eyebrow">Free bathroom estimate</span><span aria-live="polite" class="step-counter" id="quoteStepCounter">Step 1 of 3</span></div>
+<div class="form-card" id="estimate"><div class="form-top"><span aria-live="polite" class="step-counter" id="quoteStepCounter">Step 1 of 3</span></div>
 <h2>Get Your Free Bathroom Estimate</h2><div aria-hidden="true" class="form-progress"><span id="quoteProgress"></span></div>
 <form data-form-source="Dedicated Bathroom Quote Page" id="quotePageBathroomForm" novalidate="">
 <div aria-hidden="true" class="hp"><label for="quoteCompanyWebsite">Company website</label><input autocomplete="off" id="quoteCompanyWebsite" name="companyWebsite" tabindex="-1"/></div>
