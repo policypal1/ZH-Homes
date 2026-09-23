@@ -1,12 +1,9 @@
-ZH Homes compact quote page
+ZH HOMES QUOTE PAGE — FINAL POLISH
 
-Copy quote.html and all 12 zh-bathroom-*.webp files to the repository root. Keep the existing stylesheet, hero images, scripts, and API files unchanged. quote backup.html preserves the preceding version and can be renamed to quote.html to roll back.
+Copy quote.html into the root of your ZH Homes website. Copy the included zh-bathroom-*.webp files into the same directory (you may skip copies already deployed). Keep your existing bathroom-hero-960.webp, bathroom-hero-1600.webp, zh-homes-logo.webp, google-analytics.js, and API routes in place.
 
-New: top-right Get Quote link, shorter photo/form hero on mobile, side-by-side gallery images on mobile, clean checkmark CTA. Form markup, delivery endpoint and conversion event IDs remain unchanged.
+Updates: removed the Read Google Reviews link and repeated Google Review/Google Rating captions from the review carousel. Fixed floating estimate CTA stutter by switching to a direct jump and stable visibility threshold. Deferred gallery images beyond the first slide until needed. The form and lead submission endpoint are unchanged.
 
-Only previously published testimonials are included. Add additional customer reviews only when their genuine text, attribution and permission are available.
+quote backup.html is retained from the previous delivery so you can restore the prior version.
 
-Check lead delivery and tracking on deployment before turning ads back on.
-
-
-Update notes: Added 4 new before/after image slides (8 total), inserted 8 supplied customer reviews, and made the floating estimate button background transparent on mobile.
+IMPORTANT: Verify that all published testimonials are genuine and accurately attributed, and that all displayed project images are authorized and accurately describe ZH Homes work. Test a real lead submission after deployment and ensure delivery and conversion tracking before restarting ad spend.
