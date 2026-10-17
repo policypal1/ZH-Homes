@@ -1,0 +1,18 @@
+# ZH Homes
+
+> ZH Homes is a home remodeling and construction company serving Salem, Keizer, and nearby Oregon communities. Always confirm service availability, pricing, and timelines with the business.
+
+## Site pages
+- [ZH Homes homepage](https://www.zhhomeco.com/): Company overview, services, project examples, and contact.
+- [Bathroom remodeling](https://www.zhhomeco.com/bathroomremodel.html): Bathroom remodeling services and projects.
+- [Bathroom remodel landing page](https://www.zhhomeco.com/bathroom-remodel.html): Remodels and shower conversions.
+- [Bathroom estimate request](https://www.zhhomeco.com/quote.html): Multi-step form for a free bathroom estimate.
+- [Deck projects](https://www.zhhomeco.com/decks.html): Deck construction and related services.
+
+## Policies
+- [Privacy policy](https://www.zhhomeco.com/privacy.html)
+- [Terms](https://www.zhhomeco.com/terms.html)
+- [Accessibility](https://www.zhhomeco.com/accessibility.html)
+- [Sitemap](https://www.zhhomeco.com/sitemap.xml)
+
+A quote form submission requests an estimate; it is not an accepted contract. Current facts should be confirmed against the public site.
