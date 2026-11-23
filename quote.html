@@ -445,6 +445,13 @@ try{
 var response=await fetch('/api/bathroom-lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)}),result=null;
 try{result=await response.json();}catch(e){}
 if(!response.ok||!result||result.ok!==true)throw Error('Lead delivery not confirmed');
+if (typeof window.fbq === 'function') {
+  try {
+    window.fbq('track', 'Lead');
+  } catch (pixelError) {
+    console.warn('Meta Lead tracking failed.', pixelError);
+  }
+}
 event('bathroom_form_submit_timing',{duration_ms:Math.round(performance.now()-startedAt),result:'success'});
 event('bathroom_lead_submit',{form_name:'Dedicated Bathroom Quote Page',project_type:p.projectType,lead_source:p.leadSource});
 if(typeof window.gtag==='function')window.gtag('event','conversion',{send_to:'AW-18215005784/R-utCL2htegcENjcy-1D'});
